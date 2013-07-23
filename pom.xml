@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>net.idea</groupId>
+  <artifactId>iuclid5-cli</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>iuclid5-cli</name>
+  <modules>
+  	<module>iuclid5-io</module>
+  </modules>
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>  
+<build>
+<plugins>
+
+<plugin>
+     <groupId>org.codehaus.mojo</groupId>
+     <artifactId>jaxb2-maven-plugin</artifactId>
+     <executions>
+      <execution>
+       <goals>
+        <goal>xjc</goal>
+       </goals>
+       <configuration>
+       <!-- 
+      		<schemaDirectory>src/main/resources/schemas/Root_Objects_XSD_5.5</schemaDirectory>
+      		 <schemaDirectory>src/main/resources</schemaDirectory>
+      		<schemaFiles>SUBSTANCE_20130101_000000.xsd</schemaFiles>
+      		      		 -->
+       		<packageName>net.idea.iuclid5.jaxb</packageName>
+       		<nv>false</nv>
+       		<staleFile>${project.build.directory}/jaxb2/.schema1XjcStaleFlag</staleFile>
+     	</configuration>
+      </execution>
+     </executions>
+    </plugin>
+    
+</plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.3.1</version>
+          <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <configuration>
+            <skip>true</skip>
+            <disableXmlReport>true</disableXmlReport>
+            <argLine>-Xmx1024m</argLine>
+          </configuration>
+        </plugin>
+        <plugin>
+          <!-- Create jars for test classes -->
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <executions>
+            <execution>
+              <goals>
+                <goal>test-jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+</build>  
+</project>
