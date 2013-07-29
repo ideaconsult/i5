@@ -1,6 +1,56 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jaxb:bindings version="1.0" 
-               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
-               xmlns:xs="http://www.w3.org/2001/XMLSchema">
-            <jaxb:globalBindings typesafeEnumMaxMembers="600"/>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<jaxb:bindings xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" version="2.1">
+  <jaxb:bindings>  
+  <jaxb:globalBindings typesafeEnumMaxMembers="600" />
+  </jaxb:bindings> 
+
+  <jaxb:bindings schemaLocation="Root_Objects_XSD_5.5\SUBSTANCE_20130101_000000.xsd">
+  <!--
+    These are to avoid JAXB generated classes with same name (due to recursive XML schema)
+    -->
+    <jaxb:bindings node="//xsd:element[@name='biocidalInformation']/xsd:complexType/xsd:sequence/xsd:element[@name='biocidalInformation']/xsd:complexType">
+      <jaxb:class name="BiocidalInformation2" />
+    </jaxb:bindings>
+    <jaxb:bindings node="//xsd:element[@name='ghs']/xsd:complexType/xsd:sequence/xsd:element[@name='ghs']/xsd:complexType">
+      <jaxb:class name="Ghs2" />
+    </jaxb:bindings>		
+    <jaxb:bindings node="//xsd:element[@name='carcinogenicity']/xsd:complexType/xsd:sequence/xsd:element[@name='carcinogenicity']/xsd:complexType">
+      <jaxb:class name="Carcinogenicity2" />
+    </jaxb:bindings>	
+    <jaxb:bindings node="//xsd:element[@name='volumeInformation']/xsd:complexType/xsd:sequence/xsd:element[@name='volumeInformation']/xsd:complexType">
+      <jaxb:class name="VolumeInformation2" />
+    </jaxb:bindings>	    
+    <jaxb:bindings node="//xsd:element[@name='csfLabelForSubstance']/xsd:complexType/xsd:sequence/xsd:element[@name='csfLabelForSubstance']/xsd:complexType">
+      <jaxb:class name="CsfLabelForSubstance2" />
+    </jaxb:bindings>	   
+		<jaxb:bindings node="//xsd:element[@name='germCellMutagenicity']/xsd:complexType/xsd:sequence/xsd:element[@name='germCellMutagenicity']/xsd:complexType">
+      <jaxb:class name="GermCellMutagenicity2" />
+    </jaxb:bindings>	      
+    <jaxb:bindings node="//xsd:element[@name='stostSingleExp']/xsd:complexType/xsd:sequence/xsd:element[@name='stostSingleExp']/xsd:complexType">
+      <jaxb:class name="StostSingleExp2" />
+    </jaxb:bindings>	      
+    <jaxb:bindings node="//xsd:element[@name='hazardPictograms']/xsd:complexType/xsd:sequence/xsd:element[@name='hazardPictograms']/xsd:complexType">
+      <jaxb:class name="HazardPictograms2" />
+    </jaxb:bindings>
+    <jaxb:bindings node="//xsd:element[@name='additionalRequirements']/xsd:complexType/xsd:sequence/xsd:element[@name='additionalRequirements']/xsd:complexType">
+      <jaxb:class name="AdditionalRequirements2" />
+    </jaxb:bindings>
+		<jaxb:bindings node="//xsd:element[@name='precautionaryStatements']/xsd:complexType/xsd:sequence/xsd:element[@name='precautionaryStatements']/xsd:complexType">
+      <jaxb:class name="PrecautionaryStatements2" />
+    </jaxb:bindings>    
+    <jaxb:bindings node="//xsd:element[@name='hazardStatements']/xsd:complexType/xsd:sequence/xsd:element[@name='hazardStatements']/xsd:complexType">
+      <jaxb:class name="HazardStatements2" />
+    </jaxb:bindings>
+	  <jaxb:bindings node="//xsd:element[@name='stostRepExp']/xsd:complexType/xsd:sequence/xsd:element[@name='stostRepExp']/xsd:complexType">
+      <jaxb:class name="StostRepExp2" />
+    </jaxb:bindings>    
+    <jaxb:bindings node="//xsd:element[@name='additionalLabellings']/xsd:complexType/xsd:sequence/xsd:element[@name='additionalLabellings']/xsd:complexType">
+      <jaxb:class name="AdditionalLabellings2" />
+    </jaxb:bindings>
+	  <jaxb:bindings node="//xsd:element[@name='mixtureAltNameRequestInfo']/xsd:complexType/xsd:sequence/xsd:element[@name='mixtureAltNameRequestInfo']/xsd:complexType">
+      <jaxb:class name="MixtureAltNameRequestInfo2" />
+    </jaxb:bindings>    
+         
+  </jaxb:bindings>
 </jaxb:bindings>
