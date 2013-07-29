@@ -6,9 +6,12 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <groupId>net.idea</groupId>
-  <artifactId>iuclid5-io</artifactId>
+  <artifactId>iuclid_5_5-io</artifactId>
+  <name>iuclid_5_5-io</name>
   <version>0.0.1-SNAPSHOT</version>
-<build>
+  <url>http://www.idesconsult.net</url>
+  <inceptionYear>2013</inceptionYear>
+  <build>
 <!-- 
     <pluginManagement>
       <plugins>
@@ -24,5 +27,19 @@
       </plugins>
     </pluginManagement>
      -->
-</build>  
+
+<plugins>
+	<plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-jar-plugin</artifactId>
+       <executions>
+         <execution>
+           <goals>
+             <goal>test-jar</goal>
+           </goals>
+         </execution>
+       </executions>
+     </plugin>
+	</plugins>
+</build> 
 </project>
