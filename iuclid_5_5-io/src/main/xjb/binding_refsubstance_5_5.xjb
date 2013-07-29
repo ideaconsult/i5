@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<jaxb:bindings xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" version="2.1">
+  <jaxb:bindings>  
+  <jaxb:globalBindings typesafeEnumMaxMembers="600" />
+  </jaxb:bindings> 
+  
+  <jaxb:bindings schemaLocation="Root_Objects_XSD_5.5\REFERENCESUBSTANCE_20130101_000000.xsd">
+  </jaxb:bindings>
+  
+</jaxb:bindings>
