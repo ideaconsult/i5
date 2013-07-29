@@ -9,10 +9,12 @@
   <modules>
   	<module>iuclid_5_5-io</module>
     <module>iuclid_5_4-io</module>
+    <module>i5z</module>
   </modules>
 	<properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.8.1</junit.version>
+    <ambit.version>2.4.13-SNAPSHOT</ambit.version>
   </properties>    
 <dependencies>
     <dependency>
@@ -25,6 +27,10 @@
 
 
    
+<organization>
+	<name>Ideaconsult Ltd.</name>
+	<url>http://www.ideaconsult.net</url>
+</organization>
 <build>
 <plugins>
 <!-- 
