@@ -3,6 +3,7 @@ package net.idea.i5.io.substance.test;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,7 +41,7 @@ public class SubstanceTest {
 		Assert.assertNotNull(in);
 		int count = 0;
 		try {
-			I5DReader reader = new I5DReader(new InputStreamReader(in,"UTF-8"));
+			I5DReader reader = new I5DReader(in);
 			reader.setErrorHandler(new IChemObjectReaderErrorHandler() {
 				
 				public void handleError(String message, int row, int colStart, int colEnd,

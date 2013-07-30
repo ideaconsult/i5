@@ -2,7 +2,6 @@ package net.idea.i5.io;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.logging.Logger;
 
@@ -27,7 +26,7 @@ import ambit2.core.io.IRawReader;
  */
 public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectReader implements IRawReader<T>, ICiteable {
 	protected static Logger logger = Logger.getLogger(AbstractI5DReader.class.getName());
-	protected Reader reader;
+	protected InputStream stream;
 	protected JAXBContext jaxbContext;
 	protected Unmarshaller jaxbUnmarshaller;
 	protected boolean hasNext = true;
@@ -40,7 +39,7 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 	 * @param jaxbUnmarshaller
 	 * @throws CDKException
 	 */
-	public AbstractI5DReader(Reader in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller) throws CDKException {
+	public AbstractI5DReader( InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller) throws CDKException {
 		super();
 		setReader(in);
 		initJAXB(jaxbContext, jaxbUnmarshaller);
@@ -51,7 +50,7 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 	 * uses default JAXB context path "net.idea.i5._5.substance:net.idea.i5._4.substance"
 	 * @throws CDKException
 	 */
-	public AbstractI5DReader(Reader in) throws CDKException {
+	public AbstractI5DReader( InputStream in) throws CDKException {
 		this(in,"net.idea.i5._5.substance:net.idea.i5._4.substance");
 	}
 	/**
@@ -60,7 +59,7 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 	 * @param contextPath e.g. "net.idea.i5._5.substance:net.idea.i5._4.substance"
 	 * @throws CDKException
 	 */
-	public AbstractI5DReader(Reader in,String contextPath) throws CDKException {
+	public AbstractI5DReader(InputStream in,String contextPath) throws CDKException {
 		super();
 		setReader(in);
 		try {
@@ -78,22 +77,25 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 		this.jaxbContext = jaxbContext;
 		this.jaxbUnmarshaller = jaxbUnmarshaller;
 	}
-	public void setReader(Reader reader) throws CDKException {
-		this.reader = reader;
+	public void setReader(InputStream in) throws CDKException {
+		this.stream = in;
 	}
 
-	public void setReader(InputStream reader) throws CDKException {
-		setReader(new InputStreamReader(reader));
+	/**
+	 * Does nothing, use {@link #setReader(InputStream)
+	 */
+	public void setReader(Reader reader) throws CDKException {
+		throw new CDKException("Use setReader(InputStream) to avoid problems with XML BOM");
 	}
 
 	public void close() throws IOException {
-		if (reader!=null) reader.close();
+		if (stream!=null) stream.close();
 	}
 
 	public boolean hasNext() {
 		if (hasNext) {
 			try { 
-				unmarshalled = jaxbUnmarshaller.unmarshal(reader);
+				unmarshalled = jaxbUnmarshaller.unmarshal(stream);
 				record = transform(unmarshalled);
 				hasNext = false;
 				return true;

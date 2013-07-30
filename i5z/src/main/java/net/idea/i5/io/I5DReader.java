@@ -1,6 +1,6 @@
 package net.idea.i5.io;
 
-import java.io.Reader;
+import java.io.InputStream;
 import java.util.Hashtable;
 
 import javax.xml.bind.JAXBContext;
@@ -23,7 +23,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @param jaxbUnmarshaller
 	 * @throws CDKException
 	 */
-	public I5DReader(Reader in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller) throws CDKException {
+	public I5DReader(InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller) throws CDKException {
 		super(in,jaxbContext, jaxbUnmarshaller);
 		initProcessors();
 	}
@@ -33,7 +33,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * uses default JAXB context path "net.idea.i5._5.substance:net.idea.i5._4.substance"
 	 * @throws CDKException
 	 */
-	public I5DReader(Reader in) throws CDKException {
+	public I5DReader(InputStream in) throws CDKException {
 		super(in);
 		initProcessors();
 	}
@@ -43,7 +43,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @param contextPath e.g. "net.idea.i5._5.substance:net.idea.i5._4.substance"
 	 * @throws CDKException
 	 */
-	public I5DReader(Reader in,String contextPath) throws CDKException {
+	public I5DReader(InputStream in,String contextPath) throws CDKException {
 		super(in,contextPath);
 		initProcessors();
 	}

@@ -2,6 +2,7 @@ package net.idea.i5.io;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -9,8 +10,6 @@ import java.util.logging.Level;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-
-import org.openscience.cdk.io.IChemObjectReaderErrorHandler;
 
 import ambit2.base.exceptions.AmbitIOException;
 import ambit2.base.interfaces.IStructureRecord;
@@ -35,11 +34,11 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 		String name = files[index].getName().toLowerCase();
 		if (name.endsWith(FileInputState.extensions[FileInputState.I5D_INDEX])) {
 			logger.log(Level.FINE,name);
-			InputStream in = new FileInputStream(files[index]);
+			InputStream fileReader = new FileInputStream(files[index]);
 			try {
 				if (jaxbContext==null) jaxbContext = JAXBContext.newInstance(contextPath);
 				if (jaxbUnmarshaller==null) jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-				I5DReader reader = new I5DReader(new InputStreamReader(in,"UTF-8"),jaxbContext,jaxbUnmarshaller);
+				I5DReader reader = new I5DReader(fileReader,jaxbContext,jaxbUnmarshaller);
 				reader.setErrorHandler(errorHandler);
 				return reader;
 			} catch (javax.xml.bind.UnmarshalException x) {
