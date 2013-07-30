@@ -3,6 +3,7 @@ package net.idea.i5.io;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.logging.Level;
 
 import javax.xml.bind.JAXBContext;
@@ -18,6 +19,7 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 	protected String contextPath = "net.idea.i5._5.substance:net.idea.i5._4.substance";
 	protected JAXBContext jaxbContext;
 	protected Unmarshaller jaxbUnmarshaller;
+	
 	public I5ZReader(File zipfile) throws AmbitIOException {
 		super(zipfile);
 	}
@@ -34,14 +36,13 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 			try {
 				if (jaxbContext==null) jaxbContext = JAXBContext.newInstance(contextPath);
 				if (jaxbUnmarshaller==null) jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-				transform(jaxbUnmarshaller.unmarshal(in));
-				return null;
+				return new I5DReader(new InputStreamReader(in),jaxbContext,jaxbUnmarshaller);
 			} catch (javax.xml.bind.UnmarshalException x) {
 				throw x;
 			} catch (Exception x) {
 				throw x;
 			} finally {
-				if (in != null) in.close();
+				//stream closed by closeItemReader
 			}
 		}
 			
@@ -58,10 +59,4 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 		jaxbContext = null;
 		jaxbUnmarshaller = null;
 	}
-	
-	public IStructureRecord transform(Object substance) {
-		System.out.println(substance.getClass().getName());
-		return null;
-	}
-	
 }

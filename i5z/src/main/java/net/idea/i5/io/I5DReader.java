@@ -6,8 +6,6 @@ import java.util.Hashtable;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
-import net.idea.i5._5.ambit2.I5AmbitProcessor;
-
 import org.openscience.cdk.exception.CDKException;
 
 import ambit2.base.data.SubstanceRecord;
@@ -65,6 +63,5 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 			return p.process(unmarshalled);
 		else return null;
 	}
-
 
 }

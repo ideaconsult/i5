@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.logging.Logger;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -25,7 +26,7 @@ import ambit2.core.io.IRawReader;
  * @param <SUBSTANCE>
  */
 public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectReader implements IRawReader<T>, ICiteable {
-
+	protected static Logger logger = Logger.getLogger(AbstractI5DReader.class.getName());
 	protected Reader reader;
 	protected JAXBContext jaxbContext;
 	protected Unmarshaller jaxbUnmarshaller;
@@ -84,6 +85,7 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 	public void setReader(InputStream reader) throws CDKException {
 		setReader(new InputStreamReader(reader));
 	}
+
 	public void close() throws IOException {
 		if (reader!=null) reader.close();
 	}
@@ -96,7 +98,10 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 				hasNext = false;
 				return true;
 			} catch (Exception x) {
-				try { handleError("JAXB error",x);} catch (Exception xx) {}
+				try { handleError("JAXB error",x);} 
+				catch (Exception xx) {
+					logger.log(java.util.logging.Level.SEVERE,x.getMessage(),xx);
+				}
 				return false;
 			}
 		} else {
@@ -129,5 +134,8 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 	}
 	
 	protected abstract T transform(Object unmarshalled) throws AmbitException ;
+	
+
+
 
 }
