@@ -1,12 +1,12 @@
 package net.idea.i5._4.ambit2;
 
 
-import net.idea.i5._4.substance.Substance.ExternalSystemIdentifiers.ExternalSystemIdentifier;
-import net.idea.i5._4.substance.Substance.SubstanceCompositions;
-import net.idea.i5._4.substance.Substance.SubstanceCompositions.SubstanceComposition;
-import net.idea.i5._4.substance.Substance.SubstanceCompositions.SubstanceComposition.Additives.Additive;
-import net.idea.i5._4.substance.Substance.SubstanceCompositions.SubstanceComposition.Constituents.Constituent;
-import net.idea.i5._4.substance.Substance.SubstanceCompositions.SubstanceComposition.Impurities.Impurity;
+import eu.europa.echa.schemas.iuclid5._20120101.Substance.SubstanceCompositions;
+import eu.europa.echa.schemas.iuclid5._20120101.Substance.ExternalSystemIdentifiers.ExternalSystemIdentifier;
+import eu.europa.echa.schemas.iuclid5._20120101.Substance.SubstanceCompositions.SubstanceComposition;
+import eu.europa.echa.schemas.iuclid5._20120101.Substance.SubstanceCompositions.SubstanceComposition.Additives.Additive;
+import eu.europa.echa.schemas.iuclid5._20120101.Substance.SubstanceCompositions.SubstanceComposition.Constituents.Constituent;
+import eu.europa.echa.schemas.iuclid5._20120101.Substance.SubstanceCompositions.SubstanceComposition.Impurities.Impurity;
 import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
 import ambit2.base.data.StructureRecord;
@@ -27,13 +27,13 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	private static final long serialVersionUID = -38158314141255416L;
 
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
-		if (unmarshalled instanceof net.idea.i5._4.substance.Substance)
-			return transform2record((net.idea.i5._4.substance.Substance)unmarshalled);
+		if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20120101.Substance)
+			return transform2record((eu.europa.echa.schemas.iuclid5._20120101.Substance)unmarshalled);
 		else
 		return null;
 	}
 
-	protected IStructureRecord transform2record(net.idea.i5._4.substance.Substance unmarshalled) {
+	protected IStructureRecord transform2record(eu.europa.echa.schemas.iuclid5._20120101.Substance unmarshalled) {
 		record.clear();
 		if (unmarshalled != null) {
 			if (unmarshalled.getChemicalName()!=null)

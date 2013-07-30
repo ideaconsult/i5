@@ -26,6 +26,8 @@
   <build>
   
 <plugins>
+
+
 	<plugin>
        <groupId>org.apache.maven.plugins</groupId>
        <artifactId>maven-jar-plugin</artifactId>
@@ -38,5 +40,31 @@
        </executions>
      </plugin>
 	</plugins>
+<pluginManagement>
+<plugins>
+<plugin>
+     <groupId>org.codehaus.mojo</groupId>
+     <artifactId>jaxb2-maven-plugin</artifactId>
+     <executions>
+      <execution>
+       <goals>
+        <goal>xjc</goal>
+       </goals>
+       <configuration>
+       <!-- 
+      		<schemaDirectory>src/main/resources/schemas/Root_Objects_XSD_5.5</schemaDirectory>
+      		 <schemaDirectory>src/main/resources</schemaDirectory>
+      		<schemaFiles>SUBSTANCE_20130101_000000.xsd</schemaFiles>
+ -->
+       		<nv>true</nv>
+       		<!-- 
+       		<staleFile>${project.build.directory}/jaxb2/.schema1XjcStaleFlag</staleFile>
+       		 -->
+     	</configuration>
+      </execution>
+     </executions>
+    </plugin>
+</plugins>    
+</pluginManagement>	
 </build>  
 </project>
