@@ -50,6 +50,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 					//System.out.println(unmarshalled.getTradeNames().getTradeName().get(i).getCountry().getValueID());
 				}
 			}	
+			if (unmarshalled.getExternalSystemIdentifiers()!=null)
 			for (ExternalSystemIdentifier id : unmarshalled.getExternalSystemIdentifiers().getExternalSystemIdentifier()) {
 				System.out.println(id.getExternalSystemDesignator());
 				System.out.println(id.getID());
