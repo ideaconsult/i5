@@ -30,7 +30,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	/**
 	 * 
 	 * @param in
-	 * uses default JAXB context path "net.idea.i5._5.substance:eu.europa.echa.schemas.iuclid5._20120101"
+	 * uses default JAXB context path "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101"
 	 * @throws CDKException
 	 */
 	public I5DReader(InputStream in) throws CDKException {
@@ -40,7 +40,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	/**
 	 * 
 	 * @param in
-	 * @param contextPath e.g. "net.idea.i5._5.substance:eu.europa.echa.schemas.iuclid5._20120101"
+	 * @param contextPath e.g. "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101"
 	 * @throws CDKException
 	 */
 	public I5DReader(InputStream in,String contextPath) throws CDKException {
@@ -51,7 +51,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	protected void initProcessors() {
 		processors.put(eu.europa.echa.schemas.iuclid5._20120101.Substance.class.getName(), 
 								new net.idea.i5._4.ambit2.I5AmbitProcessor());
-		processors.put(net.idea.i5._5.substance.Substance.class.getName(), 
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.class.getName(), 
 								new net.idea.i5._5.ambit2.I5AmbitProcessor());
 	}
 

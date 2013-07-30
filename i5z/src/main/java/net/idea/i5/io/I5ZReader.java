@@ -18,7 +18,7 @@ import ambit2.core.io.IRawReader;
 import ambit2.core.io.ZipReader;
 
 public class I5ZReader<SUBSTANCE> extends ZipReader {
-	protected String contextPath = "net.idea.i5._5.substance:eu.europa.echa.schemas.iuclid5._20120101";
+	protected String contextPath = "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101";
 	protected JAXBContext jaxbContext;
 	protected Unmarshaller jaxbUnmarshaller;
 	

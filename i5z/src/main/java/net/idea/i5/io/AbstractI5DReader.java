@@ -47,16 +47,16 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 	/**
 	 * 
 	 * @param in
-	 * uses default JAXB context path "net.idea.i5._5.substance:eu.europa.echa.schemas.iuclid5._20120101"
+	 * uses default JAXB context path "eu.europa.echa.schemas.iuclid5._20130101:eu.europa.echa.schemas.iuclid5._20120101"
 	 * @throws CDKException
 	 */
 	public AbstractI5DReader( InputStream in) throws CDKException {
-		this(in,"net.idea.i5._5.substance:eu.europa.echa.schemas.iuclid5._20120101");
+		this(in,"eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101");
 	}
 	/**
 	 * 
 	 * @param in
-	 * @param contextPath e.g. "net.idea.i5._5.substance:eu.europa.echa.schemas.iuclid5._20120101"
+	 * @param contextPath e.g. eu.europa.echa.schemas.iuclid5._20120101"
 	 * @throws CDKException
 	 */
 	public AbstractI5DReader(InputStream in,String contextPath) throws CDKException {
