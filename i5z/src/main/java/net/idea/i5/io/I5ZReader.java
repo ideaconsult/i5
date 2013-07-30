@@ -2,12 +2,15 @@ package net.idea.i5.io;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
+
+import org.openscience.cdk.io.IChemObjectReaderErrorHandler;
 
 import ambit2.base.exceptions.AmbitIOException;
 import ambit2.base.interfaces.IStructureRecord;
@@ -36,7 +39,9 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 			try {
 				if (jaxbContext==null) jaxbContext = JAXBContext.newInstance(contextPath);
 				if (jaxbUnmarshaller==null) jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-				return new I5DReader(new InputStreamReader(in),jaxbContext,jaxbUnmarshaller);
+				I5DReader reader = new I5DReader(new InputStreamReader(in,"UTF-8"),jaxbContext,jaxbUnmarshaller);
+				reader.setErrorHandler(errorHandler);
+				return reader;
 			} catch (javax.xml.bind.UnmarshalException x) {
 				throw x;
 			} catch (Exception x) {
@@ -49,6 +54,12 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 		throw new Exception("Unsupported format "+name); 
 	}
 
+	@Override
+	protected void closeItemReader(IRawReader<IStructureRecord> itemReader)
+			throws IOException {
+		if (itemReader!=null) itemReader.setErrorHandler(null);
+		super.closeItemReader(itemReader);
+	}
 	
 	public String getContextPath() {
 		return contextPath;
@@ -59,4 +70,5 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 		jaxbContext = null;
 		jaxbUnmarshaller = null;
 	}
+
 }

@@ -40,7 +40,7 @@ public class SubstanceTest {
 		Assert.assertNotNull(in);
 		int count = 0;
 		try {
-			I5DReader reader = new I5DReader(new InputStreamReader(in));
+			I5DReader reader = new I5DReader(new InputStreamReader(in,"UTF-8"));
 			reader.setErrorHandler(new IChemObjectReaderErrorHandler() {
 				
 				public void handleError(String message, int row, int colStart, int colEnd,
