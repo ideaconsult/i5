@@ -15,6 +15,11 @@
   	<url>http://www.ideaconsult.net</url>
   </organization>
   <dependencies>
+      <dependency>
+      <groupId>ambit</groupId>
+      <artifactId>ambit2-base</artifactId>
+      <version>${ambit.version}</version>
+    </dependency>
     <dependency>
       <groupId>ambit</groupId>
       <artifactId>ambit2-core</artifactId>

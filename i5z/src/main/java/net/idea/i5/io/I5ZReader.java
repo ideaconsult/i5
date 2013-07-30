@@ -1,4 +1,4 @@
-package net.idea.i5.i5z;
+package net.idea.i5.io;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,7 +16,8 @@ import ambit2.core.io.ZipReader;
 
 public class I5ZReader<SUBSTANCE> extends ZipReader {
 	protected String contextPath = "net.idea.i5._5.substance:net.idea.i5._4.substance";
-
+	protected JAXBContext jaxbContext;
+	protected Unmarshaller jaxbUnmarshaller;
 	public I5ZReader(File zipfile) throws AmbitIOException {
 		super(zipfile);
 	}
@@ -31,8 +32,8 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 			logger.log(Level.FINE,name);
 			InputStream in = new FileInputStream(files[index]);
 			try {
-				JAXBContext jaxbContext = JAXBContext.newInstance(contextPath);
-				Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+				if (jaxbContext==null) jaxbContext = JAXBContext.newInstance(contextPath);
+				if (jaxbUnmarshaller==null) jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 				transform(jaxbUnmarshaller.unmarshal(in));
 				return null;
 			} catch (javax.xml.bind.UnmarshalException x) {
@@ -51,8 +52,11 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 	public String getContextPath() {
 		return contextPath;
 	}
-	public void setContextPath(String contextPath) {
+	public synchronized void setContextPath(String contextPath) {
 		this.contextPath = contextPath;
+		//if contextpath is modified, let's reinitialize jaxb
+		jaxbContext = null;
+		jaxbUnmarshaller = null;
 	}
 	
 	public IStructureRecord transform(Object substance) {
