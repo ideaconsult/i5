@@ -49,8 +49,10 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	}
 	
 	protected void initProcessors() {
-		processors.put(eu.europa.echa.schemas.iuclid5._20120101.Substance.class.getName(), 
+		processors.put(eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.class.getName(), 
 								new net.idea.i5._4.ambit2.I5AmbitProcessor());
+		processors.put(eu.europa.echa.schemas.iuclid5._20120101.referencesubstance.ReferenceSubstance.class.getName(), 
+				new net.idea.i5._4.ambit2.I5AmbitProcessor());		
 		processors.put(eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.class.getName(), 
 								new net.idea.i5._5.ambit2.I5AmbitProcessor());
 		processors.put(eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance.class.getName(), 
