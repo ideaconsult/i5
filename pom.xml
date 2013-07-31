@@ -9,6 +9,7 @@
   <modules>
   	<module>iuclid_5_5-io</module>
     <module>iuclid_5_4-io</module>
+    <module>iuclid_5_0-io</module>
     <module>i5z</module>
   </modules>
 	<properties>

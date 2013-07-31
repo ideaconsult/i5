@@ -36,7 +36,7 @@
          </execution>
        </executions>
      </plugin>
-     
+ <!--    
   <plugin>
      <groupId>org.codehaus.mojo</groupId>
      <artifactId>jaxb2-maven-plugin</artifactId>
@@ -59,7 +59,7 @@
        		<verbose>true</verbose>
      	</configuration>
       </execution>
- <!--
+ 
        <execution>
         <id>ReferenceSubstance</id>
         <phase>generate-sources</phase>
@@ -78,10 +78,10 @@
              <forceRegenerate>true</forceRegenerate>
      	</configuration>
       </execution>
- -->
+ 
      </executions>
     </plugin>
-     
+ -->    
 </plugins>    
 
 </build>  

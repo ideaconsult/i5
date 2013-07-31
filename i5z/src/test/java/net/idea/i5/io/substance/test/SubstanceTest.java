@@ -113,7 +113,13 @@ public class SubstanceTest {
 		String test = "net/idea/i5/_4/substance/i5z/formaldehyde.i5z";
 		Assert.assertEquals(1,unmarshall_i5z(SubstanceTest.class.getClassLoader().getResourceAsStream(test)));		
 	}
-
+	@Test
+	public void test_i5z_0() throws Exception {
+		//ReferenceSubstance support only!
+		String test = "net/idea/i5/_0/substance/i5z/RefSub_030913110311.i5z";
+		Assert.assertEquals(10,unmarshall_i5z(SubstanceTest.class.getClassLoader().getResourceAsStream(test)));		
+	}
+	
 	protected int unmarshall_i5z(InputStream in) throws Exception {
 		Assert.assertNotNull(in);
 		FileOutputStream output = null; 
