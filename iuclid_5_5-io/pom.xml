@@ -27,34 +27,53 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>      
   <build>
-  
-<pluginManagement>
+
 <plugins>
+<!-- 
   <plugin>
      <groupId>org.codehaus.mojo</groupId>
      <artifactId>jaxb2-maven-plugin</artifactId>
-     <version>1.5</version>
      <executions>
+
       <execution>
+      <id>Substance</id>
+      <phase>generate-sources</phase>
        <goals>
         <goal>xjc</goal>
        </goals>
        <configuration>
-      		 <schemaDirectory>src/main/xsd</schemaDirectory>
- 			<schemaIncludes>
-			    <include>SUBSTANCE_20130101_000000.xsd</include>
-  	        </schemaIncludes>
+ 			 <schemaFiles>SUBSTANCE_20130101_000000.xsd</schemaFiles>
+ 			 <bindingFiles>binding_substance_5_5.xjb</bindingFiles>
   	        <packageName>eu.europa.echa.schemas.iuclid5._20130101.substance</packageName>
-  	        <generatePackage>eu.europa.echa.schemas.iuclid5._20130101.substance</generatePackage>
-       		<nv>true</nv>
        		<staleFile>${project.build.directory}/jaxb2/.schema1XjcStaleFlag</staleFile>
+       		<nv>true</nv>
+       		<verbose>true</verbose>
      	</configuration>
       </execution>
+
+       <execution>
+        <id>ReferenceSubstance</id>
+        <phase>generate-sources</phase>
+        <inherited>false</inherited>
+        <goals>
+        <goal>xjc</goal>
+        </goals>
+       <configuration>
+       		<bindingFiles>binding_refsubstance_5_5.xjb</bindingFiles>
+ 			<schemaFiles>REFERENCESUBSTANCE_20130101_000000.xsd</schemaFiles>
+ 			
+  	        <packageName>eu.europa.echa.schemas.iuclid5._20130101.referencesubstance</packageName>
+       		<staleFile>${project.build.directory}/jaxb2/.schema2XjcStaleFlag</staleFile>
+
+       		 <removeOldOutput>false</removeOldOutput>
+ 			 <clearOutputDir>false</clearOutputDir>
+             <forceRegenerate>true</forceRegenerate>
+     	</configuration>
+      </execution>
+       
      </executions>
     </plugin>
-</plugins>
-</pluginManagement>
-<plugins>
+     -->
 	<plugin>
        <groupId>org.apache.maven.plugins</groupId>
        <artifactId>maven-jar-plugin</artifactId>

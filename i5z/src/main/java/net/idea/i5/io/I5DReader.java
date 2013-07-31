@@ -53,6 +53,8 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 								new net.idea.i5._4.ambit2.I5AmbitProcessor());
 		processors.put(eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.class.getName(), 
 								new net.idea.i5._5.ambit2.I5AmbitProcessor());
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance.class.getName(), 
+				new net.idea.i5._5.ambit2.I5AmbitProcessor());
 	}
 
 

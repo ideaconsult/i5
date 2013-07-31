@@ -91,7 +91,7 @@ public class SubstanceTest {
 	@Test
 	public void test_i5z_5() throws Exception {
 		String test = "net/idea/i5/_5/substance/i5z/IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734.i5z";
-		Assert.assertEquals(1,unmarshall_i5z(SubstanceTest.class.getClassLoader().getResourceAsStream(test)));		
+		Assert.assertEquals(7,unmarshall_i5z(SubstanceTest.class.getClassLoader().getResourceAsStream(test)));		
 	}
 	@Test
 	public void test_i5z_4() throws Exception {

@@ -5,11 +5,8 @@
   <jaxb:globalBindings typesafeEnumMaxMembers="600" />
   </jaxb:bindings> 
   <jaxb:bindings schemaLocation="..\xsd\SUBSTANCE_20130101_000000.xsd">
-  <!--
-    <jaxb:bindings node="//xsd:element[@name='biocidalInformation']">
-      <jaxb:class name="BiocidalInformation1" />
-    </jaxb:bindings>
-    -->
+  	 <jaxb:package name="eu.europa.echa.schemas.iuclid5._20130101.substance" />
+  	 
     <jaxb:bindings node="//xsd:element[@name='biocidalInformation']/xsd:complexType/xsd:sequence/xsd:element[@name='biocidalInformation']/xsd:complexType">
       <jaxb:class name="BiocidalInformation2" />
     </jaxb:bindings>

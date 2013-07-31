@@ -10,6 +10,7 @@ import ambit2.base.interfaces.IStructureRecord.STRUC_TYPE;
 import ambit2.base.processors.DefaultAmbitProcessor;
 import ambit2.base.relation.STRUCTURE_RELATION;
 import ambit2.base.relation.composition.Proportion;
+import eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance;
 import eu.europa.echa.schemas.iuclid5._20130101.substance.Substance;
 import eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.ExternalSystemIdentifiers.ExternalSystemIdentifier;
 import eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.SubstanceCompositions;
@@ -28,10 +29,25 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
 		if (unmarshalled instanceof Substance)
 			return transform2record((Substance)unmarshalled);
-		else
+		else if (unmarshalled instanceof Substance)
+			return transform2record((ReferenceSubstance)unmarshalled);
 		return null;
 	}
 
+	protected IStructureRecord transform2record(ReferenceSubstance unmarshalled) {
+		record.clear();
+		if (unmarshalled.getDocumentReferencePK()!=null)
+			record.setProperty(Property.getI5UUIDInstance(),unmarshalled.getDocumentReferencePK());
+		if (unmarshalled.getName()!=null)
+			record.setProperty(Property.getNameInstance(),unmarshalled.getName());
+		if (unmarshalled.getReferenceSubstanceStructure()!=null) {
+			record.setInchi(unmarshalled.getReferenceSubstanceStructure().getInChI());
+			record.setSmiles(unmarshalled.getReferenceSubstanceStructure().getSmilesNotation());
+			//record.setFormula(unmarshalled.getReferenceSubstanceStructure().getStructureFormula().);
+		}
+			
+		return record;
+	}
 	protected IStructureRecord transform2record(Substance unmarshalled) {
 		record.clear();
 		if (unmarshalled != null) {
