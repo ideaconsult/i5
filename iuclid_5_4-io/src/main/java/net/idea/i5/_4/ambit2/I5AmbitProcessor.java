@@ -1,12 +1,5 @@
 package net.idea.i5._4.ambit2;
 
-
-import eu.europa.echa.schemas.iuclid5._20120101.Substance.SubstanceCompositions;
-import eu.europa.echa.schemas.iuclid5._20120101.Substance.ExternalSystemIdentifiers.ExternalSystemIdentifier;
-import eu.europa.echa.schemas.iuclid5._20120101.Substance.SubstanceCompositions.SubstanceComposition;
-import eu.europa.echa.schemas.iuclid5._20120101.Substance.SubstanceCompositions.SubstanceComposition.Additives.Additive;
-import eu.europa.echa.schemas.iuclid5._20120101.Substance.SubstanceCompositions.SubstanceComposition.Constituents.Constituent;
-import eu.europa.echa.schemas.iuclid5._20120101.Substance.SubstanceCompositions.SubstanceComposition.Impurities.Impurity;
 import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
 import ambit2.base.data.StructureRecord;
@@ -17,7 +10,14 @@ import ambit2.base.interfaces.IStructureRecord.STRUC_TYPE;
 import ambit2.base.processors.DefaultAmbitProcessor;
 import ambit2.base.relation.STRUCTURE_RELATION;
 import ambit2.base.relation.composition.Proportion;
-
+import eu.europa.echa.schemas.iuclid5._20120101.referencesubstance.ReferenceSubstance;
+import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance;
+import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.ExternalSystemIdentifiers.ExternalSystemIdentifier;
+import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCompositions;
+import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCompositions.SubstanceComposition;
+import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCompositions.SubstanceComposition.Additives.Additive;
+import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCompositions.SubstanceComposition.Constituents.Constituent;
+import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCompositions.SubstanceComposition.Impurities.Impurity;
 
 public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStructureRecord> {
 	protected SubstanceRecord record = new SubstanceRecord();
@@ -27,13 +27,28 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	private static final long serialVersionUID = -38158314141255416L;
 
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
-		if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20120101.Substance)
-			return transform2record((eu.europa.echa.schemas.iuclid5._20120101.Substance)unmarshalled);
-		else
+		if (unmarshalled instanceof Substance)
+			return transform2record((Substance)unmarshalled);
+		else if (unmarshalled instanceof Substance)
+			return transform2record((ReferenceSubstance)unmarshalled);
 		return null;
 	}
 
-	protected IStructureRecord transform2record(eu.europa.echa.schemas.iuclid5._20120101.Substance unmarshalled) {
+	protected IStructureRecord transform2record(ReferenceSubstance unmarshalled) {
+		record.clear();
+		if (unmarshalled.getDocumentReferencePK()!=null)
+			record.setProperty(Property.getI5UUIDInstance(),unmarshalled.getDocumentReferencePK());
+		if (unmarshalled.getName()!=null)
+			record.setProperty(Property.getNameInstance(),unmarshalled.getName());
+		if (unmarshalled.getReferenceSubstanceStructure()!=null) {
+			record.setInchi(unmarshalled.getReferenceSubstanceStructure().getInChI());
+			record.setSmiles(unmarshalled.getReferenceSubstanceStructure().getSmilesNotation());
+			//record.setFormula(unmarshalled.getReferenceSubstanceStructure().getStructureFormula().);
+		}
+			
+		return record;
+	}
+	protected IStructureRecord transform2record(Substance unmarshalled) {
 		record.clear();
 		if (unmarshalled != null) {
 			if (unmarshalled.getChemicalName()!=null)

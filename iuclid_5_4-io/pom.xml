@@ -26,8 +26,7 @@
   <build>
   
 <plugins>
-
-
+<!-- 
 	<plugin>
        <groupId>org.apache.maven.plugins</groupId>
        <artifactId>maven-jar-plugin</artifactId>
@@ -39,32 +38,51 @@
          </execution>
        </executions>
      </plugin>
-	</plugins>
-<pluginManagement>
-<plugins>
-<plugin>
+  <plugin>
      <groupId>org.codehaus.mojo</groupId>
      <artifactId>jaxb2-maven-plugin</artifactId>
      <executions>
+
       <execution>
+      <id>Substance</id>
+      <phase>generate-sources</phase>
        <goals>
         <goal>xjc</goal>
        </goals>
        <configuration>
-       <!-- 
-      		<schemaDirectory>src/main/resources/schemas/Root_Objects_XSD_5.5</schemaDirectory>
-      		 <schemaDirectory>src/main/resources</schemaDirectory>
-      		<schemaFiles>SUBSTANCE_20130101_000000.xsd</schemaFiles>
- -->
-       		<nv>true</nv>
-       		<!-- 
+ 			 <schemaFiles>SUBSTANCE_20120101_000000.xsd</schemaFiles>
+ 			 <bindingFiles>binding_substance_5_4.xjb</bindingFiles>
+  	        <packageName>eu.europa.echa.schemas.iuclid5._20120101.substance</packageName>
        		<staleFile>${project.build.directory}/jaxb2/.schema1XjcStaleFlag</staleFile>
-       		 -->
+       		<nv>true</nv>
+       		<verbose>true</verbose>
      	</configuration>
       </execution>
+
+       <execution>
+        <id>ReferenceSubstance</id>
+        <phase>generate-sources</phase>
+        <inherited>false</inherited>
+        <goals>
+        <goal>xjc</goal>
+        </goals>
+       <configuration>
+       		<bindingFiles>binding_refsubstance_5_4.xjb</bindingFiles>
+ 			<schemaFiles>REFERENCESUBSTANCE_20120101_000000.xsd</schemaFiles>
+ 			
+  	        <packageName>eu.europa.echa.schemas.iuclid5._20120101.referencesubstance</packageName>
+       		<staleFile>${project.build.directory}/jaxb2/.schema2XjcStaleFlag</staleFile>
+
+       		 <removeOldOutput>false</removeOldOutput>
+ 			 <clearOutputDir>false</clearOutputDir>
+             <forceRegenerate>true</forceRegenerate>
+     	</configuration>
+      </execution>
+ 
      </executions>
     </plugin>
+     -->
 </plugins>    
-</pluginManagement>	
+
 </build>  
 </project>
