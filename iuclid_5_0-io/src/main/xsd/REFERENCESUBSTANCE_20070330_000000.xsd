@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified"
+    elementFormDefault="qualified"
+    targetNamespace="http://echa.europa.eu/schemas/iuclid5/20070330"
+    xmlns:aug="http://www.ecb.jrc.it/ecb-net/augmenting"
+    xmlns:i5="http://echa.europa.eu/schemas/iuclid5/20070330" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:include schemaLocation="xsd/phrases.xsd"/>
+    <xsd:simpleType name="string32768">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="32768"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="string2000">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="2000"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="uuidType">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength fixed="false" value="42"/>
+            <xsd:pattern value="\w*(\-[0-9a-f]+){5}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="documentReferencePKType">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength fixed="false" value="83"/>
+            <xsd:pattern value="\w*(\-[0-9a-f]+){5}/0"/>
+            <xsd:pattern value="\w*(\-[0-9a-f]+){5}/\w*(\-[0-9a-f]+){5}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="documentTypeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="LegalEntity"/>
+            <xsd:enumeration value="Substance"/>
+            <xsd:enumeration value="Dossier"/>
+            <xsd:enumeration value="DossierRecreationInfo"/>
+            <xsd:enumeration value="Annotation"/>
+            <xsd:enumeration value="Category"/>
+            <xsd:enumeration value="Mixture"/>
+            <xsd:enumeration value="ReferenceSubstance"/>
+            <xsd:enumeration value="Template"/>
+            <xsd:enumeration value="AttachmentDocument"/>
+            <xsd:enumeration value="EndpointStudyRecord"/>
+            <xsd:enumeration value="EndpointSummary"/>
+            <xsd:enumeration value="EndpointRecord"/>
+            <xsd:enumeration value="Site"/>
+            <xsd:enumeration value="DocumentReferenceGroup"/>
+            <xsd:enumeration value="ExtendedAttribute"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="picklistClearText">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength fixed="false" value="255"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="escapedStringUserType">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength fixed="false" value="255"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="datetimeType">
+        <xsd:union>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:dateTime"/>
+            </xsd:simpleType>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="0"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:union>
+    </xsd:simpleType>
+    <xsd:simpleType name="timestamp">
+        <xsd:union>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:dateTime"/>
+            </xsd:simpleType>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="0"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:union>
+    </xsd:simpleType>
+    <xsd:element name="ReferenceSubstance">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en">
+  &lt;h1&gt;ReferenceSubstance&lt;/h1&gt;
+  &lt;h3&gt;Model documentation, [Analysis Model, 7.11], [Design Model, 3.1.1.6]
+  &lt;/h3&gt;
+  [REACH_PR2, Annex IV, 2]&lt;br&gt;
+  A substance definition is constructed by:
+  &lt;ul&gt;
+  &lt;li&gt;Establishing references to common inventories when possible. Such common
+  inventories will be delivered with IUCLID and it is foreseen that IUCLID 5
+  will initially include the EC inventory which includes the following fields:
+  &lt;ul&gt;
+  &lt;li&gt;EC number.&lt;/li&gt;
+  &lt;li&gt;EC name.&lt;/li&gt;
+  &lt;li&gt;The CAS number in the EC inventory (also dubbed EC-CAS number)&lt;/li&gt;
+  &lt;li&gt;The molecular formula.&lt;/li&gt;
+  &lt;li&gt;A description.&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Other inventories could be initially added to IUCLID, for instance the
+  TSCA inventory, or can be added at a later stage as part of a reconfiguration
+  of the tool. Providing other identifying and naming information. For
+  instances:
+  &lt;ul&gt;
+  &lt;li&gt;Codes and indexes such as UN code, colour index, etc.&lt;/li&gt;
+  &lt;li&gt;Names and number such as IUPAC name, CAS number, etc.&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Providing structural information&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;br&gt;
+  See also [AM_UI], figure "Manage substance definition - Common inventory".
+ 
+        &lt;p&gt;
+        [REACH_PR2, Annex IV, 2]&lt;br&gt;
+        [REACH_PR2, Annex IV, 2.1] - Name or other identifier of each
+        substance. &lt;br&gt;
+        [REACH_PR2, Annex IV, 2.2] - Information related to molecular and
+        structural formula of each substance (Corresponds also to IUCLID 4
+        endpoints 1.1.1 and 1.1.2.) &lt;br&gt;
+        A substance definition contains two parts: references to inventories
+        and local/private information. The local information is divided in
+        information on the substance identification (names) and on the
+        substance structure (molecular weight, etc.)
+ 
+  </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:sequence>
+                <xsd:element name="modificationHistory">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">
+Modification tracking of this object - any trackable document needs such
+a record since the <code>queryLastModified()</code> and similar methods
+require this structure to be present.
+                            </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType mixed="false">
+                        <xsd:sequence>
+                            <xsd:element maxOccurs="unbounded"
+                                minOccurs="1" name="modification">
+                                <xsd:complexType mixed="false">
+                                    <xsd:sequence>
+                                    <xsd:element maxOccurs="1"
+                                    minOccurs="0" name="comment"
+                                    nillable="true" type="i5:escapedStringUserType">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+An optional modification comment.
+                                                    </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element maxOccurs="1"
+                                    minOccurs="0"
+                                    name="modificationBy"
+                                    nillable="true" type="i5:escapedStringUserType">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+The party performing the modification.
+                                                    </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="date"
+                                    type="i5:datetimeType" use="required">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+The modification date.
+                                                </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:attribute>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element maxOccurs="1" minOccurs="1" name="ownershipProtection">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">
+This structure defines properies on ownership, authentication of the
+original author, and authorized uses of the current document.
+                            </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType mixed="false">
+                        <xsd:sequence>
+                            <xsd:element minOccurs="0"
+                                name="ownershipFingerprint" type="i5:escapedStringUserType">
+                                <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+Document ownership code. The document ownership code is a calculated
+code, e. g. from author's company, plus department or any arbitrary tag.
+The document ownership field is just an encoded string to prevent
+additional joins from persistence point of view. <p>
+                                    <b>Note:</b> If the
+document ownership is empty, no ownership is claimed and the current user
+can open/alter the current document in any way. There would also be need
+for an additional access control operation: "take ownership".</p>
+                                    </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="fractionalDocument" type="xsd:boolean">
+                            <xsd:annotation>
+                                <xsd:documentation xml:lang="en">
+If a document originally was filtered during export and thus the data
+contained within the document is only a subset of the overall, this flag
+should be set to <tt>true</tt>. It can be used during import to advise
+the user if he can safely import the document or should rather take a
+closer look inside since otherwise data may effectively be lost!
+                                    </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                        <xsd:attribute name="sealed" type="xsd:boolean">
+                            <xsd:annotation>
+                                <xsd:documentation xml:lang="en">
+Usually no document is sealed and thus can be modified at any time by
+virtually anybody allowed by the access control. However, there is one
+big exception: IUCLID5 Agency and management of Dossier documents. Once
+dossiers have been created, the dossier itself and anything referenced
+from within is not modifyable anymore - therefore, it can be <b>sealed</b>.
+                                    </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                        <xsd:attribute name="copyProtection" type="xsd:boolean">
+                            <xsd:annotation>
+                                <xsd:documentation xml:lang="en">
+Flag that allows or prevents the current document to be copied and pasted.
+                                    </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:attribute>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element minOccurs="1" name="name" type="i5:string2000">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">
+      The name of the substance definition. 
+     </xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="justification">
+                    <xsd:annotation>
+                        <xsd:documentation xml:lang="en">
+      The no ec information available justification.
+      See picklist N95.
+     </xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:complexType mixed="false">
+                        <xsd:simpleContent>
+                            <xsd:extension base="xsd:string">
+                                <xsd:attribute name="valueID" type="i5:phrasegroup_N95"/>
+                            </xsd:extension>
+                        </xsd:simpleContent>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="ecSubstanceInventoryEntryRef">
+                    <xsd:complexType mixed="false">
+                        <xsd:sequence>
+                            <xsd:element minOccurs="0" name="number" type="i5:escapedStringUserType">
+                                <xsd:annotation>
+                                    <xsd:documentation xml:lang="en"> EC number, like '202-049-5'
+      &lt;p/&gt;
+      This is a unique pointer to a ECSubstanceInventoryEntry,
+      however it does NOT refer to a specific ECInventory.
+      Multiple inventory providers are not supported.
+     </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="referenceSubstanceInformation">
+                    <xsd:complexType mixed="false">
+                        <xsd:sequence>
+                            <xsd:element minOccurs="0" name="dataProtection">
+                                <xsd:complexType mixed="false">
+                                    <xsd:sequence>
+                                    <xsd:element minOccurs="0" name="confidentiality">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en"> the level of data protection == confidentiality intended for the associated data / entities </xsd:documentation>
+                                    </xsd:annotation>
+                                    <xsd:complexType mixed="false">
+                                    <xsd:simpleContent>
+                                    <xsd:extension base="xsd:string">
+                                    <xsd:attribute
+                                    name="valueID" type="i5:phrasegroup_N64"/>
+                                    </xsd:extension>
+                                    </xsd:simpleContent>
+                                    </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element minOccurs="0"
+                                    name="justification" type="i5:escapedStringUserType">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en"> A free-text justification on the current confidentiality setting (see member confidentiality) </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element minOccurs="0" name="regulatoryPurposes">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+      Pick list &lt;b&gt;N78 &lt;/b&gt; &lt;p/&gt;The regulatory purpose which applies:
+      &lt;ul&gt;
+      &lt;li&gt;Canada: Existing Substances Program under CEPA&lt;/li&gt;
+      &lt;li&gt;Canada: Pest Control Products Act (PCPA)&lt;/li&gt;
+      &lt;li&gt;EU: Biocides Programme&lt;/li&gt;
+      &lt;li&gt;EU: Existing Chemicals Programme&lt;/li&gt;
+      &lt;li&gt;EU: New Chemicals Programme&lt;/li&gt;
+      &lt;li&gt;EU: Registration, Evaluation and Authorisation of Chemicals (REACH)&lt;/li&gt;
+      &lt;li&gt;Japan: Chemical Substances Control Law&lt;/li&gt;
+      &lt;li&gt;OECD: HPV Chemicals Programme&lt;/li&gt;
+      &lt;li&gt;US: EPA HPV Chemical Challenge Programme&lt;/li&gt;
+      &lt;li&gt;US: Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA)&lt;/li&gt;
+      &lt;li&gt;US: Toxic Substances Control Act&lt;/li&gt;
+      &lt;li&gt;[other]&lt;/li&gt;
+      &lt;/ul&gt;
+     </xsd:documentation>
+                                    </xsd:annotation>
+                                    <xsd:complexType mixed="false">
+                                    <xsd:sequence
+                                    maxOccurs="unbounded" minOccurs="0">
+                                    <xsd:element name="regulatoryPurpose">
+                                    <xsd:complexType mixed="false">
+                                    <xsd:sequence>
+
+                                    <xsd:element
+                                    minOccurs="0"
+                                    name="otherValue"
+                                    nillable="true" type="i5:picklistClearText"/>
+                                    </xsd:sequence>
+
+                                    <xsd:attribute
+                                    name="valueID" type="i5:phrasegroup_N78"/>
+                                    </xsd:complexType>
+                                    </xsd:element>
+                                    </xsd:sequence>
+                                    </xsd:complexType>
+                                    </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element minOccurs="0" name="casInformation">
+                                <xsd:complexType mixed="false">
+                                    <xsd:sequence>
+                                    <xsd:element minOccurs="0"
+                                    name="casNumber" type="i5:escapedStringUserType">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+      The CAS Number, preferred to display!
+     </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element minOccurs="0"
+                                    name="casName" type="i5:string2000">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+      The CAS Name
+     </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element minOccurs="0" name="alternativeCASInfos">
+                                    <xsd:complexType mixed="false">
+                                    <xsd:sequence>
+                                    <xsd:element
+                                    maxOccurs="unbounded"
+                                    minOccurs="0" name="alternativeCASInfo">
+                                    <xsd:complexType mixed="false">
+                                    <xsd:sequence>
+
+                                    <xsd:element
+                                    minOccurs="0"
+                                    name="casNumber" type="i5:escapedStringUserType">
+                                    <xsd:annotation>
+
+                                    <xsd:documentation xml:lang="en"> The CAS number </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:element>
+
+                                    <xsd:element
+                                    minOccurs="0"
+                                    name="casName" type="i5:string2000">
+                                    <xsd:annotation>
+
+                                    <xsd:documentation xml:lang="en"> The CAS name </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:element>
+
+                                    <xsd:element
+                                    minOccurs="0" name="justification">
+                                    <xsd:annotation>
+
+                                    <xsd:documentation xml:lang="en"/>
+                                    </xsd:annotation>
+
+                                    <xsd:complexType mixed="false">
+                                    <xsd:sequence>
+
+                                    <xsd:element
+                                    minOccurs="0"
+                                    name="otherValue"
+                                    nillable="true" type="i5:picklistClearText"/>
+                                    </xsd:sequence>
+
+                                    <xsd:attribute
+                                    name="valueID" type="i5:phrasegroup_N05"/>
+                                    </xsd:complexType>
+                                    </xsd:element>
+                                    </xsd:sequence>
+                                    </xsd:complexType>
+                                    </xsd:element>
+                                    </xsd:sequence>
+                                    </xsd:complexType>
+                                    </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element minOccurs="0" name="synonyms">
+                                <xsd:complexType mixed="false">
+                                    <xsd:sequence>
+                                    <xsd:element
+                                    maxOccurs="unbounded"
+                                    minOccurs="0" name="synonym">
+                                    <xsd:complexType mixed="false">
+                                    <xsd:sequence>
+                                    <xsd:element
+                                    minOccurs="0"
+                                    name="name" type="i5:string2000">
+                                    <xsd:annotation>
+
+                                    <xsd:documentation xml:lang="en"> the synonym name of the reference substance </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:element>
+                                    </xsd:sequence>
+                                    </xsd:complexType>
+                                    </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element minOccurs="0" name="iupacName" type="i5:string2000">
+                                <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+      [REACH_PR2, Annex IV, 2.1.1] - Name(s) in the IUPAC nomenclature. This
+      field has data protection attributes.
+      This is the english IUPAC name.
+     </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element minOccurs="0"
+                                name="groupCatInfo" type="i5:string2000">
+                                <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+      The Group / category information
+     </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element minOccurs="0"
+                                name="description" type="i5:string32768">
+                                <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+      A "free-text" description for the substance definition.
+      &lt;p/&gt;
+      Preferred to display.
+     </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element minOccurs="0" name="referenceSubstanceStructure">
+                    <xsd:complexType mixed="false">
+                        <xsd:sequence>
+                            <xsd:element minOccurs="0" name="dataProtection">
+                                <xsd:complexType mixed="false">
+                                    <xsd:sequence>
+                                    <xsd:element minOccurs="0" name="confidentiality">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en"> the level of data protection == confidentiality intended for the associated data / entities </xsd:documentation>
+                                    </xsd:annotation>
+                                    <xsd:complexType mixed="false">
+                                    <xsd:simpleContent>
+                                    <xsd:extension base="xsd:string">
+                                    <xsd:attribute
+                                    name="valueID" type="i5:phrasegroup_N64"/>
+                                    </xsd:extension>
+                                    </xsd:simpleContent>
+                                    </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element minOccurs="0"
+                                    name="justification" type="i5:escapedStringUserType">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en"> A free-text justification on the current confidentiality setting (see member confidentiality) </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element minOccurs="0" name="regulatoryPurposes">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+      Pick list &lt;b&gt;N78 &lt;/b&gt; &lt;p/&gt;The regulatory purpose which applies:
+      &lt;ul&gt;
+      &lt;li&gt;Canada: Existing Substances Program under CEPA&lt;/li&gt;
+      &lt;li&gt;Canada: Pest Control Products Act (PCPA)&lt;/li&gt;
+      &lt;li&gt;EU: Biocides Programme&lt;/li&gt;
+      &lt;li&gt;EU: Existing Chemicals Programme&lt;/li&gt;
+      &lt;li&gt;EU: New Chemicals Programme&lt;/li&gt;
+      &lt;li&gt;EU: Registration, Evaluation and Authorisation of Chemicals (REACH)&lt;/li&gt;
+      &lt;li&gt;Japan: Chemical Substances Control Law&lt;/li&gt;
+      &lt;li&gt;OECD: HPV Chemicals Programme&lt;/li&gt;
+      &lt;li&gt;US: EPA HPV Chemical Challenge Programme&lt;/li&gt;
+      &lt;li&gt;US: Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA)&lt;/li&gt;
+      &lt;li&gt;US: Toxic Substances Control Act&lt;/li&gt;
+      &lt;li&gt;[other]&lt;/li&gt;
+      &lt;/ul&gt;
+     </xsd:documentation>
+                                    </xsd:annotation>
+                                    <xsd:complexType mixed="false">
+                                    <xsd:sequence
+                                    maxOccurs="unbounded" minOccurs="0">
+                                    <xsd:element name="regulatoryPurpose">
+                                    <xsd:complexType mixed="false">
+                                    <xsd:sequence>
+
+                                    <xsd:element
+                                    minOccurs="0"
+                                    name="otherValue"
+                                    nillable="true" type="i5:picklistClearText"/>
+                                    </xsd:sequence>
+
+                                    <xsd:attribute
+                                    name="valueID" type="i5:phrasegroup_N78"/>
+                                    </xsd:complexType>
+                                    </xsd:element>
+                                    </xsd:sequence>
+                                    </xsd:complexType>
+                                    </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element minOccurs="0"
+                                name="molecularFormula" type="i5:string2000">
+                                <xsd:annotation>
+                                    <xsd:documentation xml:lang="en"> the molecular formula value </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element minOccurs="0"
+                                name="smilesNotation" type="i5:string2000">
+                                <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+      [REACH_PR2, Annex IV, 2.2.1] - If available This field has data
+      protection attributes.
+     </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element minOccurs="0" name="inChI" type="i5:string2000">
+                                <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+      [REACH_PR2, Annex IV, 2.2.1] - If available This field has data
+      protection attributes.
+     </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                            <xsd:element minOccurs="0" name="structureFormula">
+                                <xsd:complexType mixed="false">
+                                    <xsd:sequence>
+                                    <xsd:element minOccurs="0"
+                                    name="description" type="i5:escapedStringUserType">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+This is the alphanumeric description field which is displayed on screen as
+indicator where the document reference points to. <p>Usually this
+field has to be set when the document reference is created and should
+carry some clear indication where it points to such as the company name,
+the substance name, etc.</p>
+                                    </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element minOccurs="0"
+                                    name="notes" type="i5:escapedStringUserType">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+This is a free-text field for user convenience to attach additional text
+to a <tt>DocumentReference</tt>.
+                            </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:element>
+                                    <xsd:element minOccurs="0"
+                                    name="fileMimeType" type="i5:escapedStringUserType">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+The file's mimetype copied from the referenced AttachmentDocument
+                            </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute
+                                    name="lastModificationDate" type="i5:datetimeType">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+Last modification date of the target document. This field is <u>not</u>
+member of the primary key. Only at dossier creation time, the content of
+the field is encoded into <tt>timeStamp</tt> thus virtually creating a
+snapshot copy of the original object.
+                            </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:attribute>
+                                    <xsd:attribute name="type" type="i5:documentTypeType">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+Type of the target document, accelerates reference resolving. If absent,
+the resolver will have to look up all 'root element' tables.
+                            </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:attribute>
+                                    <xsd:attribute name="uniqueKey"
+                                    type="i5:documentReferencePKType" use="required">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+Unique identifier of the target document
+<p>
+                                    <b>Note:</b>
+                                    <u>primary key</u> composition. Yet this does not belong
+to the primary key of the current class since there may be any number of
+<tt>DocumentReference</tt> objects pointing to the same document
+effectively.
+</p>
+                                    </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:attribute>
+                                    <xsd:attribute name="fileSize" type="xsd:long">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+The file's size copied from the referenced AttachmentDocument
+                            </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:attribute>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element minOccurs="0" name="molecularWeightRange">
+                                <xsd:complexType mixed="false">
+                                    <xsd:sequence>
+                                    <xsd:element minOccurs="0" name="lowerPrecision">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+      Lower precision. This is picklist A02-1.
+      </xsd:documentation>
+                                    </xsd:annotation>
+                                    <xsd:complexType mixed="false">
+                                    <xsd:simpleContent>
+                                    <xsd:extension base="xsd:string">
+                                    <xsd:attribute
+                                    name="valueID" type="i5:phrasegroup_A02-1"/>
+                                    </xsd:extension>
+                                    </xsd:simpleContent>
+                                    </xsd:complexType>
+                                    </xsd:element>
+                                    <xsd:element minOccurs="0" name="upperPrecision">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+      Upper precision. This is picklist A02-2.
+      </xsd:documentation>
+                                    </xsd:annotation>
+                                    <xsd:complexType mixed="false">
+                                    <xsd:simpleContent>
+                                    <xsd:extension base="xsd:string">
+                                    <xsd:attribute
+                                    name="valueID" type="i5:phrasegroup_A02-2"/>
+                                    </xsd:extension>
+                                    </xsd:simpleContent>
+                                    </xsd:complexType>
+                                    </xsd:element>
+                                    </xsd:sequence>
+                                    <xsd:attribute name="lowerValue"
+                                    type="xsd:double" use="optional">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en"> lower value: the upper range,lower range and the format mask have to be defined in the parent </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:attribute>
+                                    <xsd:attribute name="upperValue"
+                                    type="xsd:double" use="optional">
+                                    <xsd:annotation>
+                                    <xsd:documentation xml:lang="en"> upper value: the upper range,lower range and the format mask have to be defined in the parent </xsd:documentation>
+                                    </xsd:annotation>
+                                    </xsd:attribute>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element minOccurs="0" name="remark" type="i5:string32768">
+                                <xsd:annotation>
+                                    <xsd:documentation xml:lang="en">
+      Comments to the above structure formula field (attachment).
+     </xsd:documentation>
+                                </xsd:annotation>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="version" type="i5:datetimeType" use="required">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+The version timestamp associates the XSDs with the underlying data format specification version
+as published by the IUCLID Management Group. See also layout.xml and the version attribute
+in data documents.
+                            </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute name="documentReferencePK"
+                type="i5:documentReferencePKType" use="required">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en">
+The document reference pointing to the current document
+                            </xsd:documentation>
+                </xsd:annotation>
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
