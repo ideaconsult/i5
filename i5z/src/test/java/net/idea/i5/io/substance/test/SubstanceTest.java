@@ -1,15 +1,19 @@
 package net.idea.i5.io.substance.test;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import junit.framework.Assert;
 import net.idea.i5.io.I5DReader;
+import net.idea.i5.io.I5ObjectVerifier;
+import net.idea.i5.io.I5ObjectVerifier.I5_ROOT_OBJECTS;
 import net.idea.i5.io.I5ZReader;
+import net.idea.i5.io.UnsupportedI5RootObject;
 
 import org.junit.Test;
 import org.openscience.cdk.io.IChemObjectReaderErrorHandler;
@@ -25,23 +29,34 @@ public class SubstanceTest {
 	@Test
 	public void test_i5d_5() throws Exception {
 		String test = "net/idea/i5/_5/substance/i5d/IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734_0.i5d";
+		I5ObjectVerifier rootObjectVerifier = new I5ObjectVerifier();
 		InputStream in = SubstanceTest.class.getClassLoader().getResourceAsStream(test);
-		test_i5d(in);
+		I5_ROOT_OBJECTS rootObject = rootObjectVerifier.process(in);
+		if (rootObject!=null) {
+			in = SubstanceTest.class.getClassLoader().getResourceAsStream(test);
+			test_i5d(in,rootObject.getContextPath());
+		} else throw new UnsupportedI5RootObject();
 	}	
 	
 	@Test
 	public void test_i5d_4() throws Exception {
 		String test = "net/idea/i5/_4/substance/i5z/formaldehyde.i5d";
-		InputStream in = SubstanceTest.class.getClassLoader().getResourceAsStream(test);
-		test_i5d(in);
+		I5ObjectVerifier rootObjectVerifier = new I5ObjectVerifier();
+		URL url =  SubstanceTest.class.getClassLoader().getResource(test);
+		System.out.println(url.getFile());
+		I5_ROOT_OBJECTS rootObject = rootObjectVerifier.process(new FileInputStream(new File(url.getFile())));
+		if (rootObject!=null) {
+			InputStream in = SubstanceTest.class.getClassLoader().getResourceAsStream(test);
+			test_i5d(in,rootObject.getContextPath());
+		} else throw new UnsupportedI5RootObject();
 	}	
 	
-	protected void test_i5d(InputStream in) throws Exception {
+	protected void test_i5d(InputStream in,String contextPath) throws Exception {
 
 		Assert.assertNotNull(in);
 		int count = 0;
 		try {
-			I5DReader reader = new I5DReader(in);
+			I5DReader reader = new I5DReader(in,contextPath);
 			reader.setErrorHandler(new IChemObjectReaderErrorHandler() {
 				
 				public void handleError(String message, int row, int colStart, int colEnd,

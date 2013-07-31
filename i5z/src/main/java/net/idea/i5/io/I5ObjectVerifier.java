@@ -48,7 +48,8 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
     	try {
     		XMLInputFactory factory = XMLInputFactory.newInstance();
     		factory.setProperty(XMLInputFactory.IS_REPLACING_ENTITY_REFERENCES,Boolean.TRUE);
-    		reader =   factory.createXMLStreamReader(in,"UTF-8");
+    		factory.setProperty(XMLInputFactory.IS_VALIDATING,Boolean.FALSE);
+    		reader =   factory.createXMLStreamReader(in);
     		 while (reader.hasNext()) {
     			int type = reader.next();
  	            switch (type) {
