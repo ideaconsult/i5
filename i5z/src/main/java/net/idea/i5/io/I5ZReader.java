@@ -22,9 +22,19 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 	protected Hashtable<String, JAXBStuff> jaxbCache = new Hashtable<String,JAXBStuff>();
 	protected I5ObjectVerifier rootObjectVerifier = new I5ObjectVerifier();
 	
+	/**
+	 * Uncompresses the .i5z archive content, detects the correct JAXB context path and unmarshall the XML content using JAXB generated classes
+	 * @param zipfile
+	 * @throws AmbitIOException
+	 */
 	public I5ZReader(File zipfile) throws AmbitIOException {
 		super(zipfile);
 	}
+	/**
+	 * Uncompresses the .i5z archive content, detects the correct JAXB context path and unmarshall the XML content using JAXB generated classes
+	 * @param stream
+	 * @throws AmbitIOException
+	 */
 	public I5ZReader(InputStream stream) throws AmbitIOException {
 		super(stream);
 	}
@@ -33,7 +43,7 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 	protected IRawReader<IStructureRecord> getItemReader(int index) throws Exception {
 		String name = files[index].getName().toLowerCase();
 		if (name.endsWith(FileInputState.extensions[FileInputState.I5D_INDEX])) {
-			logger.log(Level.FINE,name);
+			logger.log(Level.INFO,name);
 			try {
 				I5_ROOT_OBJECTS rootObject = rootObjectVerifier.process(new FileInputStream(files[index]));
 				

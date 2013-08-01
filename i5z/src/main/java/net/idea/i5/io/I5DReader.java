@@ -1,10 +1,14 @@
 package net.idea.i5.io;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Hashtable;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
+
+import net.idea.i5.io.I5ObjectVerifier.I5_ROOT_OBJECTS;
 
 import org.openscience.cdk.exception.CDKException;
 
@@ -37,6 +41,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 		super(in);
 		initProcessors();
 	}
+
 	/**
 	 * 
 	 * @param in
@@ -57,6 +62,8 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 								new net.idea.i5._5.ambit2.I5AmbitProcessor());
 		processors.put(eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance.class.getName(), 
 				new net.idea.i5._5.ambit2.I5AmbitProcessor());
+		processors.put(eu.europa.echa.schemas.iuclid5._20070330.referencesubstance.ReferenceSubstance.class.getName(), 
+				new net.idea.i5._0.ambit2.I5AmbitProcessor());
 	}
 
 

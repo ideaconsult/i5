@@ -20,7 +20,6 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 	private static final long serialVersionUID = 4202446709497463805L;
 
 	public enum I5_ROOT_OBJECTS {
-		AttachmentDocument,
 		ReferenceSubstance {
 			@Override
 			public String getContextPath() {

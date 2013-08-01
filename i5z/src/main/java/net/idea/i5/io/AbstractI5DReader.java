@@ -1,5 +1,8 @@
 package net.idea.i5.io;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
@@ -8,6 +11,8 @@ import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+
+import net.idea.i5.io.I5ObjectVerifier.I5_ROOT_OBJECTS;
 
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.io.formats.IResourceFormat;
@@ -54,6 +59,41 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 	public AbstractI5DReader( InputStream in) throws CDKException {
 		this(in,"eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101.substance");
 	}
+	/**
+	 * Detects the I5D content and uses the correct JAXB classes to unmarshall the XML content
+	 * @param file
+	 * @throws CDKException
+	 * @throws FileNotFoundException
+	 * @throws AmbitException
+	 */
+	public AbstractI5DReader(File file) throws CDKException, FileNotFoundException, AmbitException {
+		this(file,null);
+	}
+	/**
+	 * Detects the I5D content and uses the correct JAXB classes to unmarshall the XML content
+	 * @param file
+	 * @param rootObjectVerifier could be null
+	 * @throws CDKException
+	 * @throws FileNotFoundException
+	 * @throws AmbitException
+	 */
+	public AbstractI5DReader(File file,I5ObjectVerifier rootObjectVerifier) throws CDKException, FileNotFoundException, AmbitException {
+		this(new FileInputStream(file),getJaxbContext(file,rootObjectVerifier));
+	}	
+	/**
+	 * Detects the I5D content and returns the correct JAXB path
+	 * @param file
+	 * @param rootObjectVerifier
+	 * @return
+	 * @throws AmbitException
+	 * @throws FileNotFoundException
+	 */
+	public static String getJaxbContext(File file,I5ObjectVerifier rootObjectVerifier) throws AmbitException, FileNotFoundException {
+		if (rootObjectVerifier==null) rootObjectVerifier = new I5ObjectVerifier();
+		I5_ROOT_OBJECTS rootObject = rootObjectVerifier.process(new FileInputStream(file));
+		return rootObject==null?null:rootObject.getContextPath();
+	}
+	
 	/**
 	 * 
 	 * @param in

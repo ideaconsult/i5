@@ -5,8 +5,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import junit.framework.Assert;
 import net.idea.i5.io.I5DReader;
@@ -106,25 +109,30 @@ public class SubstanceTest {
 	@Test
 	public void test_i5z_5() throws Exception {
 		String test = "net/idea/i5/_5/substance/i5z/IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734.i5z";
-		Assert.assertEquals(7,unmarshall_i5z(SubstanceTest.class.getClassLoader().getResourceAsStream(test)));		
+		URL url = SubstanceTest.class.getClassLoader().getResource(test);
+		Assert.assertEquals(7,unmarshall_i5z(new File(url.getFile()),905));		
 	}
 	@Test
 	public void test_i5z_4() throws Exception {
 		String test = "net/idea/i5/_4/substance/i5z/formaldehyde.i5z";
-		Assert.assertEquals(1,unmarshall_i5z(SubstanceTest.class.getClassLoader().getResourceAsStream(test)));		
+		URL url = SubstanceTest.class.getClassLoader().getResource(test);
+		Assert.assertEquals(1,unmarshall_i5z(new File(url.getFile()),1));		
 	}
 	@Test
 	public void test_i5z_0() throws Exception {
 		//ReferenceSubstance support only!
 		String test = "net/idea/i5/_0/substance/i5z/RefSub_030913110311.i5z";
-		Assert.assertEquals(10,unmarshall_i5z(SubstanceTest.class.getClassLoader().getResourceAsStream(test)));		
+		URL url = SubstanceTest.class.getClassLoader().getResource(test);
+		Assert.assertEquals(10,unmarshall_i5z(new File(url.getFile()),21));		
 	}
 	
-	protected int unmarshall_i5z(InputStream in) throws Exception {
+	protected int unmarshall_i5z(File in,int nfiles) throws Exception {
 		Assert.assertNotNull(in);
 		FileOutputStream output = null; 
+		I5ZReader reader = null;
 		try {
-			I5ZReader reader = new I5ZReader(in) ;
+			reader = new I5ZReader(in) ;
+			Assert.assertEquals(nfiles,reader.getFiles().length);
 			reader.setErrorHandler(new IChemObjectReaderErrorHandler() {
 				public void handleError(String message, int row, int colStart, int colEnd,
 						Exception exception) {
@@ -149,7 +157,7 @@ public class SubstanceTest {
 			throw x;
 		} finally {
 	        if(output != null) output.close();
-            if (in!=null) in.close();
+            if (reader!=null) reader.close();
 		}	
 	}
 	
