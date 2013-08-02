@@ -1,5 +1,8 @@
 package net.idea.i5._0.ambit2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
 import ambit2.base.data.SubstanceRecord;
@@ -34,7 +37,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		if (unmarshalled.getDocumentReferencePK()!=null)
 			setUUID(record,unmarshalled.getDocumentReferencePK());
 		if (unmarshalled.getName()!=null)
-			record.setProperty(Property.getNameInstance(),unmarshalled.getName());
+			record.setProperty(I5ReaderSimple.nameProperty,unmarshalled.getName());
 		
 		if (unmarshalled.getEcSubstanceInventoryEntryRef().getNumber()!=null)
 			record.setProperty(I5ReaderSimple.ecProperty,unmarshalled.getEcSubstanceInventoryEntryRef().getNumber());
@@ -58,14 +61,20 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			record.setProperty(Property.getNameInstance(),unmarshalled.getReferenceSubstanceInformation().getIupacName());
 		
 		Synonyms synonyms = unmarshalled.getReferenceSubstanceInformation().getSynonyms();
-		if (synonyms!=null)
-		for (int i=0;i < synonyms.getSynonym().size();i++)
-			record.setProperty(
-					Property.getInstance(AmbitCONSTANTS.NAMES,
-					LiteratureEntry.getInstance(String.format("%s %s#%d",I5ReaderSimple.I5_REFERENCE,
-							ECHAPreregistrationListReader.echa_tags.SYNONYM.toString(),i+1, 
-							I5ReaderSimple.I5_URL),I5ReaderSimple.I5_URL))
-					,synonyms.getSynonym().get(i).getName());		
+		if (synonyms!=null) {
+			List<String> lookup = new ArrayList<String>();
+			for (int i=0;i < synonyms.getSynonym().size();i++)
+				if (lookup.indexOf(synonyms.getSynonym().get(i).getName())<0)
+					lookup.add(synonyms.getSynonym().get(i).getName());
+			for (int i=0;i < lookup.size();i++)
+				record.setProperty(
+						Property.getInstance(AmbitCONSTANTS.NAMES,
+						LiteratureEntry.getInstance(String.format("%s %s#%d",I5ReaderSimple.I5_REFERENCE,
+								ECHAPreregistrationListReader.echa_tags.SYNONYM.toString(),i+1, 
+								I5ReaderSimple.I5_URL),I5ReaderSimple.I5_URL))
+						,lookup.get(i));		
+			
+		}
 			
 		return record;
 	}

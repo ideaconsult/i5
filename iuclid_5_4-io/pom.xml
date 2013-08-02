@@ -22,6 +22,11 @@
       <artifactId>ambit2-base</artifactId>
       <version>${ambit.version}</version>
     </dependency>
+    <dependency>
+      <groupId>ambit</groupId>
+      <artifactId>ambit2-core</artifactId>
+      <version>${ambit.version}</version>
+    </dependency>       
   </dependencies>
   <build>
   
