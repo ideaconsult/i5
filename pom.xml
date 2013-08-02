@@ -12,6 +12,16 @@
     <module>iuclid_5_0-io</module>
     <module>i5z</module>
   </modules>
+   <distributionManagement>
+    <snapshotRepository>
+      <id>ambit-plovdiv-snapshots</id>
+      <url>http://ambit.uni-plovdiv.bg:8083/nexus/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ambit-plovdiv-releases</id>
+      <url>http://ambit.uni-plovdiv.bg:8083/nexus/content/repositories/releases</url>
+    </repository>
+  </distributionManagement>
 	<properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.8.1</junit.version>
