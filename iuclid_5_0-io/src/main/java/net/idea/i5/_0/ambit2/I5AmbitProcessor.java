@@ -5,6 +5,7 @@ import ambit2.base.data.Property;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.exceptions.AmbitException;
 import ambit2.base.interfaces.IStructureRecord;
+import ambit2.base.interfaces.IStructureRecord.MOL_TYPE;
 import ambit2.base.processors.CASProcessor;
 import ambit2.base.processors.DefaultAmbitProcessor;
 import ambit2.core.config.AmbitCONSTANTS;
@@ -39,9 +40,11 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			record.setProperty(I5ReaderSimple.ecProperty,unmarshalled.getEcSubstanceInventoryEntryRef().getNumber());
 		
 		if (unmarshalled.getReferenceSubstanceStructure()!=null) {
-			record.setInchi(unmarshalled.getReferenceSubstanceStructure().getInChI());
+			record.setFormat(MOL_TYPE.INC.name());
+			record.setContent(unmarshalled.getReferenceSubstanceStructure().getInChI());
+			record.setInchi(null);
 			record.setSmiles(unmarshalled.getReferenceSubstanceStructure().getSmilesNotation());
-			//record.setFormula(unmarshalled.getReferenceSubstanceStructure().getStructureFormula().);
+			record.setFormula(unmarshalled.getReferenceSubstanceStructure().getMolecularFormula());
 		}
 		CasInformation cas = unmarshalled.getReferenceSubstanceInformation().getCasInformation();
 		if (cas!=null) {
@@ -62,7 +65,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 					LiteratureEntry.getInstance(String.format("%s %s#%d",I5ReaderSimple.I5_REFERENCE,
 							ECHAPreregistrationListReader.echa_tags.SYNONYM.toString(),i+1, 
 							I5ReaderSimple.I5_URL),I5ReaderSimple.I5_URL))
-					,synonyms.getSynonym().get(i));		
+					,synonyms.getSynonym().get(i).getName());		
 			
 		return record;
 	}
