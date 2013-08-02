@@ -2,13 +2,12 @@ package net.idea.i5.io;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Hashtable;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-
-import net.idea.i5.io.I5ObjectVerifier.I5_ROOT_OBJECTS;
 
 import org.openscience.cdk.exception.CDKException;
 
@@ -20,6 +19,29 @@ import ambit2.base.interfaces.IStructureRecord;
 public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	protected SubstanceRecord record = new SubstanceRecord();
 	protected Hashtable<String, IProcessor<Object, IStructureRecord>> processors = new Hashtable<String, IProcessor<Object, IStructureRecord>>();
+
+	/**
+	 * Detects the I5D content and uses the correct JAXB classes to unmarshall the XML content
+	 * @param file
+	 * @throws CDKException
+	 * @throws FileNotFoundException
+	 * @throws AmbitException
+	 */
+	public I5DReader(File file) throws CDKException, FileNotFoundException, AmbitException {
+		this(file,null);
+	}
+	/**
+	 * Detects the I5D content and uses the correct JAXB classes to unmarshall the XML content
+	 * @param file
+	 * @param rootObjectVerifier could be null
+	 * @throws CDKException
+	 * @throws FileNotFoundException
+	 * @throws AmbitException
+	 */
+	public I5DReader(File file,I5ObjectVerifier rootObjectVerifier) throws CDKException, FileNotFoundException, AmbitException {
+		this(new FileInputStream(file),getJaxbContext(file,rootObjectVerifier));
+	}	
+	
 	/**
 	 * Reuses existing JAXBContext
 	 * @param in
