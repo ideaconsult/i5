@@ -48,6 +48,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 
 	protected IStructureRecord transform2record(Substance unmarshalled) {
 		record.clear();
+		setFormat(record);
 		if (unmarshalled != null) {
 			if (unmarshalled.getChemicalName()!=null)
 				record.setProperty(Property.getNameInstance(),unmarshalled.getChemicalName());
@@ -116,12 +117,15 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	 */
 	protected IStructureRecord additive2record(SubstanceRecord substance, Additive a) {
 		IStructureRecord record = new StructureRecord();
+		setFormat(record);
 		/*
 		System.out.println(constituent.getType()); //REFERENCE_SUBSTANCE
 		System.out.println(constituent.getNotes());
 		System.out.println(constituent.getDescription());
 		*/
 		record.setType(STRUC_TYPE.NA);
+
+		record.setFormat("I5D");
 		record.setContent(a.getReferenceSubstance().getDescription());
 		record.setProperty(Property.getI5UUIDInstance(),a.getReferenceSubstance().getUniqueKey());
 		
@@ -131,23 +135,20 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		if (a.getProportionReal()!=null) {
 			p.setReal_lowervalue(a.getProportionReal().getLowerValue());
 			p.setReal_uppervalue(a.getProportionReal().getUpperValue());
-//			System.out.println("Lower precision " + a.getProportionReal().getLowerPrecision().getValue());
-			//System.out.println("Upper precision " + a.getProportionReal().getUpperPrecision().getValue());
+			p.setReal_lower(a.getProportionReal().getLowerPrecision().getValue());
+			p.setReal_upper(a.getProportionReal().getUpperPrecision().getValue());
+			p.setReal_unit(a.getProportionReal().getUnit().getValue());
 		}
-		/**
-		 * TODO
-			System.out.println(a.getProportionReal().getLowerPrecision().getValue());
-			System.out.println(a.getProportionReal().getUpperPrecision().getValue());
-		 */
 		if (a.getProportionTypical()!=null) {
+			p.setTypical(a.getProportionTypical().getPrecision().getValue());
 			p.setTypical_value(a.getProportionTypical().getValue());
-			//System.out.println("getProportionTypical precision" + a.getProportionTypical().getPrecision().getValue());
 			p.setTypical_unit(a.getProportionTypical().getUnit().getValue());
 		}
 		/**
 		 * TODO
 		System.out.println(a.getRemarks());
 		 */
+		p.setFunction(a.getFunction().getOtherValue().getValue());
 		substance.addStructureRelation(record,STRUCTURE_RELATION.HAS_ADDITIVE,p);		
 		
 		return record;
@@ -160,6 +161,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	 */
 	protected IStructureRecord impurity2record(SubstanceRecord substance, Impurity a) {
 		IStructureRecord record = new StructureRecord();
+		setFormat(record);
 		/*
 		System.out.println(constituent.getType()); //REFERENCE_SUBSTANCE
 		System.out.println(constituent.getNotes());
@@ -202,6 +204,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	 */
 	protected IStructureRecord constituent2record(SubstanceRecord substance, Constituent a) {
 		IStructureRecord record = new StructureRecord();
+		setFormat(record);
 		record.setType(STRUC_TYPE.NA);
 		record.setContent(a.getReferenceSubstance().getDescription());
 		/*
@@ -291,4 +294,8 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		else
 			record.setProperty(Property.getI5UUIDInstance(),value);
 	}	
+	
+	protected void setFormat(IStructureRecord record) {
+		record.setFormat("i5._4.");
+	}
 }

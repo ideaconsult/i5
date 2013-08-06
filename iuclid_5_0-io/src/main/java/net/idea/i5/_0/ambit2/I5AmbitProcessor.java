@@ -86,4 +86,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		else
 			record.setProperty(Property.getI5UUIDInstance(),value);
 	}
+	protected void setFormat(IStructureRecord record) {
+		record.setFormat("i5._0.");
+	}
 }
