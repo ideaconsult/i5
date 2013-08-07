@@ -50,12 +50,10 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		record.clear();
 		setFormat(record);
 		if (unmarshalled != null) {
-			if (unmarshalled.getChemicalName()!=null)
-				record.setProperty(Property.getNameInstance(),unmarshalled.getChemicalName());
-			if (unmarshalled.getPublicName()!=null)
-				record.setProperty(Property.getPublicNameInstance(),unmarshalled.getPublicName());
-			if (unmarshalled.getDocumentReferencePK()!=null)
-				record.setProperty(Property.getI5UUIDInstance(),unmarshalled.getDocumentReferencePK());
+			record.setName(unmarshalled.getChemicalName());
+			record.setPublicName(unmarshalled.getPublicName());
+			record.setI5UUID(unmarshalled.getDocumentReferencePK());
+			
 			if (unmarshalled.getTradeNames()!=null) {
 				for (int i=0; i < unmarshalled.getTradeNames().getTradeName().size();i++) {
 					Property p =  Property.getInstance(String.format("Trade name %d", (i+1)), LiteratureEntry.getTradeNameReference());
