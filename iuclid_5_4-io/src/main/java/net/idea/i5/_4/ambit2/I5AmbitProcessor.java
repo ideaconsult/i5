@@ -31,6 +31,7 @@ import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCom
 
 public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStructureRecord> {
 	protected SubstanceRecord record = new SubstanceRecord();
+	protected StructureRecord structureRecord = new StructureRecord();
 	protected CASProcessor casProcessor = new CASProcessor();
 	/**
 	 * 
@@ -242,32 +243,32 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	}
 	
 	protected IStructureRecord transform2record(ReferenceSubstance unmarshalled) {
-		record.clear();
+		structureRecord.clear();
 		if (unmarshalled.getDocumentReferencePK()!=null)
-			setUUID(record,unmarshalled.getDocumentReferencePK());
+			setUUID(structureRecord,unmarshalled.getDocumentReferencePK());
 		if (unmarshalled.getName()!=null)
-			record.setProperty(I5ReaderSimple.nameProperty,unmarshalled.getName());
+			structureRecord.setProperty(I5ReaderSimple.nameProperty,unmarshalled.getName());
 		
 		if (unmarshalled.getEcSubstanceInventoryEntryRef().getNumber()!=null)
-			record.setProperty(I5ReaderSimple.ecProperty,unmarshalled.getEcSubstanceInventoryEntryRef().getNumber());
+			structureRecord.setProperty(I5ReaderSimple.ecProperty,unmarshalled.getEcSubstanceInventoryEntryRef().getNumber());
 		
 		if (unmarshalled.getReferenceSubstanceStructure()!=null) {
-			record.setFormat(MOL_TYPE.INC.name());
-			record.setContent(unmarshalled.getReferenceSubstanceStructure().getInChI());
-			record.setInchi(null);
-			record.setSmiles(unmarshalled.getReferenceSubstanceStructure().getSmilesNotation());
-			record.setFormula(unmarshalled.getReferenceSubstanceStructure().getMolecularFormula());
+			structureRecord.setFormat(MOL_TYPE.INC.name());
+			structureRecord.setContent(unmarshalled.getReferenceSubstanceStructure().getInChI());
+			structureRecord.setInchi(null);
+			structureRecord.setSmiles(unmarshalled.getReferenceSubstanceStructure().getSmilesNotation());
+			structureRecord.setFormula(unmarshalled.getReferenceSubstanceStructure().getMolecularFormula());
 		}
 		CasInformation cas = unmarshalled.getReferenceSubstanceInformation().getCasInformation();
 		if (cas!=null) {
 			try {
-				record.setProperty(I5ReaderSimple.casProperty,casProcessor.process(cas.getCasNumber()));
+				structureRecord.setProperty(I5ReaderSimple.casProperty,casProcessor.process(cas.getCasNumber()));
 			} catch (Exception x) {
-    			record.setProperty(I5ReaderSimple.casProperty,cas.getCasNumber());
+				structureRecord.setProperty(I5ReaderSimple.casProperty,cas.getCasNumber());
 			}
 		}
 		if (unmarshalled.getReferenceSubstanceInformation().getIupacName()!=null)
-			record.setProperty(Property.getNameInstance(),unmarshalled.getReferenceSubstanceInformation().getIupacName());
+			structureRecord.setProperty(Property.getNameInstance(),unmarshalled.getReferenceSubstanceInformation().getIupacName());
 		
 		Synonyms synonyms = unmarshalled.getReferenceSubstanceInformation().getSynonyms();
 		if (synonyms!=null) {
@@ -276,7 +277,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				if (lookup.indexOf(synonyms.getSynonym().get(i).getName())<0)
 					lookup.add(synonyms.getSynonym().get(i).getName());
 			for (int i=0;i < lookup.size();i++)
-				record.setProperty(
+				structureRecord.setProperty(
 						Property.getInstance(AmbitCONSTANTS.NAMES,
 						LiteratureEntry.getInstance(String.format("%s %s#%d",I5ReaderSimple.I5_REFERENCE,
 								ECHAPreregistrationListReader.echa_tags.SYNONYM.toString(),i+1, 
@@ -285,7 +286,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			
 		}
 			
-		return record;
+		return structureRecord;
 	}
 
 	protected void setUUID(IStructureRecord record,String value) {
