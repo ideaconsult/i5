@@ -129,7 +129,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		record.setType(STRUC_TYPE.NA);
 
 		record.setContent(a.getReferenceSubstance().getDescription());
-		record.setProperty(Property.getI5UUIDInstance(),a.getReferenceSubstance().getUniqueKey());
+		setUUID(record,a.getReferenceSubstance().getUniqueKey());
 		
 		//a.getFunction() additive specific
 		
@@ -172,7 +172,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		
 		record.setType(STRUC_TYPE.NA);
 		record.setContent(a.getReferenceSubstance().getDescription());
-		record.setProperty(Property.getI5UUIDInstance(),a.getReferenceSubstance().getUniqueKey());
+		setUUID(record,a.getReferenceSubstance().getUniqueKey());
 		
 		Proportion p = new Proportion();
 		if (a.getProportionReal()!=null) {
@@ -215,7 +215,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		System.out.println(constituent.getNotes());
 		System.out.println(constituent.getDescription());
 		*/
-		record.setProperty(Property.getI5UUIDInstance(),a.getReferenceSubstance().getUniqueKey());
+		setUUID(record,a.getReferenceSubstance().getUniqueKey());
 		
 		Proportion p = new Proportion();
 		if (a.getProportionReal()!=null) {
