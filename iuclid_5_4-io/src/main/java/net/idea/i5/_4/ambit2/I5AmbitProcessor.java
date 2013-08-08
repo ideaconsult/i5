@@ -40,7 +40,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
 		if (unmarshalled instanceof Substance)
 			return transform2record((Substance)unmarshalled);
-		else if (unmarshalled instanceof Substance)
+		else if (unmarshalled instanceof ReferenceSubstance)
 			return transform2record((ReferenceSubstance)unmarshalled);
 		return null;
 	}
