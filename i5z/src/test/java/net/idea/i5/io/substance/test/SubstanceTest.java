@@ -93,10 +93,11 @@ public class SubstanceTest {
 				for (IStructureRelation relation : ((SubstanceRecord)record).getRelatedStructures()) {
 					System.out.print(relation.getRelationType());
 					System.out.println(relation.getRelation());
-					for (IStructureRecord rel : relation.getStructures()) {
-						System.out.println(rel.getContent());
-						System.out.println(rel.getProperty(Property.getI5UUIDInstance()));
-					}
+					
+						System.out.println(relation.getFirstStructure().getContent());
+						System.out.println(relation.getFirstStructure().getProperty(Property.getI5UUIDInstance()));
+						System.out.println(relation.getSecondStructure().getContent());
+						System.out.println(relation.getSecondStructure().getProperty(Property.getI5UUIDInstance()));						
 					System.out.println();
 				}
 			}

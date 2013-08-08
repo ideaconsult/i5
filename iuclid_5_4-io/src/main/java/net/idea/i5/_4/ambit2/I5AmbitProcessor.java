@@ -53,7 +53,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			record.setName(unmarshalled.getChemicalName());
 			record.setPublicName(unmarshalled.getPublicName());
 			record.setI5UUID(unmarshalled.getDocumentReferencePK());
-			
+			record.setSubstancetype(unmarshalled.getComposition().getOtherValue().getValue());
 			if (unmarshalled.getTradeNames()!=null) {
 				for (int i=0; i < unmarshalled.getTradeNames().getTradeName().size();i++) {
 					Property p =  Property.getInstance(String.format("Trade name %d", (i+1)), LiteratureEntry.getTradeNameReference());
@@ -70,6 +70,8 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				System.out.println(id.getID());
 				System.out.println(id.getRemarks());
 			}
+			
+			System.out.println("origin\t"+unmarshalled.getOrigin().getOtherValue());
 			/*
 			formaldehyde / formaldehyde / 50-00-0
 			System.out.println(unmarshalled.getReferenceSubstanceRef().getDescription());
@@ -79,10 +81,12 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			REFERENCE_SUBSTANCE
 			System.out.println(unmarshalled.getReferenceSubstanceRef().getType());
 			*/
+			if (unmarshalled.getReferenceSubstanceRef()!=null) {
+			//	setUUID(record,unmarshalled.getReferenceSubstanceRef().getUniqueKey());
+			}
 			
 			SubstanceCompositions sc = unmarshalled.getSubstanceCompositions();
 			for (SubstanceComposition c : sc.getSubstanceComposition()) {
-				
 				System.out.println(c.getLocalUUID());
 				System.out.println(c.getName());
 				System.out.println(c.getDescription());
@@ -123,7 +127,6 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		*/
 		record.setType(STRUC_TYPE.NA);
 
-		record.setFormat("I5D");
 		record.setContent(a.getReferenceSubstance().getDescription());
 		record.setProperty(Property.getI5UUIDInstance(),a.getReferenceSubstance().getUniqueKey());
 		
@@ -165,6 +168,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		System.out.println(constituent.getNotes());
 		System.out.println(constituent.getDescription());
 		*/
+		
 		record.setType(STRUC_TYPE.NA);
 		record.setContent(a.getReferenceSubstance().getDescription());
 		record.setProperty(Property.getI5UUIDInstance(),a.getReferenceSubstance().getUniqueKey());
@@ -212,7 +216,6 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		*/
 		record.setProperty(Property.getI5UUIDInstance(),a.getReferenceSubstance().getUniqueKey());
 		
-
 		Proportion p = new Proportion();
 		if (a.getProportionReal()!=null) {
 			p.setReal_lowervalue(a.getProportionReal().getLowerValue());

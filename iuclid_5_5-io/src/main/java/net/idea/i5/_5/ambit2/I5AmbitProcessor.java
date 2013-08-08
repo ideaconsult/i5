@@ -53,6 +53,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			record.setName(unmarshalled.getChemicalName());
 			record.setPublicName(unmarshalled.getPublicName());
 			record.setI5UUID(unmarshalled.getDocumentReferencePK());
+			record.setSubstancetype(unmarshalled.getComposition().getOtherValue().getValue());
 			if (unmarshalled.getTradeNames()!=null) {
 				for (int i=0; i < unmarshalled.getTradeNames().getTradeName().size();i++) {
 					Property p =  Property.getInstance(String.format("Trade name %d", (i+1)), LiteratureEntry.getTradeNameReference());
@@ -69,6 +70,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				System.out.println(id.getID());
 				System.out.println(id.getRemarks());
 			}
+			System.out.println("origin\t"+unmarshalled.getOrigin().getOtherValue().getValue());
 			/*
 			formaldehyde / formaldehyde / 50-00-0
 			System.out.println(unmarshalled.getReferenceSubstanceRef().getDescription());
