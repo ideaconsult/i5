@@ -53,7 +53,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		if (unmarshalled != null) {
 			record.setName(unmarshalled.getChemicalName());
 			record.setPublicName(unmarshalled.getPublicName());
-			record.setI5UUID(unmarshalled.getDocumentReferencePK());
+			setUUID(record,unmarshalled.getDocumentReferencePK());
 			record.setSubstancetype(unmarshalled.getComposition().getOtherValue().getValue());
 			if (unmarshalled.getTradeNames()!=null) {
 				for (int i=0; i < unmarshalled.getTradeNames().getTradeName().size();i++) {
