@@ -54,7 +54,12 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			record.setName(unmarshalled.getChemicalName());
 			record.setPublicName(unmarshalled.getPublicName());
 			setUUID(record,unmarshalled.getDocumentReferencePK());
-			record.setSubstancetype(unmarshalled.getComposition().getOtherValue().getValue());
+			//get from phrases
+			try {
+				record.setSubstancetype(Phrases.phrasegroup_N08.get(unmarshalled.getComposition().getValueID()));
+			} catch (Exception x) {
+				record.setSubstancetype("Error reading the composition type");
+			}
 			if (unmarshalled.getTradeNames()!=null) {
 				for (int i=0; i < unmarshalled.getTradeNames().getTradeName().size();i++) {
 					Property p =  Property.getInstance(String.format("Trade name %d", (i+1)), LiteratureEntry.getTradeNameReference());
@@ -146,11 +151,11 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			p.setTypical_value(a.getProportionTypical().getValue());
 			p.setTypical_unit(a.getProportionTypical().getUnit().getValue());
 		}
-		/**
-		 * TODO
-		System.out.println(a.getRemarks());
-		 */
-		p.setFunction(a.getFunction().getOtherValue().getValue());
+		try {
+			p.setFunction(Phrases.phrasegroup_N08.get(a.getFunction().getValueID()));
+		} catch (Exception x) {
+			p.setFunction("Error reading the function type");
+		}		
 		substance.addStructureRelation(record,STRUCTURE_RELATION.HAS_ADDITIVE,p);		
 		
 		return record;
