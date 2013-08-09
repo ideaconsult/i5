@@ -37,7 +37,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	protected IStructureRecord transform2record(ReferenceSubstance unmarshalled) {
 		structureRecord.clear();
 		if (unmarshalled.getDocumentReferencePK()!=null)
-			setUUID(structureRecord,unmarshalled.getDocumentReferencePK());
+			setReferenceSubstanceUUID(structureRecord,unmarshalled.getDocumentReferencePK());
 		if (unmarshalled.getName()!=null)
 			structureRecord.setProperty(I5ReaderSimple.nameProperty,unmarshalled.getName());
 		
@@ -81,13 +81,13 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		return structureRecord;
 	}
 
-	protected void setUUID(IStructureRecord record,String value) {
+	protected void setReferenceSubstanceUUID(IStructureRecord record,String value) {
 		int slashpos = value.indexOf("/");
 		if (slashpos>0)
 			record.setProperty(Property.getI5UUIDInstance(),value.substring(0,slashpos));
 		else
 			record.setProperty(Property.getI5UUIDInstance(),value);
-	}
+	}	
 	protected void setFormat(IStructureRecord record) {
 		record.setFormat("i5._0.");
 	}

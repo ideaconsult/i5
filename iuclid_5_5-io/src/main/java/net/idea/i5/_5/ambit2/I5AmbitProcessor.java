@@ -51,9 +51,9 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		record.clear();
 		setFormat(record);
 		if (unmarshalled != null) {
-			record.setName(unmarshalled.getChemicalName());
+			record.setCompanyName(unmarshalled.getChemicalName());
 			record.setPublicName(unmarshalled.getPublicName());
-			setUUID(record,unmarshalled.getDocumentReferencePK());
+			setCompanyUUID(record,unmarshalled.getDocumentReferencePK());
 			//get from phrases
 			try {
 				record.setSubstancetype(Phrases.phrasegroup_N08.get(unmarshalled.getComposition().getValueID()));
@@ -86,6 +86,10 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			REFERENCE_SUBSTANCE
 			System.out.println(unmarshalled.getReferenceSubstanceRef().getType());
 			*/
+
+			if (unmarshalled.getReferenceSubstanceRef()!=null) {
+				setReferenceSubstanceUUID(record,unmarshalled.getReferenceSubstanceRef().getUniqueKey());
+			}
 			
 			SubstanceCompositions sc = unmarshalled.getSubstanceCompositions();
 			for (SubstanceComposition c : sc.getSubstanceComposition()) {
@@ -130,7 +134,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		*/
 		record.setType(STRUC_TYPE.NA);
 		record.setContent(a.getReferenceSubstance().getDescription());
-		setUUID(record,a.getReferenceSubstance().getUniqueKey());
+		setReferenceSubstanceUUID(record,a.getReferenceSubstance().getUniqueKey());
 		
 		Proportion p = new Proportion();
 		if (a.getProportionReal()!=null) {
@@ -174,7 +178,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		*/
 		record.setType(STRUC_TYPE.NA);
 		record.setContent(a.getReferenceSubstance().getDescription());
-		setUUID(record,a.getReferenceSubstance().getUniqueKey());
+		setReferenceSubstanceUUID(record,a.getReferenceSubstance().getUniqueKey());
 		
 		Proportion p = new Proportion();
 		if (a.getProportionReal()!=null) {
@@ -217,7 +221,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		System.out.println(constituent.getNotes());
 		System.out.println(constituent.getDescription());
 		*/
-		setUUID(record,a.getReferenceSubstance().getUniqueKey());
+		setReferenceSubstanceUUID(record,a.getReferenceSubstance().getUniqueKey());
 		
 
 		Proportion p = new Proportion();
@@ -250,7 +254,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		structureRecord.clear();
 		setFormat(structureRecord);
 		if (unmarshalled.getDocumentReferencePK()!=null)
-			setUUID(structureRecord,unmarshalled.getDocumentReferencePK());
+			setReferenceSubstanceUUID(structureRecord,unmarshalled.getDocumentReferencePK());
 		if (unmarshalled.getName()!=null)
 			structureRecord.setProperty(I5ReaderSimple.nameProperty,unmarshalled.getName());
 		
@@ -294,7 +298,14 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		return structureRecord;
 	}
 
-	protected void setUUID(IStructureRecord record,String value) {
+	protected void setCompanyUUID(SubstanceRecord record,String value) {
+		int slashpos = value.indexOf("/");
+		if (slashpos>0)
+			record.setCompanyUUID(value.substring(0,slashpos));
+		else
+			record.setCompanyUUID(value);
+	}	
+	protected void setReferenceSubstanceUUID(IStructureRecord record,String value) {
 		int slashpos = value.indexOf("/");
 		if (slashpos>0)
 			record.setProperty(Property.getI5UUIDInstance(),value.substring(0,slashpos));
