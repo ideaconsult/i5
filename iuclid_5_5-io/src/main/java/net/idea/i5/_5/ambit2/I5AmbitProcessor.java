@@ -133,8 +133,10 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		System.out.println(constituent.getDescription());
 		*/
 		record.setType(STRUC_TYPE.NA);
-		record.setContent(a.getReferenceSubstance().getDescription());
-		setReferenceSubstanceUUID(record,a.getReferenceSubstance().getUniqueKey());
+		if (a.getReferenceSubstance()!=null) {
+			record.setContent(a.getReferenceSubstance().getDescription());
+			setReferenceSubstanceUUID(record,a.getReferenceSubstance().getUniqueKey());
+		}
 		
 		Proportion p = new Proportion();
 		if (a.getProportionReal()!=null) {
@@ -198,8 +200,10 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		System.out.println(constituent.getDescription());
 		*/
 		record.setType(STRUC_TYPE.NA);
-		record.setContent(a.getReferenceSubstance().getDescription());
-		setReferenceSubstanceUUID(record,a.getReferenceSubstance().getUniqueKey());
+		if (a.getReferenceSubstance()!=null) {
+			record.setContent(a.getReferenceSubstance().getDescription());
+			setReferenceSubstanceUUID(record,a.getReferenceSubstance().getUniqueKey());
+		}
 		
 		Proportion p = new Proportion();
 		if (a.getProportionReal()!=null) {

@@ -132,9 +132,10 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		System.out.println(constituent.getDescription());
 		*/
 		record.setType(STRUC_TYPE.NA);
-
-		record.setContent(a.getReferenceSubstance().getDescription());
-		setReferenceSubstanceUUID(record,a.getReferenceSubstance().getUniqueKey());
+		if (a.getReferenceSubstance()!=null) {
+			record.setContent(a.getReferenceSubstance().getDescription());
+			setReferenceSubstanceUUID(record,a.getReferenceSubstance().getUniqueKey());
+		}
 		
 		//a.getFunction() additive specific
 		
@@ -190,15 +191,12 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	protected IStructureRecord impurity2record(SubstanceRecord substance, Impurity a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
-		/*
-		System.out.println(constituent.getType()); //REFERENCE_SUBSTANCE
-		System.out.println(constituent.getNotes());
-		System.out.println(constituent.getDescription());
-		*/
-		
+
 		record.setType(STRUC_TYPE.NA);
-		record.setContent(a.getReferenceSubstance().getDescription());
-		setReferenceSubstanceUUID(record,a.getReferenceSubstance().getUniqueKey());
+		if (a.getReferenceSubstance()!=null) {
+			record.setContent(a.getReferenceSubstance().getDescription());
+			setReferenceSubstanceUUID(record,a.getReferenceSubstance().getUniqueKey());
+		}
 		
 		Proportion p = new Proportion();
 		if (a.getProportionReal()!=null) {
