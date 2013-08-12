@@ -142,8 +142,16 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		if (a.getProportionReal()!=null) {
 			p.setReal_lowervalue(a.getProportionReal().getLowerValue());
 			p.setReal_uppervalue(a.getProportionReal().getUpperValue());
-			p.setReal_lower(a.getProportionReal().getLowerPrecision().getValue());
-			p.setReal_upper(a.getProportionReal().getUpperPrecision().getValue());
+			try {
+				p.setReal_lower(Phrases.phrasegroup_A02.get(a.getProportionReal().getLowerPrecision().getValueID()));
+			} catch (Exception x) {
+				p.setReal_lower("");
+			}	
+			try {
+				p.setReal_upper(Phrases.phrasegroup_A02.get(a.getProportionReal().getUpperPrecision().getValueID()));
+			} catch (Exception x) {
+				p.setReal_lower("");
+			}
 			try {
 				p.setReal_unit(Phrases.phrasegroup_N24.get(a.getProportionReal().getUnit().getValueID()));
 			} catch (Exception x) {
@@ -152,7 +160,11 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 
 		}
 		if (a.getProportionTypical()!=null) {
-			p.setTypical(a.getProportionTypical().getPrecision().getValue());
+			try {
+				p.setTypical(Phrases.phrasegroup_A02.get(a.getProportionTypical().getPrecision().getValueID()));
+			} catch (Exception x) {
+				p.setTypical("");
+			}			
 			p.setTypical_value(a.getProportionTypical().getValue());
 			try {
 				p.setTypical_unit(Phrases.phrasegroup_N24.get(a.getProportionTypical().getUnit().getValueID()));
@@ -192,8 +204,21 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		if (a.getProportionReal()!=null) {
 			p.setReal_lowervalue(a.getProportionReal().getLowerValue());
 			p.setReal_uppervalue(a.getProportionReal().getUpperValue());
-//			System.out.println("Lower precision " + a.getProportionReal().getLowerPrecision().getValue());
-			//System.out.println("Upper precision " + a.getProportionReal().getUpperPrecision().getValue());
+			try {
+				p.setReal_lower(Phrases.phrasegroup_A02.get(a.getProportionReal().getLowerPrecision().getValueID()));
+			} catch (Exception x) {
+				p.setReal_lower("");
+			}	
+			try {
+				p.setReal_upper(Phrases.phrasegroup_A02.get(a.getProportionReal().getUpperPrecision().getValueID()));
+			} catch (Exception x) {
+				p.setReal_lower("");
+			}
+			try {
+				p.setReal_unit(Phrases.phrasegroup_N24.get(a.getProportionReal().getUnit().getValueID()));
+			} catch (Exception x) {
+				p.setReal_unit("");
+			}			
 		}
 		/**
 		 * TODO
@@ -202,7 +227,11 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		 */
 		if (a.getProportionTypical()!=null) {
 			p.setTypical_value(a.getProportionTypical().getValue());
-			//System.out.println("getProportionTypical precision" + a.getProportionTypical().getPrecision().getValue());
+			try {
+				p.setTypical(Phrases.phrasegroup_A02.get(a.getProportionTypical().getPrecision().getValueID()));
+			} catch (Exception x) {
+				p.setTypical("");
+			}			
 			try {
 				p.setTypical_unit(Phrases.phrasegroup_N24.get(a.getProportionTypical().getUnit().getValueID()));
 			} catch (Exception x) {
@@ -239,8 +268,21 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		if (a.getProportionReal()!=null) {
 			p.setReal_lowervalue(a.getProportionReal().getLowerValue());
 			p.setReal_uppervalue(a.getProportionReal().getUpperValue());
-//			System.out.println("Lower precision " + a.getProportionReal().getLowerPrecision().getValue());
-			//System.out.println("Upper precision " + a.getProportionReal().getUpperPrecision().getValue());
+			try {
+				p.setReal_lower(Phrases.phrasegroup_A02.get(a.getProportionReal().getLowerPrecision().getValueID()));
+			} catch (Exception x) {
+				p.setReal_lower("");
+			}	
+			try {
+				p.setReal_upper(Phrases.phrasegroup_A02.get(a.getProportionReal().getUpperPrecision().getValueID()));
+			} catch (Exception x) {
+				p.setReal_lower("");
+			}				
+			try {
+				p.setReal_unit(Phrases.phrasegroup_N24.get(a.getProportionReal().getUnit().getValueID()));
+			} catch (Exception x) {
+				p.setReal_unit("");
+			}
 		}
 		/**
 		 * TODO
@@ -249,7 +291,11 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		 */
 		if (a.getProportionTypical()!=null) {
 			p.setTypical_value(a.getProportionTypical().getValue());
-			//System.out.println("getProportionTypical precision" + a.getProportionTypical().getPrecision().getValue());
+			try {
+				p.setTypical(Phrases.phrasegroup_A02.get(a.getProportionTypical().getPrecision().getValueID()));
+			} catch (Exception x) {
+				p.setTypical("");
+			}			
 			try {
 				p.setTypical_unit(Phrases.phrasegroup_N24.get(a.getProportionTypical().getUnit().getValueID()));
 			} catch (Exception x) {

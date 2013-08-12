@@ -11,6 +11,10 @@ public class Phrases {
 	public static final Hashtable<String, String> phrasegroup_N08 = initPhrasegroup_N08(); 
 	public static final Hashtable<String, String> phrasegroup_N28 = initPhrasegroup_N28();
 	public static final Hashtable<String, String> phrasegroup_N24 = phrasegroup_N24();
+	public static final Hashtable<String, String> phrasegroup_A02 = phrasegroup_A02();
+	public static final Hashtable<String, String> phrasegroup_A02_1 = phrasegroup_A02_1();
+	public static final Hashtable<String, String> phrasegroup_A02_2 = phrasegroup_A02_2();
+	
 	
 	
     private static Hashtable<String, String> initPhrasegroup_N08() {
@@ -20,7 +24,7 @@ public class Phrases {
     	p.put("3401", "UVCB");
     	p.put("3001", "polymer");
     	p.put("1342", "other:");
-    	p.put("NOT_SPECIFIED", "Not specified - the value is not specified"); 
+    	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }
     
@@ -63,7 +67,7 @@ public class Phrases {
     	p.put("3426", "water repellent");
     	p.put("3429", "wetting agent");
     	p.put("1342", "other:");
-    	p.put("NOT_SPECIFIED", "Not specified - the value is not specified"); 
+    	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }	    
     
@@ -75,10 +79,39 @@ public class Phrases {
     	p.put("3437", "mg/kg");
     	p.put("2283", "ppm");
     	p.put("3440", ">mg/m³");
-    	p.put("NOT_SPECIFIED", "Not specified - the value is not specified"); 
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+
+    private static Hashtable<String, String> phrasegroup_A02() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("29", "&lt;");
+    	p.put("30", "&lt;=");
+    	p.put("32", "&gt;");
+    	p.put("33", "&gt;=");
+    	p.put("1779", "ca.");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+
+    
+    private static Hashtable<String, String> phrasegroup_A02_1() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("32", "&gt;");
+    	p.put("33", "&gt;=");
+    	p.put("1779", "ca.");
+    	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }
     
+    private static Hashtable<String, String> phrasegroup_A02_2() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("29", "&lt;");
+    	p.put("30", "&lt;=");
+    	p.put("1779", "ca.");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
 
 	private Phrases() {
 	}
