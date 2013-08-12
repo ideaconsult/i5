@@ -78,7 +78,7 @@ public class Phrases {
     	p.put("2098", "mg/L");
     	p.put("3437", "mg/kg");
     	p.put("2283", "ppm");
-    	p.put("3440", ">mg/m³");
+    	p.put("3440", ">mg/m\u00B3");
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }
