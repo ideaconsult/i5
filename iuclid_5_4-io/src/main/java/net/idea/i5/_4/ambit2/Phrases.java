@@ -10,6 +10,7 @@ import java.util.Hashtable;
 public class Phrases {
 	public static final Hashtable<String, String> phrasegroup_N08 = initPhrasegroup_N08();
 	public static final Hashtable<String, String> phrasegroup_N28 = initPhrasegroup_N28();
+	public static final Hashtable<String, String> phrasegroup_N24 = phrasegroup_N24();
 	
     private static Hashtable<String, String> initPhrasegroup_N08() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
@@ -64,7 +65,18 @@ public class Phrases {
     	p.put("NOT_SPECIFIED", "Not specified - the value is not specified"); 
     	return p;
     }
-	    
+    private static Hashtable<String, String> phrasegroup_N24() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2505", "% (w/w)");
+    	p.put("2506", "% (v/v)");
+    	p.put("2098", "mg/L");
+    	p.put("3437", "mg/kg");
+    	p.put("2283", "ppm");
+    	p.put("3440", ">mg/m³");
+    	p.put("NOT_SPECIFIED", "Not specified - the value is not specified"); 
+    	return p;
+    }
+    	    
 	private Phrases() {
 	}
 }

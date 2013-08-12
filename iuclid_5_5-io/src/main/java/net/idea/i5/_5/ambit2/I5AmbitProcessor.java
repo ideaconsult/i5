@@ -142,12 +142,21 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			p.setReal_uppervalue(a.getProportionReal().getUpperValue());
 			p.setReal_lower(a.getProportionReal().getLowerPrecision().getValue());
 			p.setReal_upper(a.getProportionReal().getUpperPrecision().getValue());
-			p.setReal_unit(a.getProportionReal().getUnit().getValue());
+			try {
+				p.setReal_unit(Phrases.phrasegroup_N24.get(a.getProportionReal().getUnit().getValueID()));
+			} catch (Exception x) {
+				p.setReal_unit("");
+			}
+			
 		}
 		if (a.getProportionTypical()!=null) {
 			p.setTypical(a.getProportionTypical().getPrecision().getValue());
 			p.setTypical_value(a.getProportionTypical().getValue());
-			p.setTypical_unit(a.getProportionTypical().getUnit().getValue());
+			try {
+				p.setTypical_unit(Phrases.phrasegroup_N24.get(a.getProportionTypical().getUnit().getValueID()));
+			} catch (Exception x) {
+				p.setTypical_unit("");
+			}
 		}
 		/**
 		 * TODO
@@ -194,8 +203,12 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		 */
 		if (a.getProportionTypical()!=null) {
 			p.setTypical_value(a.getProportionTypical().getValue());
-			//System.out.println("getProportionTypical precision" + a.getProportionTypical().getPrecision().getValue());
-			p.setTypical_unit(a.getProportionTypical().getUnit().getValue());
+			try {
+				p.setTypical_unit(Phrases.phrasegroup_N24.get(a.getProportionTypical().getUnit().getValueID()));
+			} catch (Exception x) {
+				p.setTypical_unit("");
+			}
+			
 		}
 		/**
 		 * TODO
@@ -239,7 +252,11 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		if (a.getProportionTypical()!=null) {
 			p.setTypical_value(a.getProportionTypical().getValue());
 			//System.out.println("getProportionTypical precision" + a.getProportionTypical().getPrecision().getValue());
-			p.setTypical_unit(a.getProportionTypical().getUnit().getValue());
+			try {
+				p.setTypical_unit(Phrases.phrasegroup_N24.get(a.getProportionTypical().getUnit().getValueID()));
+			} catch (Exception x) {
+				p.setTypical_unit("");
+			}
 		}
 		/**
 		 * TODO
