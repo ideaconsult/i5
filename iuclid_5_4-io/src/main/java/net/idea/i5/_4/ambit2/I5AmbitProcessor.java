@@ -173,7 +173,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			}
 		}
 		try {
-			p.setFunction(Phrases.phrasegroup_N08.get(a.getFunction().getValueID()));
+			p.setFunction(Phrases.phrasegroup_N28.get(a.getFunction().getValueID()));
 		} catch (Exception x) {
 			p.setFunction("Error reading the function type");
 		}		
