@@ -97,4 +97,8 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 		else return null;
 	}
 
+	@Override
+	public Object next() {
+		return nextRecord();
+	}
 }
