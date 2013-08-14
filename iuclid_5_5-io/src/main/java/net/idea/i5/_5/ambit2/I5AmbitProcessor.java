@@ -51,6 +51,10 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		record.clear();
 		setFormat(record);
 		if (unmarshalled != null) {
+			//owner
+			try {
+			record.setOwnerUUID(unmarshalled.getOwnerLegalEntity().getUniqueKey());
+			} catch (Exception x) {}
 			record.setCompanyName(unmarshalled.getChemicalName());
 			record.setPublicName(unmarshalled.getPublicName());
 			setCompanyUUID(record,unmarshalled.getDocumentReferencePK());
@@ -103,16 +107,16 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				
 				if (c.getAdditives()!=null)
 				for (Additive a : c.getAdditives().getAdditive()) 
-					additive2record(record,a);
+					additive2record(c.getLocalUUID(),record,a);
 
 				if (c.getImpurities()!=null)
 				for (Impurity a : c.getImpurities().getImpurity()) 
-					impurity2record(record,a);
+					impurity2record(c.getLocalUUID(),record,a);
 						
 				
 				if (c.getConstituents()!=null)
 				for (Constituent a : c.getConstituents().getConstituent()) 
-					constituent2record(record,a);
+					constituent2record(c.getLocalUUID(),record,a);
 				
 			}
 		}
@@ -124,7 +128,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	 * @param constituent
 	 * @return
 	 */
-	protected IStructureRecord additive2record(SubstanceRecord substance, Additive a) {
+	protected IStructureRecord additive2record(String compositionUUID,SubstanceRecord substance, Additive a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
 		/*
@@ -181,7 +185,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		} catch (Exception x) {
 			p.setFunction("Error reading the function type");
 		}	
-		substance.addStructureRelation(record,STRUCTURE_RELATION.HAS_ADDITIVE,p);		
+		substance.addStructureRelation(compositionUUID,record,STRUCTURE_RELATION.HAS_ADDITIVE,p);		
 		
 		return record;
 	}
@@ -191,7 +195,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	 * @param constituent
 	 * @return
 	 */
-	protected IStructureRecord impurity2record(SubstanceRecord substance, Impurity a) {
+	protected IStructureRecord impurity2record(String compositionUUID,SubstanceRecord substance, Impurity a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
 		/*
@@ -248,7 +252,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		 * TODO
 		System.out.println(a.getRemarks());
 		 */
-		substance.addStructureRelation(record,STRUCTURE_RELATION.HAS_IMPURITY,p);		
+		substance.addStructureRelation(compositionUUID,record,STRUCTURE_RELATION.HAS_IMPURITY,p);		
 		
 		return record;
 	}
@@ -258,7 +262,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	 * @param constituent
 	 * @return
 	 */
-	protected IStructureRecord constituent2record(SubstanceRecord substance, Constituent a) {
+	protected IStructureRecord constituent2record(String compositionUUID,SubstanceRecord substance, Constituent a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
 		record.setType(STRUC_TYPE.NA);
@@ -313,7 +317,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		 * TODO
 		System.out.println(a.getRemarks());
 		 */
-		substance.addStructureRelation(record,STRUCTURE_RELATION.HAS_CONSTITUENT,p);
+		substance.addStructureRelation(compositionUUID,record,STRUCTURE_RELATION.HAS_CONSTITUENT,p);
 		return record;
 	}
 	
