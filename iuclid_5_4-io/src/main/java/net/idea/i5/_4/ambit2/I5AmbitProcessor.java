@@ -329,7 +329,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				structureRecord.setContent(inchi);
 				structureRecord.setType(STRUC_TYPE.D1);
 			} else {
-				structureRecord.setContent(null);
+				structureRecord.setContent("");
 				structureRecord.setType(STRUC_TYPE.NA);
 			}
 			structureRecord.setInchi(null);
@@ -348,8 +348,9 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				structureRecord.setProperty(I5ReaderSimple.casProperty,cas.getCasNumber());
 			}
 		}
-		if (unmarshalled.getReferenceSubstanceInformation().getIupacName()!=null)
-			structureRecord.setProperty(Property.getNameInstance(),unmarshalled.getReferenceSubstanceInformation().getIupacName());
+		String iupacName = unmarshalled.getReferenceSubstanceInformation().getIupacName();
+		if ((iupacName!=null) && !"".equals(iupacName.trim()))
+			structureRecord.setProperty(Property.getNameInstance(),iupacName);
 		
 		Synonyms synonyms = unmarshalled.getReferenceSubstanceInformation().getSynonyms();
 		if (synonyms!=null) {
