@@ -28,6 +28,7 @@ import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCom
 import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCompositions.SubstanceComposition.Additives.Additive;
 import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCompositions.SubstanceComposition.Constituents.Constituent;
 import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCompositions.SubstanceComposition.Impurities.Impurity;
+import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.TradeNames.TradeName;
 
 public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStructureRecord> {
 	protected SubstanceRecord record = new SubstanceRecord();
@@ -74,14 +75,16 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 					//System.out.println(unmarshalled.getTradeNames().getTradeName().get(i).getCountry().getValueID());
 				}
 			}	
+			/*
 			if (unmarshalled.getExternalSystemIdentifiers()!=null)
 			for (ExternalSystemIdentifier id : unmarshalled.getExternalSystemIdentifiers().getExternalSystemIdentifier()) {
 				System.out.println(id.getExternalSystemDesignator());
 				System.out.println(id.getID());
 				System.out.println(id.getRemarks());
 			}
+			*/
 			
-			System.out.println("origin\t"+unmarshalled.getOrigin().getOtherValue());
+			//System.out.println("origin\t"+unmarshalled.getOrigin().getOtherValue());
 			/*
 			formaldehyde / formaldehyde / 50-00-0
 			System.out.println(unmarshalled.getReferenceSubstanceRef().getDescription());
@@ -97,13 +100,14 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			
 			SubstanceCompositions sc = unmarshalled.getSubstanceCompositions();
 			for (SubstanceComposition c : sc.getSubstanceComposition()) {
+				/*
 				System.out.println(c.getLocalUUID());
 				System.out.println(c.getName());
 				System.out.println(c.getDescription());
 				System.out.println(c.getDegreeOfPurity().getUpperValue());
 				System.out.println(c.getDegreeOfPurity().getLowerValue());
 				System.out.println(c.getDegreeOfPurity().getLowerPrecision().getValue());
-				
+				*/
 				if (c.getAdditives()!=null)
 				for (Additive a : c.getAdditives().getAdditive()) 
 					additive2record(c.getLocalUUID(),record,a);
@@ -114,8 +118,11 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 						
 				
 				if (c.getConstituents()!=null)
-				for (Constituent a : c.getConstituents().getConstituent()) 
-					constituent2record(c.getLocalUUID(),record,a);
+				for (Constituent a : c.getConstituents().getConstituent()) {
+					constituent2record(
+							(unmarshalled.getReferenceSubstanceRef().getUniqueKey().equals(a.getReferenceSubstance().getUniqueKey()))?unmarshalled:null,
+							c.getLocalUUID(),record,a);
+				}	
 				
 			}
 		}
@@ -254,7 +261,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	 * @param constituent
 	 * @return
 	 */
-	protected IStructureRecord constituent2record(String compositionUUID,SubstanceRecord substance, Constituent a) {
+	protected IStructureRecord constituent2record(Substance unmarshalled,String compositionUUID,SubstanceRecord substance, Constituent a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
 		record.setType(STRUC_TYPE.NA);
@@ -309,6 +316,25 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		System.out.println(a.getRemarks());
 		 */
 		substance.addStructureRelation(compositionUUID,record,STRUCTURE_RELATION.HAS_CONSTITUENT,p);
+		
+		//Adding the tradenames to the reference structure
+		if ((unmarshalled!=null) && (unmarshalled.getTradeNames()!=null)) {
+			for (int i=0; i < unmarshalled.getTradeNames().getTradeName().size();i++) {
+				TradeName name = unmarshalled.getTradeNames().getTradeName().get(i);
+				Property prop =  Property.getInstance(String.format("Trade name %d", (i+1)), LiteratureEntry.getI5UUIDReference());
+				prop.setLabel(Property.opentox_TradeName);
+				record.setProperty(prop,name.getName());
+				//System.out.println(unmarshalled.getTradeNames().getTradeName().get(i).getNameType().getValueID());
+				
+				if (name.getRemarks()!=null && !"".equals(name.getRemarks())) {
+					prop =  Property.getInstance("Identifier", LiteratureEntry.getI5UUIDReference());
+					prop.setLabel(Property.opentox_TradeName);
+					record.setProperty(prop,unmarshalled.getTradeNames().getTradeName().get(i).getRemarks());
+				}
+
+				//System.out.println(unmarshalled.getTradeNames().getTradeName().get(i).getCountry().getValueID());
+			}
+		}			
 		return record;
 	}
 	
