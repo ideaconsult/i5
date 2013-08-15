@@ -335,11 +335,23 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		
 		if (unmarshalled.getReferenceSubstanceStructure()!=null) {
 			structureRecord.setFormat(MOL_TYPE.INC.name());
-			structureRecord.setContent(unmarshalled.getReferenceSubstanceStructure().getInChI());
+			String inchi = unmarshalled.getReferenceSubstanceStructure().getInChI();
+			if (inchi!=null && !"".equals(inchi)) {
+				structureRecord.setContent(inchi);
+				structureRecord.setType(STRUC_TYPE.D1);
+			} else {
+				structureRecord.setContent(null);
+				structureRecord.setType(STRUC_TYPE.NA);
+			}
 			structureRecord.setInchi(null);
-			structureRecord.setSmiles(unmarshalled.getReferenceSubstanceStructure().getSmilesNotation());
+			String smiles = unmarshalled.getReferenceSubstanceStructure().getSmilesNotation();
+			if (smiles!=null && !"".equals(smiles)) {
+				structureRecord.setType(STRUC_TYPE.D1);
+			}
+			structureRecord.setSmiles(smiles);
 			structureRecord.setFormula(unmarshalled.getReferenceSubstanceStructure().getMolecularFormula());
-		}
+		} else structureRecord.setType(STRUC_TYPE.NA);
+		
 		CasInformation cas = unmarshalled.getReferenceSubstanceInformation().getCasInformation();
 		if (cas!=null) {
 			try {
