@@ -1,15 +1,14 @@
-<?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>iuclid5-cli</artifactId>
     <groupId>net.idea</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
   </parent>
   <groupId>net.idea</groupId>
   <artifactId>iuclid_5_4-io</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>iuclid_5_4-io</name>
   <url>http://www.idesconsult.net</url>
   <properties>
@@ -17,7 +16,7 @@
   </properties>
   <inceptionYear>2013</inceptionYear>
   <dependencies>
-   <dependency>
+    <dependency>
       <groupId>ambit</groupId>
       <artifactId>ambit2-base</artifactId>
       <version>${ambit.version}</version>
@@ -26,24 +25,22 @@
       <groupId>ambit</groupId>
       <artifactId>ambit2-core</artifactId>
       <version>${ambit.version}</version>
-    </dependency>       
+    </dependency>
   </dependencies>
   <build>
-  
-<plugins>
-
-	<plugin>
-       <groupId>org.apache.maven.plugins</groupId>
-       <artifactId>maven-jar-plugin</artifactId>
-       <executions>
-         <execution>
-           <goals>
-             <goal>test-jar</goal>
-           </goals>
-         </execution>
-       </executions>
-     </plugin>
-     <!-- 
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>test-jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- 
   <plugin>
      <groupId>org.codehaus.mojo</groupId>
      <artifactId>jaxb2-maven-plugin</artifactId>
@@ -88,7 +85,6 @@
      </executions>
     </plugin>
      -->
-</plugins>    
-
-</build>  
+    </plugins>
+  </build>
 </project>
