@@ -25,8 +25,13 @@
 	<properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.8.1</junit.version>
-    <ambit.version>2.4.13-SNAPSHOT</ambit.version>
+    <ambit.version>2.5.0</ambit.version>
   </properties>    
+<scm>
+  	<connection>scm:git:git://github.com/ideaconsult/i5.git</connection>
+  	<developerConnection>scm:git:git@github.com:ideaconsult/i5.git</developerConnection>
+  	<url>https://github.com/ideaconsult/i5.git</url>
+  </scm>  
 <dependencies>
     <dependency>
       <groupId>junit</groupId>
