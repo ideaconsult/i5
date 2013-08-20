@@ -1,21 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>iuclid5-cli</artifactId>
     <groupId>net.idea</groupId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
   </parent>
   <groupId>net.idea</groupId>
   <artifactId>i5z</artifactId>
   <name>i5z</name>
-  <version>0.0.1</version>
+  <version>0.0.2-SNAPSHOT</version>
   <inceptionYear>2013</inceptionYear>
   <organization>
-  	<name>Ideaconsult Ltd.</name>
-  	<url>http://www.ideaconsult.net</url>
+    <name>Ideaconsult Ltd.</name>
+    <url>http://www.ideaconsult.net</url>
   </organization>
   <dependencies>
-      <dependency>
+    <dependency>
       <groupId>ambit</groupId>
       <artifactId>ambit2-base</artifactId>
       <version>${ambit.version}</version>
@@ -26,61 +27,61 @@
       <version>${ambit.version}</version>
     </dependency>
     <dependency>
-    	<groupId>net.idea</groupId>
-    	<artifactId>iuclid_5_5-io</artifactId>
-    	<version>${project.version}</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
+      <groupId>net.idea</groupId>
+      <artifactId>iuclid_5_5-io</artifactId>
+      <version>${project.version}</version>
+      <type>jar</type>
+      <scope>compile</scope>
     </dependency>
     <dependency>
-    	<groupId>net.idea</groupId>
-    	<artifactId>iuclid_5_0-io</artifactId>
-    	<version>${project.version}</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
-    </dependency>    
-    <dependency>
-    	<groupId>net.idea</groupId>
-    	<artifactId>iuclid_5_4-io</artifactId>
-    	<version>${project.version}</version>
-    	<type>jar</type>
-    	<scope>compile</scope>
+      <groupId>net.idea</groupId>
+      <artifactId>iuclid_5_0-io</artifactId>
+      <version>${project.version}</version>
+      <type>jar</type>
+      <scope>compile</scope>
     </dependency>
-   	<dependency>
-    	<groupId>net.idea</groupId>
-    	<artifactId>iuclid_5_5-io</artifactId>
-    	<version>${project.version}</version>
-	    <classifier>tests</classifier>
-	    <scope>test</scope>
-	</dependency>    
     <dependency>
-    	<groupId>net.idea</groupId>
-    	<artifactId>iuclid_5_4-io</artifactId>
-    	<version>${project.version}</version>
-	    <classifier>tests</classifier>
-	    <scope>test</scope>
-	</dependency>   	
-	<dependency>
-    	<groupId>net.idea</groupId>
-    	<artifactId>iuclid_5_0-io</artifactId>
-    	<version>${project.version}</version>
-	    <classifier>tests</classifier>
-	    <scope>test</scope>
-	</dependency>  
-</dependencies>  
-<build>
-<plugins>
-	<plugin>
-       <groupId>org.apache.maven.plugins</groupId>
-       <artifactId>maven-jar-plugin</artifactId>
-       <executions>
-         <execution>
-           <goals>
-             <goal>test-jar</goal>
-           </goals>
-         </execution>
-       </executions>
-     </plugin>
-</plugins>
-</build>
+      <groupId>net.idea</groupId>
+      <artifactId>iuclid_5_4-io</artifactId>
+      <version>${project.version}</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.idea</groupId>
+      <artifactId>iuclid_5_5-io</artifactId>
+      <version>${project.version}</version>
+      <classifier>tests</classifier>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.idea</groupId>
+      <artifactId>iuclid_5_4-io</artifactId>
+      <version>${project.version}</version>
+      <classifier>tests</classifier>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.idea</groupId>
+      <artifactId>iuclid_5_0-io</artifactId>
+      <version>${project.version}</version>
+      <classifier>tests</classifier>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>test-jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
