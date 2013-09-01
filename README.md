@@ -11,6 +11,6 @@ Available at Maven repository http://ambit.uni-plovdiv.bg:8083/nexus/index.html#
 <dependency>
   <groupId>net.idea</groupId>
   <artifactId>i5z</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
 </dependency>
 ````
