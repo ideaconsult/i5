@@ -31,6 +31,17 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 			public String getContextPath() {
 				return "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101.substance";
 			}
+		},
+		EndpointStudyRecord {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION";
+				/*
+						"eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION:" +
+						"eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION:" +
+						"eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION";
+						*/
+			}			
 		}
 		;
 		public String getContextPath() {
@@ -63,6 +74,9 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		    			case Substance: {
 		    				return tag;
 		    			}	
+		    			case EndpointStudyRecord: {
+		    				return tag;
+		    			}
 		    			default:
 		    				throw new UnsupportedI5RootObject(tag.name());
 		    			}

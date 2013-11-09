@@ -21,6 +21,8 @@ import ambit2.core.io.I5ReaderSimple;
 import eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance;
 import eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance.ReferenceSubstanceInformation.CasInformation;
 import eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance.ReferenceSubstanceInformation.Synonyms;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart;
 import eu.europa.echa.schemas.iuclid5._20130101.substance.Substance;
 import eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.ExternalSystemIdentifiers.ExternalSystemIdentifier;
 import eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.SubstanceCompositions;
@@ -42,8 +44,17 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
 		if (unmarshalled instanceof Substance)
 			return transform2record((Substance)unmarshalled);
-		else if (unmarshalled instanceof ReferenceSubstance)
+		else if (unmarshalled instanceof ReferenceSubstance) {
 			return transform2record((ReferenceSubstance)unmarshalled);
+		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord) {
+			System.out.println(unmarshalled.getClass().getName());
+		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord) {
+			System.out.println(unmarshalled.getClass().getName());
+		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord) {
+			System.out.println(unmarshalled.getClass().getName());
+		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord) {
+			System.out.println(unmarshalled.getClass().getName());
+		}
 		return null;
 	}
 
@@ -413,5 +424,12 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	
 	protected void setFormat(IStructureRecord record) {
 		record.setFormat("i5._5.");
+	}
+	
+	protected IStructureRecord transform2record(EndpointStudyRecord unmarshalled) {
+		structureRecord.clear();
+		ScientificPart sciPart = unmarshalled.getScientificPart();
+		//sciPart.getTOACUTEORAL().
+		return structureRecord;
 	}
 }
