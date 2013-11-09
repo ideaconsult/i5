@@ -19,24 +19,430 @@ public class Phrases {
 	 */
 	public static final Hashtable<String, String> phrasegroup_N64 = phrasegroup_N64();
 	public static final Hashtable<String, String> phrasegroup_N78 = phrasegroup_N78();
+
+	public static final Hashtable<String, String> phrasegroup_A36 = phrasegroup_A36();
+	public static final Hashtable<String, String> phrasegroup_A101 = phrasegroup_A101();
+	public static final Hashtable<String, String> phrasegroup_A03 = phrasegroup_A03();
+	
 	public static final Hashtable<String, String> phrasegroup_Y14_3 = phrasegroup_Y14_3(); //name="phrasegroup_Y14-3"
 	public static final Hashtable<String, String> phrasegroup_Z02 = phrasegroup_Z02();
-	public static final Hashtable<String, String> phrasegroup_Z05 = phrasegroup_Z05();
-	public static final Hashtable<String, String> phrasegroup_A36 = phrasegroup_A36();
-	public static final Hashtable<String, String> phrasegroup_Z31 = phrasegroup_Z31();
 	public static final Hashtable<String, String> phrasegroup_Z03 = phrasegroup_Z03();
-	public static final Hashtable<String, String> phrasegroup_Z30 = phrasegroup_Z30();
+	public static final Hashtable<String, String> phrasegroup_Z05 = phrasegroup_Z05();
 	public static final Hashtable<String, String> phrasegroup_Z06 = phrasegroup_Z06();
-	public static final Hashtable<String, String> phrasegroup_E03_1 = phrasegroup_E03_1();
 	public static final Hashtable<String, String> phrasegroup_Z08 = phrasegroup_Z08();
-	public static final Hashtable<String, String> phrasegroup_Z40 = phrasegroup_Z40();
-	public static final Hashtable<String, String> phrasegroup_Z38 = phrasegroup_Z38();
-	public static final Hashtable<String, String> phrasegroup_A101 = phrasegroup_A101();
+	public static final Hashtable<String, String> phrasegroup_Z30 = phrasegroup_Z30();
+	public static final Hashtable<String, String> phrasegroup_Z31 = phrasegroup_Z31();	
 	public static final Hashtable<String, String> phrasegroup_Z36 = phrasegroup_Z36();
-	public static final Hashtable<String, String> phrasegroup_A03 = phrasegroup_A03();
+	public static final Hashtable<String, String> phrasegroup_Z38 = phrasegroup_Z38();
+	public static final Hashtable<String, String> phrasegroup_Z39 = phrasegroup_Z39();
+	public static final Hashtable<String, String> phrasegroup_Z40 = phrasegroup_Z40();
+				
+
+	//Ecotox
+
+	public static final Hashtable<String, String> phrasegroup_E01 = phrasegroup_E01();
 	public static final Hashtable<String, String> phrasegroup_E02 = phrasegroup_E02();
+	public static final Hashtable<String, String> phrasegroup_E03_1 = phrasegroup_E03_1();
+	public static final Hashtable<String, String> phrasegroup_E04 = phrasegroup_E04();
+	public static final Hashtable<String, String> phrasegroup_E05 = phrasegroup_E05();
+	public static final Hashtable<String, String> phrasegroup_E35 = phrasegroup_E35();
+	public static final Hashtable<String, String> phrasegroup_E102 = phrasegroup_E102();
+	public static final Hashtable<String, String> phrasegroup_E103 = phrasegroup_E103();
+	public static final Hashtable<String, String> phrasegroup_E104 = phrasegroup_E104();
+	public static final Hashtable<String, String> phrasegroup_E105 = phrasegroup_E105();
 	
-	  
+	
+	public static final Hashtable<String, String> phrasegroup_F102 = phrasegroup_F102();
+	//TO_ACUTE_ORAL
+	public static final Hashtable<String, String> phrasegroup_T124 = phrasegroup_T124();
+	public static final Hashtable<String, String> phrasegroup_T02_1 = phrasegroup_T02_1(); //phrasegroup_T02-1
+	public static final Hashtable<String, String> phrasegroup_T25_1 = phrasegroup_T25_1(); //phrasegroup_T25-1
+	public static final Hashtable<String, String> phrasegroup_T24 = phrasegroup_T24();
+	public static final Hashtable<String, String> phrasegroup_T23_1234 = phrasegroup_T23_1234(); //phrasegroup_T23-1234
+	public static final Hashtable<String, String> phrasegroup_T123 = phrasegroup_T123();
+	public static final Hashtable<String, String> phrasegroup_T48 = phrasegroup_T48();
+	public static final Hashtable<String, String> phrasegroup_T03 = phrasegroup_T03();
+	public static final Hashtable<String, String> phrasegroup_T148 = phrasegroup_T148();
+	public static final Hashtable<String, String> phrasegroup_T01 = phrasegroup_T01();
+	public static final Hashtable<String, String> phrasegroup_T04 = phrasegroup_T04();
+	public static final Hashtable<String, String> phrasegroup_T108 = phrasegroup_T108();
+
+    private static Hashtable<String, String> phrasegroup_T108() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("207", "Canada pesticides - ");
+    	p.put("208", "Canada workplace - ");
+    	p.put("645", "EU - ");
+    	p.put("4453", "Japan - ");
+    	p.put("1183", "OECD GHS - ");
+    	p.put("1645", "US EPA pesticides - ");
+    	p.put("1644", "US CPSC / US OSHA - ");
+    	p.put("1643", "US CPSC / US FDA - ");
+    	p.put("4104", "expert judgment - ");
+    	p.put("1342", "other: - ");
+    	p.put("2207", "not specified - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+
+    private static Hashtable<String, String> phrasegroup_E105() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("1758", "test mat. - ");
+    	p.put("1754", "act. ingr. - ");
+    	p.put("1756", "element - ");
+    	p.put("1755", "dissolved - ");
+    	p.put("1757", "labile/free - ");
+    	p.put("1755", "dissolved - ");
+    	p.put("1342", "other: - ");
+    	p.put("1173", "no data - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+    
+    private static Hashtable<String, String> phrasegroup_T04() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2081", "mg/kg bw - ");
+    	p.put("2119", "mL/kg bw - ");
+    	p.put("2103", "mg/m² - ");
+    	p.put("1342", "other: - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }		
+
+    
+    private static Hashtable<String, String> phrasegroup_T01() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("928", "LD0 - ");
+    	p.put("931", "LD50 - ");
+    	p.put("930", "LD100 - ");
+    	p.put("932", "LDLo - ");
+    	p.put("1733", "approx. LD50 - ");
+    	p.put("1858", "discriminating dose - ");
+    	p.put("1342", "other: - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }		
+    
+    private static Hashtable<String, String> phrasegroup_T148() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2480", "yes - ");
+    	p.put("2158", "no - ");
+    	p.put("1173", "no data - ");
+    	p.put("1342", "other: - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }		
+    private static Hashtable<String, String> phrasegroup_T03() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("1249", "OECD Guideline 401 (Acute Oral Toxicity) - ");
+    	p.put("1268", "OECD Guideline 420 (Acute Oral Toxicity - Fixed Dose Method) - ");
+    	p.put("1271", "OECD Guideline 423 (Acute Oral toxicity - Acute Toxic Class Method) - ");
+    	p.put("1273", "OECD Guideline 425 (Acute Oral Toxicity: Up-and-Down Procedure) - ");
+    	p.put("663", "EU Method B.1 (Acute Toxicity (Oral)) - ");
+    	p.put("664", "EU Method B.1 bis (Acute Oral Toxicity - Fixed Dose Procedure) - ");
+    	p.put("665", "EU Method B.1 tris (Acute Oral Toxicity - Acute Toxic Class Method) - ");
+    	p.put("405", "EPA OPP 81-1 (Acute Oral Toxicity) - ");
+    	p.put("501", "EPA OPPTS 870.1100 (Acute Oral Toxicity) - ");
+    	p.put("600", "EPA OTS 798.1175 (Acute Oral Toxicity) - ");
+    	p.put("2246", "other guideline: - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }	  	
+	
+	private static Hashtable<String, String> phrasegroup_T48() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	      p.put("2437","unchanged (no vehicle) - ");
+    	      p.put("1682","acetone - ");
+    	      p.put("1735","arachis oil - ");
+    	      p.put("1760","beeswax - ");
+    	      p.put("1782","carbowaxe - ");
+    	      p.put("1788","castor oil - ");
+    	      p.put("1792","cetosteryl alcohol - ");
+    	      p.put("1793","cetyl alcohol - ");
+    	      p.put("194","CMC (carboxymethyl cellulose) - ");
+    	      p.put("1804","coconut oil - ");
+    	      p.put("1817","corn oil - ");
+    	      p.put("1821","cotton seed oil - ");
+    	      p.put("316","DMSO - ");
+    	      p.put("1887","ethanol - ");
+    	      p.put("1944","glycerol ester - ");
+    	      p.put("1945","glycolester - ");
+    	      p.put("1980","hydrogenated vegetable oil - ");
+    	      p.put("2036","lecithin - ");
+    	      p.put("2049","macrogel ester - ");
+    	      p.put("2050", "maize oil - ");
+    	      p.put("2221","olive oil - ");
+    	      p.put("2253","paraffin oil - ");
+    	      p.put("2259", "peanut oil - ");
+    	      p.put("2261","petrolatum - ");
+    	      p.put("2267", "physiol. saline - ");
+    	      p.put("2274", "poloxamer - ");
+    	      p.put("2275","polyethylene glycol - ");
+    	      p.put("2296","propylene glycol - ");
+    	      p.put("2360","silicone oil - ");
+    	      p.put("2384", "sorbitan derivative - ");
+    	      p.put("2385","soya oil - ");
+    	      p.put("2417",     "theobroma oil - ");
+    	      p.put("2447","vegetable oil - ");
+    	      p.put("1659","water - ");
+    	      p.put("1342","other: - ");
+   	      p.put("1173","no data - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+	
+	private static Hashtable<String, String> phrasegroup_T123() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("51", "acute toxic class method - ");
+    	p.put("770", "fixed dose procedure - ");
+    	p.put("1578", "standard acute method - ");
+    	p.put("1342", "other: - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+	
+	private static Hashtable<String, String> phrasegroup_T23_1234() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+          p.put("3487","Abyssinian - guinea pig");
+          p.put("3501","AKR - mouse");
+          p.put("3552","Angora - rabbit");
+          p.put("3503","Balb/c - mouse");
+          p.put("3553","Belgian Hare - rabbit");
+          p.put("3565","Brown Norway - rat");
+          p.put("3502","B6C3F1 - mouse");
+          p.put("3506","CAF1 - mouse");
+          p.put("3554","Californian - rabbit");
+          p.put("3508" ,"CBA - mouse");
+          p.put("3507" ,"CB6F1 - mouse");
+          p.put("3509","CD-1 - mouse");
+          p.put("3510" ,"CF-1 - mouse");
+          p.put("3555" ,"Chinchilla - rabbit");
+          p.put("3566" ,"Crj: CD(SD) - rat");
+          p.put("3504","C3H - mouse");
+          p.put("3505","C57BL - mouse");
+          p.put("3511" ,"DBA - mouse");
+          p.put("3512","DBF1 - mouse");
+          p.put("3488","Dunkin-Hartley - guinea pig");
+          p.put("3556" ,"Dutch - rabbit");
+          p.put("3567","Fischer 344 - rat");
+          p.put("3568","Fischer 344/DuCrj - rat");
+          p.put("3557" ,"Flemish Giant - rabbit");
+          p.put("3513" ,"FVB - mouse");
+          p.put("3489" ,"Hartley - guinea pig");
+          p.put("3558","Himalayan - rabbit");
+          p.put("3514","ICL-ICR - mouse");
+          p.put("3515","ICR - mouse");
+          p.put("3569" ,"Lewis - rat");
+          p.put("3570","Long-Evans - rat");
+          p.put("3559" ,"New Zealand Black - rabbit");
+          p.put("3560" ,"New Zealand Red - rabbit");
+          p.put("3561" ,"New Zealand White - rabbit");
+          p.put("3516","NMRI - mouse");
+          p.put("3517","Nude Balb/cAnN - mouse");
+          p.put("3518","Nude CD-1 - mouse");
+          p.put("3571" ,"Osborne-Mendel - rat");
+          p.put("3490","Peruvian - guinea pig");
+          p.put("3491","Pirbright-Hartley - guinea pig");
+          p.put("3562","Polish - rabbit");
+          p.put("3563","San Juan - rabbit");
+          p.put("3519","Sencar - mouse");
+          p.put("3572","Sherman - rat");
+          p.put("3492","Shorthair - guinea pig");
+          p.put("3520" ,"SIV 50 - mouse");
+          p.put("3521","SKH/HR1 - mouse");
+          p.put("3573","Sprague-Dawley - rat");
+          p.put("3522","Strain A - mouse");
+          p.put("3523","Swiss - mouse");
+          p.put("3524","Swiss Webster - mouse");
+          p.put("9007","Tif:MAGf - mouse");
+          p.put("3564","Vienna White - rabbit");
+          p.put("3574","Wistar - rat");
+          p.put("3575","Wistar Kyoto (WKY) - rat");
+          p.put("3576","Zucker - rat");
+          p.put("1342","other: - ");
+          p.put("1173","no data - ");
+            
+     	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+	
+	private static Hashtable<String, String> phrasegroup_T24() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("1904", "female - ");
+    	p.put("2051", "male - ");
+    	p.put("2052", "male/female - ");
+    	p.put("1173", "no data - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+	
+	private static Hashtable<String, String> phrasegroup_T25_1() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2229", "oral: drinking water - ");
+    	p.put("2231", "oral: gavage - ");
+    	p.put("2228", "oral: capsule - ");
+    	p.put("2230", "oral: feed - ");
+    	p.put("2234", "oral: unspecified - ");
+    	p.put("1342", "other: - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+	
+	private static Hashtable<String, String> phrasegroup_T02_1() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("3485", "rat - common species");
+    	p.put("3530", "cat - other species");
+    	p.put("3531", "cattle - other species");
+    	p.put("3532", "dog - other species");
+    	p.put("3533", "gerbil - other species");
+    	p.put("3534", "guinea pig - other species");
+    	p.put("3536", "hamster, Armenian - other species");
+    	p.put("3537", "hamster, Chinese - other species");
+    	p.put("3538", "hamster, Syrian - other species");
+    	p.put("3539", "hen - other species");
+    	p.put("3541", "miniature swine - other species");
+    	p.put("3542", "monkey - other species");
+    	p.put("3543", "mouse - other species");
+    	p.put("3545", "pig - other species");
+    	p.put("3546", "primate - other species");
+    	p.put("3547", "rabbit - other species");
+    	p.put("3548", "sheep - other species");
+    	p.put("3544", "other: - other species");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+	
+	
+	private static Hashtable<String, String> phrasegroup_T124() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2286", "practically nontoxic - ");
+    	p.put("2312", "relatively harmless - ");
+    	p.put("2373", "sligthly toxic - ");
+    	p.put("2126", "moderately toxic - ");
+    	p.put("1960", "harmful - ");
+    	p.put("2425", "toxic - ");
+    	p.put("1972", "highly toxic - ");
+    	p.put("2450", "very toxic - ");
+    	p.put("1901", "extremely toxic - ");
+    	p.put("1617", "Toxicity Category I - ");
+    	p.put("1618", "Toxicity Category II - ");
+    	p.put("1619", "Toxicity Category III - ");
+    	p.put("1620", "Toxicity Category IV - ");
+    	p.put("1621", "Toxicity Category V - ");
+    	p.put("2195", "not classified - ");
+    	p.put("1342", "other: - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+	
+	private static Hashtable<String, String> phrasegroup_F102() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2480", "yes - ");
+    	p.put("2158", "no - ");
+    	p.put("1173", "no data - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+	
+	private static Hashtable<String, String> phrasegroup_E103() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2135", "mortality - ");
+    	p.put("2469", "weight - ");
+    	p.put("144", "behaviour - ");
+    	p.put("2162", "mobility - ");
+    	p.put("2143", "morphology - ");
+    	p.put("1342", "other: - ");
+    	p.put("1173", "no data - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }	
+	private static Hashtable<String, String> phrasegroup_E35() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2178", "nominal - ");
+    	p.put("2002", "meas. (initial) - ");
+    	p.put("1941", "meas. (geom. mean) - ");
+    	p.put("1736", "meas. (arithm. mean) - ");
+    	p.put("2421", "meas. (TWA) - ");
+    	p.put("4038", "meas. (not specified) - ");
+    	p.put("1685", "acid equivalent - ");
+    	p.put("1884", "estimated - ");
+    	p.put("1685", "acid equivalent - ");
+    	p.put("1173", "no data - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }	
+	
+	private static Hashtable<String, String> phrasegroup_E05() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2155", "ng/L - ");
+    	p.put("2500", "µg/L - ");
+    	p.put("2098", "mg/L - ");
+    	p.put("1935", "g/L - ");
+    	p.put("2504", "µmol/L - ");
+    	p.put("2123", "mmol/L - ");
+    	p.put("2127", "mol/L - ");
+    	p.put("1342", "other: - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }	 
+	private static Hashtable<String, String> phrasegroup_E104() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("922", "LC0 - ");
+    	p.put("923", "LC10 - ");
+    	p.put("926", "LC50 - ");
+    	p.put("924", "LC100 - ");
+    	p.put("360", "EC0 - ");
+    	p.put("361", "EC10 - ");
+    	p.put("365", "EC50 - ");
+    	p.put("362", "EC100 - ");
+    	p.put("933", "LL0 - ");
+    	p.put("934", "LL10 - ");
+    	p.put("936", "LL50 - ");
+    	p.put("935", "LL100 - ");
+    	p.put("368", "EL0 - ");
+    	p.put("369", "EL10 - ");
+    	p.put("373", "EL50 - ");
+    	p.put("370", "EL100 - ");
+    	p.put("855", "IC10 - ");
+    	p.put("857", "IC50 - ");
+    	p.put("856", "IC100 - ");
+    	p.put("1149", "NOELR - ");
+    	p.put("976", "LOELR - ");
+    	p.put("1129", "NOEC - ");
+    	p.put("957", "LOEC - ");
+    	p.put("1342", "other: - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }	 
+	
+    private static Hashtable<String, String> phrasegroup_E04() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2113", "min - ");
+    	p.put("1976", "h - ");
+    	p.put("2468", "wk - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }	  	
+	
+    private static Hashtable<String, String> phrasegroup_E102() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("1920", "freshwater - ");
+    	p.put("2326", "saltwater - ");
+    	p.put("1777", "brackish water - ");
+    	p.put("1173", "no data - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }	  	
+	
+    private static Hashtable<String, String> phrasegroup_E01() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2392", "static - ");
+    	p.put("2393", "semi-static - ");
+    	p.put("1914", "flow-through - ");
+    	p.put("1342", "other: - ");
+    	p.put("1173", "no data - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }	  
     
     private static Hashtable<String, String> phrasegroup_E02() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
@@ -447,7 +853,7 @@ public class Phrases {
     	p.put("2098", "mg/L");
     	p.put("3437", "mg/kg");
     	p.put("2283", "ppm");
-    	p.put("3440", ">mg/m\u00B3");
+    	p.put("3440", ",mg/m\u00B3");
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }
