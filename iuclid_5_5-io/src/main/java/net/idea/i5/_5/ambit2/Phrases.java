@@ -67,6 +67,67 @@ public class Phrases {
 	public static final Hashtable<String, String> phrasegroup_T04 = phrasegroup_T04();
 	public static final Hashtable<String, String> phrasegroup_T108 = phrasegroup_T108();
 
+	//physchem
+	public static final Hashtable<String, String> phrasegroup_C15 = phrasegroup_C15();
+	public static final Hashtable<String, String> phrasegroup_C101 = phrasegroup_C101();
+	
+	
+	public static final Hashtable<String, String> phrasegroup_P07 = phrasegroup_P07();
+	public static final Hashtable<String, String> phrasegroup_P36 = phrasegroup_P36();
+	public static final Hashtable<String, String> phrasegroup_P19 = phrasegroup_P19();
+	
+    private static Hashtable<String, String> phrasegroup_P19() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("123", "Pow - ");
+    	p.put("2043", "log Pow - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+    
+    private static Hashtable<String, String> phrasegroup_C101() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("791", "GC - ");
+    	p.put("816", "HPLC - ");
+    	p.put("2266", "photometry - ");
+    	p.put("1597", "TLC - ");
+    	p.put("1342", "other: - ");
+    	p.put("1173", "no data - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+    
+    private static Hashtable<String, String> phrasegroup_P36() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("4786", "shake-flask method - ");
+    	p.put("4787", "HPLC method - ");
+    	p.put("4787", "generator column method - ");
+    	p.put("1342", "other: - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }	
+
+    private static Hashtable<String, String> phrasegroup_P07() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("1189", "OECD Guideline 107 (Partition Coefficient (n-octanol / water), Shake Flask Method) - ");
+    	p.put("1197", "OECD Guideline 117 (Partition Coefficient (n-octanol / water), HPLC Method) - ");
+    	p.put("2163", "OECD Guideline 123 (Partition Coefficient (1-Octanol / Water), Slow-Stirring Method) - ");
+    	p.put("661", "EU Method A.8 (Partition Coefficient) - ");
+    	p.put("430", "EPA OPPTS 830.7550 (Partition Coefficient, n-octanol / H2O, Shake Flask Method) - ");
+    	p.put("432", "EPA OPPTS 830.7560 (Partition Coefficient, n-octanol / H2O, Generator Column Method) - ");
+    	p.put("433", "EPA OPPTS 830.7570 (Partition Coefficient, n-octanol / H2O, Estimation by Liquid Chromatography) - ");
+    	p.put("2246", "other guideline: - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }	
+	
+    private static Hashtable<String, String> phrasegroup_C15() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2214", "octanol-water - ");
+    	p.put("1342", "other: - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+    
     private static Hashtable<String, String> phrasegroup_T108() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
     	p.put("207", "Canada pesticides - ");
