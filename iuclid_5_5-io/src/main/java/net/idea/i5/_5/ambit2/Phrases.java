@@ -46,13 +46,29 @@ public class Phrases {
 	public static final Hashtable<String, String> phrasegroup_E04 = phrasegroup_E04();
 	public static final Hashtable<String, String> phrasegroup_E05 = phrasegroup_E05();
 	public static final Hashtable<String, String> phrasegroup_E35 = phrasegroup_E35();
+	public static final Hashtable<String, String> phrasegroup_E36 = phrasegroup_E36();
 	public static final Hashtable<String, String> phrasegroup_E102 = phrasegroup_E102();
 	public static final Hashtable<String, String> phrasegroup_E103 = phrasegroup_E103();
 	public static final Hashtable<String, String> phrasegroup_E104 = phrasegroup_E104();
 	public static final Hashtable<String, String> phrasegroup_E105 = phrasegroup_E105();
 	
-	
+	//TO_biodeg
+	public static final Hashtable<String, String> phrasegroup_F05 = phrasegroup_F05();
 	public static final Hashtable<String, String> phrasegroup_F102 = phrasegroup_F102();
+	public static final Hashtable<String, String> phrasegroup_F103 = phrasegroup_F103();
+	public static final Hashtable<String, String> phrasegroup_F106 = phrasegroup_F106();
+	public static final Hashtable<String, String> phrasegroup_F107 = phrasegroup_F107();
+	
+	public static final Hashtable<String, String> phrasegroup_F134 = phrasegroup_F134();
+	public static final Hashtable<String, String> phrasegroup_F26_1a = phrasegroup_F26_1a(); //phrasegroup_F26-1a
+	public static final Hashtable<String, String> phrasegroup_F25_1 = phrasegroup_F25_1(); //phrasegroup_F25-1
+	public static final Hashtable<String, String> phrasegroup_F27_1 = phrasegroup_F27_1(); //phrasegroup_F27-1
+	
+	public static final Hashtable<String, String> phrasegroup_F28 = phrasegroup_F28();
+	public static final Hashtable<String, String> phrasegroup_F29 = phrasegroup_F29();
+	public static final Hashtable<String, String> phrasegroup_F30 = phrasegroup_F30();
+	
+	
 	//TO_ACUTE_ORAL
 	public static final Hashtable<String, String> phrasegroup_T124 = phrasegroup_T124();
 	public static final Hashtable<String, String> phrasegroup_T02_1 = phrasegroup_T02_1(); //phrasegroup_T02-1
@@ -75,7 +91,220 @@ public class Phrases {
 	public static final Hashtable<String, String> phrasegroup_P07 = phrasegroup_P07();
 	public static final Hashtable<String, String> phrasegroup_P36 = phrasegroup_P36();
 	public static final Hashtable<String, String> phrasegroup_P19 = phrasegroup_P19();
+
+	private static Hashtable<String, String> phrasegroup_F30() {
+		Hashtable<String, String> p = new Hashtable<String,String>();
+		p.put("2438","under test conditions no biodegradation observed - ");
+		p.put("2305","readily biodegradable - ");
+		p.put("2306","readily biodegradable, but failing 10-day window - ");
+		p.put("1997","inherently biodegradable - ");
+		p.put("1998","inherently biodegradable, fulfilling specific criteria - ");
+		p.put("1999","inherently biodegradable, not fulfilling specific criteria - ");
+		p.put("2199","not inherently biodegradable - ");
+		p.put("1342","other: - ");
+		p.put("NOT_SPECIFIED", "");
+		return p;
+	}	
 	
+	private static Hashtable<String, String> phrasegroup_F107() {
+		Hashtable<String, String> p = new Hashtable<String,String>();
+		p.put("1927","g O2/g test mat. - ");
+		p.put("2074","mg O2/g test mat. - ");
+		p.put("1342","other: - ");
+		p.put("NOT_SPECIFIED", "");
+		return p;
+	}	
+	
+	private static Hashtable<String, String> phrasegroup_F106() {
+		Hashtable<String, String> p = new Hashtable<String,String>();
+		p.put("128","BOD5 - ");
+		p.put("197","COD - ");
+		p.put("1478","BOD5*100/COD - ");
+		p.put("NOT_SPECIFIED", "");
+		return p;
+	}	
+	
+	private static Hashtable<String, String> phrasegroup_E36() {
+		Hashtable<String, String> p = new Hashtable<String,String>();
+		p.put("1732","aniline - ");
+		p.put("1764","benzoic acid, sodium salt - ");
+		p.put("1681","acetic acid, sodium salt - ");
+		p.put("1889","ethylene glycol - ");
+		p.put("1850","diethylene glycol - ");
+		p.put("2029","laurylsulfonate - ");
+		p.put("2203","not required - ");
+		p.put("1342","other: - ");
+		p.put("1173","no data - ");
+		p.put("NOT_SPECIFIED", "");
+		return p;
+	}	
+	
+	
+	private static Hashtable<String, String> phrasegroup_F103() {
+		Hashtable<String, String> p = new Hashtable<String,String>();
+		p.put("193","CH4 evolution - ");
+		p.put("196","CO2 evolution - ");
+		p.put("321","DOC removal - ");
+		p.put("906","inorg. C analysis - ");
+		p.put("1181","O2 consumption - ");
+		p.put("1445","Radiochem. meas. - ");
+		p.put("1605","Test mat. analysis - ");
+		p.put("1599","TOC removal - ");
+		p.put("1342","other: - ");
+		p.put("1173","no data - ");
+		p.put("NOT_SPECIFIED", "");
+		return p;
+	}	
+	
+	private static Hashtable<String, String> phrasegroup_F29() {
+		Hashtable<String, String> p = new Hashtable<String,String>();
+		p.put("197","COD - ");
+		p.put("320","DOC - ");
+		p.put("1607","ThOD/L - ");
+		p.put("1606","ThIC - ");
+		p.put("1758","test mat. - ");
+		p.put("1754","act. ingr. - ");
+		p.put("1919","formulation - ");
+		p.put("1342","other: - ");
+		p.put("1173","no data - ");
+		p.put("NOT_SPECIFIED", "");
+		return p;
+	}	
+	
+	private static Hashtable<String, String> phrasegroup_F28() {
+		Hashtable<String, String> p = new Hashtable<String,String>();
+		p.put("1935","g/L - ");
+		p.put("2098","mg/L - ");
+		p.put("2123","mmol/L - ");
+		p.put("2127","mol/L - ");
+		p.put("2500","µg/L - ");
+		p.put("2504","µmol/L - ");
+		p.put("1342","other: - ");
+		p.put("NOT_SPECIFIED", "");
+		return p;
+	}	
+	private static Hashtable<String, String> phrasegroup_F05() {
+		Hashtable<String, String> p = new Hashtable<String,String>();
+		p.put("2113","min - ");
+		p.put("1976","h - ");
+		p.put("1839","d - ");
+		p.put("2468","wk - ");
+		p.put("2133","mo - ");
+		p.put("2477","yr - ");
+		p.put("NOT_SPECIFIED", "");
+		return p;
+	}	
+	private static Hashtable<String, String> phrasegroup_F27_1() {
+		Hashtable<String, String> p = new Hashtable<String,String>();	
+	      p.put("4464","activated sludge (adaptation not specified) - ");
+	      p.put("3455","activated sludge, adapted - ");
+	      p.put("3462","activated sludge, non-adapted - ");
+	      p.put("3456","activated sludge, domestic (adaptation not specified) - ");
+	      p.put("3457","activated sludge, domestic, adapted - ");
+	      p.put("3458","activated sludge, domestic, non-adapted - ");
+	      p.put("3459","activated sludge, industrial (adaptation not specified) - ");
+	      p.put("3460","activated sludge, industrial, adapted - ");
+	      p.put("3461","activated sludge, industrial, non-adapted - ");
+	      p.put("3578","sewage, domestic (adaptation not specified) - ");
+	      p.put("3579","sewage, domestic, adapted - ");
+	      p.put("3580","sewage, domestic, non-adapted - ");
+	      p.put("3581","sewage, industrial (adaptation not specified) - ");
+	      p.put("3582","sewage, industrial, adapted - ");
+	      p.put("3583","sewage, industrial, non-adapted - ");
+	      p.put("3584","sewage, predominantly domestic (adaptation not specified) - ");
+	      p.put("3577", "sewage, predominantly domestic, adapted - ");
+	      p.put("3585", "sewage, predominantly domestic, non-adapted - ");
+	      p.put("3586", "sewage, predominantly industrial (adaptation not specified) - ");
+	      p.put("3587", "sewage, predominantly industrial, adapted - ");
+	      p.put("3588", "sewage, predominantly industrial, non-adapted - ");
+	      p.put("3465", "anaerobic sludge - ");
+	      p.put("3466", "digested sludge - ");
+	      p.put("3463", "anaerobic bacteria - ");
+	      p.put("3464", "anaerobic microorganisms - ");
+	      p.put("3528","natural water - ");
+	      p.put("3529",  "natural water / sediment - ");
+	      p.put("3526","natural sediment - ");
+	      p.put("3527","natural soil - ");
+	      p.put("3525","mixture of sewage, soil and natural water - ");
+	      p.put("1342","other: - ");
+	      p.put("1173","no data - ");
+	      p.put("NOT_SPECIFIED","");
+  		return p;
+	}
+	private static Hashtable<String, String> phrasegroup_F25_1() {
+		Hashtable<String, String> p = new Hashtable<String,String>();
+		p.put("1708","aerobic - ");
+		p.put("1723","anaerobic - ");
+		p.put("1342","other: - ");
+		p.put("1173","no data - ");
+		p.put("NOT_SPECIFIED", ""); 
+		return p;
+	}
+	private static Hashtable<String, String> phrasegroup_F26_1a() {
+		Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("1223","OECD Guideline 301 A (old version) (Ready Biodegradabiltiy: Modified AFNOR Test) - ");
+    	p.put("1222","OECD Guideline 301 A (new version) (Ready Biodegradability: DOC Die Away Test) - ");
+    	p.put("1224","OECD Guideline 301 B (Ready Biodegradability: CO2 Evolution Test) - ");
+    	p.put("1225","OECD Guideline 301 C (Ready Biodegradability: Modified MITI Test (I)) - ");
+    	p.put("1226","OECD Guideline 301 D (Ready Biodegradability: Closed Bottle Test) - ");
+    	p.put("1227","OECD Guideline 301 E (Ready biodegradability: Modified OECD Screening Test) - ");
+    	p.put("1228","OECD Guideline 301 F (Ready Biodegradability: Manometric Respirometry Test) - ");
+    	p.put("1229","OECD Guideline 302 A (Inherent Biodegradability: Modified SCAS Test) - ");
+    	p.put("1230","OECD Guideline 302 B (Inherent biodegradability: Zahn-Wellens/EMPA Test) - ");
+    	p.put("1231","OECD Guideline 302 C (Inherent Biodegradability: Modified MITI Test (II)) - ");
+    	p.put("1232","OECD Guideline 302 D (Inherent Biodegradability - Concawe Test) - ");
+    	p.put("1246","OECD Guideline 310 (Ready Biodegradability - CO2 in Sealed Vessels (Headspace Test) - ");
+    	p.put("1247","OECD Guideline 311 (Anaerobic Biodegradability of Organic Compounds in Digested Sludge: Measurement of Gas Production) - ");
+    	p.put("723","EU Method C.4-A (Determination of the \"Ready\" Biodegradability - Dissolved Organic Carbon (DOC) Die-Away Test) - ");
+    	p.put("724","EU Method C.4-B (Determination of the \"Ready\" Biodegradability - Modified OECD Screening Test) - ");
+    	p.put("725","EU Method C.4-C (Determination of the \"Ready\" Biodegradability - Carbon Dioxide Evolution Test) - ");
+    	p.put("726","EU Method C.4-D (Determination of the \"Ready\" Biodegradability - Manometric Respirometry Test) - ");
+    	p.put("727","EU Method C.4-E (Determination of the \"Ready\" Biodegradability - Closed Bottle Test) - ");
+    	p.put("728","EU Method C.4-F (Determination of the \"Ready\" Biodegradability - MITI Test) - ");
+    	p.put("729","EU Method C.5 (Degradation: Biochemical Oxygen Demand) - ");
+    	p.put("730","EU Method C.6 (Degradation: Chemical Oxygen Demand) - ");
+    	p.put("732","EU Method C.9 (Biodegradation: Zahn-Wellens Test) - ");
+    	p.put("709","EU Method C.12 (Biodegradation: Modified SCAS Test) - ");
+    	p.put("441","EPA OPPTS 835.3100 (Aerobic Aquatic Biodegradation) - ");
+    	p.put("442","EPA OPPTS 835.3110 (Ready Biodegradability) - ");
+    	p.put("443","EPA OPPTS 835.3120 (Sealed Vessel Carbon Dioxide Production Test) - ");
+    	p.put("444","EPA OPPTS 835.3170 (Shake Flask Die-away Test) - ");
+    	p.put("446","EPA OPPTS 835.3200 (Zahn-Wellens / EMPA Test) - ");
+    	p.put("447","EPA OPPTS 835.3210 (Inherent Biodegradability: Modified SCAS Test) - ");
+    	p.put("450","EPA OPPTS 835.3400 (Anaerobic Biodegradability of Organic Chemicals) - ");
+    	p.put("452","EPA OPPTS 835.5045 (Modified SCAS Test for Insoluble and Volatile Chemicals) - ");
+    	p.put("555","EPA OTS 795.45 (Inherent Biodegradability: Modified SCAS Test for Chemical Substances that are Water Insoluble or Water Insoluble and Volatile) - ");
+    	p.put("560","EPA OTS 796.3100 (Aerobic Aquatic Biodegradation) - ");
+    	p.put("561","EPA OTS 796.3140 (Anaerobic Biodegradability of Organic Chemicals) - ");
+    	p.put("562","EPA OTS 796.3180 (Ready Biodegradability: Modified AFNOR Test) - ");
+    	p.put("563","EPA OTS 796.3200 (Ready Biodegradability: Closed Bottle Test) - ");
+    	p.put("564","EPA OTS 796.3220 (Ready Biodegradability: Modified MITI Test(I)) - ");
+    	p.put("565","EPA OTS 796.3240 (Ready Biodegradability: Modified OECD Screening Test) - ");
+    	p.put("566","EPA OTS 796.3260 (Ready Biodegradability: Modified Sturm Test) - ");
+    	p.put("567","EPA OTS 796.3340 (Inherent Biodegradability: Modified SCAS Test) - ");
+    	p.put("568","EPA OTS 796.3360 (Inherent Biodegradability: Modified Zahn-Wellens Test) - ");
+    	p.put("367","ECETOC Anaerobic Biodegradation (Technical Report No. 28) - ");
+    	p.put("868","ISO 5815 (Water quality - Determination of Biochemical Oxygen Demand after 5 Days (BOD5) - Dilution and Seeding Method) - ");
+    	p.put("880","ISO DP 6060 (Water Quality - Determination of the Chemical Oxygen Demand) - ");
+    	p.put("874","ISO 7827 (Evaluation in an Aqueous Medium of the \"Ultimate\" Aerobic Biodegradability of Organic Compounds - Method by Anlaysis of Dissolved Organic Carbon (DOC)) - ");
+    	p.put("877","ISO DIS 9408 (Ultimate Aerobic Biodegradability - Method by Determining the Oxygen Demand in a Closed Respirometer) - ");
+    	p.put("878","ISO DIS 9439 (Ultimate Aerobic Biodegradability - Method by Analysis of Released Carbon Dioxide) - ");
+    	p.put("881","ISO Draft (BOD Test for Insoluble Substances) - ");
+    	p.put("2246","other guideline: - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+	
+    private static Hashtable<String, String> phrasegroup_F134() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2307", "ready biodegradability - ");
+    	p.put("1996", "inherent biodegradability - ");
+    	p.put("1342", "other: - ");
+    	p.put("1173", "no data - ");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+    
     private static Hashtable<String, String> phrasegroup_P19() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
     	p.put("123", "Pow - ");
