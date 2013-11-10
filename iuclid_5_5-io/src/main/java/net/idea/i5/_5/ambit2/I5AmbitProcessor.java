@@ -480,7 +480,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				sciPart.getECFISHTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());		
 		//MEASURED CONC.
 		
-
+		System.out.println("===== Effect level");
 		//ENDPOINT
 		if (sciPart.getECFISHTOX().getEFFCONC()!=null && sciPart.getECFISHTOX().getEFFCONC().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart.ECFISHTOX.EFFCONC.Set set : sciPart.getECFISHTOX().getEFFCONC().getSet()) {
@@ -493,11 +493,23 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			//(Exposure value)
 			//(Exposure unit)
 			
-			if (set.getPRECISIONLOQUALIFIER()!=null)
-				System.out.println("Qualifier\t"+set.getPRECISIONLOQUALIFIER().getLOQUALIFIER()+ "\t" + set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
+			if (set.getPRECISIONLOQUALIFIER()!=null) {
+				if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null)
+				System.out.println("LO Value\t"+set.getPRECISIONLOQUALIFIER().getLOQUALIFIER()+ 
+						"\t" + set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue()+
+						"\t" + set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()+
+						"\t" + set.getPRECISIONLOQUALIFIER().getUNITValue()
+						);
+				if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null)
+				System.out.println("UP value\t"+set.getPRECISIONLOQUALIFIER().getUPQUALIFIER()+ 
+						"\t" + set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue()+
+						"\t" + set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()+
+						"\t" + set.getPRECISIONLOQUALIFIER().getUNITValue()
+						);
+			}	
 			
 			if (set.getVALUEUNITEXPDURATIONVALUE()!=null)
-				System.out.println("Value\t"+set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue()+
+				System.out.println("Exposure duration\t"+set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue()+
 							"\t" + set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNIT()+
 							"\t" + set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue()
 							);			
@@ -533,8 +545,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		if (sciPart.getPCPARTITION().getMETHODNOGUIDELINE()!=null)
 			System.out.println("Guideline\t"+sciPart.getPCPARTITION().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 
-		System.out.println(sciPart.getPCPARTITION().getMETHODDETAILS().getSet().getFREETEXTBELOW());
-		System.out.println(sciPart.getPCPARTITION().getMETHODTYPE());
+		System.out.println("Method type\t"+sciPart.getPCPARTITION().getMETHODTYPE());
 
 		
 		//Partition coeff
@@ -542,7 +553,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		//System.out.println(sciPart.getPCPARTITION().getPARTCOEFFTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		//values	
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart.PCPARTITION.PARTCOEFF.Set set: sciPart.getPCPARTITION().getPARTCOEFF().getSet()) {
-			System.out.println(set.getTYPE().getTYPEValue());
+			System.out.println("Type value\t"+set.getTYPE().getTYPEValue());
 			if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) {
 				System.out.println(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
 				System.out.println("LoValue\t"+set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue());	
@@ -648,6 +659,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			System.out.println("Year\t"+set.getREFERENCEYEAR());
 		}
 		//Acute tox oral
+		
 		//Species
 		System.out.print("Organism\t"+sciPart.getTOACUTEORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOP());
 		System.out.println("\t"+sciPart.getTOACUTEORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
@@ -661,7 +673,10 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		//effect level
 		if (sciPart.getTOACUTEORAL().getEFFLEVEL()!=null)
 		for (Set set : sciPart.getTOACUTEORAL().getEFFLEVEL().getSet()) {
+			
 			System.out.println("===== Effect level");
+			if (set.getPHRASEOTHEREFFCONCTYPE()!=null)
+				System.out.println(set.getPHRASEOTHEREFFCONCTYPE().getEFFCONCTYPEValue());
 			if (set.getSEX()!=null)
 				System.out.println("Sex\t"+set.getSEX().getSEX()+ "\t" + set.getSEX().getSEXValue());
 			
