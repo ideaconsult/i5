@@ -50,7 +50,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord) {
 			return transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord)unmarshalled);
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord) {
-			System.out.println(unmarshalled.getClass().getName());
+			return transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord)unmarshalled);
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord) {
 			return transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord)unmarshalled);
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord) {
@@ -426,14 +426,42 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	protected void setFormat(IStructureRecord record) {
 		record.setFormat("i5._5.");
 	}
-	protected IStructureRecord transform2record(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord unmarshalled) {
-		structureRecord.clear();
+	protected IStructureRecord transform2record(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord unmarshalled) {
+		record.clear();
+		
 		//(Endpoint EP)
 		System.out.println("Endpoint\t"+unmarshalled.getName());
 		//UUID
-		System.out.println("UUID\t"+unmarshalled.getDocumentReferencePK());
-		//DATA OWNER
-		System.out.println("Owner\t" + unmarshalled.getOwnerRef().getUniqueKey());
+		System.out.println("Document UUID\t"+unmarshalled.getDocumentReferencePK());
+		//DATA OWNER - this is substance UUID, not the UUID of the company
+		System.out.println("Substance UUID (company specific)\t" + unmarshalled.getOwnerRef().getUniqueKey());
+		//TODO data owner
+		setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
+		//GUIDELINE
+		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
+		if (sciPart.getECFISHTOX().getGUIDELINE()!=null)
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart.ECFISHTOX.GUIDELINE.Set set : sciPart.getECFISHTOX().getGUIDELINE().getSet()) {
+				System.out.println("Guideline\t"+
+						set.getQUALIFIER().getQUALIFIERValue()+ "\t"+
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+			}
+		//GUIDELINE (other)
+		if (sciPart.getECFISHTOX().getMETHODNOGUIDELINE()!=null)
+			System.out.println("Guideline\t"+sciPart.getECFISHTOX().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+		
+		//sciPart.getECFISHTOX().get
+		return record;
+	}
+	protected IStructureRecord transform2record(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord unmarshalled) {
+		record.clear();
+		//(Endpoint EP)
+		System.out.println("Endpoint\t"+unmarshalled.getName());
+		//UUID
+		System.out.println("Document UUID\t"+unmarshalled.getDocumentReferencePK());
+		//DATA OWNER - this is substance UUID, not the UUID of the company
+		System.out.println("Substance UUID (company specific)\t" + unmarshalled.getOwnerRef().getUniqueKey());
+		setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
+		//TODO data owner
 		//GUIDELINE
 		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
 		System.out.println("Guideline\t"+sciPart.getPCPARTITION().getGUIDELINE());
@@ -466,16 +494,18 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				System.out.println(set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE().getValue());
 			}
 		}
-		return structureRecord;
+		return record;
 	}
 	protected IStructureRecord transform2record(EndpointStudyRecord unmarshalled) {
-		structureRecord.clear();
+		record.clear();
 		//(Endpoint EP)
 		System.out.println("Endpoint\t"+unmarshalled.getName());
 		//UUID
-		System.out.println("UUID\t"+unmarshalled.getDocumentReferencePK());
-		//DATA OWNER
-		System.out.println("Owner\t" + unmarshalled.getOwnerRef().getUniqueKey());
+		System.out.println("Document UUID\t"+unmarshalled.getDocumentReferencePK());
+		//DATA OWNER - this is substance UUID, not the UUID of the company
+		System.out.println("Substance UUID (company specific)\t" + unmarshalled.getOwnerRef().getUniqueKey());
+		//TODO data owner
+		setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
 		//GUIDELINE
 		ScientificPart sciPart = unmarshalled.getScientificPart();
 		System.out.println("Guideline\t"+sciPart.getTOACUTEORAL().getGUIDELINE());
@@ -544,6 +574,6 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			System.out.println(sciPart.getTOACUTEORAL().getCRITERIASUBMITTER().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		}
 		//sciPart.getTOACUTEORAL().
-		return structureRecord;
+		return record;
 	}
 }
