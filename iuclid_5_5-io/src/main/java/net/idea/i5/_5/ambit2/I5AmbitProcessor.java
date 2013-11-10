@@ -21,6 +21,7 @@ import ambit2.core.io.I5ReaderSimple;
 import eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance;
 import eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance.ReferenceSubstanceInformation.CasInformation;
 import eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance.ReferenceSubstanceInformation.Synonyms;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.DocumentTypeType;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.EFFLEVEL.Set;
@@ -434,9 +435,15 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		//UUID
 		System.out.println("Document UUID\t"+unmarshalled.getDocumentReferencePK());
 		//DATA OWNER - this is substance UUID, not the UUID of the company
-		System.out.println("Substance UUID (company specific)\t" + unmarshalled.getOwnerRef().getUniqueKey());
-		//TODO data owner
-		setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
+		if (unmarshalled.getOwnerRef().getType().equals(DocumentTypeType.SUBSTANCE)) {
+			System.out.println("Substance UUID (company specific)\t" + unmarshalled.getOwnerRef().getUniqueKey());
+			System.out.println("Substance description\t" + unmarshalled.getOwnerRef().getDescription());
+			setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
+		}
+		//TODO data owner - it's probably not in this file
+		
+		//NO. OF STUDY
+
 		//GUIDELINE
 		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
 		if (sciPart.getECFISHTOX().getGUIDELINE()!=null)
@@ -444,12 +451,69 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				System.out.println("Guideline\t"+
 						set.getQUALIFIER().getQUALIFIERValue()+ "\t"+
 						set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				
+
 			}
 		//GUIDELINE (other)
 		if (sciPart.getECFISHTOX().getMETHODNOGUIDELINE()!=null)
 			System.out.println("Guideline\t"+sciPart.getECFISHTOX().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+		/*
+		if (sciPart.getECFISHTOX().getREFERENCESUBSTANCE()!=null) {
+			record.setReferenceSubstanceUUID(sciPart.getECFISHTOX().getREFERENCESUBSTANCE().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue())
+		}
+		*/
+		if (sciPart.getECFISHTOX().getSALINITY()!=null)
+			System.out.println(sciPart.getECFISHTOX().getSALINITY().getSet().getTEXTBELOW());
+		//Exposure duration
+		if (sciPart.getECFISHTOX().getEXPDURATION()!=null) {
+			System.out.print("Exposure\t"+sciPart.getECFISHTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE());
+			System.out.println("\t"+sciPart.getECFISHTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());
+		}
+		if (sciPart.getECFISHTOX().getWATERTYPE()!=null) {
+		System.out.println("Water\t"+
+				sciPart.getECFISHTOX().getWATERTYPE().getSet().getLISTRIGHTPOP().getLISTRIGHTPOP()+"\t"+
+				sciPart.getECFISHTOX().getWATERTYPE().getSet().getLISTRIGHTPOP().getLISTRIGHTPOPValue());
+		}
+		//TEST ORGANISM
+		System.out.println("Organism\t"+
+				sciPart.getECFISHTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOP()+"\t"+
+				sciPart.getECFISHTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());		
+		//MEASURED CONC.
 		
-		//sciPart.getECFISHTOX().get
+
+		//ENDPOINT
+		if (sciPart.getECFISHTOX().getEFFCONC()!=null && sciPart.getECFISHTOX().getEFFCONC().getSet()!=null)
+		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart.ECFISHTOX.EFFCONC.Set set : sciPart.getECFISHTOX().getEFFCONC().getSet()) {
+			System.out.println("Endpoint\t"+set.getPHRASEOTHERENDPOINT().getENDPOINT()+ "\t" + set.getPHRASEOTHERENDPOINT().getENDPOINTValue());
+			if (set.getPHRASEOTHERBASISEFFECT()!=null)
+				System.out.println("Effect\t"+set.getPHRASEOTHERBASISEFFECT().getBASISEFFECT()+ "\t" + set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue());
+			if (set.getPHRASEOTHEREFFCONCTYPE()!=null)
+				System.out.println("Conc type\t"+set.getPHRASEOTHEREFFCONCTYPE().getEFFCONCTYPE()+ "\t" + set.getPHRASEOTHEREFFCONCTYPE().getEFFCONCTYPEValue());
+			//EXPOSURE
+			//(Exposure value)
+			//(Exposure unit)
+			
+			if (set.getPRECISIONLOQUALIFIER()!=null)
+				System.out.println("Qualifier\t"+set.getPRECISIONLOQUALIFIER().getLOQUALIFIER()+ "\t" + set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
+			
+			if (set.getVALUEUNITEXPDURATIONVALUE()!=null)
+				System.out.println("Value\t"+set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue()+
+							"\t" + set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNIT()+
+							"\t" + set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue()
+							);			
+						
+		} else {
+			System.err.println("No data");
+		}
+		//ECOTOXICITY
+		//(Value 1st Prefix)
+		//(Value 1st value)
+		//(Value unit)
+
+		//EFFECT
+		//EFFECT BASED ON
+
+
 		return record;
 	}
 	protected IStructureRecord transform2record(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord unmarshalled) {
@@ -468,6 +532,11 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		//GUIDELINE (other)
 		if (sciPart.getPCPARTITION().getMETHODNOGUIDELINE()!=null)
 			System.out.println("Guideline\t"+sciPart.getPCPARTITION().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+
+		System.out.println(sciPart.getPCPARTITION().getMETHODDETAILS().getSet().getFREETEXTBELOW());
+		System.out.println(sciPart.getPCPARTITION().getMETHODTYPE());
+
+		
 		//Partition coeff
 		//type
 		//System.out.println(sciPart.getPCPARTITION().getPARTCOEFFTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
