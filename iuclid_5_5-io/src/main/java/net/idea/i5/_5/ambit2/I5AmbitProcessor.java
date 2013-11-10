@@ -55,7 +55,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord) {
 			return transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord)unmarshalled);
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord) {
-			System.out.println(unmarshalled.getClass().getName());
+			return transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord)unmarshalled);
 		}
 		return null;
 	}
@@ -563,6 +563,66 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				System.out.println(set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE().getValue());
 			}
 		}
+		return record;
+	}
+
+	protected IStructureRecord transform2record(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord unmarshalled) {
+		record.clear();
+		//(Endpoint EP)
+		System.out.println("Endpoint\t"+unmarshalled.getName());
+		//UUID
+		System.out.println("Document UUID\t"+unmarshalled.getDocumentReferencePK());
+		//DATA OWNER - this is substance UUID, not the UUID of the company
+		System.out.println("Substance UUID (company specific)\t" + unmarshalled.getOwnerRef().getUniqueKey());
+		//TODO data owner
+		setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
+		//GUIDELINE
+		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
+		if (sciPart.getTOBIODEGWATERSCREEN().getGUIDELINE()!=null)
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSCREEN.GUIDELINE.Set set : sciPart.getTOBIODEGWATERSCREEN().getGUIDELINE().getSet()) {
+				System.out.println("Guideline\t"+
+						(set.getQUALIFIER()==null?"":set.getQUALIFIER().getQUALIFIERValue())+
+						"\t"+
+						(set.getPHRASEOTHERGUIDELINE()==null?"":set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue()));
+			}
+		
+		//GUIDELINE (other)
+		if (sciPart.getTOBIODEGWATERSCREEN().getMETHODNOGUIDELINE()!=null)
+			System.out.println("Guideline\t"+sciPart.getTOBIODEGWATERSCREEN().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+		//TEST TYPE
+		if (sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS()!=null) {
+			System.out.println("TEST TYPE\t"+sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
+		}
+		if (sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM()!=null) {
+			System.out.println("RESULT\t"+sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		}
+		if (sciPart.getTOBIODEGWATERSCREEN().getDEGRAD()!=null) {
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSCREEN.DEGRAD.Set set : sciPart.getTOBIODEGWATERSCREEN().getDEGRAD().getSet()) {
+				if (set.getPHRASEOTHERPARAMETER()!=null)
+					System.out.println("PARAMETER\t"+set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
+				
+				if (set.getPRECISIONLOQUALIFIER()!=null) {
+					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) {
+						System.out.print("LO\t"+set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
+						System.out.print("\t");
+						System.out.println(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue());
+					}
+					if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) {
+						System.out.print("UP\t"+set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
+						System.out.print("\t");
+						System.out.println(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue());
+					}
+				}
+				if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
+					System.out.print("Time point\t"+
+							(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()==null?"":set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue()));
+				
+					System.out.println("\t"+
+							(set.getVALUEUNITTIMEPOINTVALUE()==null?"":set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));				
+			}
+		}
+
+		//sciPart.getTOBIODEGWATERSCREEN().get
 		return record;
 	}
 	protected IStructureRecord transform2record(EndpointStudyRecord unmarshalled) {
