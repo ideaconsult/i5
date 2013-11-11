@@ -35,9 +35,9 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		EndpointStudyRecord {
 			@Override
 			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION";
+				//return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION";
 				//return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION" ;
-				//return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION";
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION";
 				// return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION" ;
 				/*
 				 * "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION" ;

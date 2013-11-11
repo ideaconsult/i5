@@ -40,8 +40,12 @@ public class I5AmbitProcessor<Target> extends
 	protected StructureRecord structureRecord = new StructureRecord();
 	protected CASProcessor casProcessor = new CASProcessor();
 	protected StudyRecordConverter EC_FISHTOX_SECTION = new StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION.StudyRecordConverter PC_PARTITION_SECTION = new net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SCREEN_SECTION.StudyRecordConverter TO_BIODEG_WATER_SCREEN_SECTION = new net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SCREEN_SECTION.StudyRecordConverter();
+	protected net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION.StudyRecordConverter PC_PARTITION_SECTION = 
+		  new net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION.StudyRecordConverter();
+	protected net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SCREEN_SECTION.StudyRecordConverter TO_BIODEG_WATER_SCREEN_SECTION = 
+		  new net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SCREEN_SECTION.StudyRecordConverter();
+	protected net.idea.i5._5.ambit2.sections.TO_ACUTE_ORAL_SECTION.StudyRecordConverter TO_ACUTE_ORAL_SECTION = 
+		  new net.idea.i5._5.ambit2.sections.TO_ACUTE_ORAL_SECTION.StudyRecordConverter();	
 	/**
 	 * 
 	 */
@@ -63,7 +67,7 @@ public class I5AmbitProcessor<Target> extends
 							(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord) unmarshalled,
 							record);
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord) {
-			return transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord) unmarshalled);
+			return TO_ACUTE_ORAL_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord) unmarshalled,record);
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord) {
 			return TO_BIODEG_WATER_SCREEN_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord) unmarshalled,record);
 		}
@@ -502,217 +506,4 @@ public class I5AmbitProcessor<Target> extends
 		record.setFormat("i5._5.");
 	}
 
-	protected IStructureRecord transform2record(
-			eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord unmarshalled) {
-		record.clear();
-		// (Endpoint EP)
-		System.out.println("Endpoint\t" + unmarshalled.getName());
-		// UUID
-		System.out.println("Document UUID\t"
-				+ unmarshalled.getDocumentReferencePK());
-		// DATA OWNER - this is substance UUID, not the UUID of the company
-		System.out.println("Substance UUID (company specific)\t"
-				+ unmarshalled.getOwnerRef().getUniqueKey());
-		// TODO data owner
-		setCompanyUUID(record, unmarshalled.getOwnerRef().getUniqueKey());
-		// GUIDELINE
-		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled
-				.getScientificPart();
-		if (sciPart.getTOBIODEGWATERSCREEN().getGUIDELINE() != null)
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSCREEN.GUIDELINE.Set set : sciPart
-					.getTOBIODEGWATERSCREEN().getGUIDELINE().getSet()) {
-				System.out
-						.println("Guideline\t"
-								+ (set.getQUALIFIER() == null ? "" : set
-										.getQUALIFIER().getQUALIFIERValue())
-								+ "\t"
-								+ (set.getPHRASEOTHERGUIDELINE() == null ? ""
-										: set.getPHRASEOTHERGUIDELINE()
-												.getGUIDELINEValue()));
-			}
-
-		// GUIDELINE (other)
-		if (sciPart.getTOBIODEGWATERSCREEN().getMETHODNOGUIDELINE() != null)
-			System.out.println("Guideline\t"
-					+ sciPart.getTOBIODEGWATERSCREEN().getMETHODNOGUIDELINE()
-							.getSet().getTEXTAREABELOW().getTEXTAREABELOW()
-							.getValue());
-		// TEST TYPE
-		if (sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS() != null) {
-			System.out.println("TEST TYPE\t"
-					+ sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS()
-							.getSet().getPHRASEOTHERLISTPOPFIX()
-							.getLISTPOPFIXValue());
-		}
-		if (sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM() != null) {
-			System.out.println("RESULT\t"
-					+ sciPart.getTOBIODEGWATERSCREEN()
-							.getINTERPRETRESULTSSUBM().getSet()
-							.getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		}
-		if (sciPart.getTOBIODEGWATERSCREEN().getDEGRAD() != null) {
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSCREEN.DEGRAD.Set set : sciPart
-					.getTOBIODEGWATERSCREEN().getDEGRAD().getSet()) {
-				if (set.getPHRASEOTHERPARAMETER() != null)
-					System.out
-							.println("PARAMETER\t"
-									+ set.getPHRASEOTHERPARAMETER()
-											.getPARAMETERValue());
-
-				if (set.getPRECISIONLOQUALIFIER() != null) {
-					if (set.getPRECISIONLOQUALIFIER().getLOVALUE() != null) {
-						System.out.print("LO\t"
-								+ set.getPRECISIONLOQUALIFIER()
-										.getLOQUALIFIERValue());
-						System.out.print("\t");
-						System.out.println(set.getPRECISIONLOQUALIFIER()
-								.getLOVALUE().getValue());
-					}
-					if (set.getPRECISIONLOQUALIFIER().getUPVALUE() != null) {
-						System.out.print("UP\t"
-								+ set.getPRECISIONLOQUALIFIER()
-										.getUPQUALIFIERValue());
-						System.out.print("\t");
-						System.out.println(set.getPRECISIONLOQUALIFIER()
-								.getUPVALUE().getValue());
-					}
-				}
-				if (set.getVALUEUNITTIMEPOINTVALUE() != null)
-					System.out.print("Time point\t"
-							+ (set.getVALUEUNITTIMEPOINTVALUE()
-									.getTIMEPOINTVALUE() == null ? "" : set
-									.getVALUEUNITTIMEPOINTVALUE()
-									.getTIMEPOINTVALUE().getValue()));
-
-				System.out.println("\t"
-						+ (set.getVALUEUNITTIMEPOINTVALUE() == null ? "" : set
-								.getVALUEUNITTIMEPOINTVALUE()
-								.getTIMEPOINTUNITValue()));
-			}
-		}
-
-		// sciPart.getTOBIODEGWATERSCREEN().get
-		return record;
-	}
-
-	protected IStructureRecord transform2record(EndpointStudyRecord unmarshalled) {
-		record.clear();
-		// (Endpoint EP)
-		System.out.println("Endpoint\t" + unmarshalled.getName());
-		// UUID
-		System.out.println("Document UUID\t"
-				+ unmarshalled.getDocumentReferencePK());
-		// DATA OWNER - this is substance UUID, not the UUID of the company
-		System.out.println("Substance UUID (company specific)\t"
-				+ unmarshalled.getOwnerRef().getUniqueKey());
-		// TODO data owner
-		setCompanyUUID(record, unmarshalled.getOwnerRef().getUniqueKey());
-		// GUIDELINE
-		ScientificPart sciPart = unmarshalled.getScientificPart();
-		System.out.println("Guideline\t"
-				+ sciPart.getTOACUTEORAL().getGUIDELINE());
-		// GUIDELINE (other)
-		if (sciPart.getTOACUTEORAL().getMETHODNOGUIDELINE() != null)
-			System.out.println("Guideline\t"
-					+ sciPart.getTOACUTEORAL().getMETHODNOGUIDELINE().getSet()
-							.getTEXTAREABELOW().getTEXTAREABELOW().getValue());
-		// year
-		if (sciPart.getTOACUTEORAL().getREFERENCE() != null)
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.REFERENCE.Set set : sciPart
-					.getTOACUTEORAL().getREFERENCE().getSet()) {
-				System.out.println("Ref\t"
-						+ set.getREFERENCEAUTHOR().getREFERENCEAUTHOR()
-								.getValue());
-				System.out.println("Year\t" + set.getREFERENCEYEAR());
-			}
-		// Acute tox oral
-
-		// Species
-		System.out.print("Organism\t"
-				+ sciPart.getTOACUTEORAL().getORGANISM().getSet()
-						.getPHRASEOTHERLISTPOP().getLISTPOP());
-		System.out.println("\t"
-				+ sciPart.getTOACUTEORAL().getORGANISM().getSet()
-						.getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		// Sex
-		if (sciPart.getTOACUTEORAL().getSEX() != null) {
-			System.out.println("Sex\t"
-					+ sciPart.getTOACUTEORAL().getSEX().getSet()
-							.getLISTBELOWPOP().getLISTBELOWPOP()
-					+ "\t"
-					+ sciPart.getTOACUTEORAL().getSEX().getSet()
-							.getLISTBELOWPOP().getLISTBELOWPOPValue());
-		}
-		// endpoint
-		// effect level
-		if (sciPart.getTOACUTEORAL().getEFFLEVEL() != null)
-			for (Set set : sciPart.getTOACUTEORAL().getEFFLEVEL().getSet()) {
-
-				System.out.println("===== Effect level");
-				if (set.getPHRASEOTHEREFFCONCTYPE() != null)
-					System.out.println(set.getPHRASEOTHEREFFCONCTYPE()
-							.getEFFCONCTYPEValue());
-				if (set.getSEX() != null)
-					System.out.println("Sex\t" + set.getSEX().getSEX() + "\t"
-							+ set.getSEX().getSEXValue());
-
-				System.out.println("Endpoint\t"
-						+ set.getPHRASEOTHERENDPOINT().getENDPOINT());
-				System.out.println("Endpoint\t"
-						+ set.getPHRASEOTHERENDPOINT().getENDPOINTValue());
-				if (set.getPHRASEOTHERENDPOINT().getENDPOINTTXT() != null)
-					System.out.println(set.getPHRASEOTHERENDPOINT()
-							.getENDPOINTTXT().getValue());
-
-				System.out.println(set.getPRECISIONLOQUALIFIER()
-						.getLOQUALIFIER());
-				System.out.println(set.getPRECISIONLOQUALIFIER()
-						.getLOQUALIFIERValue());
-
-				System.out.println("Unit\t"
-						+ set.getPRECISIONLOQUALIFIER().getUNIT());
-				System.out
-						.println(set.getPRECISIONLOQUALIFIER().getUNITValue());
-				System.out.println(set.getPRECISIONLOQUALIFIER().getUNITTXT());
-
-				System.out.println(set.getPRECISIONLOQUALIFIER()
-						.getUPQUALIFIER());
-				System.out.println(set.getPRECISIONLOQUALIFIER()
-						.getUPQUALIFIERValue());
-
-				if (set.getPRECISIONLOQUALIFIER().getLOVALUE() != null)
-					System.out.println("Lo value\t"
-							+ set.getPRECISIONLOQUALIFIER().getLOVALUE()
-									.getValue());
-
-				if (set.getPRECISIONLOQUALIFIER().getUPVALUE() != null) {
-					System.out.println("Up value\t"
-							+ set.getPRECISIONLOQUALIFIER().getUPVALUE()
-									.getValue());
-				}
-
-				if (set.getPRECISIONCONFLIMITSLOQUALIFIER() != null) {
-					System.out.println(set.getPRECISIONCONFLIMITSLOQUALIFIER()
-							.getCONFLIMITSLOQUALIFIER());
-					System.out.println(set.getPRECISIONCONFLIMITSLOQUALIFIER()
-							.getCONFLIMITSUPQUALIFIER());
-					System.out.println(set.getPRECISIONCONFLIMITSLOQUALIFIER()
-							.getCONFLIMITSLOVALUE());
-					System.out.println(set.getPRECISIONCONFLIMITSLOQUALIFIER()
-							.getCONFLIMITSUPVALUE());
-				}
-				System.out.println(set.getPHRASEOTHEREFFCONCTYPE());
-			}
-		if (sciPart.getTOACUTEORAL().getINTERPRETRSSUBMITTER() != null) {
-			System.out.println(sciPart.getTOACUTEORAL()
-					.getINTERPRETRSSUBMITTER().getSet()
-					.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
-		}
-		if (sciPart.getTOACUTEORAL().getCRITERIASUBMITTER() != null) {
-			System.out.println(sciPart.getTOACUTEORAL().getCRITERIASUBMITTER()
-					.getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		}
-		// sciPart.getTOACUTEORAL().
-		return record;
-	}
 }
