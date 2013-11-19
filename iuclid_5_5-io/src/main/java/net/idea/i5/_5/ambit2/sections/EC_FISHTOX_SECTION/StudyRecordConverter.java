@@ -16,6 +16,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		record.clear();
 		ProtocolApplication<Protocol,Params,String,Params,String> papp = new ProtocolApplication<Protocol,Params,String,Params,String>(new Protocol(unmarshalled.getName()));
 		papp.getProtocol().setCategory("EC_FISHTOX_SECTION");
+		papp.getProtocol().setTopCategory("ECOTOX");
 		papp.setParameters(new Params());
 		record.addtMeasurement(papp);
 		//UUID
@@ -30,16 +31,17 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				papp.getProtocol().addGuidance(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
 
 			}
-		if (sciPart.getECFISHTOX().getMETHODNOGUIDELINE()!=null)
+		if (sciPart.getECFISHTOX().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuidance(sciPart.getECFISHTOX().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+		} catch (Exception x) {}	
 		/*
 		if (sciPart.getECFISHTOX().getREFERENCESUBSTANCE()!=null) {
 			record.setReferenceSubstanceUUID(sciPart.getECFISHTOX().getREFERENCESUBSTANCE().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue())
 		}
 		*/
-		if (sciPart.getECFISHTOX().getSALINITY()!=null) {
+		if (sciPart.getECFISHTOX().getSALINITY()!=null) try {
 			papp.getParameters().put("Salinity", sciPart.getECFISHTOX().getSALINITY().getSet().getTEXTBELOW().getTEXTBELOW().getValue());
-		}	
+		} catch (Exception x) {}	
 		//Exposure duration
 		if (sciPart.getECFISHTOX().getEXPDURATION()!=null) {
 			papp.getParameters().put("Exposure",
@@ -53,10 +55,10 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getECFISHTOX().getORGANISM()!=null) {
 			papp.getParameters().put("Test organism",sciPart.getECFISHTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		}	
-		if (sciPart.getECFISHTOX().getNOMMEASCONC()!=null) {
+		if (sciPart.getECFISHTOX().getNOMMEASCONC()!=null) try {
 			papp.getParameters().put("Measured concentration",
 					sciPart.getECFISHTOX().getNOMMEASCONC().getSet().getTEXTBELOW().getTEXTBELOW().getValue());
-		}	
+		} catch (Exception x) {}	
 		//ENDPOINT
 		if (sciPart.getECFISHTOX().getEFFCONC()!=null && sciPart.getECFISHTOX().getEFFCONC().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart.ECFISHTOX.EFFCONC.Set set : sciPart.getECFISHTOX().getEFFCONC().getSet()) {
@@ -71,14 +73,14 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				effect.getConditions().put("Conc type",set.getPHRASEOTHEREFFCONCTYPE().getEFFCONCTYPEValue());
 			if (set.getPRECISIONLOQUALIFIER()!=null) {
 				effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
-				if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) {
+				if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
 					effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
 					effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
-				}
-				if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) {
+				} catch (Exception x) {}
+				if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
 					effect.setUpValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
 					effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
-				}
+				} catch (Exception x) {}
 			}	
 			
 			if (set.getVALUEUNITEXPDURATIONVALUE()!=null) {
