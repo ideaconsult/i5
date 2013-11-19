@@ -19,6 +19,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
 		record.clear();
 		ProtocolApplication<Protocol,Params,String,Params,String> papp = new ProtocolApplication<Protocol,Params,String,Params,String>(new Protocol(unmarshalled.getName()));
+		papp.getProtocol().setTopCategory("ENV FATE");
 		papp.getProtocol().setCategory("TO_BIODEG_WATER_SCREEN_SECTION");
 		papp.setParameters(new Params());
 		record.addtMeasurement(papp);
