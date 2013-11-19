@@ -18,6 +18,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
 		record.clear();
 		ProtocolApplication<Protocol,Params,String,Params,String> papp = new ProtocolApplication<Protocol,Params,String,Params,String>(new Protocol(unmarshalled.getName()));
+		papp.getProtocol().setTopCategory("P-CHEM");
 		papp.getProtocol().setCategory("PC_PARTITION_SECTION");
 		papp.setParameters(new Params());
 		record.addtMeasurement(papp);
@@ -33,8 +34,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				papp.getProtocol().addGuidance(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
 
 			}
-		if (sciPart.getPCPARTITION().getMETHODNOGUIDELINE()!=null)
+		if (sciPart.getPCPARTITION().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuidance(sciPart.getPCPARTITION().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+		} catch (Exception x) {}	
 		/*
 		if (sciPart.getECFISHTOX().getREFERENCESUBSTANCE()!=null) {
 			record.setReferenceSubstanceUUID(sciPart.getECFISHTOX().getREFERENCESUBSTANCE().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue())
@@ -68,14 +70,14 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			}
 			
 			if (set.getPRECISIONLOQUALIFIER()!=null) {
-				if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) {
+				if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
 					effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
 					effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
-				}
-				if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) {
+				} catch (Exception x) {}
+				if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
 					effect.setUpValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
 					effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
-				}
+				} catch (Exception x) {}
 			}				
 		}
 	
