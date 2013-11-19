@@ -37,8 +37,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					papp.getProtocol().addGuidance(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
 
 			}
-		if (sciPart.getTOBIODEGWATERSCREEN().getMETHODNOGUIDELINE()!=null)
+		if (sciPart.getTOBIODEGWATERSCREEN().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuidance(sciPart.getTOBIODEGWATERSCREEN().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+		} catch (Exception x) {}	
 		/*
 		if (sciPart.getECFISHTOX().getREFERENCESUBSTANCE()!=null) {
 			record.setReferenceSubstanceUUID(sciPart.getECFISHTOX().getREFERENCESUBSTANCE().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue())
@@ -52,9 +53,10 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM()!=null) {
 			papp.getParameters().put("RESULT", sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		}
-		if (sciPart.getTOBIODEGWATERSCREEN().getRESULTSDETAILS()!=null) {
+		if (sciPart.getTOBIODEGWATERSCREEN().getRESULTSDETAILS()!=null) try {
 			papp.getParameters().put("RESULT DETAILS", sciPart.getTOBIODEGWATERSCREEN().getRESULTSDETAILS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
-		}		
+		} catch (Exception x) {}
+		
 		if (sciPart.getTOBIODEGWATERSCREEN().getDEGRAD()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSCREEN.DEGRAD.Set set : sciPart.getTOBIODEGWATERSCREEN().getDEGRAD().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
@@ -66,14 +68,14 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				papp.addEffect(effect);
 				
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
-					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) {
+					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
 						effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
 						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
-					}
-					if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) {
+					} catch (Exception x) {}
+					if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
 						effect.setUpValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
 						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
-					}
+					} catch (Exception x) {}
 				}	
 				
 				if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
