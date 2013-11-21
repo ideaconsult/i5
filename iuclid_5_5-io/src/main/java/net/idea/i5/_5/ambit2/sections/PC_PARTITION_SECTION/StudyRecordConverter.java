@@ -13,6 +13,11 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord>{
+	private static final String methodType = "Method type";
+	private static final String phLower = "PH (lower)";
+	private static final String phUpper = "PH (upper)";
+	private static final String Temperature = "Temperature";
+	
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
@@ -44,8 +49,10 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		*/
 		//Exposure duration
 		if (sciPart.getPCPARTITION().getMETHODTYPE()!=null) {
-			papp.getParameters().put("Method type",
+			papp.getParameters().put(methodType,
 					sciPart.getPCPARTITION().getMETHODTYPE().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
+		} else {
+			papp.getParameters().put(methodType,null);
 		}
 
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart.PCPARTITION.PARTCOEFF.Set set: sciPart.getPCPARTITION().getPARTCOEFF().getSet()) {
@@ -55,18 +62,21 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			papp.addEffect(effect);
 			
 			if (set.getVALUEUNITTEMPVALUE()!=null) {
-				effect.getConditions().put("Temperature",
+				effect.getConditions().put(Temperature,
 						(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()==null?"":set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue())
 						+ " " + set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
-			}
+			} else 
+				effect.getConditions().put(Temperature,null);
 			if (set.getPRECISIONPHLOQUALIFIER()!=null) {
-				effect.getConditions().put("PH (lower)",
+				effect.getConditions().put(phLower,
 						(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue()==null)?"":set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue() 
 						+ " " + set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE().getValue());
-
-				effect.getConditions().put("PH (upper)",
+				effect.getConditions().put(phLower,
 						set.getPRECISIONPHLOQUALIFIER().getPHUPQUALIFIERValue() + " " + set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE().getValue());
 
+			} else {
+				effect.getConditions().put(phLower, null);
+				effect.getConditions().put(phUpper, null);
 			}
 			
 			if (set.getPRECISIONLOQUALIFIER()!=null) {

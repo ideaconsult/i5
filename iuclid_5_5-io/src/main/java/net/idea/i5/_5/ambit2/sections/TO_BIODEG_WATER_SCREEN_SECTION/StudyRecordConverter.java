@@ -14,6 +14,9 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCRE
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord>{
+	private static final String cTimePoint = "Time Point";
+	private static final String cPercentDegradation = "% Degradation";
+	private static final String cTestType = "TEST TYPE";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
@@ -47,14 +50,15 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		*/
 
 		//TEST TYPE
-		if (sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS()!=null) {
-			papp.getParameters().put("TEST TYPE", sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
-		}
+		papp.getParameters().put(cTestType,
+				sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS()==null?null:
+				sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
+
 		if (sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM()!=null) {
-			papp.getParameters().put("RESULT", sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+			papp.setInterpretationResult(sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		}
 		if (sciPart.getTOBIODEGWATERSCREEN().getRESULTSDETAILS()!=null) try {
-			papp.getParameters().put("RESULT DETAILS", sciPart.getTOBIODEGWATERSCREEN().getRESULTSDETAILS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+			papp.setInterpretationCriteria(sciPart.getTOBIODEGWATERSCREEN().getRESULTSDETAILS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}
 		
 		if (sciPart.getTOBIODEGWATERSCREEN().getDEGRAD()!=null) {
@@ -62,7 +66,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 				if (set.getPHRASEOTHERPARAMETER()!=null)
 					effect.setEndpoint(set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
-				effect.setEndpoint("% Degradation");
+				effect.setEndpoint(cPercentDegradation);
 				effect.setConditions(new Params());
 				effect.setUnit("%");
 				papp.addEffect(effect);
@@ -79,14 +83,14 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				}	
 				
 				if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-					effect.getConditions().put("Time point",
+					effect.getConditions().put(cTimePoint,
 							(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()==null?"":set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue())+
 							" " + 
 							(set.getVALUEUNITTIMEPOINTVALUE()==null?"":set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));	
 
 				
 			}
-		}		
+		} 		
 	
 		System.out.println(papp);
 		return record;

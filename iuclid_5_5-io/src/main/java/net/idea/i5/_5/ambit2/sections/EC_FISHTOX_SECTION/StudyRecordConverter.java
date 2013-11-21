@@ -11,6 +11,15 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.D
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord;
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord>{
+	private static final String cSalinity = "Salinity";
+	private static final String cExposure = "Exposure";
+	private static final String cExposureUnit = "Exposure unit";
+	private static final String cTestMedium = "Test Medium";
+	private static final String cTestOrganism = "Test organism";
+	private static final String cMeasuredConcentration = "Measured concentration";
+	private static final String cEffect = "Effect";
+	private static final String cConcType = "Conc type";
+	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
 		record.clear();
@@ -40,23 +49,23 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		}
 		*/
 		if (sciPart.getECFISHTOX().getSALINITY()!=null) try {
-			papp.getParameters().put("Salinity", sciPart.getECFISHTOX().getSALINITY().getSet().getTEXTBELOW().getTEXTBELOW().getValue());
+			papp.getParameters().put(cSalinity, sciPart.getECFISHTOX().getSALINITY().getSet().getTEXTBELOW().getTEXTBELOW().getValue());
 		} catch (Exception x) {}	
 		//Exposure duration
 		if (sciPart.getECFISHTOX().getEXPDURATION()!=null) {
-			papp.getParameters().put("Exposure",
+			papp.getParameters().put(cExposure,
 						sciPart.getECFISHTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());
-			papp.getParameters().put("Exposure unit",
+			papp.getParameters().put(cExposureUnit,
 						sciPart.getECFISHTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());
 		}
 		if (sciPart.getECFISHTOX().getWATERTYPE()!=null) {
-				papp.getParameters().put("Test Medium",sciPart.getECFISHTOX().getWATERTYPE().getSet().getLISTRIGHTPOP().getLISTRIGHTPOPValue());
+				papp.getParameters().put(cTestMedium,sciPart.getECFISHTOX().getWATERTYPE().getSet().getLISTRIGHTPOP().getLISTRIGHTPOPValue());
 		}
 		if (sciPart.getECFISHTOX().getORGANISM()!=null) {
-			papp.getParameters().put("Test organism",sciPart.getECFISHTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+			papp.getParameters().put(cTestOrganism,sciPart.getECFISHTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		}	
 		if (sciPart.getECFISHTOX().getNOMMEASCONC()!=null) try {
-			papp.getParameters().put("Measured concentration",
+			papp.getParameters().put(cMeasuredConcentration,
 					sciPart.getECFISHTOX().getNOMMEASCONC().getSet().getTEXTBELOW().getTEXTBELOW().getValue());
 		} catch (Exception x) {}	
 		//ENDPOINT
@@ -67,12 +76,17 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 
-			if (set.getPHRASEOTHERBASISEFFECT()!=null)
-				effect.getConditions().put("Effect",set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue());
-			if (set.getPHRASEOTHEREFFCONCTYPE()!=null)
-				effect.getConditions().put("Conc type",set.getPHRASEOTHEREFFCONCTYPE().getEFFCONCTYPEValue());
+			effect.getConditions().put(cEffect,
+					set.getPHRASEOTHERBASISEFFECT()==null?null:
+					set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue());
+			
+			effect.getConditions().put(cConcType,
+					set.getPHRASEOTHEREFFCONCTYPE()==null?null:
+					set.getPHRASEOTHEREFFCONCTYPE().getEFFCONCTYPEValue());
+			
 			if (set.getPRECISIONLOQUALIFIER()!=null) {
 				effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
+				
 				if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
 					effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
 					effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
@@ -84,8 +98,8 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			}	
 			
 			if (set.getVALUEUNITEXPDURATIONVALUE()!=null) {
-				effect.getConditions().put("Exposure",set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue());
-				effect.getConditions().put("Exposure unit",set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue());
+				effect.getConditions().put(cExposure,set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue());
+				effect.getConditions().put(cExposureUnit,set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue());
 			}
 		}
 		System.out.println(papp);

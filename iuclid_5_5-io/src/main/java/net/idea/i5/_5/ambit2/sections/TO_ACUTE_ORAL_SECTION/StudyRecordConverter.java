@@ -13,6 +13,11 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTIO
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord>{
+	private static final String cSex = "Sex";
+	private static final String cSpecies = "Species";
+	private static final String cReference = "Reference";
+	private static final String cYear = "Year";
+	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
 		record.clear();
@@ -46,18 +51,24 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getTOACUTEORAL().getREFERENCE() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.REFERENCE.Set set : sciPart
 					.getTOACUTEORAL().getREFERENCE().getSet()) {
-				if (set.getREFERENCEAUTHOR()!=null)
-					papp.getParameters().put("Reference",set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				if (set.getREFERENCEYEAR()!=null)
-					papp.getParameters().put("Year",set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
+				papp.getParameters().put(cReference,
+						set.getREFERENCEAUTHOR()==null?null:
+						set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+				papp.getParameters().put(cYear,
+						set.getREFERENCEYEAR()==null?null:
+						set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 			}
+
 		// Acute tox oral
-		if (sciPart.getTOACUTEORAL().getORGANISM()!=null)
-			papp.getParameters().put("Species",sciPart.getTOACUTEORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		papp.getParameters().put(cSpecies,
+					sciPart.getTOACUTEORAL().getORGANISM()==null?null:
+					sciPart.getTOACUTEORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		// Sex
-		if (sciPart.getTOACUTEORAL().getSEX() != null) try {
-			papp.getParameters().put("Sex",sciPart.getTOACUTEORAL().getSEX().getSet().getLISTBELOWPOP().getLISTBELOWPOPValue());
-		} catch (Exception x) {}
+		try {
+			papp.getParameters().put(cSex,
+					sciPart.getTOACUTEORAL().getSEX()==null?null:
+					sciPart.getTOACUTEORAL().getSEX().getSet().getLISTBELOWPOP().getLISTBELOWPOPValue());
+		} catch (Exception x) { papp.getParameters().put(cSex,null);}
 		// endpoint
 		// effect level
 		if (sciPart.getTOACUTEORAL().getEFFLEVEL() != null)
@@ -78,8 +89,8 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
 					} catch (Exception x) {}
 				}
-				if (set.getSEX() != null)
-					effect.getConditions().put("Sex",set.getSEX().getSEXValue());
+				
+				effect.getConditions().put(cSex,set.getSEX()==null?null:set.getSEX().getSEXValue());
 
 				/*
 				if (set.getPHRASEOTHEREFFCONCTYPE() != null)
@@ -99,12 +110,12 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 
 			}
 		if (sciPart.getTOACUTEORAL().getINTERPRETRSSUBMITTER() != null) {
-			papp.getParameters().put("Interpretation of the results", 
+			papp.setInterpretationResult( 
 					sciPart.getTOACUTEORAL().getINTERPRETRSSUBMITTER().getSet()
 					.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 		}
 		if (sciPart.getTOACUTEORAL().getCRITERIASUBMITTER() != null) {
-			papp.getParameters().put("Criteria for interpretation of the results", 
+			papp.setInterpretationCriteria( 
 					sciPart.getTOACUTEORAL().getCRITERIASUBMITTER()
 					.getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		}
