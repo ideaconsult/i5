@@ -11,86 +11,127 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart;
 
-
-public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord>{
+public class StudyRecordConverter
+		extends
+		AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord> {
 	private static final String methodType = "Method type";
-	private static final String phLower = "PH (lower)";
-	private static final String phUpper = "PH (upper)";
+	private static final String phLower = "pH (lower)";
+	private static final String phUpper = "pH (upper)";
 	private static final String Temperature = "Temperature";
-	
-	
+
 	@Override
-	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
+	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled,
+			SubstanceRecord record) {
 		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = new ProtocolApplication<Protocol,Params,String,Params,String>(new Protocol(unmarshalled.getName()));
+		ProtocolApplication<Protocol, Params, String, Params, String> papp = new ProtocolApplication<Protocol, Params, String, Params, String>(
+				new Protocol(unmarshalled.getName()));
 		papp.getProtocol().setTopCategory("P-CHEM");
 		papp.getProtocol().setCategory("PC_PARTITION_SECTION");
 		papp.setParameters(new Params());
 		record.addtMeasurement(papp);
-		//UUID
+		// UUID
 		papp.setDocumentUUID(unmarshalled.getDocumentReferencePK());
-		if (unmarshalled.getOwnerRef().getType().equals(DocumentTypeType.SUBSTANCE)) {
-			setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
+		if (unmarshalled.getOwnerRef().getType()
+				.equals(DocumentTypeType.SUBSTANCE)) {
+			setCompanyUUID(record, unmarshalled.getOwnerRef().getUniqueKey());
 		}
-		//TODO data owner - it's probably not in this file
-		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
-		if (sciPart.getPCPARTITION().getGUIDELINE()!=null)
-			for (ScientificPart.PCPARTITION.GUIDELINE.Set set : sciPart.getPCPARTITION().getGUIDELINE().getSet()) {
-				papp.getProtocol().addGuidance(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+		// TODO data owner - it's probably not in this file
+		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled
+				.getScientificPart();
+		if (sciPart.getPCPARTITION().getGUIDELINE() != null)
+			for (ScientificPart.PCPARTITION.GUIDELINE.Set set : sciPart
+					.getPCPARTITION().getGUIDELINE().getSet()) {
+				papp.getProtocol().addGuidance(
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
 
 			}
-		if (sciPart.getPCPARTITION().getMETHODNOGUIDELINE()!=null) try {
-			papp.getProtocol().addGuidance(sciPart.getPCPARTITION().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
-		} catch (Exception x) {}	
+		if (sciPart.getPCPARTITION().getMETHODNOGUIDELINE() != null)
+			try {
+				papp.getProtocol().addGuidance(
+						sciPart.getPCPARTITION().getMETHODNOGUIDELINE()
+								.getSet().getTEXTAREABELOW().getTEXTAREABELOW()
+								.getValue());
+			} catch (Exception x) {
+			}
 		/*
-		if (sciPart.getECFISHTOX().getREFERENCESUBSTANCE()!=null) {
-			record.setReferenceSubstanceUUID(sciPart.getECFISHTOX().getREFERENCESUBSTANCE().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue())
-		}
-		*/
-		//Exposure duration
-		if (sciPart.getPCPARTITION().getMETHODTYPE()!=null) {
-			papp.getParameters().put(methodType,
-					sciPart.getPCPARTITION().getMETHODTYPE().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
+		 * if (sciPart.getECFISHTOX().getREFERENCESUBSTANCE()!=null) {
+		 * record.setReferenceSubstanceUUID
+		 * (sciPart.getECFISHTOX().getREFERENCESUBSTANCE
+		 * ().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue()) }
+		 */
+		// Exposure duration
+		if (sciPart.getPCPARTITION().getMETHODTYPE() != null) {
+			papp.getParameters().put(
+					methodType,
+					sciPart.getPCPARTITION().getMETHODTYPE().getSet()
+							.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 		} else {
-			papp.getParameters().put(methodType,null);
+			papp.getParameters().put(methodType, null);
 		}
 
-		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart.PCPARTITION.PARTCOEFF.Set set: sciPart.getPCPARTITION().getPARTCOEFF().getSet()) {
+		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart.PCPARTITION.PARTCOEFF.Set set : sciPart
+				.getPCPARTITION().getPARTCOEFF().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 			effect.setEndpoint(set.getTYPE().getTYPEValue());
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
-			
-			if (set.getVALUEUNITTEMPVALUE()!=null) {
-				effect.getConditions().put(Temperature,
-						(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()==null?"":set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue())
-						+ " " + set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
-			} else 
-				effect.getConditions().put(Temperature,null);
-			if (set.getPRECISIONPHLOQUALIFIER()!=null) {
-				effect.getConditions().put(phLower,
-						(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue()==null)?"":set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue() 
-						+ " " + set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE().getValue());
-				effect.getConditions().put(phLower,
-						set.getPRECISIONPHLOQUALIFIER().getPHUPQUALIFIERValue() + " " + set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE().getValue());
+
+			if (set.getVALUEUNITTEMPVALUE() != null) {
+				effect.getConditions()
+						.put(Temperature,
+								(set.getVALUEUNITTEMPVALUE().getTEMPVALUE()
+										.getValue() == null ? "" : set
+										.getVALUEUNITTEMPVALUE().getTEMPVALUE()
+										.getValue())
+										+ " "
+										+ set.getVALUEUNITTEMPVALUE()
+												.getTEMPUNITValue());
+			} else
+				effect.getConditions().put(Temperature, null);
+			if (set.getPRECISIONPHLOQUALIFIER() != null) {
+				effect.getConditions().put(
+						phLower,
+						(set.getPRECISIONPHLOQUALIFIER()
+								.getPHLOQUALIFIERValue() == null) ? "" : set
+								.getPRECISIONPHLOQUALIFIER()
+								.getPHLOQUALIFIERValue()
+								+ " "
+								+ set.getPRECISIONPHLOQUALIFIER()
+										.getPHLOVALUE().getValue());
+				effect.getConditions().put(
+						phUpper,
+						set.getPRECISIONPHLOQUALIFIER().getPHUPQUALIFIERValue()
+								+ " "
+								+ set.getPRECISIONPHLOQUALIFIER()
+										.getPHUPVALUE().getValue());
 
 			} else {
 				effect.getConditions().put(phLower, null);
 				effect.getConditions().put(phUpper, null);
 			}
-			
-			if (set.getPRECISIONLOQUALIFIER()!=null) {
-				if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
-					effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
-					effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
-				} catch (Exception x) {}
-				if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
-					effect.setUpValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
-					effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
-				} catch (Exception x) {}
-			}				
+
+			if (set.getPRECISIONLOQUALIFIER() != null) {
+				if (set.getPRECISIONLOQUALIFIER().getLOVALUE() != null)
+					try {
+						effect.setLoValue(Double.parseDouble(set
+								.getPRECISIONLOQUALIFIER().getLOVALUE()
+								.getValue()));
+						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER()
+								.getLOQUALIFIERValue());
+					} catch (Exception x) {
+					}
+				if (set.getPRECISIONLOQUALIFIER().getUPVALUE() != null)
+					try {
+						effect.setUpValue(Double.parseDouble(set
+								.getPRECISIONLOQUALIFIER().getUPVALUE()
+								.getValue()));
+						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER()
+								.getUPQUALIFIERValue());
+					} catch (Exception x) {
+					}
+			}
 		}
-	
+
 		System.out.println(papp);
 		return record;
 	}
