@@ -14,9 +14,9 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCRE
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord>{
-	private static final String cTimePoint = "Time Point";
+	private static final String cTimePoint = "Sampling time";
 	private static final String cPercentDegradation = "% Degradation";
-	private static final String cTestType = "TEST TYPE";
+	private static final String cTestType = "Test type";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
@@ -51,22 +51,26 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 
 		//TEST TYPE
 		papp.getParameters().put(cTestType,
-				sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS()==null?null:
+				sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS()==null?"":
 				sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 
 		if (sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM()!=null) {
 			papp.setInterpretationResult(sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		}
+		} else
+			papp.setInterpretationResult("");
+		
+		papp.setInterpretationCriteria("");
 		if (sciPart.getTOBIODEGWATERSCREEN().getRESULTSDETAILS()!=null) try {
 			papp.setInterpretationCriteria(sciPart.getTOBIODEGWATERSCREEN().getRESULTSDETAILS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}
 		
+
 		if (sciPart.getTOBIODEGWATERSCREEN().getDEGRAD()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSCREEN.DEGRAD.Set set : sciPart.getTOBIODEGWATERSCREEN().getDEGRAD().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+				effect.setEndpoint(cPercentDegradation);
 				if (set.getPHRASEOTHERPARAMETER()!=null)
 					effect.setEndpoint(set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
-				effect.setEndpoint(cPercentDegradation);
 				effect.setConditions(new Params());
 				effect.setUnit("%");
 				papp.addEffect(effect);
