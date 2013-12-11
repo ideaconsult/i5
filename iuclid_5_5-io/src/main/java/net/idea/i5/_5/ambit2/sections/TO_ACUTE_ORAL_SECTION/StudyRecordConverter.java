@@ -16,7 +16,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 	private static final String cSex = "Sex";
 	private static final String cSpecies = "Species";
 	private static final String cReference = "Reference";
-	private static final String cYear = "Year";
+	private static final String cYear = "Study year";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
@@ -52,10 +52,10 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.REFERENCE.Set set : sciPart
 					.getTOACUTEORAL().getREFERENCE().getSet()) {
 				papp.getParameters().put(cReference,
-						set.getREFERENCEAUTHOR()==null?null:
+						set.getREFERENCEAUTHOR()==null?"":
 						set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
 				papp.getParameters().put(cYear,
-						set.getREFERENCEYEAR()==null?null:
+						set.getREFERENCEYEAR()==null?"":
 						set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 			}
 
