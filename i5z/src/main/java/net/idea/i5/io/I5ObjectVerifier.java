@@ -20,6 +20,8 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 	private static final long serialVersionUID = 4202446709497463805L;
 
 	public enum I5_ROOT_OBJECTS {
+		AttachmentDocument,
+		LegalEntity,
 		ReferenceSubstance {
 			@Override
 			public String getContextPath() {
@@ -35,17 +37,41 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		EndpointStudyRecord {
 			@Override
 			public String getContextPath() {
+				return null;
 				//return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION";
 				//return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION" ;
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION";
-				// return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION" ;
-				/*
-				 * "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION" ;
-						"eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION";						
-						 "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION" ;
-						
-						*/
+				//return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION";
+				//return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION" ;
 			}			
+		},
+	    scientificPart,
+		EC_FISHTOX {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION" ;
+			}
+		},
+		TO_ACUTE_ORAL {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION" ;
+			}
+			
+		},
+		TO_BIODEG_WATER_SCREEN {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION" ;
+			}
+			
+		},	
+		PC_PARTITION {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION" ;
+			}
+			
+			
 		}
 		;
 		public String getContextPath() {
@@ -64,30 +90,78 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
     		factory.setProperty(XMLInputFactory.IS_REPLACING_ENTITY_REFERENCES,Boolean.TRUE);
     		factory.setProperty(XMLInputFactory.IS_VALIDATING,Boolean.FALSE);
     		reader =   factory.createXMLStreamReader(in);
+    		boolean inStudyRecord = false;
+    		boolean inSciPart = false;
     		 while (reader.hasNext()) {
     			int type = reader.next();
+	            I5_ROOT_OBJECTS tag = null;
+	            try {
+	            	tag = I5_ROOT_OBJECTS.valueOf(reader.getName().getLocalPart());
+	            } catch (Exception x) {
+	            	if (inSciPart || inStudyRecord) continue;
+	            	else throw x;
+	            }
  	            switch (type) {
  	            case XMLStreamConstants.START_ELEMENT: {
- 	            	I5_ROOT_OBJECTS tag = null;
 	    			try {
-	    				tag = I5_ROOT_OBJECTS.valueOf(reader.getName().getLocalPart());
 		    			switch (tag) {
+		    			case AttachmentDocument: {
+		    				return null;
+		    			}
+		    			case LegalEntity: {
+		    				return null;
+		    			}		    			
 		    			case ReferenceSubstance: {
 		    				return tag;
 		    			}
 		    			case Substance: {
 		    				return tag;
-		    			}	
+		    			}
+		    			case scientificPart: {
+		    				inSciPart = true; 
+		    				continue;
+		    			}		    			
 		    			case EndpointStudyRecord: {
+		    				inStudyRecord = true;
+		    				continue;
+		    			}
+		    			case TO_ACUTE_ORAL: {
+		    				return tag;
+		    			}
+		    			case TO_BIODEG_WATER_SCREEN: {
+		    				return tag;
+		    			}
+		    			case EC_FISHTOX: {
+		    				return tag;
+		    			}		    			
+		    			case PC_PARTITION: {
 		    				return tag;
 		    			}
 		    			default:
-		    				throw new UnsupportedI5RootObject(tag.name());
+		    				continue;
+		    				//if (inSciPart || inStudyRecord) continue;
+		    				//throw new UnsupportedI5RootObject(tag.name());
+		    			}
+		    		} catch (Exception x) {
+		    			if (inSciPart || inStudyRecord) continue;
+		    			System.out.println(reader.getName().getLocalPart());
+		    			throw new UnsupportedI5RootObject(reader.getName().getLocalPart());
+		    		}
+ 	            }
+ 	           case XMLStreamConstants.END_ELEMENT: {
+	    			try {
+		    			switch (tag) {
+		    			case scientificPart: {
+		    				throw new UnsupportedI5RootObject();
+		    			}		    			
+		    			case EndpointStudyRecord: {
+		    				throw new UnsupportedI5RootObject();
+		    			}
 		    			}
 		    		} catch (Exception x) {
 		    			throw new UnsupportedI5RootObject(reader.getName().getLocalPart());
 		    		}
- 	            }
+	            } 	            
  	            default: {
  	            	//skip
  	            }
