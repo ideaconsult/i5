@@ -15,8 +15,7 @@ public class StudyRecordConverter
 		extends
 		AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord> {
 	private static final String methodType = "Method type";
-	private static final String phLower = "pH (lower)";
-	private static final String phUpper = "pH (upper)";
+	private static final String ph = "pH";
 	private static final String Temperature = "Temperature";
 
 	@Override
@@ -95,8 +94,9 @@ public class StudyRecordConverter
 				/* Change to go like this
 				"conditions":	{"pH": {"loValue" : 4},"Temperature":"25 C"},
 				*/
-				effect.getConditions().put(
-						phLower,
+				Params phvalue = new Params();
+				phvalue.put(
+						"loValue",
 						(set.getPRECISIONPHLOQUALIFIER()
 								.getPHLOQUALIFIERValue() == null) ? "" : set
 								.getPRECISIONPHLOQUALIFIER()
@@ -104,16 +104,17 @@ public class StudyRecordConverter
 								+ " "
 								+ set.getPRECISIONPHLOQUALIFIER()
 										.getPHLOVALUE().getValue());
-				effect.getConditions().put(
-						phUpper,
+				phvalue.put(
+						"upValue",
 						set.getPRECISIONPHLOQUALIFIER().getPHUPQUALIFIERValue()
 								+ " "
 								+ set.getPRECISIONPHLOQUALIFIER()
 										.getPHUPVALUE().getValue());
+				
+				effect.getConditions().put(ph, phvalue);
 
 			} else {
-				effect.getConditions().put(phLower, "");
-				effect.getConditions().put(phUpper, "");
+				effect.getConditions().put(ph,null);
 			}
 
 			if (set.getPRECISIONLOQUALIFIER() != null) {
