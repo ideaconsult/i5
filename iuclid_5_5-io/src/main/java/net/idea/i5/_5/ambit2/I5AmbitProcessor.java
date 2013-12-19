@@ -80,10 +80,11 @@ public class I5AmbitProcessor<Target> extends
 		if (unmarshalled != null) {
 			// owner
 			try {
-				record.setOwnerUUID(unmarshalled.getOwnerLegalEntity()
-						.getUniqueKey());
+				setOwnerUUID(record,unmarshalled.getOwnerLegalEntity().getUniqueKey());
 			} catch (Exception x) {
+				record.setOwnerUUID(null);
 			}
+			try {record.setOwnerName(unmarshalled.getOwnerLegalEntity().getDescription());} catch (Exception x) {record.setOwnerName("");}
 			record.setCompanyName(unmarshalled.getChemicalName());
 			record.setPublicName(unmarshalled.getPublicName());
 			setCompanyUUID(record, unmarshalled.getDocumentReferencePK());
@@ -490,6 +491,14 @@ public class I5AmbitProcessor<Target> extends
 			record.setCompanyUUID(value.substring(0, slashpos));
 		else
 			record.setCompanyUUID(value);
+	}
+
+	protected void setOwnerUUID(SubstanceRecord record, String value) {
+		int slashpos = value.indexOf("/");
+		if (slashpos > 0)
+			record.setOwnerUUID(value.substring(0, slashpos));
+		else
+			record.setOwnerUUID(value);
 	}
 
 	protected void setReferenceSubstanceUUID(IStructureRecord record,
