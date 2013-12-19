@@ -20,6 +20,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
+		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
+		if (sciPart.getTOACUTEORAL()==null) return null;
+		
 		record.clear();
 		ProtocolApplication<Protocol,Params,String,Params,String> papp = new ProtocolApplication<Protocol,Params,String,Params,String>(new Protocol(unmarshalled.getName()));
 		papp.getProtocol().setTopCategory("TOX");
@@ -32,7 +35,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
 		}
 		//TODO data owner - it's probably not in this file
-		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
+
 		if (sciPart.getTOACUTEORAL().getGUIDELINE()!=null)
 			for (Set set : sciPart.getTOACUTEORAL().getGUIDELINE().getSet()) {
 				papp.getProtocol().addGuidance(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
@@ -51,9 +54,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getTOACUTEORAL().getREFERENCE() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.REFERENCE.Set set : sciPart
 					.getTOACUTEORAL().getREFERENCE().getSet()) {
-				papp.getParameters().put(cReference,
-						set.getREFERENCEAUTHOR()==null?"":
-						set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+				if (set.getREFERENCEAUTHOR()!=null)
+					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+				
 				papp.getParameters().put(cYear,
 						set.getREFERENCEYEAR()==null?"":
 						set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());

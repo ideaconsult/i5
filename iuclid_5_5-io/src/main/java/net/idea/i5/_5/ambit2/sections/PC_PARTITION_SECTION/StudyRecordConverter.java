@@ -22,6 +22,10 @@ public class StudyRecordConverter
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled,
 			SubstanceRecord record) {
+		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart sciPart = 
+				unmarshalled.getScientificPart();
+		if (sciPart.getPCPARTITION()==null) return null;
+
 		record.clear();
 		ProtocolApplication<Protocol, Params, String, Params, String> papp = new ProtocolApplication<Protocol, Params, String, Params, String>(
 				new Protocol(unmarshalled.getName()));
@@ -36,8 +40,7 @@ public class StudyRecordConverter
 			setCompanyUUID(record, unmarshalled.getOwnerRef().getUniqueKey());
 		}
 		// TODO data owner - it's probably not in this file
-		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled
-				.getScientificPart();
+		
 		if (sciPart.getPCPARTITION().getGUIDELINE() != null)
 			for (ScientificPart.PCPARTITION.GUIDELINE.Set set : sciPart
 					.getPCPARTITION().getGUIDELINE().getSet()) {
@@ -89,6 +92,9 @@ public class StudyRecordConverter
 			} else
 				effect.getConditions().put(Temperature, null);
 			if (set.getPRECISIONPHLOQUALIFIER() != null) {
+				/* Change to go like this
+				"conditions":	{"pH": {"loValue" : 4},"Temperature":"25 C"},
+				*/
 				effect.getConditions().put(
 						phLower,
 						(set.getPRECISIONPHLOQUALIFIER()
@@ -106,8 +112,8 @@ public class StudyRecordConverter
 										.getPHUPVALUE().getValue());
 
 			} else {
-				effect.getConditions().put(phLower, null);
-				effect.getConditions().put(phUpper, null);
+				effect.getConditions().put(phLower, "");
+				effect.getConditions().put(phUpper, "");
 			}
 
 			if (set.getPRECISIONLOQUALIFIER() != null) {

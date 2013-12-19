@@ -20,6 +20,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
+		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
+		if (sciPart.getTOBIODEGWATERSCREEN()==null) return null;
+		
 		record.clear();
 		ProtocolApplication<Protocol,Params,String,Params,String> papp = new ProtocolApplication<Protocol,Params,String,Params,String>(new Protocol(unmarshalled.getName()));
 		papp.getProtocol().setTopCategory("ENV FATE");
@@ -33,7 +36,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
 		}
 		//TODO data owner - it's probably not in this file
-		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
+		
 		if (sciPart.getTOBIODEGWATERSCREEN().getGUIDELINE()!=null)
 			for (ScientificPart.TOBIODEGWATERSCREEN.GUIDELINE.Set set : sciPart.getTOBIODEGWATERSCREEN().getGUIDELINE().getSet()) {
 				if (set.getPHRASEOTHERGUIDELINE()!=null)
