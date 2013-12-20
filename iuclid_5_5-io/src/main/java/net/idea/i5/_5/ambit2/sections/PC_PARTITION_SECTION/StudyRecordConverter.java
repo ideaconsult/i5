@@ -43,13 +43,13 @@ public class StudyRecordConverter
 		if (sciPart.getPCPARTITION().getGUIDELINE() != null)
 			for (ScientificPart.PCPARTITION.GUIDELINE.Set set : sciPart
 					.getPCPARTITION().getGUIDELINE().getSet()) {
-				papp.getProtocol().addGuidance(
+				papp.getProtocol().addGuideline(
 						set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
 
 			}
 		if (sciPart.getPCPARTITION().getMETHODNOGUIDELINE() != null)
 			try {
-				papp.getProtocol().addGuidance(
+				papp.getProtocol().addGuideline(
 						sciPart.getPCPARTITION().getMETHODNOGUIDELINE()
 								.getSet().getTEXTAREABELOW().getTEXTAREABELOW()
 								.getValue());
@@ -99,15 +99,16 @@ public class StudyRecordConverter
 					phvalue.put("loQualifier",
 							(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue() == null) ? null : 
 							set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue());
+					
 					phvalue.put(
-							"loValue",set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE().getValue());
+							"loValue",getNumber(set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE().getValue()));
 				}
 				if (set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE()!= null) {
 					phvalue.put("upQualifier",
 							(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue() == null) ? null : 
 							set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue());					
 					phvalue.put(
-							"upValue",set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE().getValue());
+							"upValue",getNumber(set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE().getValue()));
 				}
 				effect.getConditions().put(ph, phvalue);
 
@@ -118,26 +119,43 @@ public class StudyRecordConverter
 			if (set.getPRECISIONLOQUALIFIER() != null) {
 				if (set.getPRECISIONLOQUALIFIER().getLOVALUE() != null)
 					try {
+						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER()
+								.getLOQUALIFIERValue());						
 						effect.setLoValue(Double.parseDouble(set
 								.getPRECISIONLOQUALIFIER().getLOVALUE()
 								.getValue()));
-						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER()
-								.getLOQUALIFIERValue());
 					} catch (Exception x) {
+						effect.setTextValue(set
+								.getPRECISIONLOQUALIFIER().getLOVALUE()
+								.getValue());
 					}
 				if (set.getPRECISIONLOQUALIFIER().getUPVALUE() != null)
 					try {
+						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER()
+								.getUPQUALIFIERValue());						
 						effect.setUpValue(Double.parseDouble(set
 								.getPRECISIONLOQUALIFIER().getUPVALUE()
 								.getValue()));
-						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER()
-								.getUPQUALIFIERValue());
 					} catch (Exception x) {
+						effect.setTextValue(set
+								.getPRECISIONLOQUALIFIER().getLOVALUE()
+								.getValue());
 					}
 			}
 		}
 
 		System.out.println(papp);
 		return record;
+	}
+	
+	protected Object getNumber(Object value) {
+		if (value == null) return null;
+		if (value instanceof Number) return value;
+		try {
+			return Double.parseDouble(value.toString());
+		} catch (Exception x) {
+			return value;
+		}
+		
 	}
 }

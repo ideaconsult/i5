@@ -38,11 +38,11 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 
 		if (sciPart.getTOACUTEORAL().getGUIDELINE()!=null)
 			for (Set set : sciPart.getTOACUTEORAL().getGUIDELINE().getSet()) {
-				papp.getProtocol().addGuidance(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
 
 			}
 		if (sciPart.getTOACUTEORAL().getMETHODNOGUIDELINE()!=null) try {
-			papp.getProtocol().addGuidance(sciPart.getTOACUTEORAL().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+			papp.getProtocol().addGuideline(sciPart.getTOACUTEORAL().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
 		/*
 		if (sciPart.getECFISHTOX().getREFERENCESUBSTANCE()!=null) {
