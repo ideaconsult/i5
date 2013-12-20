@@ -54,15 +54,15 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 
 		//TEST TYPE
 		papp.getParameters().put(cTestType,
-				sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS()==null?"":
+				sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS()==null?null:
 				sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 
 		if (sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM()!=null) {
 			papp.setInterpretationResult(sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		} else
-			papp.setInterpretationResult("");
+			papp.setInterpretationResult(null);
 		
-		papp.setInterpretationCriteria("");
+		papp.setInterpretationCriteria(null);
 		if (sciPart.getTOBIODEGWATERSCREEN().getRESULTSDETAILS()!=null) try {
 			papp.setInterpretationCriteria(sciPart.getTOBIODEGWATERSCREEN().getRESULTSDETAILS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}
@@ -72,10 +72,12 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSCREEN.DEGRAD.Set set : sciPart.getTOBIODEGWATERSCREEN().getDEGRAD().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 				effect.setEndpoint(cPercentDegradation);
+				effect.setUnit("%");
 				if (set.getPHRASEOTHERPARAMETER()!=null)
 					effect.setEndpoint(set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
+
 				effect.setConditions(new Params());
-				effect.setUnit("%");
+				
 				papp.addEffect(effect);
 				
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
@@ -91,9 +93,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				
 				if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
 					effect.getConditions().put(cTimePoint,
-							(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()==null?"":set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue())+
+							(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue())+
 							" " + 
-							(set.getVALUEUNITTIMEPOINTVALUE()==null?"":set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));	
+							(set.getVALUEUNITTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));	
 
 				
 			}

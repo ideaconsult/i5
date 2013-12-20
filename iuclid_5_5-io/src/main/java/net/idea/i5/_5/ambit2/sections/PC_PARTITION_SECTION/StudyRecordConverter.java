@@ -95,22 +95,20 @@ public class StudyRecordConverter
 				"conditions":	{"pH": {"loValue" : 4},"Temperature":"25 C"},
 				*/
 				Params phvalue = new Params();
-				phvalue.put(
-						"loValue",
-						(set.getPRECISIONPHLOQUALIFIER()
-								.getPHLOQUALIFIERValue() == null) ? "" : set
-								.getPRECISIONPHLOQUALIFIER()
-								.getPHLOQUALIFIERValue()
-								+ " "
-								+ set.getPRECISIONPHLOQUALIFIER()
-										.getPHLOVALUE().getValue());
-				phvalue.put(
-						"upValue",
-						set.getPRECISIONPHLOQUALIFIER().getPHUPQUALIFIERValue()
-								+ " "
-								+ set.getPRECISIONPHLOQUALIFIER()
-										.getPHUPVALUE().getValue());
-				
+				if (set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE()!= null) {
+					phvalue.put("loQualifier",
+							(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue() == null) ? null : 
+							set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue());
+					phvalue.put(
+							"loValue",set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE().getValue());
+				}
+				if (set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE()!= null) {
+					phvalue.put("upQualifier",
+							(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue() == null) ? null : 
+							set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue());					
+					phvalue.put(
+							"upValue",set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE().getValue());
+				}
 				effect.getConditions().put(ph, phvalue);
 
 			} else {

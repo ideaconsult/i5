@@ -58,7 +58,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
 				
 				papp.getParameters().put(cYear,
-						set.getREFERENCEYEAR()==null?"":
+						set.getREFERENCEYEAR()==null?null:
 						set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 			}
 
@@ -123,7 +123,6 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					.getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		}
 
-		System.out.println(papp);
 		return record;
 	}
 }
