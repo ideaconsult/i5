@@ -34,6 +34,7 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 				return "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101.substance";
 			}
 		},
+		EndpointRecord,
 		EndpointStudyRecord {
 			@Override
 			public String getContextPath() {
@@ -110,7 +111,10 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		    			}
 		    			case LegalEntity: {
 		    				return null;
-		    			}		    			
+		    			}		    
+		    			case EndpointRecord: {
+		    				return null;
+		    			}
 		    			case ReferenceSubstance: {
 		    				return tag;
 		    			}
