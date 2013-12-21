@@ -30,7 +30,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		record.clear();
 		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
 				unmarshalled.getDocumentReferencePK(),
-				unmarshalled.getName(),"EC_FISHTOX_SECTION","ECOTOX");
+				unmarshalled.getName(),"ECOTOX","EC_FISHTOX_SECTION");
 		parseReliability(papp, unmarshalled.getReliability().getValueID(),
 					unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS());
 		record.addtMeasurement(papp);		
