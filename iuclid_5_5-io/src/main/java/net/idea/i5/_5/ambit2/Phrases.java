@@ -177,8 +177,8 @@ public class Phrases {
 		p.put("2098","mg/L");
 		p.put("2123","mmol/L");
 		p.put("2127","mol/L");
-		p.put("2500","µg/L");
-		p.put("2504","µmol/L");
+		p.put("2500","\u00B55g/L");
+		p.put("2504","\u00B5mol/L");
 		p.put("1342","other:");
 		p.put("NOT_SPECIFIED", "");
 		return p;
@@ -392,7 +392,7 @@ public class Phrases {
     	Hashtable<String, String> p = new Hashtable<String,String>();
     	p.put("2081", "mg/kg bw");
     	p.put("2119", "mL/kg bw");
-    	p.put("2103", "mg/m²");
+    	p.put("2103", "mg/m\u00B2");
     	p.put("1342", "other:");
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
@@ -664,10 +664,10 @@ public class Phrases {
 	private static Hashtable<String, String> phrasegroup_E05() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
     	p.put("2155", "ng/L");
-    	p.put("2500", "µg/L");
+    	p.put("2500", "\u00B5g/L");
     	p.put("2098", "mg/L");
     	p.put("1935", "g/L");
-    	p.put("2504", "µmol/L");
+    	p.put("2504", "\u00B5mol/L");
     	p.put("2123", "mmol/L");
     	p.put("2127", "mol/L");
     	p.put("1342", "other:");
