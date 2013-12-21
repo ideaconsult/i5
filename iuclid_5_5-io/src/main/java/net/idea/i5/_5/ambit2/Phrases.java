@@ -1056,7 +1056,7 @@ public class Phrases {
 	
     private static Hashtable<String, String> phrasegroup_A36() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
-    	p.put("1", "1 (reliable without restriction)");
+    	p.put("16", "1 (reliable without restriction)");
     	p.put("18", "2 (reliable with restrictions)");
     	p.put("22", "3 (not reliable)");
     	p.put("24", "4 (not assignable)");
