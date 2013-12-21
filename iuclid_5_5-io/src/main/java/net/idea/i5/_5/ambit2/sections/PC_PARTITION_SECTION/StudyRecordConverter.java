@@ -26,16 +26,15 @@ public class StudyRecordConverter
 		if (sciPart.getPCPARTITION()==null) return null;
 
 		record.clear();
-		ProtocolApplication<Protocol, Params, String, Params, String> papp = new ProtocolApplication<Protocol, Params, String, Params, String>(
-				new Protocol(unmarshalled.getName()));
-		papp.getProtocol().setTopCategory("P-CHEM");
-		papp.getProtocol().setCategory("PC_PARTITION_SECTION");
-		papp.setParameters(new Params());
-		record.addtMeasurement(papp);
+		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+				unmarshalled.getDocumentReferencePK(),
+				unmarshalled.getName(),"P-CHEM","PC_PARTITION_SECTION");
+		parseReliability(papp, unmarshalled.getReliability().getValueID()
+				,unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS());
+		record.addtMeasurement(papp);		
+		
 		// UUID
-		papp.setDocumentUUID(unmarshalled.getDocumentReferencePK());
-		if (unmarshalled.getOwnerRef().getType()
-				.equals(DocumentTypeType.SUBSTANCE)) {
+		if (unmarshalled.getOwnerRef().getType().equals(DocumentTypeType.SUBSTANCE)) {
 			setCompanyUUID(record, unmarshalled.getOwnerRef().getUniqueKey());
 		}
 		// TODO data owner - it's probably not in this file
@@ -144,7 +143,6 @@ public class StudyRecordConverter
 			}
 		}
 
-		System.out.println(papp);
 		return record;
 	}
 	

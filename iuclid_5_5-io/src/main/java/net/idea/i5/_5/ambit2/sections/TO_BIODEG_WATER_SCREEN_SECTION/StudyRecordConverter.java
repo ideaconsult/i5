@@ -22,21 +22,19 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
 		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
 		if (sciPart.getTOBIODEGWATERSCREEN()==null) return null;
-		
-		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = new ProtocolApplication<Protocol,Params,String,Params,String>(new Protocol(unmarshalled.getName()));
-		papp.getProtocol().setTopCategory("ENV FATE");
-		papp.getProtocol().setCategory("TO_BIODEG_WATER_SCREEN_SECTION");
-		papp.setParameters(new Params());
-		record.addtMeasurement(papp);
 
+		record.clear();
+		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+				unmarshalled.getDocumentReferencePK(),
+				unmarshalled.getName(),"ENV FATE","TO_BIODEG_WATER_SCREEN_SECTION");
+		parseReliability(papp, unmarshalled.getReliability().getValueID()
+				,unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS());
+		record.addtMeasurement(papp);
+	
 		//UUID
-		papp.setDocumentUUID(unmarshalled.getDocumentReferencePK());
 		if (unmarshalled.getOwnerRef().getType().equals(DocumentTypeType.SUBSTANCE)) {
 			setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
 		}
-		//TODO data owner - it's probably not in this file
-		
 		if (sciPart.getTOBIODEGWATERSCREEN().getGUIDELINE()!=null)
 			for (ScientificPart.TOBIODEGWATERSCREEN.GUIDELINE.Set set : sciPart.getTOBIODEGWATERSCREEN().getGUIDELINE().getSet()) {
 				if (set.getPHRASEOTHERGUIDELINE()!=null)
@@ -46,11 +44,6 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getTOBIODEGWATERSCREEN().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getTOBIODEGWATERSCREEN().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
-		/*
-		if (sciPart.getECFISHTOX().getREFERENCESUBSTANCE()!=null) {
-			record.setReferenceSubstanceUUID(sciPart.getECFISHTOX().getREFERENCESUBSTANCE().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue())
-		}
-		*/
 
 		//TEST TYPE
 		papp.getParameters().put(cTestType,
@@ -100,8 +93,6 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				
 			}
 		} 		
-	
-		System.out.println(papp);
 		return record;
 	}
 }

@@ -24,13 +24,14 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getTOACUTEORAL()==null) return null;
 		
 		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = new ProtocolApplication<Protocol,Params,String,Params,String>(new Protocol(unmarshalled.getName()));
-		papp.getProtocol().setTopCategory("TOX");
-		papp.getProtocol().setCategory("TO_ACUTE_ORAL_SECTION");
-		papp.setParameters(new Params());
+		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+					unmarshalled.getDocumentReferencePK(),
+					unmarshalled.getName(),"TOX","TO_ACUTE_ORAL_SECTION");
+		parseReliability(papp, unmarshalled.getReliability().getValueID()
+				,unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS());
 		record.addtMeasurement(papp);
+		
 		//UUID
-		papp.setDocumentUUID(unmarshalled.getDocumentReferencePK());
 		if (unmarshalled.getOwnerRef().getType().equals(DocumentTypeType.SUBSTANCE)) {
 			setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
 		}
@@ -56,10 +57,10 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					.getTOACUTEORAL().getREFERENCE().getSet()) {
 				if (set.getREFERENCEAUTHOR()!=null)
 					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				
 				papp.getParameters().put(cYear,
 						set.getREFERENCEYEAR()==null?null:
 						set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
+				papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());				
 			}
 
 		// Acute tox oral
@@ -94,22 +95,6 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				}
 				
 				effect.getConditions().put(cSex,set.getSEX()==null?null:set.getSEX().getSEXValue());
-
-				/*
-				if (set.getPHRASEOTHEREFFCONCTYPE() != null)
-					System.out.println(set.getPHRASEOTHEREFFCONCTYPE().getEFFCONCTYPEValue());
-				if (set.getPRECISIONCONFLIMITSLOQUALIFIER() != null) {
-					System.out.println(set.getPRECISIONCONFLIMITSLOQUALIFIER()
-							.getCONFLIMITSLOQUALIFIER());
-					System.out.println(set.getPRECISIONCONFLIMITSLOQUALIFIER()
-							.getCONFLIMITSUPQUALIFIER());
-					System.out.println(set.getPRECISIONCONFLIMITSLOQUALIFIER()
-							.getCONFLIMITSLOVALUE());
-					System.out.println(set.getPRECISIONCONFLIMITSLOQUALIFIER()
-							.getCONFLIMITSUPVALUE());
-				}
-								System.out.println(set.getPHRASEOTHEREFFCONCTYPE());
-				*/
 
 			}
 		if (sciPart.getTOACUTEORAL().getINTERPRETRSSUBMITTER() != null) {

@@ -18,21 +18,23 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 	private static final String cTestOrganism = "Test organism";
 	private static final String cMeasuredConcentration = "Measured concentration";
 	private static final String cEffect = "Effect";
-	private static final String cConcType = "Conc type";
+	private static final String cConcType = "Based on";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
 		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
 		if (sciPart.getECFISHTOX()==null) return null;
 		
+		
 		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = new ProtocolApplication<Protocol,Params,String,Params,String>(new Protocol(unmarshalled.getName()));
-		papp.getProtocol().setCategory("EC_FISHTOX_SECTION");
-		papp.getProtocol().setTopCategory("ECOTOX");
-		papp.setParameters(new Params());
-		record.addtMeasurement(papp);
+		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+				unmarshalled.getDocumentReferencePK(),
+				unmarshalled.getName(),"EC_FISHTOX_SECTION","ECOTOX");
+		parseReliability(papp, unmarshalled.getReliability().getValueID(),
+					unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS());
+		record.addtMeasurement(papp);		
+		
 		//UUID
-		papp.setDocumentUUID(unmarshalled.getDocumentReferencePK());
 		if (unmarshalled.getOwnerRef().getType().equals(DocumentTypeType.SUBSTANCE)) {
 			setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
 		}
@@ -45,18 +47,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getECFISHTOX().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getECFISHTOX().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
-		/*
-		if (sciPart.getECFISHTOX().getREFERENCESUBSTANCE()!=null) {
-			record.setReferenceSubstanceUUID(sciPart.getECFISHTOX().getREFERENCESUBSTANCE().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue())
-		}
-		*/
-		/*
-		papp.getParameters().put(cSalinity, "");
-		if (sciPart.getECFISHTOX().getSALINITY()!=null) try {
-			papp.getParameters().put(cSalinity, sciPart.getECFISHTOX().getSALINITY().getSet().getTEXTBELOW().getTEXTBELOW().getValue());
-		} catch (Exception x) {}
-		*/
-		
+	
 		//Exposure duration
 		if (sciPart.getECFISHTOX().getEXPDURATION()!=null) {
 			papp.getParameters().put(cExposure,
@@ -82,7 +73,8 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getECFISHTOX().getNOMMEASCONC()!=null) try {
 			papp.getParameters().put(cMeasuredConcentration,
 					sciPart.getECFISHTOX().getNOMMEASCONC().getSet().getTEXTBELOW().getTEXTBELOW().getValue());
-		} catch (Exception x) {}	
+		} catch (Exception x) {
+		}	
 		//ENDPOINT
 		if (sciPart.getECFISHTOX().getEFFCONC()!=null && sciPart.getECFISHTOX().getEFFCONC().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart.ECFISHTOX.EFFCONC.Set set : sciPart.getECFISHTOX().getEFFCONC().getSet()) {
