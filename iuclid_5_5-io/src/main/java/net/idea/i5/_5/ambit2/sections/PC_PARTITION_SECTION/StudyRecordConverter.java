@@ -10,6 +10,7 @@ import ambit2.base.interfaces.IStructureRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.DocumentTypeType;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart.PCPARTITION.REFERENCE.Set;
 
 public class StudyRecordConverter
 		extends
@@ -37,6 +38,16 @@ public class StudyRecordConverter
 		if (unmarshalled.getOwnerRef().getType().equals(DocumentTypeType.SUBSTANCE)) {
 			setCompanyUUID(record, unmarshalled.getOwnerRef().getUniqueKey());
 		}
+		
+		// citation
+		if (sciPart.getPCPARTITION().getREFERENCE() != null)
+			for (Set set : sciPart.getPCPARTITION().getREFERENCE().getSet()) {
+				if (set.getREFERENCEAUTHOR()!=null)
+					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+				if (set.getREFERENCEYEAR()!=null) {
+					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
+				}
+			}			
 		// TODO data owner - it's probably not in this file
 		
 		if (sciPart.getPCPARTITION().getGUIDELINE() != null)

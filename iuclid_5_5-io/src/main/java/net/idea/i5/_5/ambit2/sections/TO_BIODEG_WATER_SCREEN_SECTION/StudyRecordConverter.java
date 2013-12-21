@@ -10,6 +10,7 @@ import ambit2.base.interfaces.IStructureRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.DocumentTypeType;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSCREEN.REFERENCE.Set;
 
 
 
@@ -44,6 +45,17 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getTOBIODEGWATERSCREEN().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getTOBIODEGWATERSCREEN().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
+		
+		// citation
+		if (sciPart.getTOBIODEGWATERSCREEN().getREFERENCE() != null)
+			for (Set set : sciPart
+					.getTOBIODEGWATERSCREEN().getREFERENCE().getSet()) {
+				if (set.getREFERENCEAUTHOR()!=null)
+					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+				if (set.getREFERENCEYEAR()!=null) {
+					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
+				}
+			}		
 
 		//TEST TYPE
 		papp.getParameters().put(cTestType,

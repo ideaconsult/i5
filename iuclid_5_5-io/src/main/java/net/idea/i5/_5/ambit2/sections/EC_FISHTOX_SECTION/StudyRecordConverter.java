@@ -9,6 +9,7 @@ import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.interfaces.IStructureRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.DocumentTypeType;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart.ECFISHTOX.REFERENCE.Set;
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord>{
 	private static final String cSalinity = "Salinity";
@@ -48,6 +49,16 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			papp.getProtocol().addGuideline(sciPart.getECFISHTOX().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
 	
+		// citation
+		if (sciPart.getECFISHTOX().getREFERENCE() != null)
+			for (Set set : sciPart.getECFISHTOX().getREFERENCE().getSet()) {
+				if (set.getREFERENCEAUTHOR()!=null)
+					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+				if (set.getREFERENCEYEAR()!=null) {
+					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
+				}
+			}	
+		
 		//Exposure duration
 		if (sciPart.getECFISHTOX().getEXPDURATION()!=null) {
 			papp.getParameters().put(cExposure,
