@@ -15,7 +15,9 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		else
 			record.setCompanyUUID(value);
 	}	
-	protected Params parseReliability(ProtocolApplication papp,String valueID, boolean isRobustStudy, boolean isUsedforClassification, boolean isUsedforMSDS) {
+	protected Params parseReliability(ProtocolApplication papp,String valueID, 
+				boolean isRobustStudy, boolean isUsedforClassification, boolean isUsedforMSDS,
+				String purposeFlagCode) {
 		try {
 			Params reliability = new Params();
 			reliability.put("id", valueID);
@@ -23,6 +25,7 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 			reliability.put("isRobustStudy", isRobustStudy);
 			reliability.put("isUsedforClassification", isUsedforClassification);
 			reliability.put("isUsedforMSDS", isUsedforMSDS);
+			reliability.put("purposeFlag", Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
 			papp.setReliability(reliability);
 			return reliability;
 		} catch (Exception x) { return null; }
