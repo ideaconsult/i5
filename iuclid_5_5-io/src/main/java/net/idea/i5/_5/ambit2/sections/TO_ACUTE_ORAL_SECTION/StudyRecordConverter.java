@@ -29,7 +29,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					unmarshalled.getName(),"TOX","TO_ACUTE_ORAL_SECTION");
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
 				,unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS()
-				,unmarshalled.getPurposeFlag().getValueID());
+				,unmarshalled.getPurposeFlag().getValueID(),unmarshalled.getStudyResultType().getValueID());
 		record.addtMeasurement(papp);
 		
 		//UUID

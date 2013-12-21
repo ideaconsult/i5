@@ -30,7 +30,8 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				unmarshalled.getName(),"ENV FATE","TO_BIODEG_WATER_SCREEN_SECTION");
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
 				,unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS()
-				,unmarshalled.getPurposeFlag().getValueID()
+				,unmarshalled.getPurposeFlag().getValueID(),
+				unmarshalled.getStudyResultType().getValueID()
 			);
 		record.addtMeasurement(papp);
 	

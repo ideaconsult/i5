@@ -32,7 +32,7 @@ public class StudyRecordConverter
 				unmarshalled.getName(),"P-CHEM","PC_PARTITION_SECTION");
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
 				,unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS()
-				,unmarshalled.getPurposeFlag().getValueID());
+				,unmarshalled.getPurposeFlag().getValueID(),unmarshalled.getStudyResultType().getValueID());
 		record.addtMeasurement(papp);		
 		
 		// UUID
