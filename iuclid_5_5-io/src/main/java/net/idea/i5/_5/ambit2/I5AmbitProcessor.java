@@ -99,12 +99,11 @@ public class I5AmbitProcessor<Target> extends
 				for (ExternalSystemIdentifier id : unmarshalled
 						.getExternalSystemIdentifiers()
 						.getExternalSystemIdentifier()) {
+					
 					System.out.println(id.getExternalSystemDesignator());
 					System.out.println(id.getID());
 					System.out.println(id.getRemarks());
 				}
-			System.out.println("origin\t"
-					+ unmarshalled.getOrigin().getOtherValue().getValue());
 			/*
 			 * formaldehyde / formaldehyde / 50-00-0
 			 * System.out.println(unmarshalled
@@ -125,7 +124,7 @@ public class I5AmbitProcessor<Target> extends
 
 			SubstanceCompositions sc = unmarshalled.getSubstanceCompositions();
 			for (SubstanceComposition c : sc.getSubstanceComposition()) {
-
+/*
 				System.out.println(c.getLocalUUID());
 				System.out.println(c.getName());
 				System.out.println(c.getDescription());
@@ -133,7 +132,7 @@ public class I5AmbitProcessor<Target> extends
 				System.out.println(c.getDegreeOfPurity().getLowerValue());
 				System.out.println(c.getDegreeOfPurity().getLowerPrecision()
 						.getValue());
-
+*/
 				if (c.getAdditives() != null)
 					for (Additive a : c.getAdditives().getAdditive())
 						additive2record(c.getLocalUUID(), record, a);
@@ -445,26 +444,32 @@ public class I5AmbitProcessor<Target> extends
 				.getCasInformation();
 		if (cas != null) {
 			try {
-				structureRecord.setProperty(I5ReaderSimple.casProperty,
-						casProcessor.process(cas.getCasNumber()));
+				structureRecord.setProperty(I5ReaderSimple.casProperty,casProcessor.process(cas.getCasNumber()));
 			} catch (Exception x) {
-				structureRecord.setProperty(I5ReaderSimple.casProperty,
-						cas.getCasNumber());
+				structureRecord.setProperty(I5ReaderSimple.casProperty,	cas.getCasNumber());
 			}
+			/* CAS name
+			try {
+				structureRecord.setProperty(I5ReaderSimple.casProperty,casProcessor.process(cas.getCasNumber()));
+			} catch (Exception x) {
+				structureRecord.setProperty(I5ReaderSimple.casProperty,	cas.getCasNumber());
+			}
+			*/
 		}
-		String iupacName = unmarshalled.getReferenceSubstanceInformation()
-				.getIupacName();
+		String iupacName = unmarshalled.getReferenceSubstanceInformation().getIupacName();
 		if ((iupacName != null) && !"".equals(iupacName.trim()))
 			structureRecord.setProperty(Property.getNameInstance(), iupacName);
-
-		Synonyms synonyms = unmarshalled.getReferenceSubstanceInformation()
-				.getSynonyms();
+		
+		
+		Synonyms synonyms = unmarshalled.getReferenceSubstanceInformation().getSynonyms();
 		if (synonyms != null) {
 			List<String> lookup = new ArrayList<String>();
 			for (int i = 0; i < synonyms.getSynonym().size(); i++)
 				if (lookup.indexOf(synonyms.getSynonym().get(i).getName()) < 0)
 					lookup.add(synonyms.getSynonym().get(i).getName());
-			for (int i = 0; i < lookup.size(); i++)
+			
+			
+			for (int i = 0; i < lookup.size(); i++) {
 				structureRecord
 						.setProperty(
 								Property.getInstance(
@@ -479,6 +484,7 @@ public class I5AmbitProcessor<Target> extends
 														I5ReaderSimple.I5_URL),
 												I5ReaderSimple.I5_URL)), lookup
 										.get(i));
+			}	
 
 		}
 
