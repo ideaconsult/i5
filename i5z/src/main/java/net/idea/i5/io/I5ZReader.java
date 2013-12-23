@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 
 import javax.xml.bind.JAXBContext;
@@ -20,8 +23,9 @@ import ambit2.core.io.IRawReader;
 import ambit2.core.io.ZipReader;
 
 public class I5ZReader<SUBSTANCE> extends ZipReader {
+	protected Map<String,String> file2cjaxbcp;
 	protected Hashtable<String, JAXBStuff> jaxbCache = new Hashtable<String,JAXBStuff>();
-	protected I5ObjectVerifier rootObjectVerifier = new I5ObjectVerifier();
+	protected I5ObjectVerifier rootObjectVerifier;
 	
 	/**
 	 * Uncompresses the .i5z archive content, detects the correct JAXB context path and unmarshall the XML content using JAXB generated classes
@@ -44,11 +48,11 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 	protected IRawReader<IStructureRecord> getItemReader(int index) throws Exception {
 		String name = files[index].getName().toLowerCase();
 		if (name.endsWith(FileInputState.extensions[FileInputState.I5D_INDEX])) {
-			logger.log(Level.INFO,name);
+			logger.log(Level.FINE,name);
 			try {
 				String jaxbcontextpath = getJaxbContextPath4File(files[index]);
 				
-				if (jaxbcontextpath!=null) {
+				if (jaxbcontextpath!=null && !"".equals(jaxbcontextpath)) {
 					InputStream fileReader = new FileInputStream(files[index]);
 					try {
 						JAXBStuff jaxb = jaxbCache.get(jaxbcontextpath);
@@ -83,27 +87,80 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 	}
 
 	@Override
-	protected File createTempFile(File directory, String name) throws IOException,AmbitException {
-		I5DFile file = null;
-		if (name.toLowerCase().endsWith(FileInputState.extensions[FileInputState.I5D_INDEX])) {
-			file =  new I5DFile(directory,name);
-			file.setContextPath(getJaxbContextPath4File(file));
-		}
-		return file;
+	protected File verifyEntry(File file) throws IOException, AmbitException {
+		if (file.getName().toLowerCase().endsWith(FileInputState.extensions[FileInputState.I5D_INDEX])) {
+			String cp = getJaxbContextPath4File(file);
+			return cp==null?null:("".equals(cp))?null:file;
+		} else return null;
 	}
 	
 	private String getJaxbContextPath4File(File file) throws AmbitException,IOException {
-		if (file instanceof I5DFile) {
-			if (((I5DFile)file).getContextPath()!=null) return ((I5DFile)file).getContextPath();
-		}
+		if (file2cjaxbcp==null) file2cjaxbcp = new Hashtable<String,String>();
+		String cp = file2cjaxbcp.get(file.getAbsolutePath());
+		if (cp!=null) return cp;
 		//read the file and find out if the object is supported. Then return the JAXB context path.
-		I5_ROOT_OBJECTS rootObject = rootObjectVerifier.process(new FileInputStream(file));
-		if ((rootObject!=null)&& (rootObject.getContextPath()!=null)) {
-			return rootObject.getContextPath();
+		if (rootObjectVerifier==null) rootObjectVerifier = new I5ObjectVerifier();
+		try {
+			I5_ROOT_OBJECTS rootObject = rootObjectVerifier.process(new FileInputStream(file));
+			cp = ((rootObject!=null)&& (rootObject.getContextPath()!=null))?
+					rootObject.getContextPath():"";
+			file2cjaxbcp.put(file.getAbsolutePath(),cp);
+			return cp;
+		} catch (Exception x) {
+			logger.log(Level.FINE,x.getMessage());
+			return null;
 		}
-		return null;
 	}
+	/*
+	@Override
+	public File[] unzip(File zipfile, File directory) throws AmbitIOException {
+		File[] files = super.unzip(zipfile, directory);
+		for (File file : files)
+			System.out.println(file2cjaxbcp.get(file.getAbsolutePath()));
+		return files;
+	}
+	*/
+	
+	@Override
+	public File[] unzip(File zipfile, File directory) throws AmbitIOException {
+		File[] files =  super.unzip(zipfile, directory);
+		List<File> referenceSubstances = new ArrayList<File>();
+		List<File> substances = new ArrayList<File>();
+		List<File> study = new ArrayList<File>();
+		for (File file : files) {
+			String cp = file2cjaxbcp.get(file.getAbsolutePath());
+			if (cp!=null) {
+				logger.log(Level.FINE,cp);
+				if (cp.indexOf(".referencesubstance")>=0)
+					referenceSubstances.add(file);
+				else if (cp.indexOf(".substance")>=0)
+					substances.add(file);
+				else study.add(file);
+			}	
+		}
+		logger.log(Level.INFO,
+				String.format("Reference substances %d\tSubstances %d\tStudies %d",
+				referenceSubstances.size(),
+				substances.size(),
+				study.size()));
+		/*
+		substances.addAll(referenceSubstances);
+		substances.addAll(study);
+		referenceSubstances.clear();study.clear();
 
+		for (File file : substances)
+			System.out.println(file2cjaxbcp.get(file.getAbsolutePath()));
+		return substances.toArray(new File[referenceSubstances.size()]);
+		*/
+		referenceSubstances.addAll(substances);
+		referenceSubstances.addAll(study);
+		substances.clear();study.clear();
+
+		for (File file : substances)
+			System.out.println(file2cjaxbcp.get(file.getAbsolutePath()));
+		return referenceSubstances.toArray(new File[referenceSubstances.size()]);		
+	}
+	
 }
 
 class JAXBStuff {
@@ -116,16 +173,3 @@ class JAXBStuff {
 	}
 }
 
-class I5DFile extends File {
-	protected String contextPath;
-	public String getContextPath() {
-		return contextPath;
-	}
-	public void setContextPath(String contextPath) {
-		this.contextPath = contextPath;
-	}
-	public I5DFile(File directory, String name) {
-		super(directory,name);
-	}
-	
-}
