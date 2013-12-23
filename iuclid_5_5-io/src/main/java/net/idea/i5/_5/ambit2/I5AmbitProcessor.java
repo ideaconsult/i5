@@ -412,36 +412,39 @@ public class I5AmbitProcessor<Target> extends
 		if (unmarshalled.getName() != null)
 			structureRecord.setProperty(I5ReaderSimple.nameProperty,
 					unmarshalled.getName());
-
-		if (unmarshalled.getEcSubstanceInventoryEntryRef().getNumber() != null)
-			structureRecord.setProperty(I5ReaderSimple.ecProperty, unmarshalled
-					.getEcSubstanceInventoryEntryRef().getNumber());
+		
+		if (unmarshalled.getEcSubstanceInventoryEntryRef()!=null) 
+			if (unmarshalled.getEcSubstanceInventoryEntryRef().getNumber() != null)
+				structureRecord.setProperty(I5ReaderSimple.ecProperty, unmarshalled.getEcSubstanceInventoryEntryRef().getNumber());
 
 		if (unmarshalled.getReferenceSubstanceStructure() != null) {
-			structureRecord.setFormat(MOL_TYPE.INC.name());
-			String inchi = unmarshalled.getReferenceSubstanceStructure()
-					.getInChI();
+			structureRecord.setFormat(null);
+			String inchi = unmarshalled.getReferenceSubstanceStructure().getInChI();
 			if (inchi != null && !"".equals(inchi)) {
+				structureRecord.setFormat(MOL_TYPE.INC.name());
 				structureRecord.setContent(inchi);
 				structureRecord.setType(STRUC_TYPE.D1);
 			} else {
+				structureRecord.setFormat(null);
 				structureRecord.setContent("");
 				structureRecord.setType(STRUC_TYPE.NA);
 			}
 			structureRecord.setInchi(null);
-			String smiles = unmarshalled.getReferenceSubstanceStructure()
-					.getSmilesNotation();
+			String smiles = unmarshalled.getReferenceSubstanceStructure().getSmilesNotation();
 			if (smiles != null && !"".equals(smiles)) {
+				if (structureRecord.getFormat()==null) {
+					structureRecord.setFormat(MOL_TYPE.CSV.name());
+					structureRecord.setContent(smiles);
+				}
 				structureRecord.setType(STRUC_TYPE.D1);
 			}
 			structureRecord.setSmiles(smiles);
-			structureRecord.setFormula(unmarshalled
-					.getReferenceSubstanceStructure().getMolecularFormula());
+			structureRecord.setFormula(unmarshalled.getReferenceSubstanceStructure().getMolecularFormula());
 		} else
 			structureRecord.setType(STRUC_TYPE.NA);
 
-		CasInformation cas = unmarshalled.getReferenceSubstanceInformation()
-				.getCasInformation();
+		if (structureRecord.getFormat()==null) structureRecord.setFormat(MOL_TYPE.SDF.name());
+		CasInformation cas = unmarshalled.getReferenceSubstanceInformation().getCasInformation();
 		if (cas != null) {
 			try {
 				structureRecord.setProperty(I5ReaderSimple.casProperty,casProcessor.process(cas.getCasNumber()));
