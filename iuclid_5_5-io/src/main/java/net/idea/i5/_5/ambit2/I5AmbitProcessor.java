@@ -22,9 +22,6 @@ import ambit2.core.io.I5ReaderSimple;
 import eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance;
 import eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance.ReferenceSubstanceInformation.CasInformation;
 import eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance.ReferenceSubstanceInformation.Synonyms;
-import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord;
-import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart;
-import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.EFFLEVEL.Set;
 import eu.europa.echa.schemas.iuclid5._20130101.substance.Substance;
 import eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.ExternalSystemIdentifiers.ExternalSystemIdentifier;
 import eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.SubstanceCompositions;
@@ -417,8 +414,8 @@ public class I5AmbitProcessor<Target> extends
 			if (unmarshalled.getEcSubstanceInventoryEntryRef().getNumber() != null)
 				structureRecord.setProperty(I5ReaderSimple.ecProperty, unmarshalled.getEcSubstanceInventoryEntryRef().getNumber());
 
+		structureRecord.setFormat(null);
 		if (unmarshalled.getReferenceSubstanceStructure() != null) {
-			structureRecord.setFormat(null);
 			String inchi = unmarshalled.getReferenceSubstanceStructure().getInChI();
 			if (inchi != null && !"".equals(inchi)) {
 				structureRecord.setFormat(MOL_TYPE.INC.name());
@@ -433,7 +430,7 @@ public class I5AmbitProcessor<Target> extends
 			String smiles = unmarshalled.getReferenceSubstanceStructure().getSmilesNotation();
 			if (smiles != null && !"".equals(smiles)) {
 				if (structureRecord.getFormat()==null) {
-					structureRecord.setFormat(MOL_TYPE.CSV.name());
+					structureRecord.setFormat(MOL_TYPE.INC.name());
 					structureRecord.setContent(smiles);
 				}
 				structureRecord.setType(STRUC_TYPE.D1);
