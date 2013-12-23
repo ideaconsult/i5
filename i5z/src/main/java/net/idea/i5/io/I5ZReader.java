@@ -12,6 +12,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import net.idea.i5.io.I5ObjectVerifier.I5_ROOT_OBJECTS;
+import ambit2.base.exceptions.AmbitException;
 import ambit2.base.exceptions.AmbitIOException;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.core.io.FileInputState;
@@ -45,15 +46,15 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 		if (name.endsWith(FileInputState.extensions[FileInputState.I5D_INDEX])) {
 			logger.log(Level.INFO,name);
 			try {
-				I5_ROOT_OBJECTS rootObject = rootObjectVerifier.process(new FileInputStream(files[index]));
+				String jaxbcontextpath = getJaxbContextPath4File(files[index]);
 				
-				if ((rootObject!=null)&& (rootObject.getContextPath()!=null)) {
+				if (jaxbcontextpath!=null) {
 					InputStream fileReader = new FileInputStream(files[index]);
 					try {
-						JAXBStuff jaxb = jaxbCache.get(rootObject.getContextPath());
+						JAXBStuff jaxb = jaxbCache.get(jaxbcontextpath);
 						if (jaxb==null) {
-							jaxb = new JAXBStuff(rootObject.getContextPath());
-							jaxbCache.put(rootObject.getContextPath(), jaxb);
+							jaxb = new JAXBStuff(jaxbcontextpath);
+							jaxbCache.put(jaxbcontextpath, jaxb);
 						}
 						I5DReader reader = new I5DReader(fileReader,jaxb.jaxbContext,jaxb.jaxbUnmarshaller);
 						reader.setErrorHandler(errorHandler);
@@ -81,6 +82,27 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 		super.closeItemReader(itemReader);
 	}
 
+	@Override
+	protected File createTempFile(File directory, String name) throws IOException,AmbitException {
+		I5DFile file = null;
+		if (name.toLowerCase().endsWith(FileInputState.extensions[FileInputState.I5D_INDEX])) {
+			file =  new I5DFile(directory,name);
+			file.setContextPath(getJaxbContextPath4File(file));
+		}
+		return file;
+	}
+	
+	private String getJaxbContextPath4File(File file) throws AmbitException,IOException {
+		if (file instanceof I5DFile) {
+			if (((I5DFile)file).getContextPath()!=null) return ((I5DFile)file).getContextPath();
+		}
+		//read the file and find out if the object is supported. Then return the JAXB context path.
+		I5_ROOT_OBJECTS rootObject = rootObjectVerifier.process(new FileInputStream(file));
+		if ((rootObject!=null)&& (rootObject.getContextPath()!=null)) {
+			return rootObject.getContextPath();
+		}
+		return null;
+	}
 
 }
 
@@ -92,4 +114,18 @@ class JAXBStuff {
 		jaxbContext = JAXBContext.newInstance(contextPath);
 		jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 	}
+}
+
+class I5DFile extends File {
+	protected String contextPath;
+	public String getContextPath() {
+		return contextPath;
+	}
+	public void setContextPath(String contextPath) {
+		this.contextPath = contextPath;
+	}
+	public I5DFile(File directory, String name) {
+		super(directory,name);
+	}
+	
 }
