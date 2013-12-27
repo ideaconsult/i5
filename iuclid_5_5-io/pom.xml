@@ -4,12 +4,12 @@
   <parent>
     <artifactId>iuclid5-cli</artifactId>
     <groupId>net.idea</groupId>
-    <version>0.0.4</version>
+    <version>0.0.5-SNAPSHOT</version>
   </parent>
   <groupId>net.idea</groupId>
   <artifactId>iuclid_5_5-io</artifactId>
   <name>iuclid_5_5-io</name>
-  <version>0.0.4</version>
+  <version>0.0.5-SNAPSHOT</version>
   <url>http://www.idesconsult.net</url>
   <inceptionYear>2013</inceptionYear>
   <dependencies>
