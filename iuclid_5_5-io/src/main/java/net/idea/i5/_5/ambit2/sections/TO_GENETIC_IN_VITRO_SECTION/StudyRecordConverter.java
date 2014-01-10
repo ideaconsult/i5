@@ -91,7 +91,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				papp.getParameters().put(cSpecies,set.getPHRASEOTHERORGANISM().getORGANISMTXT().getValue());
 			} catch (Exception x) { papp.getParameters().put(cSpecies,null);}
 			try {
-				papp.getParameters().put(cMetabolicActivationSystem,set.getMETABOLICACTINDICATOR().getMETABOLICACTINDICATORValue());
+				papp.getParameters().put(cMetabolicActivationSystem,set.getMETABOLICACTSYSTEM());
 			} catch (Exception x) {	papp.getParameters().put(cMetabolicActivationSystem,null);}
 
 		}
@@ -121,7 +121,6 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		}
 		papp.setInterpretationResult(interpretation==null?null:interpretation.toString());
 		
-		System.out.println(papp);
 		return record;
 	}
 }

@@ -112,7 +112,6 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			}
 		papp.setInterpretationResult(null); 
 		papp.setInterpretationCriteria(null); 
-		System.out.println(papp);
 		return record;
 	}
 }
