@@ -84,14 +84,20 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 								new net.idea.i5._5.ambit2.I5AmbitProcessor());
 		processors.put(eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance.class.getName(), 
 				new net.idea.i5._5.ambit2.I5AmbitProcessor());
+		//TO_
 		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.class.getName(), 
 				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.class.getName(), 
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION.EndpointStudyRecord.class.getName(), 
 				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
 		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.class.getName(), 
 				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
+		//EC_
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.class.getName(), 
+				new net.idea.i5._5.ambit2.I5AmbitProcessor());
+		//PC_
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.class.getName(), 
+				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
+		//ReferenceSubstance
 		processors.put(eu.europa.echa.schemas.iuclid5._20070330.referencesubstance.ReferenceSubstance.class.getName(), 
 				new net.idea.i5._0.ambit2.I5AmbitProcessor());
 	}

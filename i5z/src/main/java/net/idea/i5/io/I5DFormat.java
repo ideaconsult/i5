@@ -1,6 +1,5 @@
 package net.idea.i5.io;
 
-import org.openscience.cdk.annotations.TestMethod;
 import org.openscience.cdk.io.formats.IChemFormatMatcher;
 import org.openscience.cdk.io.formats.IResourceFormat;
 import org.openscience.cdk.tools.DataFeatures;

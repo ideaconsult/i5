@@ -42,7 +42,9 @@ public class I5AmbitProcessor<Target> extends
 	protected net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SCREEN_SECTION.StudyRecordConverter TO_BIODEG_WATER_SCREEN_SECTION = 
 		  new net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SCREEN_SECTION.StudyRecordConverter();
 	protected net.idea.i5._5.ambit2.sections.TO_ACUTE_ORAL_SECTION.StudyRecordConverter TO_ACUTE_ORAL_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.TO_ACUTE_ORAL_SECTION.StudyRecordConverter();	
+		  new net.idea.i5._5.ambit2.sections.TO_ACUTE_ORAL_SECTION.StudyRecordConverter();
+	protected net.idea.i5._5.ambit2.sections.TO_REPEATED_ORAL_SECTION.StudyRecordConverter TO_REPEATED_ORAL_SECTION = 
+		  new net.idea.i5._5.ambit2.sections.TO_REPEATED_ORAL_SECTION.StudyRecordConverter();
 	/**
 	 * 
 	 */
@@ -65,6 +67,8 @@ public class I5AmbitProcessor<Target> extends
 							record);
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord) {
 			return TO_ACUTE_ORAL_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord) unmarshalled,record);
+		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION.EndpointStudyRecord) {
+			return TO_REPEATED_ORAL_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION.EndpointStudyRecord) unmarshalled,record);			
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord) {
 			return TO_BIODEG_WATER_SCREEN_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord) unmarshalled,record);
 		}

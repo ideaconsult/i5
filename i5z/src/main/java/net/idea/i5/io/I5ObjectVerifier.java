@@ -66,6 +66,12 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 			}
 			
 		},	
+		TO_REPEATED_ORAL {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION" ;
+			}
+		},
 		PC_PARTITION {
 			@Override
 			public String getContextPath() {
@@ -139,6 +145,9 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		    				return tag;
 		    			}		    			
 		    			case PC_PARTITION: {
+		    				return tag;
+		    			}
+		    			case TO_REPEATED_ORAL: {
 		    				return tag;
 		    			}
 		    			default:
