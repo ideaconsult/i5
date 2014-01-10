@@ -83,8 +83,14 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 			public String getContextPath() {
 				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SKIN_IRRITATION_SECTION" ;
 			}
-			
 		},
+		TO_EYE_IRRITATION {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_EYE_IRRITATION_SECTION" ;
+			}
+			
+		},		
 		PC_PARTITION {
 			@Override
 			public String getContextPath() {
@@ -169,6 +175,9 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		    			case TO_SKIN_IRRITATION: {
 		    				return tag;
 		    			}
+		    			case TO_EYE_IRRITATION: {
+		    				return tag;
+		    			}		    			
 		    			default:
 		    				continue;
 		    				//if (inSciPart || inStudyRecord) continue;

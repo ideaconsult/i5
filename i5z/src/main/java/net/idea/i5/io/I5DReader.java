@@ -95,6 +95,8 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 				new net.idea.i5._5.ambit2.I5AmbitProcessor());
 		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SKIN_IRRITATION_SECTION.EndpointStudyRecord.class.getName(), 
 				new net.idea.i5._5.ambit2.I5AmbitProcessor());
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_EYE_IRRITATION_SECTION.EndpointStudyRecord.class.getName(), 
+				new net.idea.i5._5.ambit2.I5AmbitProcessor());
 		
 		//EC_
 		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.class.getName(), 
