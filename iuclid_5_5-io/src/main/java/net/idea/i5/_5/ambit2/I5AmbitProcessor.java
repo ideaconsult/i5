@@ -52,7 +52,10 @@ public class I5AmbitProcessor<Target> extends
 	protected net.idea.i5._5.ambit2.sections.TO_SKIN_IRRITATION_SECTION.StudyRecordConverter TO_SKIN_IRRITATION_SECTION = 
 		  new net.idea.i5._5.ambit2.sections.TO_SKIN_IRRITATION_SECTION.StudyRecordConverter();
 	protected net.idea.i5._5.ambit2.sections.TO_EYE_IRRITATION_SECTION.StudyRecordConverter TO_EYE_IRRITATION_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.TO_EYE_IRRITATION_SECTION.StudyRecordConverter();	
+		  new net.idea.i5._5.ambit2.sections.TO_EYE_IRRITATION_SECTION.StudyRecordConverter();
+	protected net.idea.i5._5.ambit2.sections.TO_GENETIC_IN_VITRO_SECTION.StudyRecordConverter TO_GENETIC_IN_VITRO_SECTION = 
+		  new net.idea.i5._5.ambit2.sections.TO_GENETIC_IN_VITRO_SECTION.StudyRecordConverter();
+	
 	/**
 	 * 
 	 */
@@ -87,7 +90,10 @@ public class I5AmbitProcessor<Target> extends
 			return TO_SKIN_IRRITATION_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SKIN_IRRITATION_SECTION.EndpointStudyRecord) unmarshalled,record);
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_EYE_IRRITATION_SECTION.EndpointStudyRecord) {
 			return TO_EYE_IRRITATION_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_EYE_IRRITATION_SECTION.EndpointStudyRecord) unmarshalled,record);
-		}				
+		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_GENETIC_IN_VITRO_SECTION.EndpointStudyRecord) {
+			return TO_GENETIC_IN_VITRO_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_GENETIC_IN_VITRO_SECTION.EndpointStudyRecord) unmarshalled,record);
+		}								
+		
 		return null;
 	}
 
