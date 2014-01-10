@@ -45,6 +45,8 @@ public class I5AmbitProcessor<Target> extends
 		  new net.idea.i5._5.ambit2.sections.TO_ACUTE_ORAL_SECTION.StudyRecordConverter();
 	protected net.idea.i5._5.ambit2.sections.TO_REPEATED_ORAL_SECTION.StudyRecordConverter TO_REPEATED_ORAL_SECTION = 
 		  new net.idea.i5._5.ambit2.sections.TO_REPEATED_ORAL_SECTION.StudyRecordConverter();
+	protected net.idea.i5._5.ambit2.sections.TO_REPRODUCTION_SECTION.StudyRecordConverter TO_REPRODUCTION_SECTION = 
+		  new net.idea.i5._5.ambit2.sections.TO_REPRODUCTION_SECTION.StudyRecordConverter();
 	protected net.idea.i5._5.ambit2.sections.TO_SENSITIZATION_SECTION.StudyRecordConverter TO_SENSITIZATION_SECTION = 
 		  new net.idea.i5._5.ambit2.sections.TO_SENSITIZATION_SECTION.StudyRecordConverter();
 	protected net.idea.i5._5.ambit2.sections.TO_SKIN_IRRITATION_SECTION.StudyRecordConverter TO_SKIN_IRRITATION_SECTION = 
@@ -74,7 +76,9 @@ public class I5AmbitProcessor<Target> extends
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord) {
 			return TO_ACUTE_ORAL_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord) unmarshalled,record);
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION.EndpointStudyRecord) {
-			return TO_REPEATED_ORAL_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION.EndpointStudyRecord) unmarshalled,record);			
+			return TO_REPEATED_ORAL_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION.EndpointStudyRecord) unmarshalled,record);
+		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECTION.EndpointStudyRecord) {
+			return TO_REPRODUCTION_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECTION.EndpointStudyRecord) unmarshalled,record);			
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord) {
 			return TO_BIODEG_WATER_SCREEN_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord) unmarshalled,record);
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SENSITIZATION_SECTION.EndpointStudyRecord) {
