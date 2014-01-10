@@ -72,6 +72,12 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION" ;
 			}
 		},
+		TO_SENSITIZATION {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SENSITIZATION_SECTION" ;
+			}
+		},		
 		PC_PARTITION {
 			@Override
 			public String getContextPath() {
@@ -150,6 +156,10 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		    			case TO_REPEATED_ORAL: {
 		    				return tag;
 		    			}
+		    			case TO_SENSITIZATION: {
+		    				return tag;
+		    			}
+		    			
 		    			default:
 		    				continue;
 		    				//if (inSciPart || inStudyRecord) continue;
