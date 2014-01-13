@@ -1,4 +1,4 @@
-package net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION;
+package net.idea.i5._5.ambit2.sections.PC_WATER_SOL_SECTION;
 
 import net.idea.i5._5.ambit2.sections.AbstractStudyRecordConverter;
 import ambit2.base.data.SubstanceRecord;
@@ -7,27 +7,26 @@ import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.interfaces.IStructureRecord;
-import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.DocumentTypeType;
-import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord;
-import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart;
-import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart.PCPARTITION.REFERENCE.Set;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.DocumentTypeType;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord.ScientificPart;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord.ScientificPart.PCWATERSOL.REFERENCE.Set;
 
 public class StudyRecordConverter
 		extends
-		AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord> {
-
+		AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord> {
 
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled,
 			SubstanceRecord record) {
-		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart sciPart = 
+		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord.ScientificPart sciPart = 
 				unmarshalled.getScientificPart();
-		if (sciPart.getPCPARTITION()==null) return null;
+		if (sciPart.getPCWATERSOL()==null) return null;
 
 		record.clear();
 		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
 				unmarshalled.getDocumentReferencePK(),
-				unmarshalled.getName(),"P-CHEM","PC_PARTITION_SECTION");
+				unmarshalled.getName(),"P-CHEM","PC_WATER_SOL_SECTION");
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
 				,unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS()
 				,unmarshalled.getPurposeFlag().getValueID(),unmarshalled.getStudyResultType().getValueID());
@@ -39,8 +38,8 @@ public class StudyRecordConverter
 		}
 		
 		// citation
-		if (sciPart.getPCPARTITION().getREFERENCE() != null)
-			for (Set set : sciPart.getPCPARTITION().getREFERENCE().getSet()) {
+		if (sciPart.getPCWATERSOL().getREFERENCE() != null)
+			for (Set set : sciPart.getPCWATERSOL().getREFERENCE().getSet()) {
 				if (set.getREFERENCEAUTHOR()!=null)
 					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
 				if (set.getREFERENCEYEAR()!=null) {
@@ -49,17 +48,17 @@ public class StudyRecordConverter
 			}			
 		// TODO data owner - it's probably not in this file
 		
-		if (sciPart.getPCPARTITION().getGUIDELINE() != null)
-			for (ScientificPart.PCPARTITION.GUIDELINE.Set set : sciPart
-					.getPCPARTITION().getGUIDELINE().getSet()) {
+		if (sciPart.getPCWATERSOL().getGUIDELINE() != null)
+			for (ScientificPart.PCWATERSOL.GUIDELINE.Set set : sciPart
+					.getPCWATERSOL().getGUIDELINE().getSet()) {
 				papp.getProtocol().addGuideline(
 						set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
 
 			}
-		if (sciPart.getPCPARTITION().getMETHODNOGUIDELINE() != null)
+		if (sciPart.getPCWATERSOL().getMETHODNOGUIDELINE() != null)
 			try {
 				papp.getProtocol().addGuideline(
-						sciPart.getPCPARTITION().getMETHODNOGUIDELINE()
+						sciPart.getPCWATERSOL().getMETHODNOGUIDELINE()
 								.getSet().getTEXTAREABELOW().getTEXTAREABELOW()
 								.getValue());
 			} catch (Exception x) {
@@ -71,39 +70,35 @@ public class StudyRecordConverter
 		 * ().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue()) }
 		 */
 		// Exposure duration
-		if (sciPart.getPCPARTITION().getMETHODTYPE() != null) {
+		if (sciPart.getPCWATERSOL().getMETHODTYPE() != null) {
 			papp.getParameters().put(
 					methodType,
-					sciPart.getPCPARTITION().getMETHODTYPE().getSet()
+					sciPart.getPCWATERSOL().getMETHODTYPE().getSet()
 							.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 		} else {
 			papp.getParameters().put(methodType, null);
 		}
-
-		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart.PCPARTITION.PARTCOEFF.Set set : sciPart
-				.getPCPARTITION().getPARTCOEFF().getSet()) {
+		if (sciPart.getPCWATERSOL().getWATERSOL()!=null)
+		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord.ScientificPart.PCWATERSOL.WATERSOL.Set set : sciPart.getPCWATERSOL().getWATERSOL().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setEndpoint(set.getTYPE().getTYPEValue());
+			effect.setEndpoint(WaterSolubility);
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 
 			if (set.getVALUEUNITTEMPVALUE() != null) {
-				effect.getConditions()
-						.put(Temperature,
-								(set.getVALUEUNITTEMPVALUE().getTEMPVALUE()
-										.getValue() == null ? "" : set
-										.getVALUEUNITTEMPVALUE().getTEMPVALUE()
-										.getValue())
-										+ " "
-										+ set.getVALUEUNITTEMPVALUE()
-												.getTEMPUNITValue());
+				Params tvalue = new Params();
+				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
+					tvalue.put(
+							loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE()));
+				}
+				if (set.getVALUEUNITTEMPVALUE()!=null)
+					tvalue.put(
+							unit,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()));
+				effect.getConditions().put(Temperature, tvalue);				
 			} else
-				effect.getConditions().put(Temperature, null);
+				effect.getConditions().put(Temperature, null);			
 			
 			if (set.getPRECISIONPHLOQUALIFIER() != null) {
-				/* Change to go like this
-				"conditions":	{"pH": {"loValue" : 4},"Temperature":"25 C"},
-				*/
 				Params phvalue = new Params();
 				if (set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE()!= null) {
 					phvalue.put(loQualifier,
@@ -125,8 +120,13 @@ public class StudyRecordConverter
 			} else {
 				effect.getConditions().put(ph,null);
 			}
-
+			try{
+				effect.getConditions().put(Remark, set.getREM().getREM().getValue());
+			} catch (Exception x) {
+				effect.getConditions().put(Remark,null);	
+			}
 			if (set.getPRECISIONLOQUALIFIER() != null) {
+				effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
 				if (set.getPRECISIONLOQUALIFIER().getLOVALUE() != null)
 					try {
 						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER()
@@ -152,6 +152,7 @@ public class StudyRecordConverter
 								.getValue());
 					}
 			}
+
 		}
 
 		return record;

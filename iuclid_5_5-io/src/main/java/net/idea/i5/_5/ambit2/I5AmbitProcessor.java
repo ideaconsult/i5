@@ -37,8 +37,27 @@ public class I5AmbitProcessor<Target> extends
 	protected StructureRecord structureRecord = new StructureRecord();
 	protected CASProcessor casProcessor = new CASProcessor();
 	protected StudyRecordConverter EC_FISHTOX_SECTION = new StudyRecordConverter();
+	//PC
+	/* missing - appearance 4.1 ?
 	protected net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION.StudyRecordConverter PC_PARTITION_SECTION = 
 		  new net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION.StudyRecordConverter();
+		  */
+	protected net.idea.i5._5.ambit2.sections.PC_BOILING_SECTION.StudyRecordConverter PC_BOILING_SECTION = 
+		  new net.idea.i5._5.ambit2.sections.PC_BOILING_SECTION.StudyRecordConverter();
+	protected net.idea.i5._5.ambit2.sections.PC_DISSOCIATION_SECTION.StudyRecordConverter PC_DISSOCIATION_SECTION = 
+		  new net.idea.i5._5.ambit2.sections.PC_DISSOCIATION_SECTION.StudyRecordConverter();
+	protected net.idea.i5._5.ambit2.sections.PC_MELTING_SECTION.StudyRecordConverter PC_MELTING_SECTION = 
+		  new net.idea.i5._5.ambit2.sections.PC_MELTING_SECTION.StudyRecordConverter();
+	protected net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION.StudyRecordConverter PC_PARTITION_SECTION = 
+		  new net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION.StudyRecordConverter();
+	protected net.idea.i5._5.ambit2.sections.PC_SOL_ORGANIC_SECTION.StudyRecordConverter PC_SOL_ORGANIC_SECTION = 
+		  new net.idea.i5._5.ambit2.sections.PC_SOL_ORGANIC_SECTION.StudyRecordConverter();
+	protected net.idea.i5._5.ambit2.sections.PC_VAPOUR_SECTION.StudyRecordConverter PC_VAPOUR_SECTION = 
+		  new net.idea.i5._5.ambit2.sections.PC_VAPOUR_SECTION.StudyRecordConverter();
+	protected net.idea.i5._5.ambit2.sections.PC_WATER_SOL_SECTION.StudyRecordConverter PC_WATER_SOL_SECTION = 
+		  new net.idea.i5._5.ambit2.sections.PC_WATER_SOL_SECTION.StudyRecordConverter();
+	
+	//TO
 	protected net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SCREEN_SECTION.StudyRecordConverter TO_BIODEG_WATER_SCREEN_SECTION = 
 		  new net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SCREEN_SECTION.StudyRecordConverter();
 	protected net.idea.i5._5.ambit2.sections.TO_ACUTE_ORAL_SECTION.StudyRecordConverter TO_ACUTE_ORAL_SECTION = 
@@ -66,11 +85,20 @@ public class I5AmbitProcessor<Target> extends
 			return transform2record((Substance) unmarshalled);
 		else if (unmarshalled instanceof ReferenceSubstance) {
 			return transform2record((ReferenceSubstance) unmarshalled);
+		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_BOILING_SECTION.EndpointStudyRecord) {
+			return PC_BOILING_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_BOILING_SECTION.EndpointStudyRecord) unmarshalled,record);
+		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_DISSOCIATION_SECTION.EndpointStudyRecord) {
+			return PC_DISSOCIATION_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_DISSOCIATION_SECTION.EndpointStudyRecord) unmarshalled,record);
+		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_MELTING_SECTION.EndpointStudyRecord) {
+			return PC_MELTING_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_MELTING_SECTION.EndpointStudyRecord) unmarshalled,record);
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord) {
-			return PC_PARTITION_SECTION
-					.transform2record(
-							(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord) unmarshalled,
-							record);
+			return PC_PARTITION_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord) unmarshalled,record);
+		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION.EndpointStudyRecord) {
+			return PC_VAPOUR_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION.EndpointStudyRecord) unmarshalled,record);
+		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord) {
+			return PC_WATER_SOL_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord) unmarshalled,record);
+		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_SOL_ORGANIC_SECTION.EndpointStudyRecord) {
+			return PC_SOL_ORGANIC_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_SOL_ORGANIC_SECTION.EndpointStudyRecord) unmarshalled,record);			
 		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord) {
 			return EC_FISHTOX_SECTION
 					.transform2record(

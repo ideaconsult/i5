@@ -106,7 +106,19 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.class.getName(), 
 				new net.idea.i5._5.ambit2.I5AmbitProcessor());
 		//PC_
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_BOILING_SECTION.EndpointStudyRecord.class.getName(), 
+				new net.idea.i5._5.ambit2.I5AmbitProcessor());
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_DISSOCIATION_SECTION.EndpointStudyRecord.class.getName(), 
+				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_MELTING_SECTION.EndpointStudyRecord.class.getName(), 
+				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
 		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.class.getName(), 
+				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_SOL_ORGANIC_SECTION.EndpointStudyRecord.class.getName(), 
+				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION.EndpointStudyRecord.class.getName(), 
+				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord.class.getName(), 
 				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
 		//ReferenceSubstance
 		processors.put(eu.europa.echa.schemas.iuclid5._20070330.referencesubstance.ReferenceSubstance.class.getName(), 

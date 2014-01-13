@@ -12,10 +12,6 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SKIN_IRRITATION_S
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SKIN_IRRITATION_SECTION.EndpointStudyRecord>{
-	private static final String cSpecies = "Species";
-	private static final String cTypeMethod= "Type of method";
-	private static final String cReference = "Reference";
-	private static final String cYear = "Study year";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {

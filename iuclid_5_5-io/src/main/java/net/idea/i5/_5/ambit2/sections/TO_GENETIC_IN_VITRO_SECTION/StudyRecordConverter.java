@@ -13,13 +13,9 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_GENETIC_IN_VITRO_
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_GENETIC_IN_VITRO_SECTION.EndpointStudyRecord>{
-	private static final String cSpecies = "Species";
 	private static final String cTypeGenotoxicity= "Type of genotoxicity";
-	private static final String cTypeStudy= "Type of study";
 	private static final String cTargetGene= "Target gene";
 	private static final String cMetabolicActivationSystem= "Metabolic activation system";
-	private static final String cReference = "Reference";
-	private static final String cYear = "Study year";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {

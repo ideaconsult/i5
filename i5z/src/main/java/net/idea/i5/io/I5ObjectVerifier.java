@@ -102,14 +102,49 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_GENETIC_IN_VITRO_SECTION" ;
 			}			
 		},
+		PC_MELTING {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_MELTING_SECTION" ;
+			}
+		},
+		PC_BOILING {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_BOILING_SECTION" ;
+			}
+		},
+		PC_DISSOCIATION {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_DISSOCIATION_SECTION" ;
+			}
+		},
 		PC_PARTITION {
 			@Override
 			public String getContextPath() {
 				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION" ;
 			}
-			
-			
-		}
+		},
+		PC_SOL_ORGANIC {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_SOL_ORGANIC_SECTION" ;
+			}
+		},		
+		PC_VAPOUR {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION" ;
+			}
+		},
+		PC_WATER_SOL {
+			@Override
+			public String getContextPath() {
+				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION" ;
+			}
+		}		
+		
 		;
 		public String getContextPath() {
 			return null;
@@ -174,9 +209,27 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		    			case EC_FISHTOX: {
 		    				return tag;
 		    			}		    			
+		    			case PC_BOILING: {
+		    				return tag;
+		    			}
+		    			case PC_DISSOCIATION: {
+		    				return tag;
+		    			}
+		    			case PC_MELTING: {
+		    				return tag;
+		    			}
 		    			case PC_PARTITION: {
 		    				return tag;
 		    			}
+		    			case PC_SOL_ORGANIC: {
+		    				return tag;
+		    			}
+		    			case PC_VAPOUR: {
+		    				return tag;
+		    			}		    	
+		    			case PC_WATER_SOL: {
+		    				return tag;
+		    			}		    				    			
 		    			case TO_REPEATED_ORAL: {
 		    				return tag;
 		    			}

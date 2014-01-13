@@ -7,7 +7,46 @@ import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 
 public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordConverter<T>{
-
+	protected static final String cSex = "Sex";
+	protected static final String cSpecies = "Species";
+	protected static final String cGeneration = "Generation";
+	protected static final String cDoses= "Doses/concentrations";
+	protected static final String cRoute= "Route of administration";	
+	protected static final String cReference = "Reference";
+	protected static final String cYear = "Study year";
+	protected static final String cTypeMethod= "Type of method";
+	protected static final String cTypeStudy= "Type of study";
+	
+	protected static final String DECOMPOSITION = "Decomposition";
+	protected static final String methodType = "Method type";
+	protected static final String ph = "pH";
+	protected static final String Temperature = "Temperature";
+	protected static final String Remark = "Remark";
+	protected static final String Solvent = "Solvent";
+	protected static final String VapourPressure = "Vapour Pressure";
+	protected static final String WaterSolubility = "Water solubility";
+	protected static final String SUBLIMATION = "Sublimation";
+	protected static final String MELTINGPOINT = "Melting Point";
+	protected static final String pKa = "pKa";
+	
+	protected static final String SOLUBILITY_ORG_SOLVENT = "Solubility org. solvents";
+	
+	
+	
+	protected static final String unit = "unit";
+	protected static final String loValue = "loValue";
+	protected static final String upValue = "upValue";
+	protected static final String loQualifier = "loQualifier";
+	protected static final String upQualifier = "upQualifier";
+	
+	private static final String r_id = "id";
+	private static final String r_value = "value";
+	private static final String r_isRobustStudy = "isRobustStudy";
+	private static final String r_isUsedforClassification = "isUsedforClassification";
+	private static final String r_isUsedforMSDS = "isUsedforMSDS";
+	private static final String r_purposeFlag = "purposeFlag";
+	private static final String r_studyResultType = "studyResultType";
+	
 	protected void setCompanyUUID(SubstanceRecord record,String value) {
 		int slashpos = value.indexOf("/");
 		if (slashpos>0)
@@ -20,13 +59,13 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 				String purposeFlagCode,String studyResultTypeID) {
 		try {
 			Params reliability = new Params();
-			reliability.put("id", valueID);
-			reliability.put("value", Phrases.phrasegroup_A36.get(valueID));
-			reliability.put("isRobustStudy", isRobustStudy);
-			reliability.put("isUsedforClassification", isUsedforClassification);
-			reliability.put("isUsedforMSDS", isUsedforMSDS);
-			reliability.put("purposeFlag", Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
-			reliability.put("studyResultType", Phrases.phrasegroup_Z05.get(studyResultTypeID));
+			reliability.put(r_id, valueID);
+			reliability.put(r_value, Phrases.phrasegroup_A36.get(valueID));
+			reliability.put(r_isRobustStudy, isRobustStudy);
+			reliability.put(r_isUsedforClassification, isUsedforClassification);
+			reliability.put(r_isUsedforMSDS, isUsedforMSDS);
+			reliability.put(r_purposeFlag, Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
+			reliability.put(r_studyResultType, Phrases.phrasegroup_Z05.get(studyResultTypeID));
 			
 			papp.setReliability(reliability);
 			return reliability;

@@ -13,13 +13,6 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECT
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECTION.EndpointStudyRecord>{
-	private static final String cSex = "Sex";
-	private static final String cGeneration = "Generation";
-	private static final String cSpecies = "Species";
-	private static final String cRoute= "Route of administration";
-	private static final String cDoses= "Doses/concentrations";
-	private static final String cReference = "Reference";
-	private static final String cYear = "Study year";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
