@@ -89,7 +89,7 @@ public class StudyRecordConverter
 				Params tvalue = new Params();
 				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
 					tvalue.put(
-							loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE()));
+							loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
 				}
 				if (set.getVALUEUNITTEMPVALUE()!=null)
 					tvalue.put(
@@ -154,7 +154,7 @@ public class StudyRecordConverter
 			}
 
 		}
-
+		System.out.println(papp);
 		return record;
 	}
 	
