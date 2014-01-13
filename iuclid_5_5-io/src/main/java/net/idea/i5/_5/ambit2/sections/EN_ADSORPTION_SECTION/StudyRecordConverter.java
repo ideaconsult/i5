@@ -10,12 +10,10 @@ import ambit2.base.interfaces.IStructureRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_ADSORPTION_SECTION.DocumentTypeType;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_ADSORPTION_SECTION.EndpointStudyRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_ADSORPTION_SECTION.EndpointStudyRecord.ScientificPart;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_ADSORPTION_SECTION.EndpointStudyRecord.ScientificPart.ENADSORPTION.REFERENCE.Set;
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_ADSORPTION_SECTION.EndpointStudyRecord>{
-	private static final String cTimePoint = "Sampling time";
-	private static final String cPercentDegradation = "% Degradation";
-	private static final String cTestType = "Test type";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
@@ -38,53 +36,66 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
 		}
 		if (sciPart.getENADSORPTION().getGUIDELINE()!=null)
-			for (ScientificPart.TOBIODEGWATERSCREEN.GUIDELINE.Set set : sciPart.getTOBIODEGWATERSCREEN().getGUIDELINE().getSet()) {
+			for (ScientificPart.ENADSORPTION.GUIDELINE.Set set : sciPart.getENADSORPTION().getGUIDELINE().getSet()) {
 				if (set.getPHRASEOTHERGUIDELINE()!=null)
 					papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
 
 			}
 		if (sciPart.getENADSORPTION().getMETHODNOGUIDELINE()!=null) try {
-			papp.getProtocol().addGuideline(sciPart.getTOBIODEGWATERSCREEN().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+			papp.getProtocol().addGuideline(sciPart.getENADSORPTION().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
 		
 		// citation
 		if (sciPart.getENADSORPTION().getREFERENCE() != null)
-			for (Set set : sciPart
-					.getENADSORPTION().getREFERENCE().getSet()) {
+			for (Set set : sciPart.getENADSORPTION().getREFERENCE().getSet()) {
 				if (set.getREFERENCEAUTHOR()!=null)
 					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
 				if (set.getREFERENCEYEAR()!=null) {
 					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 				}
 			}		
+	
 
-		//TEST TYPE
-		papp.getParameters().put(cTestType,
-				sciPart.getENADSORPTION().getOXYGENCONDITIONS()==null?null:
-				sciPart.getENADSORPTION().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
-
-		if (sciPart.getENADSORPTION().getINTERPRETRESULTSSUBM()!=null) {
-			papp.setInterpretationResult(sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} else
-			papp.setInterpretationResult(null);
-		
-		papp.setInterpretationCriteria(null);
-		if (sciPart.getENADSORPTION().getRESULTSDETAILS()!=null) try {
-			papp.setInterpretationCriteria(sciPart.getENADSORPTION().getRESULTSDETAILS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
-		} catch (Exception x) {}
-		
-
-		if (sciPart.getENADSORPTION().getDEGRAD()!=null) {
-			for (Set set : sciPart.getENADSORPTION().getDEGRAD().getSet()) {
+		if (sciPart.getENADSORPTION().getRESULTSBATCHDETAILS()!=null) {
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_ADSORPTION_SECTION.EndpointStudyRecord.ScientificPart.ENADSORPTION.ADSORPTIONKOC.Set 
+					set : sciPart.getENADSORPTION().getADSORPTIONKOC().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(cPercentDegradation);
-				effect.setUnit("%");
-				if (set.getPHRASEOTHERPARAMETER()!=null)
-					effect.setEndpoint(set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
-
+				effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());
 				effect.setConditions(new Params());
-				
 				papp.addEffect(effect);
+				
+				//temperature
+				if (set.getVALUEUNITTEMPVALUE() != null) {
+					Params tvalue = new Params();
+					if (set.getVALUEUNITTEMPVALUE()!= null) {
+						tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+					}
+					tvalue.put(unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...
+					effect.getConditions().put(Temperature, tvalue);				
+				} else
+					effect.getConditions().put(Temperature, null);	
+				
+				try {
+					effect.getConditions().put(Remark, set.getREMARKS().getREMARKS().getValue());
+				} catch (Exception x) {
+					effect.getConditions().put(Remark,null);
+				}
+				
+				if (set.getPRECISIONOCLOQUALIFIER()!=null) {
+					Params oc = new Params(); //% organic carbon
+					oc.put(unit,"%");
+					if (set.getPRECISIONOCLOQUALIFIER().getOCLOVALUE()!=null) try {
+						oc.put(loValue,Double.parseDouble(set.getPRECISIONOCLOQUALIFIER().getOCLOVALUE().getValue()));
+						oc.put(loQualifier, set.getPRECISIONOCLOQUALIFIER().getOCLOQUALIFIER());
+					} catch (Exception x) {}
+					
+					if (set.getPRECISIONOCLOQUALIFIER().getOCUPVALUE()!=null) try {
+						oc.put(upValue,Double.parseDouble(set.getPRECISIONOCLOQUALIFIER().getOCUPVALUE().getValue()));
+						oc.put(upQualifier, set.getPRECISIONOCLOQUALIFIER().getOCUPQUALIFIERValue());
+					} catch (Exception x) {
+					}
+					effect.getConditions().put(OrgCarbonPercent,null);
+				}					
 				
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
 					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
@@ -96,13 +107,6 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
 					} catch (Exception x) {}
 				}	
-				
-				if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-					effect.getConditions().put(cTimePoint,
-							(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue())+
-							" " + 
-							(set.getVALUEUNITTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));	
-
 				
 			}
 		} 		
