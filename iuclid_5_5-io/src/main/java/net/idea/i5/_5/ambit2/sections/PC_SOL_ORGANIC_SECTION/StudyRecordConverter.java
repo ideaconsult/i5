@@ -127,14 +127,5 @@ public class StudyRecordConverter
 		return record;
 	}
 	
-	protected Object getNumber(Object value) {
-		if (value == null) return null;
-		if (value instanceof Number) return value;
-		try {
-			return Double.parseDouble(value.toString());
-		} catch (Exception x) {
-			return value;
-		}
-		
-	}
+
 }

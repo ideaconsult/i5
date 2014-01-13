@@ -34,121 +34,57 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 				return "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101.substance";
 			}
 		},
-		EndpointRecord,
+		EndpointRecord {
+			@Override
+			public String getContextPath() {
+				return null;
+			}
+		},
 		EndpointStudyRecord {
 			@Override
 			public String getContextPath() {
 				return null;
-				//return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION";
-				//return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION" ;
-				//return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION";
-				//return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION" ;
 			}			
 		},
-	    scientificPart,
-		EC_FISHTOX {
+	    scientificPart {
 			@Override
 			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION" ;
+				return null;
 			}
 		},
-		TO_ACUTE_ORAL {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION" ;
-			}
-			
-		},
-		TO_BIODEG_WATER_SCREEN {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION" ;
-			}
-			
-		},	
-		TO_REPEATED_ORAL {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION" ;
-			}
-		},
-		TO_REPRODUCTION {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECTION" ;
-			}
-		},		
-		TO_SENSITIZATION {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SENSITIZATION_SECTION" ;
-			}
-		},		
-		TO_SKIN_IRRITATION {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SKIN_IRRITATION_SECTION" ;
-			}
-		},
-		TO_EYE_IRRITATION {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_EYE_IRRITATION_SECTION" ;
-			}
-		},		
-		TO_GENETIC_IN_VITRO {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_GENETIC_IN_VITRO_SECTION" ;
-			}			
-		},
-		PC_MELTING {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_MELTING_SECTION" ;
-			}
-		},
-		PC_BOILING {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_BOILING_SECTION" ;
-			}
-		},
-		PC_DISSOCIATION {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_DISSOCIATION_SECTION" ;
-			}
-		},
-		PC_PARTITION {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION" ;
-			}
-		},
-		PC_SOL_ORGANIC {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_SOL_ORGANIC_SECTION" ;
-			}
-		},		
-		PC_VAPOUR {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION" ;
-			}
-		},
-		PC_WATER_SOL {
-			@Override
-			public String getContextPath() {
-				return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION" ;
-			}
-		}		
-		
+		//ecotox
+		EC_FISHTOX,
+		//env
+		TO_PHOTOTRANS_AIR_SECTION,
+		TO_HYDROLYSIS_SECTION,
+		TO_BIODEG_WATER_SIM_SECTION,
+		EN_BIOACCU_TERR_SECTION,
+		EN_BIOACCUMULATION_SECTION,
+		EN_STABILITY_IN_SOIL_SECTION,
+		EN_ADSORPTION_SECTION,
+		EN_HENRY_LAW_SECTION,
+		TO_BIODEG_WATER_SCREEN,
+		//tox
+		TO_ACUTE_ORAL,		
+		TO_REPEATED_ORAL,
+		TO_REPRODUCTION,		
+		TO_SENSITIZATION,		
+		TO_SKIN_IRRITATION,
+		TO_EYE_IRRITATION,	
+		TO_GENETIC_IN_VITRO,
+		//pc
+		PC_MELTING,
+		PC_BOILING,
+		PC_DISSOCIATION,
+		PC_PARTITION,
+		PC_SOL_ORGANIC,
+		PC_VAPOUR,
+		PC_WATER_SOL,	
 		;
+
 		public String getContextPath() {
-			return null;
-		}
+			return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord."+name()+"_SECTION";
+		}		
 	} 
 	
 	public I5ObjectVerifier() {
@@ -206,6 +142,30 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		    			case TO_BIODEG_WATER_SCREEN: {
 		    				return tag;
 		    			}
+		    			case TO_HYDROLYSIS_SECTION: {
+		    				return tag;
+		    			}
+		    			case TO_BIODEG_WATER_SIM_SECTION: {
+		    				return tag;
+		    			}
+		    			case TO_PHOTOTRANS_AIR_SECTION: {
+		    				return tag;
+		    			}
+		    			case EN_BIOACCU_TERR_SECTION: {
+		    				return tag;
+		    			}		    			
+		    			case EN_BIOACCUMULATION_SECTION: {
+		    				return tag;
+		    			}
+		    			case EN_STABILITY_IN_SOIL_SECTION: {
+		    				return tag;
+		    			}
+		    			case EN_ADSORPTION_SECTION: {
+		    				return tag;
+		    			}
+		    			case EN_HENRY_LAW_SECTION: {
+		    				return tag;
+		    			}		    					    			
 		    			case EC_FISHTOX: {
 		    				return tag;
 		    			}		    			
