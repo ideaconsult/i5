@@ -15,9 +15,6 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCUMULATION_S
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCUMULATION_SECTION.EndpointStudyRecord>{
-	private static final String cTimePoint = "Sampling time";
-	private static final String cPercentDegradation = "% Degradation";
-	private static final String cTestType = "Test type";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
@@ -60,36 +57,22 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				}
 			}		
 
-		//TEST TYPE
-		papp.getParameters().put(cTestType,
-				sciPart.getENBIOACCUMULATION().getOXYGENCONDITIONS()==null?null:
-				sciPart.getENBIOACCUMULATION().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
-
-		if (sciPart.getENBIOACCUMULATION().getINTERPRETRESULTSSUBM()!=null) {
-			papp.setInterpretationResult(sciPart.getENBIOACCUMULATION().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} else
-			papp.setInterpretationResult(null);
+		papp.getParameters().put(cSpecies,sciPart.getENBIOACCUMULATION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		papp.getParameters().put(cRoute,sciPart.getENBIOACCUMULATION().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		
-		papp.setInterpretationCriteria(null);
-		if (sciPart.getENBIOACCUMULATION().getRESULTSDETAILS()!=null) try {
-			papp.setInterpretationCriteria(sciPart.getENBIOACCUMULATION().getRESULTSDETAILS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
-		} catch (Exception x) {}
-		
-
-		if (sciPart.getENBIOACCUMULATION().getDEGRAD()!=null) {
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCUMULATION_SECTION.EndpointStudyRecord.ScientificPart.ENBIOACCUMULATION.DEGRAD.Set set : sciPart.getENBIOACCUMULATION().getDEGRAD().getSet()) {
+		if (sciPart.getENBIOACCUMULATION().getBCF()!=null) {
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCUMULATION_SECTION.EndpointStudyRecord.ScientificPart.ENBIOACCUMULATION.BCF.Set set : sciPart.getENBIOACCUMULATION().getBCF().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(cPercentDegradation);
-				effect.setUnit("%");
-				if (set.getPHRASEOTHERPARAMETER()!=null)
-					effect.setEndpoint(set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
-
+				effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());
 				effect.setConditions(new Params());
-				
 				papp.addEffect(effect);
 				
+				effect.getConditions().put(BioaccBasis,set.getPHRASEOTHERBASIS().getBASISTXT().getValue());
+				effect.getConditions().put(cDoses,set.getCONCLEVEL().getCONCLEVEL().getValue());
+				
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
-					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
+					effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
+					if (set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue()!=null) try {
 						effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
 						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
 					} catch (Exception x) {}
@@ -98,13 +81,6 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
 					} catch (Exception x) {}
 				}	
-				
-				if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-					effect.getConditions().put(cTimePoint,
-							(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue())+
-							" " + 
-							(set.getVALUEUNITTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));	
-
 				
 			}
 		} 		

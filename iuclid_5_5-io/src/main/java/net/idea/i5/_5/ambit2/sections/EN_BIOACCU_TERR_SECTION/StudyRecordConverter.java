@@ -58,14 +58,15 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			}		
 
 		papp.getParameters().put(cSpecies,sciPart.getENBIOACCUTERR().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		
 		if (sciPart.getENBIOACCUTERR().getBCF()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCU_TERR_SECTION.EndpointStudyRecord.ScientificPart.ENBIOACCUTERR.BCF.Set set : sciPart.getENBIOACCUTERR().getBCF().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 				effect.setEndpoint(set.getBSAFTYPE().getBSAFTYPEValue());
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
-				
-				effect.getConditions().put("BIOACC. BASIS",set.getPHRASEOTHERBASIS().getBASISTXT().getValue());
+
+				effect.getConditions().put(BioaccBasis,set.getPHRASEOTHERBASIS().getBASISTXT().getValue());
 				
 				if (set.getPRECISIONBSAFLOQUALIFIER()!=null) {
 					effect.setUnit(set.getPRECISIONBSAFLOQUALIFIER().getBSAFUNITValue());

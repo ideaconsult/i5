@@ -31,7 +31,7 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected static final String HLC = "Henry's Law const.";
 	protected static final String pKa = "pKa";
 	protected static final String OrgCarbonPercent = "% Org.Carbon";
-	
+	protected static final String BioaccBasis = "Bioacc. basis";
 	
 	protected static final String SOLUBILITY_ORG_SOLVENT = "Solubility org. solvents";
 	
