@@ -15,9 +15,6 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCU_TERR_SECT
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCU_TERR_SECTION.EndpointStudyRecord>{
-	private static final String cTimePoint = "Sampling time";
-	private static final String cPercentDegradation = "% Degradation";
-	private static final String cTestType = "Test type";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
@@ -60,51 +57,27 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				}
 			}		
 
-		//TEST TYPE
-		papp.getParameters().put(cTestType,
-				sciPart.getENBIOACCUTERR().getOXYGENCONDITIONS()==null?null:
-				sciPart.getENBIOACCUTERR().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
-
-		if (sciPart.getENBIOACCUTERR().getINTERPRETRESULTSSUBM()!=null) {
-			papp.setInterpretationResult(sciPart.getENBIOACCUTERR().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} else
-			papp.setInterpretationResult(null);
-		
-		papp.setInterpretationCriteria(null);
-		if (sciPart.getENBIOACCUTERR().getRESULTSDETAILS()!=null) try {
-			papp.setInterpretationCriteria(sciPart.getENBIOACCUTERR().getRESULTSDETAILS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
-		} catch (Exception x) {}
-		
-
-		if (sciPart.getENBIOACCUTERR().getDEGRAD()!=null) {
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCU_TERR_SECTION.EndpointStudyRecord.ScientificPart.ENBIOACCUTERR.DEGRAD.Set set : sciPart.getENBIOACCUTERR().getDEGRAD().getSet()) {
+		papp.getParameters().put(cSpecies,sciPart.getENBIOACCUTERR().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		if (sciPart.getENBIOACCUTERR().getBCF()!=null) {
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCU_TERR_SECTION.EndpointStudyRecord.ScientificPart.ENBIOACCUTERR.BCF.Set set : sciPart.getENBIOACCUTERR().getBCF().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(cPercentDegradation);
-				effect.setUnit("%");
-				if (set.getPHRASEOTHERPARAMETER()!=null)
-					effect.setEndpoint(set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
-
+				effect.setEndpoint(set.getBSAFTYPE().getBSAFTYPEValue());
 				effect.setConditions(new Params());
-				
 				papp.addEffect(effect);
 				
-				if (set.getPRECISIONLOQUALIFIER()!=null) {
-					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
-						effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
-						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
+				effect.getConditions().put("BIOACC. BASIS",set.getPHRASEOTHERBASIS().getBASISTXT().getValue());
+				
+				if (set.getPRECISIONBSAFLOQUALIFIER()!=null) {
+					effect.setUnit(set.getPRECISIONBSAFLOQUALIFIER().getBSAFUNITValue());
+					if (set.getPRECISIONBSAFLOQUALIFIER().getBSAFLOVALUE()!=null) try {
+						effect.setLoValue(Double.parseDouble(set.getPRECISIONBSAFLOQUALIFIER().getBSAFLOVALUE().getValue()));
+						effect.setLoQualifier(set.getPRECISIONBSAFLOQUALIFIER().getBSAFLOQUALIFIER());
 					} catch (Exception x) {}
-					if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
-						effect.setUpValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
-						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
+					if (set.getPRECISIONBSAFLOQUALIFIER().getBSAFUPVALUE()!=null) try {
+						effect.setUpValue(Double.parseDouble(set.getPRECISIONBSAFLOQUALIFIER().getBSAFUPVALUE().getValue()));
+						effect.setUpQualifier(set.getPRECISIONBSAFLOQUALIFIER().getBSAFUPQUALIFIER());
 					} catch (Exception x) {}
 				}	
-				
-				if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-					effect.getConditions().put(cTimePoint,
-							(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue())+
-							" " + 
-							(set.getVALUEUNITTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));	
-
 				
 			}
 		} 		
