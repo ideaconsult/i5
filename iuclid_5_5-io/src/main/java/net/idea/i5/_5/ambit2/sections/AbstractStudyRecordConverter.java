@@ -23,10 +23,12 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected static final String Temperature = "Temperature";
 	protected static final String Remark = "Remark";
 	protected static final String Solvent = "Solvent";
+	protected static final String Pressure = "Pressure";
 	protected static final String VapourPressure = "Vapour Pressure";
 	protected static final String WaterSolubility = "Water solubility";
 	protected static final String SUBLIMATION = "Sublimation";
 	protected static final String MELTINGPOINT = "Melting Point";
+	protected static final String HLC = "Henry's Law const.";
 	protected static final String pKa = "pKa";
 	
 	protected static final String SOLUBILITY_ORG_SOLVENT = "Solubility org. solvents";

@@ -15,10 +15,6 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_HENRY_LAW_SECTION
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_HENRY_LAW_SECTION.EndpointStudyRecord>{
-	private static final String cTimePoint = "Sampling time";
-	private static final String cPercentDegradation = "% Degradation";
-	private static final String cTestType = "Test type";
-	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
 		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_HENRY_LAW_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
@@ -65,7 +61,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getENHENRYLAW().getHENRYSLAW()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_HENRY_LAW_SECTION.EndpointStudyRecord.ScientificPart.ENHENRYLAW.HENRYSLAW.Set set : sciPart.getENHENRYLAW().getHENRYSLAW().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint("Henry's Law const.");
+				effect.setEndpoint(HLC);
 				effect.setConditions(new Params());
 				
 				papp.addEffect(effect);
@@ -80,7 +76,22 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					
 					effect.getConditions().put(Pressure, tvalue);				
 				} else
-					effect.getConditions().put(Pressure, null);				
+					effect.getConditions().put(Pressure, null);
+				try {
+					effect.getConditions().put(Remark, set.getREM().getREM().getValue());
+				} catch (Exception x) {
+					effect.getConditions().put(Remark,null);
+				}
+				//temperature
+				if (set.getTEMPVALUE() != null) {
+					Params tvalue = new Params();
+					if (set.getTEMPVALUE()!= null) {
+						tvalue.put(loValue,getNumber(set.getTEMPVALUE().getTEMPVALUE().getValue()));
+					}
+					tvalue.put(unit,"\u2103C"); //here the unit is assumed ...
+					effect.getConditions().put(Temperature, tvalue);				
+				} else
+					effect.getConditions().put(Temperature, null);		
 				
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
 					effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
@@ -94,10 +105,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					} catch (Exception x) {}
 				}	
 				
-				set.getTEMPVALUE()
-				set.getVALUEUNITPRESSUREVALUE()
-				set.getREM()
-
+	
 
 				
 			}
