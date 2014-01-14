@@ -56,8 +56,11 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 				}
 			}		
-
-		papp.getParameters().put(cSpecies,sciPart.getENBIOACCUTERR().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		try {
+			papp.getParameters().put(cSpecies,sciPart.getENBIOACCUTERR().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		} catch (Exception x) {
+			papp.getParameters().put(cSpecies,null);
+		}
 		
 		if (sciPart.getENBIOACCUTERR().getBCF()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCU_TERR_SECTION.EndpointStudyRecord.ScientificPart.ENBIOACCUTERR.BCF.Set set : sciPart.getENBIOACCUTERR().getBCF().getSet()) {
@@ -65,8 +68,12 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				effect.setEndpoint(set.getBSAFTYPE().getBSAFTYPEValue());
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
-
-				effect.getConditions().put(BioaccBasis,set.getPHRASEOTHERBASIS().getBASISTXT().getValue());
+				
+				try {
+					effect.getConditions().put(BioaccBasis,set.getPHRASEOTHERBASIS().getBASISTXT().getValue());
+				} catch (Exception x) {
+					effect.getConditions().put(BioaccBasis,null);
+				}
 				
 				if (set.getPRECISIONBSAFLOQUALIFIER()!=null) {
 					effect.setUnit(set.getPRECISIONBSAFLOQUALIFIER().getBSAFUNITValue());
