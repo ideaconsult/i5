@@ -68,18 +68,18 @@ public class StudyRecordConverter
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 
-			if (set.getTEMPQUALIFIER() != null) {
+			if (set.getVALUEUNITTEMPVALUE() != null) {
 				Params tvalue = new Params();
-				if (set.getTEMPQUALIFIER().getTEMPQUALIFIERValue()!= null) {
+				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
 					tvalue.put(
-							loValue,getNumber(set.getTEMPQUALIFIER().getTEMPQUALIFIERValue()));
+							loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
 				}
 				if (set.getVALUEUNITTEMPVALUE()!=null)
 					tvalue.put(
 							unit,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()));
 				effect.getConditions().put(Temperature, tvalue);				
 			} else
-				effect.getConditions().put(Temperature, null);
+				effect.getConditions().put(Temperature, null);	
 			
 			
 
