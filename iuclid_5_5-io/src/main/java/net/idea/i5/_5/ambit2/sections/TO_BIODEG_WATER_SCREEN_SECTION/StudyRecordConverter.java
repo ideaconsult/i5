@@ -15,9 +15,6 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCRE
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord>{
-	private static final String cTimePoint = "Sampling time";
-	private static final String cPercentDegradation = "% Degradation";
-	private static final String cTestType = "Test type";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
@@ -87,7 +84,22 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				effect.setConditions(new Params());
 				
 				papp.addEffect(effect);
+				//sampling time
+				//sampling time
+				if (set.getVALUEUNITTIMEPOINTVALUE() != null) {
+					Params tvalue = new Params();
+					if (set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()!= null) {
+						tvalue.put(
+								loValue,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue()));
+					}
+					if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
+						tvalue.put(
+								unit,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));
+					effect.getConditions().put(cTimePoint, tvalue);				
+				} else
+					effect.getConditions().put(cTimePoint, null);	
 				
+				//results
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
 					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
 						effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
@@ -99,12 +111,6 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					} catch (Exception x) {}
 				}	
 				
-				if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-					effect.getConditions().put(cTimePoint,
-							(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue())+
-							" " + 
-							(set.getVALUEUNITTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));	
-
 				
 			}
 		} 		

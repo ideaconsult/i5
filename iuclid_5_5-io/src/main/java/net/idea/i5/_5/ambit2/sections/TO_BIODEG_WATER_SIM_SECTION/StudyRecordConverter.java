@@ -15,9 +15,6 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord>{
-	private static final String cTimePoint = "Sampling time";
-	private static final String cPercentDegradation = "% Degradation";
-	private static final String cTestType = "Test type";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
@@ -65,17 +62,28 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				sciPart.getTOBIODEGWATERSIM().getOXYGENCONDITIONS()==null?null:
 				sciPart.getTOBIODEGWATERSIM().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 
-		if (sciPart.getTOBIODEGWATERSIM().getINTERPRETRESULTSSUBM()!=null) {
-			papp.setInterpretationResult(sciPart.getTOBIODEGWATERSIM().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} else
-			papp.setInterpretationResult(null);
+		if (sciPart.getTOBIODEGWATERSIM().getHALFLIFE()!=null) 
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSIM.HALFLIFE.Set set : sciPart.getTOBIODEGWATERSIM().getHALFLIFE().getSet()) {
+				papp.getParameters().put("Half-life",set.getPHRASEOTHERTYPE().getTYPEValue());
+				
+				Params hlvalue = new Params();
+				if (set.getPRECISIONLOQUALIFIER()!=null) {
+					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
+						hlvalue.put(loValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
+						hlvalue.put(loQualifier,set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
+					} catch (Exception x) {
+						hlvalue.put(loValue,set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue());
+					}
+					if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
+						hlvalue.put(upValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
+						hlvalue.put(upQualifier,set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
+					} catch (Exception x) {
+						hlvalue.put(upValue,set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue());
+					}
+				}	
+				papp.getParameters().put("Half-life value",hlvalue);					
+			}
 		
-		papp.setInterpretationCriteria(null);
-		if (sciPart.getTOBIODEGWATERSIM().getRESULTSDETAILS()!=null) try {
-			papp.setInterpretationCriteria(sciPart.getTOBIODEGWATERSIM().getRESULTSDETAILS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
-		} catch (Exception x) {}
-		
-
 		if (sciPart.getTOBIODEGWATERSIM().getDEGRAD()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSIM.DEGRAD.Set set : sciPart.getTOBIODEGWATERSIM().getDEGRAD().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
@@ -87,7 +95,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				effect.setConditions(new Params());
 				
 				papp.addEffect(effect);
-				
+				//results
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
 					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
 						effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
@@ -99,12 +107,19 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					} catch (Exception x) {}
 				}	
 				
-				if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-					effect.getConditions().put(cTimePoint,
-							(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue())+
-							" " + 
-							(set.getVALUEUNITTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));	
-
+				//sampling time
+				if (set.getVALUEUNITTIMEPOINTVALUE() != null) {
+					Params tvalue = new Params();
+					if (set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()!= null) {
+						tvalue.put(
+								loValue,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue()));
+					}
+					if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
+						tvalue.put(
+								unit,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));
+					effect.getConditions().put(cTimePoint, tvalue);				
+				} else
+					effect.getConditions().put(cTimePoint, null);						
 				
 			}
 		} 		
