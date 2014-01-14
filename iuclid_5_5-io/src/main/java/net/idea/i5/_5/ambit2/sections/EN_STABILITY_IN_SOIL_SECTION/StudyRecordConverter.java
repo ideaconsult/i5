@@ -65,17 +65,6 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				sciPart.getENSTABILITYINSOIL().getOXYGENCONDITIONS()==null?null:
 				sciPart.getENSTABILITYINSOIL().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 
-		if (sciPart.getENSTABILITYINSOIL().getINTERPRETRESULTSSUBM()!=null) {
-			papp.setInterpretationResult(sciPart.getENSTABILITYINSOIL().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} else
-			papp.setInterpretationResult(null);
-		
-		papp.setInterpretationCriteria(null);
-		if (sciPart.getENSTABILITYINSOIL().getRESULTSDETAILS()!=null) try {
-			papp.setInterpretationCriteria(sciPart.getENSTABILITYINSOIL().getRESULTSDETAILS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
-		} catch (Exception x) {}
-		
-
 		if (sciPart.getENSTABILITYINSOIL().getDEGRAD()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_STABILITY_IN_SOIL_SECTION.EndpointStudyRecord.ScientificPart.ENSTABILITYINSOIL.DEGRAD.Set set : sciPart.getENSTABILITYINSOIL().getDEGRAD().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
@@ -86,6 +75,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 
 				effect.setConditions(new Params());
 				
+
 				papp.addEffect(effect);
 				
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
