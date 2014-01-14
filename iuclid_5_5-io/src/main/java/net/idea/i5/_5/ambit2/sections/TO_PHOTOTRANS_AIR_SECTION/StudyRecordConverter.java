@@ -15,9 +15,6 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_PHOTOTRANS_AIR_SE
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_PHOTOTRANS_AIR_SECTION.EndpointStudyRecord>{
-	private static final String cTimePoint = "Sampling time";
-	private static final String cPercentDegradation = "% Degradation";
-	private static final String cTestType = "Test type";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
@@ -60,50 +57,37 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				}
 			}		
 
-		//TEST TYPE
-		papp.getParameters().put(cTestType,
-				sciPart.getTOPHOTOTRANSAIR().getOXYGENCONDITIONS()==null?null:
-				sciPart.getTOPHOTOTRANSAIR().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
-
-		if (sciPart.getTOPHOTOTRANSAIR().getINTERPRETRESULTSSUBM()!=null) {
-			papp.setInterpretationResult(sciPart.getTOPHOTOTRANSAIR().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} else
-			papp.setInterpretationResult(null);
-		
-		papp.setInterpretationCriteria(null);
-		if (sciPart.getTOPHOTOTRANSAIR().getRESULTSDETAILS()!=null) try {
-			papp.setInterpretationCriteria(sciPart.getTOPHOTOTRANSAIR().getRESULTSDETAILS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
-		} catch (Exception x) {}
-		
-
-		if (sciPart.getTOPHOTOTRANSAIR().getDEGRAD()!=null) {
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_PHOTOTRANS_AIR_SECTION.EndpointStudyRecord.ScientificPart.TOPHOTOTRANSAIR.DEGRAD.Set set : sciPart.getTOPHOTOTRANSAIR().getDEGRAD().getSet()) {
+		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_PHOTOTRANS_AIR_SECTION.EndpointStudyRecord.ScientificPart.TOPHOTOTRANSAIR.RATECONSTANT.Set set : sciPart.getTOPHOTOTRANSAIR().getRATECONSTANT().getSet()) {
+			papp.getParameters().put("Reactant",set.getPHRASEOTHERTYPE().getTYPEValue());
+			//TODO array
+		}
+	
+		if (sciPart.getTOPHOTOTRANSAIR().getDISSIP()!=null) {
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_PHOTOTRANS_AIR_SECTION.EndpointStudyRecord.ScientificPart.TOPHOTOTRANSAIR.DISSIP.Set set : sciPart.getTOPHOTOTRANSAIR().getDISSIP().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(cPercentDegradation);
-				effect.setUnit("%");
-				if (set.getPHRASEOTHERPARAMETER()!=null)
-					effect.setEndpoint(set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
+				effect.setEndpoint("DT50");
 
 				effect.setConditions(new Params());
-				
 				papp.addEffect(effect);
 				
-				if (set.getPRECISIONLOQUALIFIER()!=null) {
-					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
-						effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
-						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
-					} catch (Exception x) {}
-					if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
-						effect.setUpValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
-						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
-					} catch (Exception x) {}
-				}	
+				effect.getConditions().put("Test condition",set.getTESTCONDITION().getTESTCONDITION().getValue());
 				
-				if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-					effect.getConditions().put(cTimePoint,
-							(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue())+
-							" " + 
-							(set.getVALUEUNITTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));	
+				//results
+				if (set.getPRECISIONHALFLIFELOQUALIFIER()!=null) {
+					effect.setUnit(set.getPRECISIONHALFLIFELOQUALIFIER().getHALFLIFEUNITValue());
+					if (set.getPRECISIONHALFLIFELOQUALIFIER().getHALFLIFELOVALUE()!=null) try {
+						effect.setLoQualifier(set.getPRECISIONHALFLIFELOQUALIFIER().getHALFLIFELOQUALIFIERValue());
+						effect.setLoValue(Double.parseDouble(set.getPRECISIONHALFLIFELOQUALIFIER().getHALFLIFELOVALUE().getValue()));
+					} catch (Exception x) {
+						effect.setTextValue(set.getPRECISIONHALFLIFELOQUALIFIER().getHALFLIFELOVALUE().getValue());
+					}
+					if (set.getPRECISIONHALFLIFELOQUALIFIER().getHALFLIFEUPVALUE()!=null) try {
+						effect.setUpQualifier(set.getPRECISIONHALFLIFELOQUALIFIER().getHALFLIFEUPQUALIFIERValue());
+						effect.setUpValue(Double.parseDouble(set.getPRECISIONHALFLIFELOQUALIFIER().getHALFLIFEUPVALUE().getValue()));
+					} catch (Exception x) {
+						effect.setTextValue(set.getPRECISIONHALFLIFELOQUALIFIER().getHALFLIFEUPVALUE().getValue());
+					}
+				}	
 
 				
 			}
