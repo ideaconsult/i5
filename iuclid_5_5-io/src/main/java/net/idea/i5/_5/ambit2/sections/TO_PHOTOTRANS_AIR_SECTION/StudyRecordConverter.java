@@ -56,7 +56,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 				}
 			}		
-
+		if (sciPart.getTOPHOTOTRANSAIR().getRATECONSTANT()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_PHOTOTRANS_AIR_SECTION.EndpointStudyRecord.ScientificPart.TOPHOTOTRANSAIR.RATECONSTANT.Set set : sciPart.getTOPHOTOTRANSAIR().getRATECONSTANT().getSet()) {
 			papp.getParameters().put("Reactant",set.getPHRASEOTHERTYPE().getTYPEValue());
 			//TODO array
@@ -69,8 +69,11 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
-				
-				effect.getConditions().put("Test condition",set.getTESTCONDITION().getTESTCONDITION().getValue());
+				try {
+					effect.getConditions().put(TestCondition,set.getTESTCONDITION().getTESTCONDITION().getValue());
+				} catch (Exception x) {
+					effect.getConditions().put(TestCondition,null);
+				}
 				
 				//results
 				if (set.getPRECISIONHALFLIFELOQUALIFIER()!=null) {

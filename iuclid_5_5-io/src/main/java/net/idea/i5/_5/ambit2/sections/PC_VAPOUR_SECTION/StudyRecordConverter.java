@@ -50,12 +50,9 @@ public class StudyRecordConverter
 		// TODO data owner - it's probably not in this file
 		
 		if (sciPart.getPCVAPOUR().getGUIDELINE() != null)
-			for (ScientificPart.PCVAPOUR.GUIDELINE.Set set : sciPart
-					.getPCVAPOUR().getGUIDELINE().getSet()) {
-				papp.getProtocol().addGuideline(
-						set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			for (ScientificPart.PCVAPOUR.GUIDELINE.Set set : sciPart.getPCVAPOUR().getGUIDELINE().getSet()) try {
+				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+			} catch (Exception x) {}
 		if (sciPart.getPCVAPOUR().getMETHODNOGUIDELINE() != null)
 			try {
 				papp.getProtocol().addGuideline(

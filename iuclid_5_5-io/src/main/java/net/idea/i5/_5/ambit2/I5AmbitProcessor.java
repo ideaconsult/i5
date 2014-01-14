@@ -66,8 +66,10 @@ public class I5AmbitProcessor<Target> extends
 		  new net.idea.i5._5.ambit2.sections.TO_HYDROLYSIS_SECTION.StudyRecordConverter();
 	protected net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SIM_SECTION.StudyRecordConverter TO_BIODEG_WATER_SIM_SECTION = 
 		  new net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SIM_SECTION.StudyRecordConverter();
+	
 	protected net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SCREEN_SECTION.StudyRecordConverter TO_BIODEG_WATER_SCREEN_SECTION = 
 		  new net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SCREEN_SECTION.StudyRecordConverter();
+	
 	protected net.idea.i5._5.ambit2.sections.EN_BIOACCU_TERR_SECTION.StudyRecordConverter EN_BIOACCU_TERR_SECTION = 
 		  new net.idea.i5._5.ambit2.sections.EN_BIOACCU_TERR_SECTION.StudyRecordConverter();
 	protected net.idea.i5._5.ambit2.sections.EN_BIOACCUMULATION_SECTION.StudyRecordConverter EN_BIOACCUMULATION_SECTION = 

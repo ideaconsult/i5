@@ -38,13 +38,15 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		//TODO data owner - it's probably not in this file
 
 		if (sciPart.getTOGENETICINVITRO().getGUIDELINE()!=null)
-			for (Set set : sciPart.getTOGENETICINVITRO().getGUIDELINE().getSet()) {
+			for (Set set : sciPart.getTOGENETICINVITRO().getGUIDELINE().getSet()) try {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			} catch (Exception x) {}
+			
 		if (sciPart.getTOGENETICINVITRO().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getTOGENETICINVITRO().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
-		} catch (Exception x) {}	
+		} catch (Exception x) {
+			x.printStackTrace();
+		}	
 		/*
 		if (sciPart.getECFISHTOX().getREFERENCESUBSTANCE()!=null) {
 			record.setReferenceSubstanceUUID(sciPart.getECFISHTOX().getREFERENCESUBSTANCE().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue())
@@ -98,10 +100,14 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			for (EndpointStudyRecord.ScientificPart.TOGENETICINVITRO.TESTRS.Set set : sciPart.getTOGENETICINVITRO().getTESTRS().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 				effect.setEndpoint("Genotoxicity");
-				effect.setTextValue(set.getPHRASEOTHERGENOTOXICITY().getGENOTOXICITYValue());
+				try {effect.setTextValue(set.getPHRASEOTHERGENOTOXICITY().getGENOTOXICITYValue());} catch (Exception x) {}
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
-				effect.getConditions().put(cMetabolicActivationSystem,set.getMETACTINDICATOR().getMETACTINDICATORValue());
+				try {
+					effect.getConditions().put(cMetabolicActivationSystem,set.getMETACTINDICATOR().getMETACTINDICATORValue());
+				} catch (Exception x) {
+					effect.getConditions().put(cMetabolicActivationSystem,null);
+				}
 				if (set.getPHRASEOTHERORGANISM()==null) {
 					effect.getConditions().put(cSpecies,set.getPHRASEOTHERTESTSYSTEM().getTESTSYSTEMTXT().getValue());
 				} else

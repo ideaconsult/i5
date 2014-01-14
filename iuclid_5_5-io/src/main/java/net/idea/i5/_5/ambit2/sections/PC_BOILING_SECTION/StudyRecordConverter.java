@@ -71,8 +71,11 @@ public class StudyRecordConverter
 			effect.setEndpoint(BOILINGPOINT);
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
-
-			effect.getConditions().put(DECOMPOSITION,	set.getPHRASEOTHERDECOMPINDICATOR().getDECOMPINDICATORValue());
+			try {
+				effect.getConditions().put(DECOMPOSITION,	set.getPHRASEOTHERDECOMPINDICATOR().getDECOMPINDICATORValue());
+			}  catch (Exception x) {
+				effect.getConditions().put(DECOMPOSITION,null);
+			}
 			
 			
 			if (set.getPRECISIONPRESSURELOQUALIFIER() != null) {
