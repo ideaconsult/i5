@@ -55,14 +55,14 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		//ecotox
 		EC_FISHTOX,
 		//env
-		TO_PHOTOTRANS_AIR_SECTION,
-		TO_HYDROLYSIS_SECTION,
-		TO_BIODEG_WATER_SIM_SECTION,
-		EN_BIOACCU_TERR_SECTION,
-		EN_BIOACCUMULATION_SECTION,
-		EN_STABILITY_IN_SOIL_SECTION,
-		EN_ADSORPTION_SECTION,
-		EN_HENRY_LAW_SECTION,
+		TO_PHOTOTRANS_AIR,
+		TO_HYDROLYSIS,
+		TO_BIODEG_WATER_SIM,
+		EN_BIOACCU_TERR,
+		EN_BIOACCUMULATION,
+		EN_STABILITY_IN_SOIL,
+		EN_ADSORPTION,
+		EN_HENRY_LAW,
 		TO_BIODEG_WATER_SCREEN,
 		//tox
 		TO_ACUTE_ORAL,		
@@ -142,28 +142,28 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		    			case TO_BIODEG_WATER_SCREEN: {
 		    				return tag;
 		    			}
-		    			case TO_HYDROLYSIS_SECTION: {
+		    			case TO_HYDROLYSIS: {
 		    				return tag;
 		    			}
-		    			case TO_BIODEG_WATER_SIM_SECTION: {
+		    			case TO_BIODEG_WATER_SIM: {
 		    				return tag;
 		    			}
-		    			case TO_PHOTOTRANS_AIR_SECTION: {
+		    			case TO_PHOTOTRANS_AIR: {
 		    				return tag;
 		    			}
-		    			case EN_BIOACCU_TERR_SECTION: {
+		    			case EN_BIOACCU_TERR: {
 		    				return tag;
 		    			}		    			
-		    			case EN_BIOACCUMULATION_SECTION: {
+		    			case EN_BIOACCUMULATION: {
 		    				return tag;
 		    			}
-		    			case EN_STABILITY_IN_SOIL_SECTION: {
+		    			case EN_STABILITY_IN_SOIL: {
 		    				return tag;
 		    			}
-		    			case EN_ADSORPTION_SECTION: {
+		    			case EN_ADSORPTION: {
 		    				return tag;
 		    			}
-		    			case EN_HENRY_LAW_SECTION: {
+		    			case EN_HENRY_LAW: {
 		    				return tag;
 		    			}		    					    			
 		    			case EC_FISHTOX: {
@@ -215,7 +215,6 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		    			}
 		    		} catch (Exception x) {
 		    			if (inSciPart || inStudyRecord) continue;
-		    			System.out.println(reader.getName().getLocalPart());
 		    			throw new UnsupportedI5RootObject(reader.getName().getLocalPart());
 		    		}
  	            }
