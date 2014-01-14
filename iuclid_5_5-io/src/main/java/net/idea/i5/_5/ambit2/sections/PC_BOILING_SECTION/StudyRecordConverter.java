@@ -87,17 +87,15 @@ public class StudyRecordConverter
 					vpvalue.put(loQualifier,
 							(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOQUALIFIERValue() == null) ? null : 
 							set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOQUALIFIERValue());
-					
-					vpvalue.put(
-							loValue,getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOVALUE().getValue()));
-				}
+					vpvalue.put(loValue,getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOVALUE().getValue()));
+				} else vpvalue.put(loValue, null);
+				
 				if (set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE()!= null) {
 					vpvalue.put(upQualifier,
 							(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPQUALIFIER() == null) ? null : 
 							set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPQUALIFIERValue());					
-					vpvalue.put(
-							upValue,getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE().getValue()));
-				}
+					vpvalue.put(upValue,getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE().getValue()));
+				} else vpvalue.put(upValue, null);
 				vpvalue.put(unit,set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNITValue());
 				effect.getConditions().put(AtmPressure, vpvalue);
 

@@ -45,7 +45,6 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getTOGENETICINVITRO().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getTOGENETICINVITRO().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {
-			x.printStackTrace();
 		}	
 		/*
 		if (sciPart.getECFISHTOX().getREFERENCESUBSTANCE()!=null) {

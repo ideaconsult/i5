@@ -73,13 +73,13 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 						hlvalue.put(loQualifier,set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
 					} catch (Exception x) {
 						hlvalue.put(loValue,set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue());
-					}
+					} else hlvalue.put(loValue,null);
 					if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
 						hlvalue.put(upValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
 						hlvalue.put(upQualifier,set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
 					} catch (Exception x) {
-						hlvalue.put(upValue,set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue());
-					}
+						hlvalue.put(upValue,null);
+					} else hlvalue.put(upValue,null);
 				}	
 				papp.getParameters().put("Half-life value",hlvalue);					
 			}
@@ -111,12 +111,10 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				if (set.getVALUEUNITTIMEPOINTVALUE() != null) {
 					Params tvalue = new Params();
 					if (set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()!= null) {
-						tvalue.put(
-								loValue,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue()));
-					}
+						tvalue.put(loValue,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue()));
+					} else tvalue.put(loValue,null);
 					if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-						tvalue.put(
-								unit,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));
+						tvalue.put(unit,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));
 					effect.getConditions().put(cTimePoint, tvalue);				
 				} else
 					effect.getConditions().put(cTimePoint, null);						
