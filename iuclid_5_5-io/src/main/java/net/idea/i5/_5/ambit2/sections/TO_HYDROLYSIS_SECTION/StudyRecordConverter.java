@@ -72,6 +72,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					Params phvalue = new Params();
 					if (set.getPH().getPH().getValue()!= null) 
 						phvalue.put(loValue,getNumber(set.getPH().getPH().getValue()));
+					else  phvalue.put(loValue,null);
 					effect.getConditions().put(ph, phvalue);
 				} else effect.getConditions().put(ph,null);
 				
@@ -80,7 +81,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					Params tvalue = new Params();
 					if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
 						tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
-					}
+					} else tvalue.put(loValue,null);
 					if (set.getVALUEUNITTEMPVALUE()!=null)
 						tvalue.put(unit,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()));
 					effect.getConditions().put(Temperature, tvalue);				

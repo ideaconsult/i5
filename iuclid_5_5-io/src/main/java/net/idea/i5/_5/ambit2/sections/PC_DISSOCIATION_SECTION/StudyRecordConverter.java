@@ -74,12 +74,10 @@ public class StudyRecordConverter
 			if (set.getVALUEUNITTEMPVALUE() != null) {
 				Params tvalue = new Params();
 				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
-					tvalue.put(
-							loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
-				}
+					tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+				} else tvalue.put(loValue,null);
 				if (set.getVALUEUNITTEMPVALUE()!=null)
-					tvalue.put(
-							unit,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()));
+					tvalue.put(unit,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()));
 				effect.getConditions().put(Temperature, tvalue);				
 			} else
 				effect.getConditions().put(Temperature, null);

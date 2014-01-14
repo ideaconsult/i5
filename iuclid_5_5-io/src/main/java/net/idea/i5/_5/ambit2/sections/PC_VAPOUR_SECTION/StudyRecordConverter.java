@@ -71,43 +71,44 @@ public class StudyRecordConverter
 			if (set.getVALUEUNITTEMPVALUE() != null) {
 				Params tvalue = new Params();
 				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
-					tvalue.put(
-							loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
-				}
+					tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+				} else tvalue.put(loValue,null); 
 				if (set.getVALUEUNITTEMPVALUE()!=null)
-					tvalue.put(
-							unit,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()));
+					tvalue.put(unit,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()));
+				
+				if (set.getTEMPQUALIFIER()!=null)
+					tvalue.put(loQualifier,set.getTEMPQUALIFIER().getTEMPQUALIFIERValue());
+				
 				effect.getConditions().put(Temperature, tvalue);				
 			} else
 				effect.getConditions().put(Temperature, null);	
 			
-			
+
 
 			if (set.getPRECISIONPRESSURELOQUALIFIER() != null) {
 				effect.setUnit(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNITValue());
-				if (set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOQUALIFIERValue() != null)
+				if (set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOVALUE() != null) {
 					try {
-						effect.setLoQualifier(set.getPRECISIONPRESSURELOQUALIFIER()
-								.getPRESSURELOQUALIFIERValue());						
-						effect.setLoValue(Double.parseDouble(set
-								.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOQUALIFIERValue()
-								));
+						effect.setLoQualifier(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOQUALIFIERValue());						
+					} catch (Exception x) {}
+					try {
+						effect.setLoValue(Double.parseDouble(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOVALUE().getValue()));
 					} catch (Exception x) {
-						effect.setTextValue(set
-								.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOQUALIFIERValue());
+						effect.setTextValue(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOQUALIFIERValue());
 					}
-				if (set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPQUALIFIERValue() != null)
+				}	
+				if (set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE() != null) {
 					try {
-						effect.setUpQualifier(set.getPRECISIONPRESSURELOQUALIFIER()
-								.getPRESSUREUPQUALIFIER());						
-						effect.setUpValue(Double.parseDouble(set
-								.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE()
-								.getValue()));
+						effect.setUpQualifier(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPQUALIFIERValue());						
+					} catch (Exception x) {}
+					try {
+						effect.setUpValue(Double.parseDouble(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE().getValue()));
 					} catch (Exception x) {
-						effect.setTextValue(set
-								.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE().getValue()
+						effect.setTextValue(
+								set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE().getValue()
 								);
 					}
+				}	
 			}
 		}
 
