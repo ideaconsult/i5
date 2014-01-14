@@ -60,35 +60,36 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				}
 			}		
 
-		//TEST TYPE
-		papp.getParameters().put(cTestType,
-				sciPart.getTOHYDROLYSIS().getOXYGENCONDITIONS()==null?null:
-				sciPart.getTOHYDROLYSIS().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
-
-		if (sciPart.getTOHYDROLYSIS().getINTERPRETRESULTSSUBM()!=null) {
-			papp.setInterpretationResult(sciPart.getTOHYDROLYSIS().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} else
-			papp.setInterpretationResult(null);
-		
-		papp.setInterpretationCriteria(null);
-		if (sciPart.getTOHYDROLYSIS().getRESULTSDETAILS()!=null) try {
-			papp.setInterpretationCriteria(sciPart.getTOHYDROLYSIS().getRESULTSDETAILS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
-		} catch (Exception x) {}
-		
-
-		if (sciPart.getTOHYDROLYSIS().getDEGRAD()!=null) {
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_HYDROLYSIS_SECTION.EndpointStudyRecord.ScientificPart.TOHYDROLYSIS.DEGRAD.Set set : sciPart.getTOHYDROLYSIS().getDEGRAD().getSet()) {
+		if (sciPart.getTOHYDROLYSIS().getHALFLIFE()!=null) {
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_HYDROLYSIS_SECTION.EndpointStudyRecord.ScientificPart.TOHYDROLYSIS.HALFLIFE.Set set : sciPart.getTOHYDROLYSIS().getHALFLIFE().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(cPercentDegradation);
-				effect.setUnit("%");
-				if (set.getPHRASEOTHERPARAMETER()!=null)
-					effect.setEndpoint(set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
-
+				effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());
 				effect.setConditions(new Params());
-				
 				papp.addEffect(effect);
 				
+				//ph
+				if (set.getPH() != null) {
+					Params phvalue = new Params();
+					if (set.getPH().getPH().getValue()!= null) 
+						phvalue.put(loValue,getNumber(set.getPH().getPH().getValue()));
+					effect.getConditions().put(ph, phvalue);
+				} else effect.getConditions().put(ph,null);
+				
+				//temperature
+				if (set.getVALUEUNITTEMPVALUE() != null) {
+					Params tvalue = new Params();
+					if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
+						tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+					}
+					if (set.getVALUEUNITTEMPVALUE()!=null)
+						tvalue.put(unit,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()));
+					effect.getConditions().put(Temperature, tvalue);				
+				} else
+					effect.getConditions().put(Temperature, null);						
+				
+				//result
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
+					effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
 					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
 						effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
 						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
@@ -99,13 +100,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					} catch (Exception x) {}
 				}	
 				
-				if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-					effect.getConditions().put(cTimePoint,
-							(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue())+
-							" " + 
-							(set.getVALUEUNITTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));	
 
-				
 			}
 		} 		
 		return record;
