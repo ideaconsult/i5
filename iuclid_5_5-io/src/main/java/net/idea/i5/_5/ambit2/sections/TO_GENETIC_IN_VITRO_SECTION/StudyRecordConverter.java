@@ -75,9 +75,13 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				sciPart.getTOGENETICINVITRO().getSTUDYTYPE()==null?null:
 				sciPart.getTOGENETICINVITRO().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		
+		try {
 		papp.getParameters().put(cTargetGene,
 				sciPart.getTOGENETICINVITRO().getTARGETGENE()==null?null:
-				sciPart.getTOGENETICINVITRO().getTARGETGENE().getSet().getTEXTBELOW());
+				sciPart.getTOGENETICINVITRO().getTARGETGENE().getSet().getTEXTBELOW().getTEXTBELOW().getValue());
+		} catch (Exception x) {
+			papp.getParameters().put(cTargetGene,null);	
+		}
 		
 		//papp.getParameters().put(cMetabolicActivationSystem,null);
 		//endpoint
