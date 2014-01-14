@@ -93,8 +93,16 @@ public class StudyRecordConverter
 			} else
 				effect.getConditions().put(Temperature, null);
 			
-			effect.getConditions().put(Remark,set.getREM());
-			effect.getConditions().put(Solvent,set.getPHRASEOTHERORGANICMEDIUM().getORGANICMEDIUMTXT());
+			try {
+				effect.getConditions().put(Remark,set.getREM().getREM().getValue());
+			} catch (Exception x) {
+				effect.getConditions().put(Remark,null);
+			}
+			try {
+				effect.getConditions().put(Solvent,set.getPHRASEOTHERORGANICMEDIUM().getORGANICMEDIUMTXT().getValue());
+			} catch (Exception x) {
+				effect.getConditions().put(Solvent,null);
+			}
 
 			if (set.getPRECISIONLOQUALIFIER() != null) {
 				if (set.getPRECISIONLOQUALIFIER().getLOVALUE() != null)
