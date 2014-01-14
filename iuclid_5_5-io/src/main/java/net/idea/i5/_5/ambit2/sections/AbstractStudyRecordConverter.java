@@ -11,7 +11,8 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected static final String cSpecies = "Species";
 	protected static final String cGeneration = "Generation";
 	protected static final String cDoses= "Doses/concentrations";
-	protected static final String cRoute= "Route of administration";	
+	protected static final String cRouteAdm= "Route of administration";
+	protected static final String cRoute= "Route";	
 	protected static final String cReference = "Reference";
 	protected static final String cYear = "Study year";
 	protected static final String cTypeMethod= "Type of method";

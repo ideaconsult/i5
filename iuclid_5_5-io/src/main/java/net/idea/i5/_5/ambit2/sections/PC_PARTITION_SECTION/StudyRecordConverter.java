@@ -110,16 +110,15 @@ public class StudyRecordConverter
 							(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue() == null) ? null : 
 							set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue());
 					
-					phvalue.put(
-							loValue,getNumber(set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE().getValue()));
-				}
+					phvalue.put(loValue,getNumber(set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE().getValue()));
+				} else phvalue.put(loValue,null);
 				if (set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE()!= null) {
 					phvalue.put(upQualifier,
 							(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue() == null) ? null : 
 							set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue());					
 					phvalue.put(
 							upValue,getNumber(set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE().getValue()));
-				}
+				} else phvalue.put(upValue,null);
 				effect.getConditions().put(ph, phvalue);
 
 			} else {

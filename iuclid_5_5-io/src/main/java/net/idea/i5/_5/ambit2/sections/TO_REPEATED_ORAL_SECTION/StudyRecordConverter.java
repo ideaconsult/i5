@@ -66,10 +66,10 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					sciPart.getTOREPEATEDORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		
 		try {
-			papp.getParameters().put(cRoute,
+			papp.getParameters().put(cRouteAdm,
 					sciPart.getTOREPEATEDORAL().getROUTE()==null?null:
 					sciPart.getTOREPEATEDORAL().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} catch (Exception x) { papp.getParameters().put(cRoute,null);}		
+		} catch (Exception x) { papp.getParameters().put(cRouteAdm,null);}		
 		
 		StringBuilder doses = null;
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOREPEATEDORAL.DOSES.Set set : sciPart.getTOREPEATEDORAL().getDOSES().getSet()) {
