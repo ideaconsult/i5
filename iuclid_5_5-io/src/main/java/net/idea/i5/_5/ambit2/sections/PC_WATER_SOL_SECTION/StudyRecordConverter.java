@@ -154,7 +154,6 @@ public class StudyRecordConverter
 			}
 
 		}
-		System.out.println(papp);
 		return record;
 	}
 	

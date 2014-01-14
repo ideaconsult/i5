@@ -192,23 +192,9 @@ public class I5AmbitProcessor<Target> extends
 				for (ExternalSystemIdentifier id : unmarshalled
 						.getExternalSystemIdentifiers()
 						.getExternalSystemIdentifier()) {
-					
-					System.out.println(id.getExternalSystemDesignator());
-					System.out.println(id.getID());
-					System.out.println(id.getRemarks());
+
 				}
-			/*
-			 * formaldehyde / formaldehyde / 50-00-0
-			 * System.out.println(unmarshalled
-			 * .getReferenceSubstanceRef().getDescription());
-			 * ECB5-053aa8c4-d29b-4aa5-b457-5cc3b47f7d8b/0
-			 * System.out.println(unmarshalled
-			 * .getReferenceSubstanceRef().getUniqueKey());
-			 * System.out.println(unmarshalled
-			 * .getReferenceSubstanceRef().getNotes()); REFERENCE_SUBSTANCE
-			 * System
-			 * .out.println(unmarshalled.getReferenceSubstanceRef().getType());
-			 */
+
 
 			if (unmarshalled.getReferenceSubstanceRef() != null) {
 				setReferenceSubstanceUUID(record, unmarshalled
@@ -217,15 +203,7 @@ public class I5AmbitProcessor<Target> extends
 
 			SubstanceCompositions sc = unmarshalled.getSubstanceCompositions();
 			for (SubstanceComposition c : sc.getSubstanceComposition()) {
-/*
-				System.out.println(c.getLocalUUID());
-				System.out.println(c.getName());
-				System.out.println(c.getDescription());
-				System.out.println(c.getDegreeOfPurity().getUpperValue());
-				System.out.println(c.getDegreeOfPurity().getLowerValue());
-				System.out.println(c.getDegreeOfPurity().getLowerPrecision()
-						.getValue());
-*/
+
 				if (c.getAdditives() != null)
 					for (Additive a : c.getAdditives().getAdditive())
 						additive2record(c.getLocalUUID(), record, a);
@@ -258,11 +236,7 @@ public class I5AmbitProcessor<Target> extends
 			SubstanceRecord substance, Additive a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
-		/*
-		 * System.out.println(constituent.getType()); //REFERENCE_SUBSTANCE
-		 * System.out.println(constituent.getNotes());
-		 * System.out.println(constituent.getDescription());
-		 */
+
 		record.setType(STRUC_TYPE.NA);
 		if (a.getReferenceSubstance() != null) {
 			record.setContent(a.getReferenceSubstance().getDescription());
@@ -309,9 +283,7 @@ public class I5AmbitProcessor<Target> extends
 				p.setTypical_unit("");
 			}
 		}
-		/**
-		 * TODO System.out.println(a.getRemarks());
-		 */
+	
 		try {
 			p.setFunction(Phrases.phrasegroup_N28.get(a.getFunction()
 					.getValueID()));
@@ -334,11 +306,7 @@ public class I5AmbitProcessor<Target> extends
 			SubstanceRecord substance, Impurity a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
-		/*
-		 * System.out.println(constituent.getType()); //REFERENCE_SUBSTANCE
-		 * System.out.println(constituent.getNotes());
-		 * System.out.println(constituent.getDescription());
-		 */
+
 		record.setType(STRUC_TYPE.NA);
 		if (a.getReferenceSubstance() != null) {
 			record.setContent(a.getReferenceSubstance().getDescription());
@@ -369,12 +337,7 @@ public class I5AmbitProcessor<Target> extends
 				p.setReal_unit("");
 			}
 		}
-		/**
-		 * TODO System.out.println(a.getProportionReal().getLowerPrecision().
-		 * getValue());
-		 * System.out.println(a.getProportionReal().getUpperPrecision
-		 * ().getValue());
-		 */
+
 		if (a.getProportionTypical() != null) {
 			p.setTypical_value(a.getProportionTypical().getValue());
 			try {
@@ -391,9 +354,7 @@ public class I5AmbitProcessor<Target> extends
 			}
 
 		}
-		/**
-		 * TODO System.out.println(a.getRemarks());
-		 */
+	
 		substance.addStructureRelation(compositionUUID, record,
 				STRUCTURE_RELATION.HAS_IMPURITY, p);
 
@@ -412,11 +373,7 @@ public class I5AmbitProcessor<Target> extends
 		setFormat(record);
 		record.setType(STRUC_TYPE.NA);
 		record.setContent(a.getReferenceSubstance().getDescription());
-		/*
-		 * System.out.println(constituent.getType()); //REFERENCE_SUBSTANCE
-		 * System.out.println(constituent.getNotes());
-		 * System.out.println(constituent.getDescription());
-		 */
+
 		setReferenceSubstanceUUID(record, a.getReferenceSubstance()
 				.getUniqueKey());
 
@@ -443,12 +400,7 @@ public class I5AmbitProcessor<Target> extends
 				p.setReal_unit("");
 			}
 		}
-		/**
-		 * TODO System.out.println(a.getProportionReal().getLowerPrecision().
-		 * getValue());
-		 * System.out.println(a.getProportionReal().getUpperPrecision
-		 * ().getValue());
-		 */
+
 		if (a.getProportionTypical() != null) {
 			p.setTypical_value(a.getProportionTypical().getValue());
 			try {
@@ -464,9 +416,7 @@ public class I5AmbitProcessor<Target> extends
 				p.setTypical_unit("");
 			}
 		}
-		/**
-		 * TODO System.out.println(a.getRemarks());
-		 */
+		
 		substance.addStructureRelation(compositionUUID, record,
 				STRUCTURE_RELATION.HAS_CONSTITUENT, p);
 		// Adding the tradenames to the reference structure
@@ -480,7 +430,6 @@ public class I5AmbitProcessor<Target> extends
 						LiteratureEntry.getI5UUIDReference());
 				prop.setLabel(Property.opentox_TradeName);
 				record.setProperty(prop, name.getName());
-				// System.out.println(unmarshalled.getTradeNames().getTradeName().get(i).getNameType().getValueID());
 
 				if (name.getRemarks() != null && !"".equals(name.getRemarks())) {
 					prop = Property.getInstance("Identifier",
@@ -488,8 +437,6 @@ public class I5AmbitProcessor<Target> extends
 					prop.setLabel(Property.opentox_TradeName);
 					record.setProperty(prop, name.getRemarks());
 				}
-
-				// System.out.println(unmarshalled.getTradeNames().getTradeName().get(i).getCountry().getValueID());
 			}
 		}
 

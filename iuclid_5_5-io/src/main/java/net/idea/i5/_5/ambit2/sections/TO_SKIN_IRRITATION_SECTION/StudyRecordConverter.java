@@ -79,7 +79,6 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					sciPart.getTOSKINIRRITATION().getCRITERIASUBMITTER()
 					.getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		}
-		System.out.println(papp);
 		return record;
 	}
 }
