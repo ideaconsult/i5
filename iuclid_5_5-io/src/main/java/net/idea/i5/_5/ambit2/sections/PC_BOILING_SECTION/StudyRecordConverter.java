@@ -99,10 +99,10 @@ public class StudyRecordConverter
 							upValue,getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE().getValue()));
 				}
 				vpvalue.put(unit,set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNITValue());
-				effect.getConditions().put(VapourPressure, vpvalue);
+				effect.getConditions().put(AtmPressure, vpvalue);
 
 			} else {
-				effect.getConditions().put(VapourPressure,null);
+				effect.getConditions().put(AtmPressure,null);
 			}
 
 			
