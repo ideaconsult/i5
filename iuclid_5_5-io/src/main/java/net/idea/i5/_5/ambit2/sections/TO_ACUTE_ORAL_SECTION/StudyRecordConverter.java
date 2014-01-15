@@ -98,12 +98,12 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			papp.setInterpretationResult( 
 					sciPart.getTOACUTEORAL().getINTERPRETRSSUBMITTER().getSet()
 					.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
-		}
+		}  else papp.setInterpretationResult("");
 		if (sciPart.getTOACUTEORAL().getCRITERIASUBMITTER() != null) {
 			papp.setInterpretationCriteria( 
 					sciPart.getTOACUTEORAL().getCRITERIASUBMITTER()
 					.getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		}
+		} else papp.setInterpretationCriteria(""); 
 
 		return record;
 	}
