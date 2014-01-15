@@ -16,6 +16,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 	private static final String cTypeGenotoxicity= "Type of genotoxicity";
 	private static final String cTargetGene= "Target gene";
 	private static final String cMetabolicActivationSystem= "Metabolic activation system";
+	private static final String cMetabolicActivation= "Metabolic activation";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
@@ -92,7 +93,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				papp.getParameters().put(cSpecies,set.getPHRASEOTHERORGANISM().getORGANISMTXT().getValue());
 			} catch (Exception x) { papp.getParameters().put(cSpecies,null);}
 			try {
-				papp.getParameters().put(cMetabolicActivationSystem,set.getMETABOLICACTSYSTEM());
+				papp.getParameters().put(cMetabolicActivationSystem,set.getMETABOLICACTSYSTEM().getMETABOLICACTSYSTEM().getValue());
 			} catch (Exception x) {	papp.getParameters().put(cMetabolicActivationSystem,null);}
 
 		}
@@ -107,9 +108,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				try {
-					effect.getConditions().put(cMetabolicActivationSystem,set.getMETACTINDICATOR().getMETACTINDICATORValue());
+					effect.getConditions().put(cMetabolicActivation,set.getMETACTINDICATOR().getMETACTINDICATORValue());
 				} catch (Exception x) {
-					effect.getConditions().put(cMetabolicActivationSystem,null);
+					effect.getConditions().put(cMetabolicActivation,null);
 				}
 				if (set.getPHRASEOTHERORGANISM()==null) {
 					effect.getConditions().put(cSpecies,set.getPHRASEOTHERTESTSYSTEM().getTESTSYSTEMTXT().getValue());
