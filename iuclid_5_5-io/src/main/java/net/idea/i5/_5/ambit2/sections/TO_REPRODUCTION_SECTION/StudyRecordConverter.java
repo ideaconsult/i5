@@ -101,7 +101,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				}
 				
 				effect.getConditions().put(cSex,set.getSEX()==null?null:set.getSEX().getSEXValue());
-				effect.getConditions().put(cGeneration,set.getPHRASEOTHERGENERATION()==null?null:set.getPHRASEOTHERGENERATION().getGENERATION());
+				effect.getConditions().put(cGeneration,set.getPHRASEOTHERGENERATION()==null?null:set.getPHRASEOTHERGENERATION().getGENERATIONValue());
 			}
 		papp.setInterpretationResult(null); 
 		papp.setInterpretationCriteria(null); 
