@@ -15,9 +15,9 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_STABILITY_IN_SOIL
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_STABILITY_IN_SOIL_SECTION.EndpointStudyRecord>{
-	private static final String cTimePoint = "Sampling time";
-	private static final String cPercentDegradation = "% Degradation";
-	private static final String cTestType = "Test type";
+	private static final String cSoilNo = "Soil No.";
+	private static final String cSoilType = "Soil type";
+	private static final String cOCContent =  "OC content";
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
@@ -65,39 +65,64 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				sciPart.getENSTABILITYINSOIL().getOXYGENCONDITIONS()==null?null:
 				sciPart.getENSTABILITYINSOIL().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 
-		if (sciPart.getENSTABILITYINSOIL().getDEGRAD()!=null) {
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_STABILITY_IN_SOIL_SECTION.EndpointStudyRecord.ScientificPart.ENSTABILITYINSOIL.DEGRAD.Set set : sciPart.getENSTABILITYINSOIL().getDEGRAD().getSet()) {
+		Params soil = new Params();
+		
+		if (sciPart.getENSTABILITYINSOIL().getPROP()!=null) 
+		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_STABILITY_IN_SOIL_SECTION.EndpointStudyRecord.ScientificPart.ENSTABILITYINSOIL.PROP.Set set : sciPart.getENSTABILITYINSOIL().getPROP().getSet()){
+			Params p = new Params();
+			p.put(cSoilType,set.getPHRASEOTHERSOILTYPE().getSOILTYPEValue());
+			
+			Params v = new Params();
+			try {
+				v.put(loQualifier,set.getPRECISIONCARBONLOQUALIFIER().getCARBONLOQUALIFIERValue());
+			} catch (Exception x) {}
+			try {
+				v.put(loValue,set.getPRECISIONCARBONLOQUALIFIER().getCARBONLOVALUE().getValue());
+			} catch (Exception x) {v.put(loValue,null);}
+			try {
+				v.put(upQualifier,set.getPRECISIONCARBONLOQUALIFIER().getCARBONUPQUALIFIERValue());
+			} catch (Exception x) {}
+			try {
+				v.put(upValue,set.getPRECISIONCARBONLOQUALIFIER().getCARBONUPVALUE().getValue());
+			} catch (Exception x) {v.put(upValue,null);}
+			try {
+				v.put(unit,"%");
+			} catch (Exception x) {v.put(unit,null);}
+			p.put(cOCContent, v);
+			
+			p.put(cSoilNo, set.getSOILNUMBER().getSOILNUMBERValue());
+			soil.put(set.getSOILNUMBER().getSOILNUMBERValue(),p);
+		}
+			
+
+		if (sciPart.getENSTABILITYINSOIL().getHALFLIFE()!=null) 
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_STABILITY_IN_SOIL_SECTION.EndpointStudyRecord.ScientificPart.ENSTABILITYINSOIL.HALFLIFE.Set set : sciPart.getENSTABILITYINSOIL().getHALFLIFE().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(cPercentDegradation);
-				effect.setUnit("%");
-				if (set.getPHRASEOTHERPARAMETER()!=null)
-					effect.setEndpoint(set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
-
+				effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());
 				effect.setConditions(new Params());
-				
-
 				papp.addEffect(effect);
+				try {
+					Params soilno = (Params)soil.get(set.getSOILNUMBER().getSOILNUMBERValue());
+					effect.getConditions().putAll(soilno);
+				} catch (Exception x) {
+					effect.getConditions().put(cSoilNo,null);
+				}
 				
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
+					effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
 					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
 						effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
 						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
 					} catch (Exception x) {}
+					
 					if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
 						effect.setUpValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
 						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
 					} catch (Exception x) {}
 				}	
 				
-				if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-					effect.getConditions().put(cTimePoint,
-							(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue())+
-							" " + 
-							(set.getVALUEUNITTIMEPOINTVALUE()==null?null:set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));	
-
-				
 			}
-		} 		
+		System.out.println(papp);
 		return record;
 	}
 }
