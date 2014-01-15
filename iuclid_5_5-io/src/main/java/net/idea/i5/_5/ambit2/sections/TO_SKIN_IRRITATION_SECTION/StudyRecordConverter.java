@@ -48,6 +48,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		*/
 		
 		// year
+		papp.getParameters().put(cYear,null);
 		if (sciPart.getTOSKINIRRITATION().getREFERENCE() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SKIN_IRRITATION_SECTION.EndpointStudyRecord.ScientificPart.TOSKINIRRITATION.REFERENCE.Set set : sciPart
 					.getTOSKINIRRITATION().getREFERENCE().getSet()) {
@@ -73,12 +74,12 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			papp.setInterpretationResult( 
 					sciPart.getTOSKINIRRITATION().getINTERPRETRSSUBMITTER().getSet()
 					.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
-		}
+		} else papp.setInterpretationResult(null); 
 		if (sciPart.getTOSKINIRRITATION().getCRITERIASUBMITTER() != null) {
 			papp.setInterpretationCriteria( 
 					sciPart.getTOSKINIRRITATION().getCRITERIASUBMITTER()
 					.getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		}
+		} else papp.setInterpretationCriteria("");
 		return record;
 	}
 }
