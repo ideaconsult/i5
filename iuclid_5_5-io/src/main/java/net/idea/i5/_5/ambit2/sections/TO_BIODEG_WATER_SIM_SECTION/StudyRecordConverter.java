@@ -11,11 +11,13 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.ScientificPart;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSIM.REFERENCE.Set;
+import eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.Ghs.Ghs2.ClassificationEntry.EffectsViaLactation;
 
 
 
 public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord>{
 	
+	protected static final String chalfLife= "Half-life";
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
 		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
@@ -62,50 +64,31 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				sciPart.getTOBIODEGWATERSIM().getOXYGENCONDITIONS()==null?null:
 				sciPart.getTOBIODEGWATERSIM().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 
-		if (sciPart.getTOBIODEGWATERSIM().getHALFLIFE()!=null) 
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSIM.HALFLIFE.Set set : sciPart.getTOBIODEGWATERSIM().getHALFLIFE().getSet()) {
-				papp.getParameters().put("Half-life",set.getPHRASEOTHERTYPE().getTYPEValue());
-				
-				Params hlvalue = new Params();
-				if (set.getPRECISIONLOQUALIFIER()!=null) {
-					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
-						hlvalue.put(loValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
-						hlvalue.put(loQualifier,set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
-					} catch (Exception x) {
-						hlvalue.put(loValue,set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue());
-					} else hlvalue.put(loValue,null);
-					if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
-						hlvalue.put(upValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
-						hlvalue.put(upQualifier,set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
-					} catch (Exception x) {
-						hlvalue.put(upValue,null);
-					} else hlvalue.put(upValue,null);
-				}	
-				papp.getParameters().put("Half-life value",hlvalue);					
-			}
-		
-		if (sciPart.getTOBIODEGWATERSIM().getDEGRAD()!=null) {
+		Params degradation = new Params();
+		if (sciPart.getTOBIODEGWATERSIM().getDEGRAD()!=null) 
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSIM.DEGRAD.Set set : sciPart.getTOBIODEGWATERSIM().getDEGRAD().getSet()) {
-				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(cPercentDegradation);
-				effect.setUnit("%");
-				if (set.getPHRASEOTHERPARAMETER()!=null)
-					effect.setEndpoint(set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
-
-				effect.setConditions(new Params());
 				
-				papp.addEffect(effect);
-				//results
+				
+				Params dValue = new Params();
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
+					degradation.put("Degradation Parameter", set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
+					dValue.put(unit,"%");
 					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
-						effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
-						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
-					} catch (Exception x) {}
+						dValue.put(loValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
+						dValue.put(loQualifier,set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
+					} catch (Exception x) {
+						dValue.put(loValue,set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue());
+					} else dValue.put(loValue,null);
+					
 					if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
-						effect.setUpValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
-						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
-					} catch (Exception x) {}
+						dValue.put(upValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
+						dValue.put(upQualifier,set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
+					} catch (Exception x) {
+						dValue.put(upValue,null);
+					} else dValue.put(upValue,null);
 				}	
+
+				degradation.put("Degradation", dValue);
 				
 				//sampling time
 				if (set.getVALUEUNITTIMEPOINTVALUE() != null) {
@@ -115,12 +98,44 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					} else tvalue.put(loValue,null);
 					if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
 						tvalue.put(unit,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));
-					effect.getConditions().put(cTimePoint, tvalue);				
+					degradation.put(cTimePoint, tvalue);				
 				} else
-					effect.getConditions().put(cTimePoint, null);						
+					degradation.put(cTimePoint, null);	
+			}
+		
+		if (sciPart.getTOBIODEGWATERSIM().getHALFLIFE()!=null) {
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSIM.HALFLIFE.Set set : sciPart.getTOBIODEGWATERSIM().getHALFLIFE().getSet()) {
+				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+				effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());
+
+				effect.setConditions(new Params());
+				effect.getConditions().put("Compartment", set.getPHRASEOTHERCOMPARTMENT().getCOMPARTMENTValue());
+				effect.getConditions().putAll(degradation);
+				papp.addEffect(effect);
+				
+				//results
+				if (set.getPRECISIONLOQUALIFIER()!=null) {
+					effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
+					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
+						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
+						effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
+					} catch (Exception x) {}
+					if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
+						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
+						effect.setUpValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
+					} catch (Exception x) {}
+				}	
 				
 			}
-		} 		
+		} else {
+			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+			effect.setEndpoint(null);
+
+			effect.setConditions(new Params());
+			effect.getConditions().putAll(degradation);
+			papp.addEffect(effect);
+		}
+
 		return record;
 	}
 }
