@@ -43,66 +43,6 @@ public class I5AmbitProcessor<Target> extends
 	
 	protected Hashtable<String, IStudyRecordConverter> convertors = new Hashtable<String,IStudyRecordConverter>();
 	
-	//ECOTOX
-	protected StudyRecordConverter EC_FISHTOX_SECTION = new StudyRecordConverter();
-	//PC
-	/* missing - appearance 4.1 ?
-	protected net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION.StudyRecordConverter PC_PARTITION_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION.StudyRecordConverter();
-		  */
-	protected net.idea.i5._5.ambit2.sections.PC_BOILING_SECTION.StudyRecordConverter PC_BOILING_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.PC_BOILING_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.PC_DISSOCIATION_SECTION.StudyRecordConverter PC_DISSOCIATION_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.PC_DISSOCIATION_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.PC_MELTING_SECTION.StudyRecordConverter PC_MELTING_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.PC_MELTING_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION.StudyRecordConverter PC_PARTITION_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.PC_SOL_ORGANIC_SECTION.StudyRecordConverter PC_SOL_ORGANIC_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.PC_SOL_ORGANIC_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.PC_VAPOUR_SECTION.StudyRecordConverter PC_VAPOUR_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.PC_VAPOUR_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.PC_WATER_SOL_SECTION.StudyRecordConverter PC_WATER_SOL_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.PC_WATER_SOL_SECTION.StudyRecordConverter();
-	
-	//ENV fate
-	protected net.idea.i5._5.ambit2.sections.TO_PHOTOTRANS_AIR_SECTION.StudyRecordConverter TO_PHOTOTRANS_AIR_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.TO_PHOTOTRANS_AIR_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.TO_HYDROLYSIS_SECTION.StudyRecordConverter TO_HYDROLYSIS_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.TO_HYDROLYSIS_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SIM_SECTION.StudyRecordConverter TO_BIODEG_WATER_SIM_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SIM_SECTION.StudyRecordConverter();
-	
-	protected net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SCREEN_SECTION.StudyRecordConverter TO_BIODEG_WATER_SCREEN_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SCREEN_SECTION.StudyRecordConverter();
-	
-	protected net.idea.i5._5.ambit2.sections.EN_BIOACCU_TERR_SECTION.StudyRecordConverter EN_BIOACCU_TERR_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.EN_BIOACCU_TERR_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.EN_BIOACCUMULATION_SECTION.StudyRecordConverter EN_BIOACCUMULATION_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.EN_BIOACCUMULATION_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.EN_STABILITY_IN_SOIL_SECTION.StudyRecordConverter EN_STABILITY_IN_SOIL_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.EN_STABILITY_IN_SOIL_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.EN_ADSORPTION_SECTION.StudyRecordConverter EN_ADSORPTION_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.EN_ADSORPTION_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.EN_HENRY_LAW_SECTION.StudyRecordConverter EN_HENRY_LAW_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.EN_HENRY_LAW_SECTION.StudyRecordConverter();	
-	
-	//TOX
-	protected net.idea.i5._5.ambit2.sections.TO_ACUTE_ORAL_SECTION.StudyRecordConverter TO_ACUTE_ORAL_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.TO_ACUTE_ORAL_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.TO_REPEATED_ORAL_SECTION.StudyRecordConverter TO_REPEATED_ORAL_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.TO_REPEATED_ORAL_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.TO_REPRODUCTION_SECTION.StudyRecordConverter TO_REPRODUCTION_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.TO_REPRODUCTION_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.TO_SENSITIZATION_SECTION.StudyRecordConverter TO_SENSITIZATION_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.TO_SENSITIZATION_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.TO_SKIN_IRRITATION_SECTION.StudyRecordConverter TO_SKIN_IRRITATION_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.TO_SKIN_IRRITATION_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.TO_EYE_IRRITATION_SECTION.StudyRecordConverter TO_EYE_IRRITATION_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.TO_EYE_IRRITATION_SECTION.StudyRecordConverter();
-	protected net.idea.i5._5.ambit2.sections.TO_GENETIC_IN_VITRO_SECTION.StudyRecordConverter TO_GENETIC_IN_VITRO_SECTION = 
-		  new net.idea.i5._5.ambit2.sections.TO_GENETIC_IN_VITRO_SECTION.StudyRecordConverter();
-	
 	/**
 	 * 
 	 */
@@ -133,9 +73,10 @@ public class I5AmbitProcessor<Target> extends
 				convertor = convertors.get(tag.name());
 				if (convertor == null) {
 					Object cnv = Class.forName("net.idea.i5._5.ambit2.sections."+tag+"_SECTION.StudyRecordConverter").newInstance();
-					if (cnv instanceof IStudyRecordConverter) 
+					if (cnv instanceof IStudyRecordConverter) {
 						convertor = (IStudyRecordConverter)cnv;
-					else throw new Exception("Not an instance of IStudyRecordConverter!");
+						convertors.put(tag.name(),convertor);
+					} else throw new Exception("Not an instance of IStudyRecordConverter!");
 				}
 			}
 		} catch (Exception x) {
