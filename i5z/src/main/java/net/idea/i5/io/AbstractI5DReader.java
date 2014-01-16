@@ -12,8 +12,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import net.idea.i5.io.I5ObjectVerifier.I5_ROOT_OBJECTS;
-
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.io.formats.IResourceFormat;
 import org.openscience.cdk.io.iterator.DefaultIteratingChemObjectReader;

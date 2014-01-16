@@ -14,7 +14,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import net.idea.i5.io.I5ObjectVerifier.I5_ROOT_OBJECTS;
 import ambit2.base.exceptions.AmbitException;
 import ambit2.base.exceptions.AmbitIOException;
 import ambit2.base.interfaces.IStructureRecord;

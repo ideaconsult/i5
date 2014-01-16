@@ -9,8 +9,6 @@ import java.util.Hashtable;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
-import net.idea.i5.io.I5ObjectVerifier.I5_ROOT_OBJECTS;
-
 import org.openscience.cdk.exception.CDKException;
 
 import ambit2.base.data.SubstanceRecord;
