@@ -39,6 +39,14 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected static final String cPercentDegradation = "% Degradation";
 	protected static final String TestCondition = "Test condition";
 	
+	protected static final String cSalinity = "Salinity";
+	protected static final String cExposure = "Exposure";
+	protected static final String cTestMedium = "Test Medium";
+	protected static final String cTestOrganism = "Test organism";
+	protected static final String cMeasuredConcentration = "Measured concentration";
+	protected static final String cEffect = "Effect";
+	protected static final String cConcType = "Based on";	
+	
 	protected static final String SOLUBILITY_ORG_SOLVENT = "Solubility org. solvents";
 	
 	

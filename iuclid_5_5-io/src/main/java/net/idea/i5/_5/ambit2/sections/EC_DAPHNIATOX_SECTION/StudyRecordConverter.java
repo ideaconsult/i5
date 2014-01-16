@@ -1,4 +1,4 @@
-package net.idea.i5._5.ambit2.sections.EC_FISHTOX_SECTION;
+package net.idea.i5._5.ambit2.sections.EC_DAPHNIATOX_SECTION;
 
 import net.idea.i5._5.ambit2.sections.AbstractStudyRecordConverter;
 import ambit2.base.data.SubstanceRecord;
@@ -7,23 +7,23 @@ import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.interfaces.IStructureRecord;
-import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.DocumentTypeType;
-import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord;
-import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart.ECFISHTOX.REFERENCE.Set;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_DAPHNIATOX_SECTION.DocumentTypeType;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_DAPHNIATOX_SECTION.EndpointStudyRecord;
+import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_DAPHNIATOX_SECTION.EndpointStudyRecord.ScientificPart.ECDAPHNIATOX.REFERENCE.Set;
 
-public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord>{
+public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_DAPHNIATOX_SECTION.EndpointStudyRecord>{
 
 	
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) {
-		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
-		if (sciPart.getECFISHTOX()==null) return null;
+		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_DAPHNIATOX_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
+		if (sciPart.getECDAPHNIATOX()==null) return null;
 		
 		
 		record.clear();
 		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
 				unmarshalled.getDocumentReferencePK(),
-				unmarshalled.getName(),"ECOTOX","EC_FISHTOX_SECTION");
+				unmarshalled.getName(),"ECOTOX","EC_DAPHNIATOX_SECTION");
 		parseReliability(papp, unmarshalled.getReliability().getValueID(),
 					unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS()
 					,unmarshalled.getPurposeFlag().getValueID(),unmarshalled.getStudyResultType().getValueID());
@@ -34,18 +34,18 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			setCompanyUUID(record,unmarshalled.getOwnerRef().getUniqueKey());
 		}
 		//TODO data owner - it's probably not in this file
-		if (sciPart.getECFISHTOX().getGUIDELINE()!=null)
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart.ECFISHTOX.GUIDELINE.Set set : sciPart.getECFISHTOX().getGUIDELINE().getSet()) {
+		if (sciPart.getECDAPHNIATOX().getGUIDELINE()!=null)
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_DAPHNIATOX_SECTION.EndpointStudyRecord.ScientificPart.ECDAPHNIATOX.GUIDELINE.Set set : sciPart.getECDAPHNIATOX().getGUIDELINE().getSet()) {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
 
 			}
-		if (sciPart.getECFISHTOX().getMETHODNOGUIDELINE()!=null) try {
-			papp.getProtocol().addGuideline(sciPart.getECFISHTOX().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+		if (sciPart.getECDAPHNIATOX().getMETHODNOGUIDELINE()!=null) try {
+			papp.getProtocol().addGuideline(sciPart.getECDAPHNIATOX().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
 	
 		// citation
-		if (sciPart.getECFISHTOX().getREFERENCE() != null)
-			for (Set set : sciPart.getECFISHTOX().getREFERENCE().getSet()) {
+		if (sciPart.getECDAPHNIATOX().getREFERENCE() != null)
+			for (Set set : sciPart.getECDAPHNIATOX().getREFERENCE().getSet()) {
 				if (set.getREFERENCEAUTHOR()!=null)
 					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
 				if (set.getREFERENCEYEAR()!=null) {
@@ -54,34 +54,34 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			}	
 		
 		//Exposure duration
-		if (sciPart.getECFISHTOX().getEXPDURATION()!=null) {
+		if (sciPart.getECDAPHNIATOX().getEXPDURATION()!=null) {
 			Params p = new Params();
-			p.put(loValue, sciPart.getECFISHTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());
-			p.put(unit,sciPart.getECFISHTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());
+			p.put(loValue, sciPart.getECDAPHNIATOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());
+			p.put(unit,sciPart.getECDAPHNIATOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());
 			papp.getParameters().put(cExposure,p);
 		} else {
 			papp.getParameters().put(cExposure,null);
 		}
 		
-		if (sciPart.getECFISHTOX().getWATERTYPE()!=null) {
-				papp.getParameters().put(cTestMedium,sciPart.getECFISHTOX().getWATERTYPE().getSet().getLISTRIGHTPOP().getLISTRIGHTPOPValue());
+		if (sciPart.getECDAPHNIATOX().getWATERTYPE()!=null) {
+				papp.getParameters().put(cTestMedium,sciPart.getECDAPHNIATOX().getWATERTYPE().getSet().getLISTRIGHTPOP().getLISTRIGHTPOPValue());
 		} else 
 			papp.getParameters().put(cTestMedium,null);
 		
-		if (sciPart.getECFISHTOX().getORGANISM()!=null) {
-			papp.getParameters().put(cTestOrganism,sciPart.getECFISHTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		if (sciPart.getECDAPHNIATOX().getORGANISM()!=null) {
+			papp.getParameters().put(cTestOrganism,sciPart.getECDAPHNIATOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		} else	
 			papp.getParameters().put(cTestOrganism,null);
 		
 		papp.getParameters().put(cMeasuredConcentration,null);
-		if (sciPart.getECFISHTOX().getNOMMEASCONC()!=null) try {
+		if (sciPart.getECDAPHNIATOX().getNOMMEASCONC()!=null) try {
 			papp.getParameters().put(cMeasuredConcentration,
-					sciPart.getECFISHTOX().getNOMMEASCONC().getSet().getTEXTBELOW().getTEXTBELOW().getValue());
+					sciPart.getECDAPHNIATOX().getNOMMEASCONC().getSet().getTEXTBELOW().getTEXTBELOW().getValue());
 		} catch (Exception x) {
 		}	
 		//ENDPOINT
-		if (sciPart.getECFISHTOX().getEFFCONC()!=null && sciPart.getECFISHTOX().getEFFCONC().getSet()!=null)
-		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart.ECFISHTOX.EFFCONC.Set set : sciPart.getECFISHTOX().getEFFCONC().getSet()) {
+		if (sciPart.getECDAPHNIATOX().getEFFCONC()!=null && sciPart.getECDAPHNIATOX().getEFFCONC().getSet()!=null)
+		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_DAPHNIATOX_SECTION.EndpointStudyRecord.ScientificPart.ECDAPHNIATOX.EFFCONC.Set set : sciPart.getECDAPHNIATOX().getEFFCONC().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 			effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());
 			effect.setConditions(new Params());
