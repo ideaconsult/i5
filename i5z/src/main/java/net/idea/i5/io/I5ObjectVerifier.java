@@ -20,40 +20,82 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 	private static final long serialVersionUID = 4202446709497463805L;
 
 	public enum I5_ROOT_OBJECTS {
-		AttachmentDocument,
-		LegalEntity,
+		AttachmentDocument {
+			@Override
+			public boolean isScientificPart() {
+				return false;
+			}
+		},
+		LegalEntity {
+			@Override
+			public boolean isScientificPart() {
+				return false;
+			}
+		},
 		ReferenceSubstance {
 			@Override
 			public String getContextPath() {
 				return "eu.europa.echa.schemas.iuclid5._20130101.referencesubstance:eu.europa.echa.schemas.iuclid5._20120101.referencesubstance:eu.europa.echa.schemas.iuclid5._20070330.referencesubstance";
 			}
+			@Override
+			public boolean isScientificPart() {
+				return false;
+			}
+			
 		},
 		Substance {
 			@Override
 			public String getContextPath() {
 				return "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101.substance";
 			}
+			@Override
+			public boolean isScientificPart() {
+				return false;
+			}
+			
 		},
 		EndpointRecord {
 			@Override
 			public String getContextPath() {
 				return null;
 			}
+			@Override
+			public boolean isScientificPart() {
+				return false;
+			}
+			
 		},
 		EndpointStudyRecord {
 			@Override
 			public String getContextPath() {
 				return null;
-			}			
+			}
+			@Override
+			public boolean isScientificPart() {
+				return false;
+			}
+			
 		},
 	    scientificPart {
 			@Override
 			public String getContextPath() {
 				return null;
 			}
+			@Override
+			public boolean isScientificPart() {
+				return false;
+			}
 		},
 		//ecotox
 		EC_FISHTOX,
+		EC_CHRONFISHTOX,
+		EC_DAPHNIATOX,		
+		EC_CHRONDAPHNIATOX,
+		EC_ALGAETOX,
+		EC_BACTOX,
+		EC_SEDIMENTDWELLINGTOX,
+		EC_SOIL_MICRO_TOX,
+		EC_PLANTTOX,		
 		//env
 		TO_PHOTOTRANS_AIR,
 		TO_HYDROLYSIS,
@@ -84,7 +126,10 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 
 		public String getContextPath() {
 			return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord."+name()+"_SECTION";
-		}		
+		}	
+		public boolean isScientificPart() {
+			return true;
+		}
 	} 
 	
 	public I5ObjectVerifier() {
@@ -136,82 +181,10 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		    				inStudyRecord = true;
 		    				continue;
 		    			}
-		    			case TO_ACUTE_ORAL: {
-		    				return tag;
-		    			}
-		    			case TO_BIODEG_WATER_SCREEN: {
-		    				return tag;
-		    			}
-		    			case TO_HYDROLYSIS: {
-		    				return tag;
-		    			}
-		    			case TO_BIODEG_WATER_SIM: {
-		    				return tag;
-		    			}
-		    			case TO_PHOTOTRANS_AIR: {
-		    				return tag;
-		    			}
-		    			case EN_BIOACCU_TERR: {
-		    				return tag;
-		    			}		    			
-		    			case EN_BIOACCUMULATION: {
-		    				return tag;
-		    			}
-		    			case EN_STABILITY_IN_SOIL: {
-		    				return tag;
-		    			}
-		    			case EN_ADSORPTION: {
-		    				return tag;
-		    			}
-		    			case EN_HENRY_LAW: {
-		    				return tag;
-		    			}		    					    			
-		    			case EC_FISHTOX: {
-		    				return tag;
-		    			}		    			
-		    			case PC_BOILING: {
-		    				return tag;
-		    			}
-		    			case PC_DISSOCIATION: {
-		    				return tag;
-		    			}
-		    			case PC_MELTING: {
-		    				return tag;
-		    			}
-		    			case PC_PARTITION: {
-		    				return tag;
-		    			}
-		    			case PC_SOL_ORGANIC: {
-		    				return tag;
-		    			}
-		    			case PC_VAPOUR: {
-		    				return tag;
-		    			}		    	
-		    			case PC_WATER_SOL: {
-		    				return tag;
-		    			}		    				    			
-		    			case TO_REPEATED_ORAL: {
-		    				return tag;
-		    			}
-		    			case TO_REPRODUCTION: {
-		    				return tag;
-		    			}
-		    			case TO_SENSITIZATION: {
-		    				return tag;
-		    			}
-		    			case TO_SKIN_IRRITATION: {
-		    				return tag;
-		    			}
-		    			case TO_EYE_IRRITATION: {
-		    				return tag;
-		    			}		    
-		    			case TO_GENETIC_IN_VITRO: {
-		    				return tag;
-		    			}
-		    			default:
+		    			default: {
+		    				if (tag.isScientificPart()) return tag;
 		    				continue;
-		    				//if (inSciPart || inStudyRecord) continue;
-		    				//throw new UnsupportedI5RootObject(tag.name());
+		    			}	
 		    			}
 		    		} catch (Exception x) {
 		    			if (inSciPart || inStudyRecord) continue;

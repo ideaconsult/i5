@@ -9,6 +9,8 @@ import java.util.Hashtable;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
+import net.idea.i5.io.I5ObjectVerifier.I5_ROOT_OBJECTS;
+
 import org.openscience.cdk.exception.CDKException;
 
 import ambit2.base.data.SubstanceRecord;
@@ -76,70 +78,20 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	}
 	
 	protected void initProcessors() {
-		processors.put(eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.class.getName(), 
-								new net.idea.i5._4.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20120101.referencesubstance.ReferenceSubstance.class.getName(), 
-				new net.idea.i5._4.ambit2.I5AmbitProcessor());		
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.class.getName(), 
-								new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		//env fate
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_HYDROLYSIS_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_PHOTOTRANS_AIR_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCU_TERR_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCUMULATION_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_STABILITY_IN_SOIL_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_ADSORPTION_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_HENRY_LAW_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());		
-		//TO_
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SENSITIZATION_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SKIN_IRRITATION_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_EYE_IRRITATION_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_GENETIC_IN_VITRO_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
 		
-		//EC_
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		//PC_
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_BOILING_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_DISSOCIATION_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_MELTING_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_SOL_ORGANIC_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord.class.getName(), 
-				new net.idea.i5._5.ambit2.I5AmbitProcessor());						
-		//ReferenceSubstance
-		processors.put(eu.europa.echa.schemas.iuclid5._20070330.referencesubstance.ReferenceSubstance.class.getName(), 
-				new net.idea.i5._0.ambit2.I5AmbitProcessor());
+		net.idea.i5._5.ambit2.I5AmbitProcessor i55 = new net.idea.i5._5.ambit2.I5AmbitProcessor();
+		net.idea.i5._4.ambit2.I5AmbitProcessor i54 = new net.idea.i5._4.ambit2.I5AmbitProcessor();
+		
+		processors.put(eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.class.getName(), i54);
+		processors.put(eu.europa.echa.schemas.iuclid5._20120101.referencesubstance.ReferenceSubstance.class.getName(), i54); 
+
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.class.getName(),i55); 
+		processors.put(eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance.class.getName(),i55); 
+		//env fate
+		for (I5_ROOT_OBJECTS tag : I5_ROOT_OBJECTS.values()) 
+			if (tag.isScientificPart()) {
+				processors.put("eu.europa.echa.schemas.iuclid5._20130101.studyrecord." + tag.name() + "_SECTION.EndpointStudyRecord", i55);
+			}
 	}
 
 
