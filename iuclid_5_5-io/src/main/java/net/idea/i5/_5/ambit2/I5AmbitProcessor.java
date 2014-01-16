@@ -1,9 +1,13 @@
 package net.idea.i5._5.ambit2;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
+import net.idea.i5._5.ambit2.sections.AbstractStudyRecordConverter;
+import net.idea.i5._5.ambit2.sections.IStudyRecordConverter;
 import net.idea.i5._5.ambit2.sections.EC_FISHTOX_SECTION.StudyRecordConverter;
+import net.idea.i5.io.I5_ROOT_OBJECTS;
 import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
 import ambit2.base.data.StructureRecord;
@@ -36,6 +40,8 @@ public class I5AmbitProcessor<Target> extends
 	protected SubstanceRecord record = new SubstanceRecord();
 	protected StructureRecord structureRecord = new StructureRecord();
 	protected CASProcessor casProcessor = new CASProcessor();
+	
+	protected Hashtable<String, IStudyRecordConverter> convertors = new Hashtable<String,IStudyRecordConverter>();
 	
 	//ECOTOX
 	protected StudyRecordConverter EC_FISHTOX_SECTION = new StudyRecordConverter();
@@ -105,66 +111,37 @@ public class I5AmbitProcessor<Target> extends
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
 		if (unmarshalled instanceof Substance)
 			return transform2record((Substance) unmarshalled);
-		else if (unmarshalled instanceof ReferenceSubstance) {
+		else if (unmarshalled instanceof ReferenceSubstance) 
 			return transform2record((ReferenceSubstance) unmarshalled);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_BOILING_SECTION.EndpointStudyRecord) {
-			return PC_BOILING_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_BOILING_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_DISSOCIATION_SECTION.EndpointStudyRecord) {
-			return PC_DISSOCIATION_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_DISSOCIATION_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_MELTING_SECTION.EndpointStudyRecord) {
-			return PC_MELTING_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_MELTING_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord) {
-			return PC_PARTITION_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION.EndpointStudyRecord) {
-			return PC_VAPOUR_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord) {
-			return PC_WATER_SOL_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_SOL_ORGANIC_SECTION.EndpointStudyRecord) {
-			return PC_SOL_ORGANIC_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_SOL_ORGANIC_SECTION.EndpointStudyRecord) unmarshalled,record);			
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord) {
-			return EC_FISHTOX_SECTION
-					.transform2record(
-							(eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord) unmarshalled,
-							record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord) {
-			return TO_ACUTE_ORAL_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION.EndpointStudyRecord) {
-			return TO_REPEATED_ORAL_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECTION.EndpointStudyRecord) {
-			return TO_REPRODUCTION_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECTION.EndpointStudyRecord) unmarshalled,record);			
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SENSITIZATION_SECTION.EndpointStudyRecord) {
-			return TO_SENSITIZATION_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SENSITIZATION_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SKIN_IRRITATION_SECTION.EndpointStudyRecord) {
-			return TO_SKIN_IRRITATION_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_SKIN_IRRITATION_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_EYE_IRRITATION_SECTION.EndpointStudyRecord) {
-			return TO_EYE_IRRITATION_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_EYE_IRRITATION_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_GENETIC_IN_VITRO_SECTION.EndpointStudyRecord) {
-			return TO_GENETIC_IN_VITRO_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_GENETIC_IN_VITRO_SECTION.EndpointStudyRecord) unmarshalled,record);
-			//env
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_PHOTOTRANS_AIR_SECTION.EndpointStudyRecord) {
-			return TO_PHOTOTRANS_AIR_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_PHOTOTRANS_AIR_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_HYDROLYSIS_SECTION.EndpointStudyRecord) {
-			return TO_HYDROLYSIS_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_HYDROLYSIS_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord) {
-			return TO_BIODEG_WATER_SIM_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord) {
-			return TO_BIODEG_WATER_SCREEN_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCU_TERR_SECTION.EndpointStudyRecord) {
-			return EN_BIOACCU_TERR_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCU_TERR_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCUMULATION_SECTION.EndpointStudyRecord) {
-			return EN_BIOACCUMULATION_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCUMULATION_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_STABILITY_IN_SOIL_SECTION.EndpointStudyRecord) {
-			return EN_STABILITY_IN_SOIL_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_STABILITY_IN_SOIL_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_ADSORPTION_SECTION.EndpointStudyRecord) {
-			return EN_ADSORPTION_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_ADSORPTION_SECTION.EndpointStudyRecord) unmarshalled,record);
-		} else if (unmarshalled instanceof eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_HENRY_LAW_SECTION.EndpointStudyRecord) {
-			return EN_HENRY_LAW_SECTION.transform2record((eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_HENRY_LAW_SECTION.EndpointStudyRecord) unmarshalled,record);
-		}	
-		
-		
-		
-		
+		try {	
+			IStudyRecordConverter convertor = getConvertor(unmarshalled.getClass().getName());	
+			if (convertor != null)
+				return convertor.transform2record(unmarshalled, record);
+		} catch (Exception x) {
+			throw new AmbitException(x);
+		}
 		return null;
+	}
+	
+	protected IStudyRecordConverter getConvertor(String className) throws Exception {
+		IStudyRecordConverter convertor = null;
+		String tagName = className.replace("eu.europa.echa.schemas.iuclid5._20130101.studyrecord.","").
+						replace("_SECTION","").replace(".EndpointStudyRecord","");
+		try {
+			I5_ROOT_OBJECTS tag = I5_ROOT_OBJECTS.valueOf(tagName);
+			if (tag.isScientificPart()) {
+				convertor = convertors.get(tag.name());
+				if (convertor == null) {
+					Object cnv = Class.forName("net.idea.i5._5.ambit2.sections."+tag+"_SECTION.StudyRecordConverter").newInstance();
+					if (cnv instanceof IStudyRecordConverter) 
+						convertor = (IStudyRecordConverter)cnv;
+					else throw new Exception("Not an instance of IStudyRecordConverter!");
+				}
+			}
+		} catch (Exception x) {
+			throw x;
+		}
+		return convertor;		
 	}
 
 	protected IStructureRecord transform2record(Substance unmarshalled) {
