@@ -7,9 +7,12 @@ import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 
 public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordConverter<T>{
-	protected static final String cSex = "Sex";
+	protected final String Physstate = "Physical state";
+	
 	protected static final String cSpecies = "Species";
+	protected static final String cSex = "Sex";
 	protected static final String cGeneration = "Generation";
+	protected static final String cEffectType = "Effect type";
 	protected static final String cDoses= "Doses/concentrations";
 	protected static final String cRouteAdm= "Route of administration";
 	protected static final String cRoute= "Route";	
@@ -30,6 +33,7 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected static final String WaterSolubility = "Water solubility";
 	protected static final String SUBLIMATION = "Sublimation";
 	protected static final String MELTINGPOINT = "Melting Point";
+	protected static final String BOILINGPOINT = "Boiling point";
 	protected static final String HLC = "Henry's Law const.";
 	protected static final String pKa = "pKa";
 	protected static final String OrgCarbonPercent = "% Org.Carbon";
@@ -45,7 +49,9 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected static final String cTestOrganism = "Test organism";
 	protected static final String cMeasuredConcentration = "Measured concentration";
 	protected static final String cEffect = "Effect";
+	protected static final String cBasisForEffect = "Basis for effect";
 	protected static final String cConcType = "Based on";	
+	
 	
 	protected static final String SOLUBILITY_ORG_SOLVENT = "Solubility org. solvents";
 	

@@ -15,7 +15,6 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_BOILING_SECTION.E
 public class StudyRecordConverter
 		extends
 		AbstractStudyRecordConverter<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_BOILING_SECTION.EndpointStudyRecord> {
-	private static final String BOILINGPOINT = "Boiling point";
 
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled,
