@@ -68,6 +68,7 @@ public class StudyRecordConverter extends	AbstractStudyRecordConverter<eu.europa
 			physstate.append(set.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 		}
 		StringBuilder form = null;
+		if (sciPart.getGIGENERALINFORM().getFORM()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.GI_GENERAL_INFORM_SECTION.EndpointStudyRecord.ScientificPart.GIGENERALINFORM.FORM.Set set : sciPart.getGIGENERALINFORM().getFORM().getSet()) {
 			if (form==null) form= new StringBuilder(); else form.append(" ");
 			form.append(set.getPHRASEOTHERLISTPOP().getLISTPOPValue());
