@@ -31,7 +31,6 @@
       <artifactId>iuclid_5_5-io</artifactId>
       <version>${project.version}</version>
       <type>jar</type>
-      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>net.idea</groupId>
@@ -51,7 +50,6 @@
       <artifactId>iuclid_5_4-io</artifactId>
       <version>${project.version}</version>
       <type>jar</type>
-      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>net.idea</groupId>
