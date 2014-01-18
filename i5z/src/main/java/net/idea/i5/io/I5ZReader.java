@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -23,9 +25,9 @@ import ambit2.core.io.ZipReader;
 
 public class I5ZReader<SUBSTANCE> extends ZipReader {
 	protected Map<String,String> file2cjaxbcp;
-	protected Hashtable<String, JAXBStuff> jaxbCache = new Hashtable<String,JAXBStuff>();
-	protected I5ObjectVerifier rootObjectVerifier;
-	
+	protected transient Hashtable<String, JAXBStuff> jaxbCache = new Hashtable<String,JAXBStuff>();
+	protected transient I5ObjectVerifier rootObjectVerifier;
+	protected transient File tempFolder;
 	/**
 	 * Uncompresses the .i5z archive content, detects the correct JAXB context path and unmarshall the XML content using JAXB generated classes
 	 * @param zipfile
@@ -44,6 +46,13 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 	}
 	
 	@Override
+	protected void finalize() throws Throwable {
+		if (jaxbCache!=null) jaxbCache.clear();
+		rootObjectVerifier = null;
+		super.finalize();
+	}
+	
+	@Override
 	protected IRawReader<IStructureRecord> getItemReader(int index) throws Exception {
 		String name = files[index].getName().toLowerCase();
 		if (name.endsWith(FileInputState.extensions[FileInputState.I5D_INDEX])) {
@@ -57,15 +66,21 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 						JAXBStuff jaxb = jaxbCache.get(jaxbcontextpath);
 						if (jaxb==null) {
 							jaxb = new JAXBStuff(jaxbcontextpath);
+							
+							jaxbCache.clear();
 							jaxbCache.put(jaxbcontextpath, jaxb);
+							//System.out.print(jaxbCache.size());	System.out.print("\t"); System.out.println(jaxbcontextpath);
+						} else {
+							//System.out.print("CACHED");	System.out.print("\t");	System.out.println(jaxbcontextpath);
 						}
-						I5DReader reader = new I5DReader(fileReader,jaxb.jaxbContext,jaxb.jaxbUnmarshaller);
+						I5DReader reader = new I5DReader(fileReader,jaxb.jaxbContext,jaxb.getUnmarshaller());
 						reader.setErrorHandler(errorHandler);
 						return reader;
 					} catch (javax.xml.bind.UnmarshalException x) {
 						throw x;
 					} catch (Exception x) {
 						throw x;
+
 					} finally {
 						//stream closed by closeItemReader
 					}
@@ -122,6 +137,7 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 	
 	@Override
 	public File[] unzip(File zipfile, File directory) throws AmbitIOException {
+		tempFolder = directory;
 		File[] files =  super.unzip(zipfile, directory);
 		List<File> referenceSubstances = new ArrayList<File>();
 		List<File> substances = new ArrayList<File>();
@@ -142,24 +158,29 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 				referenceSubstances.size(),
 				substances.size(),
 				study.size()));
-		/*
-		substances.addAll(referenceSubstances);
-		substances.addAll(study);
-		referenceSubstances.clear();study.clear();
+	
+		//sort by jaxb context so that we reuse JAXBContext and cache it only once!
+		Collections.sort(study,new Comparator<File>() {
+			@Override
+			public int compare(File o1, File o2) {
+				return file2cjaxbcp.get(o2.getAbsolutePath()).compareTo(file2cjaxbcp.get(o1.getAbsolutePath()));
+			}
+		});
 
-		for (File file : substances)
-			System.out.println(file2cjaxbcp.get(file.getAbsolutePath()));
-		return substances.toArray(new File[referenceSubstances.size()]);
-		*/
 		referenceSubstances.addAll(substances);
 		referenceSubstances.addAll(study);
 		substances.clear();study.clear();
 
-		for (File file : substances)
-			System.out.println(file2cjaxbcp.get(file.getAbsolutePath()));
 		return referenceSubstances.toArray(new File[referenceSubstances.size()]);		
 	}
-	
+
+	@Override
+	public void close() throws IOException {
+		try {
+			if (tempFolder!=null && tempFolder.exists()) tempFolder.delete();
+		} catch (Exception x) {	}
+		super.close();
+	}
 }
 
 class JAXBStuff {
@@ -170,5 +191,9 @@ class JAXBStuff {
 		jaxbContext = JAXBContext.newInstance(contextPath);
 		jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 	}
+	public Unmarshaller getUnmarshaller() throws JAXBException{
+		return jaxbUnmarshaller==null?jaxbContext.createUnmarshaller():jaxbUnmarshaller;
+	}
+	
 }
 
