@@ -67,7 +67,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				//temperature
 				if (set.getVALUEUNITTEMPVALUE() != null) {
 					Params tvalue = new Params();
-					if (set.getVALUEUNITTEMPVALUE()!= null) {
+					if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
 						tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
 					}
 					tvalue.put(unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...

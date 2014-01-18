@@ -88,17 +88,14 @@ public class StudyRecordConverter
 			papp.addEffect(effect);
 
 			if (set.getVALUEUNITTEMPVALUE() != null) {
-				effect.getConditions()
-						.put(Temperature,
-								(set.getVALUEUNITTEMPVALUE().getTEMPVALUE()
-										.getValue() == null ? "" : set
-										.getVALUEUNITTEMPVALUE().getTEMPVALUE()
-										.getValue())
-										+ " "
-										+ set.getVALUEUNITTEMPVALUE()
-												.getTEMPUNITValue());
+				Params tvalue = new Params();
+				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
+					tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+				}
+				tvalue.put(unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...
+				effect.getConditions().put(Temperature, tvalue);				
 			} else
-				effect.getConditions().put(Temperature, null);
+				effect.getConditions().put(Temperature, null);				
 			
 			if (set.getPRECISIONPHLOQUALIFIER() != null) {
 				/* Change to go like this

@@ -42,7 +42,7 @@ public class StudyRecordConverter
 			for (Set set : sciPart.getPCBOILING().getREFERENCE().getSet()) {
 				if (set.getREFERENCEAUTHOR()!=null)
 					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				if (set.getREFERENCEYEAR()!=null) {
+				if (set.getREFERENCEYEAR()!=null && set.getREFERENCEYEAR().getREFERENCEYEAR()!=null) {
 					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 				}
 			}			

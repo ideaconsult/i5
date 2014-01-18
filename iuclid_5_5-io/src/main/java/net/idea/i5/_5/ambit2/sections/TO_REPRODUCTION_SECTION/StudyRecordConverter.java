@@ -73,11 +73,12 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		} catch (Exception x) { papp.getParameters().put(cRouteAdm,null);}		
 		
 		StringBuilder doses = null;
-		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECTION.EndpointStudyRecord.ScientificPart.TOREPRODUCTION.DOSES.Set set : sciPart.getTOREPRODUCTION().getDOSES().getSet()) {
+		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECTION.EndpointStudyRecord.ScientificPart.TOREPRODUCTION.DOSES.Set set : sciPart.getTOREPRODUCTION().getDOSES().getSet()) try {
+			String value = set.getCONCENTRATIONS().getCONCENTRATIONS().getValue();
 			if (doses==null) doses = new StringBuilder();
 			else doses.append(";");
-			doses.append(set.getCONCENTRATIONS().getCONCENTRATIONS().getValue());
-		}
+			doses.append(value);
+		} catch (Exception x){}
 		papp.getParameters().put(cDoses,doses==null?null:doses.toString());
 		// endpoint
 		// effect level

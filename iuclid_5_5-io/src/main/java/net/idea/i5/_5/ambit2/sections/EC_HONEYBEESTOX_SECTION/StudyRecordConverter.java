@@ -56,8 +56,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		//Exposure duration
 		if (sciPart.getECHONEYBEESTOX().getEXPDURATION()!=null) {
 			Params p = new Params();
-			p.put(loValue, sciPart.getECHONEYBEESTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());
-			p.put(unit,sciPart.getECHONEYBEESTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());
+			try {p.put(loValue, sciPart.getECHONEYBEESTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());}
+			catch (Exception x) {p.put(loValue, null);}
+			try {p.put(unit,sciPart.getECHONEYBEESTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());} catch (Exception x){}
 			papp.getParameters().put(cExposure,p);
 		} else {
 			papp.getParameters().put(cExposure,null);

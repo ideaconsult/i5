@@ -54,7 +54,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					.getTOSKINIRRITATION().getREFERENCE().getSet()) {
 				if (set.getREFERENCEAUTHOR()!=null)
 					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				if (set.getREFERENCEYEAR()!=null) {
+				if (set.getREFERENCEYEAR()!=null && set.getREFERENCEYEAR().getREFERENCEYEAR()!=null) {
 					papp.getParameters().put(cYear,set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 				} else papp.getParameters().put(cYear,null);
