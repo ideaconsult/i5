@@ -52,9 +52,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					.getTOPHOTOTRANSAIR().getREFERENCE().getSet()) {
 				if (set.getREFERENCEAUTHOR()!=null)
 					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				if (set.getREFERENCEYEAR()!=null) {
+				if (set.getREFERENCEYEAR()!=null) try {
 					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
-				}
+				} catch (Exception x) {}
 			}
 		papp.getParameters().put("Reactant",null);
 		if (sciPart.getTOPHOTOTRANSAIR().getRATECONSTANT()!=null)

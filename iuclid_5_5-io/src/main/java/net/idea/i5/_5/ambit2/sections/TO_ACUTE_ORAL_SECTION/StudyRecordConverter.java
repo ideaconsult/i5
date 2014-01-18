@@ -51,12 +51,13 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getTOACUTEORAL().getREFERENCE() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.REFERENCE.Set set : sciPart
 					.getTOACUTEORAL().getREFERENCE().getSet()) {
-				if (set.getREFERENCEAUTHOR()!=null)
+				if (set.getREFERENCEAUTHOR()!=null && set.getREFERENCEAUTHOR().getREFERENCEAUTHOR()!=null) 
 					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				if (set.getREFERENCEYEAR()!=null) {
+				if (set.getREFERENCEYEAR()!=null) try {
 					papp.getParameters().put(cYear,set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
-				} else papp.getParameters().put(cYear,null);
+				} catch (Exception x) {papp.getParameters().put(cYear,null);}
+				else papp.getParameters().put(cYear,null);
 			}
 
 		// Acute tox oral

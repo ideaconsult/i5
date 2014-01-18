@@ -47,15 +47,19 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			for (Set set : sciPart.getECDAPHNIATOX().getREFERENCE().getSet()) {
 				if (set.getREFERENCEAUTHOR()!=null)
 					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				if (set.getREFERENCEYEAR()!=null) {
+				if (set.getREFERENCEYEAR()!=null) try {
 					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
-				}
+				} catch (Exception x) {}
 			}	
 		
 		//Exposure duration
 		if (sciPart.getECDAPHNIATOX().getEXPDURATION()!=null) {
 			Params p = new Params();
-			p.put(loValue, sciPart.getECDAPHNIATOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());
+			try {
+				p.put(loValue, sciPart.getECDAPHNIATOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());
+			} catch (Exception x) {
+				p.put(loValue,null);
+			}
 			p.put(unit,sciPart.getECDAPHNIATOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());
 			papp.getParameters().put(cExposure,p);
 		} else {

@@ -43,9 +43,9 @@ public class StudyRecordConverter
 			for (Set set : sciPart.getPCVAPOUR().getREFERENCE().getSet()) {
 				if (set.getREFERENCEAUTHOR()!=null)
 					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				if (set.getREFERENCEYEAR()!=null) {
+				if (set.getREFERENCEYEAR()!=null) try {
 					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
-				}
+				} catch (Exception x) {}
 			}			
 		// TODO data owner - it's probably not in this file
 		

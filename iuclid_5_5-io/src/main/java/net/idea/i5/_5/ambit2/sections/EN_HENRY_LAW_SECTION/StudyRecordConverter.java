@@ -51,9 +51,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 					.getENHENRYLAW().getREFERENCE().getSet()) {
 				if (set.getREFERENCEAUTHOR()!=null)
 					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				if (set.getREFERENCEYEAR()!=null) {
+				if (set.getREFERENCEYEAR()!=null) try {
 					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
-				}
+				} catch (Exception x) {}
 			}		
 
 		//TEST TYPE
@@ -68,9 +68,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				
 				if (set.getVALUEUNITPRESSUREVALUE() != null) {
 					Params tvalue = new Params();
-					if (set.getVALUEUNITPRESSUREVALUE()!= null) {
+					if (set.getVALUEUNITPRESSUREVALUE().getPRESSUREVALUE()!= null) {
 						tvalue.put(loValue,getNumber(set.getVALUEUNITPRESSUREVALUE().getPRESSUREVALUE().getValue()));
-					}
+					} else tvalue.put(loValue,null);
 					if (set.getVALUEUNITPRESSUREVALUE()!=null)
 						tvalue.put(unit,getNumber(set.getVALUEUNITPRESSUREVALUE().getPRESSUREUNITValue()));
 					
