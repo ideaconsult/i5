@@ -118,7 +118,8 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			}
 			
 			effect.getConditions().put(cBasisForEffect,set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue());
-			effect.getConditions().put(cEffect,set.getPHRASEOTHERENDPOINT().getENDPOINTValue());
+			try { effect.getConditions().put(cEffect,set.getPHRASEOTHERENDPOINT().getENDPOINTValue());}
+			catch (Exception x) {effect.getConditions().put(cEffect,null);}
 		}
 		return record;
 	}
