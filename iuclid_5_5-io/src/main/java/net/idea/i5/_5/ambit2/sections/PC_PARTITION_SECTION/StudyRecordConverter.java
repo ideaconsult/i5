@@ -50,12 +50,9 @@ public class StudyRecordConverter
 		// TODO data owner - it's probably not in this file
 		
 		if (sciPart.getPCPARTITION().getGUIDELINE() != null)
-			for (ScientificPart.PCPARTITION.GUIDELINE.Set set : sciPart
-					.getPCPARTITION().getGUIDELINE().getSet()) {
-				papp.getProtocol().addGuideline(
-						set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			for (ScientificPart.PCPARTITION.GUIDELINE.Set set : sciPart.getPCPARTITION().getGUIDELINE().getSet()) try {
+				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+			} catch (Exception x) {}
 		if (sciPart.getPCPARTITION().getMETHODNOGUIDELINE() != null)
 			try {
 				papp.getProtocol().addGuideline(
@@ -83,7 +80,7 @@ public class StudyRecordConverter
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart.PCPARTITION.PARTCOEFF.Set set : sciPart
 				.getPCPARTITION().getPARTCOEFF().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setEndpoint(set.getTYPE().getTYPEValue());
+			try {effect.setEndpoint(set.getTYPE().getTYPEValue());} catch (Exception x) {}
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 

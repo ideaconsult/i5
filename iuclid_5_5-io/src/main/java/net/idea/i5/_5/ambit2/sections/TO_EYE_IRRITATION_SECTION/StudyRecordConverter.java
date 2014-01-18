@@ -34,10 +34,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		//TODO data owner - it's probably not in this file
 
 		if (sciPart.getTOEYEIRRITATION().getGUIDELINE()!=null)
-			for (Set set : sciPart.getTOEYEIRRITATION().getGUIDELINE().getSet()) {
+			for (Set set : sciPart.getTOEYEIRRITATION().getGUIDELINE().getSet()) try {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			} catch (Exception x) {}
 		if (sciPart.getTOEYEIRRITATION().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getTOEYEIRRITATION().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	

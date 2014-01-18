@@ -35,10 +35,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		}
 		//TODO data owner - it's probably not in this file
 		if (sciPart.getECPLANTTOX().getGUIDELINE()!=null)
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_PLANTTOX_SECTION.EndpointStudyRecord.ScientificPart.ECPLANTTOX.GUIDELINE.Set set : sciPart.getECPLANTTOX().getGUIDELINE().getSet()) {
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_PLANTTOX_SECTION.EndpointStudyRecord.ScientificPart.ECPLANTTOX.GUIDELINE.Set set : sciPart.getECPLANTTOX().getGUIDELINE().getSet()) try {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			} catch (Exception x) {}
 		if (sciPart.getECPLANTTOX().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getECPLANTTOX().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
@@ -80,11 +79,13 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getECPLANTTOX().getEFFCONC()!=null && sciPart.getECPLANTTOX().getEFFCONC().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_PLANTTOX_SECTION.EndpointStudyRecord.ScientificPart.ECPLANTTOX.EFFCONC.Set set : sciPart.getECPLANTTOX().getEFFCONC().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());
+			try {effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());} catch (Exception x) {}
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 			
-			effect.getConditions().put(cTestOrganism,set.getPHRASEOTHERORGANISM().getORGANISMValue());
+			try {
+				effect.getConditions().put(cTestOrganism,set.getPHRASEOTHERORGANISM().getORGANISMValue());
+			} catch (Exception x) { effect.getConditions().put(cTestOrganism, null);}
 
 			effect.getConditions().put(cEffect,
 					set.getPHRASEOTHERBASISEFFECT()==null?null:

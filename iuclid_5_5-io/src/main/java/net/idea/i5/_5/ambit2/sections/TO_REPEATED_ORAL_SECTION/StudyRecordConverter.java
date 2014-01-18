@@ -35,10 +35,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		//TODO data owner - it's probably not in this file
 
 		if (sciPart.getTOREPEATEDORAL().getGUIDELINE()!=null)
-			for (Set set : sciPart.getTOREPEATEDORAL().getGUIDELINE().getSet()) {
+			for (Set set : sciPart.getTOREPEATEDORAL().getGUIDELINE().getSet()) try {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			} catch (Exception x) {}
 		if (sciPart.getTOREPEATEDORAL().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getTOREPEATEDORAL().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
@@ -72,6 +71,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		} catch (Exception x) { papp.getParameters().put(cRouteAdm,null);}		
 		
 		StringBuilder doses = null;
+		if (sciPart.getTOREPEATEDORAL().getDOSES()!=null && sciPart.getTOREPEATEDORAL().getDOSES().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOREPEATEDORAL.DOSES.Set set : sciPart.getTOREPEATEDORAL().getDOSES().getSet()) {
 			if (doses==null) doses = new StringBuilder();
 			else doses.append(";");

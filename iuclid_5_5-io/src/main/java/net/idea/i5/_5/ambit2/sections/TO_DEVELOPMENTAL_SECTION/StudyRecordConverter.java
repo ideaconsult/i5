@@ -35,10 +35,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		//TODO data owner - it's probably not in this file
 
 		if (sciPart.getTODEVELOPMENTAL().getGUIDELINE()!=null)
-			for (Set set : sciPart.getTODEVELOPMENTAL().getGUIDELINE().getSet()) {
+			for (Set set : sciPart.getTODEVELOPMENTAL().getGUIDELINE().getSet()) try {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			} catch (Exception x) {}
 		if (sciPart.getTODEVELOPMENTAL().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getTODEVELOPMENTAL().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
@@ -73,6 +72,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		} catch (Exception x) { papp.getParameters().put(cRouteAdm,null);}		
 		
 		StringBuilder doses = null;
+		if (sciPart.getTODEVELOPMENTAL().getDOSES()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_DEVELOPMENTAL_SECTION.EndpointStudyRecord.ScientificPart.TODEVELOPMENTAL.DOSES.Set set : sciPart.getTODEVELOPMENTAL().getDOSES().getSet()) {
 			if (doses==null) doses = new StringBuilder();
 			else doses.append(";");
@@ -84,7 +84,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getTODEVELOPMENTAL().getEFFLEVEL() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_DEVELOPMENTAL_SECTION.EndpointStudyRecord.ScientificPart.TODEVELOPMENTAL.EFFLEVEL.Set set : sciPart.getTODEVELOPMENTAL().getEFFLEVEL().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());
+				try {effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());} catch (Exception x) {}
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				

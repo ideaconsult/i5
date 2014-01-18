@@ -35,10 +35,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		//TODO data owner - it's probably not in this file
 
 		if (sciPart.getTOREPEATEDDERMAL().getGUIDELINE()!=null)
-			for (Set set : sciPart.getTOREPEATEDDERMAL().getGUIDELINE().getSet()) {
+			for (Set set : sciPart.getTOREPEATEDDERMAL().getGUIDELINE().getSet()) try {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			} catch (Exception x) {}
 		if (sciPart.getTOREPEATEDDERMAL().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getTOREPEATEDDERMAL().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
@@ -73,6 +72,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		*/		
 		
 		StringBuilder doses = null;
+		if ( sciPart.getTOREPEATEDDERMAL().getDOSES()!=null &&  sciPart.getTOREPEATEDDERMAL().getDOSES().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_DERMAL_SECTION.EndpointStudyRecord.ScientificPart.TOREPEATEDDERMAL.DOSES.Set set : sciPart.getTOREPEATEDDERMAL().getDOSES().getSet()) {
 			if (doses==null) doses = new StringBuilder();
 			else doses.append(";");

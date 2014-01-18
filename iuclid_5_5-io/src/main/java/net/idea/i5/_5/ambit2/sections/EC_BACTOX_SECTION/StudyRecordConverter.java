@@ -35,10 +35,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		}
 		//TODO data owner - it's probably not in this file
 		if (sciPart.getECBACTOX().getGUIDELINE()!=null)
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_BACTOX_SECTION.EndpointStudyRecord.ScientificPart.ECBACTOX.GUIDELINE.Set set : sciPart.getECBACTOX().getGUIDELINE().getSet()) {
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_BACTOX_SECTION.EndpointStudyRecord.ScientificPart.ECBACTOX.GUIDELINE.Set set : sciPart.getECBACTOX().getGUIDELINE().getSet()) try {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			} catch (Exception x) {}
 		if (sciPart.getECBACTOX().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getECBACTOX().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
@@ -84,7 +83,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getECBACTOX().getEFFCONC()!=null && sciPart.getECBACTOX().getEFFCONC().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_BACTOX_SECTION.EndpointStudyRecord.ScientificPart.ECBACTOX.EFFCONC.Set set : sciPart.getECBACTOX().getEFFCONC().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());
+			try {effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());} catch (Exception x){}
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 

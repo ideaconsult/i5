@@ -35,10 +35,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		}
 		//TODO data owner - it's probably not in this file
 		if (sciPart.getECSOILDWELLINGTOX().getGUIDELINE()!=null)
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_SOILDWELLINGTOX_SECTION.EndpointStudyRecord.ScientificPart.ECSOILDWELLINGTOX.GUIDELINE.Set set : sciPart.getECSOILDWELLINGTOX().getGUIDELINE().getSet()) {
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_SOILDWELLINGTOX_SECTION.EndpointStudyRecord.ScientificPart.ECSOILDWELLINGTOX.GUIDELINE.Set set : sciPart.getECSOILDWELLINGTOX().getGUIDELINE().getSet()) try {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			} catch (Exception x) {}
 		if (sciPart.getECSOILDWELLINGTOX().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getECSOILDWELLINGTOX().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	

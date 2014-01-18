@@ -87,7 +87,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		//endpoint
 		//sciPart.getTOGENETICINVITRO().getGENOTOXICITYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue()
 		
-		
+		if ( sciPart.getTOGENETICINVITRO().getORGANISM()!= null &&  sciPart.getTOGENETICINVITRO().getORGANISM().getSet()!=null)
 		for (EndpointStudyRecord.ScientificPart.TOGENETICINVITRO.ORGANISM.Set set : sciPart.getTOGENETICINVITRO().getORGANISM().getSet()) {
 			try {
 				papp.getParameters().put(cSpecies,set.getPHRASEOTHERORGANISM().getORGANISMTXT().getValue());
@@ -96,6 +96,10 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				papp.getParameters().put(cMetabolicActivationSystem,set.getMETABOLICACTSYSTEM().getMETABOLICACTSYSTEM().getValue());
 			} catch (Exception x) {	papp.getParameters().put(cMetabolicActivationSystem,null);}
 
+		}
+		else {
+			papp.getParameters().put(cSpecies,null);
+			papp.getParameters().put(cMetabolicActivationSystem,null);
 		}
 		
 		// endpoint
@@ -112,10 +116,12 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				} catch (Exception x) {
 					effect.getConditions().put(cMetabolicActivation,null);
 				}
-				if (set.getPHRASEOTHERORGANISM()==null) {
+				if (set.getPHRASEOTHERORGANISM()==null) try {
 					effect.getConditions().put(cSpecies,set.getPHRASEOTHERTESTSYSTEM().getTESTSYSTEMTXT().getValue());
-				} else
+				} catch (Exception x) { effect.getConditions().put(cSpecies,null);} 
+				else  try {
 					effect.getConditions().put(cSpecies,set.getPHRASEOTHERORGANISM().getORGANISMTXT().getValue());
+				} catch (Exception x) { effect.getConditions().put(cSpecies,null);}
 			}
 		StringBuilder interpretation = null;
 		if (sciPart.getTOGENETICINVITRO().getINTERPRETRSSUBMITTER() != null) {

@@ -35,10 +35,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		//TODO data owner - it's probably not in this file
 
 		if (sciPart.getTOCARCINOGENICITY().getGUIDELINE()!=null)
-			for (Set set : sciPart.getTOCARCINOGENICITY().getGUIDELINE().getSet()) {
+			for (Set set : sciPart.getTOCARCINOGENICITY().getGUIDELINE().getSet()) try {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			} catch (Exception x) {}
 		if (sciPart.getTOCARCINOGENICITY().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getTOCARCINOGENICITY().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
@@ -73,6 +72,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		} catch (Exception x) { papp.getParameters().put(cRouteAdm,null);}		
 		
 		StringBuilder doses = null;
+		if (sciPart.getTOCARCINOGENICITY().getDOSES()!=null && sciPart.getTOCARCINOGENICITY().getDOSES().getSet() != null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_CARCINOGENICITY_SECTION.EndpointStudyRecord.ScientificPart.TOCARCINOGENICITY.DOSES.Set set : sciPart.getTOCARCINOGENICITY().getDOSES().getSet()) {
 			if (doses==null) doses = new StringBuilder();
 			else doses.append(";");

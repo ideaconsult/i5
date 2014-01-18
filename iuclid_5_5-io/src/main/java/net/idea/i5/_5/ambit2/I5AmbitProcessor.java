@@ -120,6 +120,7 @@ public class I5AmbitProcessor<Target> extends
 			}
 
 			SubstanceCompositions sc = unmarshalled.getSubstanceCompositions();
+			if (sc!=null)
 			for (SubstanceComposition c : sc.getSubstanceComposition()) {
 
 				if (c.getAdditives() != null)

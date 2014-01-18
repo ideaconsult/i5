@@ -35,10 +35,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		}
 		//TODO data owner - it's probably not in this file
 		if (sciPart.getECDAPHNIATOX().getGUIDELINE()!=null)
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_DAPHNIATOX_SECTION.EndpointStudyRecord.ScientificPart.ECDAPHNIATOX.GUIDELINE.Set set : sciPart.getECDAPHNIATOX().getGUIDELINE().getSet()) {
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_DAPHNIATOX_SECTION.EndpointStudyRecord.ScientificPart.ECDAPHNIATOX.GUIDELINE.Set set : sciPart.getECDAPHNIATOX().getGUIDELINE().getSet()) try {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			} catch (Exception x) {}
 		if (sciPart.getECDAPHNIATOX().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getECDAPHNIATOX().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
@@ -83,7 +82,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getECDAPHNIATOX().getEFFCONC()!=null && sciPart.getECDAPHNIATOX().getEFFCONC().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_DAPHNIATOX_SECTION.EndpointStudyRecord.ScientificPart.ECDAPHNIATOX.EFFCONC.Set set : sciPart.getECDAPHNIATOX().getEFFCONC().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());
+			try {effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());} catch (Exception x) {}
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 

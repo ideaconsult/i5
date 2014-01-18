@@ -51,12 +51,9 @@ public class StudyRecordConverter
 		// TODO data owner - it's probably not in this file
 		
 		if (sciPart.getPCMELTING().getGUIDELINE() != null)
-			for (ScientificPart.PCMELTING.GUIDELINE.Set set : sciPart
-					.getPCMELTING().getGUIDELINE().getSet()) {
-				papp.getProtocol().addGuideline(
-						set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			for (ScientificPart.PCMELTING.GUIDELINE.Set set : sciPart.getPCMELTING().getGUIDELINE().getSet()) try {
+				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+			} catch (Exception x) {}
 		if (sciPart.getPCMELTING().getMETHODNOGUIDELINE() != null)
 			try {
 				papp.getProtocol().addGuideline(
@@ -75,7 +72,7 @@ public class StudyRecordConverter
 			papp.getParameters().put(methodType, null);
 		}
 		*/
-
+		if (sciPart.getPCMELTING().getMELTINGPT()!=null && sciPart.getPCMELTING().getMELTINGPT().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_MELTING_SECTION.EndpointStudyRecord.ScientificPart.PCMELTING.MELTINGPT.Set set : sciPart.getPCMELTING().getMELTINGPT().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 			effect.setEndpoint(MELTINGPOINT);

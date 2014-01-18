@@ -112,8 +112,11 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			
 			if (set.getVALUEUNITEXPDURATIONVALUE()!=null) {
 				Params p = new Params();
-				p.put(loValue, set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue());
-				p.put(unit,set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue());
+				try {
+					p.put(loValue, set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue());
+				} catch (Exception x) { p.put(loValue, null);}
+				try {p.put(unit,set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue());}
+				catch (Exception x) {}
 				effect.getConditions().put(cExposure,p);
 			} else {
 				effect.getConditions().put(cExposure,null);

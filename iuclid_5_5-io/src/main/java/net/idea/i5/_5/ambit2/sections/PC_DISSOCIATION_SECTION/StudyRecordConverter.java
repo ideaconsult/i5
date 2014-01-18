@@ -64,7 +64,7 @@ public class StudyRecordConverter
 			} catch (Exception x) {
 			}
 
-
+		if (sciPart.getPCDISSOCIATION().getPKA()!=null && sciPart.getPCDISSOCIATION().getPKA().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_DISSOCIATION_SECTION.EndpointStudyRecord.ScientificPart.PCDISSOCIATION.PKA.Set set : sciPart.getPCDISSOCIATION().getPKA().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 			effect.setEndpoint(pKa);

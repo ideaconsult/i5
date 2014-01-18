@@ -66,7 +66,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getENBIOACCUMULATION().getBCF()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCUMULATION_SECTION.EndpointStudyRecord.ScientificPart.ENBIOACCUMULATION.BCF.Set set : sciPart.getENBIOACCUMULATION().getBCF().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());
+				try {effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());} catch (Exception x) {}
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				try {

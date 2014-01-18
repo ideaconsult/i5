@@ -35,10 +35,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		//TODO data owner - it's probably not in this file
 
 		if (sciPart.getTOACUTEORAL().getGUIDELINE()!=null)
-			for (Set set : sciPart.getTOACUTEORAL().getGUIDELINE().getSet()) {
+			for (Set set : sciPart.getTOACUTEORAL().getGUIDELINE().getSet()) try {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			} catch (Exception x) {}
 		if (sciPart.getTOACUTEORAL().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getTOACUTEORAL().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
@@ -75,7 +74,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getTOACUTEORAL().getEFFLEVEL() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.EFFLEVEL.Set set : sciPart.getTOACUTEORAL().getEFFLEVEL().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());
+				try {effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());} catch (Exception x){}
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				

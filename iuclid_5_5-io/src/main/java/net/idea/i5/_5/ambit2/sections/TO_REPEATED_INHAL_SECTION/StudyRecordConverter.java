@@ -35,10 +35,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		//TODO data owner - it's probably not in this file
 
 		if (sciPart.getTOREPEATEDINHAL().getGUIDELINE()!=null)
-			for (Set set : sciPart.getTOREPEATEDINHAL().getGUIDELINE().getSet()) {
+			for (Set set : sciPart.getTOREPEATEDINHAL().getGUIDELINE().getSet()) try {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			} catch (Exception x) {}
 		if (sciPart.getTOREPEATEDINHAL().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getTOREPEATEDINHAL().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
@@ -72,6 +71,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		} catch (Exception x) { papp.getParameters().put(cRouteAdm,null);}		
 		
 		StringBuilder doses = null;
+		if (sciPart.getTOREPEATEDINHAL().getDOSES()!= null && sciPart.getTOREPEATEDINHAL().getDOSES().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_INHAL_SECTION.EndpointStudyRecord.ScientificPart.TOREPEATEDINHAL.DOSES.Set set : sciPart.getTOREPEATEDINHAL().getDOSES().getSet()) {
 			if (doses==null) doses = new StringBuilder();
 			else doses.append(";");
@@ -83,7 +83,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getTOREPEATEDINHAL().getEFFLEVEL() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_INHAL_SECTION.EndpointStudyRecord.ScientificPart.TOREPEATEDINHAL.EFFLEVEL.Set set : sciPart.getTOREPEATEDINHAL().getEFFLEVEL().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());
+				try {effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());} catch (Exception x) {}
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				

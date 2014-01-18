@@ -49,12 +49,9 @@ public class StudyRecordConverter
 		// TODO data owner - it's probably not in this file
 		
 		if (sciPart.getPCBOILING().getGUIDELINE() != null)
-			for (ScientificPart.PCBOILING.GUIDELINE.Set set : sciPart
-					.getPCBOILING().getGUIDELINE().getSet()) {
-				papp.getProtocol().addGuideline(
-						set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			for (ScientificPart.PCBOILING.GUIDELINE.Set set : sciPart.getPCBOILING().getGUIDELINE().getSet()) try {
+				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+			} catch (Exception x) {}
 		if (sciPart.getPCBOILING().getMETHODNOGUIDELINE() != null)
 			try {
 				papp.getProtocol().addGuideline(
@@ -64,7 +61,7 @@ public class StudyRecordConverter
 			} catch (Exception x) {
 			}
 
-
+		if (sciPart.getPCBOILING().getBOILINGPT()!=null && sciPart.getPCBOILING().getBOILINGPT().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_BOILING_SECTION.EndpointStudyRecord.ScientificPart.PCBOILING.BOILINGPT.Set set : sciPart.getPCBOILING().getBOILINGPT().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 			effect.setEndpoint(BOILINGPOINT);

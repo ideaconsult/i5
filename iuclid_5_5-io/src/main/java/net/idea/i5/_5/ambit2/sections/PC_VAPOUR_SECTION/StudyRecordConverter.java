@@ -62,6 +62,7 @@ public class StudyRecordConverter
 			} catch (Exception x) {
 			}
 
+		if (sciPart.getPCVAPOUR().getVAPOURPR()!=null && sciPart.getPCVAPOUR().getVAPOURPR().getSet()!=null)			
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION.EndpointStudyRecord.ScientificPart.PCVAPOUR.VAPOURPR.Set set : sciPart.getPCVAPOUR().getVAPOURPR().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 			effect.setEndpoint(VapourPressure);

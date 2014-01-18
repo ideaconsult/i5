@@ -35,10 +35,9 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		//TODO data owner - it's probably not in this file
 
 		if (sciPart.getTOREPRODUCTION().getGUIDELINE()!=null)
-			for (Set set : sciPart.getTOREPRODUCTION().getGUIDELINE().getSet()) {
+			for (Set set : sciPart.getTOREPRODUCTION().getGUIDELINE().getSet()) try {
 				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
-
-			}
+			} catch (Exception x) {}
 		if (sciPart.getTOREPRODUCTION().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getTOREPRODUCTION().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {}	
@@ -73,6 +72,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		} catch (Exception x) { papp.getParameters().put(cRouteAdm,null);}		
 		
 		StringBuilder doses = null;
+		if (sciPart.getTOREPRODUCTION().getDOSES()!=null &&  sciPart.getTOREPRODUCTION().getDOSES().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECTION.EndpointStudyRecord.ScientificPart.TOREPRODUCTION.DOSES.Set set : sciPart.getTOREPRODUCTION().getDOSES().getSet()) try {
 			String value = set.getCONCENTRATIONS().getCONCENTRATIONS().getValue();
 			if (doses==null) doses = new StringBuilder();

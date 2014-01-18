@@ -63,10 +63,12 @@ public class StudyRecordConverter extends	AbstractStudyRecordConverter<eu.europa
 			}
 		
 		StringBuilder physstate = null;
+		if (sciPart.getGIGENERALINFORM().getSUBSTANCEPHYSICALSTATE()!=null && sciPart.getGIGENERALINFORM().getSUBSTANCEPHYSICALSTATE().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.GI_GENERAL_INFORM_SECTION.EndpointStudyRecord.ScientificPart.GIGENERALINFORM.SUBSTANCEPHYSICALSTATE.Set set : sciPart.getGIGENERALINFORM().getSUBSTANCEPHYSICALSTATE().getSet()) {
 			if (physstate==null) physstate = new StringBuilder(); else physstate.append(" ");
 			physstate.append(set.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 		}
+		
 		StringBuilder form = null;
 		if (sciPart.getGIGENERALINFORM().getFORM()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.GI_GENERAL_INFORM_SECTION.EndpointStudyRecord.ScientificPart.GIGENERALINFORM.FORM.Set set : sciPart.getGIGENERALINFORM().getFORM().getSet()) {
@@ -75,11 +77,13 @@ public class StudyRecordConverter extends	AbstractStudyRecordConverter<eu.europa
 		}
 
 		EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-		effect.setEndpoint(Physstate==null?null:physstate.toString());
+		effect.setEndpoint(physstate==null?null:physstate.toString());
 		effect.setConditions(new Params());
 		effect.getConditions().put(Remark,form==null?null:form.toString());
 		papp.addEffect(effect);
+		try {
 		papp.setInterpretationResult(sciPart.getGIGENERALINFORM().getSUBSTANCETYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		} catch (Exception x) {papp.setInterpretationResult("");}
 
 		return record;
 	}

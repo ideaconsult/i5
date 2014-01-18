@@ -71,7 +71,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 				
 				Params dValue = new Params();
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
-					degradation.put("Degradation Parameter", set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
+					degradation.put("Degradation Parameter", set.getPHRASEOTHERPARAMETER()==null?null:set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
 					dValue.put(unit,"%");
 					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
 						dValue.put(loValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));

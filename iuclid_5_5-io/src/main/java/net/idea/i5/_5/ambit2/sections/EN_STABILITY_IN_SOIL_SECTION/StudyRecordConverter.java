@@ -70,7 +70,7 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 		if (sciPart.getENSTABILITYINSOIL().getPROP()!=null) 
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_STABILITY_IN_SOIL_SECTION.EndpointStudyRecord.ScientificPart.ENSTABILITYINSOIL.PROP.Set set : sciPart.getENSTABILITYINSOIL().getPROP().getSet()){
 			Params p = new Params();
-			p.put(cSoilType,set.getPHRASEOTHERSOILTYPE().getSOILTYPEValue());
+			p.put(cSoilType,set.getPHRASEOTHERSOILTYPE()==null?null:set.getPHRASEOTHERSOILTYPE().getSOILTYPEValue());
 			
 			Params v = new Params();
 			try {
@@ -90,8 +90,10 @@ public class StudyRecordConverter extends AbstractStudyRecordConverter<eu.europa
 			} catch (Exception x) {v.put(unit,null);}
 			p.put(cOCContent, v);
 			
-			p.put(cSoilNo, set.getSOILNUMBER().getSOILNUMBERValue());
-			soil.put(set.getSOILNUMBER().getSOILNUMBERValue(),p);
+			if (set.getSOILNUMBER()!=null && set.getSOILNUMBER().getSOILNUMBERValue()!=null) {
+				p.put(cSoilNo, set.getSOILNUMBER().getSOILNUMBERValue());
+				soil.put(set.getSOILNUMBER().getSOILNUMBERValue(),p);
+			}
 		}
 			
 
