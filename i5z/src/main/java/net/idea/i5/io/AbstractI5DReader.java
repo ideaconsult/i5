@@ -178,5 +178,10 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 	
 
 
-
+	@Override
+	protected void finalize() throws Throwable {
+		jaxbContext = null;
+		jaxbUnmarshaller = null;
+		super.finalize();
+	}
 }
