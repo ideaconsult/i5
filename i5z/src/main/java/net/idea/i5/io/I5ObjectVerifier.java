@@ -11,7 +11,7 @@ import ambit2.base.processors.DefaultAmbitProcessor;
 
 
 public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_OBJECTS> {
-	
+	protected XMLInputFactory factory;
 
 	/**
 	 * 
@@ -22,14 +22,14 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 	
 	public I5ObjectVerifier() {
 		super();
+		factory = XMLInputFactory.newInstance();
+		factory.setProperty(XMLInputFactory.IS_REPLACING_ENTITY_REFERENCES,Boolean.TRUE);
+		factory.setProperty(XMLInputFactory.IS_VALIDATING,Boolean.FALSE);
 	}
 
 	public I5_ROOT_OBJECTS process(InputStream in) throws AmbitException {
 		XMLStreamReader reader = null;
     	try {
-    		XMLInputFactory factory = XMLInputFactory.newInstance();
-    		factory.setProperty(XMLInputFactory.IS_REPLACING_ENTITY_REFERENCES,Boolean.TRUE);
-    		factory.setProperty(XMLInputFactory.IS_VALIDATING,Boolean.FALSE);
     		reader =   factory.createXMLStreamReader(in);
     		boolean inStudyRecord = false;
     		boolean inSciPart = false;
@@ -106,7 +106,9 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
     	} finally {
     		try { in.close(); } catch (Exception x) {}
     		try { reader.close(); } catch (Exception x) {}
+    		
     	}
 	}
+	
 
 }
