@@ -11,8 +11,8 @@ import java.util.logging.Logger;
 import junit.framework.Assert;
 import net.idea.i5.io.I5DReader;
 import net.idea.i5.io.I5ObjectVerifier;
-import net.idea.i5.io.I5ObjectVerifier.I5_ROOT_OBJECTS;
 import net.idea.i5.io.I5ZReader;
+import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.UnsupportedI5RootObject;
 
 import org.junit.Test;
