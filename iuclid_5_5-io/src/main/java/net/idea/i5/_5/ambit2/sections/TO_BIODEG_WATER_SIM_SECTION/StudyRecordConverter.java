@@ -145,13 +145,15 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 					degradation.put(cTimePoint, null);	
 			}
 		
-		if (sciPart.getTOBIODEGWATERSIM().getHALFLIFE()!=null) {
+		if (sciPart.getTOBIODEGWATERSIM().getHALFLIFE()!=null && 
+			sciPart.getTOBIODEGWATERSIM().getHALFLIFE().getSet()!=null && 
+			sciPart.getTOBIODEGWATERSIM().getHALFLIFE().getSet().size()>0) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSIM.HALFLIFE.Set set : sciPart.getTOBIODEGWATERSIM().getHALFLIFE().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 				effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());
 
 				effect.setConditions(new Params());
-				effect.getConditions().put("Compartment", set.getPHRASEOTHERCOMPARTMENT().getCOMPARTMENTValue());
+				//effect.getConditions().put("Compartment", set.getPHRASEOTHERCOMPARTMENT().getCOMPARTMENTValue());
 				effect.getConditions().putAll(degradation);
 				papp.addEffect(effect);
 				
