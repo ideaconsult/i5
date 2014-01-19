@@ -132,7 +132,7 @@ public class StudyRecordConverter
 				Params tvalue = new Params();
 				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
 					tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
-				}
+				} else tvalue.put(loValue,null);
 				tvalue.put(unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...
 				effect.getConditions().put(Temperature, tvalue);				
 			} else
