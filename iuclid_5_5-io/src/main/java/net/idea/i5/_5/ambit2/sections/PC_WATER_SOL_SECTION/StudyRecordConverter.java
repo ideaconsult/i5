@@ -29,6 +29,14 @@ public class StudyRecordConverter
 		return unmarshalled.getDataWaiving()!=null;
 	}
 	@Override
+	protected String getTestMaterialIdentity(EndpointStudyRecord unmarshalled) {
+		try {
+			return unmarshalled.getScientificPart().getPCWATERSOL().getTESTMATINDICATOR().getSet().getLISTBELOWSEL().getLISTBELOWSEL();
+		} catch (Exception x) {
+			return null;	
+		}
+	}		
+	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled,
 			SubstanceRecord record) throws AmbitException {
 		if (super.transform2record(unmarshalled, record)==null) return null;
@@ -42,7 +50,8 @@ public class StudyRecordConverter
 				unmarshalled.getName());
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
 				,unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS()
-				,unmarshalled.getPurposeFlag().getValueID(),unmarshalled.getStudyResultType().getValueID());
+				,unmarshalled.getPurposeFlag().getValueID(),unmarshalled.getStudyResultType().getValueID(),
+				getTestMaterialIdentity(unmarshalled));
 		record.addtMeasurement(papp);		
 		
 		// UUID

@@ -30,6 +30,15 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 	protected boolean isDataWaiving(EndpointStudyRecord unmarshalled) {
 		return unmarshalled.getDataWaiving()!=null;
 	}
+	
+	@Override
+	protected String getTestMaterialIdentity(EndpointStudyRecord unmarshalled) {
+		try {
+			return unmarshalled.getScientificPart().getENBIOACCUTERR().getTESTMATINDICATOR().getSet().getLISTBELOWSEL().getLISTBELOWSEL();
+		} catch (Exception x) {
+			return null;	
+		}
+	}		
 		
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) throws AmbitException {
@@ -44,7 +53,8 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
 				,unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS()
 				,unmarshalled.getPurposeFlag().getValueID(),
-				unmarshalled.getStudyResultType().getValueID()
+				unmarshalled.getStudyResultType().getValueID(),
+				getTestMaterialIdentity(unmarshalled)
 			);
 		record.addtMeasurement(papp);
 	

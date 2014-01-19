@@ -122,18 +122,19 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		if (isDataWaiving(unmarshalled)) return false;
 
 		//if (!isReferenceTypeAccepted(unmarshalled)) return false;
-		if (!isTestMaterialIdentityAccepted(unmarshalled)) return false;
 		return false;
 	}
 
 	protected abstract String getTopCategory();
 	protected abstract boolean hasScientificPart(T unmarshalled) ;	
 	protected abstract boolean isDataWaiving(T unmarshalled);
-	protected boolean isTestMaterialIdentityAccepted(T unmarshalled) {
-		return true; //for now
+	protected abstract String getTestMaterialIdentity(T unmarshalled);
+	
+	protected boolean isTestMaterialIdentityAccepted(String testMaterialCode) throws QACriteriaException {
+		if ("2480".equals(testMaterialCode)) return true; //yes
+		throw new QACriteriaException(Phrases.phrasegroup_Z38.get(testMaterialCode));
 	}
 	
-
 	protected boolean isPurposeflagAccepted(String purposeFlagCode) throws QACriteriaException{
 		if ("921".equals(purposeFlagCode) || "1590".equals(purposeFlagCode) ) return true; //1 or 2
 		throw new QACriteriaException(Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
@@ -159,12 +160,14 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected Params parseReliability(ProtocolApplication papp,
 				String valueID, 
 				boolean isRobustStudy, boolean isUsedforClassification, boolean isUsedforMSDS,
-				String purposeFlagCode,String studyResultTypeID) throws AmbitException {
-		try {
+				String purposeFlagCode,String studyResultTypeID,
+				String testMaterialIndicator) throws AmbitException {
+
 			//will throw exception if not correct flags
 			isPurposeflagAccepted(purposeFlagCode);
 			isStudyResultAccepted(studyResultTypeID);
 			isReliabilityAccepted(valueID);
+			isTestMaterialIdentityAccepted(testMaterialIndicator);
 			
 			Params reliability = new Params();
 			reliability.put(r_id, valueID);
@@ -177,7 +180,6 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 			
 			papp.setReliability(reliability);
 			return reliability;
-		} catch (Exception x) { return null; }
 	};
 	
 	protected ProtocolApplication createProtocolApplication(String documentID,String name) {

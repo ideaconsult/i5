@@ -27,6 +27,14 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 	protected boolean isDataWaiving(EndpointStudyRecord unmarshalled) {
 		return unmarshalled.getDataWaiving()!=null;
 	}
+	
+	protected String getTestMaterialIdentity(EndpointStudyRecord unmarshalled) {
+		try {
+			return unmarshalled.getScientificPart().getECSOILMICROTOX().getTESTMATINDICATOR().getSet().getLISTBELOWSEL().getLISTBELOWSEL();
+		} catch (Exception x) {
+			return null;	
+		}
+	}	
 		
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) throws AmbitException {
@@ -41,7 +49,8 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 				unmarshalled.getName());
 		parseReliability(papp, unmarshalled.getReliability().getValueID(),
 					unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS()
-					,unmarshalled.getPurposeFlag().getValueID(),unmarshalled.getStudyResultType().getValueID());
+					,unmarshalled.getPurposeFlag().getValueID(),unmarshalled.getStudyResultType().getValueID(),
+					getTestMaterialIdentity(unmarshalled));
 		record.addtMeasurement(papp);		
 		
 		//UUID

@@ -32,6 +32,15 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 	}
 		
 	@Override
+	protected String getTestMaterialIdentity(EndpointStudyRecord unmarshalled) {
+		try {
+			return unmarshalled.getScientificPart().getENHENRYLAW().getTESTMATINDICATOR().getSet().getLISTBELOWSEL().getLISTBELOWSEL();
+		} catch (Exception x) {
+			return null;	
+		}
+	}
+		
+	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) throws AmbitException {
 		if (super.transform2record(unmarshalled, record)==null) return null;
 		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_HENRY_LAW_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
@@ -44,7 +53,8 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
 				,unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS()
 				,unmarshalled.getPurposeFlag().getValueID(),
-				unmarshalled.getStudyResultType().getValueID()
+				unmarshalled.getStudyResultType().getValueID(),
+				getTestMaterialIdentity(unmarshalled)
 			);
 		record.addtMeasurement(papp);
 	

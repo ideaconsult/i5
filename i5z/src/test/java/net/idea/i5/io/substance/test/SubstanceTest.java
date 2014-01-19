@@ -424,7 +424,7 @@ Value	2	1976	h
 		//String test = "F:/nina/Ideaconsult/Projects/2013 - LRI AMBIT/AMBIT-LRI/IUCLID example for 4 endpoints.i5z";
 		URL url = SubstanceTest.class.getClassLoader().getResource(test);
 		//Assert.assertEquals(7,unmarshall_i5z(new File(test),25));
-		Assert.assertEquals(103,unmarshall_i5z(new File(url.getFile()),535));
+		Assert.assertEquals(404,unmarshall_i5z(new File(url.getFile()),404));
 	}		
 	@Test
 	public void test_i5z_4() throws Exception {

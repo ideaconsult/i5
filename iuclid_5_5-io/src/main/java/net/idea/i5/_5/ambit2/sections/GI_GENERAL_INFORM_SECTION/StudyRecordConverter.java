@@ -28,6 +28,14 @@ public class StudyRecordConverter extends PChemStudyRecordConvertor<eu.europa.ec
 	protected boolean isDataWaiving(EndpointStudyRecord unmarshalled) {
 		return unmarshalled.getDataWaiving()!=null;
 	}
+	@Override
+	protected String getTestMaterialIdentity(EndpointStudyRecord unmarshalled) {
+		try {
+			return unmarshalled.getScientificPart().getGIGENERALINFORM().getTESTMATINDICATOR().getSet().getLISTBELOWSEL().getLISTBELOWSEL();
+		} catch (Exception x) {
+			return null;	
+		}
+	}	
 			
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled,
@@ -43,7 +51,8 @@ public class StudyRecordConverter extends PChemStudyRecordConvertor<eu.europa.ec
 				unmarshalled.getName());
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
 				,unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS()
-				,unmarshalled.getPurposeFlag().getValueID(),unmarshalled.getStudyResultType().getValueID());
+				,unmarshalled.getPurposeFlag().getValueID(),unmarshalled.getStudyResultType().getValueID(),
+				getTestMaterialIdentity(unmarshalled));
 		record.addtMeasurement(papp);		
 		
 		// UUID
