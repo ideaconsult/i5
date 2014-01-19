@@ -205,6 +205,9 @@ public enum I5_ROOT_OBJECTS {
 	public String getContextPath() {
 		return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord."+name()+"_SECTION";
 	}	
+	public String toSection() {
+		return name()+"_SECTION";
+	}		
 	public boolean isScientificPart() {
 		return true;
 	}

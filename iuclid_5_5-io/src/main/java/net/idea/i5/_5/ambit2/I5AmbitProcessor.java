@@ -57,6 +57,8 @@ public class I5AmbitProcessor<Target> extends
 			IStudyRecordConverter convertor = getConvertor(unmarshalled.getClass().getName());	
 			if (convertor != null)
 				return convertor.transform2record(unmarshalled, record);
+		} catch (AmbitException x) {
+			throw x;
 		} catch (Exception x) {
 			throw new AmbitException(x);
 		}

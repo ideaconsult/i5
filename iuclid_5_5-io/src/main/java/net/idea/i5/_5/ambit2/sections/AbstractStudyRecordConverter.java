@@ -1,12 +1,31 @@
 package net.idea.i5._5.ambit2.sections;
 
 import net.idea.i5._5.ambit2.Phrases;
+import net.idea.i5.io.I5_ROOT_OBJECTS;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
+import ambit2.base.exceptions.AmbitException;
 
 public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordConverter<T>{
+	protected I5_ROOT_OBJECTS endpointCategory;
+	protected enum _top_category {
+		PCHEM {
+			@Override
+			public String toString() {
+				return "P-CHEM";
+			}
+		},		
+		ENVFATE {
+			@Override
+			public String toString() {
+				return "ENV FATE";
+			}
+		},
+		ECOTOX,
+		TOX
+	};
 	protected final String Physstate = "Physical state";
 	
 	protected static final String cSpecies = "Species";
@@ -52,6 +71,15 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected static final String cBasisForEffect = "Basis for effect";
 	protected static final String cConcType = "Based on";	
 	
+	protected static final String cSoilNo = "Soil No.";
+	protected static final String cSoilType = "Soil type";
+	protected static final String cOCContent =  "OC content";	
+	
+	protected static final String cTypeGenotoxicity= "Type of genotoxicity";
+	protected static final String cTargetGene= "Target gene";
+	protected static final String cMetabolicActivationSystem= "Metabolic activation system";
+	protected static final String cMetabolicActivation= "Metabolic activation";	
+	
 	
 	protected static final String SOLUBILITY_ORG_SOLVENT = "Solubility org. solvents";
 	
@@ -78,10 +106,61 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		else
 			record.setCompanyUUID(value);
 	}	
-	protected Params parseReliability(ProtocolApplication papp,String valueID, 
+	
+	public AbstractStudyRecordConverter(I5_ROOT_OBJECTS endpointCategory) {
+		super();
+		this.endpointCategory = endpointCategory;
+	}
+	
+	protected String getEndpointCategory() {
+		return endpointCategory==null?null:endpointCategory.toSection();
+	}
+	
+	protected boolean hasDataTransferCriteriaFulfilled(T unmarshalled) {
+		if (!hasScientificPart(unmarshalled)) return false;
+		if (isDataWaiving(unmarshalled)) return false;
+
+		//if (!isReferenceTypeAccepted(unmarshalled)) return false;
+		if (!isTestMaterialIdentityAccepted(unmarshalled)) return false;
+		return false;
+	}
+
+	protected abstract String getTopCategory();
+	protected abstract boolean hasScientificPart(T unmarshalled) ;	
+	protected abstract boolean isDataWaiving(T unmarshalled);
+	protected boolean isTestMaterialIdentityAccepted(T unmarshalled) {
+		return true; //for now
+	}
+	
+	private static final String _msg = "Data transfer criteria not fullfilled : ";
+	protected boolean isPurposeflagAccepted(String purposeFlagCode) throws AmbitException{
+		return true;
+	}
+	protected boolean isStudyResultAccepted(String studyResultTypeID) throws AmbitException {
+		return true;
+	}
+	protected boolean isReliabilityAccepted(String valueID) throws AmbitException {
+		return true;
+	}
+	protected boolean isReferenceTypeAccepted(T unmarshalled) {
+		return true;
+	}
+	
+	public ambit2.base.interfaces.IStructureRecord transform2record(T unmarshalled, SubstanceRecord record) throws AmbitException {
+		if (hasDataTransferCriteriaFulfilled(unmarshalled)) return null;
+		else return record;
+	};
+	
+	protected Params parseReliability(ProtocolApplication papp,
+				String valueID, 
 				boolean isRobustStudy, boolean isUsedforClassification, boolean isUsedforMSDS,
-				String purposeFlagCode,String studyResultTypeID) {
+				String purposeFlagCode,String studyResultTypeID) throws AmbitException {
 		try {
+			//will throw exception if not correct flags
+			isPurposeflagAccepted(purposeFlagCode);
+			isStudyResultAccepted(studyResultTypeID);
+			isReliabilityAccepted(valueID);
+			
 			Params reliability = new Params();
 			reliability.put(r_id, valueID);
 			reliability.put(r_value, Phrases.phrasegroup_A36.get(valueID));
@@ -96,12 +175,12 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		} catch (Exception x) { return null; }
 	};
 	
-	protected ProtocolApplication createProtocolApplication(String documentID,String name, String topCategory,String category) {
+	protected ProtocolApplication createProtocolApplication(String documentID,String name) {
 		ProtocolApplication<Protocol,Params,String,Params,String> papp = new ProtocolApplication<Protocol,Params,String,Params,String>(
 					new Protocol(name));
 		papp.setDocumentUUID(documentID);		
-		papp.getProtocol().setTopCategory(topCategory);
-		papp.getProtocol().setCategory(category);
+		papp.getProtocol().setTopCategory(getTopCategory());
+		papp.getProtocol().setCategory(getEndpointCategory());
 		papp.setParameters(new Params());
 		return papp;
 	}
