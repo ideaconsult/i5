@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections;
 
 import net.idea.i5._5.ambit2.Phrases;
+import net.idea.i5._5.ambit2.QACriteriaException;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.Params;
@@ -132,14 +133,14 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		return true; //for now
 	}
 	
-	private static final String _msg = "Data transfer criteria not fullfilled : ";
-	protected boolean isPurposeflagAccepted(String purposeFlagCode) throws AmbitException{
+
+	protected boolean isPurposeflagAccepted(String purposeFlagCode) throws QACriteriaException{
 		return true;
 	}
-	protected boolean isStudyResultAccepted(String studyResultTypeID) throws AmbitException {
+	protected boolean isStudyResultAccepted(String studyResultTypeID) throws QACriteriaException {
 		return true;
 	}
-	protected boolean isReliabilityAccepted(String valueID) throws AmbitException {
+	protected boolean isReliabilityAccepted(String valueID) throws QACriteriaException {
 		return true;
 	}
 	protected boolean isReferenceTypeAccepted(T unmarshalled) {

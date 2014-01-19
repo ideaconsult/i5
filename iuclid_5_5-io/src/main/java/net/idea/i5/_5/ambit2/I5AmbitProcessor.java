@@ -3,10 +3,9 @@ package net.idea.i5._5.ambit2;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.logging.Level;
 
-import net.idea.i5._5.ambit2.sections.AbstractStudyRecordConverter;
 import net.idea.i5._5.ambit2.sections.IStudyRecordConverter;
-import net.idea.i5._5.ambit2.sections.EC_FISHTOX_SECTION.StudyRecordConverter;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
@@ -57,6 +56,10 @@ public class I5AmbitProcessor<Target> extends
 			IStudyRecordConverter convertor = getConvertor(unmarshalled.getClass().getName());	
 			if (convertor != null)
 				return convertor.transform2record(unmarshalled, record);
+		} catch (QACriteriaException x) { 
+			//reliability exception
+			logger.log(Level.INFO,x.getMessage());
+			return null;
 		} catch (AmbitException x) {
 			throw x;
 		} catch (Exception x) {
