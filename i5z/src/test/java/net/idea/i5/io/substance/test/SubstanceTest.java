@@ -414,7 +414,7 @@ Value	2	1976	h
 	public void test_i5z_5() throws Exception {
 		String test = "net/idea/i5/_5/substance/i5z/IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734.i5z";
 		URL url = SubstanceTest.class.getClassLoader().getResource(test);
-		Assert.assertEquals(535,unmarshall_i5z(new File(url.getFile()),535));		
+		Assert.assertEquals(404,unmarshall_i5z(new File(url.getFile()),404));		
 	}
 	
 	@Test
