@@ -1,5 +1,6 @@
 package net.idea.i5._5.ambit2.sections.TO_ACUTE_ORAL_SECTION;
 
+import net.idea.i5._5.ambit2.QACriteriaException;
 import net.idea.i5._5.ambit2.sections.TOXStudyRecordConvertor;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import ambit2.base.data.SubstanceRecord;
@@ -35,6 +36,32 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		}
 	}		
 	@Override
+	protected void parseReference(EndpointStudyRecord unmarshalled, ProtocolApplication papp) throws QACriteriaException {
+		// citation
+		QACriteriaException qax = null;
+		if (unmarshalled.getScientificPart().getTOACUTEORAL().getREFERENCE() != null)
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.REFERENCE.Set set : unmarshalled.getScientificPart().getTOACUTEORAL().getREFERENCE().getSet()) {
+				try {
+					if (set.getREFERENCEAUTHOR()!=null)
+						papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+					if (set.getREFERENCEYEAR()!=null) try {
+						papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
+					} catch (Exception x) {}
+					isReferenceTypeAccepted(set.getPHRASEOTHERREFERENCETYPE().getREFERENCETYPE());					
+					return;
+				} catch (QACriteriaException x) {
+					qax = x;
+					continue;
+				} catch (Exception x) {
+					qax = new QACriteriaException(x.getMessage());
+					continue;
+				}
+
+			}	
+		else qax = new QACriteriaException("Empty reference!");
+		if (qax!=null) throw qax;
+	}			
+	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) throws AmbitException {
 		if (super.transform2record(unmarshalled, record)==null) return null;
 		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
@@ -69,18 +96,8 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		}
 		*/
 		
-		// year
-		if (sciPart.getTOACUTEORAL().getREFERENCE() != null)
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.REFERENCE.Set set : sciPart
-					.getTOACUTEORAL().getREFERENCE().getSet()) {
-				if (set.getREFERENCEAUTHOR()!=null && set.getREFERENCEAUTHOR().getREFERENCEAUTHOR()!=null) 
-					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				if (set.getREFERENCEYEAR()!=null) try {
-					papp.getParameters().put(cYear,set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
-					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
-				} catch (Exception x) {papp.getParameters().put(cYear,null);}
-				else papp.getParameters().put(cYear,null);
-			}
+		parseReference(unmarshalled, papp);
+		papp.getParameters().put(cYear,papp.getReferenceYear());
 
 		// Acute tox oral
 		papp.getParameters().put(cSpecies,

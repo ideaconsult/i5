@@ -1,5 +1,6 @@
 package net.idea.i5._5.ambit2.sections.EC_FISHTOX_SECTION;
 
+import net.idea.i5._5.ambit2.QACriteriaException;
 import net.idea.i5._5.ambit2.sections.ECOTOXStudyRecordConvertor;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import ambit2.base.data.SubstanceRecord;
@@ -36,6 +37,33 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		}
 	}	
 	@Override
+	protected void parseReference(EndpointStudyRecord unmarshalled, ProtocolApplication papp) throws QACriteriaException {
+		// citation
+		QACriteriaException qax = null;
+		if (unmarshalled.getScientificPart().getECFISHTOX().getREFERENCE() != null)
+			for (Set set : unmarshalled.getScientificPart().getECFISHTOX().getREFERENCE().getSet()) {
+				try {
+					if (set.getREFERENCEAUTHOR()!=null)
+						papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+					if (set.getREFERENCEYEAR()!=null) try {
+						papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
+					} catch (Exception x) {}
+					isReferenceTypeAccepted(set.getPHRASEOTHERREFERENCETYPE().getREFERENCETYPE());					
+					return;
+				} catch (QACriteriaException x) {
+					qax = x;
+					continue;
+				} catch (Exception x) {
+					qax = new QACriteriaException(x.getMessage());
+					continue;
+				}
+
+			}	
+		else qax = new QACriteriaException("Empty reference!");
+		if (qax!=null) throw qax;
+	}	
+	
+	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) throws AmbitException {
 		if (super.transform2record(unmarshalled, record)==null) return null;
 		eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_FISHTOX_SECTION.EndpointStudyRecord.ScientificPart sciPart = unmarshalled.getScientificPart();
@@ -68,14 +96,7 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		} catch (Exception x) {}	
 	
 		// citation
-		if (sciPart.getECFISHTOX().getREFERENCE() != null)
-			for (Set set : sciPart.getECFISHTOX().getREFERENCE().getSet()) {
-				if (set.getREFERENCEAUTHOR()!=null)
-					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				if (set.getREFERENCEYEAR()!=null) try {
-					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
-				} catch (Exception x) {}
-			}	
+		parseReference(unmarshalled, papp);
 		
 		//Exposure duration
 		if (sciPart.getECFISHTOX().getEXPDURATION()!=null) {

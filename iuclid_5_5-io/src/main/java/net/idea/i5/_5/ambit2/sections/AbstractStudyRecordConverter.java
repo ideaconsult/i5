@@ -131,32 +131,36 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected abstract String getTestMaterialIdentity(T unmarshalled);
 	
 	protected boolean isTestMaterialIdentityAccepted(String testMaterialCode) throws QACriteriaException {
+		
 		if ("2480".equals(testMaterialCode)) return true; //yes
-		throw new QACriteriaException(Phrases.phrasegroup_Z38.get(testMaterialCode));
+		throw new QACriteriaException(testMaterialCode==null?null:Phrases.phrasegroup_Z38.get(testMaterialCode));
 	}
 	
 	protected boolean isPurposeflagAccepted(String purposeFlagCode) throws QACriteriaException{
 		if ("921".equals(purposeFlagCode) || "1590".equals(purposeFlagCode) ) return true; //1 or 2
-		throw new QACriteriaException(Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
+		throw new QACriteriaException(purposeFlagCode==null?null:Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
 
 	}
 	protected boolean isStudyResultAccepted(String studyResultTypeID) throws QACriteriaException {
 		if ("1895".equals(studyResultTypeID)) return true; //experimental result
-		throw new QACriteriaException(Phrases.phrasegroup_Z05.get(studyResultTypeID));
+		throw new QACriteriaException(studyResultTypeID==null?null:Phrases.phrasegroup_Z05.get(studyResultTypeID));
 	}
 	protected boolean isReliabilityAccepted(String valueID) throws QACriteriaException {
 		if ("16".equals(valueID) || "18".equals(valueID) ) return true; //1 or 2
-		throw new QACriteriaException(Phrases.phrasegroup_A36.get(valueID));
+		throw new QACriteriaException(valueID==null?null:Phrases.phrasegroup_A36.get(valueID));
 	}
-	protected boolean isReferenceTypeAccepted(T unmarshalled) {
-		return true;
+	protected boolean isReferenceTypeAccepted(String referenceTypeCode) throws QACriteriaException {
+		//Study report OR publication OR Review article / handbook 
+		if ("1586".equals(referenceTypeCode) || "1433".equals(referenceTypeCode)  || "1486".equals(referenceTypeCode)) return true; 
+		throw new QACriteriaException(referenceTypeCode==null?null:Phrases.phrasegroup_Z31.get(referenceTypeCode));
 	}
 	
 	public ambit2.base.interfaces.IStructureRecord transform2record(T unmarshalled, SubstanceRecord record) throws AmbitException {
 		if (hasDataTransferCriteriaFulfilled(unmarshalled)) return null;
 		else return record;
 	};
-	
+	protected abstract void parseReference(T unmarshalled, ProtocolApplication papp) throws QACriteriaException;
+
 	protected Params parseReliability(ProtocolApplication papp,
 				String valueID, 
 				boolean isRobustStudy, boolean isUsedforClassification, boolean isUsedforMSDS,

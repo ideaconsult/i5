@@ -35,7 +35,9 @@ public class Phrases {
 	public static final Hashtable<String, String> phrasegroup_Z06 = phrasegroup_Z06();
 	public static final Hashtable<String, String> phrasegroup_Z08 = phrasegroup_Z08();
 	public static final Hashtable<String, String> phrasegroup_Z30 = phrasegroup_Z30();
-	public static final Hashtable<String, String> phrasegroup_Z31 = phrasegroup_Z31();	
+	*/
+	public static final Hashtable<String, String> phrasegroup_Z31 = phrasegroup_Z31();
+	/*
 	public static final Hashtable<String, String> phrasegroup_Z36 = phrasegroup_Z36();
 	*/
 	public static final Hashtable<String, String> phrasegroup_Z38 = phrasegroup_Z38();
@@ -1046,7 +1048,7 @@ public class Phrases {
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }	
-    
+    */
     private static Hashtable<String, String> phrasegroup_Z31() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
     	p.put("1586", "study report");
@@ -1059,7 +1061,7 @@ public class Phrases {
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }	
-	*/
+	
     private static Hashtable<String, String> phrasegroup_A36() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
     	p.put("16", "1 (reliable without restriction)");

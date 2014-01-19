@@ -1,5 +1,6 @@
 package net.idea.i5._5.ambit2.sections.TO_REPRODUCTION_SECTION;
 
+import net.idea.i5._5.ambit2.QACriteriaException;
 import net.idea.i5._5.ambit2.sections.TOXStudyRecordConvertor;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import ambit2.base.data.SubstanceRecord;
@@ -34,6 +35,32 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 			return null;	
 		}
 	}		
+	@Override
+	protected void parseReference(EndpointStudyRecord unmarshalled, ProtocolApplication papp) throws QACriteriaException {
+		// citation
+		QACriteriaException qax = null;
+		if (unmarshalled.getScientificPart().getTOREPRODUCTION().getREFERENCE() != null)
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECTION.EndpointStudyRecord.ScientificPart.TOREPRODUCTION.REFERENCE.Set set : unmarshalled.getScientificPart().getTOREPRODUCTION().getREFERENCE().getSet()) {
+				try {
+					if (set.getREFERENCEAUTHOR()!=null)
+						papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+					if (set.getREFERENCEYEAR()!=null) try {
+						papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
+					} catch (Exception x) {}
+					isReferenceTypeAccepted(set.getPHRASEOTHERREFERENCETYPE().getREFERENCETYPE());					
+					return;
+				} catch (QACriteriaException x) {
+					qax = x;
+					continue;
+				} catch (Exception x) {
+					qax = new QACriteriaException(x.getMessage());
+					continue;
+				}
+
+			}	
+		else qax = new QACriteriaException("Empty reference!");
+		if (qax!=null) throw qax;
+	}			
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) throws AmbitException {
 		if (super.transform2record(unmarshalled, record)==null) return null;
@@ -70,16 +97,9 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		*/
 		
 		// year
-		if (sciPart.getTOREPRODUCTION().getREFERENCE() != null)
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECTION.EndpointStudyRecord.ScientificPart.TOREPRODUCTION.REFERENCE.Set set : sciPart
-					.getTOREPRODUCTION().getREFERENCE().getSet()) {
-				if (set.getREFERENCEAUTHOR()!=null)
-					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				if (set.getREFERENCEYEAR()!=null) {
-					papp.getParameters().put(cYear,set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
-					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
-				} else papp.getParameters().put(cYear,null);
-			}
+		
+		parseReference(unmarshalled, papp);
+		papp.getParameters().put(cYear,papp.getReferenceYear());
 
 		// Repeated tox oral
 		papp.getParameters().put(cSpecies,

@@ -1,5 +1,6 @@
 package net.idea.i5._5.ambit2.sections.EN_BIOACCU_TERR_SECTION;
 
+import net.idea.i5._5.ambit2.QACriteriaException;
 import net.idea.i5._5.ambit2.sections.ENVFATEStudyRecordConvertor;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import ambit2.base.data.SubstanceRecord;
@@ -39,6 +40,32 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 			return null;	
 		}
 	}		
+	@Override
+	protected void parseReference(EndpointStudyRecord unmarshalled, ProtocolApplication papp) throws QACriteriaException {
+		// citation
+		QACriteriaException qax = null;
+		if (unmarshalled.getScientificPart().getENBIOACCUTERR().getREFERENCE() != null)
+			for (Set set : unmarshalled.getScientificPart().getENBIOACCUTERR().getREFERENCE().getSet()) {
+				try {
+					if (set.getREFERENCEAUTHOR()!=null)
+						papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+					if (set.getREFERENCEYEAR()!=null) try {
+						papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
+					} catch (Exception x) {}
+					isReferenceTypeAccepted(set.getPHRASEOTHERREFERENCETYPE().getREFERENCETYPE());					
+					return;
+				} catch (QACriteriaException x) {
+					qax = x;
+					continue;
+				} catch (Exception x) {
+					qax = new QACriteriaException(x.getMessage());
+					continue;
+				}
+
+			}	
+		else qax = new QACriteriaException("Empty reference!");
+		if (qax!=null) throw qax;
+	}		
 		
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) throws AmbitException {
@@ -73,15 +100,8 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		} catch (Exception x) {}	
 		
 		// citation
-		if (sciPart.getENBIOACCUTERR().getREFERENCE() != null)
-			for (Set set : sciPart
-					.getENBIOACCUTERR().getREFERENCE().getSet()) {
-				if (set.getREFERENCEAUTHOR()!=null)
-					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				if (set.getREFERENCEYEAR()!=null) {
-					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
-				}
-			}		
+		parseReference(unmarshalled, papp);
+		
 		try {
 			papp.getParameters().put(cSpecies,sciPart.getENBIOACCUTERR().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		} catch (Exception x) {
