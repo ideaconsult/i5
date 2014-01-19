@@ -135,13 +135,17 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	
 
 	protected boolean isPurposeflagAccepted(String purposeFlagCode) throws QACriteriaException{
-		return true;
+		if ("921".equals(purposeFlagCode) || "1590".equals(purposeFlagCode) ) return true; //1 or 2
+		throw new QACriteriaException(Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
+
 	}
 	protected boolean isStudyResultAccepted(String studyResultTypeID) throws QACriteriaException {
-		return true;
+		if ("1895".equals(studyResultTypeID)) return true; //experimental result
+		throw new QACriteriaException(Phrases.phrasegroup_Z05.get(studyResultTypeID));
 	}
 	protected boolean isReliabilityAccepted(String valueID) throws QACriteriaException {
-		return true;
+		if ("16".equals(valueID) || "18".equals(valueID) ) return true; //1 or 2
+		throw new QACriteriaException(Phrases.phrasegroup_A36.get(valueID));
 	}
 	protected boolean isReferenceTypeAccepted(T unmarshalled) {
 		return true;
