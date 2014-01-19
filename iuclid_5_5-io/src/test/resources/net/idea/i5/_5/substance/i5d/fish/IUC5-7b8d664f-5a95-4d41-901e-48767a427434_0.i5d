@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<i5:EndpointStudyRecord xmlns:i5="http://echa.europa.eu/schemas/iuclid5/20130101" documentReferencePK="IUC5-7b8d664f-5a95-4d41-901e-48767a427434/0" robustStudy="false" usedForClassification="false" usedForMSDS="false" version="2013-03-28T11:56:50Z">
+  <i5:modificationHistory>
+    <i5:modification date="2013-10-14T14:43:05Z">
+      <i5:comment>Created</i5:comment>
+      <i5:modificationBy>qli / Clariant Produkte (Deutschland) GmbH / Sulzbach am Taunus / Germany</i5:modificationBy>
+    </i5:modification>
+    <i5:modification date="2013-11-15T10:06:52Z">
+      <i5:comment />
+      <i5:modificationBy>qli / Clariant Produkte (Deutschland) GmbH / Sulzbach am Taunus / Germany</i5:modificationBy>
+    </i5:modification>
+  </i5:modificationHistory>
+  <i5:ownershipProtection sealed="false" copyProtection="false" fractionalDocument="false" />
+  <i5:name>Short-term toxicity to fish.001</i5:name>
+  <i5:ownerRef lastModificationDate="2013-10-14T14:36:06Z" type="Substance" uniqueKey="IUC5-410e026d-f182-4e36-b14f-28013022f906/0">
+    <i5:description>50-00-0_Formaldehyde_TRA0001_CLN test substance_TST_DE00_REACH P3 / formaldehyde / formaldehyde / 50-00-0 / Clariant Produkte (Deutschland) GmbH / Sulzbach am Taunus / Germany</i5:description>
+    <i5:notes />
+  </i5:ownerRef>
+  <i5:dataProtection>
+    <i5:confidentiality valueID="NOT_SPECIFIED" />
+    <i5:justification />
+  </i5:dataProtection>
+  <i5:purposeFlag valueID="921" />
+  <i5:dataWaiving valueID="NOT_SPECIFIED" />
+  <i5:dataWaivingJustification />
+  <i5:studyResultType valueID="1895">
+    <i5:otherValue />
+  </i5:studyResultType>
+  <i5:studyPeriod>2006-12-01 to 2006-12-08</i5:studyPeriod>
+  <i5:reliability valueID="16">
+    <i5:otherValue />
+  </i5:reliability>
+  <i5:rationalReliability />
+  <i5:scientificPart>
+    <i5:EC_FISHTOX>
+      <i5:REFERENCE>
+        <i5:set>
+          <i5:PHRASEOTHER_REFERENCE_TYPE>
+            <i5:REFERENCE_TYPE>1586</i5:REFERENCE_TYPE>
+            <i5:REFERENCE_TYPE.value>study report</i5:REFERENCE_TYPE.value>
+            <i5:REFERENCE_TYPE_TXT />
+          </i5:PHRASEOTHER_REFERENCE_TYPE>
+          <i5:REFERENCE_AUTHOR>
+            <i5:REFERENCE_AUTHOR>ano</i5:REFERENCE_AUTHOR>
+          </i5:REFERENCE_AUTHOR>
+          <i5:REFERENCE_YEAR>
+            <i5:REFERENCE_YEAR>2006</i5:REFERENCE_YEAR>
+          </i5:REFERENCE_YEAR>
+          <i5:REFERENCE_TITLE>
+            <i5:REFERENCE_TITLE>Fish, Acute Toxicity Test</i5:REFERENCE_TITLE>
+          </i5:REFERENCE_TITLE>
+          <i5:REFERENCE_SOURCE />
+          <i5:REFERENCE_TESTLAB>
+            <i5:REFERENCE_TESTLAB>ano</i5:REFERENCE_TESTLAB>
+          </i5:REFERENCE_TESTLAB>
+          <i5:REFERENCE_REPORT_NO>
+            <i5:REFERENCE_REPORT_NO>F0001</i5:REFERENCE_REPORT_NO>
+          </i5:REFERENCE_REPORT_NO>
+          <i5:REFERENCE_COMPANY_ID>
+            <i5:REFERENCE_COMPANY_ID>Clariant</i5:REFERENCE_COMPANY_ID>
+          </i5:REFERENCE_COMPANY_ID>
+          <i5:REFERENCE_COMPANY_STUDY_NO />
+          <i5:REFERENCE_REPORT_DATE>
+            <i5:REFERENCE_REPORT_DATE>2006-12-08T23:00:00Z</i5:REFERENCE_REPORT_DATE>
+          </i5:REFERENCE_REPORT_DATE>
+        </i5:set>
+      </i5:REFERENCE>
+      <i5:DATA_ACCESS>
+        <i5:set>
+          <i5:PHRASEOTHER_LIST_POP>
+            <i5:LIST_POP>1838</i5:LIST_POP>
+            <i5:LIST_POP.value>data submitter is data owner</i5:LIST_POP.value>
+            <i5:LIST_POP_TXT />
+          </i5:PHRASEOTHER_LIST_POP>
+        </i5:set>
+      </i5:DATA_ACCESS>
+      <i5:DATA_PROT_CLAIM>
+        <i5:set>
+          <i5:PHRASEOTHER_LIST_POP_FIX>
+            <i5:LIST_POP_FIX>4161</i5:LIST_POP_FIX>
+            <i5:LIST_POP_FIX.value>yes, but willing to share</i5:LIST_POP_FIX.value>
+            <i5:LIST_POP_FIX_TXT />
+          </i5:PHRASEOTHER_LIST_POP_FIX>
+        </i5:set>
+      </i5:DATA_PROT_CLAIM>
+      <i5:CROSSREF_SAMESTUDY>
+        <i5:set>
+          <i5:TEXT_BELOW />
+        </i5:set>
+      </i5:CROSSREF_SAMESTUDY>
+      <i5:GUIDELINE>
+        <i5:set>
+          <i5:QUALIFIER>
+            <i5:QUALIFIER>1680</i5:QUALIFIER>
+            <i5:QUALIFIER.value>according to</i5:QUALIFIER.value>
+          </i5:QUALIFIER>
+          <i5:PHRASEOTHER_GUIDELINE>
+            <i5:GUIDELINE>1201</i5:GUIDELINE>
+            <i5:GUIDELINE.value>OECD Guideline 203 (Fish, Acute Toxicity Test)</i5:GUIDELINE.value>
+            <i5:GUIDELINE_TXT />
+          </i5:PHRASEOTHER_GUIDELINE>
+          <i5:PHRASEOTHER_DEVIATION>
+            <i5:DEVIATION>2158</i5:DEVIATION>
+            <i5:DEVIATION.value>no</i5:DEVIATION.value>
+            <i5:DEVIATION_TXT />
+          </i5:PHRASEOTHER_DEVIATION>
+        </i5:set>
+      </i5:GUIDELINE>
+      <i5:METHOD_NOGUIDELINE>
+        <i5:set>
+          <i5:TEXTAREA_BELOW />
+        </i5:set>
+      </i5:METHOD_NOGUIDELINE>
+      <i5:GLP_COMPLIANCE_STATEMENT>
+        <i5:set>
+          <i5:PHRASEOTHER_LIST_SEL_FIX>
+            <i5:LIST_SEL_FIX>4179</i5:LIST_SEL_FIX>
+            <i5:LIST_SEL_FIX.value>yes (incl. certificate)</i5:LIST_SEL_FIX.value>
+            <i5:LIST_SEL_FIX_TXT />
+          </i5:PHRASEOTHER_LIST_SEL_FIX>
+        </i5:set>
+      </i5:GLP_COMPLIANCE_STATEMENT>
+      <i5:TESTMAT_INDICATOR>
+        <i5:set>
+          <i5:LIST_BELOW_SEL>
+            <i5:LIST_BELOW_SEL>2480</i5:LIST_BELOW_SEL>
+            <i5:LIST_BELOW_SEL.value>yes</i5:LIST_BELOW_SEL.value>
+          </i5:LIST_BELOW_SEL>
+        </i5:set>
+      </i5:TESTMAT_INDICATOR>
+      <i5:TESTMAT />
+      <i5:TESTMAT_FORM>
+        <i5:set>
+          <i5:PHRASEOTHER_TESTMAT_FORM />
+        </i5:set>
+      </i5:TESTMAT_FORM>
+      <i5:TESTMAT_DETAILS>
+        <i5:set>
+          <i5:FREETEXT_BELOW />
+        </i5:set>
+      </i5:TESTMAT_DETAILS>
+      <i5:TESTMAT_CONFIDENTIAL_DETAILS>
+        <i5:set>
+          <i5:FREETEXT_BELOW />
+        </i5:set>
+      </i5:TESTMAT_CONFIDENTIAL_DETAILS>
+      <i5:PROPERTIES_TESTMAT_DETAILS>
+        <i5:set>
+          <i5:FREETEXT_BELOW />
+        </i5:set>
+      </i5:PROPERTIES_TESTMAT_DETAILS>
+      <i5:ANALYT_MONIT>
+        <i5:set>
+          <i5:LIST_BELOW_SEL>
+            <i5:LIST_BELOW_SEL>2480</i5:LIST_BELOW_SEL>
+            <i5:LIST_BELOW_SEL.value>yes</i5:LIST_BELOW_SEL.value>
+          </i5:LIST_BELOW_SEL>
+        </i5:set>
+      </i5:ANALYT_MONIT>
+      <i5:SAMPLING_DETAILS>
+        <i5:set>
+          <i5:FREETEXT_BELOW />
+        </i5:set>
+      </i5:SAMPLING_DETAILS>
+      <i5:ANALYT_METHOD_DETAILS>
+        <i5:set>
+          <i5:FREETEXT_BELOW />
+        </i5:set>
+      </i5:ANALYT_METHOD_DETAILS>
+      <i5:VEHICLE_AQUATOX>
+        <i5:set>
+          <i5:LIST_BELOW_SEL />
+        </i5:set>
+      </i5:VEHICLE_AQUATOX>
+      <i5:TESTSOLUTIONS_DETAILS>
+        <i5:set>
+          <i5:FREETEXT_BELOW />
+        </i5:set>
+      </i5:TESTSOLUTIONS_DETAILS>
+      <i5:ORGANISM>
+        <i5:set>
+          <i5:PHRASEOTHER_LIST_POP>
+            <i5:LIST_POP>324</i5:LIST_POP>
+            <i5:LIST_POP.value>Danio rerio</i5:LIST_POP.value>
+            <i5:LIST_POP_TXT />
+          </i5:PHRASEOTHER_LIST_POP>
+        </i5:set>
+      </i5:ORGANISM>
+      <i5:ORGANISM_DETAILS>
+        <i5:set>
+          <i5:FREETEXT_BELOW />
+        </i5:set>
+      </i5:ORGANISM_DETAILS>
+      <i5:TESTTYPE_AQUATOX>
+        <i5:set>
+          <i5:PHRASEOTHER_LIST_POP>
+            <i5:LIST_POP>2339</i5:LIST_POP>
+            <i5:LIST_POP.value>semi-static</i5:LIST_POP.value>
+            <i5:LIST_POP_TXT />
+          </i5:PHRASEOTHER_LIST_POP>
+        </i5:set>
+      </i5:TESTTYPE_AQUATOX>
+      <i5:WATERTYPE>
+        <i5:set>
+          <i5:LIST_RIGHT_POP>
+            <i5:LIST_RIGHT_POP>1920</i5:LIST_RIGHT_POP>
+            <i5:LIST_RIGHT_POP.value>freshwater</i5:LIST_RIGHT_POP.value>
+          </i5:LIST_RIGHT_POP>
+        </i5:set>
+      </i5:WATERTYPE>
+      <i5:LIMIT_TEST>
+        <i5:set>
+          <i5:LIST_RIGHT_SEL />
+        </i5:set>
+      </i5:LIMIT_TEST>
+      <i5:EXP_DURATION>
+        <i5:set>
+          <i5:VALUEUNIT_VALUE>
+            <i5:VALUE>96</i5:VALUE>
+            <i5:UNIT>1976</i5:UNIT>
+            <i5:UNIT.value>h</i5:UNIT.value>
+          </i5:VALUEUNIT_VALUE>
+          <i5:REM />
+        </i5:set>
+      </i5:EXP_DURATION>
+      <i5:POSTEXP_PERIOD>
+        <i5:set>
+          <i5:TEXT_BELOW />
+        </i5:set>
+      </i5:POSTEXP_PERIOD>
+      <i5:HARDNESS>
+        <i5:set>
+          <i5:TEXT_BELOW />
+        </i5:set>
+      </i5:HARDNESS>
+      <i5:TEST_TEMP>
+        <i5:set>
+          <i5:TEXT_BELOW />
+        </i5:set>
+      </i5:TEST_TEMP>
+      <i5:PH>
+        <i5:set>
+          <i5:TEXT_BELOW />
+        </i5:set>
+      </i5:PH>
+      <i5:DISS_OXYGEN>
+        <i5:set>
+          <i5:TEXT_BELOW />
+        </i5:set>
+      </i5:DISS_OXYGEN>
+      <i5:SALINITY>
+        <i5:set>
+          <i5:TEXT_BELOW />
+        </i5:set>
+      </i5:SALINITY>
+      <i5:NOM_MEAS_CONC>
+        <i5:set>
+          <i5:TEXT_BELOW />
+        </i5:set>
+      </i5:NOM_MEAS_CONC>
+      <i5:TESTCONDIT_DETAILS>
+        <i5:set>
+          <i5:FREETEXT_BELOW />
+        </i5:set>
+      </i5:TESTCONDIT_DETAILS>
+      <i5:REFERENCE_SUBSTANCE>
+        <i5:set>
+          <i5:PHRASEOTHER_LIST_SEL_FIX />
+        </i5:set>
+      </i5:REFERENCE_SUBSTANCE>
+      <i5:REM_ME_TC>
+        <i5:set>
+          <i5:RICHTEXT_BELOW />
+        </i5:set>
+      </i5:REM_ME_TC>
+      <i5:EFFCONC>
+        <i5:set>
+          <i5:VALUEUNIT_EXP_DURATION_VALUE>
+            <i5:EXP_DURATION_VALUE>48</i5:EXP_DURATION_VALUE>
+            <i5:EXP_DURATION_UNIT>1976</i5:EXP_DURATION_UNIT>
+            <i5:EXP_DURATION_UNIT.value>h</i5:EXP_DURATION_UNIT.value>
+          </i5:VALUEUNIT_EXP_DURATION_VALUE>
+          <i5:PHRASEOTHER_ENDPOINT>
+            <i5:ENDPOINT>926</i5:ENDPOINT>
+            <i5:ENDPOINT.value>LC50</i5:ENDPOINT.value>
+            <i5:ENDPOINT_TXT />
+          </i5:PHRASEOTHER_ENDPOINT>
+          <i5:PRECISION_LOQUALIFIER>
+            <i5:LOQUALIFIER>32</i5:LOQUALIFIER>
+            <i5:LOQUALIFIER.value>&gt;</i5:LOQUALIFIER.value>
+            <i5:LOVALUE>100</i5:LOVALUE>
+            <i5:UPQUALIFIER>NOT_SPECIFIED</i5:UPQUALIFIER>
+            <i5:UPQUALIFIER.value />
+            <i5:UPVALUE />
+            <i5:UNIT>2098</i5:UNIT>
+            <i5:UNIT.value>mg/L</i5:UNIT.value>
+            <i5:UNIT_TXT />
+          </i5:PRECISION_LOQUALIFIER>
+          <i5:BASIS_CONC>
+            <i5:BASIS_CONC>1941</i5:BASIS_CONC>
+            <i5:BASIS_CONC.value>meas. (geom. mean)</i5:BASIS_CONC.value>
+          </i5:BASIS_CONC>
+          <i5:PHRASEOTHER_EFF_CONC_TYPE>
+            <i5:EFF_CONC_TYPE>1754</i5:EFF_CONC_TYPE>
+            <i5:EFF_CONC_TYPE.value>act. ingr.</i5:EFF_CONC_TYPE.value>
+            <i5:EFF_CONC_TYPE_TXT />
+          </i5:PHRASEOTHER_EFF_CONC_TYPE>
+          <i5:PHRASEOTHER_BASIS_EFFECT>
+            <i5:BASIS_EFFECT>2135</i5:BASIS_EFFECT>
+            <i5:BASIS_EFFECT.value>mortality</i5:BASIS_EFFECT.value>
+            <i5:BASIS_EFFECT_TXT />
+          </i5:PHRASEOTHER_BASIS_EFFECT>
+          <i5:REM />
+        </i5:set>
+        <i5:set>
+          <i5:VALUEUNIT_EXP_DURATION_VALUE>
+            <i5:EXP_DURATION_VALUE>96</i5:EXP_DURATION_VALUE>
+            <i5:EXP_DURATION_UNIT>1976</i5:EXP_DURATION_UNIT>
+            <i5:EXP_DURATION_UNIT.value>h</i5:EXP_DURATION_UNIT.value>
+          </i5:VALUEUNIT_EXP_DURATION_VALUE>
+          <i5:PHRASEOTHER_ENDPOINT>
+            <i5:ENDPOINT>926</i5:ENDPOINT>
+            <i5:ENDPOINT.value>LC50</i5:ENDPOINT.value>
+            <i5:ENDPOINT_TXT />
+          </i5:PHRASEOTHER_ENDPOINT>
+          <i5:PRECISION_LOQUALIFIER>
+            <i5:LOQUALIFIER>NOT_SPECIFIED</i5:LOQUALIFIER>
+            <i5:LOQUALIFIER.value />
+            <i5:LOVALUE>55</i5:LOVALUE>
+            <i5:UPQUALIFIER>NOT_SPECIFIED</i5:UPQUALIFIER>
+            <i5:UPQUALIFIER.value />
+            <i5:UPVALUE />
+            <i5:UNIT>2098</i5:UNIT>
+            <i5:UNIT.value>mg/L</i5:UNIT.value>
+            <i5:UNIT_TXT />
+          </i5:PRECISION_LOQUALIFIER>
+          <i5:BASIS_CONC>
+            <i5:BASIS_CONC>1941</i5:BASIS_CONC>
+            <i5:BASIS_CONC.value>meas. (geom. mean)</i5:BASIS_CONC.value>
+          </i5:BASIS_CONC>
+          <i5:PHRASEOTHER_EFF_CONC_TYPE>
+            <i5:EFF_CONC_TYPE>1754</i5:EFF_CONC_TYPE>
+            <i5:EFF_CONC_TYPE.value>act. ingr.</i5:EFF_CONC_TYPE.value>
+            <i5:EFF_CONC_TYPE_TXT />
+          </i5:PHRASEOTHER_EFF_CONC_TYPE>
+          <i5:PHRASEOTHER_BASIS_EFFECT>
+            <i5:BASIS_EFFECT>2135</i5:BASIS_EFFECT>
+            <i5:BASIS_EFFECT.value>mortality</i5:BASIS_EFFECT.value>
+            <i5:BASIS_EFFECT_TXT />
+          </i5:PHRASEOTHER_BASIS_EFFECT>
+          <i5:REM />
+        </i5:set>
+      </i5:EFFCONC>
+      <i5:RESULTS_DETAILS>
+        <i5:set>
+          <i5:FREETEXT_BELOW />
+        </i5:set>
+      </i5:RESULTS_DETAILS>
+      <i5:RS_REF_SUBSTANCE>
+        <i5:set>
+          <i5:FREETEXT_BELOW />
+        </i5:set>
+      </i5:RS_REF_SUBSTANCE>
+      <i5:STATISTICS>
+        <i5:set>
+          <i5:TEXT_INT />
+        </i5:set>
+      </i5:STATISTICS>
+      <i5:REM_RS>
+        <i5:set>
+          <i5:RICHTEXT_BELOW />
+        </i5:set>
+      </i5:REM_RS>
+      <i5:REM_ANYOTHER>
+        <i5:set>
+          <i5:RICHTEXT_BELOW />
+        </i5:set>
+      </i5:REM_ANYOTHER>
+      <i5:AD />
+      <i5:AD_STUDYREPORT />
+      <i5:PG_ILLUSTRATION>
+        <i5:set>
+          <i5:PIC_BELOW />
+        </i5:set>
+      </i5:PG_ILLUSTRATION>
+      <i5:VALIDITY_CRIT_SUBM>
+        <i5:set>
+          <i5:PHRASEOTHER_LIST_SEL_FIX>
+            <i5:LIST_SEL_FIX>2480</i5:LIST_SEL_FIX>
+            <i5:LIST_SEL_FIX.value>yes</i5:LIST_SEL_FIX.value>
+            <i5:LIST_SEL_FIX_TXT />
+          </i5:PHRASEOTHER_LIST_SEL_FIX>
+        </i5:set>
+      </i5:VALIDITY_CRIT_SUBM>
+      <i5:APPL_CL>
+        <i5:set>
+          <i5:TEXTAREA_BELOW />
+        </i5:set>
+      </i5:APPL_CL>
+      <i5:APPL_EXEC_SUM>
+        <i5:set>
+          <i5:RICHTEXT_BELOW />
+        </i5:set>
+      </i5:APPL_EXEC_SUM>
+      <i5:CROSSREF_OTHER_STUDY>
+        <i5:set>
+          <i5:TEXT_BELOW />
+        </i5:set>
+      </i5:CROSSREF_OTHER_STUDY>
+    </i5:EC_FISHTOX>
+  </i5:scientificPart>
+</i5:EndpointStudyRecord>

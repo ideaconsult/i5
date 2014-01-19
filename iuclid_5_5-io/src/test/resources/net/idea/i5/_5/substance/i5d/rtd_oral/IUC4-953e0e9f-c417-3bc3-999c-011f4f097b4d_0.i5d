@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<i5:EndpointStudyRecord xmlns:i5="http://echa.europa.eu/schemas/iuclid5/20130101" documentReferencePK="IUC4-953e0e9f-c417-3bc3-999c-011f4f097b4d/0" robustStudy="false" usedForClassification="false" usedForMSDS="false" version="2013-03-28T11:56:50Z">
+  <i5:modificationHistory>
+    <i5:modification date="1998-06-30T22:00:00Z">
+      <i5:comment>IUCLID4 last update.</i5:comment>
+      <i5:modificationBy>HEDSET</i5:modificationBy>
+    </i5:modification>
+    <i5:modification date="1998-06-30T22:00:00Z">
+      <i5:comment>Successfully migrated to IUCLID 5.2 format.</i5:comment>
+      <i5:modificationBy>XML Transformation V1.0 Plug-In</i5:modificationBy>
+    </i5:modification>
+    <i5:modification date="1998-06-30T22:00:00Z">
+      <i5:comment>Successfully migrated to IUCLID 5.3 format.</i5:comment>
+      <i5:modificationBy>XML Transformation V2.0 Plug-In</i5:modificationBy>
+    </i5:modification>
+    <i5:modification date="1998-06-30T22:00:00Z">
+      <i5:comment>Successfully migrated to IUCLID 5.4 format.</i5:comment>
+      <i5:modificationBy>XML Transformation V3.0 Plug-In</i5:modificationBy>
+    </i5:modification>
+    <i5:modification date="1998-06-30T22:00:00Z">
+      <i5:comment>Successfully migrated to IUCLID 5.5 format.</i5:comment>
+      <i5:modificationBy>XML Transformation V4.0 Plug-In</i5:modificationBy>
+    </i5:modification>
+  </i5:modificationHistory>
+  <i5:ownershipProtection sealed="false" copyProtection="false" fractionalDocument="false" />
+  <i5:name>Repeated dose toxicity: oral, IUC4#104/Ch.5.4</i5:name>
+  <i5:ownerRef lastModificationDate="2003-09-01T22:00:00Z" type="Substance" uniqueKey="IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734/0">
+    <i5:description>formaldehyde (IUC4 DSN 52)</i5:description>
+    <i5:notes />
+  </i5:ownerRef>
+  <i5:dataProtection>
+    <i5:confidentiality valueID="NOT_SPECIFIED" />
+    <i5:justification>IUCLID4</i5:justification>
+    <i5:regulatoryPurposes>
+      <i5:regulatoryPurpose valueID="1342">
+        <i5:otherValue>Critical study for SIDS endpoint</i5:otherValue>
+      </i5:regulatoryPurpose>
+    </i5:regulatoryPurposes>
+  </i5:dataProtection>
+  <i5:purposeFlag valueID="921" />
+  <i5:dataWaiving valueID="NOT_SPECIFIED" />
+  <i5:dataWaivingJustification />
+  <i5:studyResultType valueID="NOT_SPECIFIED">
+    <i5:otherValue />
+  </i5:studyResultType>
+  <i5:studyPeriod />
+  <i5:reliability valueID="18">
+    <i5:otherValue />
+  </i5:reliability>
+  <i5:rationalReliability />
+  <i5:scientificPart>
+    <i5:TO_REPEATED_ORAL>
+      <i5:REFERENCE>
+        <i5:set>
+          <i5:REFERENCE_AUTHOR>
+            <i5:REFERENCE_AUTHOR>Til, H.P. et al.: Fd. Chem. Toxic. 27, 77-87 (1989)</i5:REFERENCE_AUTHOR>
+          </i5:REFERENCE_AUTHOR>
+        </i5:set>
+      </i5:REFERENCE>
+      <i5:GLP_COMPLIANCE_STATEMENT>
+        <i5:set>
+          <i5:PHRASEOTHER_LIST_SEL_FIX>
+            <i5:LIST_SEL_FIX>1173</i5:LIST_SEL_FIX>
+            <i5:LIST_SEL_FIX.value>no data</i5:LIST_SEL_FIX.value>
+          </i5:PHRASEOTHER_LIST_SEL_FIX>
+        </i5:set>
+      </i5:GLP_COMPLIANCE_STATEMENT>
+      <i5:TESTMAT_DETAILS>
+        <i5:set>
+          <i5:FREETEXT_BELOW>
+            <i5:FREETEXT_BELOW>IUCLID4 Test substance: other TS: formaldehyde; no data on purity of the compound</i5:FREETEXT_BELOW>
+          </i5:FREETEXT_BELOW>
+        </i5:set>
+      </i5:TESTMAT_DETAILS>
+      <i5:ORGANISM>
+        <i5:set>
+          <i5:PHRASEOTHER_LIST_POP>
+            <i5:LIST_POP>4194</i5:LIST_POP>
+            <i5:LIST_POP.value>rat</i5:LIST_POP.value>
+          </i5:PHRASEOTHER_LIST_POP>
+        </i5:set>
+      </i5:ORGANISM>
+      <i5:STRAIN>
+        <i5:set>
+          <i5:PHRASEOTHER_LIST_POP>
+            <i5:LIST_POP>3574</i5:LIST_POP>
+            <i5:LIST_POP.value>Wistar</i5:LIST_POP.value>
+          </i5:PHRASEOTHER_LIST_POP>
+        </i5:set>
+      </i5:STRAIN>
+      <i5:SEX>
+        <i5:set>
+          <i5:LIST_BELOW_POP>
+            <i5:LIST_BELOW_POP>2051</i5:LIST_BELOW_POP>
+            <i5:LIST_BELOW_POP.value>male</i5:LIST_BELOW_POP.value>
+          </i5:LIST_BELOW_POP>
+        </i5:set>
+      </i5:SEX>
+      <i5:ROUTE>
+        <i5:set>
+          <i5:PHRASEOTHER_LIST_POP>
+            <i5:LIST_POP>2229</i5:LIST_POP>
+            <i5:LIST_POP.value>oral: drinking water</i5:LIST_POP.value>
+          </i5:PHRASEOTHER_LIST_POP>
+        </i5:set>
+      </i5:ROUTE>
+      <i5:EXP_PERIOD>
+        <i5:set>
+          <i5:TEXT_BELOW>
+            <i5:TEXT_BELOW>104 weeks</i5:TEXT_BELOW>
+          </i5:TEXT_BELOW>
+        </i5:set>
+      </i5:EXP_PERIOD>
+      <i5:FREQUENCY>
+        <i5:set>
+          <i5:TEXT_BELOW>
+            <i5:TEXT_BELOW>continuously in the drinking water</i5:TEXT_BELOW>
+          </i5:TEXT_BELOW>
+        </i5:set>
+      </i5:FREQUENCY>
+      <i5:DOSES>
+        <i5:set>
+          <i5:CONCENTRATIONS>
+            <i5:CONCENTRATIONS>1.2, 15, 82 mg/kg bw/d (males), 1.8, 21, 109 mg/kg bw/d (females); i.e.  average concentration of 20, 260, 1900 mg/l in the drinking water</i5:CONCENTRATIONS>
+          </i5:CONCENTRATIONS>
+        </i5:set>
+      </i5:DOSES>
+      <i5:CONTROL_GROUP>
+        <i5:set>
+          <i5:PHRASEOTHER_LIST_POP>
+            <i5:LIST_POP>2480</i5:LIST_POP>
+            <i5:LIST_POP.value>yes</i5:LIST_POP.value>
+          </i5:PHRASEOTHER_LIST_POP>
+        </i5:set>
+      </i5:CONTROL_GROUP>
+      <i5:STUDY_DESIGN_DETAILS>
+        <i5:set>
+          <i5:FREETEXT_BELOW>
+            <i5:FREETEXT_BELOW>Post-exposure period: none</i5:FREETEXT_BELOW>
+          </i5:FREETEXT_BELOW>
+        </i5:set>
+      </i5:STUDY_DESIGN_DETAILS>
+      <i5:REM_ME_TC>
+        <i5:set>
+          <i5:RICHTEXT_BELOW>
+            <i5:RICHTEXT_BELOW>&lt;p style="font-family:Monospace;"&gt;ME-Freetext:&lt;br&gt;Formaldehyde&amp;nbsp;was&amp;nbsp;administered&amp;nbsp;in&amp;nbsp;the&amp;nbsp;drinking&amp;nbsp;water&amp;nbsp;to&lt;br&gt;groups&amp;nbsp;of&amp;nbsp;70&amp;nbsp;male&amp;nbsp;and&amp;nbsp;70&amp;nbsp;female&amp;nbsp;Wistar&amp;nbsp;rats&amp;nbsp;for&amp;nbsp;up&amp;nbsp;to&amp;nbsp;24&lt;br&gt;months.&amp;nbsp;Survivors&amp;nbsp;of&amp;nbsp;subgroups&amp;nbsp;of&amp;nbsp;ten&amp;nbsp;rats/sex/group&amp;nbsp;each&lt;br&gt;were&amp;nbsp;killed&amp;nbsp;after&amp;nbsp;12&amp;nbsp;or&amp;nbsp;18&amp;nbsp;months.&amp;nbsp;The&amp;nbsp;mean&amp;nbsp;formaldehyde&lt;br&gt;doses&amp;nbsp;administered&amp;nbsp;were&amp;nbsp;0,&amp;nbsp;1.2,&amp;nbsp;15&amp;nbsp;or&amp;nbsp;82&amp;nbsp;mg/kg&amp;nbsp;body&lt;br&gt;weight/day&amp;nbsp;for&amp;nbsp;males,&amp;nbsp;and&amp;nbsp;0,&amp;nbsp;1.8,&amp;nbsp;21&amp;nbsp;or&amp;nbsp;109&amp;nbsp;mg/kg/day&amp;nbsp;for&lt;br&gt;females.&lt;br&gt;At&amp;nbsp;the&amp;nbsp;beginning&amp;nbsp;of&amp;nbsp;the&amp;nbsp;study&amp;nbsp;the&amp;nbsp;rats&amp;nbsp;were&amp;nbsp;5&amp;nbsp;weeks&amp;nbsp;old.&lt;br&gt;Hematology&amp;nbsp;and&amp;nbsp;clinical&amp;nbsp;chemistry:&amp;nbsp;Blood&amp;nbsp;samples&amp;nbsp;were&lt;br&gt;collected&amp;nbsp;from&amp;nbsp;the&amp;nbsp;tail&amp;nbsp;tips&amp;nbsp;of&amp;nbsp;ten&amp;nbsp;rats/sex/group&amp;nbsp;in&amp;nbsp;weeks&lt;br&gt;26&amp;nbsp;and&amp;nbsp;103&amp;nbsp;and&amp;nbsp;were&amp;nbsp;examined.&lt;br&gt;Urinalysis:&amp;nbsp;In&amp;nbsp;weeks&amp;nbsp;27,&amp;nbsp;52,&amp;nbsp;78&amp;nbsp;and&amp;nbsp;104,&amp;nbsp;ten&amp;nbsp;rats/sex/group&lt;br&gt;were&amp;nbsp;sampled.&lt;br&gt;Pathology:&amp;nbsp;Before&amp;nbsp;the&amp;nbsp;start&amp;nbsp;of&amp;nbsp;the&amp;nbsp;study,&amp;nbsp;two&amp;nbsp;subsets&amp;nbsp;each&lt;br&gt;of&amp;nbsp;10&amp;nbsp;male&amp;nbsp;and&amp;nbsp;10&amp;nbsp;female&amp;nbsp;rats&amp;nbsp;and&amp;nbsp;one&amp;nbsp;of&amp;nbsp;50&amp;nbsp;rats&amp;nbsp;of&amp;nbsp;each&amp;nbsp;sex&lt;br&gt;were&amp;nbsp;defined&amp;nbsp;in&amp;nbsp;each&amp;nbsp;group.&amp;nbsp;The&amp;nbsp;survivors&amp;nbsp;of&amp;nbsp;the&amp;nbsp;first&amp;nbsp;(10&lt;br&gt;rats/sex/group),&amp;nbsp;second&amp;nbsp;(10&amp;nbsp;rats/sex/group)&amp;nbsp;and&amp;nbsp;third&amp;nbsp;(50&lt;br&gt;rats/sex/group)&amp;nbsp;subsets&amp;nbsp;were&amp;nbsp;killed&amp;nbsp;in&amp;nbsp;weeks&amp;nbsp;53,&amp;nbsp;79&amp;nbsp;and&amp;nbsp;105,&lt;br&gt;respectively.&amp;nbsp;The&amp;nbsp;following&amp;nbsp;organs&amp;nbsp;of&amp;nbsp;each&amp;nbsp;rat&amp;nbsp;were&amp;nbsp;weighed&lt;br&gt;and&amp;nbsp;the&amp;nbsp;organ&amp;nbsp;to&amp;nbsp;body&amp;nbsp;weight&amp;nbsp;ratios&amp;nbsp;were&amp;nbsp;calculated:&lt;br&gt;adrenals,&amp;nbsp;brain,&amp;nbsp;heart,&amp;nbsp;kidneys,&amp;nbsp;liver,&amp;nbsp;ovaries,&amp;nbsp;pituitary,&lt;br&gt;spleen,&amp;nbsp;testes&amp;nbsp;and&amp;nbsp;thyroid.&amp;nbsp;Samples&amp;nbsp;of&amp;nbsp;these&amp;nbsp;organs&amp;nbsp;and&amp;nbsp;of&lt;br&gt;the&amp;nbsp;skin,&amp;nbsp;skeletal&amp;nbsp;muscle,&amp;nbsp;mammary&amp;nbsp;glands&amp;nbsp;(females),&lt;br&gt;Harderian&amp;nbsp;and&amp;nbsp;exorbital&amp;nbsp;lachrymal&amp;nbsp;glands,&amp;nbsp;nose,&amp;nbsp;lungs,&lt;br&gt;aorta,&amp;nbsp;parotid,&amp;nbsp;submandibular&amp;nbsp;and&amp;nbsp;sublingual&amp;nbsp;salivary&lt;br&gt;glands,&amp;nbsp;oesophagus,&amp;nbsp;forestomach,&amp;nbsp;glandular&amp;nbsp;stomach,&amp;nbsp;small&lt;br&gt;and&amp;nbsp;large&amp;nbsp;intestine,&amp;nbsp;pancreas,&amp;nbsp;urinary&amp;nbsp;bladder,&lt;br&gt;epididymides,&amp;nbsp;prostate,&amp;nbsp;uterus,&amp;nbsp;sternum,&amp;nbsp;mesenteric&amp;nbsp;and&lt;br&gt;axillary&amp;nbsp;lymph&amp;nbsp;nodes,&amp;nbsp;spinal&amp;nbsp;cord,&amp;nbsp;sciatic&amp;nbsp;nerve&amp;nbsp;and&amp;nbsp;eyes.&lt;br&gt;Detailed&amp;nbsp;microscopic&amp;nbsp;examinations&amp;nbsp;were&amp;nbsp;carried&amp;nbsp;out.&lt;br&gt;In&amp;nbsp;addition,&amp;nbsp;the&amp;nbsp;adrenals,&amp;nbsp;kidneys,&amp;nbsp;spleen,&amp;nbsp;testes,&amp;nbsp;thyroid,&lt;br&gt;ovaries,&amp;nbsp;pituitary&amp;nbsp;and&amp;nbsp;mammary&amp;nbsp;glands&amp;nbsp;(females)&amp;nbsp;of&amp;nbsp;the&amp;nbsp;rats&lt;br&gt;of&amp;nbsp;subset&amp;nbsp;three&amp;nbsp;(killed&amp;nbsp;in&amp;nbsp;week&amp;nbsp;105)&amp;nbsp;of&amp;nbsp;the&amp;nbsp;low-&amp;nbsp;and&lt;br&gt;mid-dose&amp;nbsp;groups&amp;nbsp;were&amp;nbsp;examined&amp;nbsp;.&lt;br&gt;The&amp;nbsp;laboratory&amp;nbsp;determinations&amp;nbsp;and&amp;nbsp;organ&amp;nbsp;weights&amp;nbsp;were&lt;br&gt;evaluated&amp;nbsp;by&amp;nbsp;a&amp;nbsp;one-way&amp;nbsp;analysis&amp;nbsp;of&amp;nbsp;variance,&amp;nbsp;followed&amp;nbsp;by&lt;br&gt;Dunnett&amp;apos;s&amp;nbsp;multiple&amp;nbsp;comparison&amp;nbsp;tests.&lt;br&gt;The&amp;nbsp;mortality&amp;nbsp;incidences&amp;nbsp;and&amp;nbsp;the&amp;nbsp;histopathological&amp;nbsp;changes&lt;br&gt;were&amp;nbsp;examined&amp;nbsp;by&amp;nbsp;Fisher&amp;apos;s&amp;nbsp;exact&amp;nbsp;probability&amp;nbsp;test&lt;br&gt;(two-sided).&lt;/p&gt;</i5:RICHTEXT_BELOW>
+          </i5:RICHTEXT_BELOW>
+        </i5:set>
+      </i5:REM_ME_TC>
+      <i5:EFFLEVEL>
+        <i5:set>
+          <i5:PHRASEOTHER_ENDPOINT>
+            <i5:ENDPOINT>1109</i5:ENDPOINT>
+            <i5:ENDPOINT.value>NOAEL</i5:ENDPOINT.value>
+          </i5:PHRASEOTHER_ENDPOINT>
+          <i5:PRECISION_LOQUALIFIER>
+            <i5:LOQUALIFIER>1779</i5:LOQUALIFIER>
+            <i5:LOQUALIFIER.value>ca.</i5:LOQUALIFIER.value>
+            <i5:LOVALUE>260</i5:LOVALUE>
+            <i5:UNIT>2102</i5:UNIT>
+            <i5:UNIT.value>mg/L drinking water</i5:UNIT.value>
+          </i5:PRECISION_LOQUALIFIER>
+          <i5:SEX>
+            <i5:SEX>2051</i5:SEX>
+            <i5:SEX.value>male</i5:SEX.value>
+          </i5:SEX>
+        </i5:set>
+      </i5:EFFLEVEL>
+      <i5:REM_RS>
+        <i5:set>
+          <i5:RICHTEXT_BELOW>
+            <i5:RICHTEXT_BELOW>&lt;p style="font-family:Monospace;"&gt;RS-Freetext:&lt;br&gt;In&amp;nbsp;the&amp;nbsp;high&amp;nbsp;dose&amp;nbsp;group&amp;nbsp;(1900&amp;nbsp;mg/l;&amp;nbsp;82&amp;nbsp;and&amp;nbsp;109&amp;nbsp;mg/kg/d&amp;nbsp;for&lt;br&gt;males&amp;nbsp;and&amp;nbsp;females,&amp;nbsp;respectively),&amp;nbsp;decreased&amp;nbsp;water&amp;nbsp;(40%)&amp;nbsp;and&lt;br&gt;food&amp;nbsp;consumption,&amp;nbsp;depressed&amp;nbsp;body&amp;nbsp;weight&amp;nbsp;gain,&amp;nbsp;and&amp;nbsp;minor&lt;br&gt;changes&amp;nbsp;in&amp;nbsp;urinary&amp;nbsp;densitiy&amp;nbsp;and&amp;nbsp;volume&amp;nbsp;were&amp;nbsp;recorded.&lt;br&gt;Increased&amp;nbsp;incidence&amp;nbsp;of&amp;nbsp;papillary&amp;nbsp;epithelial&amp;nbsp;hyperplasia&amp;nbsp;in&lt;br&gt;the&amp;nbsp;forestomach&amp;nbsp;(60-90%)&amp;nbsp;and&amp;nbsp;chronic&amp;nbsp;atrophic&amp;nbsp;gastritis&amp;nbsp;in&lt;br&gt;the&amp;nbsp;glandular&amp;nbsp;stomach&amp;nbsp;(100%)&amp;nbsp;were&amp;nbsp;observed.&amp;nbsp;After&amp;nbsp;24&amp;nbsp;months&lt;br&gt;of&amp;nbsp;exposure,&amp;nbsp;additionally&amp;nbsp;hyperkeratosis&amp;nbsp;(50-70%)&amp;nbsp;and&lt;br&gt;ulceration&amp;nbsp;(15%)&amp;nbsp;in&amp;nbsp;the&amp;nbsp;forestomach,&amp;nbsp;focal&amp;nbsp;ulceration&amp;nbsp;(20%)&lt;br&gt;and&amp;nbsp;glandular&amp;nbsp;hyperplasia&amp;nbsp;in&amp;nbsp;the&amp;nbsp;glandular&amp;nbsp;stomach&lt;br&gt;(30-40%),and&amp;nbsp;renal&amp;nbsp;papillary&amp;nbsp;necrosis&amp;nbsp;(40%)&amp;nbsp;were&amp;nbsp;found.&amp;nbsp;The&lt;br&gt;forestomach&amp;nbsp;lesions&amp;nbsp;were&amp;nbsp;mostly&amp;nbsp;located&amp;nbsp;in&amp;nbsp;the&amp;nbsp;vicinty&amp;nbsp;of&lt;br&gt;the&amp;nbsp;limiting&amp;nbsp;ridge;&amp;nbsp;according&amp;nbsp;to&amp;nbsp;the&amp;nbsp;authors,&amp;nbsp;the&amp;nbsp;renal&lt;br&gt;papillary&amp;nbsp;necrosis&amp;nbsp;was&amp;nbsp;due&amp;nbsp;to&amp;nbsp;decreased&amp;nbsp;water&amp;nbsp;consumption.&lt;br&gt;&lt;br&gt;In&amp;nbsp;the&amp;nbsp;mid&amp;nbsp;dose&amp;nbsp;group,&amp;nbsp;(260&amp;nbsp;mg/l;&amp;nbsp;15&amp;nbsp;and&amp;nbsp;21&amp;nbsp;mg/kg/d&amp;nbsp;for&lt;br&gt;males&amp;nbsp;and&amp;nbsp;females,&amp;nbsp;respectively),&amp;nbsp;a&amp;nbsp;slight&amp;nbsp;reduction&amp;nbsp;of&lt;br&gt;water&amp;nbsp;consumption&amp;nbsp;was&amp;nbsp;observed.&amp;nbsp;Thus,&amp;nbsp;according&amp;nbsp;to&amp;nbsp;the&lt;br&gt;authors,&amp;nbsp;a&amp;nbsp;concentration&amp;nbsp;of&amp;nbsp;260&amp;nbsp;mg/l&amp;nbsp;drinking&amp;nbsp;water&amp;nbsp;was&lt;br&gt;considered&amp;nbsp;to&amp;nbsp;be&amp;nbsp;the&amp;nbsp;NOAEL.&amp;nbsp;No&amp;nbsp;evidence&amp;nbsp;of&amp;nbsp;carcinogenicity&lt;br&gt;was&amp;nbsp;found&amp;nbsp;(see&amp;nbsp;chapter&amp;nbsp;5.7).&lt;/p&gt;</i5:RICHTEXT_BELOW>
+          </i5:RICHTEXT_BELOW>
+        </i5:set>
+      </i5:REM_RS>
+    </i5:TO_REPEATED_ORAL>
+  </i5:scientificPart>
+</i5:EndpointStudyRecord>

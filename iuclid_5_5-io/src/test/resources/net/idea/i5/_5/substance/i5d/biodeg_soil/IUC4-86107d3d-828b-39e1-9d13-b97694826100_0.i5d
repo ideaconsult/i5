@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<i5:EndpointStudyRecord xmlns:i5="http://echa.europa.eu/schemas/iuclid5/20130101" documentReferencePK="IUC4-86107d3d-828b-39e1-9d13-b97694826100/0" robustStudy="false" usedForClassification="false" usedForMSDS="false" version="2013-03-28T11:56:50Z">
+  <i5:modificationHistory>
+    <i5:modification date="1995-10-22T23:00:00Z" />
+  </i5:modificationHistory>
+  <i5:ownershipProtection sealed="false" copyProtection="false" fractionalDocument="false" />
+  <i5:name>Biodegradation in soil, IUC4#1/Ch.3.1.3</i5:name>
+  <i5:ownerRef lastModificationDate="2008-06-10T22:00:00Z" type="Substance" uniqueKey="IUC4-f5dd46ce-6fc9-316f-a468-c4f9acfcfc3c/0">
+    <i5:description>dimethyl sulfoxide (IUC4 DSN 2609)</i5:description>
+    <i5:notes />
+  </i5:ownerRef>
+  <i5:dataProtection>
+    <i5:confidentiality valueID="NOT_SPECIFIED" />
+    <i5:justification />
+  </i5:dataProtection>
+  <i5:purposeFlag valueID="NOT_SPECIFIED" />
+  <i5:dataWaiving valueID="NOT_SPECIFIED" />
+  <i5:dataWaivingJustification />
+  <i5:studyResultType valueID="NOT_SPECIFIED">
+    <i5:otherValue />
+  </i5:studyResultType>
+  <i5:studyPeriod />
+  <i5:reliability valueID="24">
+    <i5:otherValue />
+  </i5:reliability>
+  <i5:rationalReliability />
+  <i5:scientificPart>
+    <i5:EN_STABILITY_IN_SOIL>
+      <i5:REFERENCE>
+        <i5:set>
+          <i5:REFERENCE_AUTHOR>
+            <i5:REFERENCE_AUTHOR>Sparling GP and Searle PL (1993) Dimethyl sulfoxide reduction as a  sensitive indicator of microbial activity in soil: the relationship with  biomass and mineralization of nitrogen and sulfur. Soil Biol. Biochem.,  25(2), 251-6.</i5:REFERENCE_AUTHOR>
+          </i5:REFERENCE_AUTHOR>
+        </i5:set>
+      </i5:REFERENCE>
+      <i5:TESTMAT_INDICATOR>
+        <i5:set>
+          <i5:LIST_BELOW_SEL>
+            <i5:LIST_BELOW_SEL>2480</i5:LIST_BELOW_SEL>
+            <i5:LIST_BELOW_SEL.value>yes</i5:LIST_BELOW_SEL.value>
+          </i5:LIST_BELOW_SEL>
+        </i5:set>
+      </i5:TESTMAT_INDICATOR>
+      <i5:HALFLIFE>
+        <i5:set>
+          <i5:PHRASEOTHER_TYPE>
+            <i5:TYPE>15</i5:TYPE>
+            <i5:TYPE.value>(pseudo-)first order (= DT50)</i5:TYPE.value>
+          </i5:PHRASEOTHER_TYPE>
+        </i5:set>
+      </i5:HALFLIFE>
+      <i5:REM_RS>
+        <i5:set>
+          <i5:RICHTEXT_BELOW>
+            <i5:RICHTEXT_BELOW>&lt;p style="font-family:Monospace;"&gt;RS-Freetext:&lt;br&gt;The&amp;nbsp;reduction&amp;nbsp;of&amp;nbsp;DMSO&amp;nbsp;to&amp;nbsp;dimethyl&amp;nbsp;sulfide&amp;nbsp;(DMS)&amp;nbsp;in&amp;nbsp;soil&amp;nbsp;was&amp;nbsp;measured&amp;nbsp;in&amp;nbsp;a&amp;nbsp;&amp;nbsp;range&amp;nbsp;of&amp;nbsp;47&amp;nbsp;New&amp;nbsp;Zealands&amp;nbsp;topsoils&amp;nbsp;and&amp;nbsp;humus&amp;nbsp;samples.&lt;br&gt;The&amp;nbsp;relationships&amp;nbsp;between&amp;nbsp;the&amp;nbsp;rate&amp;nbsp;of&amp;nbsp;DMSO&amp;nbsp;reduction&amp;nbsp;and&amp;nbsp;soil&amp;nbsp;type&amp;nbsp;and&amp;nbsp;&amp;nbsp;land&amp;nbsp;use,&amp;nbsp;organic&amp;nbsp;C&amp;nbsp;and&amp;nbsp;N,&amp;nbsp;the&amp;nbsp;soil&amp;nbsp;microbial&amp;nbsp;C&amp;nbsp;estimated&amp;nbsp;by&amp;nbsp;the&amp;nbsp;&amp;nbsp;substrate-induced-respiration&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(SIR)&amp;nbsp;method,&amp;nbsp;mineralization&amp;nbsp;of&amp;nbsp;N&amp;nbsp;under&amp;nbsp;&amp;nbsp;anaerobic&amp;nbsp;incubation&amp;nbsp;and&amp;nbsp;the&amp;nbsp;mineralization&amp;nbsp;of&amp;nbsp;organic&amp;nbsp;S,&amp;nbsp;were&amp;nbsp;&amp;nbsp;investigated.&lt;br&gt;&lt;br&gt;DMSO&amp;nbsp;was&amp;nbsp;reduced&amp;nbsp;rapidly&amp;nbsp;in&amp;nbsp;all&amp;nbsp;soils&amp;nbsp;and&amp;nbsp;rates&amp;nbsp;ranged&amp;nbsp;between&amp;nbsp;180&amp;nbsp;and&amp;nbsp;&amp;nbsp;8124&amp;nbsp;ng&amp;nbsp;DMS/g&amp;nbsp;soil/h,&amp;nbsp;with&amp;nbsp;the&amp;nbsp;coefficient&amp;nbsp;of&amp;nbsp;variance&amp;nbsp;being&amp;nbsp;typically&amp;nbsp;&amp;nbsp;&amp;lt;10%.&lt;br&gt;&lt;br&gt;Reduction&amp;nbsp;was&amp;nbsp;significantly&amp;nbsp;correlated&amp;nbsp;with&amp;nbsp;the&amp;nbsp;organic&amp;nbsp;carbon&amp;nbsp;and&amp;nbsp;N&amp;nbsp;&amp;nbsp;content&amp;nbsp;of&amp;nbsp;the&amp;nbsp;44&amp;nbsp;mineral&amp;nbsp;soils&amp;nbsp;(r=0.61&amp;nbsp;and&amp;nbsp;0.62&amp;nbsp;respectively),&amp;nbsp;&amp;nbsp;anaerobically-mineralized&amp;nbsp;N&amp;nbsp;(r=&amp;nbsp;0.80),&amp;nbsp;microbial&amp;nbsp;biomass&amp;nbsp;C&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(r=0.81)&amp;nbsp;&amp;nbsp;and&amp;nbsp;aerobically&amp;nbsp;mineralized&amp;nbsp;SO4-S&amp;nbsp;(r=0.60).&lt;br&gt;&lt;br&gt;The&amp;nbsp;reduction&amp;nbsp;of&amp;nbsp;DMSO&amp;nbsp;was&amp;nbsp;shown&amp;nbsp;to&amp;nbsp;be&amp;nbsp;more&amp;nbsp;sensitive&amp;nbsp;to&amp;nbsp;the&amp;nbsp;presence&amp;nbsp;of&amp;nbsp;&amp;nbsp;Cr(VI)&amp;nbsp;or&amp;nbsp;As(V)&amp;nbsp;than&amp;nbsp;was&amp;nbsp;the&amp;nbsp;SIR&amp;nbsp;response.&amp;nbsp;The&amp;nbsp;sensitivity&amp;nbsp;and&amp;nbsp;&amp;nbsp;reproducibility&amp;nbsp;of&amp;nbsp;the&amp;nbsp;assay&amp;nbsp;make&amp;nbsp;the&amp;nbsp;technique&amp;nbsp;potentially&amp;nbsp;useful&amp;nbsp;for&amp;nbsp;&amp;nbsp;the&amp;nbsp;study&amp;nbsp;of&amp;nbsp;microbial&amp;nbsp;activity&amp;nbsp;in&amp;nbsp;aggregates,&amp;nbsp;rhizospheres&amp;nbsp;samples&amp;nbsp;and&amp;nbsp;&amp;nbsp;contaminated&amp;nbsp;soils.&lt;/p&gt;</i5:RICHTEXT_BELOW>
+          </i5:RICHTEXT_BELOW>
+        </i5:set>
+      </i5:REM_RS>
+      <i5:TESTMAT>
+        <i5:set>
+          <i5:PHRASEOTHER_IDENTIFIER>
+            <i5:IDENTIFIER>4175</i5:IDENTIFIER>
+            <i5:IDENTIFIER.value>CAS number</i5:IDENTIFIER.value>
+            <i5:IDENTIFIER_TXT />
+          </i5:PHRASEOTHER_IDENTIFIER>
+          <i5:ID>
+            <i5:ID>67-68-5</i5:ID>
+          </i5:ID>
+        </i5:set>
+        <i5:set>
+          <i5:PHRASEOTHER_IDENTIFIER>
+            <i5:IDENTIFIER>4178</i5:IDENTIFIER>
+            <i5:IDENTIFIER.value>EC number</i5:IDENTIFIER.value>
+            <i5:IDENTIFIER_TXT />
+          </i5:PHRASEOTHER_IDENTIFIER>
+          <i5:ID>
+            <i5:ID>200-664-3</i5:ID>
+          </i5:ID>
+        </i5:set>
+        <i5:set>
+          <i5:PHRASEOTHER_IDENTIFIER>
+            <i5:IDENTIFIER>4177</i5:IDENTIFIER>
+            <i5:IDENTIFIER.value>EC name</i5:IDENTIFIER.value>
+            <i5:IDENTIFIER_TXT />
+          </i5:PHRASEOTHER_IDENTIFIER>
+          <i5:ID>
+            <i5:ID>dimethyl sulfoxide</i5:ID>
+          </i5:ID>
+        </i5:set>
+      </i5:TESTMAT>
+    </i5:EN_STABILITY_IN_SOIL>
+  </i5:scientificPart>
+</i5:EndpointStudyRecord>
