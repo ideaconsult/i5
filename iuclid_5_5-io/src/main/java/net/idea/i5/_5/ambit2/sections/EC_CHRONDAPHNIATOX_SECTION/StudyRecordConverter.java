@@ -122,13 +122,7 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			papp.getParameters().put(cTestOrganism,sciPart.getECCHRONDAPHNIATOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		} else	
 			papp.getParameters().put(cTestOrganism,null);
-		
-		papp.getParameters().put(cMeasuredConcentration,null);
-		if (sciPart.getECCHRONDAPHNIATOX().getNOMMEASCONC()!=null) try {
-			papp.getParameters().put(cMeasuredConcentration,
-					sciPart.getECCHRONDAPHNIATOX().getNOMMEASCONC().getSet().getTEXTBELOW().getTEXTBELOW().getValue());
-		} catch (Exception x) {
-		}	
+
 		//ENDPOINT
 		if (sciPart.getECCHRONDAPHNIATOX().getEFFCONC()!=null && sciPart.getECCHRONDAPHNIATOX().getEFFCONC().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_CHRONDAPHNIATOX_SECTION.EndpointStudyRecord.ScientificPart.ECCHRONDAPHNIATOX.EFFCONC.Set set : sciPart.getECCHRONDAPHNIATOX().getEFFCONC().getSet()) {
@@ -144,6 +138,11 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			effect.getConditions().put(cConcType,
 					set.getPHRASEOTHEREFFCONCTYPE()==null?null:
 					set.getPHRASEOTHEREFFCONCTYPE().getEFFCONCTYPEValue());
+			
+			effect.getConditions().put(cMeasuredConcentration,
+					set.getBASISCONC()==null?null:
+					set.getBASISCONC().getBASISCONCValue());
+						
 			
 			if (set.getPRECISIONLOQUALIFIER()!=null) {
 				effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
