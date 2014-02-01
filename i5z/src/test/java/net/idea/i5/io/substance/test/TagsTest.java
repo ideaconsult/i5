@@ -13,7 +13,19 @@ public class TagsTest {
 			create(xmlobj);
 		}
 	}
-	
+	/*
+	@Test
+	public void tags() throws Exception {
+		for (I5_ROOT_OBJECTS tag : I5_ROOT_OBJECTS.values()) if (tag.isScientificPart() && tag.isDataRich()){
+			System.out.print(tag.getNumber());
+			System.out.print(".\t");
+			System.out.print(tag.getTitle());
+			System.out.print("\t");
+			System.out.print(tag);
+			System.out.print("\n");
+		}
+	}
+	*/
 	@Test
 	public void converterObjectsTest() throws Exception {
 		int err = 0;
