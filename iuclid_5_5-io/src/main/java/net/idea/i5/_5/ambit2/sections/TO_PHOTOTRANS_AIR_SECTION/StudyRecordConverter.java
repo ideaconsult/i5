@@ -139,7 +139,13 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 
 				
 			}
-		} 		
+		} else {
+			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+			effect.setEndpoint("DT50");
+			effect.setConditions(new Params());
+			effect.getConditions().put(TestCondition,null);
+			papp.addEffect(effect);
+		}
 
 		return record;
 	}
