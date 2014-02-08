@@ -100,6 +100,12 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		papp.getParameters().put(cSpecies,
 					sciPart.getTOREPEATEDDERMAL().getORGANISM()==null?null:
 					sciPart.getTOREPEATEDDERMAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		
+		try {
+			papp.getParameters().put(cTestType,
+					sciPart.getTOREPEATEDDERMAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		} catch (Exception x) { papp.getParameters().put(cTestType,null);}
+		
 		/*
 		try {
 			papp.getParameters().put(cRouteAdm,

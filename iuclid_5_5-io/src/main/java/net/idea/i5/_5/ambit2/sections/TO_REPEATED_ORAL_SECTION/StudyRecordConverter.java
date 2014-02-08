@@ -112,6 +112,12 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 					sciPart.getTOREPEATEDORAL().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		} catch (Exception x) { papp.getParameters().put(cRouteAdm,null);}		
 		
+		try {
+			papp.getParameters().put(cTestType,
+					sciPart.getTOREPEATEDORAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		} catch (Exception x) { papp.getParameters().put(cTestType,null);}
+		
+		
 		StringBuilder doses = null;
 		if (sciPart.getTOREPEATEDORAL().getDOSES()!=null && sciPart.getTOREPEATEDORAL().getDOSES().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOREPEATEDORAL.DOSES.Set set : sciPart.getTOREPEATEDORAL().getDOSES().getSet()) try {
