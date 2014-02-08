@@ -116,7 +116,6 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 				otherValue = sciPart.getTOSKINIRRITATION().getINTERPRETRSSUBMITTER().getSet().
 					getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXTXT().getValue();
 			} catch (Exception x) {
-				x.printStackTrace();
 			};
 			
 			setInterpretationResult(papp, 

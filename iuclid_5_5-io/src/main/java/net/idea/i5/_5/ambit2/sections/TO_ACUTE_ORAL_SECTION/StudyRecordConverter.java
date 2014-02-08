@@ -155,7 +155,6 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 					.getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		} else papp.setInterpretationCriteria(""); 
 
-		System.out.println(papp);
 		return record;
 	}
 	
