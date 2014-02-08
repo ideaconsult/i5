@@ -205,4 +205,13 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		}
 		
 	}
+	
+	
+	protected void setInterpretationResult(ProtocolApplication papp,String value,String otherValue) {
+		if (value == null) papp.setInterpretationResult("");
+		else if ("other:".equals(value)) { //other
+			papp.setInterpretationResult(otherValue);
+		} else
+			papp.setInterpretationResult(value);
+	}
 }

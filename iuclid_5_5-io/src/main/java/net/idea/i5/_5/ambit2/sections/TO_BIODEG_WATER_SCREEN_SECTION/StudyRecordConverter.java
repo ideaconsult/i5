@@ -105,10 +105,21 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS()==null?null:
 				sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 
-		if (sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM()!=null) {
-			papp.setInterpretationResult(sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} else
-			papp.setInterpretationResult(null);
+		
+		if (sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM() != null) {
+			String otherValue = null;
+			try { 
+				otherValue = sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM().getSet().
+				getPHRASEOTHERLISTPOP().getLISTPOPTXT().getValue();
+			} catch (Exception x) {};
+			
+			setInterpretationResult(papp, 
+					sciPart.getTOBIODEGWATERSCREEN().getINTERPRETRESULTSSUBM().getSet()
+					.getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+					otherValue
+			);
+
+		} else setInterpretationResult(papp,null,null);		
 		
 		papp.setInterpretationCriteria(null);
 		if (sciPart.getTOBIODEGWATERSCREEN().getRESULTSDETAILS()!=null) try {

@@ -109,10 +109,23 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 				sciPart.getTOEYEIRRITATION().getTYPEINVIVOINVITRO().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		
 		if (sciPart.getTOEYEIRRITATION().getINTERPRETRSSUBMITTER() != null) {
-			papp.setInterpretationResult( 
+			String otherValue = null;
+			try { 
+				otherValue = sciPart.getTOEYEIRRITATION().getINTERPRETRSSUBMITTER().getSet().
+					getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXTXT().getValue();
+			} catch (Exception x) {
+				x.printStackTrace();
+			};
+			
+			setInterpretationResult(papp, 
 					sciPart.getTOEYEIRRITATION().getINTERPRETRSSUBMITTER().getSet()
-					.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
-		} else papp.setInterpretationResult(null);
+					.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue(),
+					otherValue
+			);
+
+		} else setInterpretationResult(papp,null,null);
+		
+		
 		if (sciPart.getTOEYEIRRITATION().getCRITERIASUBMITTER() != null) {
 			papp.setInterpretationCriteria( 
 					sciPart.getTOEYEIRRITATION().getCRITERIASUBMITTER()
