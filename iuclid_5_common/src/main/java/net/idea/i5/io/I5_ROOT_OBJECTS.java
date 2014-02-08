@@ -392,6 +392,20 @@ public enum I5_ROOT_OBJECTS {
 			return "7.6.1";
 		}		
 	},
+	TO_GENETIC_IN_VIVO {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}		
+		@Override
+		public String getTitle() {
+			return "Genetic toxicity in vivo";
+		}
+		@Override
+		public String getNumber() {
+			return "7.6.1";
+		}		
+	},	
 	TO_CARCINOGENICITY {
 		@Override
 		public String getTitle() {

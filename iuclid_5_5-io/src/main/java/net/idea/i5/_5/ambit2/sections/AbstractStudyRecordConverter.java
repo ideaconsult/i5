@@ -31,6 +31,8 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	
 	protected static final String cSpecies = "Species";
 	protected static final String cSex = "Sex";
+	
+	protected static final String cToxicity = "Toxicity";
 	protected static final String cGeneration = "Generation";
 	protected static final String cEffectType = "Effect type";
 	protected static final String cDoses= "Doses/concentrations";
