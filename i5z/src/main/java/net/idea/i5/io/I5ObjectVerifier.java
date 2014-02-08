@@ -70,7 +70,7 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		    				continue;
 		    			}
 		    			default: {
-		    				if (tag.isScientificPart() && tag.isDataRich()) return tag;
+		    				if (tag.isScientificPart()) return tag;
 		    				continue;
 		    			}	
 		    			}
