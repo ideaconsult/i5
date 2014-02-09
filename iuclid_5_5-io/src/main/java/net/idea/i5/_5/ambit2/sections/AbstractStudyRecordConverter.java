@@ -28,7 +28,7 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		TOX
 	};
 	
-	protected boolean qualityCheckEnabled = true;
+	protected boolean qualityCheckEnabled ;
 	public boolean isQualityCheckEnabled() {
 		return qualityCheckEnabled;
 	}
@@ -124,6 +124,7 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	public AbstractStudyRecordConverter(I5_ROOT_OBJECTS endpointCategory) {
 		super();
 		this.endpointCategory = endpointCategory;
+		this.qualityCheckEnabled = true;
 	}
 	
 	protected String getEndpointCategory() {
@@ -144,7 +145,6 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected abstract String getTestMaterialIdentity(T unmarshalled);
 	
 	protected boolean isTestMaterialIdentityAccepted(String testMaterialCode) throws QACriteriaException {
-		
 		if ("2480".equals(testMaterialCode)) return true; //yes
 		throw new QACriteriaException("Test material identity ",testMaterialCode,testMaterialCode==null?null:Phrases.phrasegroup_Z38.get(testMaterialCode));
 	}
@@ -163,7 +163,7 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		throw new QACriteriaException("Reliability ",valueID,valueID==null?null:Phrases.phrasegroup_A36.get(valueID));
 	}
 	protected boolean isReferenceTypeAccepted(String referenceTypeCode) throws QACriteriaException {
-		//Study report OR publication OR Review article / handbook 
+		//Study report OR publication OR Review article / handbook
 		if ("1586".equals(referenceTypeCode) || "1433".equals(referenceTypeCode)  || "1486".equals(referenceTypeCode)) return true;
 		QACriteriaException x = new QACriteriaException("Reference type ",referenceTypeCode,referenceTypeCode==null?null:Phrases.phrasegroup_Z31.get(referenceTypeCode));
 		if (isQualityCheckEnabled()) throw x;
@@ -182,19 +182,14 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 				String purposeFlagCode,String studyResultTypeID,
 				String testMaterialIndicator) throws AmbitException {
 
-			//will throw exception if not correct flags
-			try {
+			if (isQualityCheckEnabled()) {
 				isPurposeflagAccepted(purposeFlagCode);
 				isStudyResultAccepted(studyResultTypeID);
 				isReliabilityAccepted(valueID);
 				isTestMaterialIdentityAccepted(testMaterialIndicator);
-			} catch (QACriteriaException x) {
-				if (isQualityCheckEnabled()) throw x;
-			} catch (AmbitException x) {
-				throw x;
-			} catch (Exception x) {
-				throw new AmbitException(x);
-			}
+			} 
+			//else System.out.println("No quality check");
+
 			Params reliability = new Params();
 			reliability.put(r_id, valueID);
 			reliability.put(r_value, Phrases.phrasegroup_A36.get(valueID));
