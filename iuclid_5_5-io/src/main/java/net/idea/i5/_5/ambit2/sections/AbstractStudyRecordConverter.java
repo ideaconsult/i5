@@ -27,6 +27,17 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		ECOTOX,
 		TOX
 	};
+	
+	protected boolean qualityCheckEnabled = true;
+	public boolean isQualityCheckEnabled() {
+		return qualityCheckEnabled;
+	}
+
+	public void setQualityCheckEnabled(boolean qualityCheckEnabled) {
+		this.qualityCheckEnabled = qualityCheckEnabled;
+	}
+
+
 	protected final String Physstate = "Physical state";
 	
 	protected static final String cSpecies = "Species";
@@ -135,26 +146,28 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected boolean isTestMaterialIdentityAccepted(String testMaterialCode) throws QACriteriaException {
 		
 		if ("2480".equals(testMaterialCode)) return true; //yes
-		throw new QACriteriaException(testMaterialCode==null?null:Phrases.phrasegroup_Z38.get(testMaterialCode));
+		throw new QACriteriaException("Test material identity ",testMaterialCode,testMaterialCode==null?null:Phrases.phrasegroup_Z38.get(testMaterialCode));
 	}
 	
 	protected boolean isPurposeflagAccepted(String purposeFlagCode) throws QACriteriaException{
 		if ("921".equals(purposeFlagCode) || "1590".equals(purposeFlagCode) ) return true; //1 or 2
-		throw new QACriteriaException(purposeFlagCode==null?null:Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
+		throw new QACriteriaException("Purpose flag ",purposeFlagCode,purposeFlagCode==null?null:Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
 
 	}
 	protected boolean isStudyResultAccepted(String studyResultTypeID) throws QACriteriaException {
 		if ("1895".equals(studyResultTypeID)) return true; //experimental result
-		throw new QACriteriaException(studyResultTypeID==null?null:Phrases.phrasegroup_Z05.get(studyResultTypeID));
+		throw new QACriteriaException("Study result ",studyResultTypeID,studyResultTypeID==null?null:Phrases.phrasegroup_Z05.get(studyResultTypeID));
 	}
 	protected boolean isReliabilityAccepted(String valueID) throws QACriteriaException {
 		if ("16".equals(valueID) || "18".equals(valueID) ) return true; //1 or 2
-		throw new QACriteriaException(valueID==null?null:Phrases.phrasegroup_A36.get(valueID));
+		throw new QACriteriaException("Reliability ",valueID,valueID==null?null:Phrases.phrasegroup_A36.get(valueID));
 	}
 	protected boolean isReferenceTypeAccepted(String referenceTypeCode) throws QACriteriaException {
 		//Study report OR publication OR Review article / handbook 
-		if ("1586".equals(referenceTypeCode) || "1433".equals(referenceTypeCode)  || "1486".equals(referenceTypeCode)) return true; 
-		throw new QACriteriaException(referenceTypeCode==null?null:Phrases.phrasegroup_Z31.get(referenceTypeCode));
+		if ("1586".equals(referenceTypeCode) || "1433".equals(referenceTypeCode)  || "1486".equals(referenceTypeCode)) return true;
+		QACriteriaException x = new QACriteriaException("Reference type ",referenceTypeCode,referenceTypeCode==null?null:Phrases.phrasegroup_Z31.get(referenceTypeCode));
+		if (isQualityCheckEnabled()) throw x;
+		else return true;
 	}
 	
 	public ambit2.base.interfaces.IStructureRecord transform2record(T unmarshalled, SubstanceRecord record) throws AmbitException {
@@ -170,11 +183,18 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 				String testMaterialIndicator) throws AmbitException {
 
 			//will throw exception if not correct flags
-			isPurposeflagAccepted(purposeFlagCode);
-			isStudyResultAccepted(studyResultTypeID);
-			isReliabilityAccepted(valueID);
-			isTestMaterialIdentityAccepted(testMaterialIndicator);
-			
+			try {
+				isPurposeflagAccepted(purposeFlagCode);
+				isStudyResultAccepted(studyResultTypeID);
+				isReliabilityAccepted(valueID);
+				isTestMaterialIdentityAccepted(testMaterialIndicator);
+			} catch (QACriteriaException x) {
+				if (isQualityCheckEnabled()) throw x;
+			} catch (AmbitException x) {
+				throw x;
+			} catch (Exception x) {
+				throw new AmbitException(x);
+			}
 			Params reliability = new Params();
 			reliability.put(r_id, valueID);
 			reliability.put(r_value, Phrases.phrasegroup_A36.get(valueID));

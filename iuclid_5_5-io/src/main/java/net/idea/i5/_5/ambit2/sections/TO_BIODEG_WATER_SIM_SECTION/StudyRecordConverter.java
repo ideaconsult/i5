@@ -51,7 +51,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 					if (set.getREFERENCEYEAR()!=null) try {
 						papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 					} catch (Exception x) {}
-					isReferenceTypeAccepted(set.getPHRASEOTHERREFERENCETYPE().getREFERENCETYPE());					
+					isReferenceTypeAccepted(set.getPHRASEOTHERREFERENCETYPE()==null?null:set.getPHRASEOTHERREFERENCETYPE().getREFERENCETYPE());					
 					return;
 				} catch (QACriteriaException x) {
 					qax = x;
@@ -144,6 +144,8 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				} else
 					degradation.put(cTimePoint, null);	
 			}
+		
+		
 		
 		if (sciPart.getTOBIODEGWATERSIM().getHALFLIFE()!=null && 
 			sciPart.getTOBIODEGWATERSIM().getHALFLIFE().getSet()!=null && 
