@@ -52,6 +52,9 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 					if (set.getREFERENCEYEAR()!=null) try {
 						papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 					} catch (Exception x) {}
+					try {
+						papp.setReferenceOwner(set.getREFERENCECOMPANYID().getREFERENCECOMPANYID().getValue());
+					} catch (Exception x) {	papp.setReferenceOwner("");}					
 					isReferenceTypeAccepted(set.getPHRASEOTHERREFERENCETYPE()==null?null:set.getPHRASEOTHERREFERENCETYPE().getREFERENCETYPE());					
 					return;
 				} catch (QACriteriaException x) {
