@@ -3,6 +3,7 @@ package net.idea.i5._5.ambit2;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 
 import net.idea.i5._5.ambit2.sections.IStudyRecordConverter;
@@ -11,6 +12,7 @@ import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
 import ambit2.base.data.StructureRecord;
 import ambit2.base.data.SubstanceRecord;
+import ambit2.base.data.substance.ExternalIdentifier;
 import ambit2.base.exceptions.AmbitException;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.base.interfaces.IStructureRecord.MOL_TYPE;
@@ -112,12 +114,10 @@ public class I5AmbitProcessor<Target> extends
 				record.setSubstancetype("Error reading the composition type");
 			}
 			if (unmarshalled.getExternalSystemIdentifiers() != null)
-				for (ExternalSystemIdentifier id : unmarshalled
-						.getExternalSystemIdentifiers()
-						.getExternalSystemIdentifier()) {
-
+				for (ExternalSystemIdentifier id : unmarshalled.getExternalSystemIdentifiers().getExternalSystemIdentifier()) {
+					if (record.getExternalids()==null) record.setExternalids(new ArrayList<ExternalIdentifier>());
+					record.getExternalids().add(new ExternalIdentifier(id.getExternalSystemDesignator(),id.getID()));
 				}
-
 
 			if (unmarshalled.getReferenceSubstanceRef() != null) {
 				setReferenceSubstanceUUID(record, unmarshalled
@@ -489,3 +489,4 @@ public class I5AmbitProcessor<Target> extends
 	}
 
 }
+
