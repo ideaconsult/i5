@@ -1,19 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>iuclid5-cli</artifactId>
     <groupId>net.idea</groupId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.5</version>
   </parent>
   <groupId>net.idea</groupId>
   <artifactId>iuclid_5_common</artifactId>
-  <version>0.0.5-SNAPSHOT</version>
-<name>iuclid_5_5-common</name>
-<dependencies>
+  <version>0.0.5</version>
+  <name>iuclid_5_5-common</name>
+  <dependencies>
     <dependency>
       <groupId>ambit</groupId>
       <artifactId>ambit2-base</artifactId>
       <version>${ambit.version}</version>
     </dependency>
-</dependencies>
+  </dependencies>
 </project>
