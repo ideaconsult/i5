@@ -3,11 +3,12 @@ package net.idea.i5._5.ambit2;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Level;
 
-import net.idea.i5._5.ambit2.sections.IStudyRecordConverter;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
+import net.idea.i5.io.IQASettings;
+import net.idea.i5.io.IStudyRecordConverter;
+import net.idea.i5.io.QASettings;
 import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
 import ambit2.base.data.StructureRecord;
@@ -36,23 +37,32 @@ import eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.SubstanceCom
 import eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.SubstanceCompositions.SubstanceComposition.Impurities.Impurity;
 import eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.TradeNames.TradeName;
 
-public class I5AmbitProcessor<Target> extends
-		DefaultAmbitProcessor<Target, IStructureRecord> {
+public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStructureRecord> implements IQASettings {
 	protected SubstanceRecord record = new SubstanceRecord();
 	protected StructureRecord structureRecord = new StructureRecord();
 	protected CASProcessor casProcessor = new CASProcessor();
 	
 	protected Hashtable<String, IStudyRecordConverter> convertors = new Hashtable<String,IStudyRecordConverter>();
-	
+	protected QASettings qaSettings;
+	@Override
+	public QASettings getQASettings() {
+		if (qaSettings==null) qaSettings = new QASettings();
+		return qaSettings;
+	}
+	@Override
+	public void setQASettings(QASettings qualityCheckEnabled) {
+		this.qaSettings = qualityCheckEnabled;
+	}
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -38158314141255416L;
 
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
-		if (unmarshalled instanceof Substance)
-			return transform2record((Substance) unmarshalled);
-		else if (unmarshalled instanceof ReferenceSubstance) 
+		if (unmarshalled instanceof Substance) {
+			if (!acceptSubstance((Substance) unmarshalled)) return null;
+			else return transform2record((Substance) unmarshalled);
+		} else if (unmarshalled instanceof ReferenceSubstance) 
 			return transform2record((ReferenceSubstance) unmarshalled);
 		try {	
 			IStudyRecordConverter convertor = getConvertor(unmarshalled.getClass().getName());	
@@ -70,6 +80,9 @@ public class I5AmbitProcessor<Target> extends
 		return null;
 	}
 	
+	protected boolean acceptSubstance(Substance substance) {
+		return true;
+	}
 	protected IStudyRecordConverter getConvertor(String className) throws Exception {
 		IStudyRecordConverter convertor = null;
 		String tagName = className.replace("eu.europa.echa.schemas.iuclid5._20130101.studyrecord.","").
@@ -78,6 +91,7 @@ public class I5AmbitProcessor<Target> extends
 			I5_ROOT_OBJECTS tag = I5_ROOT_OBJECTS.valueOf(tagName);
 			if (tag.isScientificPart()) {
 				convertor = convertors.get(tag.name());
+				convertor.setQASettings(getQASettings());
 				if (convertor == null) {
 					Object cnv = Class.forName("net.idea.i5._5.ambit2.sections."+tag+"_SECTION.StudyRecordConverter").newInstance();
 					if (cnv instanceof IStudyRecordConverter) {

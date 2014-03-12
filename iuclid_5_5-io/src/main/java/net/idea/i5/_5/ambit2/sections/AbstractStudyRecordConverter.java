@@ -3,6 +3,8 @@ package net.idea.i5._5.ambit2.sections;
 import net.idea.i5._5.ambit2.Phrases;
 import net.idea.i5._5.ambit2.QACriteriaException;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
+import net.idea.i5.io.IStudyRecordConverter;
+import net.idea.i5.io.QASettings;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
@@ -28,16 +30,7 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		TOX
 	};
 	
-	protected boolean qualityCheckEnabled ;
-	public boolean isQualityCheckEnabled() {
-		return qualityCheckEnabled;
-	}
-
-	public void setQualityCheckEnabled(boolean qualityCheckEnabled) {
-		this.qualityCheckEnabled = qualityCheckEnabled;
-	}
-
-
+	protected QASettings qaSettings;
 	protected final String Physstate = "Physical state";
 	
 	protected static final String cSpecies = "Species";
@@ -124,7 +117,6 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	public AbstractStudyRecordConverter(I5_ROOT_OBJECTS endpointCategory) {
 		super();
 		this.endpointCategory = endpointCategory;
-		this.qualityCheckEnabled = true;
 	}
 	
 	protected String getEndpointCategory() {
@@ -166,7 +158,7 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		//Study report OR publication OR Review article / handbook
 		if ("1586".equals(referenceTypeCode) || "1433".equals(referenceTypeCode)  || "1486".equals(referenceTypeCode)) return true;
 		QACriteriaException x = new QACriteriaException("Reference type ",referenceTypeCode,referenceTypeCode==null?null:Phrases.phrasegroup_Z31.get(referenceTypeCode));
-		if (isQualityCheckEnabled()) throw x;
+		if (getQASettings().isEnabled()) throw x;
 		else return true;
 	}
 	
@@ -182,7 +174,7 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 				String purposeFlagCode,String studyResultTypeID,
 				String testMaterialIndicator) throws AmbitException {
 
-			if (isQualityCheckEnabled()) {
+			if (getQASettings().isEnabled()) {
 				isPurposeflagAccepted(purposeFlagCode);
 				isStudyResultAccepted(studyResultTypeID);
 				isReliabilityAccepted(valueID);
@@ -230,5 +222,14 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 			papp.setInterpretationResult(otherValue);
 		} else
 			papp.setInterpretationResult(value);
+	}
+	@Override
+	public QASettings getQASettings() {
+		if (qaSettings==null) qaSettings = new QASettings();
+		return qaSettings;
+	}
+	@Override
+	public void setQASettings(QASettings qualityCheckEnabled) {
+		this.qaSettings = qualityCheckEnabled;
 	}
 }

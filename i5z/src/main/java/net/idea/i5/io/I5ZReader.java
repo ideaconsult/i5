@@ -25,11 +25,22 @@ import ambit2.core.io.FileInputState;
 import ambit2.core.io.IRawReader;
 import ambit2.core.io.ZipReader;
 
-public class I5ZReader<SUBSTANCE> extends ZipReader {
+public class I5ZReader<SUBSTANCE> extends ZipReader implements IQASettings {
 	protected Map<String,String> file2cjaxbcp;
 	protected transient Hashtable<String, JAXBStuff> jaxbCache = new Hashtable<String,JAXBStuff>();
 	protected transient I5ObjectVerifier rootObjectVerifier;
 	protected transient File tempFolder;
+	protected QASettings qaSettings;
+	@Override
+	public QASettings getQASettings() {
+		if (qaSettings==null) qaSettings = new QASettings();
+		return qaSettings;
+	}
+	@Override
+	public void setQASettings(QASettings qualityCheckEnabled) {
+		this.qaSettings = qualityCheckEnabled;
+	}
+		
 	/**
 	 * Uncompresses the .i5z archive content, detects the correct JAXB context path and unmarshall the XML content using JAXB generated classes
 	 * @param zipfile
@@ -76,6 +87,7 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 							//System.out.print("CACHED");	System.out.print("\t");	System.out.println(jaxbcontextpath);
 						}
 						I5DReader reader = new I5DReader(fileReader,jaxb.jaxbContext,jaxb.getUnmarshaller());
+						reader.setQASettings(getQASettings());
 						reader.setErrorHandler(errorHandler);
 						return reader;
 					} catch (javax.xml.bind.UnmarshalException x) {

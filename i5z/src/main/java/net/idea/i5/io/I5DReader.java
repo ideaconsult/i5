@@ -19,6 +19,7 @@ import ambit2.base.interfaces.IStructureRecord;
 public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	protected SubstanceRecord record = new SubstanceRecord();
 	protected Hashtable<String, IProcessor<Object, IStructureRecord>> processors = new Hashtable<String, IProcessor<Object, IStructureRecord>>();
+		
 
 	/**
 	 * Detects the I5D content and uses the correct JAXB classes to unmarshall the XML content
@@ -80,6 +81,8 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 		net.idea.i5._0.ambit2.I5AmbitProcessor i50 = new net.idea.i5._0.ambit2.I5AmbitProcessor();
 		net.idea.i5._5.ambit2.I5AmbitProcessor i55 = new net.idea.i5._5.ambit2.I5AmbitProcessor();
 		net.idea.i5._4.ambit2.I5AmbitProcessor i54 = new net.idea.i5._4.ambit2.I5AmbitProcessor();
+		
+		i55.setQASettings(getQASettings());
 		
 		processors.put(eu.europa.echa.schemas.iuclid5._20070330.referencesubstance.ReferenceSubstance.class.getName(), i50); 
 		
