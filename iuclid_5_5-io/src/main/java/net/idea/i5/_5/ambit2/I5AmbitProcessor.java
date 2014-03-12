@@ -91,13 +91,15 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			I5_ROOT_OBJECTS tag = I5_ROOT_OBJECTS.valueOf(tagName);
 			if (tag.isScientificPart()) {
 				convertor = convertors.get(tag.name());
-				convertor.setQASettings(getQASettings());
 				if (convertor == null) {
 					Object cnv = Class.forName("net.idea.i5._5.ambit2.sections."+tag+"_SECTION.StudyRecordConverter").newInstance();
 					if (cnv instanceof IStudyRecordConverter) {
 						convertor = (IStudyRecordConverter)cnv;
+						convertor.setQASettings(getQASettings());
 						convertors.put(tag.name(),convertor);
 					} else throw new Exception("Not an instance of IStudyRecordConverter!");
+				} else {
+					convertor.setQASettings(getQASettings());
 				}
 			}
 		} catch (Exception x) {

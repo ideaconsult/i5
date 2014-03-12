@@ -10,4 +10,8 @@ public class QASettings {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+	@Override
+	public String toString() {
+		return isEnabled()?"QA enabled":"QA disabled";
+	}
 }
