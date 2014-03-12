@@ -16,6 +16,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.commons.io.FileUtils;
+
 import ambit2.base.exceptions.AmbitException;
 import ambit2.base.exceptions.AmbitIOException;
 import ambit2.base.interfaces.IStructureRecord;
@@ -177,8 +179,11 @@ public class I5ZReader<SUBSTANCE> extends ZipReader {
 	@Override
 	public void close() throws IOException {
 		try {
-			if (tempFolder!=null && tempFolder.exists()) tempFolder.delete();
-		} catch (Exception x) {	}
+			if (tempFolder!=null && tempFolder.exists()) 
+				FileUtils.deleteDirectory(tempFolder);
+		} catch (Exception x) {	
+			x.printStackTrace();
+		}
 		super.close();
 	}
 }
