@@ -14,6 +14,7 @@ import net.idea.i5.io.I5DReader;
 import net.idea.i5.io.I5ObjectVerifier;
 import net.idea.i5.io.I5ZReader;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
+import net.idea.i5.io.QASettings;
 import net.idea.i5.io.UnsupportedI5RootObject;
 
 import org.junit.Test;
@@ -357,7 +358,7 @@ Value	2	1976	h
 		Assert.assertNotNull(in);
 		int count = 0;
 		try {
-			I5DReader reader = new I5DReader(in,contextPath);
+			I5DReader reader = new I5DReader(in,contextPath,new QASettings());
 			reader.setErrorHandler(new IChemObjectReaderErrorHandler() {
 				
 				public void handleError(String message, int row, int colStart, int colEnd,

@@ -115,8 +115,12 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	}	
 	
 	public AbstractStudyRecordConverter(I5_ROOT_OBJECTS endpointCategory) {
+		this(endpointCategory,new QASettings());
+	}
+	public AbstractStudyRecordConverter(I5_ROOT_OBJECTS endpointCategory,QASettings qaSettings) {
 		super();
 		this.endpointCategory = endpointCategory;
+		setQASettings(qaSettings);
 	}
 	
 	protected String getEndpointCategory() {
@@ -229,7 +233,7 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		return qaSettings;
 	}
 	@Override
-	public void setQASettings(QASettings qualityCheckEnabled) {
-		this.qaSettings = qualityCheckEnabled;
+	public void setQASettings(QASettings qaSettings) {
+		this.qaSettings = qaSettings;
 	}
 }

@@ -86,8 +86,7 @@ public class I5ZReader<SUBSTANCE> extends ZipReader implements IQASettings {
 						} else {
 							//System.out.print("CACHED");	System.out.print("\t");	System.out.println(jaxbcontextpath);
 						}
-						I5DReader reader = new I5DReader(fileReader,jaxb.jaxbContext,jaxb.getUnmarshaller());
-						reader.setQASettings(getQASettings());
+						I5DReader reader = new I5DReader(fileReader,jaxb.jaxbContext,jaxb.getUnmarshaller(),getQASettings());
 						reader.setErrorHandler(errorHandler);
 						return reader;
 					} catch (javax.xml.bind.UnmarshalException x) {

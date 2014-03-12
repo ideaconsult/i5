@@ -27,7 +27,7 @@ import ambit2.core.io.IRawReader;
  *
  * @param <SUBSTANCE>
  */
-public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectReader implements IRawReader<T>, ICiteable, IQASettings {
+public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectReader implements IRawReader<T>, ICiteable {
 	protected static Logger logger = Logger.getLogger(AbstractI5DReader.class.getName());
 	protected InputStream stream;
 	protected JAXBContext jaxbContext;
@@ -35,7 +35,7 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 	protected boolean hasNext = true;
 	protected Object unmarshalled;
 	protected T record;
-	protected QASettings qaSettings;
+
 	/**
 	 * Reuses existing JAXBContext
 	 * @param in
@@ -186,13 +186,4 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 		super.finalize();
 	}
 	
-	@Override
-	public QASettings getQASettings() {
-		if (qaSettings==null) qaSettings = new QASettings();
-		return qaSettings;
-	}
-	@Override
-	public void setQASettings(QASettings qualityCheckEnabled) {
-		this.qaSettings = qualityCheckEnabled;
-	}
 }

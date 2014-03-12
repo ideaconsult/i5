@@ -28,8 +28,8 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @throws FileNotFoundException
 	 * @throws AmbitException
 	 */
-	public I5DReader(File file) throws CDKException, FileNotFoundException, AmbitException {
-		this(file,null);
+	public I5DReader(File file,QASettings qaSettings) throws CDKException, FileNotFoundException, AmbitException {
+		this(file,null,qaSettings);
 	}
 	/**
 	 * Detects the I5D content and uses the correct JAXB classes to unmarshall the XML content
@@ -39,8 +39,8 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @throws FileNotFoundException
 	 * @throws AmbitException
 	 */
-	public I5DReader(File file,I5ObjectVerifier rootObjectVerifier) throws CDKException, FileNotFoundException, AmbitException {
-		this(new FileInputStream(file),getJaxbContext(file,rootObjectVerifier));
+	public I5DReader(File file,I5ObjectVerifier rootObjectVerifier,QASettings qaSettings) throws CDKException, FileNotFoundException, AmbitException {
+		this(new FileInputStream(file),getJaxbContext(file,rootObjectVerifier),qaSettings);
 	}	
 	
 	/**
@@ -50,9 +50,12 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @param jaxbUnmarshaller
 	 * @throws CDKException
 	 */
-	public I5DReader(InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller) throws CDKException {
+	public I5DReader(InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller,QASettings qaSettings) throws CDKException {
 		super(in,jaxbContext, jaxbUnmarshaller);
-		initProcessors();
+		initProcessors(qaSettings);
+	}
+	public I5DReader(InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller) throws CDKException {
+		this(in,jaxbContext,jaxbUnmarshaller,new QASettings());
 	}
 	/**
 	 * 
@@ -60,9 +63,9 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * uses default JAXB context path "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101"
 	 * @throws CDKException
 	 */
-	public I5DReader(InputStream in) throws CDKException {
+	public I5DReader(InputStream in,QASettings qaSettings) throws CDKException {
 		super(in);
-		initProcessors();
+		initProcessors(qaSettings);
 	}
 
 	/**
@@ -71,18 +74,18 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @param contextPath e.g. "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101"
 	 * @throws CDKException
 	 */
-	public I5DReader(InputStream in,String contextPath) throws CDKException {
+	public I5DReader(InputStream in,String contextPath,QASettings qaSettings) throws CDKException {
 		super(in,contextPath);
-		initProcessors();
+		initProcessors(qaSettings);
 	}
 	
-	protected void initProcessors() {
+	protected void initProcessors(QASettings qaSettings) {
 		
 		net.idea.i5._0.ambit2.I5AmbitProcessor i50 = new net.idea.i5._0.ambit2.I5AmbitProcessor();
 		net.idea.i5._5.ambit2.I5AmbitProcessor i55 = new net.idea.i5._5.ambit2.I5AmbitProcessor();
 		net.idea.i5._4.ambit2.I5AmbitProcessor i54 = new net.idea.i5._4.ambit2.I5AmbitProcessor();
 		
-		i55.setQASettings(getQASettings());
+		i55.setQASettings(qaSettings);
 		
 		processors.put(eu.europa.echa.schemas.iuclid5._20070330.referencesubstance.ReferenceSubstance.class.getName(), i50); 
 		
