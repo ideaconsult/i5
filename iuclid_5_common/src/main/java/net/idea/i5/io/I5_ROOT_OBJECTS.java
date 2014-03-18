@@ -569,8 +569,190 @@ public enum I5_ROOT_OBJECTS {
 		public String getNumber() {
 			return "6.3.4";
 		}			
-	};
-
+	},
+	AGGLOMERATION_AGGREGATION {
+		@Override
+		public String getTitle() {
+			return "Nanomaterial agglomeration/aggregation";
+		}
+		@Override
+		public String getNumber() {
+			return "101";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true;
+		}
+	},
+	CRYSTALLINE_PHASE {
+		@Override
+		public String getTitle() {
+			return "Nanomaterial crystalline phase";
+		}
+		@Override
+		public String getNumber() {
+			return "102";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true;
+		}		
+	},
+	CRYSTALLITE_AND_GRAIN_SIZE {
+		@Override
+		public String getTitle() {
+			return "Nanomaterial crystallite and grain phase";
+		}
+		@Override
+		public String getNumber() {
+			return "103";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true;
+		}
+	},
+	ASPECT_RATIO_SHAPE {
+		@Override
+		public String getTitle() {
+			return "Nanomaterial aspect ratio/shape";
+		}
+		@Override
+		public String getNumber() {
+			return "104";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true;
+		}
+	},
+	SPECIFIC_SURFACE_AREA {
+		@Override
+		public String getTitle() {
+			return "Nanomaterial specific surface area";
+		}
+		@Override
+		public String getNumber() {
+			return "105";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true;
+		}
+	},
+	ZETA_POTENTIAL {
+		@Override
+		public String getTitle() {
+			return "Nanomaterial Zeta potential";
+		}
+		@Override
+		public String getNumber() {
+			return "106";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true;
+		}
+	},
+	SURFACE_CHEMISTRY {
+		@Override
+		public String getTitle() {
+			return "Nanomaterial surface chemistry";
+		}
+		@Override
+		public String getNumber() {
+			return "107";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true;
+		}
+	},
+	DUSTINESS_SECTION {
+		@Override
+		public String getTitle() {
+			return "Nanomaterial dustiness";
+		}
+		@Override
+		public String getNumber() {
+			return "108";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true;
+		}
+	},
+	POROSITY {
+		@Override
+		public String getTitle() {
+			return "Nanomaterial porosity";
+		}
+		@Override
+		public String getNumber() {
+			return "109";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true;
+		}
+	},
+	POUR_DENSITY {
+		@Override
+		public String getTitle() {
+			return "Nanomaterial pour density";
+		}
+		@Override
+		public String getNumber() {
+			return "110";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true;
+		}
+	},
+	PHOTOCATALYTIC_ACTIVITY {
+		@Override
+		public String getTitle() {
+			return "Nanomaterial photocatalytic activity";
+		}
+		@Override
+		public String getNumber() {
+			return "111";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true;
+		}
+	},
+	RADICAL_FORMATION_POTENTIAL {
+		@Override
+		public String getTitle() {
+			return "Nanomaterial radical formation potential";
+		}
+		@Override
+		public String getNumber() {
+			return "112";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true;
+		}
+	},		
+	CATALYTIC_ACTIVITY {
+		@Override
+		public String getTitle() {
+			return "Nanomaterial catalytic activity";
+		}
+		@Override
+		public String getNumber() {
+			return "113";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true;
+		}
+	}		
+	;
 	public String getContextPath() {
 		return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord."+name()+"_SECTION";
 	}	
@@ -583,6 +765,9 @@ public enum I5_ROOT_OBJECTS {
 	public boolean isDataRich() {
 		return false;
 	}	
+	public boolean isNanoMaterialTemplate() {
+		return false;
+	}		
 	public String getNumber() {
 		return "";
 	}	
