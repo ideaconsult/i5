@@ -1,0 +1,12 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:typ="http://echa.europa.eu/schemas/iuclid5/i5webservice/types/">
+   <soap:Header/>
+   <soap:Body>
+      <typ:downloadContainer>
+      <!-- session id -->
+         <typ:session typ:id="%s"/>
+         <!-- document uuid/n -->
+         <typ:downloadContainerInformation typ:uniqueKey="%s"/>
+         
+      </typ:downloadContainer>
+   </soap:Body>
+</soap:Envelope>
