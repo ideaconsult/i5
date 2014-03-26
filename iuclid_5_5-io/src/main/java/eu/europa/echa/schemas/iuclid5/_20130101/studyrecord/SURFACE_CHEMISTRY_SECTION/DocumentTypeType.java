@@ -6,7 +6,7 @@
 //
 
 
-package eu.europa.echa.schemas.iuclid5._20130101;
+package eu.europa.echa.schemas.iuclid5._20130101.studyrecord.SURFACE_CHEMISTRY_SECTION;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;

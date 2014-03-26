@@ -6,4 +6,4 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://echa.europa.eu/schemas/iuclid5/20130101", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package eu.europa.echa.schemas.iuclid5._20130101;
+package eu.europa.echa.schemas.iuclid5._20130101.studyrecord.SURFACE_CHEMISTRY_SECTION;
