@@ -3,7 +3,7 @@
    <soap:Body>
       <typ:login>
       <!--  username and md5 hash of the password -->
-         <typ:credentials typ:username="%s" typ:password="%"/>
+         <typ:credentials typ:username="%s" typ:password="%s"/>
       </typ:login>
    </soap:Body>
 </soap:Envelope>

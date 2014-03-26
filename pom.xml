@@ -12,7 +12,7 @@
     <module>iuclid_5_0-io</module>
     <module>i5z</module>
     <module>iuclid_5_common</module>
-    <module>iuclid5_ws</module>
+    <module>iuclid_5-ws</module>
   </modules>
   <distributionManagement>
     <snapshotRepository>
@@ -27,7 +27,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.8.1</junit.version>
-    <ambit.version>2.5.4</ambit.version>
+    <ambit.version>2.5.5-SNAPSHOT</ambit.version>
   </properties>
   <scm>
     <connection>scm:git:git://github.com/ideaconsult/i5.git</connection>
@@ -73,7 +73,7 @@
     </repository>
     <repository>
       <releases>
-        <enabled>true</enabled>
+        <enabled>false</enabled>
       </releases>
       <snapshots>
         <enabled>true</enabled>
