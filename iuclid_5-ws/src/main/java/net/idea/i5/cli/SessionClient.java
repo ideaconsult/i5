@@ -129,7 +129,7 @@ public class SessionClient extends I5AbstractClient {
 	}	
 	
 	
-	private static String encryptPassword(String decryptedPassword) {
+	public static String encryptPassword(String decryptedPassword) {
 		try {
 			MessageDigest md5 = MessageDigest.getInstance("MD5");
 			byte pwdByte[] = decryptedPassword.getBytes("UTF-8");

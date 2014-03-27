@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- Created: 2014-03-27 13:13:05 by QueryUIPlugin; 5.4.0 -->
+<expression>
+  <version>5.4.0</version>
+  <comment/>
+  <datalayer>RAW_DATA</datalayer>
+  <query level="1">
+    <path>
+      <pathelement id="TR.SE00.00"/>
+      <pathelement id="TR.SU.SE00.00"/>
+      <pathelement id="SU.SE01.00"/>
+      <pathelement id="SU.SE01.03"/>
+    </path>
+    <criteria>
+      <string id="S01.03.0060" fieldname="/externalSystemIdentifiers/externalSystemDesignator">
+        <value operator="EQUALS" expression="IUCLID4"/>
+      </string>
+      <string id="S01.03.0070" fieldname="/externalSystemIdentifiers/ID">
+        <value operator="EQUALS" expression="DSN 20"/>
+      </string>
+    </criteria>
+  </query>
+</expression>

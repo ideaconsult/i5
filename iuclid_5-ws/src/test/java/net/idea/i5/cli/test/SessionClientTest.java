@@ -22,4 +22,8 @@ public class SessionClientTest extends ClientTest {
 			System.out.println(System.currentTimeMillis()-now);
 		}
 	}
+	@Test
+	public void testEncryptPassword() throws Exception {
+		System.out.println(SessionClient.encryptPassword(PropertiesUtil.getPassword()));
+	}
 }

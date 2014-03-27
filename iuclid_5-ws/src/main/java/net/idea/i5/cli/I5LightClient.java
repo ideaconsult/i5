@@ -42,6 +42,8 @@ public class I5LightClient extends ApplicationClient<String> {
 	public ContainerClient getContainerClient() {
 		return new ContainerClient(getHttpClient(),baseURL,ssoToken);
 	}
-	
+	public QueryToolClient getQueryToolClient() {
+		return new QueryToolClient(getHttpClient(),baseURL,ssoToken);
+	}	
 	
 }
