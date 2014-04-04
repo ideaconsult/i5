@@ -1,9 +1,9 @@
 package net.idea.i5._5.ambit2.sections;
 
 import net.idea.i5._5.ambit2.Phrases;
-import net.idea.i5._5.ambit2.QACriteriaException;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.IStudyRecordConverter;
+import net.idea.i5.io.QACriteriaException;
 import net.idea.i5.io.QASettings;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.Params;
@@ -90,6 +90,8 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	
 	protected static final String SOLUBILITY_ORG_SOLVENT = "Solubility org. solvents";
 	
+	//NM
+	protected static final String cTestMaterialForm = "TESTMATFORM";
 	
 	
 	protected static final String unit = "unit";
@@ -141,26 +143,25 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected abstract String getTestMaterialIdentity(T unmarshalled);
 	
 	protected boolean isTestMaterialIdentityAccepted(String testMaterialCode) throws QACriteriaException {
-		if ("2480".equals(testMaterialCode)) return true; //yes
+		if (qaSettings.isTestMaterialIdentityAccepted(testMaterialCode)) return true; //yes
 		throw new QACriteriaException("Test material identity ",testMaterialCode,testMaterialCode==null?null:Phrases.phrasegroup_Z38.get(testMaterialCode));
 	}
 	
 	protected boolean isPurposeflagAccepted(String purposeFlagCode) throws QACriteriaException{
-		if ("921".equals(purposeFlagCode) || "1590".equals(purposeFlagCode) ) return true; //1 or 2
+		if (qaSettings.isPurposeflagAccepted(purposeFlagCode)) return true; //key study, supporting study
 		throw new QACriteriaException("Purpose flag ",purposeFlagCode,purposeFlagCode==null?null:Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
-
 	}
+	
 	protected boolean isStudyResultAccepted(String studyResultTypeID) throws QACriteriaException {
-		if ("1895".equals(studyResultTypeID)) return true; //experimental result
+		if (qaSettings.isStudyResultAccepted(studyResultTypeID)) return true; // experimental result
 		throw new QACriteriaException("Study result ",studyResultTypeID,studyResultTypeID==null?null:Phrases.phrasegroup_Z05.get(studyResultTypeID));
 	}
 	protected boolean isReliabilityAccepted(String valueID) throws QACriteriaException {
-		if ("16".equals(valueID) || "18".equals(valueID) ) return true; //1 or 2
+		if (qaSettings.isReliabilityAccepted(valueID)) return true; //"1 (reliable without restriction)", "2 (reliable with restrictions)"
 		throw new QACriteriaException("Reliability ",valueID,valueID==null?null:Phrases.phrasegroup_A36.get(valueID));
 	}
 	protected boolean isReferenceTypeAccepted(String referenceTypeCode) throws QACriteriaException {
-		//Study report OR publication OR Review article / handbook
-		if ("1586".equals(referenceTypeCode) || "1433".equals(referenceTypeCode)  || "1486".equals(referenceTypeCode)) return true;
+		if (qaSettings.isReferenceTypeAccepted(referenceTypeCode)) return true; //"study report",  "publication", "review article or handbook"
 		QACriteriaException x = new QACriteriaException("Reference type ",referenceTypeCode,referenceTypeCode==null?null:Phrases.phrasegroup_Z31.get(referenceTypeCode));
 		if (getQASettings().isEnabled()) throw x;
 		else return true;
