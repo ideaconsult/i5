@@ -2,6 +2,7 @@ package net.idea.i5.io;
 
 import java.io.InputStream;
 
+import javax.xml.namespace.QName;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
@@ -37,7 +38,8 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
     			int type = reader.next();
 	            I5_ROOT_OBJECTS tag = null;
 	            try {
-	            	tag = I5_ROOT_OBJECTS.valueOf(reader.getName().getLocalPart());
+	            	QName qname = reader.getName();
+	            	tag = I5_ROOT_OBJECTS.valueOf(qname.getLocalPart());
 	            } catch (Exception x) {
 	            	if (inSciPart || inStudyRecord) continue;
 	            	else throw x;
