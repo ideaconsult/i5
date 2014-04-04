@@ -577,11 +577,11 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String getNumber() {
-			return "101";
+			return "4.24";
 		}
 		@Override
 		public boolean isNanoMaterialTemplate() {
-			return true;
+			return true; //101
 		}
 	},
 	CRYSTALLINE_PHASE {
@@ -591,11 +591,11 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String getNumber() {
-			return "102";
+			return "4.25";
 		}
 		@Override
 		public boolean isNanoMaterialTemplate() {
-			return true;
+			return true; //102
 		}		
 	},
 	CRYSTALLITE_AND_GRAIN_SIZE {
@@ -605,11 +605,11 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String getNumber() {
-			return "103";
+			return "4.26";
 		}
 		@Override
 		public boolean isNanoMaterialTemplate() {
-			return true;
+			return true; //103
 		}
 	},
 	ASPECT_RATIO_SHAPE {
@@ -619,11 +619,11 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String getNumber() {
-			return "104";
+			return "4.27";
 		}
 		@Override
 		public boolean isNanoMaterialTemplate() {
-			return true;
+			return true; //104
 		}
 	},
 	SPECIFIC_SURFACE_AREA {
@@ -633,11 +633,11 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String getNumber() {
-			return "105";
+			return "4.28";
 		}
 		@Override
 		public boolean isNanoMaterialTemplate() {
-			return true;
+			return true; //105
 		}
 	},
 	ZETA_POTENTIAL {
@@ -647,11 +647,11 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String getNumber() {
-			return "106";
+			return "4.29";
 		}
 		@Override
 		public boolean isNanoMaterialTemplate() {
-			return true;
+			return true; //106
 		}
 	},
 	SURFACE_CHEMISTRY {
@@ -661,25 +661,25 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String getNumber() {
-			return "107";
+			return "4.30";
 		}
 		@Override
 		public boolean isNanoMaterialTemplate() {
-			return true;
+			return true; //107
 		}
 	},
-	DUSTINESS_SECTION {
+	DUSTINESS {
 		@Override
 		public String getTitle() {
 			return "Nanomaterial dustiness";
 		}
 		@Override
 		public String getNumber() {
-			return "108";
+			return "4.31";
 		}
 		@Override
 		public boolean isNanoMaterialTemplate() {
-			return true;
+			return true; //108
 		}
 	},
 	POROSITY {
@@ -689,11 +689,11 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String getNumber() {
-			return "109";
+			return "4.32";
 		}
 		@Override
 		public boolean isNanoMaterialTemplate() {
-			return true;
+			return true; //109
 		}
 	},
 	POUR_DENSITY {
@@ -703,11 +703,11 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String getNumber() {
-			return "110";
+			return "4.33";
 		}
 		@Override
 		public boolean isNanoMaterialTemplate() {
-			return true;
+			return true; //110
 		}
 	},
 	PHOTOCATALYTIC_ACTIVITY {
@@ -717,11 +717,11 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String getNumber() {
-			return "111";
+			return "4.34";
 		}
 		@Override
 		public boolean isNanoMaterialTemplate() {
-			return true;
+			return true; //111
 		}
 	},
 	RADICAL_FORMATION_POTENTIAL {
@@ -731,11 +731,11 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String getNumber() {
-			return "112";
+			return "4.35";
 		}
 		@Override
 		public boolean isNanoMaterialTemplate() {
-			return true;
+			return true; //112
 		}
 	},		
 	CATALYTIC_ACTIVITY {
@@ -745,11 +745,11 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String getNumber() {
-			return "113";
+			return "4.36";
 		}
 		@Override
 		public boolean isNanoMaterialTemplate() {
-			return true;
+			return true; //113
 		}
 	}		
 	;
