@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.IQASettings;
 import net.idea.i5.io.IStudyRecordConverter;
+import net.idea.i5.io.QACriteriaException;
 import net.idea.i5.io.QASettings;
 import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;

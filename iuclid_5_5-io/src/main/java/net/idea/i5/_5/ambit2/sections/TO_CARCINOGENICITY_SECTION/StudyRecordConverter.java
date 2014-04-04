@@ -1,8 +1,8 @@
 package net.idea.i5._5.ambit2.sections.TO_CARCINOGENICITY_SECTION;
 
-import net.idea.i5._5.ambit2.QACriteriaException;
 import net.idea.i5._5.ambit2.sections.TOXStudyRecordConvertor;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
+import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.Params;

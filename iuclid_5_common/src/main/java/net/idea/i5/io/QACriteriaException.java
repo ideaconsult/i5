@@ -1,4 +1,4 @@
-package net.idea.i5._5.ambit2;
+package net.idea.i5.io;
 
 import ambit2.base.exceptions.AmbitException;
 
