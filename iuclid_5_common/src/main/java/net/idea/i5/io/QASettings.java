@@ -80,7 +80,8 @@ public class QASettings {
 		// yes
 		testMaterialIdentity.add("2480");testMaterialIdentity.add("2158");testMaterialIdentity.add("NOT_SPECIFIED");
 		 //"1 (reliable without restriction)", "2 (reliable with restrictions)"
-		reliability.add("16");reliability.add("18");reliability.add("22");reliability.add("24");reliability.add("1342");reliability.add("NOT_SPECIFIED");
+		reliability.add("16");reliability.add("18");
+		reliability.add("22");reliability.add("24");reliability.add("1342");reliability.add("NOT_SPECIFIED");
 		// experimental result
 		studyResultType.add("1895");studyResultType.add("1896");studyResultType.add("1885");studyResultType.add("2303");
 		studyResultType.add("2304");studyResultType.add("14");studyResultType.add("1342");studyResultType.add("1173");
