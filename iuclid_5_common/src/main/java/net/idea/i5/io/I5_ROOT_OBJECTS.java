@@ -499,7 +499,7 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String getTitle() {
-			return "Algae";
+			return "Toxicity to aquatic algae and cyanobacteria";
 		}
 		@Override
 		public String getNumber() {
