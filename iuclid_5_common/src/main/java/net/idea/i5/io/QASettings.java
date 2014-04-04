@@ -42,6 +42,14 @@ public class QASettings {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+	public void clear() {
+		setEnabled(false);
+		purposeFlag.clear();	
+		testMaterialIdentity.clear();
+		reliability.clear();
+		studyResultType.clear();
+		referenceType.clear();
+	}
 	@Override
 	public String toString() {
 		return isEnabled()?"QA enabled":"QA disabled";
@@ -65,18 +73,32 @@ public class QASettings {
 		//Study report OR publication OR Review article / handbook
 		referenceType.add("1586");referenceType.add("1433");referenceType.add("1486");
 	}
-
+	public void addTestMaterialIdentityOption(String testMaterialCode) {
+		testMaterialIdentity.add(testMaterialCode);
+	}
 	public boolean isTestMaterialIdentityAccepted(String testMaterialCode) {
 		return testMaterialIdentity.contains(testMaterialCode);
 	}
+	public void addPurposeflagOption(String purposeFlagCode) {
+		purposeFlag.add(purposeFlagCode);
+	}
 	public boolean isPurposeflagAccepted(String purposeFlagCode){
-		return purposeFlagCode.contains(purposeFlagCode);
+		return purposeFlag.contains(purposeFlagCode);
+	}
+	public void addStudyResultOption(String studyResultTypeID) {
+		studyResultType.add(studyResultTypeID);
 	}
 	public boolean isStudyResultAccepted(String studyResultTypeID){
 		return studyResultType.contains(studyResultTypeID);
 	}
+	public void addReliabilityOption(String valueID) {
+		reliability.add(valueID);
+	}
 	public boolean isReliabilityAccepted(String valueID) {
 		return reliability.contains(valueID);
+	}
+	public void addReferenceTypeOption(String referenceTypeCode) {
+		referenceType.add(referenceTypeCode);
 	}
 	public boolean isReferenceTypeAccepted(String referenceTypeCode) {
 		return referenceType.contains(referenceTypeCode);	
