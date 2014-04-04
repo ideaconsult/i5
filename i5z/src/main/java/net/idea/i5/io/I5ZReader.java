@@ -134,7 +134,7 @@ public class I5ZReader<SUBSTANCE> extends ZipReader implements IQASettings {
 			file2cjaxbcp.put(file.getAbsolutePath(),cp);
 			return cp;
 		} catch (Exception x) {
-			logger.log(Level.WARNING,x.getMessage());
+			logger.log(Level.FINE,x.getMessage());
 			return null;
 		}
 	}
