@@ -97,8 +97,11 @@ public class StudyRecordConverter
 		if (sciPart.getPCNONSATURATEDPH().getGUIDELINE() != null)
 			for (ScientificPart.PCNONSATURATEDPH.GUIDELINE.Set set : sciPart
 					.getPCNONSATURATEDPH().getGUIDELINE().getSet()) {
+				
 				papp.getProtocol().addGuideline(
-						set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()==null?null:set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT().getValue())
+				);
 
 			}
 		if (sciPart.getPCNONSATURATEDPH().getMETHODNOGUIDELINE() != null)
@@ -125,28 +128,33 @@ public class StudyRecordConverter
 				}
 				if (set.getVALUEUNITTEMPVALUE()!=null)
 					tvalue.put(
-							unit,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()));
+							unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
 				effect.getConditions().put(Temperature, tvalue);				
 			} else
 				effect.getConditions().put(Temperature, null);			
 			
+			
 			if (set.getPRECISIONCONCLOQUALIFIER() != null) {
 				Params phvalue = new Params();
 				if (set.getPRECISIONCONCLOQUALIFIER().getCONCLOVALUE()!= null) {
-					phvalue.put(loQualifier,
-							(set.getPRECISIONCONCLOQUALIFIER().getCONCLOQUALIFIER() == null) ? null : 
-							set.getPRECISIONCONCLOQUALIFIER().getCONCLOQUALIFIER());
+					String qlfr = getQualifier(set.getPRECISIONCONCLOQUALIFIER().getCONCUPQUALIFIERValue()); 
+					phvalue.put(loQualifier,qlfr);
 					
-					phvalue.put(
-							loValue,getNumber(set.getPRECISIONCONCLOQUALIFIER().getCONCLOVALUE().getValue()));
+					phvalue.put(loValue,getNumber(set.getPRECISIONCONCLOQUALIFIER().getCONCLOVALUE().getValue()));
 				} else phvalue.put(loValue,null);
 				if (set.getPRECISIONCONCLOQUALIFIER().getCONCUPVALUE()!= null) {
-					phvalue.put(upQualifier,
-							(set.getPRECISIONCONCLOQUALIFIER().getCONCUPQUALIFIERValue() == null) ? null : 
-							set.getPRECISIONCONCLOQUALIFIER().getCONCUPQUALIFIERValue());					
+					String qlfr = getQualifier(set.getPRECISIONCONCLOQUALIFIER().getCONCUPQUALIFIERValue());
+					phvalue.put(upQualifier,qlfr);
+												
 					phvalue.put(
 							upValue,getNumber(set.getPRECISIONCONCLOQUALIFIER().getCONCUPVALUE().getValue()));
 				} else phvalue.put(upValue,null);
+				
+				phvalue.put(unit,getUnit(set.getPRECISIONCONCLOQUALIFIER().getCONCUNITValue(),
+								set.getPRECISIONCONCLOQUALIFIER().getCONCUNITTXT()==null?null:
+								set.getPRECISIONCONCLOQUALIFIER().getCONCUNITTXT().getValue()));
+				
+				
 				effect.getConditions().put(cDoses, phvalue);
 
 			} else {

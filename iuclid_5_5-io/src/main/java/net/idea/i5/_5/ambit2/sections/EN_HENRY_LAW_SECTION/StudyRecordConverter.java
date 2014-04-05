@@ -120,7 +120,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 						tvalue.put(loValue,getNumber(set.getVALUEUNITPRESSUREVALUE().getPRESSUREVALUE().getValue()));
 					} else tvalue.put(loValue,null);
 					if (set.getVALUEUNITPRESSUREVALUE()!=null)
-						tvalue.put(unit,getNumber(set.getVALUEUNITPRESSUREVALUE().getPRESSUREUNITValue()));
+						tvalue.put(unit,set.getVALUEUNITPRESSUREVALUE().getPRESSUREUNITValue());
 					
 					effect.getConditions().put(Pressure, tvalue);				
 				} else

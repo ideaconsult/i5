@@ -87,6 +87,7 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected static final String cMetabolicActivationSystem= "Metabolic activation system";
 	protected static final String cMetabolicActivation= "Metabolic activation";	
 	
+	protected static final String No = "No.";
 	
 	protected static final String SOLUBILITY_ORG_SOLVENT = "Solubility org. solvents";
 	
@@ -237,4 +238,16 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	public void setQASettings(QASettings qaSettings) {
 		this.qaSettings = qaSettings;
 	}
+	protected String getQualifier(String qualifier) {
+		return "NOT_SPECIFIED".equals(qualifier)?null:qualifier;
+	}
+	protected String getUnit(String unit,String otherValue) {
+		if ("other:".equals(unit)) return otherValue;
+		else return unit;
+	}
+	protected String getGuideline(String method,String otherValue) {
+		if ("other guideline:".equals(method)) return otherValue;
+		else return method;
+	}
+	
 }

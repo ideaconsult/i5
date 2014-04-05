@@ -126,6 +126,14 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 
+			try {
+				String basis = set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue();
+				if (basis.startsWith("other:")) basis = set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTTXT().getValue();
+				effect.getConditions().put(BioaccBasis,basis);
+			} catch (Exception x) {
+				effect.getConditions().put(BioaccBasis,null);	
+			}
+				
 			effect.getConditions().put(cEffect,
 					set.getPHRASEOTHERBASISEFFECT()==null?null:
 					set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue());
@@ -160,6 +168,16 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			} else {
 				effect.getConditions().put(cExposure,null);
 			}
+		} else {
+			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+			effect.setEndpoint("BCF");
+			effect.setConditions(new Params());
+			papp.addEffect(effect);
+			effect.getConditions().put(cEffect,null);
+			effect.getConditions().put(cMeasuredConcentration,null);
+			effect.getConditions().put(cConcType,null);
+			effect.getConditions().put(BioaccBasis,null);
+			effect.getConditions().put(cExposure,null);
 		}
 		return record;
 	}

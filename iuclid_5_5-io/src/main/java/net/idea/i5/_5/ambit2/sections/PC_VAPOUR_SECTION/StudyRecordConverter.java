@@ -104,7 +104,13 @@ public class StudyRecordConverter
 								.getValue());
 			} catch (Exception x) {
 			}
-
+		/*
+		if (sciPart.getPCVAPOUR().getTRANSITION().getSet()!=null) 			
+		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION.EndpointStudyRecord.ScientificPart.PCVAPOUR.TRANSITION.Set set : sciPart.getPCVAPOUR().getTRANSITION().getSet()) {
+			
+		}
+		*/
+		
 		if (sciPart.getPCVAPOUR().getVAPOURPR()!=null && sciPart.getPCVAPOUR().getVAPOURPR().getSet()!=null)			
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION.EndpointStudyRecord.ScientificPart.PCVAPOUR.VAPOURPR.Set set : sciPart.getPCVAPOUR().getVAPOURPR().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
@@ -118,7 +124,7 @@ public class StudyRecordConverter
 					tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
 				} else tvalue.put(loValue,null); 
 				if (set.getVALUEUNITTEMPVALUE()!=null)
-					tvalue.put(unit,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()));
+					tvalue.put(unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
 				
 				if (set.getTEMPQUALIFIER()!=null)
 					tvalue.put(loQualifier,set.getTEMPQUALIFIER().getTEMPQUALIFIERValue());
@@ -127,7 +133,8 @@ public class StudyRecordConverter
 			} else
 				effect.getConditions().put(Temperature, null);	
 			
-
+			//Not sure where to get it from
+			effect.getConditions().put(DECOMPOSITION,null);
 
 			if (set.getPRECISIONPRESSURELOQUALIFIER() != null) {
 				effect.setUnit(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNITValue());

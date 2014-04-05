@@ -147,16 +147,12 @@ public class StudyRecordConverter
 				*/
 				Params phvalue = new Params();
 				if (set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE()!= null) {
-					phvalue.put(loQualifier,
-							(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue() == null) ? null : 
-							set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue());
+					phvalue.put(loQualifier,getQualifier(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue()));
 					
 					phvalue.put(loValue,getNumber(set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE().getValue()));
 				} else phvalue.put(loValue,null);
 				if (set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE()!= null) {
-					phvalue.put(upQualifier,
-							(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue() == null) ? null : 
-							set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue());					
+					phvalue.put(upQualifier,getQualifier(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue()));  
 					phvalue.put(
 							upValue,getNumber(set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE().getValue()));
 				} else phvalue.put(upValue,null);

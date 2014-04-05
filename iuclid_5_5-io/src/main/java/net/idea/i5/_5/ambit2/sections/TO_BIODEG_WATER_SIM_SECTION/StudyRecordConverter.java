@@ -142,7 +142,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 						tvalue.put(loValue,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue()));
 					} else tvalue.put(loValue,null);
 					if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-						tvalue.put(unit,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue()));
+						tvalue.put(unit,set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue());
 					degradation.put(cTimePoint, tvalue);				
 				} else
 					degradation.put(cTimePoint, null);	

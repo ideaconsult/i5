@@ -133,8 +133,7 @@ public class StudyRecordConverter
 							loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
 				}
 				if (set.getVALUEUNITTEMPVALUE()!=null)
-					tvalue.put(
-							unit,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()));
+					tvalue.put(unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
 				effect.getConditions().put(Temperature, tvalue);				
 			} else
 				effect.getConditions().put(Temperature, null);			

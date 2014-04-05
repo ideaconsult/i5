@@ -129,22 +129,28 @@ public class StudyRecordConverter
 			} else
 				effect.getConditions().put(Temperature, null);
 			
+			if (set.getNO()!= null) {
+				Params nvalue = new Params();
+				nvalue.put(loValue,set.getNO().getNOValue());
+				effect.getConditions().put(No, nvalue);
+			} else
+				effect.getConditions().put(No, null);
 
+			
+			
 			if (set.getPRECISIONVALUELOQUALIFIER() != null) {
 				if (set.getPRECISIONVALUELOQUALIFIER().getVALUELOVALUE() != null)
 					try {
-						effect.setLoQualifier(set.getPRECISIONVALUELOQUALIFIER().getVALUELOQUALIFIER());
-						effect.setLoValue(Double.parseDouble(set
-								.getPRECISIONVALUELOQUALIFIER().getVALUELOQUALIFIERValue()));
+						effect.setLoQualifier(getQualifier(set.getPRECISIONVALUELOQUALIFIER().getVALUELOQUALIFIER()));
+						effect.setLoValue(Double.parseDouble(set.getPRECISIONVALUELOQUALIFIER().getVALUELOVALUE().getValue()));
 					} catch (Exception x) {
 						effect.setTextValue(set
 								.getPRECISIONVALUELOQUALIFIER().getVALUELOQUALIFIERValue());
 					}
 				if (set.getPRECISIONVALUELOQUALIFIER().getVALUEUPVALUE() != null)
 					try {
-						effect.setUpQualifier(set.getPRECISIONVALUELOQUALIFIER().getVALUEUPQUALIFIER());						
-						effect.setUpValue(Double.parseDouble(set
-								.getPRECISIONVALUELOQUALIFIER().getVALUEUPQUALIFIERValue()));
+						effect.setUpQualifier(getQualifier(set.getPRECISIONVALUELOQUALIFIER().getVALUEUPQUALIFIER()));						
+						effect.setUpValue(Double.parseDouble(set.getPRECISIONVALUELOQUALIFIER().getVALUEUPVALUE().getValue()));
 					} catch (Exception x) {
 						effect.setTextValue(set
 								.getPRECISIONVALUELOQUALIFIER().getVALUEUPQUALIFIERValue());

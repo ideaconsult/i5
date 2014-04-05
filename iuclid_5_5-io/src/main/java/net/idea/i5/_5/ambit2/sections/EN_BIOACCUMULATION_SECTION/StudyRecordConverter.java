@@ -118,7 +118,9 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				try {
-					effect.getConditions().put(BioaccBasis,set.getPHRASEOTHERBASIS().getBASISTXT().getValue());
+					String basis = set.getPHRASEOTHERBASIS().getBASIS();
+					if (basis.startsWith("other:")) basis = set.getPHRASEOTHERBASIS().getBASISTXT().getValue();
+					effect.getConditions().put(BioaccBasis,basis);
 				} catch (Exception x) { effect.getConditions().put(BioaccBasis,null);}
 				try {
 					effect.getConditions().put(cDoses,set.getCONCLEVEL().getCONCLEVEL().getValue());
@@ -137,7 +139,14 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				}	
 				
 			}
-		} 		
+		} else {
+			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+			effect.setEndpoint("BCF");
+			effect.setConditions(new Params());
+			papp.addEffect(effect);
+			effect.getConditions().put(BioaccBasis,null);
+			effect.getConditions().put(cDoses,null);
+		}
 		return record;
 	}
 }
