@@ -7,10 +7,20 @@ JAXB generated classes from [IUCLID5.x XSD schema](http://iuclid.eu/index.php?fu
 
 Available at Maven repository http://ambit.uni-plovdiv.bg:8083/nexus/index.html#nexus-search;quick~i5z
 
+Stable release
 ````
 <dependency>
   <groupId>net.idea</groupId>
   <artifactId>i5z</artifactId>
-  <version>0.0.4</version>
+  <version>0.0.5</version>
+</dependency>
+````
+
+Development snapshot
+````
+<dependency>
+  <groupId>net.idea</groupId>
+  <artifactId>i5z</artifactId>
+  <version>0.0.6-SNAPSHOT</version>
 </dependency>
 ````
