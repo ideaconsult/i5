@@ -596,7 +596,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public boolean isNanoMaterialTemplate() {
 			return true; //102
-		}		
+		}	
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
 	},
 	CRYSTALLITE_AND_GRAIN_SIZE {
 		@Override
@@ -610,6 +614,10 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public boolean isNanoMaterialTemplate() {
 			return true; //103
+		}
+		@Override
+		public boolean isSupported() {
+			return false;
 		}
 	},
 	ASPECT_RATIO_SHAPE {
@@ -625,6 +633,10 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isNanoMaterialTemplate() {
 			return true; //104
 		}
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
 	},
 	SPECIFIC_SURFACE_AREA {
 		@Override
@@ -638,6 +650,10 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public boolean isNanoMaterialTemplate() {
 			return true; //105
+		}
+		@Override
+		public boolean isSupported() {
+			return false;
 		}
 	},
 	ZETA_POTENTIAL {
@@ -653,6 +669,10 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isNanoMaterialTemplate() {
 			return true; //106
 		}
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
 	},
 	SURFACE_CHEMISTRY {
 		@Override
@@ -667,6 +687,10 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isNanoMaterialTemplate() {
 			return true; //107
 		}
+		@Override
+		public boolean isSupported() {
+			return false;
+		}		
 	},
 	DUSTINESS {
 		@Override
@@ -680,6 +704,10 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public boolean isNanoMaterialTemplate() {
 			return true; //108
+		}
+		@Override
+		public boolean isSupported() {
+			return false;
 		}
 	},
 	POROSITY {
@@ -695,6 +723,11 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isNanoMaterialTemplate() {
 			return true; //109
 		}
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+		
 	},
 	POUR_DENSITY {
 		@Override
@@ -709,6 +742,11 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isNanoMaterialTemplate() {
 			return true; //110
 		}
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
 	},
 	PHOTOCATALYTIC_ACTIVITY {
 		@Override
@@ -722,6 +760,10 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public boolean isNanoMaterialTemplate() {
 			return true; //111
+		}
+		@Override
+		public boolean isSupported() {
+			return false;
 		}
 	},
 	RADICAL_FORMATION_POTENTIAL {
@@ -737,6 +779,10 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isNanoMaterialTemplate() {
 			return true; //112
 		}
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
 	},		
 	CATALYTIC_ACTIVITY {
 		@Override
@@ -751,6 +797,11 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isNanoMaterialTemplate() {
 			return true; //113
 		}
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+		
 	}		
 	;
 	public String getContextPath() {
@@ -765,6 +816,9 @@ public enum I5_ROOT_OBJECTS {
 	public boolean isDataRich() {
 		return false;
 	}	
+	public boolean isSupported() {
+		return true;
+	}		
 	public boolean isNanoMaterialTemplate() {
 		return false;
 	}		

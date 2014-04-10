@@ -90,6 +90,9 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
 		    			case EndpointStudyRecord: {
 		    				throw new UnsupportedI5RootObject();
 		    			}
+		    			default : {
+		    				if (!tag.isSupported()) throw new UnsupportedI5RootObject();
+		    			}
 		    			}
 		    		} catch (Exception x) {
 		    			throw new UnsupportedI5RootObject(reader.getName().getLocalPart());

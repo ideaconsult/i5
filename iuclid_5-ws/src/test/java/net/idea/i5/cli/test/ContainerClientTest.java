@@ -1,24 +1,14 @@
 package net.idea.i5.cli.test;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import junit.framework.Assert;
 import net.idea.i5.cli.Container;
 import net.idea.i5.cli.ContainerClient;
-import net.idea.i5.cli.I5LightClient;
-import net.idea.i5.io.I5ZReader;
-import net.idea.i5.io.QASettings;
 import net.idea.opentox.cli.IIdentifiableResource;
 
 import org.junit.Test;
-import org.openscience.cdk.io.IChemObjectReaderErrorHandler;
-
-import ambit2.base.data.SubstanceRecord;
-import ambit2.base.interfaces.IStructureRecord;
 
 
 
@@ -31,17 +21,20 @@ public class ContainerClientTest  extends ClientTest {
 		try {
 			if (i5.login(PropertiesUtil.getUsername(),PropertiesUtil.getPassword())) {
 				ContainerClient cli = i5.getContainerClient();
-				String identifier = "IUC4-567539b9-f1fc-3b07-a5ce-688fbe66f1b5/0";
+
+				String identifier = "IUC5-6d15f057-c651-4399-9fb9-1dd7d39ee6fa/0";
+				//String identifier = "IUC4-567539b9-f1fc-3b07-a5ce-688fbe66f1b5/0";
 				List<IIdentifiableResource<String>> content = cli.get(identifier);
 				//("IUC4-7388635d-6cce-3f32-acab-6b081221b103/0"); linalool
 				//("IUC5-6d15f057-c651-4399-9fb9-1dd7d39ee6fa/0");
+
 				Assert.assertNotNull(content);
 				Assert.assertEquals(1,content.size());
 				Assert.assertEquals(identifier,content.get(0).getResourceIdentifier());
 				Assert.assertTrue(content.get(0) instanceof Container);
 				file = ((Container)content.get(0)).getIpzarchive();
 				Assert.assertTrue(file.exists());
-				unmarshall_i5z(file,2);
+				unmarshall_i5z(file,-1);
 			}
 		} catch (Exception x) {
 			throw x;

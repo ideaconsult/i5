@@ -2,6 +2,7 @@ package net.idea.i5.cli.test;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,6 +16,8 @@ import org.junit.BeforeClass;
 import org.openscience.cdk.io.IChemObjectReaderErrorHandler;
 
 import ambit2.base.data.SubstanceRecord;
+import ambit2.base.data.study.Protocol;
+import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.interfaces.IStructureRecord;
 
 public class ClientTest {
@@ -57,8 +60,18 @@ public class ClientTest {
 			while (reader.hasNext()) {
 				Object next = reader.nextRecord();
 				if (next instanceof SubstanceRecord) {
-					if (((SubstanceRecord)next).getMeasurements()!=null)
-						Assert.assertTrue(((SubstanceRecord)next).getMeasurements().size()>0);
+					List<ProtocolApplication> papps = ((SubstanceRecord)next).getMeasurements();
+					if (papps!=null) {
+						Assert.assertTrue(papps.size()>0);
+						for (ProtocolApplication papp : papps) {
+							if (papp.getProtocol()!=null) {
+								String category = ((Protocol)papp.getProtocol()).getCategory();
+								System.out.println(category);
+								if ("AGGLOMERATION_AGGREGATION_SECTION".equals(((Protocol)papp.getProtocol()).getCategory()))
+									System.out.println(papp);
+							}	
+						}
+					}	
 				} else if (next instanceof IStructureRecord) {
 					Assert.assertNotNull(((IStructureRecord)next).getContent());
 				}

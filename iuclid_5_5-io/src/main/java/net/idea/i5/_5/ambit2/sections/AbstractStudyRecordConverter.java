@@ -210,7 +210,7 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		papp.setParameters(new Params());
 		return papp;
 	}
-	protected Object getNumber(Object value) {
+	public static Object getNumber(Object value) {
 		if (value == null) return null;
 		if (value instanceof Number) return value;
 		try {
