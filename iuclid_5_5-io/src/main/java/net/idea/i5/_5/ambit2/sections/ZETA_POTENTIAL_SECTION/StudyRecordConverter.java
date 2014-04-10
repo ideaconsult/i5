@@ -137,6 +137,11 @@ public class StudyRecordConverter
 		if (sciPart.getZETAPOTENTIAL().getISOELECTRICPOINTTABLE()!=null) {
 			parseElement(sciPart.getZETAPOTENTIAL().getISOELECTRICPOINTTABLE(),papp);
 		}	
+		try {
+			papp.setInterpretationResult(sciPart.getZETAPOTENTIAL().getAPPLCL().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+		} catch (Exception x) {
+			papp.setInterpretationResult(null);			
+		}
 		return record;
 	}
 	

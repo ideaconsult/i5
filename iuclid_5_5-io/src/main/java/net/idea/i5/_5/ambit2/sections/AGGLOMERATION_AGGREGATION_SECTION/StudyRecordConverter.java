@@ -143,6 +143,11 @@ public class StudyRecordConverter
 		if (sciPart.getAGGLOMERATIONAGGREGATION().getAGGLOAGGREGATIONIDX()!=null) {
 			parseElement(sciPart.getAGGLOMERATIONAGGREGATION().getAGGLOAGGREGATIONIDX(),papp);
 		}
+		try {
+			papp.setInterpretationResult(sciPart.getAGGLOMERATIONAGGREGATION().getAPPLCL().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+		} catch (Exception x) {
+			papp.setInterpretationResult(null);			
+		}
 		return record;
 	}
 	
