@@ -671,7 +671,7 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public boolean isSupported() {
-			return false;
+			return true;
 		}
 	},
 	SURFACE_CHEMISTRY {

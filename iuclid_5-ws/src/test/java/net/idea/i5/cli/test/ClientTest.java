@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import junit.framework.Assert;
 import net.idea.i5.cli.I5LightClient;
 import net.idea.i5.io.I5ZReader;
+import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QASettings;
 
 import org.junit.AfterClass;
@@ -67,8 +68,13 @@ public class ClientTest {
 							if (papp.getProtocol()!=null) {
 								String category = ((Protocol)papp.getProtocol()).getCategory();
 								System.out.println(category);
-								if ("AGGLOMERATION_AGGREGATION_SECTION".equals(((Protocol)papp.getProtocol()).getCategory()))
-									System.out.println(papp);
+								try {
+									I5_ROOT_OBJECTS r = I5_ROOT_OBJECTS.valueOf(((Protocol)papp.getProtocol()).getCategory().replace("_SECTION", ""));
+									if (r.isNanoMaterialTemplate() && r.isSupported())
+										System.out.println(papp);
+								} catch (Exception x) {
+									x.printStackTrace();
+								}
 							}	
 						}
 					}	
