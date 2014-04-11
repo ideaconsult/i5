@@ -108,6 +108,12 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	private static final String r_isUsedforMSDS = "isUsedforMSDS";
 	private static final String r_purposeFlag = "purposeFlag";
 	private static final String r_studyResultType = "studyResultType";
+	//NM
+	protected static final String pSAMPLING = "SAMPLING";
+	protected static final String pMETHODDETAILS = "Method details";
+	protected static final String pDATA_GATHERING_INSTRUMENTS = "DATA_GATHERING_INSTRUMENTS";
+	protected static final String pMATERIAL_ISOTROPIC = "MATERIAL_ISOTROPIC";
+	protected static final String pTESTMAT_FORM = "TESTMAT_FORM";
 	
 	protected void setCompanyUUID(SubstanceRecord record,String value) {
 		int slashpos = value.indexOf("/");

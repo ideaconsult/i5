@@ -570,10 +570,28 @@ public enum I5_ROOT_OBJECTS {
 			return "6.3.4";
 		}			
 	},
+	PC_GRANULOMETRY {
+		@Override
+		public String getTitle() {
+			return "Particle size distribution (Granulometry)";
+		}
+		@Override
+		public String getNumber() {
+			return "4.5";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true; //not NM specific, but used in NM !
+		}		
+		@Override
+		public boolean isSupported() {
+			return false;
+		}		
+	},
 	AGGLOMERATION_AGGREGATION {
 		@Override
 		public String getTitle() {
-			return "Nanomaterial agglomeration/aggregation";
+			return "Agglomeration/aggregation";
 		}
 		@Override
 		public String getNumber() {
@@ -587,7 +605,7 @@ public enum I5_ROOT_OBJECTS {
 	CRYSTALLINE_PHASE {
 		@Override
 		public String getTitle() {
-			return "Nanomaterial crystalline phase";
+			return "Crystalline phase";
 		}
 		@Override
 		public String getNumber() {
@@ -605,7 +623,7 @@ public enum I5_ROOT_OBJECTS {
 	CRYSTALLITE_AND_GRAIN_SIZE {
 		@Override
 		public String getTitle() {
-			return "Nanomaterial crystallite and grain phase";
+			return "Crystallite and grain phase";
 		}
 		@Override
 		public String getNumber() {
@@ -617,13 +635,13 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public boolean isSupported() {
-			return false;
+			return true;
 		}
 	},
 	ASPECT_RATIO_SHAPE {
 		@Override
 		public String getTitle() {
-			return "Nanomaterial aspect ratio/shape";
+			return "Aspect ratio/shape";
 		}
 		@Override
 		public String getNumber() {
@@ -641,7 +659,7 @@ public enum I5_ROOT_OBJECTS {
 	SPECIFIC_SURFACE_AREA {
 		@Override
 		public String getTitle() {
-			return "Nanomaterial specific surface area";
+			return "Specific surface area";
 		}
 		@Override
 		public String getNumber() {
@@ -659,7 +677,7 @@ public enum I5_ROOT_OBJECTS {
 	ZETA_POTENTIAL {
 		@Override
 		public String getTitle() {
-			return "Nanomaterial Zeta potential";
+			return "Zeta potential";
 		}
 		@Override
 		public String getNumber() {
@@ -677,7 +695,7 @@ public enum I5_ROOT_OBJECTS {
 	SURFACE_CHEMISTRY {
 		@Override
 		public String getTitle() {
-			return "Nanomaterial surface chemistry";
+			return "Surface chemistry";
 		}
 		@Override
 		public String getNumber() {
@@ -689,7 +707,7 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public boolean isSupported() {
-			return false;
+			return true;
 		}		
 	},
 	DUSTINESS {
