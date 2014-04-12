@@ -175,5 +175,10 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		if ("other guideline:".equals(method)) return otherValue;
 		else return method;
 	}
-	
+
+	protected Params addParams(String key,Object value) {
+		Params p = new Params();
+		p.put(key,value);
+		return p;
+	}	
 }

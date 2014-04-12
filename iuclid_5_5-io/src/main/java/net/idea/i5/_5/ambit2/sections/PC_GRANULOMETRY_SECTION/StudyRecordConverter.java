@@ -317,10 +317,5 @@ public class StudyRecordConverter
 		return record;
 	}
 
-	protected Params addParams(String key,Object value) {
-		Params p = new Params();
-		p.put(key,value);
-		return p;
-	}
 	
 }
