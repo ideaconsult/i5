@@ -114,6 +114,18 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected static final String pDATA_GATHERING_INSTRUMENTS = "DATA_GATHERING_INSTRUMENTS";
 	protected static final String pMATERIAL_ISOTROPIC = "MATERIAL_ISOTROPIC";
 	protected static final String pTESTMAT_FORM = "TESTMAT_FORM";
+	//particlesize
+	protected static final String pDISTRIBUTION_TYPE = "DISTRIBUTION_TYPE";
+	protected static final String pMMD = "MASS MEDIAN DIAMETER";
+	protected static final String pMMAD = "MASS MEDIAN AERODYNAMIC DIAMETER";
+	protected static final String pGSD = "GEOMETRIC STANDARD DEVIATION";
+	protected static final String pPARTICLESIZE = "PARTICLE SIZE";
+	
+	protected static final String rSTD_DEV = "STD_DEV";
+	
+	protected static final String cPERCENTILE = "PERCENTILE";
+	protected static final String cSEQ_NUM = "SEQ_NUM";
+	
 	
 	protected void setCompanyUUID(SubstanceRecord record,String value) {
 		int slashpos = value.indexOf("/");

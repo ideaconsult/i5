@@ -297,7 +297,7 @@ public class StudyRecordConverter
 				}
 			}		
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}
 		},
 		FUNCT_GROUP_STD_DEVI_VALUE {
@@ -310,7 +310,7 @@ public class StudyRecordConverter
 				}
 			}		
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}
 		}
 		;
@@ -373,7 +373,7 @@ public class StudyRecordConverter
 			}	
 			@Override
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}				
 		},
 		FUNCTIONAL_GROUP {
@@ -436,7 +436,7 @@ public class StudyRecordConverter
 			}	
 			@Override
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}				
 		},
 		REMARKS {

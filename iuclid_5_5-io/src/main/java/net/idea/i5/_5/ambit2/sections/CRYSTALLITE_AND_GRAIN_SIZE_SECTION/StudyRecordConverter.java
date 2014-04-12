@@ -246,7 +246,7 @@ public class StudyRecordConverter
 			}	
 			@Override
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}
 		},
 		STD_DEVI_UNIT_value {
@@ -279,7 +279,7 @@ public class StudyRecordConverter
 				useChildrenNodesParams(effect, nodes);
 			}
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}			
 		};
 		public String getTag() {

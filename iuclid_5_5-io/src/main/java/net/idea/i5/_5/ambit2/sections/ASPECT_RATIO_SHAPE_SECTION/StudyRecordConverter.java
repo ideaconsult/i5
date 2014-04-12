@@ -280,7 +280,7 @@ public class StudyRecordConverter
 			}
 			@Override
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}
 		},
 		//y
@@ -327,7 +327,7 @@ public class StudyRecordConverter
 			}
 			@Override
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}
 		},
 		//z
@@ -374,7 +374,7 @@ public class StudyRecordConverter
 			}
 			@Override
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}
 		}
 		
@@ -430,7 +430,7 @@ public class StudyRecordConverter
 			}	
 			@Override
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}			
 		},
 		PRECISION_X_LOQUALIFIER {

@@ -233,7 +233,7 @@ public class StudyRecordConverter
 				}
 			}		
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}
 		},
 		//i5:PH_VALUE
@@ -299,7 +299,7 @@ public class StudyRecordConverter
 				useChildrenNodesParams(effect, nodes);	
 			}	
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}			
 		},
 		PH_VALUE {
@@ -333,7 +333,7 @@ public class StudyRecordConverter
 				useChildrenNodesParams(effect, nodes);	
 			}	
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}			
 		},
 		MEDIUM {

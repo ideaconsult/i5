@@ -312,7 +312,7 @@ public class StudyRecordConverter
 			}	
 			@Override
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}
 		},
 		//i5:VALUEUNIT_STD_DEVI_VALUE
@@ -335,7 +335,7 @@ public class StudyRecordConverter
 				}
 			}		
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}
 		},
 		STD_DEV_UNIT,
@@ -389,7 +389,7 @@ public class StudyRecordConverter
 			}
 			@Override
 			public String getTag() {
-				return "SEQ_NUM";
+				return cSEQ_NUM;
 			}
 		},
 		SIZE_LOQUALIFIER_value {
@@ -490,7 +490,7 @@ public class StudyRecordConverter
 				useChildrenNodesParams(effect, nodes);	
 			}	
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}			
 		},
 		//i5:AGGLO_AGGR_SIZE_DIST
@@ -499,7 +499,11 @@ public class StudyRecordConverter
 			public void setValue(EffectRecord<String, Params, String> effect,
 					NodeList nodes) {
 				useChildrenNodesParams(effect, nodes);	
-			}				
+			}	
+			@Override
+			public String getTag() {
+				return cSEQ_NUM;
+			}
 		},
 		PRECISION_SIZE_LOQUALIFIER {
 			@Override
@@ -518,7 +522,7 @@ public class StudyRecordConverter
 				useChildrenNodesParams(effect, nodes);	
 			}
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}
 		},
 		//i5:AGGLO_AGGR_DIAM
@@ -539,7 +543,7 @@ public class StudyRecordConverter
 				useChildrenNodesParams(effect, nodes);
 			}
 			public String getTag() {
-				return "STD_DEV";
+				return rSTD_DEV;
 			}			
 		},		
 		//i5:AGGLO_AGGR_SIZE
@@ -569,7 +573,7 @@ public class StudyRecordConverter
 			}			
 			@Override
 				public String getTag() {
-					return "STD_DEV";
+					return rSTD_DEV;
 				}
 		},		
 		PRECISION_PH_LOQUALIFIER {
