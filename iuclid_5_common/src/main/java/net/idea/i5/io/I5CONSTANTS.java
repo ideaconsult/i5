@@ -122,6 +122,9 @@ public class I5CONSTANTS {
 	public static final String ePOROSITY = "POROSITY";
 	public static final String eSPECIFIC_PORE_VOLUME = "SPECIFIC PORE VOLUME";
 	public static final String ePOUR_DENSITY = "POUR DENSITY";
+	public static final String eCATALYTIC_ACTIVITY = "CATALYTIC ACTIVITY";
+	public static final String ePHOTOCATALYTIC_ACTIVITY = "PHOTOCATALYTIC ACTIVITY";
+	public static final String eTURNOVERFREQUENCY = "TURN OVER FREQUENCY";
 	
 	
 	public static final String rSTD_DEV = "STD_DEV";

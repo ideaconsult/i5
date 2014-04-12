@@ -781,7 +781,7 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public boolean isSupported() {
-			return false;
+			return true;
 		}
 	},
 	RADICAL_FORMATION_POTENTIAL {
@@ -817,7 +817,7 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public boolean isSupported() {
-			return false;
+			return true;
 		}
 		
 	}		
