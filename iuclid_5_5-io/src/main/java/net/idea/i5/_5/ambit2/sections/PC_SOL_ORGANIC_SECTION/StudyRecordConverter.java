@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.PC_SOL_ORGANIC_SECTION;
 
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -119,30 +120,30 @@ public class StudyRecordConverter
 
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_SOL_ORGANIC_SECTION.EndpointStudyRecord.ScientificPart.PCSOLORGANIC.FATSOL.Set set : sciPart.getPCSOLORGANIC().getFATSOL().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setEndpoint(SOLUBILITY_ORG_SOLVENT);
+			effect.setEndpoint(I5CONSTANTS.eSOLUBILITY_ORG_SOLVENT);
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 
 			if (set.getVALUEUNITTEMPVALUE() != null) {
 				Params tvalue = new Params();
 				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
-					tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
-				} else tvalue.put(loValue, null);
+					tvalue.put(I5CONSTANTS.loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+				} else tvalue.put(I5CONSTANTS.loValue, null);
 				if (set.getVALUEUNITTEMPVALUE()!=null)
-					tvalue.put(unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
-				effect.getConditions().put(Temperature, tvalue);				
+					tvalue.put(I5CONSTANTS.unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
+				effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);				
 			} else
-				effect.getConditions().put(Temperature, null);
+				effect.getConditions().put(I5CONSTANTS.cTemperature, null);
 			
 			try {
-				effect.getConditions().put(Remark,set.getREM().getREM().getValue());
+				effect.getConditions().put(I5CONSTANTS.Remark,set.getREM().getREM().getValue());
 			} catch (Exception x) {
-				effect.getConditions().put(Remark,null);
+				effect.getConditions().put(I5CONSTANTS.Remark,null);
 			}
 			try {
-				effect.getConditions().put(Solvent,set.getPHRASEOTHERORGANICMEDIUM().getORGANICMEDIUMTXT().getValue());
+				effect.getConditions().put(I5CONSTANTS.cSolvent,set.getPHRASEOTHERORGANICMEDIUM().getORGANICMEDIUMTXT().getValue());
 			} catch (Exception x) {
-				effect.getConditions().put(Solvent,null);
+				effect.getConditions().put(I5CONSTANTS.cSolvent,null);
 			}
 
 			if (set.getPRECISIONLOQUALIFIER() != null) {

@@ -4,6 +4,7 @@ import javax.xml.bind.JAXBElement;
 
 import net.idea.i5._5.ambit2.sections.AbstractStudyRecordConverter;
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 
@@ -115,20 +116,27 @@ public class StudyRecordConverter
 			} catch (Exception x) {
 			}
 
-		papp.getParameters().put(cTypeMethod,
+		papp.getParameters().put(I5CONSTANTS.cTypeMethod,
 					sciPart.getAGGLOMERATIONAGGREGATION().getMETHOD()==null?null:
 					sciPart.getAGGLOMERATIONAGGREGATION().getMETHOD().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue());
 		
-		papp.getParameters().put("Method details",
+		papp.getParameters().put(I5CONSTANTS.pMETHODDETAILS,
 				sciPart.getAGGLOMERATIONAGGREGATION().getMETHODSDETAILSDATAEVAL().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		/*
 		papp.getParameters().put(cTestMaterialForm,
 				sciPart.getAGGLOMERATIONAGGREGATION().getTESTMATFORM()==null?null:
 				sciPart.getAGGLOMERATIONAGGREGATION().getTESTMATFORM().getSet().getPHRASEOTHERTESTMATFORM().getTESTMATFORMValue());
 		*/
-		papp.getParameters().put("Sampling",sciPart.getAGGLOMERATIONAGGREGATION().getSAMPLING().getSet().getFREETEXTBELOW().getFREETEXTBELOW().getValue());
-		
-		papp.getParameters().put("Instruments",sciPart.getAGGLOMERATIONAGGREGATION().getDATAGATHERINGINSTRUMENTS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+		try {
+			papp.getParameters().put(I5CONSTANTS.pSAMPLING,sciPart.getAGGLOMERATIONAGGREGATION().getSAMPLING().getSet().getFREETEXTBELOW().getFREETEXTBELOW().getValue());
+		} catch (Exception x) {
+			papp.getParameters().put(I5CONSTANTS.pSAMPLING,null);
+		}
+		try {
+			papp.getParameters().put(I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,sciPart.getAGGLOMERATIONAGGREGATION().getDATAGATHERINGINSTRUMENTS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+		} catch (Exception x) {
+			papp.getParameters().put(I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,null);
+		}
 				
 		
 		if (sciPart.getAGGLOMERATIONAGGREGATION().getAGGLOAGGRDIAM()!=null) {
@@ -166,7 +174,7 @@ public class StudyRecordConverter
 					EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 					effect.setEndpoint(endpoint);
 					effect.setConditions(new Params());
-					Params sn = new Params(); sn.put(loValue,"");sn.put(loQualifier,"");
+					Params sn = new Params(); sn.put(I5CONSTANTS.loValue,"");sn.put(I5CONSTANTS.loQualifier,"");
 					effect.getConditions().put(P.SEQ_NUM_value.getTag(),sn);
 					papp.addEffect(effect);
 					NodeList r = set.getChildNodes();
@@ -217,8 +225,8 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(loValue,Double.parseDouble(node.getTextContent()));
-				} catch (Exception x) {params.put(loValue,node.getTextContent());}
+					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
+				} catch (Exception x) {params.put(I5CONSTANTS.loValue,node.getTextContent());}
 			}	
 		},
 		//i5:PRECISION_MEAN_SIZE_LOQUALIFIER
@@ -308,11 +316,11 @@ public class StudyRecordConverter
 		STD_DEVI_VALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(loValue,node.getTextContent());
+				params.put(I5CONSTANTS.loValue,node.getTextContent());
 			}	
 			@Override
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}
 		},
 		//i5:VALUEUNIT_STD_DEVI_VALUE
@@ -320,7 +328,7 @@ public class StudyRecordConverter
 		STD_DEVI_UNIT_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(AbstractStudyRecordConverter.unit,node.getTextContent());
+				params.put(I5CONSTANTS.unit,node.getTextContent());
 			}			
 		},
 		STD_DEVI_UNIT_TXT,
@@ -329,20 +337,20 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(loValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(loValue,node.getTextContent());	
+					params.put(I5CONSTANTS.loValue,node.getTextContent());	
 				}
 			}		
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}
 		},
 		STD_DEV_UNIT,
 		STD_DEV_UNIT_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(AbstractStudyRecordConverter.unit,node.getTextContent());
+				params.put(I5CONSTANTS.unit,node.getTextContent());
 			}			
 		},
 		STD_DEV_UNIT_TXT,	
@@ -351,26 +359,26 @@ public class StudyRecordConverter
 		PH_LOQUALIFIER_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(AbstractStudyRecordConverter.loQualifier,node.getTextContent());
+				params.put(I5CONSTANTS.loQualifier,node.getTextContent());
 			}			
 		},
 		PH_LOVALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(AbstractStudyRecordConverter.loValue,node.getTextContent());
+				params.put(I5CONSTANTS.loValue,node.getTextContent());
 			}
 		},
 		PH_UPQUALIFIER,
 		PH_UPQUALIFIER_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(AbstractStudyRecordConverter.upQualifier,node.getTextContent());
+				params.put(I5CONSTANTS.upQualifier,node.getTextContent());
 			}						
 		},
 		PH_UPVALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(AbstractStudyRecordConverter.upValue,node.getTextContent());
+				params.put(I5CONSTANTS.upValue,node.getTextContent());
 			}
 		},
 		//i5:AGGLO_AGGR_SIZE_DIST
@@ -384,12 +392,12 @@ public class StudyRecordConverter
 		SEQ_NUM_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(loValue,node.getTextContent());
-				params.put(loQualifier,"");
+				params.put(I5CONSTANTS.loValue,node.getTextContent());
+				params.put(I5CONSTANTS.loQualifier,"");
 			}
 			@Override
 			public String getTag() {
-				return cSEQ_NUM;
+				return I5CONSTANTS.cSEQ_NUM;
 			}
 		},
 		SIZE_LOQUALIFIER_value {
@@ -428,14 +436,14 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					Params params, Node node) {
-				params.put(loQualifier, node.getTextContent());
+				params.put(I5CONSTANTS.loQualifier, node.getTextContent());
 			}			
 		},
 		DIST_LOVALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(loValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
 					params.put(name(),node.getTextContent());	
 				}
@@ -446,16 +454,16 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					Params params, Node node) {
-				params.put(upQualifier, node.getTextContent());
+				params.put(I5CONSTANTS.upQualifier, node.getTextContent());
 			}
 		},
 		DIST_UPVALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(upValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.upValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(upValue,node.getTextContent());	
+					params.put(I5CONSTANTS.upValue,node.getTextContent());	
 				}
 			}				
 		},
@@ -464,7 +472,7 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					Params params, Node node) {
-				params.put(unit, node.getTextContent());
+				params.put(I5CONSTANTS.unit, node.getTextContent());
 			}
 		}
 		;
@@ -490,7 +498,7 @@ public class StudyRecordConverter
 				useChildrenNodesParams(effect, nodes);	
 			}	
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}			
 		},
 		//i5:AGGLO_AGGR_SIZE_DIST
@@ -502,7 +510,7 @@ public class StudyRecordConverter
 			}	
 			@Override
 			public String getTag() {
-				return cSEQ_NUM;
+				return I5CONSTANTS.cSEQ_NUM;
 			}
 		},
 		PRECISION_SIZE_LOQUALIFIER {
@@ -522,7 +530,7 @@ public class StudyRecordConverter
 				useChildrenNodesParams(effect, nodes);	
 			}
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}
 		},
 		//i5:AGGLO_AGGR_DIAM
@@ -543,7 +551,7 @@ public class StudyRecordConverter
 				useChildrenNodesParams(effect, nodes);
 			}
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}			
 		},		
 		//i5:AGGLO_AGGR_SIZE
@@ -573,7 +581,7 @@ public class StudyRecordConverter
 			}			
 			@Override
 				public String getTag() {
-					return rSTD_DEV;
+					return I5CONSTANTS.rSTD_DEV;
 				}
 		},		
 		PRECISION_PH_LOQUALIFIER {
@@ -584,7 +592,7 @@ public class StudyRecordConverter
 			}
 			@Override
 			public String getTag() {
-				return ph;
+				return I5CONSTANTS.pH;
 			}
 		},
 		MEDIUM {

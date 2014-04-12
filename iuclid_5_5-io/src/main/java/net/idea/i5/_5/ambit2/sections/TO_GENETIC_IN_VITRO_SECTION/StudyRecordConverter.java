@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.TO_GENETIC_IN_VITRO_SECTION;
 
 import net.idea.i5._5.ambit2.sections.TOXStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -105,23 +106,23 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		// year
 		
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(cYear,papp.getReferenceYear());
+		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
 		
-		papp.getParameters().put(cTypeGenotoxicity,
+		papp.getParameters().put(I5CONSTANTS.cTypeGenotoxicity,
 				sciPart.getTOGENETICINVITRO().getGENOTOXICITYTYPE()==null?null:
 				sciPart.getTOGENETICINVITRO().getGENOTOXICITYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		
-		papp.getParameters().put(cTypeStudy,
+		papp.getParameters().put(I5CONSTANTS.cTypeStudy,
 				sciPart.getTOGENETICINVITRO().getSTUDYTYPE()==null?null:
 				sciPart.getTOGENETICINVITRO().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		
 		try {
-		papp.getParameters().put(cTargetGene,
+		papp.getParameters().put(I5CONSTANTS.cTargetGene,
 				sciPart.getTOGENETICINVITRO().getTARGETGENE()==null?null:
 				sciPart.getTOGENETICINVITRO().getTARGETGENE().getSet().getTEXTBELOW().getTEXTBELOW().getValue());
 		} catch (Exception x) {
-			papp.getParameters().put(cTargetGene,null);	
+			papp.getParameters().put(I5CONSTANTS.cTargetGene,null);	
 		}
 		
 		//papp.getParameters().put(cMetabolicActivationSystem,null);
@@ -131,16 +132,16 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		if ( sciPart.getTOGENETICINVITRO().getORGANISM()!= null &&  sciPart.getTOGENETICINVITRO().getORGANISM().getSet()!=null)
 		for (EndpointStudyRecord.ScientificPart.TOGENETICINVITRO.ORGANISM.Set set : sciPart.getTOGENETICINVITRO().getORGANISM().getSet()) {
 			try {
-				papp.getParameters().put(cSpecies,set.getPHRASEOTHERORGANISM().getORGANISMTXT().getValue());
-			} catch (Exception x) { papp.getParameters().put(cSpecies,null);}
+				papp.getParameters().put(I5CONSTANTS.cSpecies,set.getPHRASEOTHERORGANISM().getORGANISMTXT().getValue());
+			} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}
 			try {
-				papp.getParameters().put(cMetabolicActivationSystem,set.getMETABOLICACTSYSTEM().getMETABOLICACTSYSTEM().getValue());
-			} catch (Exception x) {	papp.getParameters().put(cMetabolicActivationSystem,null);}
+				papp.getParameters().put(I5CONSTANTS.cMetabolicActivationSystem,set.getMETABOLICACTSYSTEM().getMETABOLICACTSYSTEM().getValue());
+			} catch (Exception x) {	papp.getParameters().put(I5CONSTANTS.cMetabolicActivationSystem,null);}
 
 		}
 		else {
-			papp.getParameters().put(cSpecies,null);
-			papp.getParameters().put(cMetabolicActivationSystem,null);
+			papp.getParameters().put(I5CONSTANTS.cSpecies,null);
+			papp.getParameters().put(I5CONSTANTS.cMetabolicActivationSystem,null);
 		}
 		
 		// endpoint
@@ -148,21 +149,21 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		if (sciPart.getTOGENETICINVITRO().getTESTRS() != null)
 			for (EndpointStudyRecord.ScientificPart.TOGENETICINVITRO.TESTRS.Set set : sciPart.getTOGENETICINVITRO().getTESTRS().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint("Genotoxicity");
+				effect.setEndpoint(I5CONSTANTS.eGenotoxicity);
 				try {effect.setTextValue(set.getPHRASEOTHERGENOTOXICITY().getGENOTOXICITYValue());} catch (Exception x) {}
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				try {
-					effect.getConditions().put(cMetabolicActivation,set.getMETACTINDICATOR().getMETACTINDICATORValue());
+					effect.getConditions().put(I5CONSTANTS.cMetabolicActivation,set.getMETACTINDICATOR().getMETACTINDICATORValue());
 				} catch (Exception x) {
-					effect.getConditions().put(cMetabolicActivation,null);
+					effect.getConditions().put(I5CONSTANTS.cMetabolicActivation,null);
 				}
 				if (set.getPHRASEOTHERORGANISM()==null) try {
-					effect.getConditions().put(cSpecies,set.getPHRASEOTHERTESTSYSTEM().getTESTSYSTEMTXT().getValue());
-				} catch (Exception x) { effect.getConditions().put(cSpecies,null);} 
+					effect.getConditions().put(I5CONSTANTS.cSpecies,set.getPHRASEOTHERTESTSYSTEM().getTESTSYSTEMTXT().getValue());
+				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cSpecies,null);} 
 				else  try {
-					effect.getConditions().put(cSpecies,set.getPHRASEOTHERORGANISM().getORGANISMTXT().getValue());
-				} catch (Exception x) { effect.getConditions().put(cSpecies,null);}
+					effect.getConditions().put(I5CONSTANTS.cSpecies,set.getPHRASEOTHERORGANISM().getORGANISMTXT().getValue());
+				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cSpecies,null);}
 			}
 		StringBuilder interpretation = null;
 		if (sciPart.getTOGENETICINVITRO().getINTERPRETRSSUBMITTER() != null) {

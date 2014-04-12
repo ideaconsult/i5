@@ -3,6 +3,7 @@ package net.idea.i5._5.ambit2.sections.ASPECT_RATIO_SHAPE_SECTION;
 import javax.xml.bind.JAXBElement;
 
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 
@@ -117,18 +118,18 @@ public class StudyRecordConverter
 			}
 
 		try {
-			papp.getParameters().put(cTypeMethod,
+			papp.getParameters().put(I5CONSTANTS.cTypeMethod,
 					sciPart.getASPECTRATIOSHAPE().getMETHOD()==null?null:
 					sciPart.getASPECTRATIOSHAPE().getMETHOD().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue());
 		} catch (Exception x) {
-			papp.getParameters().put(cTypeMethod,null);
+			papp.getParameters().put(I5CONSTANTS.cTypeMethod,null);
 		}
 
 		try {
-			papp.getParameters().put("Method details",
+			papp.getParameters().put(I5CONSTANTS.pMETHODDETAILS,
 				sciPart.getASPECTRATIOSHAPE().getMETHODSDETAILSDATAEVAL().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {
-			papp.getParameters().put("Method details",null);
+			papp.getParameters().put(I5CONSTANTS.pMETHODDETAILS,null);
 		}
 		/*
 		papp.getParameters().put(cTestMaterialForm,
@@ -137,14 +138,14 @@ public class StudyRecordConverter
 		*/
 
 		try {
-			papp.getParameters().put("Sampling",sciPart.getASPECTRATIOSHAPE().getSAMPLING().getSet().getFREETEXTBELOW().getFREETEXTBELOW().getValue());
+			papp.getParameters().put(I5CONSTANTS.pSAMPLING,sciPart.getASPECTRATIOSHAPE().getSAMPLING().getSet().getFREETEXTBELOW().getFREETEXTBELOW().getValue());
 		} catch (Exception x) {
-			papp.getParameters().put("Sampling",null);			
+			papp.getParameters().put(I5CONSTANTS.pSAMPLING,null);			
 		}
 		try {
-			papp.getParameters().put("Instruments",sciPart.getASPECTRATIOSHAPE().getDATAGATHERINGINSTRUMENTS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+			papp.getParameters().put(I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,sciPart.getASPECTRATIOSHAPE().getDATAGATHERINGINSTRUMENTS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {
-			papp.getParameters().put("Instruments",null);
+			papp.getParameters().put(I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,null);
 		}
 				
 		
@@ -177,11 +178,11 @@ public class StudyRecordConverter
 					EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 					effect.setEndpoint(endpoint);
 					effect.setConditions(new Params());
-					Params xyz = new Params();xyz.put(loValue,null);
+					Params xyz = new Params();xyz.put(I5CONSTANTS.loValue,null);
 					effect.getConditions().put(EFFECT.PRECISION_X_LOQUALIFIER.getTag(), xyz);
-					xyz = new Params();xyz.put(loValue,null);
+					xyz = new Params();xyz.put(I5CONSTANTS.loValue,null);
 					effect.getConditions().put(EFFECT.PRECISION_Y_LOQUALIFIER.getTag(), xyz);
-					xyz = new Params();xyz.put(loValue,null);
+					xyz = new Params();xyz.put(I5CONSTANTS.loValue,null);
 					effect.getConditions().put(EFFECT.PRECISION_Z_LOQUALIFIER.getTag(), xyz);
 					papp.addEffect(effect);
 					NodeList r = set.getChildNodes();
@@ -202,8 +203,8 @@ public class StudyRecordConverter
 		SHAPE_DESCRIPTIVE_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(loValue,node.getTextContent());
-				params.put(loQualifier," ");
+				params.put(I5CONSTANTS.loValue,node.getTextContent());
+				params.put(I5CONSTANTS.loQualifier," ");
 			}	
 		},
 		SHAPE_VALUE {
@@ -225,47 +226,47 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(loValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(loValue,node.getTextContent());
+					params.put(I5CONSTANTS.loValue,node.getTextContent());
 				}
 			}				
 		},
 		STD_DEV_UNIT_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(unit,node.getTextContent());
+				params.put(I5CONSTANTS.unit,node.getTextContent());
 			}			
 		},
 		X_LOQUALIFIER_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(loQualifier,node.getTextContent());
+				params.put(I5CONSTANTS.loQualifier,node.getTextContent());
 			}				
 		},
 		X_LOVALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(loValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(loValue,node.getTextContent());
+					params.put(I5CONSTANTS.loValue,node.getTextContent());
 				}
 			}				
 		},
 		X_UPQUALIFIER_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(upQualifier,node.getTextContent());
+				params.put(I5CONSTANTS.upQualifier,node.getTextContent());
 			}							
 		},
 		X_UPVALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(upValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.upValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(upValue,node.getTextContent());
+					params.put(I5CONSTANTS.upValue,node.getTextContent());
 				}
 			}				
 		},
@@ -273,46 +274,46 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(loValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(loValue,node.getTextContent());
+					params.put(I5CONSTANTS.loValue,node.getTextContent());
 				}
 			}
 			@Override
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}
 		},
 		//y
 		Y_LOQUALIFIER_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(loQualifier,node.getTextContent());
+				params.put(I5CONSTANTS.loQualifier,node.getTextContent());
 			}				
 		},
 		Y_LOVALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(loValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(loValue,node.getTextContent());
+					params.put(I5CONSTANTS.loValue,node.getTextContent());
 				}
 			}				
 		},
 		Y_UPQUALIFIER_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(upQualifier,node.getTextContent());
+				params.put(I5CONSTANTS.upQualifier,node.getTextContent());
 			}							
 		},
 		Y_UPVALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(upValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.upValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(upValue,node.getTextContent());
+					params.put(I5CONSTANTS.upValue,node.getTextContent());
 				}
 			}				
 		},
@@ -320,46 +321,46 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(loValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(loValue,node.getTextContent());
+					params.put(I5CONSTANTS.loValue,node.getTextContent());
 				}
 			}
 			@Override
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}
 		},
 		//z
 		Z_LOQUALIFIER_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(loQualifier,node.getTextContent());
+				params.put(I5CONSTANTS.loQualifier,node.getTextContent());
 			}				
 		},
 		Z_LOVALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(loValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(loValue,node.getTextContent());
+					params.put(I5CONSTANTS.loValue,node.getTextContent());
 				}
 			}				
 		},
 		Z_UPQUALIFIER_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(upQualifier,node.getTextContent());
+				params.put(I5CONSTANTS.upQualifier,node.getTextContent());
 			}							
 		},
 		Z_UPVALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(upValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.upValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(upValue,node.getTextContent());
+					params.put(I5CONSTANTS.upValue,node.getTextContent());
 				}
 			}				
 		},
@@ -367,14 +368,14 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(loValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(loValue,node.getTextContent());
+					params.put(I5CONSTANTS.loValue,node.getTextContent());
 				}
 			}
 			@Override
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}
 		}
 		
@@ -402,24 +403,24 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					NodeList nodes) {
-				effect.setEndpoint("SHAPE");
+				effect.setEndpoint(I5CONSTANTS.eSHAPE);
 				useChildrenNodesEffect(effect, nodes);	
 			}	
 			@Override
 			public String getTag() {
-				return "SHAPE";
+				return I5CONSTANTS.eSHAPE;
 			}
 		},
 		PHRASEOTHER_SHAPE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					NodeList nodes) {
-				effect.setEndpoint("SHAPE");
+				effect.setEndpoint(I5CONSTANTS.eSHAPE);
 				useChildrenNodesEffect(effect, nodes);	
 			}	
 			@Override
 			public String getTag() {
-				return "SHAPE";
+				return I5CONSTANTS.eSHAPE;
 			}			
 		},
 		VALUEUNIT_STD_DEV_VALUE {
@@ -430,40 +431,40 @@ public class StudyRecordConverter
 			}	
 			@Override
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}			
 		},
 		PRECISION_X_LOQUALIFIER {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					NodeList nodes) {
-				effect.setEndpoint("ASPECT RATIO");
+				effect.setEndpoint(I5CONSTANTS.eASPECT_RATIO);
 				useChildrenNodesParams(effect, nodes);
 			}	
 			public String getTag() {
-				return "X";
+				return I5CONSTANTS.eASPECT_RATIO_X;
 			}			
 		},
 		PRECISION_Y_LOQUALIFIER {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					NodeList nodes) {
-				effect.setEndpoint("ASPECT RATIO");
+				effect.setEndpoint(I5CONSTANTS.eASPECT_RATIO);
 				useChildrenNodesParams(effect, nodes);		
 			}	
 			public String getTag() {
-				return "Y";
+				return I5CONSTANTS.eASPECT_RATIO_Y;
 			}			
 		},
 		PRECISION_Z_LOQUALIFIER {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					NodeList nodes) {
-				effect.setEndpoint("ASPECT RATIO");
+				effect.setEndpoint(I5CONSTANTS.eASPECT_RATIO);
 				useChildrenNodesParams(effect, nodes);
 			}	
 			public String getTag() {
-				return "Z";
+				return I5CONSTANTS.eASPECT_RATIO_Z;
 			}			
 		},
 		REMARKS {

@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SCREEN_SECTION;
 
 import net.idea.i5._5.ambit2.sections.ENVFATEStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -101,10 +102,10 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		
 		// citation
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(cYear,papp.getReferenceYear());	
+		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());	
 
 		//TEST TYPE
-		papp.getParameters().put(cTestType,
+		papp.getParameters().put(I5CONSTANTS.cTestType,
 				sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS()==null?null:
 				sciPart.getTOBIODEGWATERSCREEN().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 
@@ -133,7 +134,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		if (sciPart.getTOBIODEGWATERSCREEN().getDEGRAD()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSCREEN.DEGRAD.Set set : sciPart.getTOBIODEGWATERSCREEN().getDEGRAD().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(cPercentDegradation);
+				effect.setEndpoint(I5CONSTANTS.ePercentDegradation);
 				effect.setUnit("%");
 				if (set.getPHRASEOTHERPARAMETER()!=null)
 					effect.setEndpoint(set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
@@ -147,13 +148,13 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 					Params tvalue = new Params();
 					if (set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()!= null) {
 						tvalue.put(
-								loValue,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue()));
+								I5CONSTANTS.loValue,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue()));
 					}
 					if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-						tvalue.put(unit,set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue());
-					effect.getConditions().put(cTimePoint, tvalue);				
+						tvalue.put(I5CONSTANTS.unit,set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue());
+					effect.getConditions().put(I5CONSTANTS.cTimePoint, tvalue);				
 				} else
-					effect.getConditions().put(cTimePoint, null);	
+					effect.getConditions().put(I5CONSTANTS.cTimePoint, null);	
 				
 				//results
 				if (set.getPRECISIONLOQUALIFIER()!=null) {

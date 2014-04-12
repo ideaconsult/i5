@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.TO_REPRODUCTION_SECTION;
 
 import net.idea.i5._5.ambit2.sections.TOXStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -102,19 +103,19 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		// year
 		
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(cYear,papp.getReferenceYear());
+		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
 		// Repeated tox oral
-		papp.getParameters().put(cSpecies,
+		papp.getParameters().put(I5CONSTANTS.cSpecies,
 					sciPart.getTOREPRODUCTION().getORGANISM()==null?null:
 					sciPart.getTOREPRODUCTION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		
 
 		try {
-			papp.getParameters().put(cRouteAdm,
+			papp.getParameters().put(I5CONSTANTS.cRouteAdm,
 					sciPart.getTOREPRODUCTION().getROUTE()==null?null:
 					sciPart.getTOREPRODUCTION().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} catch (Exception x) { papp.getParameters().put(cRouteAdm,null);}		
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cRouteAdm,null);}		
 		
 		StringBuilder doses = null;
 		if (sciPart.getTOREPRODUCTION().getDOSES()!=null &&  sciPart.getTOREPRODUCTION().getDOSES().getSet()!=null)
@@ -124,7 +125,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 			else doses.append(";");
 			doses.append(value);
 		} catch (Exception x){}
-		papp.getParameters().put(cDoses,doses==null?null:doses.toString());
+		papp.getParameters().put(I5CONSTANTS.cDoses,doses==null?null:doses.toString());
 		// endpoint
 		// effect level
 		if (sciPart.getTOREPRODUCTION().getEFFLEVEL() != null)
@@ -146,8 +147,8 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 					} catch (Exception x) {}
 				}
 				
-				effect.getConditions().put(cSex,set.getSEX()==null?null:set.getSEX().getSEXValue());
-				effect.getConditions().put(cGeneration,set.getPHRASEOTHERGENERATION()==null?null:set.getPHRASEOTHERGENERATION().getGENERATIONValue());
+				effect.getConditions().put(I5CONSTANTS.cSex,set.getSEX()==null?null:set.getSEX().getSEXValue());
+				effect.getConditions().put(I5CONSTANTS.cGeneration,set.getPHRASEOTHERGENERATION()==null?null:set.getPHRASEOTHERGENERATION().getGENERATIONValue());
 			}
 		papp.setInterpretationResult(null); 
 		papp.setInterpretationCriteria(null); 

@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.PC_VAPOUR_SECTION;
 
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -114,27 +115,27 @@ public class StudyRecordConverter
 		if (sciPart.getPCVAPOUR().getVAPOURPR()!=null && sciPart.getPCVAPOUR().getVAPOURPR().getSet()!=null)			
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION.EndpointStudyRecord.ScientificPart.PCVAPOUR.VAPOURPR.Set set : sciPart.getPCVAPOUR().getVAPOURPR().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setEndpoint(VapourPressure);
+			effect.setEndpoint(I5CONSTANTS.eVapourPressure);
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 
 			if (set.getVALUEUNITTEMPVALUE() != null) {
 				Params tvalue = new Params();
 				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
-					tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
-				} else tvalue.put(loValue,null); 
+					tvalue.put(I5CONSTANTS.loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+				} else tvalue.put(I5CONSTANTS.loValue,null); 
 				if (set.getVALUEUNITTEMPVALUE()!=null)
-					tvalue.put(unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
+					tvalue.put(I5CONSTANTS.unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
 				
 				if (set.getTEMPQUALIFIER()!=null)
-					tvalue.put(loQualifier,set.getTEMPQUALIFIER().getTEMPQUALIFIERValue());
+					tvalue.put(I5CONSTANTS.loQualifier,set.getTEMPQUALIFIER().getTEMPQUALIFIERValue());
 				
-				effect.getConditions().put(Temperature, tvalue);				
+				effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);				
 			} else
-				effect.getConditions().put(Temperature, null);	
+				effect.getConditions().put(I5CONSTANTS.cTemperature, null);	
 			
 			//Not sure where to get it from
-			effect.getConditions().put(DECOMPOSITION,null);
+			effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION,null);
 
 			if (set.getPRECISIONPRESSURELOQUALIFIER() != null) {
 				effect.setUnit(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNITValue());

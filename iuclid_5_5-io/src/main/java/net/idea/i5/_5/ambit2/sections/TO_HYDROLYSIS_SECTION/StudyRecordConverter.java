@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.TO_HYDROLYSIS_SECTION;
 
 import net.idea.i5._5.ambit2.sections.ENVFATEStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -102,7 +103,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		// citation
 		
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(cYear,papp.getReferenceYear());		
+		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());		
 
 		if (sciPart.getTOHYDROLYSIS().getHALFLIFE()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_HYDROLYSIS_SECTION.EndpointStudyRecord.ScientificPart.TOHYDROLYSIS.HALFLIFE.Set set : sciPart.getTOHYDROLYSIS().getHALFLIFE().getSet()) {
@@ -115,22 +116,22 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				if (set.getPH() != null) {
 					Params phvalue = new Params();
 					if (set.getPH().getPH().getValue()!= null) 
-						phvalue.put(loValue,getNumber(set.getPH().getPH().getValue()));
-					else  phvalue.put(loValue,null);
-					effect.getConditions().put(ph, phvalue);
-				} else effect.getConditions().put(ph,null);
+						phvalue.put(I5CONSTANTS.loValue,getNumber(set.getPH().getPH().getValue()));
+					else  phvalue.put(I5CONSTANTS.loValue,null);
+					effect.getConditions().put(I5CONSTANTS.pH, phvalue);
+				} else effect.getConditions().put(I5CONSTANTS.pH,null);
 				
 				//temperature
 				if (set.getVALUEUNITTEMPVALUE() != null) {
 					Params tvalue = new Params();
 					if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
-						tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
-					} else tvalue.put(loValue,null);
+						tvalue.put(I5CONSTANTS.loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+					} else tvalue.put(I5CONSTANTS.loValue,null);
 					if (set.getVALUEUNITTEMPVALUE()!=null)
-						tvalue.put(unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
-					effect.getConditions().put(Temperature, tvalue);				
+						tvalue.put(I5CONSTANTS.unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
+					effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);				
 				} else
-					effect.getConditions().put(Temperature, null);						
+					effect.getConditions().put(I5CONSTANTS.cTemperature, null);						
 				
 				//result
 				if (set.getPRECISIONLOQUALIFIER()!=null) {

@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.PC_DISSOCIATION_SECTION;
 
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -114,27 +115,27 @@ public class StudyRecordConverter
 		if (sciPart.getPCDISSOCIATION().getPKA()!=null && sciPart.getPCDISSOCIATION().getPKA().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_DISSOCIATION_SECTION.EndpointStudyRecord.ScientificPart.PCDISSOCIATION.PKA.Set set : sciPart.getPCDISSOCIATION().getPKA().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setEndpoint(pKa);
+			effect.setEndpoint(I5CONSTANTS.pKa);
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 
 			if (set.getVALUEUNITTEMPVALUE() != null) {
 				Params tvalue = new Params();
 				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
-					tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
-				} else tvalue.put(loValue,null);
+					tvalue.put(I5CONSTANTS.loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+				} else tvalue.put(I5CONSTANTS.loValue,null);
 				if (set.getVALUEUNITTEMPVALUE()!=null)
-					tvalue.put(unit,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()));
-				effect.getConditions().put(Temperature, tvalue);				
+					tvalue.put(I5CONSTANTS.unit,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()));
+				effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);				
 			} else
-				effect.getConditions().put(Temperature, null);
+				effect.getConditions().put(I5CONSTANTS.cTemperature, null);
 			
 			if (set.getNO()!= null) {
 				Params nvalue = new Params();
-				nvalue.put(loValue,set.getNO().getNOValue());
-				effect.getConditions().put(No, nvalue);
+				nvalue.put(I5CONSTANTS.loValue,set.getNO().getNOValue());
+				effect.getConditions().put(I5CONSTANTS.rNo, nvalue);
 			} else
-				effect.getConditions().put(No, null);
+				effect.getConditions().put(I5CONSTANTS.rNo, null);
 
 			
 			

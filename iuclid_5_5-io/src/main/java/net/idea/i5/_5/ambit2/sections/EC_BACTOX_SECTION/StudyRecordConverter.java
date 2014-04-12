@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.EC_BACTOX_SECTION;
 
 import net.idea.i5._5.ambit2.sections.ECOTOXStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -104,23 +105,23 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		//Exposure duration
 		if (sciPart.getECBACTOX().getEXPDURATION()!=null) {
 			Params p = new Params();
-			try {p.put(loValue, sciPart.getECBACTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());}
-			catch (Exception x) {p.put(loValue, null);}
-			try {p.put(unit,sciPart.getECBACTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());} catch (Exception x){}
-			papp.getParameters().put(cExposure,p);
+			try {p.put(I5CONSTANTS.loValue, sciPart.getECBACTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());}
+			catch (Exception x) {p.put(I5CONSTANTS.loValue, null);}
+			try {p.put(I5CONSTANTS.unit,sciPart.getECBACTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());} catch (Exception x){}
+			papp.getParameters().put(I5CONSTANTS.cExposure,p);
 		} else {
-			papp.getParameters().put(cExposure,null);
+			papp.getParameters().put(I5CONSTANTS.cExposure,null);
 		}
 		
 		if (sciPart.getECBACTOX().getWATERTYPE()!=null) {
-				papp.getParameters().put(cTestMedium,sciPart.getECBACTOX().getWATERTYPE().getSet().getLISTRIGHTPOP().getLISTRIGHTPOPValue());
+				papp.getParameters().put(I5CONSTANTS.cTestMedium,sciPart.getECBACTOX().getWATERTYPE().getSet().getLISTRIGHTPOP().getLISTRIGHTPOPValue());
 		} else 
-			papp.getParameters().put(cTestMedium,null);
+			papp.getParameters().put(I5CONSTANTS.cTestMedium,null);
 		
 		if (sciPart.getECBACTOX().getORGANISM()!=null) {
-			papp.getParameters().put(cTestOrganism,sciPart.getECBACTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+			papp.getParameters().put(I5CONSTANTS.cTestOrganism,sciPart.getECBACTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		} else	
-			papp.getParameters().put(cTestOrganism,null);
+			papp.getParameters().put(I5CONSTANTS.cTestOrganism,null);
 		
 		//ENDPOINT
 		if (sciPart.getECBACTOX().getEFFCONC()!=null && sciPart.getECBACTOX().getEFFCONC().getSet()!=null)
@@ -130,15 +131,15 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 
-			effect.getConditions().put(cEffect,
+			effect.getConditions().put(I5CONSTANTS.cEffect,
 					set.getPHRASEOTHERBASISEFFECT()==null?null:
 					set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue());
 			
-			effect.getConditions().put(cConcType,
+			effect.getConditions().put(I5CONSTANTS.cConcType,
 					set.getPHRASEOTHEREFFCONCTYPE()==null?null:
 					set.getPHRASEOTHEREFFCONCTYPE().getEFFCONCTYPEValue());
 			
-			effect.getConditions().put(cMeasuredConcentration,
+			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,
 					set.getBASISCONC()==null?null:
 					set.getBASISCONC().getBASISCONCValue());
 						
@@ -158,11 +159,11 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			
 			if (set.getVALUEUNITEXPDURATIONVALUE()!=null) {
 				Params p = new Params();
-				p.put(loValue, set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue());
-				p.put(unit,set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue());
-				effect.getConditions().put(cExposure,p);
+				p.put(I5CONSTANTS.loValue, set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue());
+				p.put(I5CONSTANTS.unit,set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue());
+				effect.getConditions().put(I5CONSTANTS.cExposure,p);
 			} else {
-				effect.getConditions().put(cExposure,null);
+				effect.getConditions().put(I5CONSTANTS.cExposure,null);
 			}
 		}
 		return record;

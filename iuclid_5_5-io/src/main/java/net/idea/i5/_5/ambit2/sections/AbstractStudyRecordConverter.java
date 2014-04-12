@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections;
 
 import net.idea.i5._5.ambit2.Phrases;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.IStudyRecordConverter;
 import net.idea.i5.io.QACriteriaException;
@@ -31,100 +32,7 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	};
 	
 	protected QASettings qaSettings;
-	protected final String Physstate = "Physical state";
-	
-	protected static final String cSpecies = "Species";
-	protected static final String cSex = "Sex";
-	
-	protected static final String cToxicity = "Toxicity";
-	protected static final String cGeneration = "Generation";
-	protected static final String cEffectType = "Effect type";
-	protected static final String cDoses= "Doses/concentrations";
-	protected static final String cRouteAdm= "Route of administration";
-	protected static final String cRoute= "Route";	
-	protected static final String cReference = "Reference";
-	protected static final String cYear = "Study year";
-	protected static final String cTypeMethod= "Type of method";
-	protected static final String cTypeStudy= "Type of study";
-	
-	protected static final String DECOMPOSITION = "Decomposition";
-	protected static final String methodType = "Method type";
-	protected static final String ph = "pH";
-	protected static final String Temperature = "Temperature";
-	protected static final String Remark = "Remark";
-	protected static final String Solvent = "Solvent";
-	protected static final String Pressure = "Pressure";
-	protected static final String VapourPressure = "Vapour Pressure";
-	protected static final String AtmPressure = "Atm. Pressure";
-	protected static final String WaterSolubility = "Water solubility";
-	protected static final String SUBLIMATION = "Sublimation";
-	protected static final String MELTINGPOINT = "Melting Point";
-	protected static final String BOILINGPOINT = "Boiling point";
-	protected static final String HLC = "Henry's Law const.";
-	protected static final String pKa = "pKa";
-	protected static final String OrgCarbonPercent = "% Org.Carbon";
-	protected static final String BioaccBasis = "Bioacc. basis";
-	protected static final String cTestType = "Test type";
-	protected static final String cTimePoint = "Sampling time";
-	protected static final String cPercentDegradation = "% Degradation";
-	protected static final String TestCondition = "Test condition";
-	
-	protected static final String cSalinity = "Salinity";
-	protected static final String cExposure = "Exposure";
-	protected static final String cTestMedium = "Test Medium";
-	protected static final String cTestOrganism = "Test organism";
-	protected static final String cMeasuredConcentration = "Measured concentration";
-	protected static final String cEffect = "Effect";
-	protected static final String cBasisForEffect = "Basis for effect";
-	protected static final String cConcType = "Based on";	
-	
-	protected static final String cSoilNo = "Soil No.";
-	protected static final String cSoilType = "Soil type";
-	protected static final String cOCContent =  "OC content";	
-	
-	protected static final String cTypeGenotoxicity= "Type of genotoxicity";
-	protected static final String cTargetGene= "Target gene";
-	protected static final String cMetabolicActivationSystem= "Metabolic activation system";
-	protected static final String cMetabolicActivation= "Metabolic activation";	
-	
-	protected static final String No = "No.";
-	
-	protected static final String SOLUBILITY_ORG_SOLVENT = "Solubility org. solvents";
-	
-	//NM
-	protected static final String cTestMaterialForm = "TESTMATFORM";
-	
-	
-	protected static final String unit = "unit";
-	protected static final String loValue = "loValue";
-	protected static final String upValue = "upValue";
-	protected static final String loQualifier = "loQualifier";
-	protected static final String upQualifier = "upQualifier";
-	
-	private static final String r_id = "id";
-	private static final String r_value = "value";
-	private static final String r_isRobustStudy = "isRobustStudy";
-	private static final String r_isUsedforClassification = "isUsedforClassification";
-	private static final String r_isUsedforMSDS = "isUsedforMSDS";
-	private static final String r_purposeFlag = "purposeFlag";
-	private static final String r_studyResultType = "studyResultType";
-	//NM
-	protected static final String pSAMPLING = "SAMPLING";
-	protected static final String pMETHODDETAILS = "Method details";
-	protected static final String pDATA_GATHERING_INSTRUMENTS = "DATA_GATHERING_INSTRUMENTS";
-	protected static final String pMATERIAL_ISOTROPIC = "MATERIAL_ISOTROPIC";
-	protected static final String pTESTMAT_FORM = "TESTMAT_FORM";
-	//particlesize
-	protected static final String pDISTRIBUTION_TYPE = "DISTRIBUTION_TYPE";
-	protected static final String pMMD = "MASS MEDIAN DIAMETER";
-	protected static final String pMMAD = "MASS MEDIAN AERODYNAMIC DIAMETER";
-	protected static final String pGSD = "GEOMETRIC STANDARD DEVIATION";
-	protected static final String pPARTICLESIZE = "PARTICLE SIZE";
-	
-	protected static final String rSTD_DEV = "STD_DEV";
-	
-	protected static final String cPERCENTILE = "PERCENTILE";
-	protected static final String cSEQ_NUM = "SEQ_NUM";
+
 	
 	
 	protected void setCompanyUUID(SubstanceRecord record,String value) {
@@ -207,13 +115,13 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 			//else System.out.println("No quality check");
 
 			Params reliability = new Params();
-			reliability.put(r_id, valueID);
-			reliability.put(r_value, Phrases.phrasegroup_A36.get(valueID));
-			reliability.put(r_isRobustStudy, isRobustStudy);
-			reliability.put(r_isUsedforClassification, isUsedforClassification);
-			reliability.put(r_isUsedforMSDS, isUsedforMSDS);
-			reliability.put(r_purposeFlag, Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
-			reliability.put(r_studyResultType, Phrases.phrasegroup_Z05.get(studyResultTypeID));
+			reliability.put(I5CONSTANTS.r_id, valueID);
+			reliability.put(I5CONSTANTS.r_value, Phrases.phrasegroup_A36.get(valueID));
+			reliability.put(I5CONSTANTS.r_isRobustStudy, isRobustStudy);
+			reliability.put(I5CONSTANTS.r_isUsedforClassification, isUsedforClassification);
+			reliability.put(I5CONSTANTS.r_isUsedforMSDS, isUsedforMSDS);
+			reliability.put(I5CONSTANTS.r_purposeFlag, Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
+			reliability.put(I5CONSTANTS.r_studyResultType, Phrases.phrasegroup_Z05.get(studyResultTypeID));
 			
 			papp.setReliability(reliability);
 			return reliability;

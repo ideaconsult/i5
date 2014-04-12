@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.EN_STABILITY_IN_SOIL_SECTION;
 
 import net.idea.i5._5.ambit2.sections.ENVFATEStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -104,7 +105,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		parseReference(unmarshalled, papp);	
 
 		//TEST TYPE
-		papp.getParameters().put(cTestType,
+		papp.getParameters().put(I5CONSTANTS.cTestType,
 				sciPart.getENSTABILITYINSOIL().getOXYGENCONDITIONS()==null?null:
 				sciPart.getENSTABILITYINSOIL().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 
@@ -113,28 +114,28 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		if (sciPart.getENSTABILITYINSOIL().getPROP()!=null) 
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_STABILITY_IN_SOIL_SECTION.EndpointStudyRecord.ScientificPart.ENSTABILITYINSOIL.PROP.Set set : sciPart.getENSTABILITYINSOIL().getPROP().getSet()){
 			Params p = new Params();
-			p.put(cSoilType,set.getPHRASEOTHERSOILTYPE()==null?null:set.getPHRASEOTHERSOILTYPE().getSOILTYPEValue());
+			p.put(I5CONSTANTS.cSoilType,set.getPHRASEOTHERSOILTYPE()==null?null:set.getPHRASEOTHERSOILTYPE().getSOILTYPEValue());
 			
 			Params v = new Params();
 			try {
-				v.put(loQualifier,set.getPRECISIONCARBONLOQUALIFIER().getCARBONLOQUALIFIERValue());
+				v.put(I5CONSTANTS.loQualifier,set.getPRECISIONCARBONLOQUALIFIER().getCARBONLOQUALIFIERValue());
 			} catch (Exception x) {}
 			try {
-				v.put(loValue,set.getPRECISIONCARBONLOQUALIFIER().getCARBONLOVALUE().getValue());
-			} catch (Exception x) {v.put(loValue,null);}
+				v.put(I5CONSTANTS.loValue,set.getPRECISIONCARBONLOQUALIFIER().getCARBONLOVALUE().getValue());
+			} catch (Exception x) {v.put(I5CONSTANTS.loValue,null);}
 			try {
-				v.put(upQualifier,set.getPRECISIONCARBONLOQUALIFIER().getCARBONUPQUALIFIERValue());
+				v.put(I5CONSTANTS.upQualifier,set.getPRECISIONCARBONLOQUALIFIER().getCARBONUPQUALIFIERValue());
 			} catch (Exception x) {}
 			try {
-				v.put(upValue,set.getPRECISIONCARBONLOQUALIFIER().getCARBONUPVALUE().getValue());
-			} catch (Exception x) {v.put(upValue,null);}
+				v.put(I5CONSTANTS.upValue,set.getPRECISIONCARBONLOQUALIFIER().getCARBONUPVALUE().getValue());
+			} catch (Exception x) {v.put(I5CONSTANTS.upValue,null);}
 			try {
-				v.put(unit,"%");
-			} catch (Exception x) {v.put(unit,null);}
-			p.put(cOCContent, v);
+				v.put(I5CONSTANTS.unit,"%");
+			} catch (Exception x) {v.put(I5CONSTANTS.unit,null);}
+			p.put(I5CONSTANTS.cOCContent, v);
 			
 			if (set.getSOILNUMBER()!=null && set.getSOILNUMBER().getSOILNUMBERValue()!=null) {
-				p.put(cSoilNo, set.getSOILNUMBER().getSOILNUMBERValue());
+				p.put(I5CONSTANTS.cSoilNo, set.getSOILNUMBER().getSOILNUMBERValue());
 				soil.put(set.getSOILNUMBER().getSOILNUMBERValue(),p);
 			}
 		}
@@ -150,7 +151,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 					Params soilno = (Params)soil.get(set.getSOILNUMBER().getSOILNUMBERValue());
 					effect.getConditions().putAll(soilno);
 				} catch (Exception x) {
-					effect.getConditions().put(cSoilNo,null);
+					effect.getConditions().put(I5CONSTANTS.cSoilNo,null);
 				}
 				
 				if (set.getPRECISIONLOQUALIFIER()!=null) {

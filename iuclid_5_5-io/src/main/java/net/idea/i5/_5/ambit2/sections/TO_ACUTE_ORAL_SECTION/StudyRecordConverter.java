@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.TO_ACUTE_ORAL_SECTION;
 
 import net.idea.i5._5.ambit2.sections.TOXStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -100,18 +101,18 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		*/
 		
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(cYear,papp.getReferenceYear());
+		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
 		// Acute tox oral
-		papp.getParameters().put(cSpecies,
+		papp.getParameters().put(I5CONSTANTS.cSpecies,
 					sciPart.getTOACUTEORAL().getORGANISM()==null?null:
 					sciPart.getTOACUTEORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		// Sex
 		try {
-			papp.getParameters().put(cSex,
+			papp.getParameters().put(I5CONSTANTS.cSex,
 					sciPart.getTOACUTEORAL().getSEX()==null?null:
 					sciPart.getTOACUTEORAL().getSEX().getSet().getLISTBELOWPOP().getLISTBELOWPOPValue());
-		} catch (Exception x) { papp.getParameters().put(cSex,null);}
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSex,null);}
 		// endpoint
 		// effect level
 		if (sciPart.getTOACUTEORAL().getEFFLEVEL() != null)
@@ -133,7 +134,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 					} catch (Exception x) {}
 				}
 				
-				effect.getConditions().put(cSex,set.getSEX()==null?null:set.getSEX().getSEXValue());
+				effect.getConditions().put(I5CONSTANTS.cSex,set.getSEX()==null?null:set.getSEX().getSEXValue());
 
 			}
 		

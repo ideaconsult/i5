@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SIM_SECTION;
 
 import net.idea.i5._5.ambit2.sections.ENVFATEStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -102,10 +103,10 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		
 		// citation
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(cYear,papp.getReferenceYear());	
+		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());	
 
 		//TEST TYPE
-		papp.getParameters().put(cTestType,
+		papp.getParameters().put(I5CONSTANTS.cTestType,
 				sciPart.getTOBIODEGWATERSIM().getOXYGENCONDITIONS()==null?null:
 				sciPart.getTOBIODEGWATERSIM().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 
@@ -116,36 +117,36 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				
 				Params dValue = new Params();
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
-					degradation.put("Degradation Parameter", set.getPHRASEOTHERPARAMETER()==null?null:set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
-					dValue.put(unit,"%");
+					degradation.put(I5CONSTANTS.cDegradationParameter, set.getPHRASEOTHERPARAMETER()==null?null:set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
+					dValue.put(I5CONSTANTS.unit,"%");
 					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
-						dValue.put(loValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
-						dValue.put(loQualifier,set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
+						dValue.put(I5CONSTANTS.loValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
+						dValue.put(I5CONSTANTS.loQualifier,set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
 					} catch (Exception x) {
-						dValue.put(loValue,set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue());
-					} else dValue.put(loValue,null);
+						dValue.put(I5CONSTANTS.loValue,set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue());
+					} else dValue.put(I5CONSTANTS.loValue,null);
 					
 					if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
-						dValue.put(upValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
-						dValue.put(upQualifier,set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
+						dValue.put(I5CONSTANTS.upValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
+						dValue.put(I5CONSTANTS.upQualifier,set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
 					} catch (Exception x) {
-						dValue.put(upValue,null);
-					} else dValue.put(upValue,null);
+						dValue.put(I5CONSTANTS.upValue,null);
+					} else dValue.put(I5CONSTANTS.upValue,null);
 				}	
 
-				degradation.put("Degradation", dValue);
+				degradation.put(I5CONSTANTS.rDegradation, dValue);
 				
 				//sampling time
 				if (set.getVALUEUNITTIMEPOINTVALUE() != null) {
 					Params tvalue = new Params();
 					if (set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()!= null) {
-						tvalue.put(loValue,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue()));
-					} else tvalue.put(loValue,null);
+						tvalue.put(I5CONSTANTS.loValue,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue()));
+					} else tvalue.put(I5CONSTANTS.loValue,null);
 					if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-						tvalue.put(unit,set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue());
-					degradation.put(cTimePoint, tvalue);				
+						tvalue.put(I5CONSTANTS.unit,set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue());
+					degradation.put(I5CONSTANTS.cTimePoint, tvalue);				
 				} else
-					degradation.put(cTimePoint, null);	
+					degradation.put(I5CONSTANTS.cTimePoint, null);	
 			}
 		
 		

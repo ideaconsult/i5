@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.EN_ADSORPTION_SECTION;
 
 import net.idea.i5._5.ambit2.sections.ENVFATEStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -114,33 +115,33 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				if (set.getVALUEUNITTEMPVALUE() != null) {
 					Params tvalue = new Params();
 					if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
-						tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+						tvalue.put(I5CONSTANTS.loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
 					}
-					tvalue.put(unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...
-					effect.getConditions().put(Temperature, tvalue);				
+					tvalue.put(I5CONSTANTS.unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...
+					effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);				
 				} else
-					effect.getConditions().put(Temperature, null);	
+					effect.getConditions().put(I5CONSTANTS.cTemperature, null);	
 				
 				try {
-					effect.getConditions().put(Remark, set.getREMARKS().getREMARKS().getValue());
+					effect.getConditions().put(I5CONSTANTS.Remark, set.getREMARKS().getREMARKS().getValue());
 				} catch (Exception x) {
-					effect.getConditions().put(Remark,null);
+					effect.getConditions().put(I5CONSTANTS.Remark,null);
 				}
 				
 				if (set.getPRECISIONOCLOQUALIFIER()!=null) {
 					Params oc = new Params(); //% organic carbon
-					oc.put(unit,"%");
+					oc.put(I5CONSTANTS.unit,"%");
 					if (set.getPRECISIONOCLOQUALIFIER().getOCLOVALUE()!=null) try {
-						oc.put(loValue,Double.parseDouble(set.getPRECISIONOCLOQUALIFIER().getOCLOVALUE().getValue()));
-						oc.put(loQualifier, set.getPRECISIONOCLOQUALIFIER().getOCLOQUALIFIER());
+						oc.put(I5CONSTANTS.loValue,Double.parseDouble(set.getPRECISIONOCLOQUALIFIER().getOCLOVALUE().getValue()));
+						oc.put(I5CONSTANTS.loQualifier, set.getPRECISIONOCLOQUALIFIER().getOCLOQUALIFIER());
 					} catch (Exception x) {}
 					
 					if (set.getPRECISIONOCLOQUALIFIER().getOCUPVALUE()!=null) try {
-						oc.put(upValue,Double.parseDouble(set.getPRECISIONOCLOQUALIFIER().getOCUPVALUE().getValue()));
-						oc.put(upQualifier, set.getPRECISIONOCLOQUALIFIER().getOCUPQUALIFIERValue());
+						oc.put(I5CONSTANTS.upValue,Double.parseDouble(set.getPRECISIONOCLOQUALIFIER().getOCUPVALUE().getValue()));
+						oc.put(I5CONSTANTS.upQualifier, set.getPRECISIONOCLOQUALIFIER().getOCUPQUALIFIERValue());
 					} catch (Exception x) {
 					}
-					effect.getConditions().put(OrgCarbonPercent,null);
+					effect.getConditions().put(I5CONSTANTS.rOrgCarbonPercent,null);
 				}					
 				
 				if (set.getPRECISIONLOQUALIFIER()!=null) {

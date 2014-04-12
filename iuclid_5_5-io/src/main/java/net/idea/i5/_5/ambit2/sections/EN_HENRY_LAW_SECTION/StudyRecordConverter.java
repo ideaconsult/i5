@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.EN_HENRY_LAW_SECTION;
 
 import net.idea.i5._5.ambit2.sections.ENVFATEStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -109,7 +110,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		if (sciPart.getENHENRYLAW().getHENRYSLAW()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_HENRY_LAW_SECTION.EndpointStudyRecord.ScientificPart.ENHENRYLAW.HENRYSLAW.Set set : sciPart.getENHENRYLAW().getHENRYSLAW().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(HLC);
+				effect.setEndpoint(I5CONSTANTS.HLC);
 				effect.setConditions(new Params());
 				
 				papp.addEffect(effect);
@@ -117,29 +118,29 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				if (set.getVALUEUNITPRESSUREVALUE() != null) {
 					Params tvalue = new Params();
 					if (set.getVALUEUNITPRESSUREVALUE().getPRESSUREVALUE()!= null) {
-						tvalue.put(loValue,getNumber(set.getVALUEUNITPRESSUREVALUE().getPRESSUREVALUE().getValue()));
-					} else tvalue.put(loValue,null);
+						tvalue.put(I5CONSTANTS.loValue,getNumber(set.getVALUEUNITPRESSUREVALUE().getPRESSUREVALUE().getValue()));
+					} else tvalue.put(I5CONSTANTS.loValue,null);
 					if (set.getVALUEUNITPRESSUREVALUE()!=null)
-						tvalue.put(unit,set.getVALUEUNITPRESSUREVALUE().getPRESSUREUNITValue());
+						tvalue.put(I5CONSTANTS.unit,set.getVALUEUNITPRESSUREVALUE().getPRESSUREUNITValue());
 					
-					effect.getConditions().put(Pressure, tvalue);				
+					effect.getConditions().put(I5CONSTANTS.Pressure, tvalue);				
 				} else
-					effect.getConditions().put(Pressure, null);
+					effect.getConditions().put(I5CONSTANTS.Pressure, null);
 				try {
-					effect.getConditions().put(Remark, set.getREM().getREM().getValue());
+					effect.getConditions().put(I5CONSTANTS.Remark, set.getREM().getREM().getValue());
 				} catch (Exception x) {
-					effect.getConditions().put(Remark,null);
+					effect.getConditions().put(I5CONSTANTS.Remark,null);
 				}
 				//temperature
 				if (set.getTEMPVALUE() != null) {
 					Params tvalue = new Params();
 					if (set.getTEMPVALUE()!= null) {
-						tvalue.put(loValue,getNumber(set.getTEMPVALUE().getTEMPVALUE().getValue()));
+						tvalue.put(I5CONSTANTS.loValue,getNumber(set.getTEMPVALUE().getTEMPVALUE().getValue()));
 					}
-					tvalue.put(unit,"\u2103C"); //here the unit is assumed ...
-					effect.getConditions().put(Temperature, tvalue);				
+					tvalue.put(I5CONSTANTS.unit,"\u2103C"); //here the unit is assumed ...
+					effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);				
 				} else
-					effect.getConditions().put(Temperature, null);		
+					effect.getConditions().put(I5CONSTANTS.cTemperature, null);		
 				
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
 					effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());

@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.EN_BIOACCU_TERR_SECTION;
 
 import net.idea.i5._5.ambit2.sections.ENVFATEStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -106,9 +107,9 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		parseReference(unmarshalled, papp);
 		
 		try {
-			papp.getParameters().put(cSpecies,sciPart.getENBIOACCUTERR().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+			papp.getParameters().put(I5CONSTANTS.cSpecies,sciPart.getENBIOACCUTERR().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		} catch (Exception x) {
-			papp.getParameters().put(cSpecies,null);
+			papp.getParameters().put(I5CONSTANTS.cSpecies,null);
 		}
 		
 		if (sciPart.getENBIOACCUTERR().getBCF()!=null) {
@@ -119,9 +120,9 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				papp.addEffect(effect);
 				
 				try {
-					effect.getConditions().put(BioaccBasis,set.getPHRASEOTHERBASIS().getBASISTXT().getValue());
+					effect.getConditions().put(I5CONSTANTS.cBioaccBasis,set.getPHRASEOTHERBASIS().getBASISTXT().getValue());
 				} catch (Exception x) {
-					effect.getConditions().put(BioaccBasis,null);
+					effect.getConditions().put(I5CONSTANTS.cBioaccBasis,null);
 				}
 				
 				if (set.getPRECISIONBSAFLOQUALIFIER()!=null) {

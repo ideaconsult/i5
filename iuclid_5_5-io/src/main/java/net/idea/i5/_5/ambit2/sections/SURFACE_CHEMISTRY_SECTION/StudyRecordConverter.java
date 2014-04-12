@@ -4,6 +4,7 @@ import javax.xml.bind.JAXBElement;
 
 import net.idea.i5._5.ambit2.sections.AbstractStudyRecordConverter;
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 
@@ -118,18 +119,18 @@ public class StudyRecordConverter
 
 		
 		try {	
-			papp.getParameters().put(cTypeMethod,
+			papp.getParameters().put(I5CONSTANTS.cTypeMethod,
 					sciPart.getSURFACECHEMISTRY().getMETHOD()==null?null:
 					sciPart.getSURFACECHEMISTRY().getMETHOD().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue());
 		} catch (Exception x) {
-			papp.getParameters().put(cTypeMethod,null);
+			papp.getParameters().put(I5CONSTANTS.cTypeMethod,null);
 		}
 		
 		try {
-			papp.getParameters().put("Method details",
+			papp.getParameters().put(I5CONSTANTS.pMETHODDETAILS,
 				sciPart.getSURFACECHEMISTRY().getMETHODSDETAILSDATAEVAL().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {
-			papp.getParameters().put("Method details",null);
+			papp.getParameters().put(I5CONSTANTS.pMETHODDETAILS,null);
 		}
 		/*
 		papp.getParameters().put(cTestMaterialForm,
@@ -137,14 +138,14 @@ public class StudyRecordConverter
 				sciPart.getAGGLOMERATIONAGGREGATION().getTESTMATFORM().getSet().getPHRASEOTHERTESTMATFORM().getTESTMATFORMValue());
 		*/
 		try {
-			papp.getParameters().put("SAMPLING",sciPart.getSURFACECHEMISTRY().getSAMPLING().getSet().getFREETEXTBELOW().getFREETEXTBELOW().getValue());
+			papp.getParameters().put(I5CONSTANTS.pSAMPLING,sciPart.getSURFACECHEMISTRY().getSAMPLING().getSet().getFREETEXTBELOW().getFREETEXTBELOW().getValue());
 		} catch (Exception x) {
-			papp.getParameters().put("SAMPLING",null);
+			papp.getParameters().put(I5CONSTANTS.pSAMPLING,null);
 		}
 		try {
-			papp.getParameters().put("DATA_GATHERING_INSTRUMENTS",sciPart.getSURFACECHEMISTRY().getDATAGATHERINGINSTRUMENTS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+			papp.getParameters().put(I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,sciPart.getSURFACECHEMISTRY().getDATAGATHERINGINSTRUMENTS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
 		} catch (Exception x) {
-			papp.getParameters().put("DATA_GATHERING_INSTRUMENTS",null);
+			papp.getParameters().put(I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,null);
 		}
 				
 		CF cf_mode = new CF();
@@ -221,8 +222,8 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					Params params, Node node) {
-				params.put(AbstractStudyRecordConverter.loValue,node.getTextContent());
-				params.put(AbstractStudyRecordConverter.loQualifier," ");
+				params.put(I5CONSTANTS.loValue,node.getTextContent());
+				params.put(I5CONSTANTS.loQualifier," ");
 			}
 			@Override
 			public String getTag() {
@@ -234,8 +235,8 @@ public class StudyRecordConverter
 			public void setValue(EffectRecord<String, Params, String> effect,
 					Params params, Node node) {
 				if (node.getTextContent()!=null) {
-					params.put(AbstractStudyRecordConverter.loValue,node.getTextContent());
-					params.put(AbstractStudyRecordConverter.loQualifier," ");
+					params.put(I5CONSTANTS.loValue,node.getTextContent());
+					params.put(I5CONSTANTS.loQualifier," ");
 				}	
 			}
 			@Override
@@ -248,8 +249,8 @@ public class StudyRecordConverter
 			public void setValue(EffectRecord<String, Params, String> effect,
 					Params params, Node node) {
 				if (node.getTextContent()!=null) {
-					params.put(AbstractStudyRecordConverter.loValue,node.getTextContent());
-					params.put(AbstractStudyRecordConverter.loQualifier," ");
+					params.put(I5CONSTANTS.loValue,node.getTextContent());
+					params.put(I5CONSTANTS.loQualifier," ");
 				}
 			}
 			@Override
@@ -291,26 +292,26 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(loValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(loValue,node.getTextContent());	
+					params.put(I5CONSTANTS.loValue,node.getTextContent());	
 				}
 			}		
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}
 		},
 		FUNCT_GROUP_STD_DEVI_VALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(loValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(loValue,node.getTextContent());	
+					params.put(I5CONSTANTS.loValue,node.getTextContent());	
 				}
 			}		
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}
 		}
 		;
@@ -325,33 +326,33 @@ public class StudyRecordConverter
 		ELEMENT {
 			public void setValue(EffectRecord<String, Params, String> effect,
 					NodeList nodes,CF cf_mode) {
-				Params params = (Params)effect.getConditions().get("TYPE");
+				Params params = (Params)effect.getConditions().get(I5CONSTANTS.pTYPE);
 				if (params == null) {
 					params = new Params();
-					effect.getConditions().put("TYPE",params);
+					effect.getConditions().put(I5CONSTANTS.pTYPE,params);
 				}
-				params.put(loValue,"COATING");params.put(loQualifier,"  ");
+				params.put(I5CONSTANTS.loValue,I5CONSTANTS.pCOATING);params.put(I5CONSTANTS.loQualifier,"  ");
 				
-				params = (Params)effect.getConditions().get("DESCRIPTION");
+				params = (Params)effect.getConditions().get(I5CONSTANTS.pDESCRIPTION);
 				if (params == null) {
 					params = new Params();
-					effect.getConditions().put("DESCRIPTION",params);
+					effect.getConditions().put(I5CONSTANTS.pDESCRIPTION,params);
 				}
-				params.put(loValue,cf_mode.coatingType);params.put(loQualifier,"  ");
+				params.put(I5CONSTANTS.loValue,cf_mode.coatingType);params.put(I5CONSTANTS.loQualifier,"  ");
 				
-				params = (Params)effect.getConditions().get("COATING_DESCRIPTION");
+				params = (Params)effect.getConditions().get(I5CONSTANTS.pCOATING_DESCRIPTION);
 				if (params == null) {
 					params = new Params();
-					effect.getConditions().put("COATING_DESCRIPTION",params);
+					effect.getConditions().put(I5CONSTANTS.pCOATING_DESCRIPTION,params);
 				}
-				params.put(loValue,cf_mode.coatingDesc);	params.put(loQualifier,"  ");			
+				params.put(I5CONSTANTS.loValue,cf_mode.coatingDesc);	params.put(I5CONSTANTS.loQualifier,"  ");			
 				
-				effect.setEndpoint("ATOMIC COMPOSITION");
+				effect.setEndpoint(I5CONSTANTS.eATOMIC_COMPOSITION);
 				useChildrenNodesParams(effect, nodes);	
 			}	
 			@Override
 			public String getTag() {
-				return "ELEMENT_OR_GROUP";
+				return I5CONSTANTS.pELEMENT_OR_GROUP;
 			}
 		},
 		PRECISION_FRACTION_LOQUALIFIER {
@@ -362,7 +363,7 @@ public class StudyRecordConverter
 			}	
 			@Override
 			public String getTag() {
-				return "ATOMIC_COMPOSITION";
+				return I5CONSTANTS.eATOMIC_COMPOSITION;
 			}
 		},
 		STD_DEVI_VALUE  {
@@ -373,59 +374,59 @@ public class StudyRecordConverter
 			}	
 			@Override
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}				
 		},
 		FUNCTIONAL_GROUP {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					NodeList nodes,CF cf_mode) {
-				Params params = (Params)effect.getConditions().get("TYPE");
+				Params params = (Params)effect.getConditions().get(I5CONSTANTS.pTYPE);
 				if (params == null) {
 					params = new Params();
-					effect.getConditions().put("TYPE",params);
+					effect.getConditions().put(I5CONSTANTS.pTYPE,params);
 				}
-				params.put(loValue,"FUNCTIONALIZATION");params.put(loQualifier,"  ");
+				params.put(I5CONSTANTS.loValue,I5CONSTANTS.pFUNCTIONALIZATION);params.put(I5CONSTANTS.loQualifier,"  ");
 				
-				params = (Params)effect.getConditions().get("DESCRIPTION");
+				params = (Params)effect.getConditions().get(I5CONSTANTS.pDESCRIPTION);
 				if (params == null) {
 					params = new Params();
-					effect.getConditions().put("DESCRIPTION",params);
+					effect.getConditions().put(I5CONSTANTS.pDESCRIPTION,params);
 				}
-				params.put(loValue,cf_mode.functionalisationtype);params.put(loQualifier,"  ");
+				params.put(I5CONSTANTS.loValue,cf_mode.functionalisationtype);params.put(I5CONSTANTS.loQualifier,"  ");
 						
-				effect.setEndpoint("FUNCTIONAL GROUP");
+				effect.setEndpoint(I5CONSTANTS.eFUNCTIONAL_GROUP);
 				useChildrenNodesParams(effect, nodes);	
 			}	
 			@Override
 			public String getTag() {
-				return "ELEMENT_OR_GROUP";
+				return I5CONSTANTS.pELEMENT_OR_GROUP;
 			}
 		},
 		FUNCTIONAL_GROUP_NOLABEL {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					NodeList nodes,CF cf_mode) {
-				Params params = (Params)effect.getConditions().get("TYPE");
+				Params params = (Params)effect.getConditions().get(I5CONSTANTS.pTYPE);
 				if (params == null) {
 					params = new Params();
-					effect.getConditions().put("TYPE",params);
+					effect.getConditions().put(I5CONSTANTS.pTYPE,params);
 				}
-				params.put(loValue,"FUNCTIONALIZATION");params.put(loQualifier,"  ");
+				params.put(I5CONSTANTS.loValue,I5CONSTANTS.pFUNCTIONALIZATION);params.put(I5CONSTANTS.loQualifier,"  ");
 				
-				params = (Params)effect.getConditions().get("DESCRIPTION");
+				params = (Params)effect.getConditions().get(I5CONSTANTS.pDESCRIPTION);
 				if (params == null) {
 					params = new Params();
-					effect.getConditions().put("DESCRIPTION",params);
+					effect.getConditions().put(I5CONSTANTS.pDESCRIPTION,params);
 				}
-				params.put(loValue,cf_mode.functionalisationtype);params.put(loQualifier,"  ");
+				params.put(I5CONSTANTS.loValue,cf_mode.functionalisationtype);params.put(I5CONSTANTS.loQualifier,"  ");
 				
-				effect.setEndpoint("FUNCTIONAL GROUP");
+				effect.setEndpoint(I5CONSTANTS.eFUNCTIONAL_GROUP);
 				useChildrenNodesParams(effect, nodes);	
 			}			
 			@Override
 			public String getTag() {
-				return "ELEMENT_OR_GROUP";
+				return I5CONSTANTS.pELEMENT_OR_GROUP;
 			}			
 		},
 		FUNCT_GROUP_STD_DEVI_VALUE {
@@ -436,7 +437,7 @@ public class StudyRecordConverter
 			}	
 			@Override
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}				
 		},
 		REMARKS {

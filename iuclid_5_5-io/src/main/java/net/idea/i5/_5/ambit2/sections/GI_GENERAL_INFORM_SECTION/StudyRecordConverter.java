@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.GI_GENERAL_INFORM_SECTION;
 
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -126,7 +127,7 @@ public class StudyRecordConverter extends PChemStudyRecordConvertor<eu.europa.ec
 		EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 		effect.setEndpoint(physstate==null?null:physstate.toString());
 		effect.setConditions(new Params());
-		effect.getConditions().put(Remark,form==null?"":form.toString());
+		effect.getConditions().put(I5CONSTANTS.Remark,form==null?"":form.toString());
 		papp.addEffect(effect);
 		try {
 		papp.setInterpretationResult(sciPart.getGIGENERALINFORM().getSUBSTANCETYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());

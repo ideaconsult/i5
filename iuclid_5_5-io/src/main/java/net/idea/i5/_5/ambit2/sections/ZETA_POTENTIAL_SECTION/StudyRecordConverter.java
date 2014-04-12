@@ -4,6 +4,7 @@ import javax.xml.bind.JAXBElement;
 
 import net.idea.i5._5.ambit2.sections.AbstractStudyRecordConverter;
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 
@@ -115,20 +116,33 @@ public class StudyRecordConverter
 			} catch (Exception x) {
 			}
 
-		papp.getParameters().put(cTypeMethod,
+		papp.getParameters().put(I5CONSTANTS.cTypeMethod,
 					sciPart.getZETAPOTENTIAL().getMETHOD()==null?null:
 					sciPart.getZETAPOTENTIAL().getMETHOD().getSet().getPHRASEOTHERLISTSELFIX().getLISTSELFIXValue());
 		
-		papp.getParameters().put("Method details",
+		try {
+			papp.getParameters().put(I5CONSTANTS.pMETHODDETAILS,
 				sciPart.getZETAPOTENTIAL().getMETHODSDETAILSDATAEVAL().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
-		/*
-		papp.getParameters().put(cTestMaterialForm,
-				sciPart.getAGGLOMERATIONAGGREGATION().getTESTMATFORM()==null?null:
-				sciPart.getAGGLOMERATIONAGGREGATION().getTESTMATFORM().getSet().getPHRASEOTHERTESTMATFORM().getTESTMATFORMValue());
-		*/
-		papp.getParameters().put("Sampling",sciPart.getZETAPOTENTIAL().getSAMPLING().getSet().getFREETEXTBELOW().getFREETEXTBELOW().getValue());
-		
-		papp.getParameters().put("Instruments",sciPart.getZETAPOTENTIAL().getDATAGATHERINGINSTRUMENTS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+		} catch (Exception x) {
+			papp.getParameters().put(I5CONSTANTS.pMETHODDETAILS,null);
+		}
+		try {
+			papp.getParameters().put(I5CONSTANTS.pTESTMAT_FORM,
+				sciPart.getZETAPOTENTIAL().getTESTMATFORM()==null?null:
+				sciPart.getZETAPOTENTIAL().getTESTMATFORM().getSet().getPHRASEOTHERTESTMATFORM().getTESTMATFORMValue());
+		} catch (Exception x) {
+			papp.getParameters().put(I5CONSTANTS.pTESTMAT_FORM,null);
+		}
+		try {
+			papp.getParameters().put(I5CONSTANTS.pSAMPLING,sciPart.getZETAPOTENTIAL().getSAMPLING().getSet().getFREETEXTBELOW().getFREETEXTBELOW().getValue());
+		} catch (Exception x) {
+			papp.getParameters().put(I5CONSTANTS.pSAMPLING,null);
+		}
+		try {
+			papp.getParameters().put(I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,sciPart.getZETAPOTENTIAL().getDATAGATHERINGINSTRUMENTS().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());
+		} catch (Exception x) {
+			papp.getParameters().put(I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,null);
+		}
 				
 		
 		if (sciPart.getZETAPOTENTIAL().getZETAPOTENTIALTABLE()!=null) {
@@ -218,7 +232,7 @@ public class StudyRecordConverter
 		STD_DEVI_UNIT_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(AbstractStudyRecordConverter.unit,node.getTextContent());
+				params.put(I5CONSTANTS.unit,node.getTextContent());
 			}			
 		},
 		STD_DEVI_UNIT_TXT,
@@ -227,20 +241,20 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(loValue,Double.parseDouble(node.getTextContent()));
+					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(loValue,node.getTextContent());	
+					params.put(I5CONSTANTS.loValue,node.getTextContent());	
 				}
 			}		
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}
 		},
 		//i5:PH_VALUE
 		PH_VALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(AbstractStudyRecordConverter.loValue,node.getTextContent());
+				params.put(I5CONSTANTS.loValue,node.getTextContent());
 			}
 		},
 		ISOELECTRIC_POINT_LOQUALIFIER_value {
@@ -284,12 +298,12 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					NodeList nodes) {
-				effect.setEndpoint("ZETA_POTENTIAL");
+				effect.setEndpoint(I5CONSTANTS.eZETA_POTENTIAL);
 				useChildrenNodesEffect(effect, nodes);	
 			}	
 			@Override
 			public String getTag() {
-				return "Zeta potential";
+				return I5CONSTANTS.eZETA_POTENTIAL;
 			}
 		},
 		VALUEUNIT_STD_DEVI_VALUE {
@@ -299,7 +313,7 @@ public class StudyRecordConverter
 				useChildrenNodesParams(effect, nodes);	
 			}	
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}			
 		},
 		PH_VALUE {
@@ -310,19 +324,19 @@ public class StudyRecordConverter
 			}
 			@Override
 			public String getTag() {
-				return ph;
+				return I5CONSTANTS.pH;
 			}
 		},	
 		PRECISION_ISOELECTRIC_POINT_LOQUALIFIER {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					NodeList nodes) {
-				effect.setEndpoint("ISOELECTRIC_POINT");
+				effect.setEndpoint(I5CONSTANTS.eISOELECTRIC_POINT);
 				useChildrenNodesEffect(effect, nodes);	
 			}			
 			@Override
 			public String getTag() {
-				return "Isoelectric point";
+				return I5CONSTANTS.eISOELECTRIC_POINT;
 			}
 			
 		},
@@ -333,7 +347,7 @@ public class StudyRecordConverter
 				useChildrenNodesParams(effect, nodes);	
 			}	
 			public String getTag() {
-				return rSTD_DEV;
+				return I5CONSTANTS.rSTD_DEV;
 			}			
 		},
 		MEDIUM {

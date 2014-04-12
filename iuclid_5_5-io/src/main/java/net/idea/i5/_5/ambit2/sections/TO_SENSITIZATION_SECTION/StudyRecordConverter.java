@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.TO_SENSITIZATION_SECTION;
 
 import net.idea.i5._5.ambit2.sections.TOXStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -101,7 +102,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		// year
 		
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(cYear,papp.getReferenceYear());
+		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
 		// Sensitization
 		/*
@@ -109,11 +110,11 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 					sciPart.getTOSENSITIZATION().getORGANISM()==null?null:
 					sciPart.getTOSENSITIZATION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		*/
-		papp.getParameters().put(cTypeMethod,
+		papp.getParameters().put(I5CONSTANTS.cTypeMethod,
 				sciPart.getTOSENSITIZATION().getTYPEINVIVOINVITRO()==null?null:
 				sciPart.getTOSENSITIZATION().getTYPEINVIVOINVITRO().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		
-		papp.getParameters().put(cTypeStudy,
+		papp.getParameters().put(I5CONSTANTS.cTypeStudy,
 				sciPart.getTOSENSITIZATION().getSTUDYTYPE()==null?null:
 				sciPart.getTOSENSITIZATION().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		

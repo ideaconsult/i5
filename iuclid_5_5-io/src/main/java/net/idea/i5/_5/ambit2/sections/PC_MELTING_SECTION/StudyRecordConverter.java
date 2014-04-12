@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.PC_MELTING_SECTION;
 
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -120,21 +121,21 @@ public class StudyRecordConverter
 		if (sciPart.getPCMELTING().getMELTINGPT()!=null && sciPart.getPCMELTING().getMELTINGPT().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_MELTING_SECTION.EndpointStudyRecord.ScientificPart.PCMELTING.MELTINGPT.Set set : sciPart.getPCMELTING().getMELTINGPT().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setEndpoint(MELTINGPOINT);
+			effect.setEndpoint(I5CONSTANTS.eMELTINGPOINT);
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 			
 			//pressure should be a condition
 			//decomposition and sublimation are actually readouts not conditions...
 			try {
-				effect.getConditions().put(DECOMPOSITION,	set.getPHRASEOTHERDECOMPINDICATOR().getDECOMPINDICATORValue());
+				effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION,	set.getPHRASEOTHERDECOMPINDICATOR().getDECOMPINDICATORValue());
 			} catch (Exception x) {
-				effect.getConditions().put(DECOMPOSITION,null);
+				effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION,null);
 			}
 			try {
-				effect.getConditions().put(SUBLIMATION,	set.getPHRASEOTHERSUBLIMATIONINDICATOR().getSUBLIMATIONINDICATORValue());
+				effect.getConditions().put(I5CONSTANTS.rSUBLIMATION,	set.getPHRASEOTHERSUBLIMATIONINDICATOR().getSUBLIMATIONINDICATORValue());
 			} catch (Exception x) {
-				effect.getConditions().put(SUBLIMATION,null);
+				effect.getConditions().put(I5CONSTANTS.rSUBLIMATION,null);
 			}
 			
 			if (set.getPRECISIONLOQUALIFIER() != null) {

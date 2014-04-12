@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.TO_SKIN_IRRITATION_SECTION;
 
 import net.idea.i5._5.ambit2.sections.TOXStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -101,15 +102,15 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		// year
 		
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(cYear,papp.getReferenceYear());
+		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
 		// Skin irritation/corrosion
 		
-		papp.getParameters().put(cSpecies,
+		papp.getParameters().put(I5CONSTANTS.cSpecies,
 					sciPart.getTOSKINIRRITATION().getORGANISM()==null?null:
 					sciPart.getTOSKINIRRITATION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		
-		papp.getParameters().put(cTypeMethod,
+		papp.getParameters().put(I5CONSTANTS.cTypeMethod,
 				sciPart.getTOSKINIRRITATION().getTYPEINVIVOINVITRO()==null?null:
 				sciPart.getTOSKINIRRITATION().getTYPEINVIVOINVITRO().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		

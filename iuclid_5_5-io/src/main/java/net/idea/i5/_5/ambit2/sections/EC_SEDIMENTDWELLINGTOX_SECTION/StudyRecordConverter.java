@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.EC_SEDIMENTDWELLINGTOX_SECTION;
 
 import net.idea.i5._5.ambit2.sections.ECOTOXStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -100,23 +101,23 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		//Exposure duration
 		if (sciPart.getECSEDIMENTDWELLINGTOX().getEXPDURATION()!=null) {
 			Params p = new Params();
-			try {p.put(loValue, sciPart.getECSEDIMENTDWELLINGTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());}
-			catch (Exception x) {p.put(loValue, null);}
-			try {p.put(unit,sciPart.getECSEDIMENTDWELLINGTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());} catch (Exception x){}
-			papp.getParameters().put(cExposure,p);
+			try {p.put(I5CONSTANTS.loValue, sciPart.getECSEDIMENTDWELLINGTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());}
+			catch (Exception x) {p.put(I5CONSTANTS.loValue, null);}
+			try {p.put(I5CONSTANTS.unit,sciPart.getECSEDIMENTDWELLINGTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());} catch (Exception x){}
+			papp.getParameters().put(I5CONSTANTS.cExposure,p);
 		} else {
-			papp.getParameters().put(cExposure,null);
+			papp.getParameters().put(I5CONSTANTS.cExposure,null);
 		}
 		
 		if (sciPart.getECSEDIMENTDWELLINGTOX().getWATERTYPE()!=null) {
-				papp.getParameters().put(cTestMedium,sciPart.getECSEDIMENTDWELLINGTOX().getWATERTYPE().getSet().getLISTRIGHTPOP().getLISTRIGHTPOPValue());
+				papp.getParameters().put(I5CONSTANTS.cTestMedium,sciPart.getECSEDIMENTDWELLINGTOX().getWATERTYPE().getSet().getLISTRIGHTPOP().getLISTRIGHTPOPValue());
 		} else 
-			papp.getParameters().put(cTestMedium,null);
+			papp.getParameters().put(I5CONSTANTS.cTestMedium,null);
 		
 		if (sciPart.getECSEDIMENTDWELLINGTOX().getORGANISM()!=null) {
-			papp.getParameters().put(cTestOrganism,sciPart.getECSEDIMENTDWELLINGTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+			papp.getParameters().put(I5CONSTANTS.cTestOrganism,sciPart.getECSEDIMENTDWELLINGTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		} else	
-			papp.getParameters().put(cTestOrganism,null);
+			papp.getParameters().put(I5CONSTANTS.cTestOrganism,null);
 		
 		//ENDPOINT
 		if (sciPart.getECSEDIMENTDWELLINGTOX().getEFFCONC()!=null && sciPart.getECSEDIMENTDWELLINGTOX().getEFFCONC().getSet()!=null)
@@ -129,20 +130,20 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			try {
 				String basis = set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue();
 				if (basis.startsWith("other:")) basis = set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTTXT().getValue();
-				effect.getConditions().put(BioaccBasis,basis);
+				effect.getConditions().put(I5CONSTANTS.cBioaccBasis,basis);
 			} catch (Exception x) {
-				effect.getConditions().put(BioaccBasis,null);	
+				effect.getConditions().put(I5CONSTANTS.cBioaccBasis,null);	
 			}
 				
-			effect.getConditions().put(cEffect,
+			effect.getConditions().put(I5CONSTANTS.cEffect,
 					set.getPHRASEOTHERBASISEFFECT()==null?null:
 					set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue());
 			
-			effect.getConditions().put(cConcType,
+			effect.getConditions().put(I5CONSTANTS.cConcType,
 					set.getPHRASEOTHEREFFCONCTYPE()==null?null:
 					set.getPHRASEOTHEREFFCONCTYPE().getEFFCONCTYPEValue());
 			
-			effect.getConditions().put(cMeasuredConcentration,
+			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,
 					set.getBASISCONC()==null?null:
 					set.getBASISCONC().getBASISCONCValue());
 			
@@ -162,22 +163,22 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			
 			if (set.getVALUEUNITEXPDURATIONVALUE()!=null) {
 				Params p = new Params();
-				p.put(loValue, set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue());
-				p.put(unit,set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue());
-				effect.getConditions().put(cExposure,p);
+				p.put(I5CONSTANTS.loValue, set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue());
+				p.put(I5CONSTANTS.unit,set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue());
+				effect.getConditions().put(I5CONSTANTS.cExposure,p);
 			} else {
-				effect.getConditions().put(cExposure,null);
+				effect.getConditions().put(I5CONSTANTS.cExposure,null);
 			}
 		} else {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setEndpoint("BCF");
+			effect.setEndpoint(I5CONSTANTS.eBCF);
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
-			effect.getConditions().put(cEffect,null);
-			effect.getConditions().put(cMeasuredConcentration,null);
-			effect.getConditions().put(cConcType,null);
-			effect.getConditions().put(BioaccBasis,null);
-			effect.getConditions().put(cExposure,null);
+			effect.getConditions().put(I5CONSTANTS.cEffect,null);
+			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,null);
+			effect.getConditions().put(I5CONSTANTS.cConcType,null);
+			effect.getConditions().put(I5CONSTANTS.cBioaccBasis,null);
+			effect.getConditions().put(I5CONSTANTS.cExposure,null);
 		}
 		return record;
 	}

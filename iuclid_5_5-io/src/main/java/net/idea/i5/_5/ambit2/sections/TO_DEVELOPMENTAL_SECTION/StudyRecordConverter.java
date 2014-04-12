@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.TO_DEVELOPMENTAL_SECTION;
 
 import net.idea.i5._5.ambit2.sections.TOXStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -95,19 +96,19 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		} catch (Exception x) {}	
 		
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(cYear,papp.getReferenceYear());
+		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
 		// Repeated tox oral
-		papp.getParameters().put(cSpecies,
+		papp.getParameters().put(I5CONSTANTS.cSpecies,
 					sciPart.getTODEVELOPMENTAL().getORGANISM()==null?null:
 					sciPart.getTODEVELOPMENTAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		
 
 		try {
-			papp.getParameters().put(cRouteAdm,
+			papp.getParameters().put(I5CONSTANTS.cRouteAdm,
 					sciPart.getTODEVELOPMENTAL().getROUTE()==null?null:
 					sciPart.getTODEVELOPMENTAL().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} catch (Exception x) { papp.getParameters().put(cRouteAdm,null);}		
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cRouteAdm,null);}		
 		
 		StringBuilder doses = null;
 		if (sciPart.getTODEVELOPMENTAL().getDOSES()!=null)
@@ -116,7 +117,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 			else doses.append(";");
 			doses.append(set.getCONCENTRATIONS().getCONCENTRATIONS().getValue());
 		}
-		papp.getParameters().put(cDoses,doses==null?null:doses.toString());
+		papp.getParameters().put(I5CONSTANTS.cDoses,doses==null?null:doses.toString());
 		// endpoint
 		// effect level
 		if (sciPart.getTODEVELOPMENTAL().getEFFLEVEL() != null)
@@ -138,7 +139,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 					} catch (Exception x) {}
 				}
 				
-				effect.getConditions().put(cEffectType,set.getPHRASEOTHEREFFECTTYPE()==null?null:set.getPHRASEOTHEREFFECTTYPE().getEFFECTTYPEValue());
+				effect.getConditions().put(I5CONSTANTS.cEffectType,set.getPHRASEOTHEREFFECTTYPE()==null?null:set.getPHRASEOTHEREFFECTTYPE().getEFFECTTYPEValue());
 			}
 		papp.setInterpretationResult(null); 
 		papp.setInterpretationCriteria(null); 

@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.PC_BOILING_SECTION;
 
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -111,13 +112,13 @@ public class StudyRecordConverter
 		if (sciPart.getPCBOILING().getBOILINGPT()!=null && sciPart.getPCBOILING().getBOILINGPT().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_BOILING_SECTION.EndpointStudyRecord.ScientificPart.PCBOILING.BOILINGPT.Set set : sciPart.getPCBOILING().getBOILINGPT().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setEndpoint(BOILINGPOINT);
+			effect.setEndpoint(I5CONSTANTS.BOILINGPOINT);
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 			try {
-				effect.getConditions().put(DECOMPOSITION,	set.getPHRASEOTHERDECOMPINDICATOR().getDECOMPINDICATORValue());
+				effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION,	set.getPHRASEOTHERDECOMPINDICATOR().getDECOMPINDICATORValue());
 			}  catch (Exception x) {
-				effect.getConditions().put(DECOMPOSITION,null);
+				effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION,null);
 			}
 			
 			
@@ -127,23 +128,23 @@ public class StudyRecordConverter
 				*/
 				Params vpvalue = new Params();
 				if (set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOVALUE()!= null) {
-					vpvalue.put(loQualifier,
+					vpvalue.put(I5CONSTANTS.loQualifier,
 							(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOQUALIFIERValue() == null) ? null : 
 							set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOQUALIFIERValue());
-					vpvalue.put(loValue,getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOVALUE().getValue()));
-				} else vpvalue.put(loValue, null);
+					vpvalue.put(I5CONSTANTS.loValue,getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOVALUE().getValue()));
+				} else vpvalue.put(I5CONSTANTS.loValue, null);
 				
 				if (set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE()!= null) {
-					vpvalue.put(upQualifier,
+					vpvalue.put(I5CONSTANTS.upQualifier,
 							(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPQUALIFIER() == null) ? null : 
 							set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPQUALIFIERValue());					
-					vpvalue.put(upValue,getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE().getValue()));
-				} else vpvalue.put(upValue, null);
-				vpvalue.put(unit,set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNITValue());
-				effect.getConditions().put(AtmPressure, vpvalue);
+					vpvalue.put(I5CONSTANTS.upValue,getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE().getValue()));
+				} else vpvalue.put(I5CONSTANTS.upValue, null);
+				vpvalue.put(I5CONSTANTS.unit,set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNITValue());
+				effect.getConditions().put(I5CONSTANTS.AtmPressure, vpvalue);
 
 			} else {
-				effect.getConditions().put(AtmPressure,null);
+				effect.getConditions().put(I5CONSTANTS.AtmPressure,null);
 			}
 
 			

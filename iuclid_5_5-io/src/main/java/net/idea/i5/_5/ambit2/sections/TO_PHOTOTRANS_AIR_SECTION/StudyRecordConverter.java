@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.TO_PHOTOTRANS_AIR_SECTION;
 
 import net.idea.i5._5.ambit2.sections.ENVFATEStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -101,26 +102,26 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		// citation
 		
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(cYear,papp.getReferenceYear());
+		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 		
-		papp.getParameters().put("Reactant",null);
+		papp.getParameters().put(I5CONSTANTS.pReactant,null);
 		if (sciPart.getTOPHOTOTRANSAIR().getRATECONSTANT()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_PHOTOTRANS_AIR_SECTION.EndpointStudyRecord.ScientificPart.TOPHOTOTRANSAIR.RATECONSTANT.Set set : sciPart.getTOPHOTOTRANSAIR().getRATECONSTANT().getSet()) {
-			papp.getParameters().put("Reactant",set.getPHRASEOTHERTYPE().getTYPEValue());
+			papp.getParameters().put(I5CONSTANTS.pReactant,set.getPHRASEOTHERTYPE().getTYPEValue());
 			//TODO array
 		}
 	
 		if (sciPart.getTOPHOTOTRANSAIR().getDISSIP()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_PHOTOTRANS_AIR_SECTION.EndpointStudyRecord.ScientificPart.TOPHOTOTRANSAIR.DISSIP.Set set : sciPart.getTOPHOTOTRANSAIR().getDISSIP().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint("DT50");
+				effect.setEndpoint(I5CONSTANTS.rPERCENTILE_DT50);
 
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				try {
-					effect.getConditions().put(TestCondition,set.getTESTCONDITION().getTESTCONDITION().getValue());
+					effect.getConditions().put(I5CONSTANTS.TestCondition,set.getTESTCONDITION().getTESTCONDITION().getValue());
 				} catch (Exception x) {
-					effect.getConditions().put(TestCondition,null);
+					effect.getConditions().put(I5CONSTANTS.TestCondition,null);
 				}
 				
 				//results
@@ -144,9 +145,9 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 			}
 		} else {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setEndpoint("DT50");
+			effect.setEndpoint(I5CONSTANTS.rPERCENTILE_DT50);
 			effect.setConditions(new Params());
-			effect.getConditions().put(TestCondition,null);
+			effect.getConditions().put(I5CONSTANTS.TestCondition,null);
 			papp.addEffect(effect);
 		}
 

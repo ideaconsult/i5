@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION;
 
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -117,11 +118,11 @@ public class StudyRecordConverter
 		// Exposure duration
 		if (sciPart.getPCPARTITION().getMETHODTYPE() != null) {
 			papp.getParameters().put(
-					methodType,
+					I5CONSTANTS.methodType,
 					sciPart.getPCPARTITION().getMETHODTYPE().getSet()
 							.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
 		} else {
-			papp.getParameters().put(methodType, null);
+			papp.getParameters().put(I5CONSTANTS.methodType, null);
 		}
 
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart.PCPARTITION.PARTCOEFF.Set set : sciPart
@@ -134,12 +135,12 @@ public class StudyRecordConverter
 			if (set.getVALUEUNITTEMPVALUE() != null) {
 				Params tvalue = new Params();
 				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
-					tvalue.put(loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
-				} else tvalue.put(loValue,null);
-				tvalue.put(unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...
-				effect.getConditions().put(Temperature, tvalue);				
+					tvalue.put(I5CONSTANTS.loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+				} else tvalue.put(I5CONSTANTS.loValue,null);
+				tvalue.put(I5CONSTANTS.unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...
+				effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);				
 			} else
-				effect.getConditions().put(Temperature, null);				
+				effect.getConditions().put(I5CONSTANTS.cTemperature, null);				
 			
 			if (set.getPRECISIONPHLOQUALIFIER() != null) {
 				/* Change to go like this
@@ -147,19 +148,19 @@ public class StudyRecordConverter
 				*/
 				Params phvalue = new Params();
 				if (set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE()!= null) {
-					phvalue.put(loQualifier,getQualifier(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue()));
+					phvalue.put(I5CONSTANTS.loQualifier,getQualifier(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue()));
 					
-					phvalue.put(loValue,getNumber(set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE().getValue()));
-				} else phvalue.put(loValue,null);
+					phvalue.put(I5CONSTANTS.loValue,getNumber(set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE().getValue()));
+				} else phvalue.put(I5CONSTANTS.loValue,null);
 				if (set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE()!= null) {
-					phvalue.put(upQualifier,getQualifier(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue()));  
+					phvalue.put(I5CONSTANTS.upQualifier,getQualifier(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue()));  
 					phvalue.put(
-							upValue,getNumber(set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE().getValue()));
-				} else phvalue.put(upValue,null);
-				effect.getConditions().put(ph, phvalue);
+							I5CONSTANTS.upValue,getNumber(set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE().getValue()));
+				} else phvalue.put(I5CONSTANTS.upValue,null);
+				effect.getConditions().put(I5CONSTANTS.pH, phvalue);
 
 			} else {
-				effect.getConditions().put(ph,null);
+				effect.getConditions().put(I5CONSTANTS.pH,null);
 			}
 
 			if (set.getPRECISIONLOQUALIFIER() != null) {

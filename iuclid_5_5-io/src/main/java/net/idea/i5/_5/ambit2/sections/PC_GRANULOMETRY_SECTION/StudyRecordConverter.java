@@ -1,6 +1,7 @@
 package net.idea.i5._5.ambit2.sections.PC_GRANULOMETRY_SECTION;
 
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
@@ -107,29 +108,29 @@ public class StudyRecordConverter
 			}
 
 		try {
-			papp.getParameters().put(pTESTMAT_FORM,
+			papp.getParameters().put(I5CONSTANTS.pTESTMAT_FORM,
 			sciPart.getPCGRANULOMETRY().getTESTMATFORM().getSet().getPHRASEOTHERTESTMATFORM().getTESTMATFORMValue());
 		} catch (Exception x) {
-			papp.getParameters().put(pTESTMAT_FORM,null);
+			papp.getParameters().put(I5CONSTANTS.pTESTMAT_FORM,null);
 		}
 		try {
 			String value = sciPart.getPCGRANULOMETRY().getDISTRIBUTIONTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue();
 			if ("other:".equals(value)) try {
 				value = sciPart.getPCGRANULOMETRY().getDISTRIBUTIONTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT().getValue();
 			} catch (Exception x) {}	
-			papp.getParameters().put(pDISTRIBUTION_TYPE,value);
+			papp.getParameters().put(I5CONSTANTS.pDISTRIBUTION_TYPE,value);
 		} catch (Exception x) {
-			papp.getParameters().put(pDISTRIBUTION_TYPE,null);
+			papp.getParameters().put(I5CONSTANTS.pDISTRIBUTION_TYPE,null);
 		}
 		
 		//Mass median diametrer
 		if (sciPart.getPCGRANULOMETRY().getDIAMETER()!=null) { 
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 			effect.setConditions(new Params());
-			effect.setEndpoint(pMMD);
-			effect.getConditions().put(rSTD_DEV,addParams(loValue,null));
-			effect.getConditions().put(cSEQ_NUM,addParams(loValue,null));
-			effect.getConditions().put(Remark,addParams(loValue,null));
+			effect.setEndpoint(I5CONSTANTS.pMMD);
+			effect.getConditions().put(I5CONSTANTS.rSTD_DEV,addParams(I5CONSTANTS.loValue,null));
+			effect.getConditions().put(I5CONSTANTS.cSEQ_NUM,addParams(I5CONSTANTS.loValue,null));
+			effect.getConditions().put(I5CONSTANTS.Remark,addParams(I5CONSTANTS.loValue,null));
 			papp.addEffect(effect);
 			try {
 				effect.setLoQualifier(sciPart.getPCGRANULOMETRY().getDIAMETER().getSet().getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
@@ -157,11 +158,11 @@ public class StudyRecordConverter
 		if (sciPart.getPCGRANULOMETRY().getMMAD()!=null) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 			effect.setConditions(new Params());
-			effect.setEndpoint(pMMAD);
-			Params rSTDEV = addParams(loValue,null);
-			effect.getConditions().put(rSTD_DEV,rSTDEV);
-			effect.getConditions().put(cSEQ_NUM,addParams(loValue,null));
-			effect.getConditions().put(Remark,addParams(loValue,null));
+			effect.setEndpoint(I5CONSTANTS.pMMAD);
+			Params rSTDEV = addParams(I5CONSTANTS.loValue,null);
+			effect.getConditions().put(I5CONSTANTS.rSTD_DEV,rSTDEV);
+			effect.getConditions().put(I5CONSTANTS.cSEQ_NUM,addParams(I5CONSTANTS.loValue,null));
+			effect.getConditions().put(I5CONSTANTS.Remark,addParams(I5CONSTANTS.loValue,null));
 			papp.addEffect(effect);
 			try {
 				effect.setLoQualifier(sciPart.getPCGRANULOMETRY().getMMAD().getSet().getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
@@ -186,22 +187,22 @@ public class StudyRecordConverter
 			
 			//Geometric standard deviation
 			if (sciPart.getPCGRANULOMETRY().getGSD()!=null) {
-				rSTDEV.put("Class",pGSD);
+				rSTDEV.put("Class",I5CONSTANTS.pGSD);
 				rSTDEV.put("isResult",true);
 				
 				try {
-					rSTDEV.put(loQualifier,sciPart.getPCGRANULOMETRY().getGSD().getSet().getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
+					rSTDEV.put(I5CONSTANTS.loQualifier,sciPart.getPCGRANULOMETRY().getGSD().getSet().getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
 				} catch (Exception x) {}
 				try {
-					rSTDEV.put(upQualifier,sciPart.getPCGRANULOMETRY().getGSD().getSet().getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
+					rSTDEV.put(I5CONSTANTS.upQualifier,sciPart.getPCGRANULOMETRY().getGSD().getSet().getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
 				} catch (Exception x) {}
 				try {
 					Object v = getNumber(sciPart.getPCGRANULOMETRY().getGSD().getSet().getPRECISIONLOQUALIFIER().getLOVALUE().getValue());
-					rSTDEV.put(loValue,v);
+					rSTDEV.put(I5CONSTANTS.loValue,v);
 				} catch (Exception x) {}
 				try {
 					Object v = getNumber(sciPart.getPCGRANULOMETRY().getGSD().getSet().getPRECISIONLOQUALIFIER().getUPVALUE().getValue());
-					rSTDEV.put(upValue,v);
+					rSTDEV.put(I5CONSTANTS.upValue,v);
 				} catch (Exception x) {}			
 			}			
 			
@@ -213,21 +214,21 @@ public class StudyRecordConverter
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_GRANULOMETRY_SECTION.EndpointStudyRecord.ScientificPart.PCGRANULOMETRY.PARTICLESIZE.Set set : sciPart.getPCGRANULOMETRY().getPARTICLESIZE().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 				effect.setConditions(new Params());
-				Params rSTDEV = addParams(loValue,null);
-				effect.getConditions().put(rSTD_DEV,rSTDEV);
-				effect.getConditions().put(cSEQ_NUM,addParams(loValue,null));
-				effect.getConditions().put(Remark,addParams(loValue,null));
+				Params rSTDEV = addParams(I5CONSTANTS.loValue,null);
+				effect.getConditions().put(I5CONSTANTS.rSTD_DEV,rSTDEV);
+				effect.getConditions().put(I5CONSTANTS.cSEQ_NUM,addParams(I5CONSTANTS.loValue,null));
+				effect.getConditions().put(I5CONSTANTS.Remark,addParams(I5CONSTANTS.loValue,null));
 				papp.addEffect(effect);
 				String percentile = set.getPHRASEOTHERPERCENTILE().getPERCENTILEValue();
-				effect.setEndpoint(pPARTICLESIZE+"."+percentile);
+				effect.setEndpoint(I5CONSTANTS.pPARTICLESIZE+"."+percentile);
 				
-				Params p = addParams(loValue, null);effect.getConditions().put(cPERCENTILE,p);
-				try {p.put(loValue,percentile);p.put(loQualifier,"  ");} catch (Exception x) {}
+				Params p = addParams(I5CONSTANTS.loValue, null);effect.getConditions().put(I5CONSTANTS.cPERCENTILE,p);
+				try {p.put(I5CONSTANTS.loValue,percentile);p.put(I5CONSTANTS.loQualifier,"  ");} catch (Exception x) {}
 				
-				try {rSTDEV.put(loValue, getNumber(set.getSTDEV().getSTDEV().getValue()));} catch (Exception x) {}
+				try {rSTDEV.put(I5CONSTANTS.loValue, getNumber(set.getSTDEV().getSTDEV().getValue()));} catch (Exception x) {}
 				
-				p = addParams(loValue, null);effect.getConditions().put(Remark,p);
-				try {p.put(loValue, set.getREM().getREM().getValue());p.put(loQualifier,"  ");} catch (Exception x) {}
+				p = addParams(I5CONSTANTS.loValue, null);effect.getConditions().put(I5CONSTANTS.Remark,p);
+				try {p.put(I5CONSTANTS.loValue, set.getREM().getREM().getValue());p.put(I5CONSTANTS.loQualifier,"  ");} catch (Exception x) {}
 				
 				try {
 					effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
@@ -255,18 +256,18 @@ public class StudyRecordConverter
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_GRANULOMETRY_SECTION.EndpointStudyRecord.ScientificPart.PCGRANULOMETRY.DISTRIBUTION.Set set : sciPart.getPCGRANULOMETRY().getDISTRIBUTION().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 				effect.setConditions(new Params());
-				Params rSTDEV = addParams(loValue,null);
-				effect.getConditions().put(rSTD_DEV,rSTDEV);
-				Params rREM = addParams(loValue,null);
-				effect.getConditions().put(Remark,rREM);
-				try {rREM.put(loValue,set.getREM().getREM().getValue());} catch (Exception x) {}
+				Params rSTDEV = addParams(I5CONSTANTS.loValue,null);
+				effect.getConditions().put(I5CONSTANTS.rSTD_DEV,rSTDEV);
+				Params rREM = addParams(I5CONSTANTS.loValue,null);
+				effect.getConditions().put(I5CONSTANTS.Remark,rREM);
+				try {rREM.put(I5CONSTANTS.loValue,set.getREM().getREM().getValue());} catch (Exception x) {}
 				
-				effect.setEndpoint(pPARTICLESIZE);
+				effect.setEndpoint(I5CONSTANTS.pPARTICLESIZE);
 				papp.addEffect(effect);
-				Params p = addParams(loValue,null);effect.getConditions().put(cSEQ_NUM,p);
+				Params p = addParams(I5CONSTANTS.loValue,null);effect.getConditions().put(I5CONSTANTS.cSEQ_NUM,p);
 				try {
-					p.put(loValue,set.getPASSAGENUMBER().getPASSAGENUMBERValue());p.put(loQualifier,"  ");} 
-				catch (Exception x) { p.put(loValue,null);}	;
+					p.put(I5CONSTANTS.loValue,set.getPASSAGENUMBER().getPASSAGENUMBERValue());p.put(I5CONSTANTS.loQualifier,"  ");} 
+				catch (Exception x) { p.put(I5CONSTANTS.loValue,null);}	;
 				
 				try {
 					effect.setLoQualifier(set.getPRECISIONSIZELOQUALIFIER().getSIZELOQUALIFIERValue());
@@ -294,16 +295,16 @@ public class StudyRecordConverter
 				rSTDEV.put("isResult",true);
 				
 				try {
-					rSTDEV.put(loQualifier,set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
+					rSTDEV.put(I5CONSTANTS.loQualifier,set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
 				} catch (Exception x) {}
 				try {
-					rSTDEV.put(upQualifier,set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
+					rSTDEV.put(I5CONSTANTS.upQualifier,set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
 				} catch (Exception x) {}
 				try {
-					rSTDEV.put(loValue,getNumber(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
+					rSTDEV.put(I5CONSTANTS.loValue,getNumber(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
 				} catch (Exception x) {}
 				try {
-					rSTDEV.put(upValue,getNumber(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
+					rSTDEV.put(I5CONSTANTS.upValue,getNumber(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
 				} catch (Exception x) {}	
 	
 				
