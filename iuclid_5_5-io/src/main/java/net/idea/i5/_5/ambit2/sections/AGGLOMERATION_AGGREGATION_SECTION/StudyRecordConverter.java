@@ -332,7 +332,13 @@ public class StudyRecordConverter
 				params.put(I5CONSTANTS.unit,node.getTextContent());
 			}			
 		},
-		STD_DEVI_UNIT_TXT,
+		STD_DEVI_UNIT_TXT {
+			@Override
+			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+				if ("other:".equals(params.get(I5CONSTANTS.unit)))
+						params.put(I5CONSTANTS.unit,node.getTextContent());
+			}
+		},
 		//i5:VALUEUNIT_STD_DEV_VALUE
 		STD_DEV_VALUE {
 			@Override
