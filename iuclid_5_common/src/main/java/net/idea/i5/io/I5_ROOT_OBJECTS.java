@@ -713,7 +713,7 @@ public enum I5_ROOT_OBJECTS {
 	DUSTINESS {
 		@Override
 		public String getTitle() {
-			return "Nanomaterial dustiness";
+			return "Dustiness";
 		}
 		@Override
 		public String getNumber() {
@@ -725,13 +725,13 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public boolean isSupported() {
-			return false;
+			return true;
 		}
 	},
 	POROSITY {
 		@Override
 		public String getTitle() {
-			return "Nanomaterial porosity";
+			return "Porosity";
 		}
 		@Override
 		public String getNumber() {
@@ -743,7 +743,7 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public boolean isSupported() {
-			return false;
+			return true;
 		}
 		
 	},

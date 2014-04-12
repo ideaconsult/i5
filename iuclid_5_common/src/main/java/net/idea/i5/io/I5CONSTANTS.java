@@ -118,6 +118,9 @@ public class I5CONSTANTS {
 	public static final String eASPECT_RATIO_X = "X";
 	public static final String eASPECT_RATIO_Y = "Y";
 	public static final String eASPECT_RATIO_Z = "Z";
+	public static final String eDUSTINEX = "DUSTINESS INDEX";
+	public static final String ePOROSITY = "POROSITY";
+	public static final String eSPECIFIC_PORE_VOLUME = "SPECIFIC PORE VOLUME";
 	
 	
 	
