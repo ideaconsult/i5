@@ -1,5 +1,7 @@
 package net.idea.i5.io;
 
+import ambit2.base.data.study.Params;
+
 public class I5CONSTANTS {
 	public final String Physstate = "Physical state";
 	
@@ -125,7 +127,14 @@ public class I5CONSTANTS {
 	public static final String eCATALYTIC_ACTIVITY = "CATALYTIC ACTIVITY";
 	public static final String ePHOTOCATALYTIC_ACTIVITY = "PHOTOCATALYTIC ACTIVITY";
 	public static final String eTURNOVERFREQUENCY = "TURN OVER FREQUENCY";
+	public static final String eCRYSTALLINE_PHASE = "CRYSTALLINE PHASE";
 	
+	public static final String rCRYSTALLINE_PHASE_COMMON_NAME = "COMMON NAME";
+	public static final String rCRYSTALLINE_PHASE_CRYSTAL_SYSTEM = "CRYSTAL SYSTEM"; 
+	public static final String rCRYSTALLINE_PHASE_BRAVAIS_LATTICE = "BRAVAIS LATTICE";
+	public static final String rCRYSTALLINE_PHASE_POINT_GROUP = "POINT GROUP";
+	public static final String rCRYSTALLINE_PHASE_SPACE_GROUP = "SPACE GROUP";
+	public static final String rCRYSTALLINE_PHASE_CRYSTGRPH_PLANES = "CRYSTALLOGRAPHIC PLANES";
 	
 	public static final String rSTD_DEV = "STD_DEV";
 	

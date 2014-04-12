@@ -617,7 +617,7 @@ public enum I5_ROOT_OBJECTS {
 		}	
 		@Override
 		public boolean isSupported() {
-			return false;
+			return true;
 		}
 	},
 	CRYSTALLITE_AND_GRAIN_SIZE {
