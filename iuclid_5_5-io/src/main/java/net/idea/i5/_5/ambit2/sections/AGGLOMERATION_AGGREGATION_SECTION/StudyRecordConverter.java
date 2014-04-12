@@ -233,6 +233,7 @@ public class StudyRecordConverter
 		PERCENTILE_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+				effect.getConditions().put(I5CONSTANTS.cPERCENTILE,new Params(I5CONSTANTS.loValue,node.getTextContent()));
 				effect.setEndpoint(effect.getEndpoint()+"."+node.getTextContent());
 			}					
 		},
