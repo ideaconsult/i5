@@ -80,7 +80,8 @@ Moved to ambit2.base.data.study._FIELDS_RANGE
 	public static final String loQualifier = "loQualifier";
 	public static final String upQualifier = "upQualifier";
 	*/
-	
+	/*
+	 * Moved ot package ambit2.base.data.study._FIELDS_RELIABILITY;
 	public static final String r_id = "id";
 	public static final String r_value = "value";
 	public static final String r_isRobustStudy = "isRobustStudy";
@@ -88,7 +89,7 @@ Moved to ambit2.base.data.study._FIELDS_RANGE
 	public static final String r_isUsedforMSDS = "isUsedforMSDS";
 	public static final String r_purposeFlag = "purposeFlag";
 	public static final String r_studyResultType = "studyResultType";
-	
+	*/
 	public static final String pReactant = "Reactant";
 	
 	//NM
@@ -98,6 +99,12 @@ Moved to ambit2.base.data.study._FIELDS_RANGE
 	public static final String pMATERIAL_ISOTROPIC = "MATERIAL_ISOTROPIC";
 	public static final String pTESTMAT_FORM = "TESTMAT_FORM";
 	//particlesize
+
+	public static final String eAGGLO_AGGR_DIAM = "AGGLOMERATION AGGREGATION DIAMETER";
+	public static final String eAGGLO_AGGR_SIZE = "AGGLOMERATION AGGREGATION SIZE";
+	public static final String eAGGLO_AGGR_SIZE_DIST = "AGGLOMERATION AGGREGATION SIZE DIST";
+	public static final String eAGGLO_AGGREGATION_ID = "AGGLOMERATION AGGREGATION ID";
+	
 	public static final String pDISTRIBUTION_TYPE = "DISTRIBUTION_TYPE";
 	public static final String pMMD = "MASS MEDIAN DIAMETER";
 	public static final String pMMAD = "MASS MEDIAN AERODYNAMIC DIAMETER";

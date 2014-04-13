@@ -10,6 +10,7 @@ import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
+import ambit2.base.data.study.ReliabilityParams;
 import ambit2.base.exceptions.AmbitException;
 
 public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordConverter<T>{
@@ -114,14 +115,14 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 			} 
 			//else System.out.println("No quality check");
 
-			Params reliability = new Params();
-			reliability.put(I5CONSTANTS.r_id, valueID);
-			reliability.put(I5CONSTANTS.r_value, Phrases.phrasegroup_A36.get(valueID));
-			reliability.put(I5CONSTANTS.r_isRobustStudy, isRobustStudy);
-			reliability.put(I5CONSTANTS.r_isUsedforClassification, isUsedforClassification);
-			reliability.put(I5CONSTANTS.r_isUsedforMSDS, isUsedforMSDS);
-			reliability.put(I5CONSTANTS.r_purposeFlag, Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
-			reliability.put(I5CONSTANTS.r_studyResultType, Phrases.phrasegroup_Z05.get(studyResultTypeID));
+			ReliabilityParams reliability = new ReliabilityParams();
+			reliability.setId(valueID);
+			reliability.setValue(Phrases.phrasegroup_A36.get(valueID));
+			reliability.setIsRobustStudy(isRobustStudy);
+			reliability.setIsUsedforClassification(isUsedforClassification);
+			reliability.setIsUsedforMSDS(isUsedforMSDS);
+			reliability.setPurposeFlag(Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
+			reliability.setStudyResultType(Phrases.phrasegroup_Z05.get(studyResultTypeID));
 			
 			papp.setReliability(reliability);
 			return reliability;
