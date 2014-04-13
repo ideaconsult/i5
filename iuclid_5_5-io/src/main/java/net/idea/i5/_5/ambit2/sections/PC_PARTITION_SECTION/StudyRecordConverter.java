@@ -135,9 +135,9 @@ public class StudyRecordConverter
 			if (set.getVALUEUNITTEMPVALUE() != null) {
 				Params tvalue = new Params();
 				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
-					tvalue.put(I5CONSTANTS.loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
-				} else tvalue.put(I5CONSTANTS.loValue,null);
-				tvalue.put(I5CONSTANTS.unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...
+					tvalue.setLoValue(getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+				} else tvalue.setLoValue(null);
+				tvalue.setUnits(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...
 				effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);				
 			} else
 				effect.getConditions().put(I5CONSTANTS.cTemperature, null);				
@@ -148,15 +148,14 @@ public class StudyRecordConverter
 				*/
 				Params phvalue = new Params();
 				if (set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE()!= null) {
-					phvalue.put(I5CONSTANTS.loQualifier,getQualifier(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue()));
+					phvalue.setLoQualifier(getQualifier(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue()));
 					
-					phvalue.put(I5CONSTANTS.loValue,getNumber(set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE().getValue()));
-				} else phvalue.put(I5CONSTANTS.loValue,null);
+					phvalue.setLoValue(getNumber(set.getPRECISIONPHLOQUALIFIER().getPHLOVALUE().getValue()));
+				} else phvalue.setLoValue(null);
 				if (set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE()!= null) {
-					phvalue.put(I5CONSTANTS.upQualifier,getQualifier(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue()));  
-					phvalue.put(
-							I5CONSTANTS.upValue,getNumber(set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE().getValue()));
-				} else phvalue.put(I5CONSTANTS.upValue,null);
+					phvalue.setUpQualifier(getQualifier(set.getPRECISIONPHLOQUALIFIER().getPHLOQUALIFIERValue()));  
+					phvalue.setUpValue(getNumber(set.getPRECISIONPHLOQUALIFIER().getPHUPVALUE().getValue()));
+				} else phvalue.setUpValue(null);
 				effect.getConditions().put(I5CONSTANTS.pH, phvalue);
 
 			} else {

@@ -165,12 +165,12 @@ public class StudyRecordConverter
 				if ("set".equals(set.getLocalName())) {
 					EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 					effect.setEndpoint(endpoint);
-					effect.setConditions(new Params(I5CONSTANTS.rCRYSTALLINE_PHASE_COMMON_NAME,new Params(I5CONSTANTS.loValue,null)));
-					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTAL_SYSTEM,new Params(I5CONSTANTS.loValue,null));
-					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_BRAVAIS_LATTICE,new Params(I5CONSTANTS.loValue,null));
-					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_POINT_GROUP,new Params(I5CONSTANTS.loValue,null));
-					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_SPACE_GROUP,new Params(I5CONSTANTS.loValue,null));
-					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTGRPH_PLANES,new Params(I5CONSTANTS.loValue,null));
+					effect.setConditions(new Params(I5CONSTANTS.rCRYSTALLINE_PHASE_COMMON_NAME,new Params(null)));
+					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTAL_SYSTEM,new Params(null));
+					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_BRAVAIS_LATTICE,new Params(null));
+					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_POINT_GROUP,new Params(null));
+					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_SPACE_GROUP,new Params(null));
+					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTGRPH_PLANES,new Params(null));
 					
 					papp.addEffect(effect);
 					NodeList r = set.getChildNodes();
@@ -226,8 +226,8 @@ public class StudyRecordConverter
 		}		
 		;
 		public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-			params.put(I5CONSTANTS.loValue,node.getTextContent());
-			params.put(I5CONSTANTS.loQualifier," ");
+			params.setLoValue(node.getTextContent());
+			params.setLoQualifier(" ");
 		}
 		public String getTag() {
 			return name();

@@ -104,9 +104,9 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		//Exposure duration
 		if (sciPart.getECPLANTTOX().getEXPDURATION()!=null) {
 			Params p = new Params();
-			try {p.put(I5CONSTANTS.loValue, sciPart.getECPLANTTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());}
-			catch (Exception x ){p.put(I5CONSTANTS.loValue,null);}
-			try {p.put(I5CONSTANTS.unit,sciPart.getECPLANTTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());} catch (Exception x){}
+			try {p.setLoValue( sciPart.getECPLANTTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());}
+			catch (Exception x ){p.setLoValue(null);}
+			try {p.setUnits(sciPart.getECPLANTTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());} catch (Exception x){}
 			papp.getParameters().put(I5CONSTANTS.cExposure,p);
 		} else {
 			papp.getParameters().put(I5CONSTANTS.cExposure,null);
@@ -158,8 +158,8 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			
 			if (set.getVALUEUNITEXPDURATIONVALUE()!=null) {
 				Params p = new Params();
-				p.put(I5CONSTANTS.loValue, set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue());
-				p.put(I5CONSTANTS.unit,set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue());
+				p.setLoValue(set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue());
+				p.setUnits(set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue());
 				effect.getConditions().put(I5CONSTANTS.cExposure,p);
 			} else {
 				effect.getConditions().put(I5CONSTANTS.cExposure,null);

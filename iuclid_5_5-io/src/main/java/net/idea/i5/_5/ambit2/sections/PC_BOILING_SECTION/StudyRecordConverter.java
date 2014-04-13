@@ -128,19 +128,19 @@ public class StudyRecordConverter
 				*/
 				Params vpvalue = new Params();
 				if (set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOVALUE()!= null) {
-					vpvalue.put(I5CONSTANTS.loQualifier,
+					vpvalue.setLoQualifier(
 							(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOQUALIFIERValue() == null) ? null : 
 							set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOQUALIFIERValue());
-					vpvalue.put(I5CONSTANTS.loValue,getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOVALUE().getValue()));
-				} else vpvalue.put(I5CONSTANTS.loValue, null);
+					vpvalue.setLoValue(getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOVALUE().getValue()));
+				} else vpvalue.setLoValue(null);
 				
 				if (set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE()!= null) {
-					vpvalue.put(I5CONSTANTS.upQualifier,
+					vpvalue.setUpQualifier(
 							(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPQUALIFIER() == null) ? null : 
 							set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPQUALIFIERValue());					
-					vpvalue.put(I5CONSTANTS.upValue,getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE().getValue()));
-				} else vpvalue.put(I5CONSTANTS.upValue, null);
-				vpvalue.put(I5CONSTANTS.unit,set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNITValue());
+					vpvalue.setUpValue(getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE().getValue()));
+				} else vpvalue.setUpValue( null);
+				vpvalue.setUnits(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNITValue());
 				effect.getConditions().put(I5CONSTANTS.AtmPressure, vpvalue);
 
 			} else {

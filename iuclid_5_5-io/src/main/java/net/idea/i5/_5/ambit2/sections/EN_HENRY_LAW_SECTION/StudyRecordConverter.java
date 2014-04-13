@@ -118,10 +118,10 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				if (set.getVALUEUNITPRESSUREVALUE() != null) {
 					Params tvalue = new Params();
 					if (set.getVALUEUNITPRESSUREVALUE().getPRESSUREVALUE()!= null) {
-						tvalue.put(I5CONSTANTS.loValue,getNumber(set.getVALUEUNITPRESSUREVALUE().getPRESSUREVALUE().getValue()));
-					} else tvalue.put(I5CONSTANTS.loValue,null);
+						tvalue.setLoValue(getNumber(set.getVALUEUNITPRESSUREVALUE().getPRESSUREVALUE().getValue()));
+					} else tvalue.setLoValue(null);
 					if (set.getVALUEUNITPRESSUREVALUE()!=null)
-						tvalue.put(I5CONSTANTS.unit,set.getVALUEUNITPRESSUREVALUE().getPRESSUREUNITValue());
+						tvalue.setUnits(set.getVALUEUNITPRESSUREVALUE().getPRESSUREUNITValue());
 					
 					effect.getConditions().put(I5CONSTANTS.Pressure, tvalue);				
 				} else
@@ -135,9 +135,9 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				if (set.getTEMPVALUE() != null) {
 					Params tvalue = new Params();
 					if (set.getTEMPVALUE()!= null) {
-						tvalue.put(I5CONSTANTS.loValue,getNumber(set.getTEMPVALUE().getTEMPVALUE().getValue()));
+						tvalue.setLoValue(getNumber(set.getTEMPVALUE().getTEMPVALUE().getValue()));
 					}
-					tvalue.put(I5CONSTANTS.unit,"\u2103C"); //here the unit is assumed ...
+					tvalue.setUnits("\u2103C"); //here the unit is assumed ...
 					effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);				
 				} else
 					effect.getConditions().put(I5CONSTANTS.cTemperature, null);		

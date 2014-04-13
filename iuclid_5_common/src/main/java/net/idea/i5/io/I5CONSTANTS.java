@@ -1,6 +1,5 @@
 package net.idea.i5.io;
 
-import ambit2.base.data.study.Params;
 
 public class I5CONSTANTS {
 	public final String Physstate = "Physical state";
@@ -73,12 +72,14 @@ public class I5CONSTANTS {
 	//NM
 	public static final String cTestMaterialForm = "TESTMATFORM";
 	
-	
+	/*
+Moved to ambit2.base.data.study._FIELDS_RANGE
 	public static final String unit = "unit";
 	public static final String loValue = "loValue";
 	public static final String upValue = "upValue";
 	public static final String loQualifier = "loQualifier";
 	public static final String upQualifier = "upQualifier";
+	*/
 	
 	public static final String r_id = "id";
 	public static final String r_value = "value";

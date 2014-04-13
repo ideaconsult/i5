@@ -232,7 +232,7 @@ public class StudyRecordConverter
 		STD_DEVI_UNIT_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(I5CONSTANTS.unit,node.getTextContent());
+				params.setUnits(node.getTextContent());
 			}			
 		},
 		STD_DEVI_UNIT_TXT,
@@ -241,9 +241,9 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
+					params.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(I5CONSTANTS.loValue,node.getTextContent());	
+					params.setLoValue(node.getTextContent());	
 				}
 			}		
 			public String getTag() {
@@ -254,7 +254,7 @@ public class StudyRecordConverter
 		PH_VALUE {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(I5CONSTANTS.loValue,node.getTextContent());
+				params.setLoValue(node.getTextContent());
 			}
 		},
 		ISOELECTRIC_POINT_LOQUALIFIER_value {

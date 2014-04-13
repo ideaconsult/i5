@@ -115,9 +115,9 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				if (set.getVALUEUNITTEMPVALUE() != null) {
 					Params tvalue = new Params();
 					if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
-						tvalue.put(I5CONSTANTS.loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+						tvalue.setLoValue(getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
 					}
-					tvalue.put(I5CONSTANTS.unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...
+					tvalue.setUnits(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...
 					effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);				
 				} else
 					effect.getConditions().put(I5CONSTANTS.cTemperature, null);	
@@ -130,15 +130,15 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				
 				if (set.getPRECISIONOCLOQUALIFIER()!=null) {
 					Params oc = new Params(); //% organic carbon
-					oc.put(I5CONSTANTS.unit,"%");
+					oc.setUnits("%");
 					if (set.getPRECISIONOCLOQUALIFIER().getOCLOVALUE()!=null) try {
-						oc.put(I5CONSTANTS.loValue,Double.parseDouble(set.getPRECISIONOCLOQUALIFIER().getOCLOVALUE().getValue()));
-						oc.put(I5CONSTANTS.loQualifier, set.getPRECISIONOCLOQUALIFIER().getOCLOQUALIFIER());
+						oc.setLoValue(Double.parseDouble(set.getPRECISIONOCLOQUALIFIER().getOCLOVALUE().getValue()));
+						oc.setLoQualifier(set.getPRECISIONOCLOQUALIFIER().getOCLOQUALIFIER());
 					} catch (Exception x) {}
 					
 					if (set.getPRECISIONOCLOQUALIFIER().getOCUPVALUE()!=null) try {
-						oc.put(I5CONSTANTS.upValue,Double.parseDouble(set.getPRECISIONOCLOQUALIFIER().getOCUPVALUE().getValue()));
-						oc.put(I5CONSTANTS.upQualifier, set.getPRECISIONOCLOQUALIFIER().getOCUPQUALIFIERValue());
+						oc.setUpValue(Double.parseDouble(set.getPRECISIONOCLOQUALIFIER().getOCUPVALUE().getValue()));
+						oc.setUpQualifier( set.getPRECISIONOCLOQUALIFIER().getOCUPQUALIFIERValue());
 					} catch (Exception x) {
 					}
 					effect.getConditions().put(I5CONSTANTS.rOrgCarbonPercent,null);

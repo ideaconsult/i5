@@ -222,8 +222,8 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,
 					Params params, Node node) {
-				params.put(I5CONSTANTS.loValue,node.getTextContent());
-				params.put(I5CONSTANTS.loQualifier," ");
+				params.setLoValue(node.getTextContent());
+				params.setLoQualifier(" ");
 			}
 			@Override
 			public String getTag() {
@@ -235,8 +235,8 @@ public class StudyRecordConverter
 			public void setValue(EffectRecord<String, Params, String> effect,
 					Params params, Node node) {
 				if (node.getTextContent()!=null) {
-					params.put(I5CONSTANTS.loValue,node.getTextContent());
-					params.put(I5CONSTANTS.loQualifier," ");
+					params.setLoValue(node.getTextContent());
+					params.setLoQualifier(" ");
 				}	
 			}
 			@Override
@@ -249,8 +249,8 @@ public class StudyRecordConverter
 			public void setValue(EffectRecord<String, Params, String> effect,
 					Params params, Node node) {
 				if (node.getTextContent()!=null) {
-					params.put(I5CONSTANTS.loValue,node.getTextContent());
-					params.put(I5CONSTANTS.loQualifier," ");
+					params.setLoValue(node.getTextContent());
+					params.setLoQualifier(" ");
 				}
 			}
 			@Override
@@ -292,9 +292,9 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
+					params.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(I5CONSTANTS.loValue,node.getTextContent());	
+					params.setLoValue(node.getTextContent());	
 				}
 			}		
 			public String getTag() {
@@ -305,9 +305,9 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
+					params.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(I5CONSTANTS.loValue,node.getTextContent());	
+					params.setLoValue(node.getTextContent());	
 				}
 			}		
 			public String getTag() {
@@ -331,21 +331,21 @@ public class StudyRecordConverter
 					params = new Params();
 					effect.getConditions().put(I5CONSTANTS.pTYPE,params);
 				}
-				params.put(I5CONSTANTS.loValue,I5CONSTANTS.pCOATING);params.put(I5CONSTANTS.loQualifier,"  ");
+				params.setLoValue(I5CONSTANTS.pCOATING);params.setLoQualifier("  ");
 				
 				params = (Params)effect.getConditions().get(I5CONSTANTS.pDESCRIPTION);
 				if (params == null) {
 					params = new Params();
 					effect.getConditions().put(I5CONSTANTS.pDESCRIPTION,params);
 				}
-				params.put(I5CONSTANTS.loValue,cf_mode.coatingType);params.put(I5CONSTANTS.loQualifier,"  ");
+				params.setLoValue(cf_mode.coatingType);params.setLoQualifier("  ");
 				
 				params = (Params)effect.getConditions().get(I5CONSTANTS.pCOATING_DESCRIPTION);
 				if (params == null) {
 					params = new Params();
 					effect.getConditions().put(I5CONSTANTS.pCOATING_DESCRIPTION,params);
 				}
-				params.put(I5CONSTANTS.loValue,cf_mode.coatingDesc);	params.put(I5CONSTANTS.loQualifier,"  ");			
+				params.setLoValue(cf_mode.coatingDesc);	params.setLoQualifier("  ");			
 				
 				effect.setEndpoint(I5CONSTANTS.eATOMIC_COMPOSITION);
 				useChildrenNodesParams(effect, nodes);	
@@ -386,14 +386,14 @@ public class StudyRecordConverter
 					params = new Params();
 					effect.getConditions().put(I5CONSTANTS.pTYPE,params);
 				}
-				params.put(I5CONSTANTS.loValue,I5CONSTANTS.pFUNCTIONALIZATION);params.put(I5CONSTANTS.loQualifier,"  ");
+				params.setLoValue(I5CONSTANTS.pFUNCTIONALIZATION);params.setLoQualifier("  ");
 				
 				params = (Params)effect.getConditions().get(I5CONSTANTS.pDESCRIPTION);
 				if (params == null) {
 					params = new Params();
 					effect.getConditions().put(I5CONSTANTS.pDESCRIPTION,params);
 				}
-				params.put(I5CONSTANTS.loValue,cf_mode.functionalisationtype);params.put(I5CONSTANTS.loQualifier,"  ");
+				params.setLoValue(cf_mode.functionalisationtype);params.setLoQualifier("  ");
 						
 				effect.setEndpoint(I5CONSTANTS.eFUNCTIONAL_GROUP);
 				useChildrenNodesParams(effect, nodes);	
@@ -412,14 +412,14 @@ public class StudyRecordConverter
 					params = new Params();
 					effect.getConditions().put(I5CONSTANTS.pTYPE,params);
 				}
-				params.put(I5CONSTANTS.loValue,I5CONSTANTS.pFUNCTIONALIZATION);params.put(I5CONSTANTS.loQualifier,"  ");
+				params.setLoValue(I5CONSTANTS.pFUNCTIONALIZATION);params.setLoQualifier("  ");
 				
 				params = (Params)effect.getConditions().get(I5CONSTANTS.pDESCRIPTION);
 				if (params == null) {
 					params = new Params();
 					effect.getConditions().put(I5CONSTANTS.pDESCRIPTION,params);
 				}
-				params.put(I5CONSTANTS.loValue,cf_mode.functionalisationtype);params.put(I5CONSTANTS.loQualifier,"  ");
+				params.setLoValue(cf_mode.functionalisationtype);params.setLoQualifier("  ");
 				
 				effect.setEndpoint(I5CONSTANTS.eFUNCTIONAL_GROUP);
 				useChildrenNodesParams(effect, nodes);	

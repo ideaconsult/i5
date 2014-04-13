@@ -10,13 +10,11 @@ import net.idea.i5.io.QACriteriaException;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import ambit2.base.data.Range;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
-import ambit2.base.data.study.RangeValue;
 import ambit2.base.exceptions.AmbitException;
 import ambit2.base.interfaces.IStructureRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.POUR_DENSITY_SECTION.DocumentTypeType;
@@ -167,7 +165,7 @@ public class StudyRecordConverter
 				if ("set".equals(set.getLocalName())) {
 					EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 					effect.setEndpoint(endpoint);
-					effect.setConditions(new Params(I5CONSTANTS.rSTD_DEV,new Params(I5CONSTANTS.loValue,null)));
+					effect.setConditions(new Params(I5CONSTANTS.rSTD_DEV,new Params(null)));
 					papp.addEffect(effect);
 					NodeList r = set.getChildNodes();
 					for (int j=0; j < r.getLength(); j++) try {
@@ -232,9 +230,9 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
 				try {
-					params.put(I5CONSTANTS.loValue,Double.parseDouble(node.getTextContent()));
+					params.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.put(I5CONSTANTS.loValue,node.getTextContent());	
+					params.setLoValue(node.getTextContent());	
 				}
 			}		
 			public String getTag() {
@@ -244,14 +242,14 @@ public class StudyRecordConverter
 		STD_DEVI_UNIT_value {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				params.put(I5CONSTANTS.unit,node.getTextContent());
+				params.setUnits(node.getTextContent());
 			}				
 		},
 		STD_DEVI_UNIT_TXT {
 			@Override
 			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
-				if ("other:".equals(params.get(I5CONSTANTS.unit)))
-						params.put(I5CONSTANTS.unit,node.getTextContent());
+				if ("other:".equals(params.getUnits()))
+						params.setUnits(node.getTextContent());
 			}			
 		}
 		;

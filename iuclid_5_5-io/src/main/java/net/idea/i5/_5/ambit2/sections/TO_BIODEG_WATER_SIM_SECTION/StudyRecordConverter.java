@@ -118,20 +118,20 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				Params dValue = new Params();
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
 					degradation.put(I5CONSTANTS.cDegradationParameter, set.getPHRASEOTHERPARAMETER()==null?null:set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
-					dValue.put(I5CONSTANTS.unit,"%");
+					dValue.setUnits("%");
 					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
-						dValue.put(I5CONSTANTS.loValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
-						dValue.put(I5CONSTANTS.loQualifier,set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
+						dValue.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
+						dValue.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
 					} catch (Exception x) {
-						dValue.put(I5CONSTANTS.loValue,set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue());
-					} else dValue.put(I5CONSTANTS.loValue,null);
+						dValue.setLoValue(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue());
+					} else dValue.setLoValue(null);
 					
 					if (set.getPRECISIONLOQUALIFIER().getUPVALUE()!=null) try {
-						dValue.put(I5CONSTANTS.upValue,Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
-						dValue.put(I5CONSTANTS.upQualifier,set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
+						dValue.setUpValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getUPVALUE().getValue()));
+						dValue.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
 					} catch (Exception x) {
-						dValue.put(I5CONSTANTS.upValue,null);
-					} else dValue.put(I5CONSTANTS.upValue,null);
+						dValue.setUpValue(null);
+					} else dValue.setUpValue(null);
 				}	
 
 				degradation.put(I5CONSTANTS.rDegradation, dValue);
@@ -140,10 +140,10 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				if (set.getVALUEUNITTIMEPOINTVALUE() != null) {
 					Params tvalue = new Params();
 					if (set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()!= null) {
-						tvalue.put(I5CONSTANTS.loValue,getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue()));
-					} else tvalue.put(I5CONSTANTS.loValue,null);
+						tvalue.setLoValue(getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue()));
+					} else tvalue.setLoValue(null);
 					if (set.getVALUEUNITTIMEPOINTVALUE()!=null)
-						tvalue.put(I5CONSTANTS.unit,set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue());
+						tvalue.setUnits(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTUNITValue());
 					degradation.put(I5CONSTANTS.cTimePoint, tvalue);				
 				} else
 					degradation.put(I5CONSTANTS.cTimePoint, null);	

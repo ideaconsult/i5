@@ -105,9 +105,9 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		//Exposure duration
 		if (sciPart.getECCHRONFISHTOX().getEXPDURATION()!=null) {
 			Params p = new Params();
-			try {p.put(I5CONSTANTS.loValue, sciPart.getECCHRONFISHTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());}
-			catch (Exception x) {p.put(I5CONSTANTS.loValue, null);}
-			try {p.put(I5CONSTANTS.unit,sciPart.getECCHRONFISHTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());}
+			try {p.setLoValue( sciPart.getECCHRONFISHTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());}
+			catch (Exception x) {p.setLoValue(null);}
+			try {p.setUnits(sciPart.getECCHRONFISHTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());}
 			catch (Exception x) {}
 			papp.getParameters().put(I5CONSTANTS.cExposure,p);
 		} else {
@@ -161,9 +161,9 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			if (set.getVALUEUNITEXPDURATIONVALUE()!=null) {
 				Params p = new Params();
 				try {
-					p.put(I5CONSTANTS.loValue, set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue());
-				} catch (Exception x) { p.put(I5CONSTANTS.loValue, null);}
-				try {p.put(I5CONSTANTS.unit,set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue());}
+					p.setLoValue( set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue());
+				} catch (Exception x) { p.setLoValue( null);}
+				try {p.setUnits(set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue());}
 				catch (Exception x) {}
 				effect.getConditions().put(I5CONSTANTS.cExposure,p);
 			} else {

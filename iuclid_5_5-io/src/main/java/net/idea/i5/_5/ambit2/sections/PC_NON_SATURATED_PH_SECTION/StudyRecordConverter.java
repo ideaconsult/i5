@@ -124,12 +124,10 @@ public class StudyRecordConverter
 			if (set.getVALUEUNITTEMPVALUE() != null) {
 				Params tvalue = new Params();
 				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
-					tvalue.put(
-							I5CONSTANTS.loValue,getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
+					tvalue.setLoValue(getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
 				}
 				if (set.getVALUEUNITTEMPVALUE()!=null)
-					tvalue.put(
-							I5CONSTANTS.unit,set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
+					tvalue.setUnits(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
 				effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);				
 			} else
 				effect.getConditions().put(I5CONSTANTS.cTemperature, null);			
@@ -139,19 +137,18 @@ public class StudyRecordConverter
 				Params phvalue = new Params();
 				if (set.getPRECISIONCONCLOQUALIFIER().getCONCLOVALUE()!= null) {
 					String qlfr = getQualifier(set.getPRECISIONCONCLOQUALIFIER().getCONCUPQUALIFIERValue()); 
-					phvalue.put(I5CONSTANTS.loQualifier,qlfr);
+					phvalue.setLoQualifier(qlfr);
 					
-					phvalue.put(I5CONSTANTS.loValue,getNumber(set.getPRECISIONCONCLOQUALIFIER().getCONCLOVALUE().getValue()));
-				} else phvalue.put(I5CONSTANTS.loValue,null);
+					phvalue.setLoValue(getNumber(set.getPRECISIONCONCLOQUALIFIER().getCONCLOVALUE().getValue()));
+				} else phvalue.setLoValue(null);
 				if (set.getPRECISIONCONCLOQUALIFIER().getCONCUPVALUE()!= null) {
 					String qlfr = getQualifier(set.getPRECISIONCONCLOQUALIFIER().getCONCUPQUALIFIERValue());
-					phvalue.put(I5CONSTANTS.upQualifier,qlfr);
+					phvalue.setUpQualifier(qlfr);
 												
-					phvalue.put(
-							I5CONSTANTS.upValue,getNumber(set.getPRECISIONCONCLOQUALIFIER().getCONCUPVALUE().getValue()));
-				} else phvalue.put(I5CONSTANTS.upValue,null);
+					phvalue.setUpValue(getNumber(set.getPRECISIONCONCLOQUALIFIER().getCONCUPVALUE().getValue()));
+				} else phvalue.setUpValue(null);
 				
-				phvalue.put(I5CONSTANTS.unit,getUnit(set.getPRECISIONCONCLOQUALIFIER().getCONCUNITValue(),
+				phvalue.setUnits(getUnit(set.getPRECISIONCONCLOQUALIFIER().getCONCUNITValue(),
 								set.getPRECISIONCONCLOQUALIFIER().getCONCUNITTXT()==null?null:
 								set.getPRECISIONCONCLOQUALIFIER().getCONCUNITTXT().getValue()));
 				

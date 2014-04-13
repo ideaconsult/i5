@@ -118,20 +118,20 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 			
 			Params v = new Params();
 			try {
-				v.put(I5CONSTANTS.loQualifier,set.getPRECISIONCARBONLOQUALIFIER().getCARBONLOQUALIFIERValue());
+				v.setLoQualifier(set.getPRECISIONCARBONLOQUALIFIER().getCARBONLOQUALIFIERValue());
 			} catch (Exception x) {}
 			try {
-				v.put(I5CONSTANTS.loValue,set.getPRECISIONCARBONLOQUALIFIER().getCARBONLOVALUE().getValue());
-			} catch (Exception x) {v.put(I5CONSTANTS.loValue,null);}
+				v.setLoValue(set.getPRECISIONCARBONLOQUALIFIER().getCARBONLOVALUE().getValue());
+			} catch (Exception x) {v.setLoValue(null);}
 			try {
-				v.put(I5CONSTANTS.upQualifier,set.getPRECISIONCARBONLOQUALIFIER().getCARBONUPQUALIFIERValue());
+				v.setUpQualifier(set.getPRECISIONCARBONLOQUALIFIER().getCARBONUPQUALIFIERValue());
 			} catch (Exception x) {}
 			try {
-				v.put(I5CONSTANTS.upValue,set.getPRECISIONCARBONLOQUALIFIER().getCARBONUPVALUE().getValue());
-			} catch (Exception x) {v.put(I5CONSTANTS.upValue,null);}
+				v.setUpValue(set.getPRECISIONCARBONLOQUALIFIER().getCARBONUPVALUE().getValue());
+			} catch (Exception x) {v.setUpValue(null);}
 			try {
-				v.put(I5CONSTANTS.unit,"%");
-			} catch (Exception x) {v.put(I5CONSTANTS.unit,null);}
+				v.setUnits("%");
+			} catch (Exception x) {v.setUnits(null);}
 			p.put(I5CONSTANTS.cOCContent, v);
 			
 			if (set.getSOILNUMBER()!=null && set.getSOILNUMBER().getSOILNUMBERValue()!=null) {
