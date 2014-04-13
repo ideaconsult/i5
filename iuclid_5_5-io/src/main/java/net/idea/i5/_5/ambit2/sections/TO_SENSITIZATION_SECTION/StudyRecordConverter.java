@@ -88,7 +88,8 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 
 		if (sciPart.getTOSENSITIZATION().getGUIDELINE()!=null)
 			for (Set set : sciPart.getTOSENSITIZATION().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {}
 		if (sciPart.getTOSENSITIZATION().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getTOSENSITIZATION().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());

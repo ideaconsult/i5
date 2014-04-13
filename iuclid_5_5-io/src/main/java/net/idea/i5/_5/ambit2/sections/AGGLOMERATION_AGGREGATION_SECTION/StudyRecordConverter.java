@@ -105,7 +105,8 @@ public class StudyRecordConverter
 		
 		if (sciPart.getAGGLOMERATIONAGGREGATION().getGUIDELINE() != null)
 			for (ScientificPart.AGGLOMERATIONAGGREGATION.GUIDELINE.Set set : sciPart.getAGGLOMERATIONAGGREGATION().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {}
 		if (sciPart.getAGGLOMERATIONAGGREGATION().getMETHODNOGUIDELINE() != null)
 			try {

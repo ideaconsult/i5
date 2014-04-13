@@ -96,7 +96,8 @@ public class StudyRecordConverter
 		
 		if (sciPart.getPCGRANULOMETRY().getGUIDELINE() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_GRANULOMETRY_SECTION.EndpointStudyRecord.ScientificPart.PCGRANULOMETRY.GUIDELINE.Set set : sciPart.getPCGRANULOMETRY().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {}
 		if (sciPart.getPCGRANULOMETRY().getMETHODNOGUIDELINE() != null)
 			try {

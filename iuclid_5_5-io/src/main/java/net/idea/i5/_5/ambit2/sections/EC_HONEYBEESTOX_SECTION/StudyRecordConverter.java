@@ -89,7 +89,8 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		//TODO data owner - it's probably not in this file
 		if (sciPart.getECHONEYBEESTOX().getGUIDELINE()!=null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_HONEYBEESTOX_SECTION.EndpointStudyRecord.ScientificPart.ECHONEYBEESTOX.GUIDELINE.Set set : sciPart.getECHONEYBEESTOX().getGUIDELINE().getSet()) {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 
 			}
 		if (sciPart.getECHONEYBEESTOX().getMETHODNOGUIDELINE()!=null) try {

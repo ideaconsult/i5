@@ -95,7 +95,8 @@ public class StudyRecordConverter
 		
 		if (sciPart.getPCWATERSOL().getGUIDELINE() != null)
 			for (ScientificPart.PCWATERSOL.GUIDELINE.Set set : sciPart.getPCWATERSOL().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {}
 		if (sciPart.getPCWATERSOL().getMETHODNOGUIDELINE() != null)
 			try {

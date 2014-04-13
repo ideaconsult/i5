@@ -97,8 +97,8 @@ public class StudyRecordConverter extends PChemStudyRecordConvertor<eu.europa.ec
 		if (sciPart.getGIGENERALINFORM().getGUIDELINE() != null)
 			for (ScientificPart.GIGENERALINFORM.GUIDELINE.Set set : sciPart
 					.getGIGENERALINFORM().getGUIDELINE().getSet()) {
-				papp.getProtocol().addGuideline(
-						set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 
 			}
 		if (sciPart.getGIGENERALINFORM().getMETHODNOGUIDELINE() != null)

@@ -1,5 +1,7 @@
 package net.idea.i5._5.ambit2.sections;
 
+import javax.xml.bind.JAXBElement;
+
 import net.idea.i5._5.ambit2.Phrases;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
@@ -171,6 +173,10 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 	protected String getUnit(String unit,String otherValue) {
 		if ("other:".equals(unit)) return otherValue;
 		else return unit;
+	}
+	protected String getGuideline(String method,JAXBElement<String> otherValue) {
+		if ("other guideline:".equals(method)) return otherValue.getValue();
+		else return method;
 	}
 	protected String getGuideline(String method,String otherValue) {
 		if ("other guideline:".equals(method)) return otherValue;

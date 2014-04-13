@@ -104,7 +104,8 @@ public class StudyRecordConverter
 		
 		if (sciPart.getCATALYTICACTIVITY().getGUIDELINE() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CATALYTIC_ACTIVITY_SECTION.EndpointStudyRecord.ScientificPart.CATALYTICACTIVITY.GUIDELINE.Set set : sciPart.getCATALYTICACTIVITY().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {}
 		if (sciPart.getCATALYTICACTIVITY().getMETHODNOGUIDELINE() != null)
 			try {

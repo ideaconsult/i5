@@ -104,7 +104,8 @@ public class StudyRecordConverter
 		
 		if (sciPart.getSPECIFICSURFACEAREA().getGUIDELINE() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.SPECIFIC_SURFACE_AREA_SECTION.EndpointStudyRecord.ScientificPart.SPECIFICSURFACEAREA.GUIDELINE.Set set : sciPart.getSPECIFICSURFACEAREA().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {}
 		if (sciPart.getSPECIFICSURFACEAREA().getMETHODNOGUIDELINE() != null)
 			try {

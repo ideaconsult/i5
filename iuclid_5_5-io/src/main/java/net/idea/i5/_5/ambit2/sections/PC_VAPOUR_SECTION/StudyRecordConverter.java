@@ -95,7 +95,8 @@ public class StudyRecordConverter
 		
 		if (sciPart.getPCVAPOUR().getGUIDELINE() != null)
 			for (ScientificPart.PCVAPOUR.GUIDELINE.Set set : sciPart.getPCVAPOUR().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {}
 		if (sciPart.getPCVAPOUR().getMETHODNOGUIDELINE() != null)
 			try {

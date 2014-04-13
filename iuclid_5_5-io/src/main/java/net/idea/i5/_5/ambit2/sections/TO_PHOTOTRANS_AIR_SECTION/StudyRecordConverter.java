@@ -92,7 +92,8 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		if (sciPart.getTOPHOTOTRANSAIR().getGUIDELINE()!=null)
 			for (ScientificPart.TOPHOTOTRANSAIR.GUIDELINE.Set set : sciPart.getTOPHOTOTRANSAIR().getGUIDELINE().getSet()) {
 				if (set.getPHRASEOTHERGUIDELINE()!=null)
-					papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+					papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+							set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 
 			}
 		if (sciPart.getTOPHOTOTRANSAIR().getMETHODNOGUIDELINE()!=null) try {

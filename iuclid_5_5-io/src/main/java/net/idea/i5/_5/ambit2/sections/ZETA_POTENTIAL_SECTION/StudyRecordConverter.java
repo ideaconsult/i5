@@ -105,7 +105,8 @@ public class StudyRecordConverter
 		
 		if (sciPart.getZETAPOTENTIAL().getGUIDELINE() != null)
 			for (Set set : sciPart.getZETAPOTENTIAL().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {}
 		if (sciPart.getZETAPOTENTIAL().getMETHODNOGUIDELINE() != null)
 			try {

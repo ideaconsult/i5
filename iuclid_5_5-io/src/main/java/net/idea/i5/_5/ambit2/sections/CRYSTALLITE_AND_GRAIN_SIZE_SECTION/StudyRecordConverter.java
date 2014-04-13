@@ -110,7 +110,8 @@ public class StudyRecordConverter
 		
 		if (sciPart.getCRYSTALLITEANDGRAINSIZE().getGUIDELINE() != null)
 			for (Set set : sciPart.getCRYSTALLITEANDGRAINSIZE().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {}
 		if (sciPart.getCRYSTALLITEANDGRAINSIZE().getMETHODNOGUIDELINE() != null)
 			try {

@@ -90,7 +90,8 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		//TODO data owner - it's probably not in this file
 		if (sciPart.getECSOILMICROTOX().getGUIDELINE()!=null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_SOIL_MICRO_TOX_SECTION.EndpointStudyRecord.ScientificPart.ECSOILMICROTOX.GUIDELINE.Set set : sciPart.getECSOILMICROTOX().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {}
 		if (sciPart.getECSOILMICROTOX().getMETHODNOGUIDELINE()!=null) try {
 			papp.getProtocol().addGuideline(sciPart.getECSOILMICROTOX().getMETHODNOGUIDELINE().getSet().getTEXTAREABELOW().getTEXTAREABELOW().getValue());

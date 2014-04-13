@@ -106,7 +106,8 @@ public class StudyRecordConverter
 		
 		if (sciPart.getSURFACECHEMISTRY().getGUIDELINE() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.SURFACE_CHEMISTRY_SECTION.EndpointStudyRecord.ScientificPart.SURFACECHEMISTRY.GUIDELINE.Set set : sciPart.getSURFACECHEMISTRY().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {}
 		if (sciPart.getSURFACECHEMISTRY().getMETHODNOGUIDELINE() != null)
 			try {

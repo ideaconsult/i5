@@ -98,7 +98,8 @@ public class StudyRecordConverter
 		
 		if (sciPart.getPCBOILING().getGUIDELINE() != null)
 			for (ScientificPart.PCBOILING.GUIDELINE.Set set : sciPart.getPCBOILING().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {}
 		if (sciPart.getPCBOILING().getMETHODNOGUIDELINE() != null)
 			try {

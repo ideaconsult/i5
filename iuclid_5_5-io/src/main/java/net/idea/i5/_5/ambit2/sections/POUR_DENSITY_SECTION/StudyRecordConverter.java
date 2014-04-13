@@ -104,7 +104,8 @@ public class StudyRecordConverter
 		
 		if (sciPart.getPOURDENSITY().getGUIDELINE() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.POUR_DENSITY_SECTION.EndpointStudyRecord.ScientificPart.POURDENSITY.GUIDELINE.Set set : sciPart.getPOURDENSITY().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {}
 		if (sciPart.getPOURDENSITY().getMETHODNOGUIDELINE() != null)
 			try {

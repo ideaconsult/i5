@@ -104,7 +104,8 @@ public class StudyRecordConverter
 		
 		if (sciPart.getASPECTRATIOSHAPE().getGUIDELINE() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.ASPECT_RATIO_SHAPE_SECTION.EndpointStudyRecord.ScientificPart.ASPECTRATIOSHAPE.GUIDELINE.Set set : sciPart.getASPECTRATIOSHAPE().getGUIDELINE().getSet()) try {
-				papp.getProtocol().addGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue());
+				papp.getProtocol().addGuideline(getGuideline(set.getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
+						set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT()));
 			} catch (Exception x) {		
 			}
 			
@@ -178,11 +179,11 @@ public class StudyRecordConverter
 					EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 					effect.setEndpoint(endpoint);
 					effect.setConditions(new Params());
-					Params xyz = new Params();xyz.setLoValue(null);
+					Params xyz = new Params(null);xyz.setLoQualifier("  ");
 					effect.getConditions().put(EFFECT.PRECISION_X_LOQUALIFIER.getTag(), xyz);
-					xyz = new Params();xyz.setLoValue(null);
+					xyz = new Params(null);xyz.setLoQualifier("  ");
 					effect.getConditions().put(EFFECT.PRECISION_Y_LOQUALIFIER.getTag(), xyz);
-					xyz = new Params();xyz.setLoValue(null);
+					xyz = new Params(null);xyz.setLoQualifier("  ");
 					effect.getConditions().put(EFFECT.PRECISION_Z_LOQUALIFIER.getTag(), xyz);
 					papp.addEffect(effect);
 					NodeList r = set.getChildNodes();
