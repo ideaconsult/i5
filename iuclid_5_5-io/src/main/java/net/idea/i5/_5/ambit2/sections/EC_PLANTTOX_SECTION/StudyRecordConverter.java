@@ -113,11 +113,14 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			papp.getParameters().put(I5CONSTANTS.cExposure,null);
 		}
 		
-		if (sciPart.getECPLANTTOX().getSUBSTRATETYPE()!=null) {
-				papp.getParameters().put(I5CONSTANTS.cTestMedium,sciPart.getECPLANTTOX().getSUBSTRATETYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} else 
-			papp.getParameters().put(I5CONSTANTS.cTestMedium,null);
-		
+		try {
+			String medium = sciPart.getECPLANTTOX().getSUBSTRATETYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue();
+			if (medium.startsWith("other:")) medium = sciPart.getECPLANTTOX().getSUBSTRATETYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT().getValue();
+			papp.getParameters().put(I5CONSTANTS.cTestMedium,medium);
+		} catch (Exception x) {
+			papp.getParameters().put(I5CONSTANTS.cTestMedium,null);	
+		}
+
 
 		//ENDPOINT
 		if (sciPart.getECPLANTTOX().getEFFCONC()!=null && sciPart.getECPLANTTOX().getEFFCONC().getSet()!=null)
@@ -131,9 +134,14 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 				effect.getConditions().put(I5CONSTANTS.cTestOrganism,set.getPHRASEOTHERORGANISM().getORGANISMValue());
 			} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cTestOrganism, null);}
 
-			effect.getConditions().put(I5CONSTANTS.cEffect,
-					set.getPHRASEOTHERBASISEFFECT()==null?null:
-					set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue());
+			try {
+				String basis = set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue();
+				if (basis.startsWith("other:")) basis = set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTTXT().getValue();
+				effect.getConditions().put(I5CONSTANTS.cEffect,basis);
+			} catch (Exception x) {
+				effect.getConditions().put(I5CONSTANTS.cEffect,null);	
+			}
+
 			
 			effect.getConditions().put(I5CONSTANTS.cConcType,
 					set.getPHRASEOTHEREFFCONCTYPE()==null?null:
@@ -168,9 +176,6 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 				effect.getConditions().put(I5CONSTANTS.cExposure,null);
 			}
 			
-			effect.getConditions().put(I5CONSTANTS.cBasisForEffect,set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue());
-			try { effect.getConditions().put(I5CONSTANTS.cEffect,set.getPHRASEOTHERENDPOINT().getENDPOINTValue());}
-			catch (Exception x) {effect.getConditions().put(I5CONSTANTS.cEffect,null);}
 		}
 		return record;
 	}
