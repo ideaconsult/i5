@@ -141,12 +141,16 @@ public class StudyRecordConverter
 				effect.getConditions().put(I5CONSTANTS.Remark,null);
 			}
 			try {
-				effect.getConditions().put(I5CONSTANTS.cSolvent,set.getPHRASEOTHERORGANICMEDIUM().getORGANICMEDIUMTXT().getValue());
+				String solvent = set.getPHRASEOTHERORGANICMEDIUM().getORGANICMEDIUMValue();
+				if ("other:".equals(set.getPHRASEOTHERORGANICMEDIUM().getORGANICMEDIUMValue())) 
+						solvent = set.getPHRASEOTHERORGANICMEDIUM().getORGANICMEDIUMTXT().getValue();
+				effect.getConditions().put(I5CONSTANTS.cSolvent,solvent);
 			} catch (Exception x) {
 				effect.getConditions().put(I5CONSTANTS.cSolvent,null);
 			}
 
 			if (set.getPRECISIONLOQUALIFIER() != null) {
+				
 				if (set.getPRECISIONLOQUALIFIER().getLOVALUE() != null)
 					try {
 						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER()
@@ -171,6 +175,10 @@ public class StudyRecordConverter
 								.getPRECISIONLOQUALIFIER().getLOVALUE()
 								.getValue());
 					}
+				
+					effect.setUnit(getUnit(set.getPRECISIONLOQUALIFIER().getUNITValue(),
+							set.getPRECISIONLOQUALIFIER().getUNITTXT()==null?null:
+							set.getPRECISIONLOQUALIFIER().getUNITTXT().getValue()));
 			}
 		}
 
