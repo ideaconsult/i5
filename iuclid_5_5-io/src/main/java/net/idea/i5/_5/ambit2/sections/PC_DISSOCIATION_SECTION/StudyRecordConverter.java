@@ -142,7 +142,7 @@ public class StudyRecordConverter
 			if (set.getPRECISIONVALUELOQUALIFIER() != null) {
 				if (set.getPRECISIONVALUELOQUALIFIER().getVALUELOVALUE() != null)
 					try {
-						effect.setLoQualifier(getQualifier(set.getPRECISIONVALUELOQUALIFIER().getVALUELOQUALIFIER()));
+						effect.setLoQualifier(getQualifier(set.getPRECISIONVALUELOQUALIFIER().getVALUELOQUALIFIERValue()));
 						effect.setLoValue(Double.parseDouble(set.getPRECISIONVALUELOQUALIFIER().getVALUELOVALUE().getValue()));
 					} catch (Exception x) {
 						effect.setTextValue(set
@@ -150,7 +150,7 @@ public class StudyRecordConverter
 					}
 				if (set.getPRECISIONVALUELOQUALIFIER().getVALUEUPVALUE() != null)
 					try {
-						effect.setUpQualifier(getQualifier(set.getPRECISIONVALUELOQUALIFIER().getVALUEUPQUALIFIER()));						
+						effect.setUpQualifier(getQualifier(set.getPRECISIONVALUELOQUALIFIER().getVALUEUPQUALIFIERValue()));						
 						effect.setUpValue(Double.parseDouble(set.getPRECISIONVALUELOQUALIFIER().getVALUEUPVALUE().getValue()));
 					} catch (Exception x) {
 						effect.setTextValue(set
