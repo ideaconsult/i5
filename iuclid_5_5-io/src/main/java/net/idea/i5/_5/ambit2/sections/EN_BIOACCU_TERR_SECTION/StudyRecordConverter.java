@@ -121,10 +121,11 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				papp.addEffect(effect);
 				
 				try {
-					effect.getConditions().put(I5CONSTANTS.cBioaccBasis,set.getPHRASEOTHERBASIS().getBASISTXT().getValue());
-				} catch (Exception x) {
-					effect.getConditions().put(I5CONSTANTS.cBioaccBasis,null);
-				}
+					String basis = set.getPHRASEOTHERBASIS().getBASISValue();
+					if (basis.startsWith("other:")) basis = set.getPHRASEOTHERBASIS().getBASISTXT().getValue();
+					
+					effect.getConditions().put(I5CONSTANTS.cBioaccBasis,basis);
+				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cBioaccBasis,null);}				
 				
 				if (set.getPRECISIONBSAFLOQUALIFIER()!=null) {
 					effect.setUnit(set.getPRECISIONBSAFLOQUALIFIER().getBSAFUNITValue());

@@ -120,8 +120,9 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				try {
-					String basis = set.getPHRASEOTHERBASIS().getBASIS();
+					String basis = set.getPHRASEOTHERBASIS().getBASISValue();
 					if (basis.startsWith("other:")) basis = set.getPHRASEOTHERBASIS().getBASISTXT().getValue();
+					
 					effect.getConditions().put(I5CONSTANTS.cBioaccBasis,basis);
 				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cBioaccBasis,null);}
 				try {
