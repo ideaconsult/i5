@@ -100,6 +100,14 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		
 		parseReference(unmarshalled, papp);
 		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
+		
+		try {
+			String medium = sciPart.getTOREPEATEDDERMAL().getTYPECOVERAGE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue();
+			if (medium.startsWith("other:")) medium = sciPart.getTOREPEATEDDERMAL().getTYPECOVERAGE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT().getValue();
+			papp.getParameters().put(I5CONSTANTS.cTypeCoverage,medium);
+		} catch (Exception x) {
+			papp.getParameters().put(I5CONSTANTS.cTypeCoverage,null);	
+		}
 
 		// Repeated tox oral
 		papp.getParameters().put(I5CONSTANTS.cSpecies,

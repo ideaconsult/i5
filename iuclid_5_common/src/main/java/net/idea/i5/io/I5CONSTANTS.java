@@ -17,6 +17,7 @@ public class I5CONSTANTS {
 	public static final String cYear = "Study year";
 	public static final String cTypeMethod= "Type of method";
 	public static final String cTypeStudy= "Type of study";
+	public static final String cTypeCoverage= "TYPE_COVERAGE";
 	
 	public static final String rDECOMPOSITION = "Decomposition";
 	public static final String methodType = "Method type";
