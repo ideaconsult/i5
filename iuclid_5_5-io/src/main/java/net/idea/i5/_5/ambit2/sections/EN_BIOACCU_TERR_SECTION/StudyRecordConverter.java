@@ -118,6 +118,8 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 				effect.setEndpoint(set.getBSAFTYPE().getBSAFTYPEValue());
 				effect.setConditions(new Params());
+				//not sure where to get concentrations from
+				effect.getConditions().put(I5CONSTANTS.cDoses,null);
 				papp.addEffect(effect);
 				
 				try {
