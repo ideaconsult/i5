@@ -150,7 +150,9 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			
 			
 			if (set.getPRECISIONLOQUALIFIER()!=null) {
-				effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
+				effect.setUnit(getUnit(set.getPRECISIONLOQUALIFIER().getUNITValue(),
+						set.getPRECISIONLOQUALIFIER().getUNITTXT()==null?null:
+						set.getPRECISIONLOQUALIFIER().getUNITTXT().getValue()));
 				
 				if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
 					effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));

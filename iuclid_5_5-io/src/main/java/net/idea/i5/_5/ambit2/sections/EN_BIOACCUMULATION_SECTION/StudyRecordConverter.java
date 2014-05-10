@@ -130,7 +130,10 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cDoses,null);}
 				
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
-					effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
+					effect.setUnit(getUnit(set.getPRECISIONLOQUALIFIER().getUNITValue(),
+							set.getPRECISIONLOQUALIFIER().getUNITTXT()==null?null:
+							set.getPRECISIONLOQUALIFIER().getUNITTXT().getValue()));
+					
 					if (set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue()!=null) try {
 						effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
 						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());

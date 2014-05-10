@@ -165,7 +165,10 @@ public class StudyRecordConverter
 				effect.getConditions().put(I5CONSTANTS.Remark,null);	
 			}
 			if (set.getPRECISIONLOQUALIFIER() != null) {
-				effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
+				effect.setUnit(getUnit(set.getPRECISIONLOQUALIFIER().getUNITValue(),
+						set.getPRECISIONLOQUALIFIER().getUNITTXT()==null?null:
+						set.getPRECISIONLOQUALIFIER().getUNITTXT().getValue()));
+				
 				if (set.getPRECISIONLOQUALIFIER().getLOVALUE() != null)
 					try {
 						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER()

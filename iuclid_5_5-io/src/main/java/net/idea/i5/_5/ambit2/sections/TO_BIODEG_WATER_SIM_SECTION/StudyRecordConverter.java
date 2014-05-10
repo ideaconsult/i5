@@ -167,6 +167,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				//results
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
 					effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
+					
 					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
 						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER().getLOQUALIFIERValue());
 						effect.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));

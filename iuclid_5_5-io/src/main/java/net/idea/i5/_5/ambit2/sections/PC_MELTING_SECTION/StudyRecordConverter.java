@@ -141,6 +141,7 @@ public class StudyRecordConverter
 			
 			if (set.getPRECISIONLOQUALIFIER() != null) {
 				effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
+				
 				if (set.getPRECISIONLOQUALIFIER().getLOVALUE() != null)
 					try {
 						effect.setLoQualifier(set.getPRECISIONLOQUALIFIER()
