@@ -131,14 +131,10 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			try {
 				String basis = set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue();
 				if (basis.startsWith("other:")) basis = set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTTXT().getValue();
-				effect.getConditions().put(I5CONSTANTS.cBioaccBasis,basis);
+				effect.getConditions().put(I5CONSTANTS.cEffect,basis);
 			} catch (Exception x) {
-				effect.getConditions().put(I5CONSTANTS.cBioaccBasis,null);	
+				effect.getConditions().put(I5CONSTANTS.cEffect,null);	
 			}
-				
-			effect.getConditions().put(I5CONSTANTS.cEffect,
-					set.getPHRASEOTHERBASISEFFECT()==null?null:
-					set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue());
 			
 			effect.getConditions().put(I5CONSTANTS.cConcType,
 					set.getPHRASEOTHEREFFCONCTYPE()==null?null:
@@ -178,7 +174,6 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			effect.getConditions().put(I5CONSTANTS.cEffect,null);
 			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,null);
 			effect.getConditions().put(I5CONSTANTS.cConcType,null);
-			effect.getConditions().put(I5CONSTANTS.cBioaccBasis,null);
 			effect.getConditions().put(I5CONSTANTS.cExposure,null);
 		}
 		return record;
