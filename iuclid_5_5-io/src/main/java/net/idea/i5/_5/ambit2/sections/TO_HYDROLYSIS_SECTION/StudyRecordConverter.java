@@ -109,7 +109,9 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		if (sciPart.getTOHYDROLYSIS().getHALFLIFE()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_HYDROLYSIS_SECTION.EndpointStudyRecord.ScientificPart.TOHYDROLYSIS.HALFLIFE.Set set : sciPart.getTOHYDROLYSIS().getHALFLIFE().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				try { effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());} catch (Exception x) {effect.setEndpoint(null);}
+				try { 
+					effect.setEndpoint(getValue(set.getPHRASEOTHERTYPE().getTYPEValue(),set.getPHRASEOTHERTYPE().getTYPETXT()));
+				} catch (Exception x) {effect.setEndpoint(null);}
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				

@@ -145,7 +145,6 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		if (sciPart.getENSTABILITYINSOIL().getHALFLIFE()!=null) 
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_STABILITY_IN_SOIL_SECTION.EndpointStudyRecord.ScientificPart.ENSTABILITYINSOIL.HALFLIFE.Set set : sciPart.getENSTABILITYINSOIL().getHALFLIFE().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());
 				try {
 					effect.setEndpoint(getValue(set.getPHRASEOTHERTYPE().getTYPEValue(),set.getPHRASEOTHERTYPE().getTYPETXT()));
 				} catch (Exception x) {effect.setEndpoint(null);}
