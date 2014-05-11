@@ -5,6 +5,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.logging.Level;
 
+import javax.xml.bind.JAXBElement;
+
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.IQASettings;
 import net.idea.i5.io.IStudyRecordConverter;
@@ -125,8 +127,11 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			setCompanyUUID(record, unmarshalled.getDocumentReferencePK());
 			// get from phrases
 			try {
-				record.setSubstancetype(Phrases.phrasegroup_N08
-						.get(unmarshalled.getComposition().getValueID()));
+				record.setSubstancetype(getValue(
+						Phrases.phrasegroup_N08
+						.get(unmarshalled.getComposition().getValueID()),
+						unmarshalled.getComposition().getOtherValue()
+						));
 			} catch (Exception x) {
 				record.setSubstancetype("Error reading the composition type");
 			}
@@ -503,6 +508,9 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 
 	protected void setFormat(IStructureRecord record) {
 		record.setFormat("i5._5.");
+	}
+	protected String getValue(String value, JAXBElement<String> other) {
+		return value==null?value:(value.startsWith("other")?(other==null?null:other.getValue()):value);
 	}
 
 }
