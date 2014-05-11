@@ -112,14 +112,17 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 							sciPart.getTOSENSITIZATION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
 		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}		
 		
-		papp.getParameters().put(I5CONSTANTS.cTypeMethod,
-				sciPart.getTOSENSITIZATION().getTYPEINVIVOINVITRO()==null?null:
-				sciPart.getTOSENSITIZATION().getTYPEINVIVOINVITRO().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		try {
+			papp.getParameters().put(I5CONSTANTS.cTypeMethod,
+					getValue(sciPart.getTOSENSITIZATION().getTYPEINVIVOINVITRO().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOSENSITIZATION().getTYPEINVIVOINVITRO().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cTypeMethod,null);}		
 		
-		papp.getParameters().put(I5CONSTANTS.cTypeStudy,
-				sciPart.getTOSENSITIZATION().getSTUDYTYPE()==null?null:
-				sciPart.getTOSENSITIZATION().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		
+		try {
+			papp.getParameters().put(I5CONSTANTS.cTypeStudy,
+					getValue(sciPart.getTOSENSITIZATION().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOSENSITIZATION().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cTypeStudy,null);}				
 		
 		if (sciPart.getTOSENSITIZATION().getINTERPRETRSSUBMITTER() != null) {
 			String otherValue = null;

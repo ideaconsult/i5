@@ -132,7 +132,12 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		if (sciPart.getECCHRONFISHTOX().getEFFCONC()!=null && sciPart.getECCHRONFISHTOX().getEFFCONC().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_CHRONFISHTOX_SECTION.EndpointStudyRecord.ScientificPart.ECCHRONFISHTOX.EFFCONC.Set set : sciPart.getECCHRONFISHTOX().getEFFCONC().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());
+			try {
+				effect.setEndpoint(getValue(
+					set.getPHRASEOTHERENDPOINT().getENDPOINTValue(),
+					set.getPHRASEOTHERENDPOINT().getENDPOINTTXT()
+					));
+			} catch (Exception x) {}
 			effect.setConditions(new Params());
 			papp.addEffect(effect);
 

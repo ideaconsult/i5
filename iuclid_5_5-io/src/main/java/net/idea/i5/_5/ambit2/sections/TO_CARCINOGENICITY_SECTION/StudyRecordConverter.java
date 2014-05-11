@@ -131,7 +131,12 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		if (sciPart.getTOCARCINOGENICITY().getEFFLEVEL() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_CARCINOGENICITY_SECTION.EndpointStudyRecord.ScientificPart.TOCARCINOGENICITY.EFFLEVEL.Set set : sciPart.getTOCARCINOGENICITY().getEFFLEVEL().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(set.getPHRASEOTHERENDPOINT().getENDPOINTValue());
+				try {
+					effect.setEndpoint(getValue(
+						set.getPHRASEOTHERENDPOINT().getENDPOINTValue(),
+						set.getPHRASEOTHERENDPOINT().getENDPOINTTXT()
+						));
+				} catch (Exception x) {effect.setEndpoint(null);}
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				
