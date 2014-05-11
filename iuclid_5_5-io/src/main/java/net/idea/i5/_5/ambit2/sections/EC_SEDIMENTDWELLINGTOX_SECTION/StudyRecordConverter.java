@@ -115,11 +115,13 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		} else 
 			papp.getParameters().put(I5CONSTANTS.cTestMedium,null);
 		
-		if (sciPart.getECSEDIMENTDWELLINGTOX().getORGANISM()!=null) {
-			papp.getParameters().put(I5CONSTANTS.cTestOrganism,sciPart.getECSEDIMENTDWELLINGTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} else	
+		try {
+			papp.getParameters().put(I5CONSTANTS.cTestOrganism,
+					getValue(sciPart.getECSEDIMENTDWELLINGTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getECSEDIMENTDWELLINGTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { 
 			papp.getParameters().put(I5CONSTANTS.cTestOrganism,null);
-		
+		}		
 		//ENDPOINT
 		if (sciPart.getECSEDIMENTDWELLINGTOX().getEFFCONC()!=null && sciPart.getECSEDIMENTDWELLINGTOX().getEFFCONC().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_SEDIMENTDWELLINGTOX_SECTION.EndpointStudyRecord.ScientificPart.ECSEDIMENTDWELLINGTOX.EFFCONC.Set set : sciPart.getECSEDIMENTDWELLINGTOX().getEFFCONC().getSet()) {

@@ -106,16 +106,16 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		parseReference(unmarshalled, papp);
 		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
-		// Repeated tox oral
-		papp.getParameters().put(I5CONSTANTS.cSpecies,
-					sciPart.getTOREPRODUCTION().getORGANISM()==null?null:
-					sciPart.getTOREPRODUCTION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		
+		try {
+			papp.getParameters().put(I5CONSTANTS.cSpecies,
+					getValue(sciPart.getTOREPRODUCTION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOREPRODUCTION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}			
 
 		try {
 			papp.getParameters().put(I5CONSTANTS.cRouteAdm,
-					sciPart.getTOREPRODUCTION().getROUTE()==null?null:
-					sciPart.getTOREPRODUCTION().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+					getValue(sciPart.getTOREPRODUCTION().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOREPRODUCTION().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));					
 		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cRouteAdm,null);}		
 		
 		StringBuilder doses = null;

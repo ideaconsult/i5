@@ -106,20 +106,25 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		parseReference(unmarshalled, papp);
 		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
-		// Repeated tox oral
-		papp.getParameters().put(I5CONSTANTS.cSpecies,
-					sciPart.getTOREPEATEDORAL().getORGANISM()==null?null:
-					sciPart.getTOREPEATEDORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		try {
+			papp.getParameters().put(I5CONSTANTS.cSpecies,
+					getValue(sciPart.getTOREPEATEDORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOREPEATEDORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}	
 		
 		try {
 			papp.getParameters().put(I5CONSTANTS.cRouteAdm,
-					sciPart.getTOREPEATEDORAL().getROUTE()==null?null:
-					sciPart.getTOREPEATEDORAL().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cRouteAdm,null);}		
+					getValue(sciPart.getTOREPEATEDORAL().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOREPEATEDORAL().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+			
+		} catch (Exception x) {
+			papp.getParameters().put(I5CONSTANTS.cRouteAdm,null);	
+		}
 		
 		try {
 			papp.getParameters().put(I5CONSTANTS.cTestType,
-					sciPart.getTOREPEATEDORAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+					getValue(sciPart.getTOREPEATEDORAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOREPEATEDORAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
 		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cTestType,null);}
 		
 		

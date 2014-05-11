@@ -106,9 +106,12 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
 		// Acute tox oral
-		papp.getParameters().put(I5CONSTANTS.cSpecies,
-					sciPart.getTOACUTEINHAL().getORGANISM()==null?null:
-					sciPart.getTOACUTEINHAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		try {
+			papp.getParameters().put(I5CONSTANTS.cSpecies,
+					getValue(sciPart.getTOACUTEINHAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOACUTEINHAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}
+		
 		// Sex
 		try {
 			papp.getParameters().put(I5CONSTANTS.cSex,

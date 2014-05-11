@@ -119,12 +119,14 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		} else 
 			papp.getParameters().put(I5CONSTANTS.cTestMedium,null);
 		
-		if (sciPart.getECBACTOX().getORGANISM()!=null) {
-			papp.getParameters().put(I5CONSTANTS.cTestOrganism,sciPart.getECBACTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} else	
+		try {
+			papp.getParameters().put(I5CONSTANTS.cTestOrganism,
+					getValue(sciPart.getECBACTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getECBACTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { 
 			papp.getParameters().put(I5CONSTANTS.cTestOrganism,null);
-		
-		//ENDPOINT
+		}
+				//ENDPOINT
 		if (sciPart.getECBACTOX().getEFFCONC()!=null && sciPart.getECBACTOX().getEFFCONC().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_BACTOX_SECTION.EndpointStudyRecord.ScientificPart.ECBACTOX.EFFCONC.Set set : sciPart.getECBACTOX().getEFFCONC().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();

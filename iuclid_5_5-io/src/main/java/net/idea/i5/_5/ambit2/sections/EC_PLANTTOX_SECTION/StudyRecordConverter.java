@@ -131,9 +131,12 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			papp.addEffect(effect);
 			
 			try {
-				effect.getConditions().put(I5CONSTANTS.cTestOrganism,set.getPHRASEOTHERORGANISM().getORGANISMValue());
-			} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cTestOrganism, null);}
-
+				effect.getConditions().put(I5CONSTANTS.cTestOrganism,
+						getValue(set.getPHRASEOTHERORGANISM().getORGANISMValue(),
+								set.getPHRASEOTHERORGANISM().getORGANISMTXT()));
+			} catch (Exception x) { 
+				effect.getConditions().put(I5CONSTANTS.cTestOrganism,null);
+			}
 			try {
 				String basis = set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTValue();
 				if (basis.startsWith("other:")) basis = set.getPHRASEOTHERBASISEFFECT().getBASISEFFECTTXT().getValue();

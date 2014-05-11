@@ -187,5 +187,9 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		Params p = new Params();
 		p.put(key,value);
 		return p;
-	}	
+	}
+	
+	protected String getValue(String value, JAXBElement<String> other) {
+		return value==null?value:(value.startsWith("other:")?(other==null?null:other.getValue()):value);
+	}
 }

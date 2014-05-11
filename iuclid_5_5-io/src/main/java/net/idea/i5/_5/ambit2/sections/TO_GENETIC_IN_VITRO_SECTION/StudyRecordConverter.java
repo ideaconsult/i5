@@ -109,15 +109,21 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		parseReference(unmarshalled, papp);
 		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
+		try {
+			papp.getParameters().put(I5CONSTANTS.cTypeGenotoxicity,
+					getValue(sciPart.getTOGENETICINVITRO().getGENOTOXICITYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOGENETICINVITRO().getGENOTOXICITYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { 
+			papp.getParameters().put(I5CONSTANTS.cTypeGenotoxicity,null);
+		}	
 		
-		papp.getParameters().put(I5CONSTANTS.cTypeGenotoxicity,
-				sciPart.getTOGENETICINVITRO().getGENOTOXICITYTYPE()==null?null:
-				sciPart.getTOGENETICINVITRO().getGENOTOXICITYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		
-		papp.getParameters().put(I5CONSTANTS.cTypeStudy,
-				sciPart.getTOGENETICINVITRO().getSTUDYTYPE()==null?null:
-				sciPart.getTOGENETICINVITRO().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		
+		try {
+			papp.getParameters().put(I5CONSTANTS.cTypeStudy,
+					getValue(sciPart.getTOGENETICINVITRO().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOGENETICINVITRO().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { 
+			papp.getParameters().put(I5CONSTANTS.cTypeStudy,null);
+		}		
 		try {
 		papp.getParameters().put(I5CONSTANTS.cTargetGene,
 				sciPart.getTOGENETICINVITRO().getTARGETGENE()==null?null:
@@ -133,8 +139,12 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		if ( sciPart.getTOGENETICINVITRO().getORGANISM()!= null &&  sciPart.getTOGENETICINVITRO().getORGANISM().getSet()!=null)
 		for (EndpointStudyRecord.ScientificPart.TOGENETICINVITRO.ORGANISM.Set set : sciPart.getTOGENETICINVITRO().getORGANISM().getSet()) {
 			try {
-				papp.getParameters().put(I5CONSTANTS.cSpecies,set.getPHRASEOTHERORGANISM().getORGANISMTXT().getValue());
+				papp.getParameters().put(I5CONSTANTS.cSpecies,
+						getValue(set.getPHRASEOTHERORGANISM().getORGANISMValue(),
+								set.getPHRASEOTHERORGANISM().getORGANISMTXT()));
+				
 			} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}
+			
 			try {
 				papp.getParameters().put(I5CONSTANTS.cMetabolicActivationSystem,set.getMETABOLICACTSYSTEM().getMETABOLICACTSYSTEM().getValue());
 			} catch (Exception x) {	papp.getParameters().put(I5CONSTANTS.cMetabolicActivationSystem,null);}
@@ -159,11 +169,17 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 				} catch (Exception x) {
 					effect.getConditions().put(I5CONSTANTS.cMetabolicActivation,null);
 				}
-				if (set.getPHRASEOTHERORGANISM()==null) try {
-					effect.getConditions().put(I5CONSTANTS.cSpecies,set.getPHRASEOTHERTESTSYSTEM().getTESTSYSTEMTXT().getValue());
-				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cSpecies,null);} 
+				if (set.getPHRASEOTHERORGANISM()==null) 
+					try {
+						effect.getConditions().put(I5CONSTANTS.cSpecies,
+								getValue(set.getPHRASEOTHERTESTSYSTEM().getTESTSYSTEMValue(),
+										set.getPHRASEOTHERTESTSYSTEM().getTESTSYSTEMTXT()));
+					} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cSpecies,null);}	
+				
 				else  try {
-					effect.getConditions().put(I5CONSTANTS.cSpecies,set.getPHRASEOTHERORGANISM().getORGANISMTXT().getValue());
+					effect.getConditions().put(I5CONSTANTS.cSpecies,
+							getValue(set.getPHRASEOTHERORGANISM().getORGANISMValue(),
+									set.getPHRASEOTHERORGANISM().getORGANISMTXT()));
 				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cSpecies,null);}
 			}
 		StringBuilder interpretation = null;

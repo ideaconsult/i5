@@ -110,19 +110,26 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		parseReference(unmarshalled, papp);
 		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
-		
-		papp.getParameters().put(I5CONSTANTS.cTypeGenotoxicity,
-				sciPart.getTOGENETICINVIVO().getGENOTOXICITYTYPE()==null?null:
-				sciPart.getTOGENETICINVIVO().getGENOTOXICITYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		
-		papp.getParameters().put(I5CONSTANTS.cTypeStudy,
-				sciPart.getTOGENETICINVIVO().getSTUDYTYPE()==null?null:
-				sciPart.getTOGENETICINVIVO().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		try {
+			papp.getParameters().put(I5CONSTANTS.cTypeGenotoxicity,
+					getValue(sciPart.getTOGENETICINVIVO().getGENOTOXICITYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOGENETICINVIVO().getGENOTOXICITYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { 
+			papp.getParameters().put(I5CONSTANTS.cTypeGenotoxicity,null);
+		}	
 		
 		try {
+			papp.getParameters().put(I5CONSTANTS.cTypeStudy,
+					getValue(sciPart.getTOGENETICINVIVO().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOGENETICINVIVO().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { 
+			papp.getParameters().put(I5CONSTANTS.cTypeStudy,null);
+		}			
+		try {
 			papp.getParameters().put(I5CONSTANTS.cRouteAdm,
-				sciPart.getTOGENETICINVIVO().getROUTE()==null?null:
-				sciPart.getTOGENETICINVIVO().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+					getValue(sciPart.getTOGENETICINVIVO().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOGENETICINVIVO().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+			
 		} catch (Exception x) {
 			papp.getParameters().put(I5CONSTANTS.cRouteAdm,null);	
 		}
@@ -133,7 +140,12 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		
 		if ( sciPart.getTOGENETICINVIVO().getORGANISM()!= null &&  sciPart.getTOGENETICINVIVO().getORGANISM().getSet()!=null)
 			try {
-				papp.getParameters().put(I5CONSTANTS.cSpecies,sciPart.getTOGENETICINVIVO().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+				papp.getParameters().put(I5CONSTANTS.cSpecies,
+						getValue(
+						sciPart.getTOGENETICINVIVO().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue()
+						,
+						sciPart.getTOGENETICINVIVO().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()
+						));
 			} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}
 		else 
 			papp.getParameters().put(I5CONSTANTS.cSpecies,null);

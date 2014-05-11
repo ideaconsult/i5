@@ -107,19 +107,22 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
 		// Repeated tox oral
-		papp.getParameters().put(I5CONSTANTS.cSpecies,
-					sciPart.getTOREPEATEDINHAL().getORGANISM()==null?null:
-					sciPart.getTOREPEATEDINHAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		try {
+			papp.getParameters().put(I5CONSTANTS.cSpecies,
+					getValue(sciPart.getTOREPEATEDINHAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOREPEATEDINHAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}
 		
 		try {
 			papp.getParameters().put(I5CONSTANTS.cRouteAdm,
-					sciPart.getTOREPEATEDINHAL().getROUTE()==null?null:
-					sciPart.getTOREPEATEDINHAL().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+					getValue(sciPart.getTOREPEATEDINHAL().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOREPEATEDINHAL().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));					
 		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cRouteAdm,null);}		
 		
 		try {
 			papp.getParameters().put(I5CONSTANTS.cTestType,
-					sciPart.getTOREPEATEDINHAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+					getValue(sciPart.getTOREPEATEDINHAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOREPEATEDINHAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));					
 		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cTestType,null);}
 		
 		StringBuilder doses = null;

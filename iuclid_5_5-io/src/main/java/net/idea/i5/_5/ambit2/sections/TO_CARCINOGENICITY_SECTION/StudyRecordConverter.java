@@ -105,16 +105,17 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		parseReference(unmarshalled, papp);
 		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
-		// Repeated tox oral
-		papp.getParameters().put(I5CONSTANTS.cSpecies,
-					sciPart.getTOCARCINOGENICITY().getORGANISM()==null?null:
-					sciPart.getTOCARCINOGENICITY().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		
+		try {
+			papp.getParameters().put(I5CONSTANTS.cSpecies,
+					getValue(sciPart.getTOCARCINOGENICITY().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOCARCINOGENICITY().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}
+				
 
 		try {
 			papp.getParameters().put(I5CONSTANTS.cRouteAdm,
-					sciPart.getTOCARCINOGENICITY().getROUTE()==null?null:
-					sciPart.getTOCARCINOGENICITY().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+					getValue(sciPart.getTOCARCINOGENICITY().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOCARCINOGENICITY().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
 		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cRouteAdm,null);}		
 		
 		StringBuilder doses = null;

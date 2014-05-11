@@ -104,14 +104,17 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
 		// Skin irritation/corrosion
-		
-		papp.getParameters().put(I5CONSTANTS.cSpecies,
-					sciPart.getTOEYEIRRITATION().getORGANISM()==null?null:
-					sciPart.getTOEYEIRRITATION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		
-		papp.getParameters().put(I5CONSTANTS.cTypeMethod,
-				sciPart.getTOEYEIRRITATION().getTYPEINVIVOINVITRO()==null?null:
-				sciPart.getTOEYEIRRITATION().getTYPEINVIVOINVITRO().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		try {
+			papp.getParameters().put(I5CONSTANTS.cSpecies,
+					getValue(sciPart.getTOEYEIRRITATION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOEYEIRRITATION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}				
+
+		try {
+			papp.getParameters().put(I5CONSTANTS.cTypeMethod,
+					getValue(sciPart.getTOEYEIRRITATION().getTYPEINVIVOINVITRO().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOEYEIRRITATION().getTYPEINVIVOINVITRO().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cTypeMethod,null);}
 		
 		if (sciPart.getTOEYEIRRITATION().getINTERPRETRSSUBMITTER() != null) {
 			String otherValue = null;

@@ -123,11 +123,14 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		} else 
 			papp.getParameters().put(I5CONSTANTS.cTestMedium,null);
 		
-		if (sciPart.getECCHRONDAPHNIATOX().getORGANISM()!=null) {
-			papp.getParameters().put(I5CONSTANTS.cTestOrganism,sciPart.getECCHRONDAPHNIATOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} else	
+		try {
+			papp.getParameters().put(I5CONSTANTS.cTestOrganism,
+					getValue(sciPart.getECCHRONDAPHNIATOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getECCHRONDAPHNIATOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { 
 			papp.getParameters().put(I5CONSTANTS.cTestOrganism,null);
-
+		}
+		
 		//ENDPOINT
 		if (sciPart.getECCHRONDAPHNIATOX().getEFFCONC()!=null && sciPart.getECCHRONDAPHNIATOX().getEFFCONC().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_CHRONDAPHNIATOX_SECTION.EndpointStudyRecord.ScientificPart.ECCHRONDAPHNIATOX.EFFCONC.Set set : sciPart.getECCHRONDAPHNIATOX().getEFFCONC().getSet()) {

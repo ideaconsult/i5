@@ -106,12 +106,13 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		
 		// citation
 		parseReference(unmarshalled, papp);
-		
+
 		try {
-			papp.getParameters().put(I5CONSTANTS.cSpecies,sciPart.getENBIOACCUTERR().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} catch (Exception x) {
-			papp.getParameters().put(I5CONSTANTS.cSpecies,null);
-		}
+			papp.getParameters().put(I5CONSTANTS.cSpecies,
+					getValue(sciPart.getENBIOACCUTERR().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getENBIOACCUTERR().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+			
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}		
 		
 		if (sciPart.getENBIOACCUTERR().getBCF()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCU_TERR_SECTION.EndpointStudyRecord.ScientificPart.ENBIOACCUTERR.BCF.Set set : sciPart.getENBIOACCUTERR().getBCF().getSet()) {

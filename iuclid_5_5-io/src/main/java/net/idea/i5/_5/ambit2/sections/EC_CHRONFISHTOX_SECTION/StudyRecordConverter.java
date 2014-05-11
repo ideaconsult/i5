@@ -120,10 +120,13 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		} else 
 			papp.getParameters().put(I5CONSTANTS.cTestMedium,null);
 		
-		if (sciPart.getECCHRONFISHTOX().getORGANISM()!=null) {
-			papp.getParameters().put(I5CONSTANTS.cTestOrganism,sciPart.getECCHRONFISHTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} else	
+		try {
+			papp.getParameters().put(I5CONSTANTS.cTestOrganism,
+					getValue(sciPart.getECCHRONFISHTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getECCHRONFISHTOX().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { 
 			papp.getParameters().put(I5CONSTANTS.cTestOrganism,null);
+		}
 		
 		//ENDPOINT
 		if (sciPart.getECCHRONFISHTOX().getEFFCONC()!=null && sciPart.getECCHRONFISHTOX().getEFFCONC().getSet()!=null)

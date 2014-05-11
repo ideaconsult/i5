@@ -107,8 +107,11 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		parseReference(unmarshalled, papp);
 		
 		try {
-		papp.getParameters().put(I5CONSTANTS.cSpecies,sciPart.getENBIOACCUMULATION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}
+			papp.getParameters().put(I5CONSTANTS.cSpecies,
+					getValue(sciPart.getENBIOACCUMULATION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getENBIOACCUMULATION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}			
+		
 		try {
 			papp.getParameters().put(I5CONSTANTS.cRoute,sciPart.getENBIOACCUMULATION().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
 		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cRoute,null);}
@@ -120,10 +123,8 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				try {
-					String basis = set.getPHRASEOTHERBASIS().getBASISValue();
-					if (basis.startsWith("other:")) basis = set.getPHRASEOTHERBASIS().getBASISTXT().getValue();
-					
-					effect.getConditions().put(I5CONSTANTS.cBioaccBasis,basis);
+					effect.getConditions().put(I5CONSTANTS.cBioaccBasis,
+							getValue(set.getPHRASEOTHERBASIS().getBASISValue(), set.getPHRASEOTHERBASIS().getBASISTXT()));
 				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cBioaccBasis,null);}
 				try {
 					effect.getConditions().put(I5CONSTANTS.cDoses,set.getCONCLEVEL().getCONCLEVEL().getValue());

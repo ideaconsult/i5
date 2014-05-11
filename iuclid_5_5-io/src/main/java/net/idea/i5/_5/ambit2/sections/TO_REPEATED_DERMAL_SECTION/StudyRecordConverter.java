@@ -108,15 +108,18 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		} catch (Exception x) {
 			papp.getParameters().put(I5CONSTANTS.cTypeCoverage,null);	
 		}
+		try {
+			papp.getParameters().put(I5CONSTANTS.cSpecies,
+					getValue(sciPart.getTOREPEATEDDERMAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOREPEATEDDERMAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}
 
-		// Repeated tox oral
-		papp.getParameters().put(I5CONSTANTS.cSpecies,
-					sciPart.getTOREPEATEDDERMAL().getORGANISM()==null?null:
-					sciPart.getTOREPEATEDDERMAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
-		
 		try {
 			papp.getParameters().put(I5CONSTANTS.cTestType,
-					sciPart.getTOREPEATEDDERMAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+					getValue(
+					sciPart.getTOREPEATEDDERMAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+					sciPart.getTOREPEATEDDERMAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()
+					));
 		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cTestType,null);}
 		
 		/*
