@@ -120,8 +120,9 @@ public class StudyRecordConverter
 		if (sciPart.getPCPARTITION().getMETHODTYPE() != null) {
 			papp.getParameters().put(
 					I5CONSTANTS.methodType,
-					sciPart.getPCPARTITION().getMETHODTYPE().getSet()
-							.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
+					getValue(sciPart.getPCPARTITION().getMETHODTYPE().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue(),
+							sciPart.getPCPARTITION().getMETHODTYPE().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXTXT()
+							));
 		} else {
 			papp.getParameters().put(I5CONSTANTS.methodType, null);
 		}

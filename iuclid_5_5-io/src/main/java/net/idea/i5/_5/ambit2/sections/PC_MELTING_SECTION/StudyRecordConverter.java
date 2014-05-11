@@ -119,6 +119,7 @@ public class StudyRecordConverter
 			papp.getParameters().put(methodType, null);
 		}
 		*/
+			
 		if (sciPart.getPCMELTING().getMELTINGPT()!=null && sciPart.getPCMELTING().getMELTINGPT().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_MELTING_SECTION.EndpointStudyRecord.ScientificPart.PCMELTING.MELTINGPT.Set set : sciPart.getPCMELTING().getMELTINGPT().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();

@@ -121,7 +121,10 @@ public class StudyRecordConverter extends PChemStudyRecordConvertor<eu.europa.ec
 		if (sciPart.getGIGENERALINFORM().getFORM()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.GI_GENERAL_INFORM_SECTION.EndpointStudyRecord.ScientificPart.GIGENERALINFORM.FORM.Set set : sciPart.getGIGENERALINFORM().getFORM().getSet()) {
 			if (form==null) form= new StringBuilder(); else form.append(" ");
-			form.append(set.getPHRASEOTHERLISTPOP().getLISTPOPValue());
+			form.append(getValue(
+					set.getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+					set.getPHRASEOTHERLISTPOP().getLISTPOPTXT()
+					));
 		}
 
 		EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();

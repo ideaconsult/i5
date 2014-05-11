@@ -116,11 +116,13 @@ public class StudyRecordConverter
 		if (sciPart.getPCWATERSOL().getMETHODTYPE() != null) {
 			papp.getParameters().put(
 					I5CONSTANTS.methodType,
-					sciPart.getPCWATERSOL().getMETHODTYPE().getSet()
-							.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
+					getValue(sciPart.getPCWATERSOL().getMETHODTYPE().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue(),
+							sciPart.getPCWATERSOL().getMETHODTYPE().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXTXT()
+							));
 		} else {
 			papp.getParameters().put(I5CONSTANTS.methodType, null);
 		}
+		
 		if (sciPart.getPCWATERSOL().getWATERSOL()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord.ScientificPart.PCWATERSOL.WATERSOL.Set set : sciPart.getPCWATERSOL().getWATERSOL().getSet()) {
 			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();

@@ -30,8 +30,6 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 	protected boolean isDataWaiving(EndpointStudyRecord unmarshalled) {
 		return unmarshalled.getDataWaiving()!=null;
 	}	
-	protected static final String chalfLife= "Half-life";
-	
 	@Override
 	protected String getTestMaterialIdentity(EndpointStudyRecord unmarshalled) {
 		try {
@@ -107,9 +105,14 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());	
 
 		//TEST TYPE
-		papp.getParameters().put(I5CONSTANTS.cTestType,
-				sciPart.getTOBIODEGWATERSIM().getOXYGENCONDITIONS()==null?null:
-				sciPart.getTOBIODEGWATERSIM().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
+		try {
+			papp.getParameters().put(I5CONSTANTS.cTestType,
+				getValue(
+				sciPart.getTOBIODEGWATERSIM().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue(),
+				sciPart.getTOBIODEGWATERSIM().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXTXT()));
+		} catch (Exception x) {
+			papp.getParameters().put(I5CONSTANTS.cTestType,null);
+		}
 
 		Params degradation = new Params();
 		if (sciPart.getTOBIODEGWATERSIM().getDEGRAD()!=null) 
@@ -118,7 +121,14 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				
 				Params dValue = new Params();
 				if (set.getPRECISIONLOQUALIFIER()!=null) {
-					degradation.put(I5CONSTANTS.cDegradationParameter, set.getPHRASEOTHERPARAMETER()==null?null:set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
+					try {
+						degradation.put(I5CONSTANTS.cDegradationParameter,getValue( 
+							set.getPHRASEOTHERPARAMETER().getPARAMETERValue(),
+							set.getPHRASEOTHERPARAMETER().getPARAMETERTXT())
+							);
+					} catch (Exception x) {
+						degradation.put(I5CONSTANTS.cDegradationParameter,null);
+					}
 					dValue.setUnits("%");
 					if (set.getPRECISIONLOQUALIFIER().getLOVALUE()!=null) try {
 						dValue.setLoValue(Double.parseDouble(set.getPRECISIONLOQUALIFIER().getLOVALUE().getValue()));
@@ -157,7 +167,12 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 			sciPart.getTOBIODEGWATERSIM().getHALFLIFE().getSet().size()>0) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSIM.HALFLIFE.Set set : sciPart.getTOBIODEGWATERSIM().getHALFLIFE().getSet()) {
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());
+				try {
+					effect.setEndpoint(getValue(
+							set.getPHRASEOTHERTYPE().getTYPEValue(),
+							set.getPHRASEOTHERTYPE().getTYPETXT()
+							));
+				} catch (Exception x) {effect.setEndpoint(null);}				
 
 				effect.setConditions(new Params());
 				//effect.getConditions().put("Compartment", set.getPHRASEOTHERCOMPARTMENT().getCOMPARTMENTValue());

@@ -137,9 +137,12 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 				effect.setEndpoint(I5CONSTANTS.ePercentDegradation);
 				effect.setUnit("%");
-				if (set.getPHRASEOTHERPARAMETER()!=null)
-					effect.setEndpoint(set.getPHRASEOTHERPARAMETER().getPARAMETERValue());
-
+				try {
+					effect.setEndpoint(getValue(
+							set.getPHRASEOTHERPARAMETER().getPARAMETERValue(),
+							set.getPHRASEOTHERPARAMETER().getPARAMETERTXT()
+							));
+				} catch (Exception x) {}
 				effect.setConditions(new Params());
 				
 				papp.addEffect(effect);
