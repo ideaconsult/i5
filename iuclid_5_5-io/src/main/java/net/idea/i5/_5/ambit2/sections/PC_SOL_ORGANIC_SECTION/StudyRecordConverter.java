@@ -141,10 +141,10 @@ public class StudyRecordConverter
 				effect.getConditions().put(I5CONSTANTS.Remark,null);
 			}
 			try {
-				String solvent = set.getPHRASEOTHERORGANICMEDIUM().getORGANICMEDIUMValue();
-				if ("other:".equals(set.getPHRASEOTHERORGANICMEDIUM().getORGANICMEDIUMValue())) 
-						solvent = set.getPHRASEOTHERORGANICMEDIUM().getORGANICMEDIUMTXT().getValue();
-				effect.getConditions().put(I5CONSTANTS.cSolvent,solvent);
+				effect.getConditions().put(I5CONSTANTS.cSolvent,getValue(
+						set.getPHRASEOTHERORGANICMEDIUM().getORGANICMEDIUMValue(),
+						set.getPHRASEOTHERORGANICMEDIUM().getORGANICMEDIUMTXT()
+						));
 			} catch (Exception x) {
 				effect.getConditions().put(I5CONSTANTS.cSolvent,null);
 			}
