@@ -175,11 +175,11 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 		else return unit;
 	}
 	protected String getGuideline(String method,JAXBElement<String> otherValue) {
-		if ("other guideline:".equals(method)) return otherValue.getValue();
+		if (method==null || method.startsWith("other")) return otherValue==null?null:otherValue.getValue();
 		else return method;
 	}
 	protected String getGuideline(String method,String otherValue) {
-		if ("other guideline:".equals(method)) return otherValue;
+		if (method==null || method.startsWith("other")) return otherValue;
 		else return method;
 	}
 
