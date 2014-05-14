@@ -114,7 +114,7 @@ public class StudyRecordConverter extends PChemStudyRecordConvertor<eu.europa.ec
 		if (sciPart.getGIGENERALINFORM().getSUBSTANCEPHYSICALSTATE()!=null && sciPart.getGIGENERALINFORM().getSUBSTANCEPHYSICALSTATE().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.GI_GENERAL_INFORM_SECTION.EndpointStudyRecord.ScientificPart.GIGENERALINFORM.SUBSTANCEPHYSICALSTATE.Set set : sciPart.getGIGENERALINFORM().getSUBSTANCEPHYSICALSTATE().getSet()) {
 			if (physstate==null) physstate = new StringBuilder(); else physstate.append(" ");
-			physstate.append(set.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue());
+			physstate.append(getValue(set.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue(),set.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXTXT()));
 		}
 		
 		StringBuilder form = null;
@@ -133,7 +133,10 @@ public class StudyRecordConverter extends PChemStudyRecordConvertor<eu.europa.ec
 		effect.getConditions().put(I5CONSTANTS.Remark,form==null?"":form.toString());
 		papp.addEffect(effect);
 		try {
-		papp.setInterpretationResult(sciPart.getGIGENERALINFORM().getSUBSTANCETYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+		papp.setInterpretationResult(getValue(
+			sciPart.getGIGENERALINFORM().getSUBSTANCETYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+			sciPart.getGIGENERALINFORM().getSUBSTANCETYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()
+					));
 		} catch (Exception x) {papp.setInterpretationResult("");}
 
 		return record;
