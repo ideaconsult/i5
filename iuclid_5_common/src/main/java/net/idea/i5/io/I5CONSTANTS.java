@@ -49,6 +49,7 @@ public class I5CONSTANTS {
 	public static final String cSalinity = "Salinity";
 	public static final String cExposure = "Exposure";
 	public static final String cTestMedium = "Test Medium";
+	public static final String cMEDIUM = "MEDIUM";
 	public static final String cTestOrganism = "Test organism";
 	public static final String cMeasuredConcentration = "Measured concentration";
 	public static final String cEffect = "Effect";
@@ -72,6 +73,7 @@ public class I5CONSTANTS {
 	
 	//NM
 	public static final String cTestMaterialForm = "TESTMATFORM";
+	
 	
 	/*
 Moved to ambit2.base.data.study._FIELDS_RANGE
@@ -147,7 +149,21 @@ Moved to ambit2.base.data.study._FIELDS_RANGE
 	
 	public static final String rSTD_DEV = "STD_DEV";
 	
-	public static final String cPERCENTILE = "PERCENTILE";
+	public static final String cPERCENTILE = "PHRASEOTHER_PERCENTILE";
 	public static final String rPERCENTILE_DT50 = "DT50";
 	public static final String cSEQ_NUM = "SEQ_NUM";
+	
+	public static final String AGGLO_AGGR_DIAM = "AGGLO_AGGR_DIAM";
+	public static final String AGGLO_AGGR_SIZE = "AGGLO_AGGR_SIZE";
+	public static final String AGGLO_AGGR_SIZE_DIST = "AGGLO_AGGR_SIZE_DIST";
+	public static final String AGGLO_AGGREGATION_IDX = "AGGLO_AGGREGATION_IDX";
+	
+	public static final String MEAN_DIAMETER = "MEAN DIAMETER";
+	public static final String X = "X";
+	public static final String Y = "Y";
+	public static final String Z = "Z";
+	
+	public static final String SPECIFIC_SURFACE_AREA	= "SPECIFIC_SURFACE_AREA";
+	
 }
+

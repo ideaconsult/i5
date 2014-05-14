@@ -16,7 +16,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.GI_GENERAL_INFORM_SE
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.GI_GENERAL_INFORM_SECTION.EndpointStudyRecord.ScientificPart;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.GI_GENERAL_INFORM_SECTION.EndpointStudyRecord.ScientificPart.GIGENERALINFORM.REFERENCE.Set;
 
-public class StudyRecordConverter extends PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.GI_GENERAL_INFORM_SECTION.EndpointStudyRecord> {
+public class StudyRecordConverter extends PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.GI_GENERAL_INFORM_SECTION.EndpointStudyRecord,Params,Params> {
 
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.GI_GENERAL_INFORM);

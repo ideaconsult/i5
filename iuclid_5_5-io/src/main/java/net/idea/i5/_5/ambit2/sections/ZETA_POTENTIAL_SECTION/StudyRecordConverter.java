@@ -26,7 +26,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.ZETA_POTENTIAL_SECTI
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.ZETA_POTENTIAL_SECTION.EndpointStudyRecord> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.ZETA_POTENTIAL_SECTION.EndpointStudyRecord,Params,Params> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.ZETA_POTENTIAL);

@@ -18,7 +18,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION.En
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION.EndpointStudyRecord> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_VAPOUR_SECTION.EndpointStudyRecord,Params,Params> {
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.PC_VAPOUR);
 	}

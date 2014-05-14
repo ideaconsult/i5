@@ -26,7 +26,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.SURFACE_CHEMISTRY_SE
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.SURFACE_CHEMISTRY_SECTION.EndpointStudyRecord> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.SURFACE_CHEMISTRY_SECTION.EndpointStudyRecord,Params,Params> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.SURFACE_CHEMISTRY);

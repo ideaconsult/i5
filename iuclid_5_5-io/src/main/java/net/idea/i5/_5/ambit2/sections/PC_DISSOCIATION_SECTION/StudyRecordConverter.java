@@ -18,7 +18,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_DISSOCIATION_SECT
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_DISSOCIATION_SECTION.EndpointStudyRecord> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_DISSOCIATION_SECTION.EndpointStudyRecord,Params,Params> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.PC_DISSOCIATION);

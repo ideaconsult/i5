@@ -2,6 +2,7 @@ package net.idea.i5._5.ambit2.sections.CATALYTIC_ACTIVITY_SECTION;
 
 import javax.xml.bind.JAXBElement;
 
+import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
@@ -25,7 +26,9 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CATALYTIC_ACTIVITY_S
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CATALYTIC_ACTIVITY_SECTION.EndpointStudyRecord> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CATALYTIC_ACTIVITY_SECTION.EndpointStudyRecord,
+		Params,Params
+		> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.CATALYTIC_ACTIVITY);
@@ -84,7 +87,7 @@ public class StudyRecordConverter
 		if (sciPart.getCATALYTICACTIVITY()==null) return null;
 
 		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+		Experiment<Params,Params> papp = createProtocolApplication(
 				unmarshalled.getDocumentReferencePK(),
 				unmarshalled.getName());
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
@@ -167,8 +170,9 @@ public class StudyRecordConverter
 				Node set = nodes.item(i);
 				if ("set".equals(set.getLocalName())) {
 					EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+					effect.setConditions(new Params());
 					effect.setEndpoint(endpoint);
-					effect.setConditions(new Params(I5CONSTANTS.rSTD_DEV,new Params(null)));
+					effect.getConditions().put(I5CONSTANTS.rSTD_DEV,new Params(null));
 					papp.addEffect(effect);
 					NodeList r = set.getChildNodes();
 					for (int j=0; j < r.getLength(); j++) try {

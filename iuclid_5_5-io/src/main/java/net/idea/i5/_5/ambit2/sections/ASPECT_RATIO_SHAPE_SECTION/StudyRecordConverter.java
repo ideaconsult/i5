@@ -25,7 +25,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.ASPECT_RATIO_SHAPE_S
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.ASPECT_RATIO_SHAPE_SECTION.EndpointStudyRecord> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.ASPECT_RATIO_SHAPE_SECTION.EndpointStudyRecord,Params,Params> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.ASPECT_RATIO_SHAPE);

@@ -3,19 +3,20 @@ package net.idea.i5._5.ambit2.sections;
 import javax.xml.bind.JAXBElement;
 
 import net.idea.i5._5.ambit2.Phrases;
-import net.idea.i5.io.I5CONSTANTS;
+import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.IStudyRecordConverter;
 import net.idea.i5.io.QACriteriaException;
 import net.idea.i5.io.QASettings;
 import ambit2.base.data.SubstanceRecord;
+import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.ReliabilityParams;
 import ambit2.base.exceptions.AmbitException;
 
-public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordConverter<T>{
+public abstract class AbstractStudyRecordConverter<T,PROTOCOLPARAMS extends IParams,CONDITIONS extends IParams>  implements IStudyRecordConverter<T>{
 	protected I5_ROOT_OBJECTS endpointCategory;
 	protected enum _top_category {
 		PCHEM {
@@ -130,13 +131,15 @@ public abstract class AbstractStudyRecordConverter<T>  implements IStudyRecordCo
 			return reliability;
 	};
 	
-	protected ProtocolApplication createProtocolApplication(String documentID,String name) {
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = new ProtocolApplication<Protocol,Params,String,Params,String>(
-					new Protocol(name));
+	protected PROTOCOLPARAMS createProtocolParameters() {
+		return (PROTOCOLPARAMS) new Params();
+	}
+	protected Experiment<PROTOCOLPARAMS,CONDITIONS> createProtocolApplication(String documentID,String name) {
+		Experiment<PROTOCOLPARAMS,CONDITIONS> papp = new Experiment<PROTOCOLPARAMS,CONDITIONS>(new Protocol(name));
 		papp.setDocumentUUID(documentID);		
 		papp.getProtocol().setTopCategory(getTopCategory());
 		papp.getProtocol().setCategory(getEndpointCategory());
-		papp.setParameters(new Params());
+		papp.setParameters(createProtocolParameters());
 		return papp;
 	}
 	public static Object getNumber(Object value) {

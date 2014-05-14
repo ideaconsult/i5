@@ -25,7 +25,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.POUR_DENSITY_SECTION
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.POUR_DENSITY_SECTION.EndpointStudyRecord> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.POUR_DENSITY_SECTION.EndpointStudyRecord,Params,Params> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.POUR_DENSITY);
@@ -165,8 +165,9 @@ public class StudyRecordConverter
 				Node set = nodes.item(i);
 				if ("set".equals(set.getLocalName())) {
 					EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+					effect.setConditions(new Params());
 					effect.setEndpoint(endpoint);
-					effect.setConditions(new Params(I5CONSTANTS.rSTD_DEV,new Params(null)));
+					effect.getConditions().put(I5CONSTANTS.rSTD_DEV,new Params(null));
 					papp.addEffect(effect);
 					NodeList r = set.getChildNodes();
 					for (int j=0; j < r.getLength(); j++) try {

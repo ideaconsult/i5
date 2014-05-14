@@ -587,6 +587,21 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isSupported() {
 			return true;
 		}		
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+				I5CONSTANTS.pMMD,I5CONSTANTS.pMMAD,I5CONSTANTS.pGSD,I5CONSTANTS.pPARTICLESIZE
+				//I5CONSTANTS.pPARTICLESIZE + percentile
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {I5CONSTANTS.cPERCENTILE,I5CONSTANTS.cSEQ_NUM,I5CONSTANTS.Remark};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {I5CONSTANTS.pTESTMAT_FORM,I5CONSTANTS.pDISTRIBUTION_TYPE};
+		}
 	},
 	AGGLOMERATION_AGGREGATION {
 		@Override
@@ -600,6 +615,22 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public boolean isNanoMaterialTemplate() {
 			return true; //101
+		}
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					I5CONSTANTS.AGGLO_AGGR_DIAM,I5CONSTANTS.AGGLO_AGGR_SIZE, I5CONSTANTS.AGGLO_AGGR_SIZE_DIST, I5CONSTANTS.AGGLO_AGGREGATION_IDX
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {I5CONSTANTS.pH,I5CONSTANTS.cMEDIUM,I5CONSTANTS.Remark,I5CONSTANTS.cSEQ_NUM,I5CONSTANTS.cPERCENTILE};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTypeMethod
+			};
 		}
 	},
 	CRYSTALLINE_PHASE {
@@ -619,6 +650,19 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isSupported() {
 			return true;
 		}
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {};
+		}
 	},
 	CRYSTALLITE_AND_GRAIN_SIZE {
 		@Override
@@ -636,6 +680,24 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public boolean isSupported() {
 			return true;
+		}
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					I5CONSTANTS.MEAN_DIAMETER
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+								
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTypeMethod,I5CONSTANTS.pTESTMAT_FORM,I5CONSTANTS.pMATERIAL_ISOTROPIC			
+			};
 		}
 	},
 	ASPECT_RATIO_SHAPE {
@@ -655,6 +717,24 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isSupported() {
 			return true;
 		}
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					I5CONSTANTS.eASPECT_RATIO,I5CONSTANTS.eSHAPE
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+				I5CONSTANTS.eSHAPE_DESCRIPTIVE,I5CONSTANTS.X,I5CONSTANTS.Y,I5CONSTANTS.Z,I5CONSTANTS.Remark	
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTypeMethod
+			};
+		}
 	},
 	SPECIFIC_SURFACE_AREA {
 		@Override
@@ -672,6 +752,24 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public boolean isSupported() {
 			return true;
+		}
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					I5CONSTANTS.SPECIFIC_SURFACE_AREA
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.Remark
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTestMaterialForm,I5CONSTANTS.cTypeMethod
+			};
 		}
 	},
 	ZETA_POTENTIAL {
@@ -691,6 +789,24 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isSupported() {
 			return true;
 		}
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					I5CONSTANTS.eZETA_POTENTIAL,I5CONSTANTS.eISOELECTRIC_POINT
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cMEDIUM,I5CONSTANTS.pH,I5CONSTANTS.Remark
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTestMaterialForm,I5CONSTANTS.cTypeMethod
+			};
+		}
 	},
 	SURFACE_CHEMISTRY {
 		@Override
@@ -708,7 +824,25 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public boolean isSupported() {
 			return true;
-		}		
+		}	
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					I5CONSTANTS.eATOMIC_COMPOSITION,I5CONSTANTS.eFUNCTIONAL_GROUP
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.pCOATING_DESCRIPTION,I5CONSTANTS.pDESCRIPTION,I5CONSTANTS.Remark,I5CONSTANTS.pELEMENT_OR_GROUP,I5CONSTANTS.pTYPE
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTypeMethod
+			};
+		}
 	},
 	DUSTINESS {
 		@Override
@@ -727,6 +861,24 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isSupported() {
 			return true;
 		}
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					I5CONSTANTS.eDUSTINEX
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTypeMethod,I5CONSTANTS.pTESTMAT_FORM
+			};
+		}
 	},
 	POROSITY {
 		@Override
@@ -744,6 +896,24 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public boolean isSupported() {
 			return true;
+		}
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					I5CONSTANTS.ePOROSITY,
+					I5CONSTANTS.eSPECIFIC_PORE_VOLUME,
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTypeMethod,I5CONSTANTS.pTESTMAT_FORM
+			};
 		}
 		
 	},
@@ -764,6 +934,19 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isSupported() {
 			return true;
 		}
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {};
+		}
 
 	},
 	PHOTOCATALYTIC_ACTIVITY {
@@ -783,6 +966,19 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isSupported() {
 			return true;
 		}
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {};
+		}
 	},
 	RADICAL_FORMATION_POTENTIAL {
 		@Override
@@ -800,6 +996,19 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public boolean isSupported() {
 			return false;
+		}
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {};
 		}
 	},		
 	CATALYTIC_ACTIVITY {
@@ -819,7 +1028,19 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isSupported() {
 			return true;
 		}
-		
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {};
+		}
 	}		
 	;
 	public String getContextPath() {
@@ -846,4 +1067,13 @@ public enum I5_ROOT_OBJECTS {
 	public String getTitle() {
 		return name();
 	}		
+	public String[] getEndpoints() {
+		return null;
+	}
+	public String[] getProtocolParameters() {
+		return null;
+	}
+	public String[] getConditions() {
+		return null;
+	}
 } 

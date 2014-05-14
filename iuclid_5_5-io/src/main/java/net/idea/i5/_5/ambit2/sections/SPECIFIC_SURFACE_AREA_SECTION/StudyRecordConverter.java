@@ -25,7 +25,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.SPECIFIC_SURFACE_ARE
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.SPECIFIC_SURFACE_AREA_SECTION.EndpointStudyRecord> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.SPECIFIC_SURFACE_AREA_SECTION.EndpointStudyRecord,Params,Params> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.SPECIFIC_SURFACE_AREA);

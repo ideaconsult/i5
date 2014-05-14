@@ -2,7 +2,6 @@ package net.idea.i5._5.ambit2.sections.CRYSTALLITE_AND_GRAIN_SIZE_SECTION;
 
 import javax.xml.bind.JAXBElement;
 
-import net.idea.i5._5.ambit2.sections.AbstractStudyRecordConverter;
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
@@ -24,7 +23,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CRYSTALLITE_AND_GRAI
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CRYSTALLITE_AND_GRAIN_SIZE_SECTION.EndpointStudyRecord> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CRYSTALLITE_AND_GRAIN_SIZE_SECTION.EndpointStudyRecord,Params,Params> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.CRYSTALLITE_AND_GRAIN_SIZE);

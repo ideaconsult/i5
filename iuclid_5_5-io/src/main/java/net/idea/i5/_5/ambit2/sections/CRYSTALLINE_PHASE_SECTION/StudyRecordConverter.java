@@ -25,7 +25,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CRYSTALLINE_PHASE_SE
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CRYSTALLINE_PHASE_SECTION.EndpointStudyRecord> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CRYSTALLINE_PHASE_SECTION.EndpointStudyRecord,Params,Params> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.CRYSTALLINE_PHASE);
@@ -145,8 +145,10 @@ public class StudyRecordConverter
 		}
 				
 		
-		if (sciPart.getCRYSTALLINEPHASE().getCRYSTALLINEPHASERES()!=null) {
+		if (sciPart.getCRYSTALLINEPHASE().getCRYSTALLINEPHASERES()!=null) try {
 			parseElement(sciPart.getCRYSTALLINEPHASE().getCRYSTALLINEPHASERES(),papp,I5CONSTANTS.eCRYSTALLINE_PHASE);
+		} catch (Exception x) {
+			x.printStackTrace();
 		}
 	
 		try {
@@ -166,7 +168,8 @@ public class StudyRecordConverter
 				if ("set".equals(set.getLocalName())) {
 					EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
 					effect.setEndpoint(endpoint);
-					effect.setConditions(new Params(I5CONSTANTS.rCRYSTALLINE_PHASE_COMMON_NAME,new Params(null)));
+					effect.setConditions(new Params());
+					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_COMMON_NAME,new Params(null));
 					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTAL_SYSTEM,new Params(null));
 					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_BRAVAIS_LATTICE,new Params(null));
 					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_POINT_GROUP,new Params(null));
