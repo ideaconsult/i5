@@ -653,15 +653,25 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			return new String[] {
+					I5CONSTANTS.eCRYSTALLINE_PHASE
 			};
 		}
 		@Override
 		public String[] getConditions() {
-			return new String[] {};
+			return new String[] {
+					I5CONSTANTS.rCRYSTALLINE_PHASE_SPACE_GROUP,
+					I5CONSTANTS.rCRYSTALLINE_PHASE_POINT_GROUP,
+					I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTGRPH_PLANES,
+					I5CONSTANTS.rCRYSTALLINE_PHASE_BRAVAIS_LATTICE,
+					I5CONSTANTS.rCRYSTALLINE_PHASE_COMMON_NAME,
+					I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTAL_SYSTEM
+			};
 		}
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] {};
+			return new String[] {
+					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTypeMethod,I5CONSTANTS.pTESTMAT_FORM,I5CONSTANTS.pMATERIAL_ISOTROPIC
+			};
 		}
 	},
 	CRYSTALLITE_AND_GRAIN_SIZE {
@@ -937,6 +947,7 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			return new String[] {
+					I5CONSTANTS.ePOUR_DENSITY
 			};
 		}
 		@Override
@@ -945,7 +956,9 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] {};
+			return new String[] {
+					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTypeMethod,I5CONSTANTS.pTESTMAT_FORM
+			};
 		}
 
 	},
@@ -969,6 +982,7 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			return new String[] {
+					I5CONSTANTS.ePHOTOCATALYTIC_ACTIVITY,I5CONSTANTS.eTURNOVERFREQUENCY
 			};
 		}
 		@Override
@@ -977,7 +991,9 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] {};
+			return new String[] {
+					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTypeMethod,I5CONSTANTS.pTESTMAT_FORM
+			};
 		}
 	},
 	RADICAL_FORMATION_POTENTIAL {
@@ -1031,6 +1047,7 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			return new String[] {
+					I5CONSTANTS.eCATALYTIC_ACTIVITY,I5CONSTANTS.eTURNOVERFREQUENCY
 			};
 		}
 		@Override
@@ -1039,7 +1056,9 @@ public enum I5_ROOT_OBJECTS {
 		}
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] {};
+			return new String[] {
+					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTypeMethod,I5CONSTANTS.pTESTMAT_FORM
+			};
 		}
 	}		
 	;
