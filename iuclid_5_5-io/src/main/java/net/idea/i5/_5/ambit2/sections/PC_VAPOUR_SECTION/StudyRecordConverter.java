@@ -135,9 +135,6 @@ public class StudyRecordConverter
 			} else
 				effect.getConditions().put(I5CONSTANTS.cTemperature, null);	
 			
-			//Not sure where to get it from
-			effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION,null);
-
 			if (set.getPRECISIONPRESSURELOQUALIFIER() != null) {
 				effect.setUnit(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNITValue());
 				if (set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOVALUE() != null) {
