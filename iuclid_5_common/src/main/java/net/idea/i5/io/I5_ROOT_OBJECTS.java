@@ -71,6 +71,25 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "4.1";
+		}	
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					//SUBSTANCEPHYSICALSTATE  phrasegroup_A19
+				"gaseous","liquid","solid","Not specified"
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.Remark
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					
+			};
 		}		
 	},
 	PC_MELTING {
@@ -97,6 +116,39 @@ public enum I5_ROOT_OBJECTS {
 			return "4.3";
 		}			
 	},
+	PC_GRANULOMETRY {
+		@Override
+		public String getTitle() {
+			return "Particle size distribution (Granulometry)";
+		}
+		@Override
+		public String getNumber() {
+			return "4.5";
+		}
+		@Override
+		public boolean isNanoMaterialTemplate() {
+			return true; //not NM specific, but used in NM !
+		}		
+		@Override
+		public boolean isSupported() {
+			return true;
+		}		
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+				I5CONSTANTS.pMMD,I5CONSTANTS.pMMAD,I5CONSTANTS.pGSD,I5CONSTANTS.pPARTICLESIZE
+				//I5CONSTANTS.pPARTICLESIZE + percentile
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {I5CONSTANTS.cPERCENTILE,I5CONSTANTS.cSEQ_NUM,I5CONSTANTS.Remark};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {I5CONSTANTS.pTESTMAT_FORM,I5CONSTANTS.pDISTRIBUTION_TYPE};
+		}
+	},	
 	PC_VAPOUR {
 		@Override
 		public boolean isDataRich() {
@@ -169,440 +221,7 @@ public enum I5_ROOT_OBJECTS {
 			return "4.21";
 		}		
 	},
-	TO_PHOTOTRANS_AIR {
-		@Override
-		public String getTitle() {
-			return "Phototransformation in Air";
-		}		
-		@Override
-		public String getNumber() {
-			return "5.1.1";
-		}			
-	},
-	TO_HYDROLYSIS {
-		@Override
-		public String getTitle() {
-			return "Hydrolysis";
-		}
-		@Override
-		public String getNumber() {
-			return "5.1.2";
-		}			
-	},
-	TO_BIODEG_WATER_SCREEN {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}		
-		@Override
-		public String getTitle() {
-			return "Biodegradation in water - screening tests";
-		}
-		@Override
-		public String getNumber() {
-			return "5.2.1";
-		}			
-	},
-	TO_BIODEG_WATER_SIM {
-		@Override
-		public String getTitle() {
-			return "Biodegradation in water and sediment: simulation tests";
-		}
-		@Override
-		public String getNumber() {
-			return "5.2.2";
-		}	
-	},
-	EN_STABILITY_IN_SOIL {
-		@Override
-		public String getTitle() {
-			return "Biodegradation in Soil";
-		}
-		@Override
-		public String getNumber() {
-			return "5.2.3";
-		}		
-	},
-	EN_BIOACCUMULATION {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}		
-		@Override
-		public String getTitle() {
-			return "Bioaccumulation: aquatic / sediment";
-		}
-		@Override
-		public String getNumber() {
-			return "5.3.1";
-		}		
-	},
-	EN_BIOACCU_TERR {
-		@Override
-		public String getTitle() {
-			return "Bioaccumulation: terrestrial";
-		}
-		@Override
-		public String getNumber() {
-			return "5.3.2";
-		}			
-	},
-	EN_ADSORPTION {
-		@Override
-		public String getTitle() {
-			return "Adsorption / Desorption";
-		}
-		@Override
-		public String getNumber() {
-			return "5.4.1";
-		}			
-	},
-	EN_HENRY_LAW {
-		@Override
-		public String getTitle() {
-			return "Henry's Law constant";
-		}
-		@Override
-		public String getNumber() {
-			return "5.4.2";
-		}			
-	},
-	TO_ACUTE_ORAL {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}		
-		@Override
-		public String getTitle() {
-			return "Acute toxicity - oral";
-		}
-		@Override
-		public String getNumber() {
-			return "7.2.1";
-		}			
-	},
-	TO_ACUTE_INHAL {
-		@Override
-		public String getTitle() {
-			return "Acute toxicity - inhalation";
-		}			
-		@Override
-		public String getNumber() {
-			return "7.2.2";
-		}		
-	},
-	TO_ACUTE_DERMAL {
-		@Override
-		public String getTitle() {
-			return "Acute toxicity - dermal";
-		}			
-		@Override
-		public String getNumber() {
-			return "7.2.3";
-		}			
-	},
-	TO_SKIN_IRRITATION {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}		
-		@Override
-		public String getTitle() {
-			return "Skin irritation / Corrosion";
-		}	
-		@Override
-		public String getNumber() {
-			return "7.3.1";
-		}			
-	},
-	TO_EYE_IRRITATION {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}
-		@Override
-		public String getTitle() {
-			return "Eye irritation";
-		}	
-		@Override
-		public String getNumber() {
-			return "7.3.2";
-		}			
-	},
-	TO_SENSITIZATION {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}	
-		@Override
-		public String getTitle() {
-			return "Skin sensitisation";
-		}
-		@Override
-		public String getNumber() {
-			return "7.4.1";
-		}			
-	},
-	//TO_SENSITIZATION_HUMAN,
-	TO_REPEATED_ORAL {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}		
-		@Override
-		public String getTitle() {
-			return "Repeated dose toxicity - oral";
-		}
-		@Override
-		public String getNumber() {
-			return "7.5.1";
-		}			
-	},
-	TO_REPEATED_INHAL {
-		@Override
-		public String getTitle() {
-			return "Repeated dose toxicity - inhalation";
-		}
-		@Override
-		public String getNumber() {
-			return "7.5.2";
-		}		
-	},
-	TO_REPEATED_DERMAL {
-		@Override
-		public String getTitle() {
-			return "Repeated dose toxicity - dermal";
-		}
-		@Override
-		public String getNumber() {
-			return "7.5.3";
-		}			
-	},
-	TO_GENETIC_IN_VITRO {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}		
-		@Override
-		public String getTitle() {
-			return "Genetic toxicity in vitro";
-		}
-		@Override
-		public String getNumber() {
-			return "7.6.1";
-		}		
-	},
-	TO_GENETIC_IN_VIVO {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}		
-		@Override
-		public String getTitle() {
-			return "Genetic toxicity in vivo";
-		}
-		@Override
-		public String getNumber() {
-			return "7.6.1";
-		}		
-	},	
-	TO_CARCINOGENICITY {
-		@Override
-		public String getTitle() {
-			return "Carcinogenicity";
-		}
-		@Override
-		public String getNumber() {
-			return "7.7";
-		}				
-	},
-	TO_REPRODUCTION {
-		@Override
-		public String getTitle() {
-			return "Toxicity to reproduction";
-		}
-		@Override
-		public String getNumber() {
-			return "7.8.1";
-		}		
-	},
-	TO_DEVELOPMENTAL {
-		@Override
-		public String getTitle() {
-			return "Developmental toxicity / teratogenicity";
-		}
-		@Override
-		public String getNumber() {
-			return "7.8.2";
-		}		
-	},
-	EC_FISHTOX {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}
-		@Override
-		public String getTitle() {
-			return "Short-term toxicity to fish";
-		}
-		@Override
-		public String getNumber() {
-			return "6.1.1";
-		}		
-	},
-	EC_CHRONFISHTOX {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}		
-		@Override
-		public String getTitle() {
-			return "Long-term toxicity to fish";
-		}
-		@Override
-		public String getNumber() {
-			return "6.1.2";
-		}		
-	},
-	EC_DAPHNIATOX {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}
-		@Override
-		public String getTitle() {
-			return "Short-term toxicity to aquatic inverterbrates";
-		}			
-		@Override
-		public String getNumber() {
-			return "6.1.3";
-		}		
-	},
-	EC_CHRONDAPHNIATOX {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}		
-		@Override
-		public String getTitle() {
-			return "Long-term toxicity to aquatic inverterbrates";
-		}
-		@Override
-		public String getNumber() {
-			return "6.1.4";
-		}		
-	},
-	EC_ALGAETOX {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}
-		@Override
-		public String getTitle() {
-			return "Toxicity to aquatic algae and cyanobacteria";
-		}
-		@Override
-		public String getNumber() {
-			return "6.1.5";
-		}		
-	},
-	EC_BACTOX {
-		@Override
-		public boolean isDataRich() {
-			return true;
-		}		
-		@Override
-		public String getTitle() {
-			return "Toxicity to microorganisms";
-		}
-		@Override
-		public String getNumber() {
-			return "6.1.7";
-		}		
-	},
-	EC_SEDIMENTDWELLINGTOX {
-		@Override
-		public String getTitle() {
-			return "Sediment toxicity";
-		}
-		@Override
-		public String getNumber() {
-			return "6.2";
-		}			
-	},
-	EC_SOILDWELLINGTOX {
-		@Override
-		public String getTitle() {
-			return "Toxicity to soil macroorganisms";
-		}
-		@Override
-		public String getNumber() {
-			return "6.3.1";
-		}		
-	},
-	EC_HONEYBEESTOX {
-		@Override
-		public String getTitle() {
-			return "Toxicity to terrestrial arthropods";
-		}
-		@Override
-		public String getNumber() {
-			return "6.3.2";
-		}			
-	},
-	EC_PLANTTOX {
-		@Override
-		public String getTitle() {
-			return "Toxicity to terrestrial plants";
-		}
-		@Override
-		public String getNumber() {
-			return "6.3.3";
-		}		
-	},
-	EC_SOIL_MICRO_TOX {
-		@Override
-		public String getTitle() {
-			return "Toxicity to soil microorganisms";
-		}
-		@Override
-		public String getNumber() {
-			return "6.3.4";
-		}			
-	},
-	PC_GRANULOMETRY {
-		@Override
-		public String getTitle() {
-			return "Particle size distribution (Granulometry)";
-		}
-		@Override
-		public String getNumber() {
-			return "4.5";
-		}
-		@Override
-		public boolean isNanoMaterialTemplate() {
-			return true; //not NM specific, but used in NM !
-		}		
-		@Override
-		public boolean isSupported() {
-			return true;
-		}		
-		@Override
-		public String[] getEndpoints() {
-			return new String[] {
-				I5CONSTANTS.pMMD,I5CONSTANTS.pMMAD,I5CONSTANTS.pGSD,I5CONSTANTS.pPARTICLESIZE
-				//I5CONSTANTS.pPARTICLESIZE + percentile
-			};
-		}
-		@Override
-		public String[] getConditions() {
-			return new String[] {I5CONSTANTS.cPERCENTILE,I5CONSTANTS.cSEQ_NUM,I5CONSTANTS.Remark};
-		}
-		@Override
-		public String[] getProtocolParameters() {
-			return new String[] {I5CONSTANTS.pTESTMAT_FORM,I5CONSTANTS.pDISTRIBUTION_TYPE};
-		}
-	},
+	
 	AGGLOMERATION_AGGREGATION {
 		@Override
 		public String getTitle() {
@@ -1060,7 +679,678 @@ public enum I5_ROOT_OBJECTS {
 					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTypeMethod,I5CONSTANTS.pTESTMAT_FORM
 			};
 		}
-	}		
+	},			
+	TO_PHOTOTRANS_AIR {
+		@Override
+		public String getTitle() {
+			return "Phototransformation in Air";
+		}		
+		@Override
+		public String getNumber() {
+			return "5.1.1";
+		}			
+	},
+	TO_HYDROLYSIS {
+		@Override
+		public String getTitle() {
+			return "Hydrolysis";
+		}
+		@Override
+		public String getNumber() {
+			return "5.1.2";
+		}			
+	},
+	TO_BIODEG_WATER_SCREEN {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}		
+		@Override
+		public String getTitle() {
+			return "Biodegradation in water - screening tests";
+		}
+		@Override
+		public String getNumber() {
+			return "5.2.1";
+		}			
+	},
+	TO_BIODEG_WATER_SIM {
+		@Override
+		public String getTitle() {
+			return "Biodegradation in water and sediment: simulation tests";
+		}
+		@Override
+		public String getNumber() {
+			return "5.2.2";
+		}	
+	},
+	EN_STABILITY_IN_SOIL {
+		@Override
+		public String getTitle() {
+			return "Biodegradation in Soil";
+		}
+		@Override
+		public String getNumber() {
+			return "5.2.3";
+		}
+		@Override
+		public String[] getEndpoints() {
+			//phrasegroup_F136
+			return new String[] {
+					"(pseudo-)first order (= DT50)","second order","zero order","other:","no data"
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cSoilNo, //phrasegroup_F108
+					I5CONSTANTS.cSoilType, //phrasegroup_F109
+					I5CONSTANTS.cOCContent	//number
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.cTestType
+			};
+		}
+		
+	},
+	EN_BIOACCUMULATION {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}		
+		@Override
+		public String getTitle() {
+			return "Bioaccumulation: aquatic / sediment";
+		}
+		@Override
+		public String getNumber() {
+			return "5.3.1";
+		}		
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					
+			};
+		}		
+	},
+	EN_BIOACCU_TERR {
+		@Override
+		public String getTitle() {
+			return "Bioaccumulation: terrestrial";
+		}
+		@Override
+		public String getNumber() {
+			return "5.3.2";
+		}
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					
+			};
+		}		
+	},
+	EN_ADSORPTION {
+		@Override
+		public String getTitle() {
+			return "Adsorption / Desorption";
+		}
+		@Override
+		public String getNumber() {
+			return "5.4.1";
+		}		
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					//phrasegroup_TD470
+					"Koc","log Koc","Kd","other:"
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cTemperature,I5CONSTANTS.rOrgCarbonPercent, I5CONSTANTS.Remark
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					
+			};
+		}		
+	},
+	EN_HENRY_LAW {
+		@Override
+		public String getTitle() {
+			return "Henry's Law constant";
+		}
+		@Override
+		public String getNumber() {
+			return "5.4.2";
+		}	
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					
+			};
+		}		
+	},
+	EC_FISHTOX {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}
+		@Override
+		public String getTitle() {
+			return "Short-term toxicity to fish";
+		}
+		@Override
+		public String getNumber() {
+			return "6.1.1";
+		}		
+	},
+	EC_CHRONFISHTOX {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}		
+		@Override
+		public String getTitle() {
+			return "Long-term toxicity to fish";
+		}
+		@Override
+		public String getNumber() {
+			return "6.1.2";
+		}		
+	},
+	EC_DAPHNIATOX {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}
+		@Override
+		public String getTitle() {
+			return "Short-term toxicity to aquatic inverterbrates";
+		}			
+		@Override
+		public String getNumber() {
+			return "6.1.3";
+		}		
+	},
+	EC_CHRONDAPHNIATOX {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}		
+		@Override
+		public String getTitle() {
+			return "Long-term toxicity to aquatic inverterbrates";
+		}
+		@Override
+		public String getNumber() {
+			return "6.1.4";
+		}		
+	},
+	EC_ALGAETOX {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}
+		@Override
+		public String getTitle() {
+			return "Toxicity to aquatic algae and cyanobacteria";
+		}
+		@Override
+		public String getNumber() {
+			return "6.1.5";
+		}		
+	},
+	EC_BACTOX {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}		
+		@Override
+		public String getTitle() {
+			return "Toxicity to microorganisms";
+		}
+		@Override
+		public String getNumber() {
+			return "6.1.7";
+		}		
+	},
+	EC_SEDIMENTDWELLINGTOX {
+		@Override
+		public String getTitle() {
+			return "Sediment toxicity";
+		}
+		@Override
+		public String getNumber() {
+			return "6.2";
+		}	
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					//phrasegroup_E118
+					"LC0","LC10","LC50","LC100","EC0","EC10","EC50","EC100","LD0","LD10","LD50","LD100","LR0","LR10",
+					"LR50","LR100","NOEC","LOEC","other:"
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cConcType,I5CONSTANTS.cExposure,I5CONSTANTS.cMeasuredConcentration,I5CONSTANTS.cEffect
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.cTestMedium,I5CONSTANTS.cTestOrganism,I5CONSTANTS.cExposure
+			};
+		}			
+	},
+	EC_SOILDWELLINGTOX {
+		@Override
+		public String getTitle() {
+			return "Toxicity to soil macroorganisms";
+		}
+		@Override
+		public String getNumber() {
+			return "6.3.1";
+		}
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					//phrasegroup_E118
+					"LC0","LC10","LC50","LC100","EC0","EC10","EC50","EC100","LD0","LD10","LD50","LD100","LR0","LR10",
+					"LR50","LR100","NOEC","LOEC","other:"					
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cConcType,I5CONSTANTS.cExposure,I5CONSTANTS.cMeasuredConcentration,I5CONSTANTS.cEffect
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.cTestMedium,I5CONSTANTS.cTestOrganism,I5CONSTANTS.cExposure
+			};
+		}			
+	},
+	EC_HONEYBEESTOX {
+		@Override
+		public String getTitle() {
+			return "Toxicity to terrestrial arthropods";
+		}
+		@Override
+		public String getNumber() {
+			return "6.3.2";
+		}			
+	},
+	EC_PLANTTOX {
+		@Override
+		public String getTitle() {
+			return "Toxicity to terrestrial plants";
+		}
+		@Override
+		public String getNumber() {
+			return "6.3.3";
+		}		
+	},
+	EC_SOIL_MICRO_TOX {
+		@Override
+		public String getTitle() {
+			return "Toxicity to soil microorganisms";
+		}
+		@Override
+		public String getNumber() {
+			return "6.3.4";
+		}	
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					//phrasegroup_E128
+					"EC0","EC10","EC25","EC50","EC100",
+					"ER0","ER10","ER25","ER50","ER100","NOEC","other:"					
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cConcType,I5CONSTANTS.cExposure,I5CONSTANTS.cMeasuredConcentration,I5CONSTANTS.cEffect
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.cTestOrganism,I5CONSTANTS.cExposure
+			};
+		}			
+	},	
+	TO_ACUTE_ORAL {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}		
+		@Override
+		public String getTitle() {
+			return "Acute toxicity - oral";
+		}
+		@Override
+		public String getNumber() {
+			return "7.2.1";
+		}			
+	},
+	TO_ACUTE_INHAL {
+		@Override
+		public String getTitle() {
+			return "Acute toxicity - inhalation";
+		}			
+		@Override
+		public String getNumber() {
+			return "7.2.2";
+		}		
+	},
+	TO_ACUTE_DERMAL {
+		@Override
+		public String getTitle() {
+			return "Acute toxicity - dermal";
+		}			
+		@Override
+		public String getNumber() {
+			return "7.2.3";
+		}			
+	},
+	TO_SKIN_IRRITATION {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}		
+		@Override
+		public String getTitle() {
+			return "Skin irritation / Corrosion";
+		}	
+		@Override
+		public String getNumber() {
+			return "7.3.1";
+		}			
+	},
+	TO_EYE_IRRITATION {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}
+		@Override
+		public String getTitle() {
+			return "Eye irritation";
+		}	
+		@Override
+		public String getNumber() {
+			return "7.3.2";
+		}			
+	},
+	TO_SENSITIZATION {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}	
+		@Override
+		public String getTitle() {
+			return "Skin sensitisation";
+		}
+		@Override
+		public String getNumber() {
+			return "7.4.1";
+		}			
+	},
+	//TO_SENSITIZATION_HUMAN,
+	TO_REPEATED_ORAL {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}		
+		@Override
+		public String getTitle() {
+			return "Repeated dose toxicity - oral";
+		}
+		@Override
+		public String getNumber() {
+			return "7.5.1";
+		}	
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					//phrasegroup_T156
+					"NOAEL","NOEL","LOAEL","LOEL","BMD05","BMDL05","BMDL10","BMD","BMC05","BMCL05","BMCL10","BMC","dose level","conc. level","other:"
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cSex					
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.cRouteAdm,I5CONSTANTS.cDoses,I5CONSTANTS.cSpecies,I5CONSTANTS.cTestType
+			};
+		}			
+	},
+	TO_REPEATED_INHAL {
+		@Override
+		public String getTitle() {
+			return "Repeated dose toxicity - inhalation";
+		}
+		@Override
+		public String getNumber() {
+			return "7.5.2";
+		}		
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					//phrasegroup_T166
+					"NOAEL","NOEL","LOAEL","LOEL","BMD05","BMDL05","BMDL10","BMD","BMC05","BMCL05","BMCL10","BMC","dose level","conc. level","other:"
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cSex		
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.cRouteAdm,I5CONSTANTS.cDoses,I5CONSTANTS.cSpecies,I5CONSTANTS.cTestType
+			};
+		}			
+	},
+	TO_REPEATED_DERMAL {
+		@Override
+		public String getTitle() {
+			return "Repeated dose toxicity - dermal";
+		}
+		@Override
+		public String getNumber() {
+			return "7.5.3";
+		}	
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					//phrasegroup_T156
+					"NOAEL","NOEL","LOAEL","LOEL","BMD05","BMDL05","BMDL10","BMD","BMC05","BMCL05","BMCL10","BMC","dose level","conc. level","other:"
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cSex		
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.cTypeCoverage,I5CONSTANTS.cDoses,I5CONSTANTS.cSpecies,I5CONSTANTS.cTestType
+			};
+		}			
+	},
+	TO_GENETIC_IN_VITRO {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}		
+		@Override
+		public String getTitle() {
+			return "Genetic toxicity in vitro";
+		}
+		@Override
+		public String getNumber() {
+			return "7.6.1";
+		}		
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					I5CONSTANTS.eGenotoxicity
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cMetabolicActivation, I5CONSTANTS.cSpecies  
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.cTypeStudy, I5CONSTANTS.cMetabolicActivationSystem,I5CONSTANTS.cTypeGenotoxicity,
+					I5CONSTANTS.cTargetGene,I5CONSTANTS.cSpecies 
+			};
+		}				
+	},
+	TO_GENETIC_IN_VIVO {
+		@Override
+		public boolean isDataRich() {
+			return true;
+		}		
+		@Override
+		public String getTitle() {
+			return "Genetic toxicity in vivo";
+		}
+		@Override
+		public String getNumber() {
+			return "7.6.2";
+		}		
+		@Override
+		public String[] getEndpoints() {
+			return new String[] {
+					I5CONSTANTS.eGenotoxicity
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cToxicity, I5CONSTANTS.cSex
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.cRouteAdm,
+					I5CONSTANTS.cTypeStudy, I5CONSTANTS.cTypeGenotoxicity,I5CONSTANTS.cSpecies 
+			};
+		}			
+	},	
+	TO_CARCINOGENICITY {
+		@Override
+		public String getTitle() {
+			return "Carcinogenicity";
+		}
+		@Override
+		public String getNumber() {
+			return "7.7";
+		}				
+		@Override
+		public String[] getEndpoints() {
+			return new String[] { //phrasegroup_TD400
+				"no NOAEC identified","no NOAEL identified","no T25 identified",
+				"T25","NOAEC","NOAEL","NOEC","NOEL","LOAEC","LOAEL","LOEC","LOEL",
+				"BMD05","BMDL05","BMDL10","BMD","BMC05","BMCL05","BMCL10","BMC","dose level","conc.level","other:"
+			};
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cToxicity, I5CONSTANTS.cSex
+			};
+		}
+		@Override
+		public String[] getProtocolParameters() {
+			return new String[] {
+					I5CONSTANTS.cRouteAdm,
+					I5CONSTANTS.cTypeStudy, I5CONSTANTS.cTypeGenotoxicity,I5CONSTANTS.cSpecies ,I5CONSTANTS.cDoses
+			};
+		}			
+	},
+	TO_REPRODUCTION {
+		@Override
+		public String getTitle() {
+			return "Toxicity to reproduction";
+		}
+		@Override
+		public String getNumber() {
+			return "7.8.1";
+		}		
+	},
+	TO_DEVELOPMENTAL {
+		@Override
+		public String getTitle() {
+			return "Developmental toxicity / teratogenicity";
+		}
+		@Override
+		public String getNumber() {
+			return "7.8.2";
+		}		
+	}
+	
+	
 	;
 	public String getContextPath() {
 		return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord."+name()+"_SECTION";

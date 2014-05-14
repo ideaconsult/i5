@@ -56,9 +56,9 @@ public class I5CONSTANTS {
 	public static final String cBasisForEffect = "Basis for effect";
 	public static final String cConcType = "Based on";	
 	
-	public static final String cSoilNo = "Soil No.";
-	public static final String cSoilType = "Soil type";
-	public static final String cOCContent =  "OC content";	
+	public static final String cSoilNo = "Soil No."; //SOILNUMBER
+	public static final String cSoilType = "Soil type"; //SOILTYPE
+	public static final String cOCContent =  "OC content";	//PRECISION_CARBON_LOQUALIFIER
 	
 	
 	public static final String eGenotoxicity = "GENOTOXICITY";

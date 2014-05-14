@@ -1230,6 +1230,40 @@ public class Phrases {
     	return p;
     }
 */
+    private static Hashtable<String, String> phrasegroup_TD400() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+
+    	return p;
+    }
+    /*
+"4146","noNOAECidentified"
+"4103","noNOAELidentified"
+"8132","noT25identified"
+"5675","T25"
+"4147","NOAEC"
+"1109","NOAEL"
+"1129","NOEC"
+"1130","NOEL"
+"4148","LOAEC"
+"937","LOAEL"
+"957","LOEC"
+"958","LOEL"
+"5673","BMD05"
+"5672","BMDL05"
+"5674","BMDL10"
+"126","BMD:"
+"5760","BMC05"
+"5759","BMCL05"
+"5761","BMCL10"
+"122","BMC:"
+"345","doselevel:"
+"271","conc.level:"
+"1342","other:"
+"NOT_SPECIFIED","Notspecified-thevalueisnotspecified"
+*/
+
+
+  
 	private Phrases() {
 	}
 }
