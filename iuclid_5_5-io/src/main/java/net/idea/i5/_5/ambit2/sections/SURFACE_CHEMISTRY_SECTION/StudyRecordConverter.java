@@ -223,8 +223,9 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, IParams, String> effect,
 					IParams params, Node node) {
-				params.setLoValue(node.getTextContent());
-				params.setLoQualifier(" ");
+				//params.setLoValue(node.getTextContent());
+				//params.setLoQualifier(" ");
+				effect.setTextValue(node.getTextContent());
 			}
 			@Override
 			public String getTag() {
@@ -236,8 +237,9 @@ public class StudyRecordConverter
 			public void setValue(EffectRecord<String, IParams, String> effect,
 					IParams params, Node node) {
 				if (node.getTextContent()!=null) {
-					params.setLoValue(node.getTextContent());
-					params.setLoQualifier(" ");
+					//params.setLoValue(node.getTextContent());
+					//params.setLoQualifier(" ");
+					effect.setTextValue(node.getTextContent());
 				}	
 			}
 			@Override
@@ -250,8 +252,9 @@ public class StudyRecordConverter
 			public void setValue(EffectRecord<String, IParams, String> effect,
 					IParams params, Node node) {
 				if (node.getTextContent()!=null) {
-					params.setLoValue(node.getTextContent());
-					params.setLoQualifier(" ");
+					//params.setLoValue(node.getTextContent());
+					//params.setLoQualifier(" ");
+					effect.setTextValue(node.getTextContent());
 				}
 			}
 			@Override
