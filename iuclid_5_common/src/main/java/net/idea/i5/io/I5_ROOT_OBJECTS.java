@@ -1565,7 +1565,19 @@ public enum I5_ROOT_OBJECTS {
 			for (String param : params)
 				protocolParams.put(param,null);
 		return protocolParams;
-	}		
+	}
+	/**
+	 * 
+	 * @param guide
+	 * @return
+	 */
+	public Protocol getProtocol(String guide) {
+		Protocol protocol = new Protocol(guide);
+		protocol.setCategory(name()+"_SECTION");
+		protocol.setTopCategory(getTopCategory());
+		return protocol;
+	}
+
 	/**
 	 * Creates an experiment record and adds placeholders for the relevant parameters
 	 * @param protocol
