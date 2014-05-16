@@ -176,9 +176,8 @@ public class StudyRecordConverter
 			for (int i=0; i < nodes.getLength(); i++) {
 				Node set = nodes.item(i);
 				if ("set".equals(set.getLocalName())) {
-					EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+					EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint(endpoint);
-					effect.setConditions(new Params());
 					Params xyz = new Params(null);xyz.setLoQualifier("  ");
 					effect.getConditions().put(EFFECT.PRECISION_X_LOQUALIFIER.getTag(), xyz);
 					xyz = new Params(null);xyz.setLoQualifier("  ");

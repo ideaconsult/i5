@@ -132,7 +132,8 @@ public abstract class AbstractStudyRecordConverter<T,PROTOCOLPARAMS extends IPar
 	};
 	
 	protected PROTOCOLPARAMS createProtocolParameters() {
-		return (PROTOCOLPARAMS) new Params();
+		if (endpointCategory==null) return (PROTOCOLPARAMS) new Params();
+		else return (PROTOCOLPARAMS) endpointCategory.createProtocolParameters();
 	}
 	protected Experiment<PROTOCOLPARAMS,CONDITIONS> createProtocolApplication(String documentID,String name) {
 		Experiment<PROTOCOLPARAMS,CONDITIONS> papp = new Experiment<PROTOCOLPARAMS,CONDITIONS>(new Protocol(name));

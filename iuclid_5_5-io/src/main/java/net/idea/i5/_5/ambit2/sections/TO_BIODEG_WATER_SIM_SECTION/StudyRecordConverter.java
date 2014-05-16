@@ -166,15 +166,13 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 			sciPart.getTOBIODEGWATERSIM().getHALFLIFE().getSet()!=null && 
 			sciPart.getTOBIODEGWATERSIM().getHALFLIFE().getSet().size()>0) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSIM.HALFLIFE.Set set : sciPart.getTOBIODEGWATERSIM().getHALFLIFE().getSet()) {
-				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 				try {
 					effect.setEndpoint(getValue(
 							set.getPHRASEOTHERTYPE().getTYPEValue(),
 							set.getPHRASEOTHERTYPE().getTYPETXT()
 							));
 				} catch (Exception x) {effect.setEndpoint(null);}				
-
-				effect.setConditions(new Params());
 				//effect.getConditions().put("Compartment", set.getPHRASEOTHERCOMPARTMENT().getCOMPARTMENTValue());
 				effect.getConditions().putAll(degradation);
 				papp.addEffect(effect);
@@ -195,10 +193,8 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				
 			}
 		} else {
-			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(null);
-
-			effect.setConditions(new Params());
 			effect.getConditions().putAll(degradation);
 			papp.addEffect(effect);
 		}

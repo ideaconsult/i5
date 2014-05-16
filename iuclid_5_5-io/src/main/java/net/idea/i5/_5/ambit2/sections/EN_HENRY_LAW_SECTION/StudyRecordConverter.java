@@ -110,10 +110,8 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 
 		if (sciPart.getENHENRYLAW().getHENRYSLAW()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_HENRY_LAW_SECTION.EndpointStudyRecord.ScientificPart.ENHENRYLAW.HENRYSLAW.Set set : sciPart.getENHENRYLAW().getHENRYSLAW().getSet()) {
-				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.HLC);
-				effect.setConditions(new Params());
-				
 				papp.addEffect(effect);
 				
 				if (set.getVALUEUNITPRESSUREVALUE() != null) {

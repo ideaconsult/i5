@@ -126,8 +126,7 @@ public class StudyRecordConverter
 		
 		//Mass median diametrer
 		if (sciPart.getPCGRANULOMETRY().getDIAMETER()!=null) { 
-			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setConditions(new Params());
+			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.pMMD);
 			effect.getConditions().put(I5CONSTANTS.rSTD_DEV,new Params(null));
 			effect.getConditions().put(I5CONSTANTS.cSEQ_NUM,new Params(null));
@@ -157,8 +156,7 @@ public class StudyRecordConverter
 		}
 		//Mass median aerodynamic diameter
 		if (sciPart.getPCGRANULOMETRY().getMMAD()!=null) {
-			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-			effect.setConditions(new Params());
+			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.pMMAD);
 			Params rSTDEV = new Params(null);
 			effect.getConditions().put(I5CONSTANTS.rSTD_DEV,rSTDEV);
@@ -213,8 +211,7 @@ public class StudyRecordConverter
 		//Particle size
 		if (sciPart.getPCGRANULOMETRY().getPARTICLESIZE()!=null) 
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_GRANULOMETRY_SECTION.EndpointStudyRecord.ScientificPart.PCGRANULOMETRY.PARTICLESIZE.Set set : sciPart.getPCGRANULOMETRY().getPARTICLESIZE().getSet()) {
-				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setConditions(new Params());
+				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 				Params rSTDEV = new Params(null);
 				effect.getConditions().put(I5CONSTANTS.rSTD_DEV,rSTDEV);
 				effect.getConditions().put(I5CONSTANTS.cSEQ_NUM,new Params(null));
@@ -255,8 +252,7 @@ public class StudyRecordConverter
 		//particle size at different passages
 		if (sciPart.getPCGRANULOMETRY().getPARTICLESIZE()!=null) 
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_GRANULOMETRY_SECTION.EndpointStudyRecord.ScientificPart.PCGRANULOMETRY.DISTRIBUTION.Set set : sciPart.getPCGRANULOMETRY().getDISTRIBUTION().getSet()) {
-				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
-				effect.setConditions(new Params());
+				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 				Params rSTDEV = new Params(null);
 				effect.getConditions().put(I5CONSTANTS.rSTD_DEV,rSTDEV);
 				Params rREM = new Params(null);

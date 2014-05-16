@@ -116,9 +116,8 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		
 		if (sciPart.getENBIOACCUTERR().getBCF()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCU_TERR_SECTION.EndpointStudyRecord.ScientificPart.ENBIOACCUTERR.BCF.Set set : sciPart.getENBIOACCUTERR().getBCF().getSet()) {
-				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(set.getBSAFTYPE().getBSAFTYPEValue());
-				effect.setConditions(new Params());
 				//not sure where to get concentrations from
 				effect.getConditions().put(I5CONSTANTS.cDoses,null);
 				papp.addEffect(effect);

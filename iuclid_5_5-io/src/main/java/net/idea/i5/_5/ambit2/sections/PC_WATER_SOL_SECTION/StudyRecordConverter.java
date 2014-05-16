@@ -125,9 +125,8 @@ public class StudyRecordConverter
 		
 		if (sciPart.getPCWATERSOL().getWATERSOL()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_WATER_SOL_SECTION.EndpointStudyRecord.ScientificPart.PCWATERSOL.WATERSOL.Set set : sciPart.getPCWATERSOL().getWATERSOL().getSet()) {
-			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.eWaterSolubility);
-			effect.setConditions(new Params());
 			papp.addEffect(effect);
 
 			if (set.getVALUEUNITTEMPVALUE() != null) {

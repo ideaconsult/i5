@@ -107,9 +107,8 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		if (sciPart.getENADSORPTION().getRESULTSBATCHDETAILS()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_ADSORPTION_SECTION.EndpointStudyRecord.ScientificPart.ENADSORPTION.ADSORPTIONKOC.Set 
 					set : sciPart.getENADSORPTION().getADSORPTIONKOC().getSet()) {
-				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());
-				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				
 				//temperature

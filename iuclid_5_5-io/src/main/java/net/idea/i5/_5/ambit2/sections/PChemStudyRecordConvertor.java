@@ -13,4 +13,5 @@ public abstract class PChemStudyRecordConvertor<T,PROTOCOLPARAMS extends Params,
 	protected String getTopCategory() {
 		return _top_category.PCHEM.toString();
 	}
+	
 }

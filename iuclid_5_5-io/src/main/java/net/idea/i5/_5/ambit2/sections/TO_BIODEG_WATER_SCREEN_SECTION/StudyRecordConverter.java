@@ -134,7 +134,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 
 		if (sciPart.getTOBIODEGWATERSCREEN().getDEGRAD()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSCREEN.DEGRAD.Set set : sciPart.getTOBIODEGWATERSCREEN().getDEGRAD().getSet()) {
-				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.ePercentDegradation);
 				effect.setUnit("%");
 				try {
@@ -143,7 +143,6 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 							set.getPHRASEOTHERPARAMETER().getPARAMETERTXT()
 							));
 				} catch (Exception x) {}
-				effect.setConditions(new Params());
 				
 				papp.addEffect(effect);
 				//sampling time

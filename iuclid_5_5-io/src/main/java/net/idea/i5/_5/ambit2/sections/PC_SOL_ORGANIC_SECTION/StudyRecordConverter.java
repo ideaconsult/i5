@@ -119,9 +119,8 @@ public class StudyRecordConverter
 
 
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_SOL_ORGANIC_SECTION.EndpointStudyRecord.ScientificPart.PCSOLORGANIC.FATSOL.Set set : sciPart.getPCSOLORGANIC().getFATSOL().getSet()) {
-			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.eSOLUBILITY_ORG_SOLVENT);
-			effect.setConditions(new Params());
 			papp.addEffect(effect);
 
 			if (set.getVALUEUNITTEMPVALUE() != null) {

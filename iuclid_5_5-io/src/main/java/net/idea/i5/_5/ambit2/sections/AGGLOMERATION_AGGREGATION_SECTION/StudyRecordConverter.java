@@ -171,9 +171,8 @@ public class StudyRecordConverter
 			for (int i=0; i < nodes.getLength(); i++) {
 				Node set = nodes.item(i);
 				if ("set".equals(set.getLocalName())) {
-					EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+					EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint(endpoint);
-					effect.setConditions(new Params());
 					Params sn = new Params("");sn.setLoQualifier("");
 					effect.getConditions().put(P.SEQ_NUM_value.getTag(),sn);
 					papp.addEffect(effect);

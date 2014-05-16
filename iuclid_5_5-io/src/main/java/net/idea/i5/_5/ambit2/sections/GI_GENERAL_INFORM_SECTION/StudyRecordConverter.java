@@ -127,9 +127,8 @@ public class StudyRecordConverter extends PChemStudyRecordConvertor<eu.europa.ec
 					));
 		}
 
-		EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+		EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 		effect.setEndpoint(physstate==null?null:physstate.toString());
-		effect.setConditions(new Params());
 		effect.getConditions().put(I5CONSTANTS.Remark,form==null?"":form.toString());
 		papp.addEffect(effect);
 		try {

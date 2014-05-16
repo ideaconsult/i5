@@ -129,9 +129,8 @@ public class StudyRecordConverter
 
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_PARTITION_SECTION.EndpointStudyRecord.ScientificPart.PCPARTITION.PARTCOEFF.Set set : sciPart
 				.getPCPARTITION().getPARTCOEFF().getSet()) {
-			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 			try {effect.setEndpoint(set.getTYPE().getTYPEValue());} catch (Exception x) {}
-			effect.setConditions(new Params());
 			papp.addEffect(effect);
 
 			if (set.getVALUEUNITTEMPVALUE() != null) {

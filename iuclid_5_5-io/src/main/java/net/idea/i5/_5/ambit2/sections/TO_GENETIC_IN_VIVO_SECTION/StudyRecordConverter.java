@@ -155,10 +155,9 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		// effect level
 		if (sciPart.getTOGENETICINVIVO().getTESTRS() != null)
 			for (EndpointStudyRecord.ScientificPart.TOGENETICINVIVO.TESTRS.Set set : sciPart.getTOGENETICINVIVO().getTESTRS().getSet()) {
-				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.eGenotoxicity);
 				try {effect.setTextValue(set.getPHRASEOTHERGENOTOXICITY().getGENOTOXICITYValue());} catch (Exception x) {}
-				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				try {
 					effect.getConditions().put(I5CONSTANTS.cToxicity,set.getPHRASEOTHERTOXICITY().getTOXICITYValue());

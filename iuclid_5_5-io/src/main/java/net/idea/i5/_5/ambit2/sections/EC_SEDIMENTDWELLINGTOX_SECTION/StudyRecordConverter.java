@@ -125,14 +125,13 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		//ENDPOINT
 		if (sciPart.getECSEDIMENTDWELLINGTOX().getEFFCONC()!=null && sciPart.getECSEDIMENTDWELLINGTOX().getEFFCONC().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_SEDIMENTDWELLINGTOX_SECTION.EndpointStudyRecord.ScientificPart.ECSEDIMENTDWELLINGTOX.EFFCONC.Set set : sciPart.getECSEDIMENTDWELLINGTOX().getEFFCONC().getSet()) {
-			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 			try {
 				effect.setEndpoint(getValue(
 					set.getPHRASEOTHERENDPOINT().getENDPOINTValue(),
 					set.getPHRASEOTHERENDPOINT().getENDPOINTTXT()
 					));
 			} catch (Exception x) {effect.setEndpoint(null);}
-			effect.setConditions(new Params());
 			papp.addEffect(effect);
 
 			try {
@@ -180,9 +179,8 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 				effect.getConditions().put(I5CONSTANTS.cExposure,null);
 			}
 		} else {
-			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.eBCF);
-			effect.setConditions(new Params());
 			papp.addEffect(effect);
 			effect.getConditions().put(I5CONSTANTS.cEffect,null);
 			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,null);

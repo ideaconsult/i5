@@ -1,5 +1,10 @@
 package net.idea.i5.io;
 
+import ambit2.base.data.study.EffectRecord;
+import ambit2.base.data.study.Params;
+import ambit2.base.data.study.Protocol;
+import ambit2.base.data.study.ProtocolApplication;
+
 public enum I5_ROOT_OBJECTS {
 	AttachmentDocument {
 		@Override
@@ -1384,5 +1389,36 @@ public enum I5_ROOT_OBJECTS {
 	}
 	public String[] getConditions() {
 		return null;
+	}
+	public Params createProtocolParameters() {
+		Params protocolParams = new Params();
+		String[] params = getProtocolParameters();
+		if (params!=null) 
+			for (String param : params)
+				protocolParams.put(param,null);
+		return protocolParams;
+	}		
+	/**
+	 * Creates an experiment record and adds placeholders for the relevant parameters
+	 * @param protocol
+	 * @return
+	 */
+	public ProtocolApplication<Protocol, Params, String, Params,String> createExperimentRecord(Protocol protocol) {
+		ProtocolApplication<Protocol, Params, String, Params,String> experiment = new ProtocolApplication<Protocol, Params, String, Params,String>(protocol);
+		experiment.setParameters(createProtocolParameters());
+		return experiment;
+	}	
+	/**
+	 * Creates an effect record and adds placeholders for the relevant conditions
+	 * @return
+	 */
+	public EffectRecord<String, Params, String> createEffectRecord() {
+		EffectRecord<String, Params, String> record =  new EffectRecord<String, Params, String>();
+		record.setConditions(new Params());
+		String[] conditions = getConditions();
+		if (conditions!=null) 
+			for (String condition : conditions)
+				record.getConditions().put(condition,null);
+		return record;
 	}
 } 

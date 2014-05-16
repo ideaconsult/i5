@@ -166,9 +166,8 @@ public class StudyRecordConverter
 			for (int i=0; i < nodes.getLength(); i++) {
 				Node set = nodes.item(i);
 				if ("set".equals(set.getLocalName())) {
-					EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+					EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint(endpoint);
-					effect.setConditions(new Params());
 					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_COMMON_NAME,new Params(null));
 					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTAL_SYSTEM,new Params(null));
 					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_BRAVAIS_LATTICE,new Params(null));

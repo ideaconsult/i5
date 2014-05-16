@@ -122,9 +122,8 @@ public class StudyRecordConverter
 			
 		if (sciPart.getPCMELTING().getMELTINGPT()!=null && sciPart.getPCMELTING().getMELTINGPT().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_MELTING_SECTION.EndpointStudyRecord.ScientificPart.PCMELTING.MELTINGPT.Set set : sciPart.getPCMELTING().getMELTINGPT().getSet()) {
-			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.eMELTINGPOINT);
-			effect.setConditions(new Params());
 			papp.addEffect(effect);
 			
 			//pressure should be a condition

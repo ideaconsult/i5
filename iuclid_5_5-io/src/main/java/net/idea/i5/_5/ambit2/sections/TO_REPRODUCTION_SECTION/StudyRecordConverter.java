@@ -131,14 +131,13 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		// effect level
 		if (sciPart.getTOREPRODUCTION().getEFFLEVEL() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPRODUCTION_SECTION.EndpointStudyRecord.ScientificPart.TOREPRODUCTION.EFFLEVEL.Set set : sciPart.getTOREPRODUCTION().getEFFLEVEL().getSet()) {
-				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 				try {
 					effect.setEndpoint(getValue(
 						set.getPHRASEOTHERENDPOINT().getENDPOINTValue(),
 						set.getPHRASEOTHERENDPOINT().getENDPOINTTXT()
 						));
 				} catch (Exception x) {effect.setEndpoint(null);}
-				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				
 				if (set.getPRECISIONLOQUALIFIER()!=null) {

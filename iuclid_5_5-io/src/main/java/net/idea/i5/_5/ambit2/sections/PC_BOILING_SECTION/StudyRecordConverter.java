@@ -112,9 +112,8 @@ public class StudyRecordConverter
 
 		if (sciPart.getPCBOILING().getBOILINGPT()!=null && sciPart.getPCBOILING().getBOILINGPT().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_BOILING_SECTION.EndpointStudyRecord.ScientificPart.PCBOILING.BOILINGPT.Set set : sciPart.getPCBOILING().getBOILINGPT().getSet()) {
-			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.BOILINGPOINT);
-			effect.setConditions(new Params());
 			papp.addEffect(effect);
 			try {
 				effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION,	set.getPHRASEOTHERDECOMPINDICATOR().getDECOMPINDICATORValue());

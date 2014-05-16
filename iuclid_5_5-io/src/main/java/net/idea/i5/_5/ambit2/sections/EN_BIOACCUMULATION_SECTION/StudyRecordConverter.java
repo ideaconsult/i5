@@ -118,9 +118,8 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		
 		if (sciPart.getENBIOACCUMULATION().getBCF()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EN_BIOACCUMULATION_SECTION.EndpointStudyRecord.ScientificPart.ENBIOACCUMULATION.BCF.Set set : sciPart.getENBIOACCUMULATION().getBCF().getSet()) {
-				EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 				try {effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());} catch (Exception x) {}
-				effect.setConditions(new Params());
 				papp.addEffect(effect);
 				try {
 					effect.getConditions().put(I5CONSTANTS.cBioaccBasis,
@@ -147,9 +146,8 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				
 			}
 		} else {
-			EffectRecord<String, Params, String> effect = new EffectRecord<String, Params, String>();
+			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.eBCF);
-			effect.setConditions(new Params());
 			papp.addEffect(effect);
 			effect.getConditions().put(I5CONSTANTS.cBioaccBasis,null);
 			effect.getConditions().put(I5CONSTANTS.cDoses,null);
