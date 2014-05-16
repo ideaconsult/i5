@@ -12,6 +12,7 @@ import org.w3c.dom.NodeList;
 
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
+import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
@@ -24,7 +25,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.AGGLOMERATION_AGGREG
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.AGGLOMERATION_AGGREGATION_SECTION.EndpointStudyRecord,Params,Params> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.AGGLOMERATION_AGGREGATION_SECTION.EndpointStudyRecord,IParams,IParams> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.AGGLOMERATION_AGGREGATION);
@@ -84,7 +85,7 @@ public class StudyRecordConverter
 		if (sciPart.getAGGLOMERATIONAGGREGATION()==null) return null;
 
 		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+		ProtocolApplication<Protocol,IParams,String,IParams,String> papp = createProtocolApplication(
 				unmarshalled.getDocumentReferencePK(),
 				unmarshalled.getName());
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
@@ -159,7 +160,7 @@ public class StudyRecordConverter
 		return record;
 	}
 	
-	protected void parseElement(JAXBElement<Object> element,ProtocolApplication<Protocol,Params,String,Params,String> papp) {
+	protected void parseElement(JAXBElement<Object> element,ProtocolApplication<Protocol,IParams,String,IParams,String> papp) {
 		String endpoint = null;
 		if (element.getValue() instanceof Node) {
 			endpoint = ((Node) element.getValue()).getLocalName();
@@ -171,7 +172,7 @@ public class StudyRecordConverter
 			for (int i=0; i < nodes.getLength(); i++) {
 				Node set = nodes.item(i);
 				if ("set".equals(set.getLocalName())) {
-					EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
+					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint(endpoint);
 					Params sn = new Params("");sn.setLoQualifier("");
 					effect.getConditions().put(P.SEQ_NUM_value.getTag(),sn);
@@ -194,13 +195,13 @@ public class StudyRecordConverter
 		//i5:AGGLO_AGGREGATION_IDX
 		MEAN_LOQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setLoQualifier(node.getTextContent());
 			}	
 		},
 		MEAN_LOVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {effect.setTextValue(node.getTextContent());}
@@ -208,13 +209,13 @@ public class StudyRecordConverter
 		},
 		MEAN_UPQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setUpQualifier(node.getTextContent());
 			}	
 		},
 		MEAN_UPVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setUpValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {}
@@ -222,7 +223,7 @@ public class StudyRecordConverter
 		},
 		STD_DEV {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					params.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {params.setLoValue(node.getTextContent());}
@@ -231,7 +232,7 @@ public class StudyRecordConverter
 		//i5:PRECISION_MEAN_SIZE_LOQUALIFIER
 		PERCENTILE_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.getConditions().put(I5CONSTANTS.cPERCENTILE,new Params(node.getTextContent()));
 				effect.setEndpoint(effect.getEndpoint()+"."+node.getTextContent());
 			}					
@@ -239,13 +240,13 @@ public class StudyRecordConverter
 		MEAN_SIZE_LOQUALIFIER,
 		MEAN_SIZE_LOQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setLoQualifier(node.getTextContent());
 			}			
 		},
 		MEAN_SIZE_LOVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {effect.setTextValue(node.getTextContent());}
@@ -254,13 +255,13 @@ public class StudyRecordConverter
 		MEAN_SIZE_UPQUALIFIER,
 		MEAN_SIZE_UPQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setUpQualifier(node.getTextContent());
 			}			
 		},
 		MEAN_SIZE_UPVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setUpValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {effect.setTextValue(node.getTextContent());}
@@ -269,7 +270,7 @@ public class StudyRecordConverter
 		MEAN_SIZE_UNIT,
 		MEAN_SIZE_UNIT_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setUnit(node.getTextContent());
 			}			
 		},
@@ -278,13 +279,13 @@ public class StudyRecordConverter
 		MEAN_DIAM_LOQUALIFIER,
 		MEAN_DIAM_LOQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setLoQualifier(node.getTextContent());
 			}			
 		},
 		MEAN_DIAM_LOVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {effect.setTextValue(node.getTextContent());}
@@ -293,13 +294,13 @@ public class StudyRecordConverter
 		MEAN_DIAM_UPQUALIFIER,
 		MEAN_DIAM_UPQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setUpQualifier(node.getTextContent());
 			}			
 		},
 		MEAN_DIAM_UPVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setUpValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {effect.setTextValue(node.getTextContent());}
@@ -308,14 +309,14 @@ public class StudyRecordConverter
 		MEAN_DIAM_UNIT,
 		MEAN_DIAM_UNIT_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setUnit(node.getTextContent());
 			}			
 		},
 		MEAN_DIAM_UNIT_TXT,
 		STD_DEVI_VALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				params.setLoValue(node.getTextContent());
 			}	
 			@Override
@@ -327,13 +328,13 @@ public class StudyRecordConverter
 		STD_DEVI_UNIT,
 		STD_DEVI_UNIT_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				params.setUnits(node.getTextContent());
 			}			
 		},
 		STD_DEVI_UNIT_TXT {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				if ("other:".equals(params.getUnits()))
 						params.setUnits(node.getTextContent());
 			}
@@ -341,7 +342,7 @@ public class StudyRecordConverter
 		//i5:VALUEUNIT_STD_DEV_VALUE
 		STD_DEV_VALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					params.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
@@ -355,7 +356,7 @@ public class StudyRecordConverter
 		STD_DEV_UNIT,
 		STD_DEV_UNIT_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				params.setUnits(node.getTextContent());
 			}			
 		},
@@ -364,26 +365,26 @@ public class StudyRecordConverter
 		PH_LOQUALIFIER,
 		PH_LOQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				params.setLoQualifier(node.getTextContent());
 			}			
 		},
 		PH_LOVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				params.setLoValue(node.getTextContent());
 			}
 		},
 		PH_UPQUALIFIER,
 		PH_UPQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				params.setUpQualifier(node.getTextContent());
 			}						
 		},
 		PH_UPVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				params.setUpValue(node.getTextContent());
 			}
 		},
@@ -391,13 +392,13 @@ public class StudyRecordConverter
 		//size is mean for i5:AGGLO_AGGR_SIZE_DIST
 		SIZE_UNIT_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setUnit(node.getTextContent());
 			}			
 		},
 		SEQ_NUM_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				params.setLoValue(node.getTextContent());
 				params.setLoQualifier("");
 			}
@@ -408,19 +409,19 @@ public class StudyRecordConverter
 		},
 		SIZE_LOQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setLoQualifier(node.getTextContent());
 			}
 		},
 		SIZE_UPQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setUpQualifier(node.getTextContent());
 			}
 		},				
 		SIZE_LOVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {effect.setTextValue(node.getTextContent());}
@@ -429,7 +430,7 @@ public class StudyRecordConverter
 		},
 		SIZE_UPVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {effect.setTextValue(node.getTextContent());}
@@ -440,14 +441,14 @@ public class StudyRecordConverter
 		DIST_LOQUALIFIER,
 		DIST_LOQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
-					Params params, Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,
+					IParams params, Node node) {
 				params.setLoQualifier(node.getTextContent());
 			}			
 		},
 		DIST_LOVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					params.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
@@ -458,14 +459,14 @@ public class StudyRecordConverter
 		DIST_UPQUALIFIER,
 		DIST_UPQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
-					Params params, Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,
+					IParams params, Node node) {
 				params.setUpQualifier( node.getTextContent());
 			}
 		},
 		DIST_UPVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					params.setUpValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
@@ -476,13 +477,13 @@ public class StudyRecordConverter
 		DIST_UNIT,
 		DIST_UNIT_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
-					Params params, Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,
+					IParams params, Node node) {
 				params.setUnits( node.getTextContent());
 			}
 		}
 		;
-		public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+		public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 		}
 		public String getTag() {
 			return name();
@@ -492,14 +493,14 @@ public class StudyRecordConverter
 		//i5:AGGLO_AGGREGATION_IDX
 		PRECISION_MEAN_LOQUALIFIER {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesEffect(effect, nodes);	
 			}	
 		},
 		STD_DEV {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesParams(effect, nodes);	
 			}	
@@ -510,7 +511,7 @@ public class StudyRecordConverter
 		//i5:AGGLO_AGGR_SIZE_DIST
 		SEQ_NUM {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesParams(effect, nodes);	
 			}	
@@ -521,7 +522,7 @@ public class StudyRecordConverter
 		},
 		PRECISION_SIZE_LOQUALIFIER {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesEffect(effect, nodes);	
 			}			
@@ -531,7 +532,7 @@ public class StudyRecordConverter
 		},
 		PRECISION_DIST_LOQUALIFIER {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesParams(effect, nodes);	
 			}
@@ -542,7 +543,7 @@ public class StudyRecordConverter
 		//i5:AGGLO_AGGR_DIAM
 		PRECISION_MEAN_DIAM_LOQUALIFIER {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesEffect(effect, nodes);	
 			}			
@@ -552,7 +553,7 @@ public class StudyRecordConverter
 		},
 		VALUEUNIT_STD_DEVI_VALUE { 
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesParams(effect, nodes);
 			}
@@ -563,14 +564,14 @@ public class StudyRecordConverter
 		//i5:AGGLO_AGGR_SIZE
 		PHRASEOTHER_PERCENTILE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesParams(effect, nodes);
 			}
 		},
 		PRECISION_MEAN_SIZE_LOQUALIFIER {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesEffect(effect, nodes);
 			}
@@ -581,7 +582,7 @@ public class StudyRecordConverter
 		},
 		VALUEUNIT_STD_DEV_VALUE { //now this is good Schema design, isn't it
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesParams(effect, nodes);
 			}			
@@ -592,7 +593,7 @@ public class StudyRecordConverter
 		},		
 		PRECISION_PH_LOQUALIFIER {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesParams(effect, nodes);
 			}
@@ -603,7 +604,7 @@ public class StudyRecordConverter
 		},
 		MEDIUM {
 			@Override
-			public void setValue(EffectRecord<String,Params,String> effect,NodeList nodes) {
+			public void setValue(EffectRecord<String, IParams, String> effect,NodeList nodes) {
 				if (nodes!=null)
 					for (int i=0; i < nodes.getLength(); i++) {
 						effect.getConditions().put(name(),nodes.item(i).getTextContent());
@@ -612,7 +613,7 @@ public class StudyRecordConverter
 		},
 		REMARKS {
 			@Override
-			public void setValue(EffectRecord<String,Params,String> effect,NodeList nodes) {
+			public void setValue(EffectRecord<String, IParams, String> effect,NodeList nodes) {
 				if (nodes!=null)
 					for (int i=0; i < nodes.getLength(); i++) {
 						effect.getConditions().put(getTag(),nodes.item(i).getTextContent());
@@ -626,13 +627,13 @@ public class StudyRecordConverter
 		public String getTag() {
 			return name();
 		}
-		public void setValue(EffectRecord<String,Params,String> effect,NodeList nodes) {
+		public void setValue(EffectRecord<String, IParams, String> effect,NodeList nodes) {
 			
 		}
-		public void useChildrenNodesParams(EffectRecord<String, Params, String> effect,
+		public void useChildrenNodesParams(EffectRecord<String, IParams, String> effect,
 				NodeList nodes) {
 			if (nodes!=null) {
-				Params params = new Params();
+				IParams params = new Params();
 				effect.getConditions().put(getTag(),params);
 				for (int i=0; i < nodes.getLength(); i++) try {
 					P p = P.valueOf(nodes.item(i).getLocalName().replace(".","_"));
@@ -640,7 +641,7 @@ public class StudyRecordConverter
 				} catch (Exception x) {}
 			}	
 		}		
-		public void useChildrenNodesEffect(EffectRecord<String, Params, String> effect,
+		public void useChildrenNodesEffect(EffectRecord<String, IParams, String> effect,
 				NodeList nodes) {
 			if (nodes!=null) {
 				for (int i=0; i < nodes.getLength(); i++) try {

@@ -1,12 +1,12 @@
 package net.idea.i5._5.ambit2.sections.TO_SKIN_IRRITATION_SECTION;
 
+import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.TOXStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
-import ambit2.base.data.study.Params;
-import ambit2.base.data.study.Protocol;
+import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.exceptions.AmbitException;
 import ambit2.base.interfaces.IStructureRecord;
@@ -71,7 +71,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		if (sciPart.getTOSKINIRRITATION()==null) return null;
 		
 		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+		Experiment<IParams, IParams> papp = createProtocolApplication(
 					unmarshalled.getDocumentReferencePK(),
 					unmarshalled.getName());
 		parseReliability(papp, unmarshalled.getReliability().getValueID()

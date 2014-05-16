@@ -2,7 +2,7 @@ package net.idea.i5._5.ambit2.sections.ZETA_POTENTIAL_SECTION;
 
 import javax.xml.bind.JAXBElement;
 
-import net.idea.i5._5.ambit2.sections.AbstractStudyRecordConverter;
+import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
@@ -13,6 +13,7 @@ import org.w3c.dom.NodeList;
 
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
+import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
@@ -26,7 +27,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.ZETA_POTENTIAL_SECTI
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.ZETA_POTENTIAL_SECTION.EndpointStudyRecord,Params,Params> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.ZETA_POTENTIAL_SECTION.EndpointStudyRecord,IParams,IParams> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.ZETA_POTENTIAL);
@@ -85,7 +86,7 @@ public class StudyRecordConverter
 		if (sciPart.getZETAPOTENTIAL()==null) return null;
 
 		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+		Experiment<IParams, IParams> papp = createProtocolApplication(
 				unmarshalled.getDocumentReferencePK(),
 				unmarshalled.getName());
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
@@ -160,7 +161,7 @@ public class StudyRecordConverter
 		return record;
 	}
 	
-	protected void parseElement(JAXBElement<Object> element,ProtocolApplication<Protocol,Params,String,Params,String> papp) {
+	protected void parseElement(JAXBElement<Object> element,ProtocolApplication<Protocol,IParams,String,IParams,String> papp) {
 		String endpoint = null;
 		if (element.getValue() instanceof Node) {
 			endpoint = ((Node) element.getValue()).getLocalName();
@@ -172,7 +173,7 @@ public class StudyRecordConverter
 			for (int i=0; i < nodes.getLength(); i++) {
 				Node set = nodes.item(i);
 				if ("set".equals(set.getLocalName())) {
-					EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
+					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint(endpoint);
 					papp.addEffect(effect);
 					NodeList r = set.getChildNodes();
@@ -193,14 +194,14 @@ public class StudyRecordConverter
 		//i5:AGGLO_AGGREGATION_IDX
 		ZETA_POTENTIAL_LOQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				String q = node.getTextContent();
 				effect.setLoQualifier("NOT_SPECIFIED".equals(q)?null:q);				
 			}	
 		},
 		ZETA_POTENTIAL_LOVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {effect.setTextValue(node.getTextContent());}
@@ -208,14 +209,14 @@ public class StudyRecordConverter
 		},
 		ZETA_POTENTIAL_UPQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				String q = node.getTextContent();
 				effect.setUpQualifier("NOT_SPECIFIED".equals(q)?null:q);
 			}	
 		},
 		ZETA_POTENTIAL_UPVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setUpValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {}
@@ -223,7 +224,7 @@ public class StudyRecordConverter
 		},
 		ZETA_POTENTIAL_UNIT {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				String q = node.getTextContent();
 				effect.setUnit("NOT_SPECIFIED".equals(q)?null:q);
 			}				
@@ -231,7 +232,7 @@ public class StudyRecordConverter
 		STD_DEVI_UNIT,
 		STD_DEVI_UNIT_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				params.setUnits(node.getTextContent());
 			}			
 		},
@@ -239,7 +240,7 @@ public class StudyRecordConverter
 		//i5:VALUEUNIT_STD_DEV_VALUE
 		STD_DEVI_VALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					params.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
@@ -253,19 +254,19 @@ public class StudyRecordConverter
 		//i5:PH_VALUE
 		PH_VALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				params.setLoValue(node.getTextContent());
 			}
 		},
 		ISOELECTRIC_POINT_LOQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setLoQualifier(node.getTextContent());
 			}			
 		},
 		ISOELECTRIC_POINT_LOVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {effect.setTextValue(node.getTextContent());}
@@ -273,20 +274,20 @@ public class StudyRecordConverter
 		},
 		ISOELECTRIC_POINT_UPQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setUpQualifier(node.getTextContent());
 			}			
 		},		
 		ISOELECTRIC_POINT_UPVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setUpValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {effect.setTextValue(node.getTextContent());}
 			}				
 		}
 		;
-		public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+		public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 		}
 		public String getTag() {
 			return name();
@@ -296,7 +297,7 @@ public class StudyRecordConverter
 		//i5:ZETA_POTENTIAL_TABLE
 		PRECISION_ZETA_POTENTIAL_LOQUALIFIER {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				effect.setEndpoint(I5CONSTANTS.eZETA_POTENTIAL);
 				useChildrenNodesEffect(effect, nodes);	
@@ -308,7 +309,7 @@ public class StudyRecordConverter
 		},
 		VALUEUNIT_STD_DEVI_VALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesParams(effect, nodes);	
 			}	
@@ -318,7 +319,7 @@ public class StudyRecordConverter
 		},
 		PH_VALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesParams(effect, nodes);
 			}
@@ -329,7 +330,7 @@ public class StudyRecordConverter
 		},	
 		PRECISION_ISOELECTRIC_POINT_LOQUALIFIER {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				effect.setEndpoint(I5CONSTANTS.eISOELECTRIC_POINT);
 				useChildrenNodesEffect(effect, nodes);	
@@ -342,7 +343,7 @@ public class StudyRecordConverter
 		},
 		STD_DEVI_VALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesParams(effect, nodes);	
 			}	
@@ -352,7 +353,7 @@ public class StudyRecordConverter
 		},
 		MEDIUM {
 			@Override
-			public void setValue(EffectRecord<String,Params,String> effect,NodeList nodes) {
+			public void setValue(EffectRecord<String, IParams, String> effect,NodeList nodes) {
 				if (nodes!=null)
 					for (int i=0; i < nodes.getLength(); i++) {
 						effect.getConditions().put(name(),nodes.item(i).getTextContent());
@@ -361,7 +362,7 @@ public class StudyRecordConverter
 		},
 		REMARKS {
 			@Override
-			public void setValue(EffectRecord<String,Params,String> effect,NodeList nodes) {
+			public void setValue(EffectRecord<String, IParams, String> effect,NodeList nodes) {
 				if (nodes!=null)
 					for (int i=0; i < nodes.getLength(); i++) {
 						effect.getConditions().put(getTag(),nodes.item(i).getTextContent());
@@ -375,10 +376,10 @@ public class StudyRecordConverter
 		public String getTag() {
 			return name();
 		}
-		public void setValue(EffectRecord<String,Params,String> effect,NodeList nodes) {
+		public void setValue(EffectRecord<String, IParams, String> effect,NodeList nodes) {
 			
 		}
-		public void useChildrenNodesParams(EffectRecord<String, Params, String> effect,
+		public void useChildrenNodesParams(EffectRecord<String, IParams, String> effect,
 				NodeList nodes) {
 			if (nodes!=null) {
 				Params params = new Params();
@@ -389,7 +390,7 @@ public class StudyRecordConverter
 				} catch (Exception x) {}
 			}	
 		}		
-		public void useChildrenNodesEffect(EffectRecord<String, Params, String> effect,
+		public void useChildrenNodesEffect(EffectRecord<String, IParams, String> effect,
 				NodeList nodes) {
 			if (nodes!=null) {
 				for (int i=0; i < nodes.getLength(); i++) try {

@@ -1,13 +1,14 @@
 package net.idea.i5._5.ambit2.sections.PC_GRANULOMETRY_SECTION;
 
+import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
+import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
-import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.exceptions.AmbitException;
 import ambit2.base.interfaces.IStructureRecord;
@@ -16,7 +17,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.ZETA_POTENTIAL_SECTI
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_GRANULOMETRY_SECTION.EndpointStudyRecord,Params,Params> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_GRANULOMETRY_SECTION.EndpointStudyRecord,IParams,IParams> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.PC_GRANULOMETRY);
@@ -76,7 +77,7 @@ public class StudyRecordConverter
 		if (sciPart.getPCGRANULOMETRY()==null) return null;
 
 		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+		Experiment<IParams, IParams> papp = createProtocolApplication(
 				unmarshalled.getDocumentReferencePK(),
 				unmarshalled.getName());
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
@@ -126,7 +127,7 @@ public class StudyRecordConverter
 		
 		//Mass median diametrer
 		if (sciPart.getPCGRANULOMETRY().getDIAMETER()!=null) { 
-			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
+			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.pMMD);
 			effect.getConditions().put(I5CONSTANTS.rSTD_DEV,new Params(null));
 			effect.getConditions().put(I5CONSTANTS.cSEQ_NUM,new Params(null));
@@ -156,7 +157,7 @@ public class StudyRecordConverter
 		}
 		//Mass median aerodynamic diameter
 		if (sciPart.getPCGRANULOMETRY().getMMAD()!=null) {
-			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
+			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.pMMAD);
 			Params rSTDEV = new Params(null);
 			effect.getConditions().put(I5CONSTANTS.rSTD_DEV,rSTDEV);
@@ -211,7 +212,7 @@ public class StudyRecordConverter
 		//Particle size
 		if (sciPart.getPCGRANULOMETRY().getPARTICLESIZE()!=null) 
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_GRANULOMETRY_SECTION.EndpointStudyRecord.ScientificPart.PCGRANULOMETRY.PARTICLESIZE.Set set : sciPart.getPCGRANULOMETRY().getPARTICLESIZE().getSet()) {
-				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
+				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				Params rSTDEV = new Params(null);
 				effect.getConditions().put(I5CONSTANTS.rSTD_DEV,rSTDEV);
 				effect.getConditions().put(I5CONSTANTS.cSEQ_NUM,new Params(null));
@@ -252,7 +253,7 @@ public class StudyRecordConverter
 		//particle size at different passages
 		if (sciPart.getPCGRANULOMETRY().getPARTICLESIZE()!=null) 
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_GRANULOMETRY_SECTION.EndpointStudyRecord.ScientificPart.PCGRANULOMETRY.DISTRIBUTION.Set set : sciPart.getPCGRANULOMETRY().getDISTRIBUTION().getSet()) {
-				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
+				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				Params rSTDEV = new Params(null);
 				effect.getConditions().put(I5CONSTANTS.rSTD_DEV,rSTDEV);
 				Params rREM = new Params(null);

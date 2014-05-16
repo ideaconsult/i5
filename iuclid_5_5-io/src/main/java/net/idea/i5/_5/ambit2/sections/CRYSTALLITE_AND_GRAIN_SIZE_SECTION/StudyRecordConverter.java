@@ -12,6 +12,7 @@ import org.w3c.dom.NodeList;
 
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
+import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
@@ -23,7 +24,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CRYSTALLITE_AND_GRAI
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CRYSTALLITE_AND_GRAIN_SIZE_SECTION.EndpointStudyRecord,Params,Params> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CRYSTALLITE_AND_GRAIN_SIZE_SECTION.EndpointStudyRecord,IParams,IParams> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.CRYSTALLITE_AND_GRAIN_SIZE);
@@ -89,7 +90,7 @@ public class StudyRecordConverter
 		if (sciPart.getCRYSTALLITEANDGRAINSIZE()==null) return null;
 
 		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+		ProtocolApplication<Protocol,IParams,String,IParams,String> papp = createProtocolApplication(
 				unmarshalled.getDocumentReferencePK(),
 				unmarshalled.getName());
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
@@ -169,7 +170,7 @@ public class StudyRecordConverter
 		return record;
 	}
 	
-	protected void parseElement(JAXBElement<Object> element,ProtocolApplication<Protocol,Params,String,Params,String> papp) {
+	protected void parseElement(JAXBElement<Object> element,ProtocolApplication<Protocol,IParams,String,IParams,String> papp) {
 		String endpoint = null;
 		endpoint = "MEAN DIAMETER";
 		if (element.getValue() instanceof NodeList) {
@@ -178,7 +179,7 @@ public class StudyRecordConverter
 			for (int i=0; i < nodes.getLength(); i++) {
 				Node set = nodes.item(i);
 				if ("set".equals(set.getLocalName())) {
-					EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
+					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint(endpoint);
 					papp.addEffect(effect);
 					NodeList r = set.getChildNodes();
@@ -199,13 +200,13 @@ public class StudyRecordConverter
 		//i5:AGGLO_AGGREGATION_IDX
 		MEAN_DIAM_LOQUALIFIER {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setLoQualifier(node.getTextContent());
 			}	
 		},
 		MEAN_DIAM_LOQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {effect.setTextValue(node.getTextContent());}
@@ -213,13 +214,13 @@ public class StudyRecordConverter
 		},
 		MEAN_DIAM_UPQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setUpQualifier(node.getTextContent());
 			}	
 		},
 		MEAN_DIAM_UPVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setUpValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {}
@@ -227,7 +228,7 @@ public class StudyRecordConverter
 		},
 		STD_DEV {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					params.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {params.setLoValue(node.getTextContent());}
@@ -235,13 +236,13 @@ public class StudyRecordConverter
 		},
 		MEAN_DIAM_UNIT_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				effect.setUnit(node.getTextContent());
 			}			
 		},
 		STD_DEVI_VALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				params.setLoValue(node.getTextContent());
 			}	
 			@Override
@@ -251,19 +252,19 @@ public class StudyRecordConverter
 		},
 		STD_DEVI_UNIT_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				params.setUnits(node.getTextContent());
 			}			
 		},
 		STD_DEVI_UNIT_TXT {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				if ("other:".equals(params.getUnits()))
 						params.setUnits(node.getTextContent());
 			}
 		}	
 		;
-		public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+		public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 		}
 		public String getTag() {
 			return name();
@@ -272,14 +273,14 @@ public class StudyRecordConverter
 	enum EFFECT {
 		PRECISION_MEAN_DIAM_LOQUALIFIER {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesEffect(effect, nodes);	
 			}	
 		},
 		VALUEUNIT_STD_DEVI_VALUE { 
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
 				useChildrenNodesParams(effect, nodes);
 			}
@@ -290,10 +291,10 @@ public class StudyRecordConverter
 		public String getTag() {
 			return name();
 		}
-		public void setValue(EffectRecord<String,Params,String> effect,NodeList nodes) {
+		public void setValue(EffectRecord<String, IParams, String> effect,NodeList nodes) {
 			
 		}
-		public void useChildrenNodesParams(EffectRecord<String, Params, String> effect,
+		public void useChildrenNodesParams(EffectRecord<String, IParams, String> effect,
 				NodeList nodes) {
 			if (nodes!=null) {
 				Params params = new Params();
@@ -304,7 +305,7 @@ public class StudyRecordConverter
 				} catch (Exception x) {}
 			}	
 		}		
-		public void useChildrenNodesEffect(EffectRecord<String, Params, String> effect,
+		public void useChildrenNodesEffect(EffectRecord<String, IParams, String> effect,
 				NodeList nodes) {
 			if (nodes!=null) {
 				for (int i=0; i < nodes.getLength(); i++) try {

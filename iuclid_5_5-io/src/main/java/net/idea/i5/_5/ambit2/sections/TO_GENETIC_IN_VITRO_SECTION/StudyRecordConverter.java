@@ -1,13 +1,13 @@
 package net.idea.i5._5.ambit2.sections.TO_GENETIC_IN_VITRO_SECTION;
 
+import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.TOXStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
-import ambit2.base.data.study.Params;
-import ambit2.base.data.study.Protocol;
+import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.exceptions.AmbitException;
 import ambit2.base.interfaces.IStructureRecord;
@@ -73,7 +73,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		if (sciPart.getTOGENETICINVITRO()==null) return null;
 		
 		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+		Experiment<IParams, IParams> papp = createProtocolApplication(
 					unmarshalled.getDocumentReferencePK(),
 					unmarshalled.getName());
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
@@ -159,7 +159,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		// effect level
 		if (sciPart.getTOGENETICINVITRO().getTESTRS() != null)
 			for (EndpointStudyRecord.ScientificPart.TOGENETICINVITRO.TESTRS.Set set : sciPart.getTOGENETICINVITRO().getTESTRS().getSet()) {
-				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
+				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.eGenotoxicity);
 				try {effect.setTextValue(set.getPHRASEOTHERGENOTOXICITY().getGENOTOXICITYValue());} catch (Exception x) {}
 				papp.addEffect(effect);

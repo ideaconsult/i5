@@ -1,11 +1,13 @@
 package net.idea.i5._5.ambit2.sections.TO_ACUTE_ORAL_SECTION;
 
+import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.TOXStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
+import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
@@ -72,7 +74,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		if (sciPart.getTOACUTEORAL()==null) return null;
 		
 		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+		Experiment<IParams, IParams> papp = createProtocolApplication(
 					unmarshalled.getDocumentReferencePK(),
 					unmarshalled.getName());
 		parseReliability(papp, unmarshalled.getReliability().getValueID()
@@ -120,7 +122,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		// effect level
 		if (sciPart.getTOACUTEORAL().getEFFLEVEL() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.EFFLEVEL.Set set : sciPart.getTOACUTEORAL().getEFFLEVEL().getSet()) {
-				EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
+				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				try {
 					effect.setEndpoint(getValue(set.getPHRASEOTHERENDPOINT().getENDPOINTValue(),set.getPHRASEOTHERENDPOINT().getENDPOINTTXT()));
 				} catch (Exception x) {effect.setEndpoint(null);}

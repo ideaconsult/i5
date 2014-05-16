@@ -1,6 +1,7 @@
 package net.idea.i5.io;
 
 import ambit2.base.data.study.EffectRecord;
+import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
@@ -684,6 +685,20 @@ public enum I5_ROOT_OBJECTS {
 					I5CONSTANTS.pMETHODDETAILS,I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,I5CONSTANTS.pSAMPLING,I5CONSTANTS.cTypeMethod,I5CONSTANTS.pTESTMAT_FORM
 			};
 		}
+		
+	},			
+	PC_UNKNOWN {
+		@Override
+		public String toString() {
+			return "Physico chemical properties (other)";
+		}
+		@Override
+		public String getNumber() {
+			return "4.99";
+		}
+		public String getTopCategory() {
+			return "P-CHEM";
+		}			
 	},			
 	TO_PHOTOTRANS_AIR {
 		@Override
@@ -693,7 +708,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "5.1.1";
-		}			
+		}	
+		@Override
+		public String getTopCategory() {
+			return "ENV FATE";
+		}
 	},
 	TO_HYDROLYSIS {
 		@Override
@@ -703,7 +722,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "5.1.2";
-		}			
+		}	
+		@Override
+		public String getTopCategory() {
+			return "ENV FATE";
+		}
 	},
 	TO_BIODEG_WATER_SCREEN {
 		@Override
@@ -717,7 +740,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "5.2.1";
-		}			
+		}	
+		@Override
+		public String getTopCategory() {
+			return "ENV FATE";
+		}
 	},
 	TO_BIODEG_WATER_SIM {
 		@Override
@@ -728,6 +755,10 @@ public enum I5_ROOT_OBJECTS {
 		public String getNumber() {
 			return "5.2.2";
 		}	
+		@Override
+		public String getTopCategory() {
+			return "ENV FATE";
+		}
 	},
 	EN_STABILITY_IN_SOIL {
 		@Override
@@ -758,6 +789,10 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] {
 					I5CONSTANTS.cTestType
 			};
+		}
+		@Override
+		public String getTopCategory() {
+			return "ENV FATE";
 		}
 		
 	},
@@ -790,7 +825,11 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] {
 					
 			};
-		}		
+		}	
+		@Override
+		public String getTopCategory() {
+			return "ENV FATE";
+		}
 	},
 	EN_BIOACCU_TERR {
 		@Override
@@ -817,7 +856,11 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] {
 					
 			};
-		}		
+		}
+		@Override
+		public String getTopCategory() {
+			return "ENV FATE";
+		}
 	},
 	EN_ADSORPTION {
 		@Override
@@ -846,7 +889,11 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] {
 					
 			};
-		}		
+		}	
+		@Override
+		public String getTopCategory() {
+			return "ENV FATE";
+		}
 	},
 	EN_HENRY_LAW {
 		@Override
@@ -873,7 +920,11 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] {
 					
 			};
-		}		
+		}	
+		@Override
+		public String getTopCategory() {
+			return "ENV FATE";
+		}
 	},
 	EC_FISHTOX {
 		@Override
@@ -887,7 +938,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "6.1.1";
-		}		
+		}	
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
 	},
 	EC_CHRONFISHTOX {
 		@Override
@@ -901,7 +956,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "6.1.2";
-		}		
+		}	
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
 	},
 	EC_DAPHNIATOX {
 		@Override
@@ -915,7 +974,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "6.1.3";
-		}		
+		}	
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
 	},
 	EC_CHRONDAPHNIATOX {
 		@Override
@@ -929,7 +992,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "6.1.4";
-		}		
+		}	
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
 	},
 	EC_ALGAETOX {
 		@Override
@@ -943,7 +1010,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "6.1.5";
-		}		
+		}	
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
 	},
 	EC_BACTOX {
 		@Override
@@ -958,6 +1029,10 @@ public enum I5_ROOT_OBJECTS {
 		public String getNumber() {
 			return "6.1.7";
 		}		
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
 	},
 	EC_SEDIMENTDWELLINGTOX {
 		@Override
@@ -987,7 +1062,11 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] {
 					I5CONSTANTS.cTestMedium,I5CONSTANTS.cTestOrganism,I5CONSTANTS.cExposure
 			};
-		}			
+		}		
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
 	},
 	EC_SOILDWELLINGTOX {
 		@Override
@@ -1017,7 +1096,11 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] {
 					I5CONSTANTS.cTestMedium,I5CONSTANTS.cTestOrganism,I5CONSTANTS.cExposure
 			};
-		}			
+		}
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
 	},
 	EC_HONEYBEESTOX {
 		@Override
@@ -1027,7 +1110,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "6.3.2";
-		}			
+		}		
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
 	},
 	EC_PLANTTOX {
 		@Override
@@ -1037,7 +1124,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "6.3.3";
-		}		
+		}
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
 	},
 	EC_SOIL_MICRO_TOX {
 		@Override
@@ -1067,7 +1158,11 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] {
 					I5CONSTANTS.cTestOrganism,I5CONSTANTS.cExposure
 			};
-		}			
+		}	
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
 	},	
 	TO_ACUTE_ORAL {
 		@Override
@@ -1081,7 +1176,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "7.2.1";
-		}			
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	},
 	TO_ACUTE_INHAL {
 		@Override
@@ -1092,6 +1191,10 @@ public enum I5_ROOT_OBJECTS {
 		public String getNumber() {
 			return "7.2.2";
 		}		
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	},
 	TO_ACUTE_DERMAL {
 		@Override
@@ -1101,7 +1204,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "7.2.3";
-		}			
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	},
 	TO_SKIN_IRRITATION {
 		@Override
@@ -1115,7 +1222,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "7.3.1";
-		}			
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	},
 	TO_EYE_IRRITATION {
 		@Override
@@ -1129,7 +1240,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "7.3.2";
-		}			
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	},
 	TO_SENSITIZATION {
 		@Override
@@ -1143,7 +1258,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "7.4.1";
-		}			
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	},
 	//TO_SENSITIZATION_HUMAN,
 	TO_REPEATED_ORAL {
@@ -1177,7 +1296,11 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] {
 					I5CONSTANTS.cRouteAdm,I5CONSTANTS.cDoses,I5CONSTANTS.cSpecies,I5CONSTANTS.cTestType
 			};
-		}			
+		}
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	},
 	TO_REPEATED_INHAL {
 		@Override
@@ -1206,7 +1329,11 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] {
 					I5CONSTANTS.cRouteAdm,I5CONSTANTS.cDoses,I5CONSTANTS.cSpecies,I5CONSTANTS.cTestType
 			};
-		}			
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	},
 	TO_REPEATED_DERMAL {
 		@Override
@@ -1235,7 +1362,11 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] {
 					I5CONSTANTS.cTypeCoverage,I5CONSTANTS.cDoses,I5CONSTANTS.cSpecies,I5CONSTANTS.cTestType
 			};
-		}			
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	},
 	TO_GENETIC_IN_VITRO {
 		@Override
@@ -1268,7 +1399,11 @@ public enum I5_ROOT_OBJECTS {
 					I5CONSTANTS.cTypeStudy, I5CONSTANTS.cMetabolicActivationSystem,I5CONSTANTS.cTypeGenotoxicity,
 					I5CONSTANTS.cTargetGene,I5CONSTANTS.cSpecies 
 			};
-		}				
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	},
 	TO_GENETIC_IN_VIVO {
 		@Override
@@ -1301,7 +1436,11 @@ public enum I5_ROOT_OBJECTS {
 					I5CONSTANTS.cRouteAdm,
 					I5CONSTANTS.cTypeStudy, I5CONSTANTS.cTypeGenotoxicity,I5CONSTANTS.cSpecies 
 			};
-		}			
+		}
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	},	
 	TO_CARCINOGENICITY {
 		@Override
@@ -1332,7 +1471,11 @@ public enum I5_ROOT_OBJECTS {
 					I5CONSTANTS.cRouteAdm,
 					I5CONSTANTS.cTypeStudy, I5CONSTANTS.cTypeGenotoxicity,I5CONSTANTS.cSpecies ,I5CONSTANTS.cDoses
 			};
-		}			
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	},
 	TO_REPRODUCTION {
 		@Override
@@ -1342,7 +1485,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "7.8.1";
-		}		
+		}
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	},
 	TO_DEVELOPMENTAL {
 		@Override
@@ -1352,7 +1499,25 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getNumber() {
 			return "7.8.2";
-		}		
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+	},
+	UNKNOWN_TOXICITY {
+		@Override
+		public String getTitle() {
+			return "Toxicity (other)";
+		}
+		@Override
+		public String getNumber() {
+			return "7.999";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	}
 	
 	
@@ -1381,6 +1546,9 @@ public enum I5_ROOT_OBJECTS {
 	public String getTitle() {
 		return name();
 	}		
+	public String getTopCategory() {
+		return "P-CHEM";
+	}
 	public String[] getEndpoints() {
 		return null;
 	}
@@ -1390,8 +1558,8 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getConditions() {
 		return null;
 	}
-	public Params createProtocolParameters() {
-		Params protocolParams = new Params();
+	public IParams createProtocolParameters() {
+		IParams protocolParams = new Params();
 		String[] params = getProtocolParameters();
 		if (params!=null) 
 			for (String param : params)
@@ -1403,8 +1571,8 @@ public enum I5_ROOT_OBJECTS {
 	 * @param protocol
 	 * @return
 	 */
-	public ProtocolApplication<Protocol, Params, String, Params,String> createExperimentRecord(Protocol protocol) {
-		ProtocolApplication<Protocol, Params, String, Params,String> experiment = new ProtocolApplication<Protocol, Params, String, Params,String>(protocol);
+	public ProtocolApplication<Protocol, IParams, String, IParams,String> createExperimentRecord(Protocol protocol) {
+		ProtocolApplication<Protocol, IParams, String, IParams,String> experiment = new ProtocolApplication<Protocol, IParams, String, IParams,String>(protocol);
 		experiment.setParameters(createProtocolParameters());
 		return experiment;
 	}	
@@ -1412,8 +1580,8 @@ public enum I5_ROOT_OBJECTS {
 	 * Creates an effect record and adds placeholders for the relevant conditions
 	 * @return
 	 */
-	public EffectRecord<String, Params, String> createEffectRecord() {
-		EffectRecord<String, Params, String> record =  new EffectRecord<String, Params, String>();
+	public EffectRecord<String, IParams, String> createEffectRecord() {
+		EffectRecord<String, IParams, String> record =  new EffectRecord<String, IParams, String>();
 		record.setConditions(new Params());
 		String[] conditions = getConditions();
 		if (conditions!=null) 

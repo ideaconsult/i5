@@ -1,13 +1,14 @@
 package net.idea.i5._5.ambit2.sections.EC_SEDIMENTDWELLINGTOX_SECTION;
 
+import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.ECOTOXStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
+import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
-import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.exceptions.AmbitException;
 import ambit2.base.interfaces.IStructureRecord;
@@ -73,7 +74,7 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		
 		
 		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+		Experiment<IParams, IParams> papp = createProtocolApplication(
 				unmarshalled.getDocumentReferencePK(),
 				unmarshalled.getName());
 		
@@ -125,7 +126,7 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		//ENDPOINT
 		if (sciPart.getECSEDIMENTDWELLINGTOX().getEFFCONC()!=null && sciPart.getECSEDIMENTDWELLINGTOX().getEFFCONC().getSet()!=null)
 		for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.EC_SEDIMENTDWELLINGTOX_SECTION.EndpointStudyRecord.ScientificPart.ECSEDIMENTDWELLINGTOX.EFFCONC.Set set : sciPart.getECSEDIMENTDWELLINGTOX().getEFFCONC().getSet()) {
-			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
+			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			try {
 				effect.setEndpoint(getValue(
 					set.getPHRASEOTHERENDPOINT().getENDPOINTValue(),
@@ -179,7 +180,7 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 				effect.getConditions().put(I5CONSTANTS.cExposure,null);
 			}
 		} else {
-			EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
+			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.eBCF);
 			papp.addEffect(effect);
 			effect.getConditions().put(I5CONSTANTS.cEffect,null);

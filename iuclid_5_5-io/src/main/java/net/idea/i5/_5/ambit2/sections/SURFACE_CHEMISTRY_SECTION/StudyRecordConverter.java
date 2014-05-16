@@ -2,7 +2,7 @@ package net.idea.i5._5.ambit2.sections.SURFACE_CHEMISTRY_SECTION;
 
 import javax.xml.bind.JAXBElement;
 
-import net.idea.i5._5.ambit2.sections.AbstractStudyRecordConverter;
+import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
@@ -13,6 +13,7 @@ import org.w3c.dom.NodeList;
 
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
+import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
@@ -26,7 +27,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.SURFACE_CHEMISTRY_SE
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.SURFACE_CHEMISTRY_SECTION.EndpointStudyRecord,Params,Params> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.SURFACE_CHEMISTRY_SECTION.EndpointStudyRecord,IParams,IParams> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.SURFACE_CHEMISTRY);
@@ -85,7 +86,7 @@ public class StudyRecordConverter
 		if (sciPart.getSURFACECHEMISTRY()==null) return null;
 
 		record.clear();
-		ProtocolApplication<Protocol,Params,String,Params,String> papp = createProtocolApplication(
+		Experiment<IParams, IParams> papp = createProtocolApplication(
 				unmarshalled.getDocumentReferencePK(),
 				unmarshalled.getName());
 		
@@ -187,7 +188,7 @@ public class StudyRecordConverter
 		return record;
 	}
 	
-	protected void parseElement(JAXBElement<Object> element,ProtocolApplication<Protocol,Params,String,Params,String> papp,CF cf_mode) {
+	protected void parseElement(JAXBElement<Object> element,ProtocolApplication<Protocol,IParams,String,IParams,String> papp,CF cf_mode) {
 		String endpoint = null;
 		if (element.getValue() instanceof Node) {
 			endpoint = ((Node) element.getValue()).getLocalName();
@@ -199,7 +200,7 @@ public class StudyRecordConverter
 			for (int i=0; i < nodes.getLength(); i++) {
 				Node set = nodes.item(i);
 				if ("set".equals(set.getLocalName())) {
-					EffectRecord<String, Params, String> effect = endpointCategory.createEffectRecord();
+					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint(endpoint);
 					papp.addEffect(effect);
 					NodeList r = set.getChildNodes();
@@ -220,8 +221,8 @@ public class StudyRecordConverter
 		//
 		ELEMENT {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
-					Params params, Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,
+					IParams params, Node node) {
 				params.setLoValue(node.getTextContent());
 				params.setLoQualifier(" ");
 			}
@@ -232,8 +233,8 @@ public class StudyRecordConverter
 		},
 		FUNCTIONAL_GROUP_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
-					Params params, Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,
+					IParams params, Node node) {
 				if (node.getTextContent()!=null) {
 					params.setLoValue(node.getTextContent());
 					params.setLoQualifier(" ");
@@ -246,8 +247,8 @@ public class StudyRecordConverter
 		},
 		FUNCTIONAL_GROUP_NOLABEL {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
-					Params params, Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,
+					IParams params, Node node) {
 				if (node.getTextContent()!=null) {
 					params.setLoValue(node.getTextContent());
 					params.setLoQualifier(" ");
@@ -260,14 +261,14 @@ public class StudyRecordConverter
 		},		
 		FRACTION_LOQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				String q = node.getTextContent();
 				effect.setLoQualifier("NOT_SPECIFIED".equals(q)?null:q);				
 			}	
 		},
 		FRACTION_LOVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {effect.setTextValue(node.getTextContent());}
@@ -275,14 +276,14 @@ public class StudyRecordConverter
 		},
 		FRACTION_UPQUALIFIER_value {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				String q = node.getTextContent();
 				effect.setUpQualifier("NOT_SPECIFIED".equals(q)?null:q);
 			}	
 		},
 		FRACTION_UPVALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					effect.setUpValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {}
@@ -290,7 +291,7 @@ public class StudyRecordConverter
 		},
 		STD_DEVI_VALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					params.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
@@ -303,7 +304,7 @@ public class StudyRecordConverter
 		},
 		FUNCT_GROUP_STD_DEVI_VALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
 					params.setLoValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
@@ -315,7 +316,7 @@ public class StudyRecordConverter
 			}
 		}
 		;
-		public void setValue(EffectRecord<String, Params, String> effect,Params params,Node node) {
+		public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 		}
 		public String getTag() {
 			return name();
@@ -324,7 +325,7 @@ public class StudyRecordConverter
 	enum EFFECT {
 		//ATOMIC_COMPOSITION_TABLE
 		ELEMENT {
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes,CF cf_mode) {
 				Params params = (Params)effect.getConditions().get(I5CONSTANTS.pTYPE);
 				if (params == null) {
@@ -357,7 +358,7 @@ public class StudyRecordConverter
 		},
 		PRECISION_FRACTION_LOQUALIFIER {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes,CF cf_mode) {
 				useChildrenNodesEffect(effect, nodes);	
 			}	
@@ -368,7 +369,7 @@ public class StudyRecordConverter
 		},
 		STD_DEVI_VALUE  {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes,CF cf_mode) {
 				useChildrenNodesParams(effect, nodes);	
 			}	
@@ -379,7 +380,7 @@ public class StudyRecordConverter
 		},
 		FUNCTIONAL_GROUP {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes,CF cf_mode) {
 				Params params = (Params)effect.getConditions().get(I5CONSTANTS.pTYPE);
 				if (params == null) {
@@ -405,7 +406,7 @@ public class StudyRecordConverter
 		},
 		FUNCTIONAL_GROUP_NOLABEL {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes,CF cf_mode) {
 				Params params = (Params)effect.getConditions().get(I5CONSTANTS.pTYPE);
 				if (params == null) {
@@ -431,7 +432,7 @@ public class StudyRecordConverter
 		},
 		FUNCT_GROUP_STD_DEVI_VALUE {
 			@Override
-			public void setValue(EffectRecord<String, Params, String> effect,
+			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes,CF cf_mode) {
 				useChildrenNodesParams(effect, nodes);	
 			}	
@@ -442,7 +443,7 @@ public class StudyRecordConverter
 		},
 		REMARKS {
 			@Override
-			public void setValue(EffectRecord<String,Params,String> effect,NodeList nodes,CF cf_mode) {
+			public void setValue(EffectRecord<String, IParams, String> effect,NodeList nodes,CF cf_mode) {
 				if (nodes!=null)
 					for (int i=0; i < nodes.getLength(); i++) {
 						effect.getConditions().put(getTag(),nodes.item(i).getTextContent());
@@ -457,10 +458,10 @@ public class StudyRecordConverter
 		public String getTag() {
 			return name();
 		}
-		public void setValue(EffectRecord<String,Params,String> effect,NodeList nodes,CF cf_mode) {
+		public void setValue(EffectRecord<String, IParams, String> effect,NodeList nodes,CF cf_mode) {
 			
 		}
-		public void useChildrenNodesParams(EffectRecord<String, Params, String> effect,
+		public void useChildrenNodesParams(EffectRecord<String, IParams, String> effect,
 				NodeList nodes) {
 			if (nodes!=null) {
 				Params params = (Params)effect.getConditions().get(getTag());
@@ -472,7 +473,7 @@ public class StudyRecordConverter
 				} catch (Exception x) {}
 			}	
 		}		
-		public void useChildrenNodesEffect(EffectRecord<String, Params, String> effect,
+		public void useChildrenNodesEffect(EffectRecord<String, IParams, String> effect,
 				NodeList nodes) {
 			if (nodes!=null) {
 				for (int i=0; i < nodes.getLength(); i++) try {
