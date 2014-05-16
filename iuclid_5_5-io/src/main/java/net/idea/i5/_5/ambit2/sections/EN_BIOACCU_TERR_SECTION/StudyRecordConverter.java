@@ -87,7 +87,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				unmarshalled.getStudyResultType().getValueID(),
 				getTestMaterialIdentity(unmarshalled)
 			);
-		record.addtMeasurement(papp);
+		record.addMeasurement(papp);
 	
 		//UUID
 		if (unmarshalled.getOwnerRef().getType().equals(DocumentTypeType.SUBSTANCE)) {

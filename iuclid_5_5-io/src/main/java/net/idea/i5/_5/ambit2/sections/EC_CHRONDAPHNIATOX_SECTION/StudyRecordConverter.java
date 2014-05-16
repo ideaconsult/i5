@@ -88,7 +88,7 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 		} catch (Exception x) {
 			return null;
 		}
-		record.addtMeasurement(papp);		
+		record.addMeasurement(papp);		
 		
 		//UUID
 		if (unmarshalled.getOwnerRef().getType().equals(DocumentTypeType.SUBSTANCE)) {

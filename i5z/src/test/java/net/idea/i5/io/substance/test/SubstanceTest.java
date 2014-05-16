@@ -22,6 +22,7 @@ import org.openscience.cdk.io.IChemObjectReaderErrorHandler;
 
 import ambit2.base.data.Property;
 import ambit2.base.data.SubstanceRecord;
+import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.base.interfaces.IStructureRelation;
 import ambit2.base.relation.composition.CompositionRelation;
@@ -390,8 +391,9 @@ Value	2	1976	h
 					System.out.println(record.getProperty(p));
 				}
 				Assert.assertTrue(record instanceof SubstanceRecord);
+				SubstanceRecord substanceRecord = ((SubstanceRecord)record);
 				if (substance) {
-					for (IStructureRelation relation : ((SubstanceRecord)record).getRelatedStructures()) {
+					for (IStructureRelation relation : substanceRecord.getRelatedStructures()) {
 						System.out.print(relation.getRelationType());
 						System.out.println(relation.getRelation());
 						
@@ -401,6 +403,12 @@ Value	2	1976	h
 							System.out.println(relation.getSecondStructure().getProperty(Property.getI5UUIDInstance()));						
 						System.out.println();
 					}
+					System.out.println(substanceRecord.toJSON("http://localhost:8080/ambit2"));
+					if (substanceRecord.getMeasurements()!=null)
+						for (ProtocolApplication papp : substanceRecord.getMeasurements()) {
+							System.out.println(papp.toString());
+						}
+					
 				} else {
 					Assert.assertNotNull(((SubstanceRecord)record).getCompanyUUID());
 				}
@@ -447,6 +455,8 @@ Value	2	1976	h
 		I5ZReader reader = null;
 		try {
 			reader = new I5ZReader(in) ;
+			QASettings qa = new QASettings(true);
+			qa.setAll();
 			Assert.assertEquals(nfiles,reader.getFiles().length);
 			reader.setErrorHandler(new IChemObjectReaderErrorHandler() {
 				public void handleError(String message, int row, int colStart, int colEnd,

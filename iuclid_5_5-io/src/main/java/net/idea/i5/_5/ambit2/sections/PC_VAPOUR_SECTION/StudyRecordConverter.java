@@ -83,7 +83,7 @@ public class StudyRecordConverter
 				,unmarshalled.isRobustStudy(),unmarshalled.isUsedForClassification(),unmarshalled.isUsedForMSDS()
 				,unmarshalled.getPurposeFlag().getValueID(),unmarshalled.getStudyResultType().getValueID(),
 				getTestMaterialIdentity(unmarshalled));
-		record.addtMeasurement(papp);		
+		record.addMeasurement(papp);		
 		
 		// UUID
 		if (unmarshalled.getOwnerRef().getType().equals(DocumentTypeType.SUBSTANCE)) {
