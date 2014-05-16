@@ -472,9 +472,13 @@ public class StudyRecordConverter
 			public void setValue(EffectRecord<String,Params,String> effect,NodeList nodes) {
 				if (nodes!=null)
 					for (int i=0; i < nodes.getLength(); i++) {
-						effect.getConditions().put(name(),nodes.item(i).getTextContent());
+						effect.getConditions().put(getTag(),nodes.item(i).getTextContent());
 					}
-			}			
+			}	
+			@Override
+			public String getTag() {
+				return I5CONSTANTS.Remark;
+			}
 		};
 		public String getTag() {
 			return name();

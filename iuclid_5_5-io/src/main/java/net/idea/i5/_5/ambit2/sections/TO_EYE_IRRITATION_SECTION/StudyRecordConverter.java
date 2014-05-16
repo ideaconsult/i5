@@ -124,9 +124,8 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 			} catch (Exception x) {
 			};
 			
-			setInterpretationResult(papp, 
-					sciPart.getTOEYEIRRITATION().getINTERPRETRSSUBMITTER().getSet()
-					.getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue(),
+			setInterpretationResult(papp,
+					sciPart.getTOEYEIRRITATION().getINTERPRETRSSUBMITTER().getSet().getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXValue(),
 					otherValue
 			);
 
@@ -134,9 +133,10 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		
 		
 		if (sciPart.getTOEYEIRRITATION().getCRITERIASUBMITTER() != null) {
-			papp.setInterpretationCriteria( 
-					sciPart.getTOEYEIRRITATION().getCRITERIASUBMITTER()
-					.getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+			papp.setInterpretationCriteria(getValue( 
+					sciPart.getTOEYEIRRITATION().getCRITERIASUBMITTER().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+					sciPart.getTOEYEIRRITATION().getCRITERIASUBMITTER().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()
+					));
 		} else papp.setInterpretationCriteria(""); 
 		return record;
 	}

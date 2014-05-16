@@ -141,9 +141,10 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		} else setInterpretationResult(papp,null,null);
 		
 		if (sciPart.getTOSENSITIZATION().getCRITERIASUBMITTER() != null) {
-			papp.setInterpretationCriteria( 
-					sciPart.getTOSENSITIZATION().getCRITERIASUBMITTER()
-					.getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+			papp.setInterpretationCriteria(getValue( 
+					sciPart.getTOSENSITIZATION().getCRITERIASUBMITTER().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+					sciPart.getTOSENSITIZATION().getCRITERIASUBMITTER().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()
+					));
 		} else papp.setInterpretationCriteria(null);
 		return record;
 	}

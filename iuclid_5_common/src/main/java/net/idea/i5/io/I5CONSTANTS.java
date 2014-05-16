@@ -71,10 +71,6 @@ public class I5CONSTANTS {
 	
 	public static final String eSOLUBILITY_ORG_SOLVENT = "Solubility org. solvents";
 	
-	//NM
-	public static final String cTestMaterialForm = "TESTMATFORM";
-	
-	
 	/*
 Moved to ambit2.base.data.study._FIELDS_RANGE
 	public static final String unit = "unit";
