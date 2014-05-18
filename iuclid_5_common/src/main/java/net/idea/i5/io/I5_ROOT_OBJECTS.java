@@ -1518,6 +1518,20 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "TOX";
 		}
+	},
+	PROTEOMICS {
+		@Override
+		public String getTitle() {
+			return "Proteomics";
+		}
+		@Override
+		public String getNumber() {
+			return "7.100";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
 	}
 	
 	
