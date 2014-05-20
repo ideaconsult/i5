@@ -621,6 +621,7 @@ public enum I5_ROOT_OBJECTS {
 			};
 		}
 	},
+	/*
 	RADICAL_FORMATION_POTENTIAL {
 		@Override
 		public String getTitle() {
@@ -652,6 +653,7 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] {};
 		}
 	},		
+	*/
 	CATALYTIC_ACTIVITY {
 		@Override
 		public String getTitle() {
