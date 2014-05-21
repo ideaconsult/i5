@@ -2,6 +2,7 @@ package net.idea.i5.cli;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,6 +16,7 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 
+import net.idea.loom.common.DownloadTool;
 import net.idea.opentox.cli.IIdentifiableResource;
 
 import org.apache.commons.codec.binary.Base64OutputStream;
@@ -39,6 +41,7 @@ public class ContainerClient extends I5AbstractClient{
 			String mediaType, String... params) throws RestException,
 			IOException {
 		String xml = String.format(loadXML("net/idea/i5/cli/container/request.xml"),token,identifier);
+		//System.out.println(xml);
 		HttpEntity content = new StringEntity(xml,"UTF-8");
 		HttpPost httpPOST = new HttpPost(baseURL+"/ContainerEngine");
 		if (headers!=null) for (Header header : headers) httpPOST.addHeader(header);
@@ -76,15 +79,20 @@ public class ContainerClient extends I5AbstractClient{
 			InputStream in, String identifier) throws RestException, IOException {
 		StringBuilder report = new StringBuilder();
 		File tmpFile = File.createTempFile("i5ws_",".i5z");
-		Writer dataContentFile = 	new OutputStreamWriter(new Base64OutputStream(
-			      			new BufferedOutputStream(new FileOutputStream(tmpFile))
-			      			,false
-			   ));
+		Writer dataContentFile = new OutputStreamWriter(new Base64OutputStream(
+      			new BufferedOutputStream(new FileOutputStream(tmpFile)),false
+		   ));
 		XMLStreamReader reader = null;
+		InputStream xmlin = null;
+		String resultFlag= "";
     	try {
     		XMLInputFactory factory = XMLInputFactory.newInstance();
     		factory.setProperty(XMLInputFactory.IS_REPLACING_ENTITY_REFERENCES,Boolean.TRUE);
-    		reader =   factory.createXMLStreamReader(in);
+    		
+    		File xmlFile = new File(tmpFile.getAbsoluteFile().toString().replace(".i5z",".xml"));
+    		DownloadTool.download(in, xmlFile);
+    		xmlin = new FileInputStream(xmlFile);
+    		reader =   factory.createXMLStreamReader(xmlin);
     		boolean dataContent = false;
     		boolean resultReport = false;
     		while (reader.hasNext()) {
@@ -105,8 +113,7 @@ public class ContainerClient extends I5AbstractClient{
 	            		}
 	            		case resultReport: {
 	            			resultReport = true;
-	            			String resultFlag = reader.getAttributeValue("http://echa.europa.eu/schemas/iuclid5/i5webservice/types/", "resultFlag");
-	            			System.out.println(resultFlag);
+	            			resultFlag = reader.getAttributeValue("http://echa.europa.eu/schemas/iuclid5/i5webservice/types/", "resultFlag");
 	            			break;
 	            		}
 	            		case message : {
@@ -140,7 +147,7 @@ public class ContainerClient extends I5AbstractClient{
 	            case XMLStreamConstants.CHARACTERS: {
 	            	if (dataContent) {
 	            		String value = reader.getText();
-	            		dataContentFile.write(value.substring(0,reader.getTextLength()));
+            			dataContentFile.write(value.substring(0,reader.getTextLength()));
 	            	} else if (resultReport) {
 	            		String value = reader.getText();
 	            		report.append(value.substring(0,reader.getTextLength()));
@@ -151,14 +158,27 @@ public class ContainerClient extends I5AbstractClient{
   		    	}
     		}
     		List<IIdentifiableResource<String>> list = new ArrayList<IIdentifiableResource<String>>();
-    		list.add(new Container(identifier,tmpFile));
+    		if ("SUCCESS".equals(resultFlag)) {
+    			list.add(new Container(identifier,tmpFile));
+    			try {dataContentFile.flush();} catch (Exception x)  {}
+    			try {xmlin.close();xmlin=null;} catch (Exception x) {}
+    			try {xmlFile.delete();} catch (Exception x) {}
+    		} else {	
+    			try {if (dataContentFile!=null) dataContentFile.close();tmpFile.delete();} catch (Exception x) {}
+    			tmpFile = xmlFile; //return the xml output
+    			throw new RestException(HttpStatus.SC_BAD_GATEWAY,
+    					String.format("Error when retrieving document %s from %s : %s. Response at %s", identifier,baseURL,resultFlag,xmlFile.getAbsolutePath()));
+    		}	
 	    	return list;
+    	} catch (RestException x) {
+    		throw x;
     	} catch (Exception x) {
-    		x.printStackTrace();
     		throw new RestException(HttpStatus.SC_BAD_REQUEST);
     	} finally {
+    		try {in.close();} catch (Exception x) {}
     		try {reader.close();} catch (Exception x) {}
-    		try {dataContentFile.close();} catch (Exception x) {}
+    		try {if (xmlin!=null) xmlin.close();} catch (Exception x) {}
+    		try {if (dataContentFile!=null) dataContentFile.close();} catch (Exception x) {}
     	}
 	}
 

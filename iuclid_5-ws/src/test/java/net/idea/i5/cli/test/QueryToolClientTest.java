@@ -57,34 +57,39 @@ public class QueryToolClientTest  extends ClientTest {
 									   "IUC5-541ccdba-0033-45ee-8136-406478deb0f4/0",
 									   "IUC5-203e228e-7422-4f76-9068-82033f998d88/0"
 									   };
-				List<IIdentifiableResource<String>> content = cli.executeQuery(PredefinedQuery.query_by_it_identifier,"CompTox","Ambit Transfer1");
-				Assert.assertNotNull(content);
-				for (int j=0; j < content.size(); j++) {
-					System.out.println(content.get(j).getResourceIdentifier());
-				}
-				Assert.assertEquals(expected,content.size());
-				int i = 0;
-				
-				for (int j=0; j < content.size(); j++) {
-					boolean found = false;
-					for (String id : identifier) 
-						if (id.equals(content.get(j).getResourceIdentifier())) { found = true; break;}
-					if (!found)
-						System.err.println(content.get(j).getResourceIdentifier());
-					else 
-						i++;
-				}	
-				Assert.assertEquals(expected,i);
-				
-				for (int j=0; j < content.size();  j++) {
-					Assert.assertTrue(content.get(j) instanceof Container);
-					ContainerClient ccli = i5.getContainerClient();
-					try {
-						getCompToxContainer(ccli, content.get(j).getResourceIdentifier());
-					} catch (Exception x) {
-						logger.log(Level.SEVERE,content.get(j).getResourceIdentifier(),x);
+				try {
+					List<IIdentifiableResource<String>> content = cli.executeQuery(PredefinedQuery.query_by_it_identifier,"CompTox","Ambit Transfer");
+					
+					Assert.assertNotNull(content);
+					for (int j=0; j < content.size(); j++) {
+						System.out.println(content.get(j).getResourceIdentifier());
 					}
-				}	
+					Assert.assertEquals(expected,content.size());
+					int i = 0;
+					
+					for (int j=0; j < content.size(); j++) {
+						boolean found = false;
+						for (String id : identifier) 
+							if (id.equals(content.get(j).getResourceIdentifier())) { found = true; break;}
+						if (!found)
+							System.err.println(content.get(j).getResourceIdentifier());
+						else 
+							i++;
+					}	
+					Assert.assertEquals(expected,i);
+					
+					for (int j=0; j < content.size();  j++) {
+						Assert.assertTrue(content.get(j) instanceof Container);
+						ContainerClient ccli = i5.getContainerClient();
+						try {
+							getCompToxContainer(ccli, content.get(j).getResourceIdentifier());
+						} catch (Exception x) {
+							logger.log(Level.SEVERE,content.get(j).getResourceIdentifier(),x);
+						}
+					}	
+				} catch (Exception x) {
+					System.err.println(x.getMessage());
+				}
 			}
 		} catch (Exception x) {
 			throw x;
@@ -99,8 +104,8 @@ public class QueryToolClientTest  extends ClientTest {
 		File file = null;
 		List<IIdentifiableResource<String>> content = cli.get(identifier);
 		Assert.assertNotNull(content);
-		System.out.println(identifier);
-		System.out.println(content.size());
+		System.out.println("Identifier "+identifier);
+		System.out.println("Size "+content.size());
 		Assert.assertNotNull(content);
 //		Assert.assertEquals(1,content.size());
 		//Assert.assertEquals(identifier,content.get(0).getResourceIdentifier());
@@ -111,7 +116,12 @@ public class QueryToolClientTest  extends ClientTest {
 			Assert.assertTrue(file.exists());
 			//Assert.assertTrue(file.length()>0);
 			System.out.println(file);
-			//unmarshall_i5z(file,-1);
+			try {
+				unmarshall_i5z(file,-1);
+			} catch (Exception x) {
+				x.printStackTrace();
+			}
+			file.deleteOnExit();
 		}
 		
 	}

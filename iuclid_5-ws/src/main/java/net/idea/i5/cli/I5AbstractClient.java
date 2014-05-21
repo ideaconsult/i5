@@ -122,13 +122,10 @@ public abstract class I5AbstractClient extends AbstractClient<String, IIdentifia
 	            case XMLStreamConstants.CHARACTERS: {
 	            	if (code) {
 	            		String value = reader.getText();
-	            		System.out.println(value);
 	            	} else if (reason) {
 	            		String value = reader.getText();
-	            		System.out.println(value);
 	            	} else if (details) {
 	            		String value = reader.getText();
-	            		System.out.println(value);
 	            	}
 	            	break;
 	            }

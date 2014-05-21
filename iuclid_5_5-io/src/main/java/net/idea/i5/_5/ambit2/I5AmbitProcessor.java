@@ -150,21 +150,23 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			if (sc!=null)
 			for (SubstanceComposition c : sc.getSubstanceComposition()) {
 
-				if (c.getAdditives() != null)
+				if ((c.getAdditives() != null) && (c.getAdditives().getAdditive()!=null))
 					for (Additive a : c.getAdditives().getAdditive())
 						additive2record(c.getLocalUUID(), record, a);
 
-				if (c.getImpurities() != null)
+				if ((c.getImpurities() != null) && (c.getImpurities().getImpurity()!=null))
 					for (Impurity a : c.getImpurities().getImpurity())
 						impurity2record(c.getLocalUUID(), record, a);
 
-				if (c.getConstituents() != null)
+				if (c.getConstituents() != null && (c.getConstituents().getConstituent()!=null)) 
 					for (Constituent a : c.getConstituents().getConstituent()) {
-						constituent2record(
-								(unmarshalled.getReferenceSubstanceRef()
-										.getUniqueKey().equals(a
-										.getReferenceSubstance().getUniqueKey())) ? unmarshalled
-										: null, c.getLocalUUID(), record, a);
+						Substance substance = unmarshalled;
+						try {
+							if (!substance.getReferenceSubstanceRef().getUniqueKey().equals(a.getReferenceSubstance().getUniqueKey()))
+								substance = null;
+						} catch (Exception x) {
+						}
+						constituent2record(substance, c.getLocalUUID(), record, a);
 					}
 
 			}
