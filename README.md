@@ -12,7 +12,7 @@ Stable release
 <dependency>
   <groupId>net.idea</groupId>
   <artifactId>i5z</artifactId>
-  <version>0.0.5</version>
+  <version>0.0.6</version>
 </dependency>
 ````
 
@@ -21,6 +21,6 @@ Development snapshot
 <dependency>
   <groupId>net.idea</groupId>
   <artifactId>i5z</artifactId>
-  <version>0.0.6-SNAPSHOT</version>
+  <version>0.0.7-SNAPSHOT</version>
 </dependency>
 ````
