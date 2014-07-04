@@ -28,6 +28,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.8.1</junit.version>
     <ambit.version>2.5.7-SNAPSHOT</ambit.version>
+    <loom.version>1.0.2-SNAPSHOT</loom.version>
   </properties>
   <scm>
     <connection>scm:git:git://github.com/ideaconsult/i5.git</connection>

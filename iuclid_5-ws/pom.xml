@@ -35,9 +35,6 @@
   		<scope>test</scope>
 	</dependency>
 </dependencies>
- <properties>
- 	<loom.version>1.0.2-SNAPSHOT</loom.version>
- </properties>  
 <build>
       <resources>
       <resource>
