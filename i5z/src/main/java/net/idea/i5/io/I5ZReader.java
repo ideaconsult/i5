@@ -152,6 +152,7 @@ public class I5ZReader<SUBSTANCE> extends ZipReader implements IQASettings {
 	public File[] unzip(File zipfile, File directory) throws AmbitIOException {
 		tempFolder = directory;
 		File[] files =  super.unzip(zipfile, directory);
+		if (files == null) throw new AmbitIOException(String.format("Failed to unzip %s into %s",zipfile.getAbsolutePath(),directory.getAbsolutePath()));
 		List<File> referenceSubstances = new ArrayList<File>();
 		List<File> substances = new ArrayList<File>();
 		List<File> study = new ArrayList<File>();
