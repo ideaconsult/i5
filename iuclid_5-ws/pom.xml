@@ -3,12 +3,12 @@
   <parent>
     <artifactId>iuclid5-cli</artifactId>
     <groupId>net.idea</groupId>
-    <version>0.0.6</version>
+    <version>0.0.7-SNAPSHOT</version>
   </parent>
   <groupId>net.idea</groupId>
   <artifactId>iuclid_5-ws</artifactId>
   <name>iuclid_5-ws</name>
-  <version>0.0.6</version>
+  <version>0.0.7-SNAPSHOT</version>
  <dependencies>
    <dependency>
       <groupId>ambit</groupId>
