@@ -36,7 +36,7 @@
 	</dependency>
 </dependencies>
  <properties>
- 	<loom.version>1.0.1-SNAPSHOT</loom.version>
+ 	<loom.version>1.0.2-SNAPSHOT</loom.version>
  </properties>  
 <build>
       <resources>
