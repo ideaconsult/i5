@@ -1,6 +1,6 @@
 package net.idea.i5.io;
 
-import ambit2.base.exceptions.AmbitException;
+import net.idea.modbcum.i.exceptions.AmbitException;
 
 public class UnsupportedI5RootObject extends AmbitException {
 

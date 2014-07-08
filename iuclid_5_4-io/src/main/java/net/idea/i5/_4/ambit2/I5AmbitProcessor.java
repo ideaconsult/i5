@@ -3,11 +3,11 @@ package net.idea.i5._4.ambit2;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.idea.modbcum.i.exceptions.AmbitException;
 import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
 import ambit2.base.data.StructureRecord;
 import ambit2.base.data.SubstanceRecord;
-import ambit2.base.exceptions.AmbitException;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.base.interfaces.IStructureRecord.MOL_TYPE;
 import ambit2.base.interfaces.IStructureRecord.STRUC_TYPE;
@@ -22,7 +22,6 @@ import eu.europa.echa.schemas.iuclid5._20120101.referencesubstance.ReferenceSubs
 import eu.europa.echa.schemas.iuclid5._20120101.referencesubstance.ReferenceSubstance.ReferenceSubstanceInformation.CasInformation;
 import eu.europa.echa.schemas.iuclid5._20120101.referencesubstance.ReferenceSubstance.ReferenceSubstanceInformation.Synonyms;
 import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance;
-import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.ExternalSystemIdentifiers.ExternalSystemIdentifier;
 import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCompositions;
 import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCompositions.SubstanceComposition;
 import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCompositions.SubstanceComposition.Additives.Additive;

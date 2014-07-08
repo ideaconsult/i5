@@ -16,9 +16,10 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import net.idea.modbcum.i.exceptions.AmbitException;
+
 import org.apache.commons.io.FileUtils;
 
-import ambit2.base.exceptions.AmbitException;
 import ambit2.base.exceptions.AmbitIOException;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.core.io.FileInputState;

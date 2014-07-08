@@ -8,13 +8,13 @@ import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.IStudyRecordConverter;
 import net.idea.i5.io.QACriteriaException;
 import net.idea.i5.io.QASettings;
+import net.idea.modbcum.i.exceptions.AmbitException;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.ReliabilityParams;
-import ambit2.base.exceptions.AmbitException;
 
 public abstract class AbstractStudyRecordConverter<T,PROTOCOLPARAMS extends IParams,CONDITIONS extends IParams>  implements IStudyRecordConverter<T>{
 	protected I5_ROOT_OBJECTS endpointCategory;

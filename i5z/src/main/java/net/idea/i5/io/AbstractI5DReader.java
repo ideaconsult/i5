@@ -12,12 +12,13 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import net.idea.modbcum.i.exceptions.AmbitException;
+
 import org.openscience.cdk.exception.CDKException;
 import org.openscience.cdk.io.formats.IResourceFormat;
 import org.openscience.cdk.io.iterator.DefaultIteratingChemObjectReader;
 
 import ambit2.base.data.ILiteratureEntry;
-import ambit2.base.exceptions.AmbitException;
 import ambit2.base.interfaces.ICiteable;
 import ambit2.core.io.IRawReader;
 

@@ -9,11 +9,12 @@ import java.util.Hashtable;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
+import net.idea.modbcum.i.exceptions.AmbitException;
+import net.idea.modbcum.i.processors.IProcessor;
+
 import org.openscience.cdk.exception.CDKException;
 
 import ambit2.base.data.SubstanceRecord;
-import ambit2.base.exceptions.AmbitException;
-import ambit2.base.interfaces.IProcessor;
 import ambit2.base.interfaces.IStructureRecord;
 
 public class I5DReader extends AbstractI5DReader<IStructureRecord> {
@@ -105,8 +106,11 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	@Override
 	protected IStructureRecord transform(Object unmarshalled) throws AmbitException {
 		IProcessor<Object, IStructureRecord> p = processors.get(unmarshalled.getClass().getName());
-		if (p!=null)
+		if (p!=null) try {
 			return p.process(unmarshalled);
+		} catch (Exception x) {
+			throw new AmbitException(x);
+		}	
 		else return null;
 	}
 
