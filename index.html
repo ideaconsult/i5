@@ -11,6 +11,25 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <title>I5 by ideaconsult</title>
+    
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="demo/carrotsearch.foamtree.js"></script>    
+	<script src="demo/init.js"></script>    
+<script language='Javascript'>
+	$(document)
+		.ready(
+				function() {
+		 				var foamtree = new CarrotSearchFoamTree({
+    		      id: "visualization"
+		        });
+						foamtree.set({
+  					dataObject: { groups: [ { label: "loading..." }, { label: "Please wait" } ] },
+  					fadeDuration: 500
+				});
+				init(foamtree,"http://apps.ideaconsult.net:8080/biodeg/admin/stats/protocol_applications?media=application/json");
+				
+});
+</script>       
   </head>
 
   <body>
@@ -21,7 +40,7 @@
           <h1>I5</h1>
           <h2>IUCLID5 support</h2>
         </header>
-
+ 			
         <section id="downloads" class="clearfix">
           <a href="https://github.com/ideaconsult/i5/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
           <a href="https://github.com/ideaconsult/i5/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
@@ -30,7 +49,13 @@
 
         <hr>
 
+
+				<section id="summary" class="clearfix">
+ 					<div id="visualization" style="width: 800px; height: 600px"></div>
+ 				</section>
+ 				
         <section id="main_content">
+        	
           <h1>
 <a name="i5" class="anchor" href="#i5"><span class="octicon octicon-link"></span></a>i5</h1>
 
