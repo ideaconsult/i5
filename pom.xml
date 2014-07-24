@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.idea</groupId>
   <artifactId>iuclid5-cli</artifactId>
-  <version>0.0.7-SNAPSHOT</version>
+  <version>0.0.7</version>
   <packaging>pom</packaging>
   <name>iuclid5-cli</name>
   <modules>
@@ -27,7 +27,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.8.1</junit.version>
     <ambit.version>2.5.7-SNAPSHOT</ambit.version>
-    <loom.version>1.0.2-SNAPSHOT</loom.version>
   </properties>
   <scm>
     <connection>scm:git:git://github.com/ideaconsult/i5.git</connection>
