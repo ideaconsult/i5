@@ -1371,6 +1371,7 @@ public enum I5_ROOT_OBJECTS {
 		}
 	},
 	TO_GENETIC_IN_VITRO {
+
 		@Override
 		public boolean isDataRich() {
 			return true;
@@ -1405,6 +1406,10 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getTopCategory() {
 			return "TOX";
+		}
+		@Override
+		public String getOntologyURI() {
+			return "http://www.bioassayontology.org/bao#BAO_0002167";
 		}
 	},
 	TO_GENETIC_IN_VIVO {
@@ -1507,6 +1512,96 @@ public enum I5_ROOT_OBJECTS {
 			return "TOX";
 		}
 	},
+	CELL_VIABILITY_ASSAY {
+		@Override
+		public String getTitle() {
+			return "Cell viability assay";
+		}
+		@Override
+		public String getNumber() {
+			return "7.999.1";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+		@Override
+		public String getOntologyURI() {
+			return "http://www.bioassayontology.org/bao#BAO_0003009";
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cDoses
+			};
+		}
+		//cell viability: http://www.bioassayontology.org/bao#BAO_0003009
+		//cytotoxicity: http://www.bioassayontology.org/bao#BAO_0002993
+		//functional : http://www.bioassayontology.org/bao#BAO_0000010
+	},
+	BINDING_ASSAY {
+		@Override
+		public String getTitle() {
+			return "Binding assay";
+		}
+		@Override
+		public String getNumber() {
+			return "7.999.2";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+		@Override
+		public String getOntologyURI() {
+			return "http://www.bioassayontology.org/bao#BAO_0000041";
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cDoses
+			};
+		}
+	},	
+	PROTEIN_SMALLMOLECULE_INTERACTION {
+		@Override
+		public String getTitle() {
+			return "Protein-small molecule interaction assay";
+		}
+		@Override
+		public String getNumber() {
+			return "7.999.2";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+		@Override
+		public String getOntologyURI() {
+			return "http://www.bioassayontology.org/bao#BAO_0000110";
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cDoses
+			};
+		}
+		
+	},		
+	AUTO_FLUORESCENCE {
+		@Override
+		public String getTitle() {
+			return "Auto fluorescence";
+		}
+		@Override
+		public String getNumber() {
+			return "7.999.3";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+	},	
 	UNKNOWN_TOXICITY {
 		@Override
 		public String getTitle() {
@@ -1521,6 +1616,20 @@ public enum I5_ROOT_OBJECTS {
 			return "TOX";
 		}
 	},
+	UNKNOWN_TOXICITY_SUMMARY {
+		@Override
+		public String getTitle() {
+			return "Toxicity (other) summary";
+		}
+		@Override
+		public String getNumber() {
+			return "7.999.9";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+	},	
 	PROTEOMICS {
 		@Override
 		public String getTitle() {
@@ -1572,6 +1681,9 @@ public enum I5_ROOT_OBJECTS {
 		return null;
 	}
 	public String[] getConditions() {
+		return null;
+	}
+	public String getOntologyURI() {
 		return null;
 	}
 	public IParams createProtocolParameters() {
