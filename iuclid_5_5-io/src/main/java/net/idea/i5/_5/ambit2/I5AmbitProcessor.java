@@ -21,6 +21,7 @@ import ambit2.base.data.substance.ExternalIdentifier;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.base.interfaces.IStructureRecord.MOL_TYPE;
 import ambit2.base.interfaces.IStructureRecord.STRUC_TYPE;
+import ambit2.base.interfaces.IStructureRelation;
 import ambit2.base.processors.CASProcessor;
 import ambit2.base.processors.DefaultAmbitProcessor;
 import ambit2.base.relation.STRUCTURE_RELATION;
@@ -149,14 +150,14 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			SubstanceCompositions sc = unmarshalled.getSubstanceCompositions();
 			if (sc!=null)
 			for (SubstanceComposition c : sc.getSubstanceComposition()) {
-
+				//c.getName();
 				if ((c.getAdditives() != null) && (c.getAdditives().getAdditive()!=null))
 					for (Additive a : c.getAdditives().getAdditive())
-						additive2record(c.getLocalUUID(), record, a);
+						additive2record(c.getLocalUUID(),c.getName(), record, a);
 
 				if ((c.getImpurities() != null) && (c.getImpurities().getImpurity()!=null))
 					for (Impurity a : c.getImpurities().getImpurity())
-						impurity2record(c.getLocalUUID(), record, a);
+						impurity2record(c.getLocalUUID(),c.getName(), record, a);
 
 				if (c.getConstituents() != null && (c.getConstituents().getConstituent()!=null)) 
 					for (Constituent a : c.getConstituents().getConstituent()) {
@@ -166,7 +167,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 								substance = null;
 						} catch (Exception x) {
 						}
-						constituent2record(substance, c.getLocalUUID(), record, a);
+						constituent2record(substance, c.getLocalUUID(),c.getName(), record, a);
 					}
 
 			}
@@ -180,7 +181,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	 * @param constituent
 	 * @return
 	 */
-	protected IStructureRecord additive2record(String compositionUUID,
+	protected IStructureRecord additive2record(String compositionUUID,String name,
 			SubstanceRecord substance, Additive a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
@@ -238,9 +239,9 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		} catch (Exception x) {
 			p.setFunction("Error reading the function type");
 		}
-		substance.addStructureRelation(compositionUUID, record,
+		IStructureRelation r = substance.addStructureRelation(compositionUUID, record,
 				STRUCTURE_RELATION.HAS_ADDITIVE, p);
-
+		r.setName(name);
 		return record;
 	}
 
@@ -250,7 +251,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	 * @param constituent
 	 * @return
 	 */
-	protected IStructureRecord impurity2record(String compositionUUID,
+	protected IStructureRecord impurity2record(String compositionUUID,String name,
 			SubstanceRecord substance, Impurity a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
@@ -303,9 +304,9 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 
 		}
 	
-		substance.addStructureRelation(compositionUUID, record,
+		IStructureRelation r = substance.addStructureRelation(compositionUUID, record,
 				STRUCTURE_RELATION.HAS_IMPURITY, p);
-
+		r.setName(name);
 		return record;
 	}
 
@@ -316,7 +317,8 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	 * @return
 	 */
 	protected IStructureRecord constituent2record(Substance unmarshalled,
-			String compositionUUID, SubstanceRecord substance, Constituent a) {
+			String compositionUUID,String cname, 
+			SubstanceRecord substance, Constituent a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
 		record.setType(STRUC_TYPE.NA);
@@ -365,8 +367,9 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			}
 		}
 		
-		substance.addStructureRelation(compositionUUID, record,
+		IStructureRelation r = substance.addStructureRelation(compositionUUID, record,
 				STRUCTURE_RELATION.HAS_CONSTITUENT, p);
+		r.setName(cname);
 		// Adding the tradenames to the reference structure
 		if ((unmarshalled != null) && (unmarshalled.getTradeNames() != null)) {
 			for (int i = 0; i < unmarshalled.getTradeNames().getTradeName()
