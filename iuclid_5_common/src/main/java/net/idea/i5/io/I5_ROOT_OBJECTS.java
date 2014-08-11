@@ -1639,7 +1639,7 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getConditions() {
 			return new String[] {
-					I5CONSTANTS.cDoses,"Replicate","Emission wavelength"
+					"Replicate","Emission wavelength"
 			};
 		}
 	},
@@ -1666,6 +1666,12 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getTopCategory() {
 			return "TOX";
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cDoses,"Replicate","Emission wavelength"
+			};
 		}
 	},		
 	PUBCHEM_PANEL {
