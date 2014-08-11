@@ -1630,6 +1630,74 @@ public enum I5_ROOT_OBJECTS {
 			return "TOX";
 		}
 	},	
+
+	PUBCHEM_CONFIRMATORY {
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					I5CONSTANTS.cDoses,"Replicate","Emission wavelength"
+			};
+		}
+	},
+	PUBCHEM_SUMMARY {
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+	
+	},
+	PUBCHEM_SCREENING {
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+	},
+	PUBCHEM_CELLBASED {
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+	},	
+	PUBCHEM_DOSERESPONSE {
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+	},		
+	PUBCHEM_PANEL {
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+	},		
+	PUBCHEM_BIOCHEMICAL {
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+	},		
+	PUBCHEM_INVIVO {
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+	},		
+	PUBCHEM_ACTIVECONCENTRATIONSPECIFIED {
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+	},			
+	PUBCHEM_INVITRO {
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+	},			
 	PROTEOMICS {
 		@Override
 		public String getTitle() {
@@ -1666,10 +1734,10 @@ public enum I5_ROOT_OBJECTS {
 		return false;
 	}		
 	public String getNumber() {
-		return "";
+		return String.format("10.%d",ordinal());
 	}	
 	public String getTitle() {
-		return name();
+		return name().replace("_"," ");
 	}		
 	public String getTopCategory() {
 		return "P-CHEM";
