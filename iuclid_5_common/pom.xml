@@ -4,11 +4,11 @@
   <parent>
     <artifactId>iuclid5-cli</artifactId>
     <groupId>net.idea</groupId>
-    <version>0.0.8-SNAPSHOT</version>
+    <version>0.0.8</version>
   </parent>
   <groupId>net.idea</groupId>
   <artifactId>iuclid_5_common</artifactId>
-  <version>0.0.8-SNAPSHOT</version>
+  <version>0.0.8</version>
   <name>iuclid_5_5-common</name>
   <dependencies>
     <dependency>
