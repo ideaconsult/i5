@@ -164,9 +164,12 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 				} catch (Exception x) {
 					effect.getConditions().put(I5CONSTANTS.cToxicity,null);
 				}
-				if (set.getSEX()==null) try {
+				if (set.getSEX()!=null) try {
 					effect.getConditions().put(I5CONSTANTS.cSex,set.getSEX().getSEXValue());
-				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cSex,null);} 
+				} catch (Exception x) {
+					
+					effect.getConditions().put(I5CONSTANTS.cSex,null);
+				} 
 				else 
 					effect.getConditions().put(I5CONSTANTS.cSex,null);
 
