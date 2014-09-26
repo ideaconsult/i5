@@ -102,7 +102,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		*/
 		
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
+		//papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
 		// Acute tox oral
 		try {

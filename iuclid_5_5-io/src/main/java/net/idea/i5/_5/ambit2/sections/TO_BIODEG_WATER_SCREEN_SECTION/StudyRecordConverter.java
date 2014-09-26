@@ -104,7 +104,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		
 		// citation
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());	
+		//papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());	
 
 		//TEST TYPE
 		papp.getParameters().put(I5CONSTANTS.cTestType,

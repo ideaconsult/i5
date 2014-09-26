@@ -107,7 +107,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		// year
 		
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
+		//papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
 		try {
 			papp.getParameters().put(I5CONSTANTS.cTypeGenotoxicity,

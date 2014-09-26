@@ -105,7 +105,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 		// citation
 		
 		parseReference(unmarshalled, papp);
-		papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());		
+		//papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());		
 
 		if (sciPart.getTOHYDROLYSIS().getHALFLIFE()!=null) {
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_HYDROLYSIS_SECTION.EndpointStudyRecord.ScientificPart.TOHYDROLYSIS.HALFLIFE.Set set : sciPart.getTOHYDROLYSIS().getHALFLIFE().getSet()) {
