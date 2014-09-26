@@ -1469,14 +1469,13 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getConditions() {
 			return new String[] {
-					I5CONSTANTS.cToxicity, I5CONSTANTS.cSex
+					I5CONSTANTS.cEffectType
 			};
 		}
 		@Override
 		public String[] getProtocolParameters() {
 			return new String[] {
-					I5CONSTANTS.cRouteAdm,
-					I5CONSTANTS.cTypeStudy, I5CONSTANTS.cTypeGenotoxicity,I5CONSTANTS.cSpecies ,I5CONSTANTS.cDoses
+					I5CONSTANTS.cSpecies ,I5CONSTANTS.cRouteAdm, I5CONSTANTS.cDoses
 			};
 		}	
 		@Override
