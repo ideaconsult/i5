@@ -1716,6 +1716,20 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "TOX";
 		}		
+	},
+	BAO_0003009 {
+		@Override
+		public String getTitle() {
+			return "Cell Viability Assay";
+		}
+		@Override
+		public String getNumber() {
+			return "7.200";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
 	}
 	
 	
