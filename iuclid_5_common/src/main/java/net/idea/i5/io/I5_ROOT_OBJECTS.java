@@ -1730,8 +1730,81 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "TOX";
 		}
+	},
+	BAO_0002993 {
+		@Override
+		public String getTitle() {
+			return "Cytotoxicity Assay";
+		}
+		@Override
+		public String getNumber() {
+			return "7.201";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+	},
+	BAO_0002100 {
+		@Override
+		public String getTitle() {
+			return "Cell Growth Assay";
+		}
+		@Override
+		public String getNumber() {
+			return "7.202";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+	},
+	BAO_0002167 {
+		//to be merged with genotox
+		@Override
+		public String getTitle() {
+			return "Genotoxicity Assay";
+		}
+		@Override
+		public String getNumber() {
+			return "7.203";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+	},
+	BAO_0002168 {
+		//to be merged woth I5 category
+		@Override
+		public String getTitle() {
+			return "Oxidative Stress Assay";
+		}
+		@Override
+		public String getNumber() {
+			return "7.204";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+	},
+	BAO_0002189 {
+		//to be merged with I5 category
+		@Override
+		public String getTitle() {
+			return "Toxicity Assay";
+		}
+		@Override
+		public String getNumber() {
+			return "7.205";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
 	}
-	
+
 	
 	;
 	public String getContextPath() {
