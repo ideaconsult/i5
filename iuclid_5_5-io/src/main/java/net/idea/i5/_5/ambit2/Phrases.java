@@ -1053,7 +1053,7 @@ public class Phrases {
     	Hashtable<String, String> p = new Hashtable<String,String>();
     	p.put("1586", "study report");
     	p.put("266", "other company data");
-    	p.put("1433", "publication");
+    	p.put("1443", "publication");
     	p.put("1486", "review article or handbook");
     	p.put("1542", "secondary source");
     	p.put("811", "grey literature");
