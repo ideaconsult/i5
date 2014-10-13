@@ -93,8 +93,9 @@ public abstract class AbstractStudyRecordConverter<T,PROTOCOLPARAMS extends IPar
 	}
 	protected boolean isReferenceTypeAccepted(String referenceTypeCode) throws QACriteriaException {
 		if (qaSettings.isReferenceTypeAccepted(referenceTypeCode)) return true; //"study report",  "publication", "review article or handbook"
-		QACriteriaException x = new QACriteriaException("Reference type ",referenceTypeCode,referenceTypeCode==null?null:Phrases.phrasegroup_Z31.get(referenceTypeCode));
-		if (getQASettings().isEnabled()) throw x;
+		if (getQASettings().isEnabled()) {
+			throw new QACriteriaException("Reference type ",referenceTypeCode,referenceTypeCode==null?null:Phrases.phrasegroup_Z31.get(referenceTypeCode));
+		}
 		else return true;
 	}
 	

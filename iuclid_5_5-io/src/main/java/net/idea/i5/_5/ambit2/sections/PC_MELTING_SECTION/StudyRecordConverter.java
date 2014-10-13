@@ -47,15 +47,19 @@ public class StudyRecordConverter
 		QACriteriaException qax = null;
 		if (unmarshalled.getScientificPart().getPCMELTING().getREFERENCE() != null)
 			for (Set set : unmarshalled.getScientificPart().getPCMELTING().getREFERENCE().getSet()) {
+				//author
 				try {
-					if (set.getREFERENCEAUTHOR()!=null)
-						papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-					if (set.getREFERENCEYEAR()!=null) try {
-						papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
-					} catch (Exception x) {}
-					try {
-						papp.setReferenceOwner(set.getREFERENCECOMPANYID().getREFERENCECOMPANYID().getValue());
-					} catch (Exception x) {	papp.setReferenceOwner("");}					
+					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+				} catch (Exception x) {papp.setReference(null);}
+				//reference
+				if (set.getREFERENCEYEAR()!=null) try {
+					papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
+				} catch (Exception x) {}
+				//reference owner
+				try {
+					papp.setReferenceOwner(set.getREFERENCECOMPANYID().getREFERENCECOMPANYID().getValue());
+				} catch (Exception x) {	papp.setReferenceOwner("");}					
+				try {
 					isReferenceTypeAccepted(set.getPHRASEOTHERREFERENCETYPE()==null?null:set.getPHRASEOTHERREFERENCETYPE().getREFERENCETYPE());					
 					return;
 				} catch (QACriteriaException x) {

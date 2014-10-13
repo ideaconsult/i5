@@ -56,8 +56,9 @@ public class StudyRecordConverter
 		if (unmarshalled.getScientificPart().getPOURDENSITY().getREFERENCE() != null)
 			for (Set set : unmarshalled.getScientificPart().getPOURDENSITY().getREFERENCE().getSet()) {
 				try {
-					if (set.getREFERENCEAUTHOR()!=null && set.getREFERENCEAUTHOR().getREFERENCEAUTHOR()!=null)
-						papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+				} catch (Exception x) {papp.setReference(null);}				
+				try {
 					if (set.getREFERENCEYEAR()!=null) try {
 						papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 					} catch (Exception x) {}

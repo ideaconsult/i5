@@ -43,8 +43,9 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		if (unmarshalled.getScientificPart().getTOREPEATEDORAL().getREFERENCE() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_REPEATED_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOREPEATEDORAL.REFERENCE.Set set : unmarshalled.getScientificPart().getTOREPEATEDORAL().getREFERENCE().getSet()) {
 				try {
-					if (set.getREFERENCEAUTHOR()!=null)
-						papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+				} catch (Exception x) {papp.setReference(null);}				
+				try {
 					if (set.getREFERENCEYEAR()!=null) try {
 						papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 					} catch (Exception x) {}

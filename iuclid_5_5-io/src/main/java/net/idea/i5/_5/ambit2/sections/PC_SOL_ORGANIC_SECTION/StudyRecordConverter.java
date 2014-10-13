@@ -48,8 +48,9 @@ public class StudyRecordConverter
 		if (unmarshalled.getScientificPart().getPCSOLORGANIC().getREFERENCE() != null)
 			for (Set set : unmarshalled.getScientificPart().getPCSOLORGANIC().getREFERENCE().getSet()) {
 				try {
-					if (set.getREFERENCEAUTHOR()!=null)
-						papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+				} catch (Exception x) {papp.setReference(null);}				
+				try {
 					if (set.getREFERENCEYEAR()!=null) try {
 						papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 					} catch (Exception x) {}

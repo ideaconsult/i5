@@ -46,8 +46,9 @@ public class StudyRecordConverter
 		if (unmarshalled.getScientificPart().getPCGRANULOMETRY().getREFERENCE() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.PC_GRANULOMETRY_SECTION.EndpointStudyRecord.ScientificPart.PCGRANULOMETRY.REFERENCE.Set set : unmarshalled.getScientificPart().getPCGRANULOMETRY().getREFERENCE().getSet()) {
 				try {
-					if (set.getREFERENCEAUTHOR()!=null)
-						papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+				} catch (Exception x) {papp.setReference(null);}				
+				try {
 					if (set.getREFERENCEYEAR()!=null) try {
 						papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 					} catch (Exception x) {}

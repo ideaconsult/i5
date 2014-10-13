@@ -59,8 +59,9 @@ public class StudyRecordConverter
 		if (unmarshalled.getScientificPart().getCRYSTALLITEANDGRAINSIZE().getREFERENCE() != null)
 			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CRYSTALLITE_AND_GRAIN_SIZE_SECTION.EndpointStudyRecord.ScientificPart.CRYSTALLITEANDGRAINSIZE.REFERENCE.Set set : unmarshalled.getScientificPart().getCRYSTALLITEANDGRAINSIZE().getREFERENCE().getSet()) {
 				try {
-					if ((set.getREFERENCEAUTHOR()!=null) && set.getREFERENCEAUTHOR().getREFERENCEAUTHOR()!=null)
-						papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
+				} catch (Exception x) {papp.setReference(null);}				
+				try {
 					if (set.getREFERENCEYEAR()!=null && set.getREFERENCEYEAR().getREFERENCEYEAR()!=null) try {
 						papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
 					} catch (Exception x) {}
