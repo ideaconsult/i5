@@ -6,6 +6,11 @@ import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 
+/**
+ * https://github.com/ideaconsult/i5/blob/master/iuclid_5_common/src/main/java/net/idea/i5/io/I5_ROOT_OBJECTS.java
+ * @author nina
+ *
+ */
 public enum I5_ROOT_OBJECTS {
 	AttachmentDocument {
 		@Override
@@ -1647,6 +1652,12 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "TOX";
 		}
+		@Override
+		public String[] getConditions() {
+			return new String[] {
+					"Emission wavelength"
+			};
+		}		
 	
 	},
 	PUBCHEM_SCREENING {
