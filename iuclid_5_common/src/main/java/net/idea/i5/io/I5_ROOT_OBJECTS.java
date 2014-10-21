@@ -705,7 +705,12 @@ public enum I5_ROOT_OBJECTS {
 		}
 		public String getTopCategory() {
 			return "P-CHEM";
-		}			
+		}	
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},			
 	TO_PHOTOTRANS_AIR {
 		@Override
@@ -1542,6 +1547,11 @@ public enum I5_ROOT_OBJECTS {
 		//cell viability: http://www.bioassayontology.org/bao#BAO_0003009
 		//cytotoxicity: http://www.bioassayontology.org/bao#BAO_0002993
 		//functional : http://www.bioassayontology.org/bao#BAO_0000010
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},
 	BINDING_ASSAY {
 		@Override
@@ -1566,6 +1576,11 @@ public enum I5_ROOT_OBJECTS {
 					I5CONSTANTS.cDoses
 			};
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},	
 	PROTEIN_SMALLMOLECULE_INTERACTION {
 		@Override
@@ -1590,7 +1605,11 @@ public enum I5_ROOT_OBJECTS {
 					I5CONSTANTS.cDoses
 			};
 		}
-		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},		
 	AUTO_FLUORESCENCE {
 		@Override
@@ -1605,6 +1624,11 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "TOX";
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},	
 	UNKNOWN_TOXICITY {
 		@Override
@@ -1619,6 +1643,11 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "TOX";
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},
 	UNKNOWN_TOXICITY_SUMMARY {
 		@Override
@@ -1633,6 +1662,11 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "TOX";
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},	
 
 	PUBCHEM_CONFIRMATORY {
@@ -1646,6 +1680,11 @@ public enum I5_ROOT_OBJECTS {
 					"Replicate","Emission wavelength"
 			};
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},
 	PUBCHEM_SUMMARY {
 		@Override
@@ -1658,6 +1697,11 @@ public enum I5_ROOT_OBJECTS {
 					"Emission wavelength"
 			};
 		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	
 	},
 	PUBCHEM_SCREENING {
@@ -1665,12 +1709,22 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "TOX";
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},
 	PUBCHEM_CELLBASED {
 		@Override
 		public String getTopCategory() {
 			return "TOX";
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},	
 	PUBCHEM_DOSERESPONSE {
 		@Override
@@ -1683,36 +1737,67 @@ public enum I5_ROOT_OBJECTS {
 					I5CONSTANTS.cDoses,"Replicate","Emission wavelength"
 			};
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},		
 	PUBCHEM_PANEL {
 		@Override
 		public String getTopCategory() {
 			return "TOX";
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},		
 	PUBCHEM_BIOCHEMICAL {
 		@Override
 		public String getTopCategory() {
 			return "TOX";
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},		
 	PUBCHEM_INVIVO {
 		@Override
 		public String getTopCategory() {
 			return "TOX";
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+		
+
 	},		
 	PUBCHEM_ACTIVECONCENTRATIONSPECIFIED {
 		@Override
 		public String getTopCategory() {
 			return "TOX";
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},			
 	PUBCHEM_INVITRO {
 		@Override
 		public String getTopCategory() {
 			return "TOX";
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},			
 	PROTEOMICS {
 		@Override
@@ -1726,7 +1811,12 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getTopCategory() {
 			return "TOX";
-		}		
+		}	
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},
 	BAO_0003009 {
 		@Override
@@ -1741,6 +1831,11 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "TOX";
 		}
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},
 	BAO_0002993 {
 		@Override
@@ -1754,7 +1849,12 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getTopCategory() {
 			return "TOX";
-		}		
+		}	
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},
 	BAO_0002100 {
 		@Override
@@ -1769,6 +1869,11 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "TOX";
 		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},
 	BAO_0002167 {
 		//to be merged with genotox
@@ -1784,6 +1889,11 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "TOX";
 		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},
 	BAO_0002168 {
 		//to be merged woth I5 category
@@ -1798,7 +1908,12 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getTopCategory() {
 			return "TOX";
-		}		
+		}	
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
+
 	},
 	BAO_0002189 {
 		//to be merged with I5 category
@@ -1814,10 +1929,17 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "TOX";
 		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}	
 	}
 
 	
 	;
+	public boolean isIUCLID5() {
+		return true;
+	}	
 	public String getContextPath() {
 		return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord."+name()+"_SECTION";
 	}	

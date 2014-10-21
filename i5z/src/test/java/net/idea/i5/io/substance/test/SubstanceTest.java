@@ -61,6 +61,7 @@ public class SubstanceTest {
 			System.out.println("\n>>>>>\t"+test);
 			I5ObjectVerifier rootObjectVerifier = new I5ObjectVerifier();
 			InputStream in = SubstanceTest.class.getClassLoader().getResourceAsStream(test);
+			Assert.assertNotNull(in);
 			I5_ROOT_OBJECTS rootObject = rootObjectVerifier.process(in);
 			if (rootObject!=null) {
 				in = SubstanceTest.class.getClassLoader().getResourceAsStream(test);
@@ -183,6 +184,7 @@ public class SubstanceTest {
 			System.out.println("\n>>>>>\t"+test);
 			I5ObjectVerifier rootObjectVerifier = new I5ObjectVerifier();
 			InputStream in = SubstanceTest.class.getClassLoader().getResourceAsStream(test);
+			Assert.assertNotNull(in);
 			I5_ROOT_OBJECTS rootObject = rootObjectVerifier.process(in);
 			if (rootObject!=null) {
 				in = SubstanceTest.class.getClassLoader().getResourceAsStream(test);
@@ -439,7 +441,10 @@ Value	2	1976	h
 	public void test_i5z_4() throws Exception {
 		String test = "net/idea/i5/_4/substance/i5z/formaldehyde.i5z";
 		URL url = SubstanceTest.class.getClassLoader().getResource(test);
-		Assert.assertEquals(1,unmarshall_i5z(new File(url.getFile()),1));		
+		Assert.assertNotNull(url);
+		File file = new File(url.getFile());
+		Assert.assertTrue(file.exists());
+		Assert.assertEquals(1,unmarshall_i5z(file,1));		
 	}
 	@Test
 	public void test_i5z_0() throws Exception {

@@ -14,7 +14,7 @@ import ambit2.base.data.study.Params;
 public class TagsTest {
 	@Test
 	public void xmlObjectsTest() throws Exception {
-		for (I5_ROOT_OBJECTS tag : I5_ROOT_OBJECTS.values()) if (tag.isScientificPart()){
+		for (I5_ROOT_OBJECTS tag : I5_ROOT_OBJECTS.values()) if (tag.isScientificPart() && tag.isIUCLID5()){
 			String xmlobj = tag.getContextPath() + ".EndpointStudyRecord";
 			create(xmlobj);
 		}
@@ -77,7 +77,7 @@ public class TagsTest {
 	@Test
 	public void converterObjectsTest() throws Exception {
 		int err = 0;
-		for (I5_ROOT_OBJECTS tag : I5_ROOT_OBJECTS.values()) if (tag.isScientificPart()){
+		for (I5_ROOT_OBJECTS tag : I5_ROOT_OBJECTS.values()) if (tag.isScientificPart() && tag.isIUCLID5()){
 			String cname = "net.idea.i5._5.ambit2.sections." + tag.name() + "_SECTION.StudyRecordConverter";
 			try {
 				Object object = create(cname);
