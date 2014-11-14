@@ -8,7 +8,7 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 
 import net.idea.modbcum.i.exceptions.AmbitException;
-import ambit2.base.processors.DefaultAmbitProcessor;
+import net.idea.modbcum.p.DefaultAmbitProcessor;
 
 
 public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_OBJECTS> {

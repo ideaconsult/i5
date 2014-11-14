@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.idea.modbcum.i.exceptions.AmbitException;
+import net.idea.modbcum.p.DefaultAmbitProcessor;
 import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
 import ambit2.base.data.StructureRecord;
@@ -12,7 +13,6 @@ import ambit2.base.interfaces.IStructureRecord;
 import ambit2.base.interfaces.IStructureRecord.MOL_TYPE;
 import ambit2.base.interfaces.IStructureRecord.STRUC_TYPE;
 import ambit2.base.processors.CASProcessor;
-import ambit2.base.processors.DefaultAmbitProcessor;
 import ambit2.base.relation.STRUCTURE_RELATION;
 import ambit2.base.relation.composition.Proportion;
 import ambit2.core.config.AmbitCONSTANTS;
