@@ -1933,10 +1933,174 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isIUCLID5() {
 			return false;
 		}	
-	}
-
+	},
+	CELL_CYCLE {
+		//obo:GO:0007049
+		@Override
+		public String getNumber() {
+			return "7.205";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+	},
+	CELL_DEATH {
+		//obo:GO:0008219
+		@Override
+		public String getNumber() {
+			return "7.205";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+	},
+	CELL_MORPHOLOGY {
+		//BAO_0170002
+		@Override
+		public String getNumber() {
+			return "7.205";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+	},
 	
-	;
+	CELL_PROLIFERATION {
+	//obo:GO:0008283
+		@Override
+		public String getNumber() {
+			return "7.205";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+	},
+	MITOCHONDRIAL_DEPOLARIZATION {
+
+		@Override
+		public String getNumber() {
+			return "7.205";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+	},
+	OXIDATIVE_PHOSPHORYLATION {
+		@Override
+		public String getNumber() {
+			return "7.205";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+	},
+	PROTEIN_STABILIZATION {
+		//obo:GO:0050821
+		@Override
+		public String getNumber() {
+			return "7.205";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+	},
+	RECEPTOR_BINDING {
+		//obo:GO:0005102
+		@Override
+		public String getNumber() {
+			return "7.205";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+	},
+	REGULATION_OF_CATALYTIC_ACTIVITY {
+	//BAO_0002737
+		@Override
+		public String getNumber() {
+			return "7.205";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+	},
+	REGULATION_OF_GENE_EXPRESSION {
+		//obo:GO:0010468
+		@Override
+		public String getNumber() {
+			return "7.205";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+	},
+	REGULATION_OF_TRANSCRIPTION_FACTOR_ACTIVITY {
+		//	obo:GO:0006355
+		@Override
+		public String getNumber() {
+			return "7.505";
+		}	
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}		
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+	};
+
+
 	public boolean isIUCLID5() {
 		return true;
 	}	
