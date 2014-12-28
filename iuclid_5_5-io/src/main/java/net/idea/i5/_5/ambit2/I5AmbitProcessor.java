@@ -74,7 +74,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				return convertor.transform2record(unmarshalled, record);
 		} catch (QACriteriaException x) { 
 			//reliability exception
-			logger.log(Level.INFO,x.getMessage());
+			logger.log(Level.FINE,x.getMessage());
 			return null;
 		} catch (AmbitException x) {
 			throw x;
