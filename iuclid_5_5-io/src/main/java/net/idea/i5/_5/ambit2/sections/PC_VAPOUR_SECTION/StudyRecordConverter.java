@@ -1,5 +1,6 @@
 package net.idea.i5._5.ambit2.sections.PC_VAPOUR_SECTION;
 
+import net.idea.i5._5.ambit2.Phrases;
 import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
@@ -126,8 +127,9 @@ public class StudyRecordConverter
 				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
 					tvalue.setLoValue(getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
 				} else tvalue.setLoValue(null); 
-				if (set.getVALUEUNITTEMPVALUE()!=null)
-					tvalue.setUnits(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue());
+				if (set.getVALUEUNITTEMPVALUE()!=null) try {
+					tvalue.setUnits(Phrases.phrasegroup_A102.get(set.getVALUEUNITTEMPVALUE().getTEMPUNIT()));
+				} catch (Exception x) {}
 				
 				if (set.getTEMPQUALIFIER()!=null)
 					tvalue.setLoQualifier(set.getTEMPQUALIFIER().getTEMPQUALIFIERValue());
@@ -137,7 +139,8 @@ public class StudyRecordConverter
 				effect.getConditions().put(I5CONSTANTS.cTemperature, null);	
 			
 			if (set.getPRECISIONPRESSURELOQUALIFIER() != null) {
-				effect.setUnit(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNITValue());
+				effect.setUnit(Phrases.phrasegroup_P02.get(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNIT()));
+				
 				if (set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOVALUE() != null) {
 					try {
 						effect.setLoQualifier(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSURELOQUALIFIERValue());						

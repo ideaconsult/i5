@@ -1,5 +1,6 @@
 package net.idea.i5._5.ambit2.sections.PC_MELTING_SECTION;
 
+import net.idea.i5._5.ambit2.Phrases;
 import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
@@ -144,7 +145,7 @@ public class StudyRecordConverter
 			}
 			
 			if (set.getPRECISIONLOQUALIFIER() != null) {
-				effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
+				effect.setUnit(Phrases.phrasegroup_A102.get(set.getPRECISIONLOQUALIFIER().getUNIT()));
 				
 				if (set.getPRECISIONLOQUALIFIER().getLOVALUE() != null)
 					try {

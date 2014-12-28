@@ -1,5 +1,6 @@
 package net.idea.i5._5.ambit2.sections.PC_BOILING_SECTION;
 
+import net.idea.i5._5.ambit2.Phrases;
 import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
@@ -142,7 +143,7 @@ public class StudyRecordConverter
 							set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPQUALIFIERValue());					
 					vpvalue.setUpValue(getNumber(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUPVALUE().getValue()));
 				} else vpvalue.setUpValue( null);
-				vpvalue.setUnits(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNITValue());
+				vpvalue.setUnits(Phrases.phrasegroup_P02.get(set.getPRECISIONPRESSURELOQUALIFIER().getPRESSUREUNIT()));
 				effect.getConditions().put(I5CONSTANTS.AtmPressure, vpvalue);
 
 			} else {
@@ -151,7 +152,8 @@ public class StudyRecordConverter
 
 			
 			if (set.getPRECISIONLOQUALIFIER() != null) {
-				effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
+				effect.setUnit(Phrases.phrasegroup_A102.get(set.getPRECISIONLOQUALIFIER().getUNIT()));
+				//effect.setUnit(set.getPRECISIONLOQUALIFIER().getUNITValue());
 				
 				if (set.getPRECISIONLOQUALIFIER().getLOVALUE() != null)
 					try {

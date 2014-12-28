@@ -1,5 +1,6 @@
 package net.idea.i5._5.ambit2.sections.EN_HENRY_LAW_SECTION;
 
+import net.idea.i5._5.ambit2.Phrases;
 import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.ENVFATEStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
@@ -122,7 +123,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 						tvalue.setLoValue(getNumber(set.getVALUEUNITPRESSUREVALUE().getPRESSUREVALUE().getValue()));
 					} else tvalue.setLoValue(null);
 					if (set.getVALUEUNITPRESSUREVALUE()!=null)
-						tvalue.setUnits(set.getVALUEUNITPRESSUREVALUE().getPRESSUREUNITValue());
+						tvalue.setUnits(Phrases.phrasegroup_P02.get(set.getVALUEUNITPRESSUREVALUE().getPRESSUREUNIT()));
 					
 					effect.getConditions().put(I5CONSTANTS.Pressure, tvalue);				
 				} else

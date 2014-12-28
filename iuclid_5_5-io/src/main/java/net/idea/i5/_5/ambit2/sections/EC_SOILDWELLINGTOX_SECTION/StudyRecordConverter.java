@@ -1,5 +1,6 @@
 package net.idea.i5._5.ambit2.sections.EC_SOILDWELLINGTOX_SECTION;
 
+import net.idea.i5._5.ambit2.Phrases;
 import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.ECOTOXStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
@@ -106,7 +107,7 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			Params p = new Params();
 			try {p.setLoValue(sciPart.getECSOILDWELLINGTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getVALUE().getValue());} 
 			catch (Exception x) {p.setLoValue(null);}
-			try {p.setUnits(sciPart.getECSOILDWELLINGTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNITValue());} catch (Exception x) {}
+			try {p.setUnits(Phrases.phrasegroup_E04.get(sciPart.getECSOILDWELLINGTOX().getEXPDURATION().getSet().getVALUEUNITVALUE().getUNIT()));} catch (Exception x) {}
 			papp.getParameters().put(I5CONSTANTS.cExposure,p);
 		} else {
 			papp.getParameters().put(I5CONSTANTS.cExposure,null);
@@ -162,7 +163,8 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			
 			
 			if (set.getPRECISIONLOQUALIFIER()!=null) {
-				effect.setUnit(getUnit(set.getPRECISIONLOQUALIFIER().getUNITValue(),
+				effect.setUnit(getUnit(
+						Phrases.phrasegroup_TD340.get(set.getPRECISIONLOQUALIFIER().getUNIT()),
 						set.getPRECISIONLOQUALIFIER().getUNITTXT()==null?null:
 						set.getPRECISIONLOQUALIFIER().getUNITTXT().getValue()));
 				
@@ -179,7 +181,7 @@ public class StudyRecordConverter extends ECOTOXStudyRecordConvertor<eu.europa.e
 			if (set.getVALUEUNITEXPDURATIONVALUE()!=null) {
 				Params p = new Params();
 				p.setLoValue(set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONVALUE().getValue());
-				p.setUnits(set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNITValue());
+				p.setUnits(Phrases.phrasegroup_E04.get(set.getVALUEUNITEXPDURATIONVALUE().getEXPDURATIONUNIT()));
 				effect.getConditions().put(I5CONSTANTS.cExposure,p);
 			} else {
 				effect.getConditions().put(I5CONSTANTS.cExposure,null);

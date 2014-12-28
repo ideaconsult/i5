@@ -52,7 +52,9 @@ public class Phrases {
 	public static final Hashtable<String, String> phrasegroup_E01 = phrasegroup_E01();
 	public static final Hashtable<String, String> phrasegroup_E02 = phrasegroup_E02();
 	public static final Hashtable<String, String> phrasegroup_E03_1 = phrasegroup_E03_1();
+	*/
 	public static final Hashtable<String, String> phrasegroup_E04 = phrasegroup_E04();
+	/*
 	public static final Hashtable<String, String> phrasegroup_E05 = phrasegroup_E05();
 	public static final Hashtable<String, String> phrasegroup_E35 = phrasegroup_E35();
 	public static final Hashtable<String, String> phrasegroup_E36 = phrasegroup_E36();
@@ -91,12 +93,17 @@ public class Phrases {
 	public static final Hashtable<String, String> phrasegroup_T01 = phrasegroup_T01();
 	public static final Hashtable<String, String> phrasegroup_T04 = phrasegroup_T04();
 	public static final Hashtable<String, String> phrasegroup_T108 = phrasegroup_T108();
-
+	*/
+	public static final Hashtable<String, String> phrasegroup_TD340 = phrasegroup_TD340();
+	
 	//physchem
+	/*
 	public static final Hashtable<String, String> phrasegroup_C15 = phrasegroup_C15();
 	public static final Hashtable<String, String> phrasegroup_C101 = phrasegroup_C101();
 	
-	
+	*/
+	public static final Hashtable<String, String> phrasegroup_P02 = phrasegroup_P02();
+	/*
 	public static final Hashtable<String, String> phrasegroup_P07 = phrasegroup_P07();
 	public static final Hashtable<String, String> phrasegroup_P36 = phrasegroup_P36();
 	public static final Hashtable<String, String> phrasegroup_P19 = phrasegroup_P19();
@@ -712,16 +719,17 @@ public class Phrases {
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }	 
-	
+	*/
     private static Hashtable<String, String> phrasegroup_E04() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
     	p.put("2113", "min");
     	p.put("1976", "h");
+    	p.put("1839", "d");
     	p.put("2468", "wk");
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }	  	
-	
+	/*
     private static Hashtable<String, String> phrasegroup_E102() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
     	p.put("1920", "freshwater");
@@ -1074,6 +1082,23 @@ public class Phrases {
     	return p;
     }	
     
+    private static Hashtable<String, String> phrasegroup_P02() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("1349", "Pa");
+    	p.put("1954", "hPa");
+    	p.put("2019", "kPa");
+    	p.put("1740", "atm");
+    	p.put("139", "Bar");
+    	p.put("2046", "mBar");
+    	
+    	p.put("2121","mm H");
+    	p.put("1348", "PSI");
+    	p.put("1616", "Torr");
+    	p.put("1342", "other:");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }	
+   
     private static Hashtable<String, String> phrasegroup_A102() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
     	p.put("2493", "°C");
@@ -1241,6 +1266,40 @@ public class Phrases {
     	return p;
     }
 */
+    
+    private static Hashtable<String, String> phrasegroup_TD340() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("8089", "ng/kg soil dw");
+    	p.put("8088", "µg/kg soil dw");
+    	p.put("2096", "mg/kg soil dw");
+    	p.put("8126", "ng/kg soil ww");
+    	p.put("8127", "µg/kg soil ww");
+    	p.put("8128", "mg/kg soil ww");    	
+    	
+    	p.put("2077", "mg/cm²");
+    	p.put("1930", "g/ha");
+    	p.put("1342", "other:");    	    	
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+    /*
+<xsd:simpleType name="phrasegroup_TD340">
+    <xsd:restriction base="xsd:string">
+
+      </xsd:enumeration>
+      <xsd:enumeration value="1342">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">other: - </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="NOT_SPECIFIED">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Not specified - the value is not specified</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+     */
     private static Hashtable<String, String> phrasegroup_TD400() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
 

@@ -1,5 +1,6 @@
 package net.idea.i5._5.ambit2.sections.PC_PARTITION_SECTION;
 
+import net.idea.i5._5.ambit2.Phrases;
 import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
@@ -140,7 +141,7 @@ public class StudyRecordConverter
 				if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
 					tvalue.setLoValue(getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
 				} else tvalue.setLoValue(null);
-				tvalue.setUnits(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...
+				tvalue.setUnits(Phrases.phrasegroup_A102.get(set.getVALUEUNITTEMPVALUE().getTEMPUNIT())); //here the unit is assumed ...
 				effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);				
 			} else
 				effect.getConditions().put(I5CONSTANTS.cTemperature, null);				

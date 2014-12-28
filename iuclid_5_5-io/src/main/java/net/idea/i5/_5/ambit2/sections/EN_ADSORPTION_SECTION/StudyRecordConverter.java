@@ -1,5 +1,6 @@
 package net.idea.i5._5.ambit2.sections.EN_ADSORPTION_SECTION;
 
+import net.idea.i5._5.ambit2.Phrases;
 import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.ENVFATEStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
@@ -119,7 +120,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 					if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
 						tvalue.setLoValue(getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
 					}
-					tvalue.setUnits(set.getVALUEUNITTEMPVALUE().getTEMPUNITValue()); //here the unit is assumed ...
+					tvalue.setUnits(Phrases.phrasegroup_A102.get(set.getVALUEUNITTEMPVALUE().getTEMPUNIT())); //here the unit is assumed ...
 					effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);				
 				} else
 					effect.getConditions().put(I5CONSTANTS.cTemperature, null);	
