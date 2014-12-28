@@ -26,6 +26,7 @@ public class Phrases {
 	public static final Hashtable<String, String> phrasegroup_A101 = phrasegroup_A101();
 	public static final Hashtable<String, String> phrasegroup_A03 = phrasegroup_A03();
 	*/
+	public static final Hashtable<String, String> phrasegroup_A102 = phrasegroup_A102();
 	public static final Hashtable<String, String> phrasegroup_Y14_3 = phrasegroup_Y14_3(); //name="phrasegroup_Y14-3"
 	public static final Hashtable<String, String> phrasegroup_Z05 = phrasegroup_Z05();
 	/*
@@ -1071,7 +1072,17 @@ public class Phrases {
     	p.put("1342", "other:");
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
+    }	
+    
+    private static Hashtable<String, String> phrasegroup_A102() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("2493", "°C");
+    	p.put("3887", "K");
+    	p.put("3888", "°F");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
     }		
+
 	
     private static Hashtable<String, String> phrasegroup_Z05() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
@@ -1262,8 +1273,6 @@ public class Phrases {
 "NOT_SPECIFIED","Notspecified-thevalueisnotspecified"
 */
 
-
-  
 	private Phrases() {
 	}
 }
