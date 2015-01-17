@@ -5,7 +5,6 @@
 // Generated on: 2013.07.31 at 01:53:47 PM EEST 
 //
 
-
 package eu.europa.echa.schemas.iuclid5._20070330.referencesubstance;
 
 import javax.xml.bind.JAXBElement;
@@ -13,65 +12,71 @@ import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
 import javax.xml.namespace.QName;
 
-
 /**
- * This object contains factory methods for each 
- * Java content interface and Java element interface 
- * generated in the eu.europa.echa.schemas.iuclid5._20070330.referencesubstance package. 
- * <p>An ObjectFactory allows you to programatically 
- * construct new instances of the Java representation 
- * for XML content. The Java representation of XML 
- * content can consist of schema derived interfaces 
- * and classes representing the binding of schema 
- * type definitions, element declarations and model 
- * groups.  Factory methods for each of these are 
- * provided in this class.
+ * This object contains factory methods for each Java content interface and Java
+ * element interface generated in the
+ * eu.europa.echa.schemas.iuclid5._20070330.referencesubstance package.
+ * <p>
+ * An ObjectFactory allows you to programatically construct new instances of the
+ * Java representation for XML content. The Java representation of XML content
+ * can consist of schema derived interfaces and classes representing the binding
+ * of schema type definitions, element declarations and model groups. Factory
+ * methods for each of these are provided in this class.
  * 
  */
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _ReferenceSubstanceModificationHistoryModificationComment_QNAME = new QName("http://echa.europa.eu/schemas/iuclid5/20070330", "comment");
-    private final static QName _ReferenceSubstanceModificationHistoryModificationModificationBy_QNAME = new QName("http://echa.europa.eu/schemas/iuclid5/20070330", "modificationBy");
-    private final static QName _ReferenceSubstanceReferenceSubstanceInformationCasInformationAlternativeCASInfosAlternativeCASInfoJustificationOtherValue_QNAME = new QName("http://echa.europa.eu/schemas/iuclid5/20070330", "otherValue");
+    private final static QName _ReferenceSubstanceModificationHistoryModificationComment_QNAME = new QName(
+	    "http://echa.europa.eu/schemas/iuclid5/20070330", "comment");
+    private final static QName _ReferenceSubstanceModificationHistoryModificationModificationBy_QNAME = new QName(
+	    "http://echa.europa.eu/schemas/iuclid5/20070330", "modificationBy");
+    private final static QName _ReferenceSubstanceReferenceSubstanceInformationCasInformationAlternativeCASInfosAlternativeCASInfoJustificationOtherValue_QNAME = new QName(
+	    "http://echa.europa.eu/schemas/iuclid5/20070330", "otherValue");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.europa.echa.schemas.iuclid5._20070330.referencesubstance
+     * Create a new ObjectFactory that can be used to create new instances of
+     * schema derived classes for package:
+     * eu.europa.echa.schemas.iuclid5._20070330.referencesubstance
      * 
      */
     public ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos createReferenceSubstanceReferenceSubstanceInformationCasInformationAlternativeCASInfos() {
-        return new ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos();
+	return new ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.Confidentiality }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.Confidentiality }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.Confidentiality createReferenceSubstanceReferenceSubstanceStructureDataProtectionConfidentiality() {
-        return new ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.Confidentiality();
+	return new ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.Confidentiality();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.Confidentiality }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.Confidentiality }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.Confidentiality createReferenceSubstanceReferenceSubstanceInformationDataProtectionConfidentiality() {
-        return new ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.Confidentiality();
+	return new ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.Confidentiality();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.RegulatoryPurposes.RegulatoryPurpose }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.RegulatoryPurposes.RegulatoryPurpose }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.RegulatoryPurposes.RegulatoryPurpose createReferenceSubstanceReferenceSubstanceInformationDataProtectionRegulatoryPurposesRegulatoryPurpose() {
-        return new ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.RegulatoryPurposes.RegulatoryPurpose();
+	return new ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.RegulatoryPurposes.RegulatoryPurpose();
     }
 
     /**
@@ -79,79 +84,88 @@ public class ObjectFactory {
      * 
      */
     public ReferenceSubstance.ModificationHistory createReferenceSubstanceModificationHistory() {
-        return new ReferenceSubstance.ModificationHistory();
+	return new ReferenceSubstance.ModificationHistory();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange createReferenceSubstanceReferenceSubstanceStructureMolecularWeightRange() {
-        return new ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange();
+	return new ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceStructure.DataProtection }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceStructure.DataProtection }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceStructure.DataProtection createReferenceSubstanceReferenceSubstanceStructureDataProtection() {
-        return new ReferenceSubstance.ReferenceSubstanceStructure.DataProtection();
+	return new ReferenceSubstance.ReferenceSubstanceStructure.DataProtection();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceInformation.CasInformation }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceInformation.CasInformation }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceInformation.CasInformation createReferenceSubstanceReferenceSubstanceInformationCasInformation() {
-        return new ReferenceSubstance.ReferenceSubstanceInformation.CasInformation();
+	return new ReferenceSubstance.ReferenceSubstanceInformation.CasInformation();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.RegulatoryPurposes }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.RegulatoryPurposes }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.RegulatoryPurposes createReferenceSubstanceReferenceSubstanceStructureDataProtectionRegulatoryPurposes() {
-        return new ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.RegulatoryPurposes();
+	return new ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.RegulatoryPurposes();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange.UpperPrecision }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange.UpperPrecision }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange.UpperPrecision createReferenceSubstanceReferenceSubstanceStructureMolecularWeightRangeUpperPrecision() {
-        return new ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange.UpperPrecision();
+	return new ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange.UpperPrecision();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.RegulatoryPurposes.RegulatoryPurpose }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.RegulatoryPurposes.RegulatoryPurpose }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.RegulatoryPurposes.RegulatoryPurpose createReferenceSubstanceReferenceSubstanceStructureDataProtectionRegulatoryPurposesRegulatoryPurpose() {
-        return new ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.RegulatoryPurposes.RegulatoryPurpose();
+	return new ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.RegulatoryPurposes.RegulatoryPurpose();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.RegulatoryPurposes }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.RegulatoryPurposes }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.RegulatoryPurposes createReferenceSubstanceReferenceSubstanceInformationDataProtectionRegulatoryPurposes() {
-        return new ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.RegulatoryPurposes();
+	return new ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.RegulatoryPurposes();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceInformation.Synonyms.Synonym }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceInformation.Synonyms.Synonym }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceInformation.Synonyms.Synonym createReferenceSubstanceReferenceSubstanceInformationSynonymsSynonym() {
-        return new ReferenceSubstance.ReferenceSubstanceInformation.Synonyms.Synonym();
+	return new ReferenceSubstance.ReferenceSubstanceInformation.Synonyms.Synonym();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.EcSubstanceInventoryEntryRef }
+     * Create an instance of
+     * {@link ReferenceSubstance.EcSubstanceInventoryEntryRef }
      * 
      */
     public ReferenceSubstance.EcSubstanceInventoryEntryRef createReferenceSubstanceEcSubstanceInventoryEntryRef() {
-        return new ReferenceSubstance.EcSubstanceInventoryEntryRef();
+	return new ReferenceSubstance.EcSubstanceInventoryEntryRef();
     }
 
     /**
@@ -159,7 +173,7 @@ public class ObjectFactory {
      * 
      */
     public ReferenceSubstance createReferenceSubstance() {
-        return new ReferenceSubstance();
+	return new ReferenceSubstance();
     }
 
     /**
@@ -167,71 +181,79 @@ public class ObjectFactory {
      * 
      */
     public ReferenceSubstance.OwnershipProtection createReferenceSubstanceOwnershipProtection() {
-        return new ReferenceSubstance.OwnershipProtection();
+	return new ReferenceSubstance.OwnershipProtection();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceStructure.StructureFormula }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceStructure.StructureFormula }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceStructure.StructureFormula createReferenceSubstanceReferenceSubstanceStructureStructureFormula() {
-        return new ReferenceSubstance.ReferenceSubstanceStructure.StructureFormula();
+	return new ReferenceSubstance.ReferenceSubstanceStructure.StructureFormula();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceInformation.Synonyms }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceInformation.Synonyms }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceInformation.Synonyms createReferenceSubstanceReferenceSubstanceInformationSynonyms() {
-        return new ReferenceSubstance.ReferenceSubstanceInformation.Synonyms();
+	return new ReferenceSubstance.ReferenceSubstanceInformation.Synonyms();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ModificationHistory.Modification }
+     * Create an instance of
+     * {@link ReferenceSubstance.ModificationHistory.Modification }
      * 
      */
     public ReferenceSubstance.ModificationHistory.Modification createReferenceSubstanceModificationHistoryModification() {
-        return new ReferenceSubstance.ModificationHistory.Modification();
+	return new ReferenceSubstance.ModificationHistory.Modification();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos.AlternativeCASInfo.Justification }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos.AlternativeCASInfo.Justification }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos.AlternativeCASInfo.Justification createReferenceSubstanceReferenceSubstanceInformationCasInformationAlternativeCASInfosAlternativeCASInfoJustification() {
-        return new ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos.AlternativeCASInfo.Justification();
+	return new ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos.AlternativeCASInfo.Justification();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceStructure }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceStructure }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceStructure createReferenceSubstanceReferenceSubstanceStructure() {
-        return new ReferenceSubstance.ReferenceSubstanceStructure();
+	return new ReferenceSubstance.ReferenceSubstanceStructure();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceInformation }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceInformation }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceInformation createReferenceSubstanceReferenceSubstanceInformation() {
-        return new ReferenceSubstance.ReferenceSubstanceInformation();
+	return new ReferenceSubstance.ReferenceSubstanceInformation();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceInformation.DataProtection }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceInformation.DataProtection }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceInformation.DataProtection createReferenceSubstanceReferenceSubstanceInformationDataProtection() {
-        return new ReferenceSubstance.ReferenceSubstanceInformation.DataProtection();
+	return new ReferenceSubstance.ReferenceSubstanceInformation.DataProtection();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos.AlternativeCASInfo }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos.AlternativeCASInfo }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos.AlternativeCASInfo createReferenceSubstanceReferenceSubstanceInformationCasInformationAlternativeCASInfosAlternativeCASInfo() {
-        return new ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos.AlternativeCASInfo();
+	return new ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos.AlternativeCASInfo();
     }
 
     /**
@@ -239,60 +261,78 @@ public class ObjectFactory {
      * 
      */
     public ReferenceSubstance.Justification createReferenceSubstanceJustification() {
-        return new ReferenceSubstance.Justification();
+	return new ReferenceSubstance.Justification();
     }
 
     /**
-     * Create an instance of {@link ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange.LowerPrecision }
+     * Create an instance of
+     * {@link ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange.LowerPrecision }
      * 
      */
     public ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange.LowerPrecision createReferenceSubstanceReferenceSubstanceStructureMolecularWeightRangeLowerPrecision() {
-        return new ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange.LowerPrecision();
+	return new ReferenceSubstance.ReferenceSubstanceStructure.MolecularWeightRange.LowerPrecision();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://echa.europa.eu/schemas/iuclid5/20070330", name = "comment", scope = ReferenceSubstance.ModificationHistory.Modification.class)
     public JAXBElement<String> createReferenceSubstanceModificationHistoryModificationComment(String value) {
-        return new JAXBElement<String>(_ReferenceSubstanceModificationHistoryModificationComment_QNAME, String.class, ReferenceSubstance.ModificationHistory.Modification.class, value);
+	return new JAXBElement<String>(_ReferenceSubstanceModificationHistoryModificationComment_QNAME, String.class,
+		ReferenceSubstance.ModificationHistory.Modification.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://echa.europa.eu/schemas/iuclid5/20070330", name = "modificationBy", scope = ReferenceSubstance.ModificationHistory.Modification.class)
     public JAXBElement<String> createReferenceSubstanceModificationHistoryModificationModificationBy(String value) {
-        return new JAXBElement<String>(_ReferenceSubstanceModificationHistoryModificationModificationBy_QNAME, String.class, ReferenceSubstance.ModificationHistory.Modification.class, value);
+	return new JAXBElement<String>(_ReferenceSubstanceModificationHistoryModificationModificationBy_QNAME,
+		String.class, ReferenceSubstance.ModificationHistory.Modification.class, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://echa.europa.eu/schemas/iuclid5/20070330", name = "otherValue", scope = ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos.AlternativeCASInfo.Justification.class)
-    public JAXBElement<String> createReferenceSubstanceReferenceSubstanceInformationCasInformationAlternativeCASInfosAlternativeCASInfoJustificationOtherValue(String value) {
-        return new JAXBElement<String>(_ReferenceSubstanceReferenceSubstanceInformationCasInformationAlternativeCASInfosAlternativeCASInfoJustificationOtherValue_QNAME, String.class, ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos.AlternativeCASInfo.Justification.class, value);
+    public JAXBElement<String> createReferenceSubstanceReferenceSubstanceInformationCasInformationAlternativeCASInfosAlternativeCASInfoJustificationOtherValue(
+	    String value) {
+	return new JAXBElement<String>(
+		_ReferenceSubstanceReferenceSubstanceInformationCasInformationAlternativeCASInfosAlternativeCASInfoJustificationOtherValue_QNAME,
+		String.class,
+		ReferenceSubstance.ReferenceSubstanceInformation.CasInformation.AlternativeCASInfos.AlternativeCASInfo.Justification.class,
+		value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://echa.europa.eu/schemas/iuclid5/20070330", name = "otherValue", scope = ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.RegulatoryPurposes.RegulatoryPurpose.class)
-    public JAXBElement<String> createReferenceSubstanceReferenceSubstanceStructureDataProtectionRegulatoryPurposesRegulatoryPurposeOtherValue(String value) {
-        return new JAXBElement<String>(_ReferenceSubstanceReferenceSubstanceInformationCasInformationAlternativeCASInfosAlternativeCASInfoJustificationOtherValue_QNAME, String.class, ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.RegulatoryPurposes.RegulatoryPurpose.class, value);
+    public JAXBElement<String> createReferenceSubstanceReferenceSubstanceStructureDataProtectionRegulatoryPurposesRegulatoryPurposeOtherValue(
+	    String value) {
+	return new JAXBElement<String>(
+		_ReferenceSubstanceReferenceSubstanceInformationCasInformationAlternativeCASInfosAlternativeCASInfoJustificationOtherValue_QNAME,
+		String.class,
+		ReferenceSubstance.ReferenceSubstanceStructure.DataProtection.RegulatoryPurposes.RegulatoryPurpose.class,
+		value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}
      * 
      */
     @XmlElementDecl(namespace = "http://echa.europa.eu/schemas/iuclid5/20070330", name = "otherValue", scope = ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.RegulatoryPurposes.RegulatoryPurpose.class)
-    public JAXBElement<String> createReferenceSubstanceReferenceSubstanceInformationDataProtectionRegulatoryPurposesRegulatoryPurposeOtherValue(String value) {
-        return new JAXBElement<String>(_ReferenceSubstanceReferenceSubstanceInformationCasInformationAlternativeCASInfosAlternativeCASInfoJustificationOtherValue_QNAME, String.class, ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.RegulatoryPurposes.RegulatoryPurpose.class, value);
+    public JAXBElement<String> createReferenceSubstanceReferenceSubstanceInformationDataProtectionRegulatoryPurposesRegulatoryPurposeOtherValue(
+	    String value) {
+	return new JAXBElement<String>(
+		_ReferenceSubstanceReferenceSubstanceInformationCasInformationAlternativeCASInfosAlternativeCASInfoJustificationOtherValue_QNAME,
+		String.class,
+		ReferenceSubstance.ReferenceSubstanceInformation.DataProtection.RegulatoryPurposes.RegulatoryPurpose.class,
+		value);
     }
 
 }

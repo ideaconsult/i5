@@ -5,19 +5,21 @@
 // Generated on: 2013.07.31 at 01:53:47 PM EEST 
 //
 
-
 package eu.europa.echa.schemas.iuclid5._20070330.referencesubstance;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for documentTypeType.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
+ * Java class for documentTypeType.
+ * 
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
+ * <p>
+ * 
  * <pre>
  * &lt;simpleType name="documentTypeType">
  *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
@@ -47,54 +49,39 @@ import javax.xml.bind.annotation.XmlType;
 public enum DocumentTypeType {
 
     @XmlEnumValue("LegalEntity")
-    LEGAL_ENTITY("LegalEntity"),
-    @XmlEnumValue("Substance")
-    SUBSTANCE("Substance"),
-    @XmlEnumValue("Dossier")
-    DOSSIER("Dossier"),
-    @XmlEnumValue("DossierRecreationInfo")
-    DOSSIER_RECREATION_INFO("DossierRecreationInfo"),
-    @XmlEnumValue("Annotation")
-    ANNOTATION("Annotation"),
-    @XmlEnumValue("Category")
-    CATEGORY("Category"),
-    @XmlEnumValue("Mixture")
-    MIXTURE("Mixture"),
-    @XmlEnumValue("ReferenceSubstance")
-    REFERENCE_SUBSTANCE("ReferenceSubstance"),
-    @XmlEnumValue("Template")
-    TEMPLATE("Template"),
-    @XmlEnumValue("AttachmentDocument")
-    ATTACHMENT_DOCUMENT("AttachmentDocument"),
-    @XmlEnumValue("EndpointStudyRecord")
-    ENDPOINT_STUDY_RECORD("EndpointStudyRecord"),
-    @XmlEnumValue("EndpointSummary")
-    ENDPOINT_SUMMARY("EndpointSummary"),
-    @XmlEnumValue("EndpointRecord")
-    ENDPOINT_RECORD("EndpointRecord"),
-    @XmlEnumValue("Site")
-    SITE("Site"),
-    @XmlEnumValue("DocumentReferenceGroup")
-    DOCUMENT_REFERENCE_GROUP("DocumentReferenceGroup"),
-    @XmlEnumValue("ExtendedAttribute")
+    LEGAL_ENTITY("LegalEntity"), @XmlEnumValue("Substance")
+    SUBSTANCE("Substance"), @XmlEnumValue("Dossier")
+    DOSSIER("Dossier"), @XmlEnumValue("DossierRecreationInfo")
+    DOSSIER_RECREATION_INFO("DossierRecreationInfo"), @XmlEnumValue("Annotation")
+    ANNOTATION("Annotation"), @XmlEnumValue("Category")
+    CATEGORY("Category"), @XmlEnumValue("Mixture")
+    MIXTURE("Mixture"), @XmlEnumValue("ReferenceSubstance")
+    REFERENCE_SUBSTANCE("ReferenceSubstance"), @XmlEnumValue("Template")
+    TEMPLATE("Template"), @XmlEnumValue("AttachmentDocument")
+    ATTACHMENT_DOCUMENT("AttachmentDocument"), @XmlEnumValue("EndpointStudyRecord")
+    ENDPOINT_STUDY_RECORD("EndpointStudyRecord"), @XmlEnumValue("EndpointSummary")
+    ENDPOINT_SUMMARY("EndpointSummary"), @XmlEnumValue("EndpointRecord")
+    ENDPOINT_RECORD("EndpointRecord"), @XmlEnumValue("Site")
+    SITE("Site"), @XmlEnumValue("DocumentReferenceGroup")
+    DOCUMENT_REFERENCE_GROUP("DocumentReferenceGroup"), @XmlEnumValue("ExtendedAttribute")
     EXTENDED_ATTRIBUTE("ExtendedAttribute");
     private final String value;
 
     DocumentTypeType(String v) {
-        value = v;
+	value = v;
     }
 
     public String value() {
-        return value;
+	return value;
     }
 
     public static DocumentTypeType fromValue(String v) {
-        for (DocumentTypeType c: DocumentTypeType.values()) {
-            if (c.value.equals(v)) {
-                return c;
-            }
-        }
-        throw new IllegalArgumentException(v);
+	for (DocumentTypeType c : DocumentTypeType.values()) {
+	    if (c.value.equals(v)) {
+		return c;
+	    }
+	}
+	throw new IllegalArgumentException(v);
     }
 
 }

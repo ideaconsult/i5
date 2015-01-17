@@ -7,3 +7,4 @@
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://echa.europa.eu/schemas/iuclid5/20070330", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package eu.europa.echa.schemas.iuclid5._20070330.referencesubstance;
+
