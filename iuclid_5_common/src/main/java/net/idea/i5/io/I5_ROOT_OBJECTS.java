@@ -2333,7 +2333,7 @@ public enum I5_ROOT_OBJECTS {
 
 	@Override
 	public String getNumber() {
-	    return "7.200";
+	    return name();
 	}
 
 	@Override
@@ -2355,7 +2355,7 @@ public enum I5_ROOT_OBJECTS {
 
 	@Override
 	public String getNumber() {
-	    return "7.201";
+	    return name();
 	}
 
 	@Override
@@ -2377,7 +2377,7 @@ public enum I5_ROOT_OBJECTS {
 
 	@Override
 	public String getNumber() {
-	    return "7.202";
+	    return name();
 	}
 
 	@Override
@@ -2400,7 +2400,7 @@ public enum I5_ROOT_OBJECTS {
 
 	@Override
 	public String getNumber() {
-	    return "7.203";
+	    return name();
 	}
 
 	@Override
@@ -2423,7 +2423,7 @@ public enum I5_ROOT_OBJECTS {
 
 	@Override
 	public String getNumber() {
-	    return "7.204";
+	    return name();
 	}
 
 	@Override
@@ -2446,7 +2446,7 @@ public enum I5_ROOT_OBJECTS {
 
 	@Override
 	public String getNumber() {
-	    return "7.205";
+	    return name();
 	}
 
 	@Override
