@@ -6,10 +6,8 @@
     <groupId>net.idea</groupId>
     <version>1.0.3-SNAPSHOT</version>
   </parent>
-  <groupId>net.idea</groupId>
   <artifactId>i5z</artifactId>
   <name>i5z</name>
-  <version>1.0.3-SNAPSHOT</version>
   <inceptionYear>2013</inceptionYear>
   <organization>
     <name>Ideaconsult Ltd.</name>
