@@ -143,8 +143,7 @@ public class StudyRecordConverter
 		    } else
 			tvalue.setLoValue(null);
 		    if (set.getVALUEUNITTEMPVALUE() != null)
-			tvalue.setUnits(getNumber(Phrases.phrasegroup_A102.get(set.getVALUEUNITTEMPVALUE()
-				.getTEMPUNIT())));
+			tvalue.setUnits(Phrases.phrasegroup_A102.get(set.getVALUEUNITTEMPVALUE().getTEMPUNIT()));
 		    effect.getConditions().put(I5CONSTANTS.cTemperature, tvalue);
 		} else
 		    effect.getConditions().put(I5CONSTANTS.cTemperature, null);
