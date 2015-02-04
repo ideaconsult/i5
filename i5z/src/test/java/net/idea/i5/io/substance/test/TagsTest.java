@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import junit.framework.Assert;
 import net.idea.i5._5.ambit2.json.Experiment;
-import net.idea.i5._5.ambit2.sections.PC_GRANULOMETRY_SECTION.PC_GRANULOMETRY_Params;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 
 import org.junit.Test;
@@ -95,7 +94,7 @@ public class TagsTest {
 	
 	@Test
 	public void testJSONSchema() throws Exception {
-		Experiment<PC_GRANULOMETRY_Params,Params> experiment = new Experiment<PC_GRANULOMETRY_Params, Params>(null);
+		Experiment<Params,Params> experiment = new Experiment<Params, Params>(null);
 		
 		System.out.println(experiment.generateJSONSchema());
 	}
