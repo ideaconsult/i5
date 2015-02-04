@@ -107,7 +107,10 @@ public class Phrases {
 	public static final Hashtable<String, String> phrasegroup_P07 = phrasegroup_P07();
 	public static final Hashtable<String, String> phrasegroup_P36 = phrasegroup_P36();
 	public static final Hashtable<String, String> phrasegroup_P19 = phrasegroup_P19();
-
+	*/
+	
+	public static final Hashtable<String, String> phrasegroup_NM03 = phrasegroup_NM03();
+	/*
 	private static Hashtable<String, String> phrasegroup_F30() {
 		Hashtable<String, String> p = new Hashtable<String,String>();
 		p.put("2438","under test conditions no biodegradation observed");
@@ -1303,6 +1306,14 @@ public class Phrases {
     private static Hashtable<String, String> phrasegroup_TD400() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
 
+    	return p;
+    }
+    
+    private static Hashtable<String, String> phrasegroup_NM03() {
+    	Hashtable<String, String> p = new Hashtable<String,String>();
+    	p.put("58289", "mV");
+    	p.put("1342", "other:");    	    	
+    	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }
     /*

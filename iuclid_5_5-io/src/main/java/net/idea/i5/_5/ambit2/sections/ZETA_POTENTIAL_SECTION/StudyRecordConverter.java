@@ -2,6 +2,7 @@ package net.idea.i5._5.ambit2.sections.ZETA_POTENTIAL_SECTION;
 
 import javax.xml.bind.JAXBElement;
 
+import net.idea.i5._5.ambit2.Phrases;
 import net.idea.i5._5.ambit2.json.Experiment;
 import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
@@ -226,7 +227,7 @@ public class StudyRecordConverter
 		ZETA_POTENTIAL_UNIT {
 			@Override
 			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
-				String q = node.getTextContent();
+				String q = Phrases.phrasegroup_NM03.get(node.getTextContent());
 				effect.setUnit("NOT_SPECIFIED".equals(q)?null:q);
 			}				
 		},
