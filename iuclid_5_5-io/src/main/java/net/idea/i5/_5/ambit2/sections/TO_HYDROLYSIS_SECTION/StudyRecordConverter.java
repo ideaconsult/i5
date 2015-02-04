@@ -10,8 +10,8 @@ import net.idea.modbcum.i.exceptions.AmbitException;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
-import ambit2.base.data.study.Params;
 import ambit2.base.data.study.ProtocolApplication;
+import ambit2.base.data.study.Value;
 import ambit2.base.interfaces.IStructureRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_HYDROLYSIS_SECTION.DocumentTypeType;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_HYDROLYSIS_SECTION.EndpointStudyRecord;
@@ -119,7 +119,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				
 				//ph
 				if (set.getPH() != null) {
-					Params phvalue = new Params();
+					Value phvalue = new Value();
 					if (set.getPH().getPH().getValue()!= null) 
 						phvalue.setLoValue(getNumber(set.getPH().getPH().getValue()));
 					else  phvalue.setLoValue(null);
@@ -128,7 +128,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				
 				//temperature
 				if (set.getVALUEUNITTEMPVALUE() != null) {
-					Params tvalue = new Params();
+				    	Value tvalue = new Value();
 					if (set.getVALUEUNITTEMPVALUE().getTEMPVALUE()!= null) {
 						tvalue.setLoValue(getNumber(set.getVALUEUNITTEMPVALUE().getTEMPVALUE().getValue()));
 					} else tvalue.setLoValue(null);

@@ -9,8 +9,8 @@ import net.idea.modbcum.i.exceptions.AmbitException;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
-import ambit2.base.data.study.Params;
 import ambit2.base.data.study.ProtocolApplication;
+import ambit2.base.data.study.Value;
 import ambit2.base.interfaces.IStructureRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.DocumentTypeType;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SCREEN_SECTION.EndpointStudyRecord;
@@ -150,7 +150,7 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				//sampling time
 				//sampling time
 				if (set.getVALUEUNITTIMEPOINTVALUE() != null) {
-					Params tvalue = new Params();
+					Value tvalue = new Value();
 					if (set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE()!= null) {
 						tvalue.setLoValue(getNumber(set.getVALUEUNITTIMEPOINTVALUE().getTIMEPOINTVALUE().getValue()));
 					}
