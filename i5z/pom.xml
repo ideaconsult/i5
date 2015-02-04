@@ -87,4 +87,33 @@
       </plugin>
     </plugins>
   </build>
+<profiles>
+<profile>
+      <id>JRE6</id>
+      <activation>
+        <jdk>1.6</jdk>
+      </activation>
+      <properties>
+        <sourceVersion>1.6</sourceVersion>
+      </properties>
+    </profile>
+    <profile>
+      <id>JRE7</id>
+      <activation>
+        <jdk>1.7</jdk>
+      </activation>
+      <properties>
+        <sourceVersion>1.7</sourceVersion>
+      </properties>
+    </profile>
+    <profile>
+      <id>JRE8</id>
+      <activation>
+        <jdk>1.8</jdk>
+      </activation>
+      <properties>
+        <sourceVersion>1.8</sourceVersion>
+      </properties>
+    </profile>
+</profiles>  
 </project>
