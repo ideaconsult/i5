@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>iuclid5-cli</artifactId>
     <groupId>net.idea</groupId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
   </parent>
   <artifactId>i5z</artifactId>
   <name>i5z</name>
@@ -87,8 +87,8 @@
       </plugin>
     </plugins>
   </build>
-<profiles>
-<profile>
+  <profiles>
+    <profile>
       <id>JRE6</id>
       <activation>
         <jdk>1.6</jdk>
@@ -115,5 +115,5 @@
         <sourceVersion>1.8</sourceVersion>
       </properties>
     </profile>
-</profiles>  
+  </profiles>
 </project>
