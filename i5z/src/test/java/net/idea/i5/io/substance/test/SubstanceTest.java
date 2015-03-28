@@ -412,7 +412,7 @@ Value	2	1976	h
 						}
 					
 				} else {
-					Assert.assertNotNull(((SubstanceRecord)record).getCompanyUUID());
+					Assert.assertNotNull(((SubstanceRecord)record).getSubstanceUUID());
 				}
 			}
 		} finally{
@@ -480,7 +480,7 @@ Value	2	1976	h
 			while (reader.hasNext()) {
 				Object next = reader.nextRecord();
 				if (next instanceof SubstanceRecord) {
-					Assert.assertNotNull(((SubstanceRecord)next).getCompanyUUID());
+					Assert.assertNotNull(((SubstanceRecord)next).getSubstanceUUID());
 					if (((SubstanceRecord) next).getRelatedStructures()!=null) 
 						for (CompositionRelation r : ((SubstanceRecord) next).getRelatedStructures()) {
 							Assert.assertNotNull(r.getCompositionUUID());

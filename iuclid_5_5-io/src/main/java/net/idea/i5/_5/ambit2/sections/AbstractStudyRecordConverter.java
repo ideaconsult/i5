@@ -42,9 +42,9 @@ public abstract class AbstractStudyRecordConverter<T,PROTOCOLPARAMS extends IPar
 	protected void setCompanyUUID(SubstanceRecord record,String value) {
 		int slashpos = value.indexOf("/");
 		if (slashpos>0)
-			record.setCompanyUUID(value.substring(0,slashpos));
+			record.setSubstanceUUID(value.substring(0,slashpos));
 		else
-			record.setCompanyUUID(value);
+			record.setSubstanceUUID(value);
 	}	
 	
 	public AbstractStudyRecordConverter(I5_ROOT_OBJECTS endpointCategory) {
