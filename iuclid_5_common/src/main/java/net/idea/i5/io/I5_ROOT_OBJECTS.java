@@ -110,6 +110,7 @@ public enum I5_ROOT_OBJECTS {
 
 	    };
 	}
+
     },
     PC_MELTING {
 	@Override
@@ -136,6 +137,11 @@ public enum I5_ROOT_OBJECTS {
 	public String getNumber() {
 	    return "4.2";
 	}
+	@Override
+	public String getOntologyURI() {
+
+	    return "CHEMINF_000256";
+	}
     },
     PC_BOILING {
 	@Override
@@ -156,6 +162,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public String getNumber() {
 	    return "4.3";
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "CHEMINF_000257";
 	}
     },
     PC_GRANULOMETRY {
@@ -195,6 +205,11 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.pTESTMAT_FORM, I5CONSTANTS.pDISTRIBUTION_TYPE };
 	}
+	@Override
+	public String getOntologyURI() {
+	    //http://purl.obolibrary.org/obo/CHMO_0002119
+	    return "CHMO_0002119";
+	}
     },
     PC_VAPOUR {
 	@Override
@@ -211,6 +226,11 @@ public enum I5_ROOT_OBJECTS {
 	public String getNumber() {
 	    return "4.6";
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "CHEMINF_000419";
+	}
+	
     },
     PC_PARTITION {
 	@Override
@@ -220,7 +240,7 @@ public enum I5_ROOT_OBJECTS {
 
 	@Override
 	public String getTitle() {
-	    return "Partition coeffcicient";
+	    return "Partition coefficient";
 	}
 
 	@Override
@@ -236,6 +256,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public String[] getConditions() {
 	    return new String[] { I5CONSTANTS.cTemperature };
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "BAO_0002130";
 	}
     },
     PC_WATER_SOL {
@@ -268,6 +292,10 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.methodType };
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "BAO_0002775";
+	}
     },
     PC_SOL_ORGANIC {
 	@Override
@@ -288,6 +316,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public String[] getConditions() {
 	    return new String[] { I5CONSTANTS.cTemperature, I5CONSTANTS.Remark, I5CONSTANTS.cSolvent };
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "BAO_0002135";
 	}
 
     },
@@ -311,6 +343,10 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getConditions() {
 	    return new String[] { I5CONSTANTS.cTemperature, I5CONSTANTS.cDoses, I5CONSTANTS.Remark };
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "UO_0000196";
+	}
     },
     PC_DISSOCIATION {
 	@Override
@@ -332,6 +368,11 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getConditions() {
 	    return new String[] { I5CONSTANTS.cTemperature, I5CONSTANTS.rNo };
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "CHEMINF_000194";
+	}
+
     },
 
     AGGLOMERATION_AGGREGATION {
@@ -366,6 +407,11 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 		    I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod };
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "NPO_1967 NPO_1968";
+	    //
 	}
     },
     CRYSTALLINE_PHASE {
@@ -407,6 +453,10 @@ public enum I5_ROOT_OBJECTS {
 	    return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 		    I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod, I5CONSTANTS.pTESTMAT_FORM,
 		    I5CONSTANTS.pMATERIAL_ISOTROPIC };
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "NPO_1512";
 	}
     },
     CRYSTALLITE_AND_GRAIN_SIZE {
@@ -486,6 +536,10 @@ public enum I5_ROOT_OBJECTS {
 	    return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 		    I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod };
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "NPO_274 NPO_1365";
+	}
     },
     SPECIFIC_SURFACE_AREA {
 	@Override
@@ -523,6 +577,10 @@ public enum I5_ROOT_OBJECTS {
 	    return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 		    I5CONSTANTS.pSAMPLING, I5CONSTANTS.pTESTMAT_FORM, I5CONSTANTS.cTypeMethod };
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "NPO_1235";
+	}
     },
     ZETA_POTENTIAL {
 	@Override
@@ -559,6 +617,10 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 		    I5CONSTANTS.pSAMPLING, I5CONSTANTS.pTESTMAT_FORM, I5CONSTANTS.cTypeMethod };
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "NPO_1302";
 	}
     },
     SURFACE_CHEMISTRY {
@@ -637,6 +699,10 @@ public enum I5_ROOT_OBJECTS {
 	    return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 		    I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod, I5CONSTANTS.pTESTMAT_FORM };
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_9000003";
+	}
     },
     POROSITY {
 	@Override
@@ -673,6 +739,10 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 		    I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod, I5CONSTANTS.pTESTMAT_FORM };
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "PATO_0000973";
 	}
 
     },
@@ -712,7 +782,10 @@ public enum I5_ROOT_OBJECTS {
 	    return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 		    I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod, I5CONSTANTS.pTESTMAT_FORM };
 	}
-
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_9000004";
+	}
     },
     PHOTOCATALYTIC_ACTIVITY {
 	@Override
@@ -1116,6 +1189,10 @@ public enum I5_ROOT_OBJECTS {
 	public String getTopCategory() {
 	    return "ENV FATE";
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "CHEMINF_000433";
+	}
     },
     EC_FISHTOX {
 	@Override
@@ -1156,6 +1233,10 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.cExposure, I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000010";
+	}
     },
     EC_CHRONFISHTOX {
 	@Override
@@ -1194,6 +1275,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.cExposure, I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000011";
 	}
     },
     EC_DAPHNIATOX {
@@ -1234,6 +1319,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.cExposure, I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000006";
 	}
     },
     EC_CHRONDAPHNIATOX {
@@ -1313,6 +1402,10 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.cExposure, I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000005";
+	}
     },
     EC_BACTOX {
 	@Override
@@ -1351,6 +1444,10 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.cExposure, I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000015";
+	}
     },
     EC_SEDIMENTDWELLINGTOX {
 	@Override
@@ -1385,6 +1482,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public String getTopCategory() {
 	    return "ECOTOX";
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000009";
 	}
     },
     EC_SOILDWELLINGTOX {
@@ -1421,6 +1522,10 @@ public enum I5_ROOT_OBJECTS {
 	public String getTopCategory() {
 	    return "ECOTOX";
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000013";
+	}
     },
     EC_HONEYBEESTOX {
 	@Override
@@ -1455,6 +1560,10 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getConditions() {
 	    return new String[] { I5CONSTANTS.cConcType, I5CONSTANTS.cExposure, I5CONSTANTS.cMeasuredConcentration,
 		    I5CONSTANTS.cEffect };
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000016";
 	}
     },
     EC_PLANTTOX {
@@ -1492,6 +1601,10 @@ public enum I5_ROOT_OBJECTS {
 	    return new String[] { I5CONSTANTS.cTestOrganism, I5CONSTANTS.cConcType, I5CONSTANTS.cExposure,
 		    I5CONSTANTS.cMeasuredConcentration, I5CONSTANTS.cEffect };
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000017";
+	}
     },
     EC_SOIL_MICRO_TOX {
 	@Override
@@ -1525,6 +1638,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public String getTopCategory() {
 	    return "ECOTOX";
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000008";
 	}
     },
     TO_ACUTE_ORAL {
@@ -1564,6 +1681,10 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cSex };
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000020";
+	}
     },
     TO_ACUTE_INHAL {
 	@Override
@@ -1596,6 +1717,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cSex };
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000023";
 	}
     },
     TO_ACUTE_DERMAL {
@@ -1630,6 +1755,10 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cSex };
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000026";
+	}
     },
     TO_SKIN_IRRITATION {
 	@Override
@@ -1655,6 +1784,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cTypeMethod };
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000032";
 	}
     },
     TO_EYE_IRRITATION {
@@ -1682,6 +1815,10 @@ public enum I5_ROOT_OBJECTS {
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cTypeMethod };
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000033";
+	}
     },
     TO_SENSITIZATION {
 	@Override
@@ -1707,6 +1844,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public String[] getProtocolParameters() {
 	    return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cTypeMethod, I5CONSTANTS.cTypeStudy };
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000034";
 	}
     },
     // TO_SENSITIZATION_HUMAN,
@@ -1749,6 +1890,10 @@ public enum I5_ROOT_OBJECTS {
 	public String getTopCategory() {
 	    return "TOX";
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000021";
+	}
     },
     TO_REPEATED_INHAL {
 	@Override
@@ -1784,6 +1929,10 @@ public enum I5_ROOT_OBJECTS {
 	public String getTopCategory() {
 	    return "TOX";
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000024";
+	}
     },
     TO_REPEATED_DERMAL {
 	@Override
@@ -1818,6 +1967,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public String getTopCategory() {
 	    return "TOX";
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000027";
 	}
     },
     TO_GENETIC_IN_VITRO {
@@ -1899,6 +2052,10 @@ public enum I5_ROOT_OBJECTS {
 	public String getTopCategory() {
 	    return "TOX";
 	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000028";
+	}
     },
     TO_CARCINOGENICITY {
 	@Override
@@ -1932,6 +2089,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public String getTopCategory() {
 	    return "TOX";
+	}
+	@Override
+	public String getOntologyURI() {
+	    return "ENM_0000029";
 	}
     },
     TO_REPRODUCTION {
@@ -2345,6 +2506,10 @@ public enum I5_ROOT_OBJECTS {
 	public boolean isIUCLID5() {
 	    return false;
 	}
+	@Override
+	public String getOntologyURI() {
+	    return name();
+	}
 
     },
     BAO_0002993 {
@@ -2367,6 +2532,10 @@ public enum I5_ROOT_OBJECTS {
 	public boolean isIUCLID5() {
 	    return false;
 	}
+	@Override
+	public String getOntologyURI() {
+	    return name();
+	}
 
     },
     BAO_0002100 {
@@ -2388,6 +2557,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public boolean isIUCLID5() {
 	    return false;
+	}
+	@Override
+	public String getOntologyURI() {
+	    return name();
 	}
 
     },
@@ -2412,6 +2585,10 @@ public enum I5_ROOT_OBJECTS {
 	public boolean isIUCLID5() {
 	    return false;
 	}
+	@Override
+	public String getOntologyURI() {
+	    return name();
+	}
 
     },
     BAO_0002168 {
@@ -2435,6 +2612,10 @@ public enum I5_ROOT_OBJECTS {
 	public boolean isIUCLID5() {
 	    return false;
 	}
+	@Override
+	public String getOntologyURI() {
+	    return name();
+	}
 
     },
     BAO_0002189 {
@@ -2457,6 +2638,10 @@ public enum I5_ROOT_OBJECTS {
 	@Override
 	public boolean isIUCLID5() {
 	    return false;
+	}
+	@Override
+	public String getOntologyURI() {
+	    return name();
 	}
     },
     CELL_CYCLE {

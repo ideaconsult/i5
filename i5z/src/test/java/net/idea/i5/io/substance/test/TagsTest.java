@@ -27,6 +27,8 @@ public class TagsTest {
 		System.out.print("\t");
 		System.out.print("I5 Template");
 		System.out.print("\t");
+		System.out.print("Ontology URI");
+		System.out.print("\t");
 		System.out.print("Endpoints");
 		System.out.print("\t");
 		System.out.print("Conditions");
@@ -40,6 +42,8 @@ public class TagsTest {
 			System.out.print(tag.getTitle());
 			System.out.print("\t");
 			System.out.print(tag);
+			System.out.print("\t");
+			System.out.print(tag.getOntologyURI()==null?"":tag.getOntologyURI());
 			System.out.print("\t");
 			comma = "";
 			if (tag.getEndpoints()!=null)
