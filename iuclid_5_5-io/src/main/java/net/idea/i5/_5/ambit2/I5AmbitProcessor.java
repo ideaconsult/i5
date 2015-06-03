@@ -319,13 +319,16 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	protected IStructureRecord constituent2record(Substance unmarshalled,
 			String compositionUUID,String cname, 
 			SubstanceRecord substance, Constituent a) {
+	        if (a==null) return null;
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
 		record.setType(STRUC_TYPE.NA);
-		record.setContent(a.getReferenceSubstance().getDescription());
+		if (a.getReferenceSubstance()!=null) {
+		    record.setContent(a.getReferenceSubstance().getDescription());
 
-		setReferenceSubstanceUUID(record, a.getReferenceSubstance()
+		    setReferenceSubstanceUUID(record, a.getReferenceSubstance()
 				.getUniqueKey());
+		}
 
 		Proportion p = new Proportion();
 		if (a.getProportionReal() != null) {
