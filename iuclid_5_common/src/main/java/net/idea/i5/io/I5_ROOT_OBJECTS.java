@@ -198,7 +198,7 @@ public enum I5_ROOT_OBJECTS {
 
 	@Override
 	public String[] getConditions() {
-	    return new String[] { I5CONSTANTS.cPERCENTILE, I5CONSTANTS.cSEQ_NUM, I5CONSTANTS.Remark };
+	    return new String[] {  I5CONSTANTS.cSEQ_NUM, I5CONSTANTS.Remark };
 	}
 
 	@Override
@@ -552,6 +552,7 @@ public enum I5_ROOT_OBJECTS {
 	    return "4.28";
 	}
 
+	
 	@Override
 	public boolean isNanoMaterialTemplate() {
 	    return true; // 105
