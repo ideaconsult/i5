@@ -198,7 +198,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			p.setReal_lowervalue(a.getProportionReal().getLowerValue());
 			p.setReal_uppervalue(a.getProportionReal().getUpperValue());
 			try {
-				p.setReal_lower(Phrases.phrasegroup_A02.get(a
+				p.setReal_lower(Phrases.get(Phrases.phrasegroup_A02,a
 						.getProportionReal().getLowerPrecision().getValueID()));
 			} catch (Exception x) {
 				p.setReal_unit("");

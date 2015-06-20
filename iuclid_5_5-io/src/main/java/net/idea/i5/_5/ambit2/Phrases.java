@@ -1,6 +1,5 @@
 package net.idea.i5._5.ambit2;
 
-import java.util.Hashtable;
 
 /**
  * Hack to avoid generating classes for phrases.xsdwe only need few of them so far
@@ -8,111 +7,111 @@ import java.util.Hashtable;
  *
  */
 public class Phrases {
-	public static final Hashtable<String, String> phrasegroup_N08 = initPhrasegroup_N08(); 
-	public static final Hashtable<String, String> phrasegroup_N28 = initPhrasegroup_N28();
+	public static final Phrase phrasegroup_N08 = initPhrasegroup_N08(); 
+	public static final Phrase phrasegroup_N28 = initPhrasegroup_N28();
 
-	public static final Hashtable<String, String> phrasegroup_N24 = phrasegroup_N24();
+	public static final Phrase phrasegroup_N24 = phrasegroup_N24();
 
-	public static final Hashtable<String, String> phrasegroup_A02 = phrasegroup_A02();
+	public static final Phrase phrasegroup_A02 = phrasegroup_A02();
 	/*
-	public static final Hashtable<String, String> phrasegroup_A02_1 = phrasegroup_A02_1();
-	public static final Hashtable<String, String> phrasegroup_A02_2 = phrasegroup_A02_2();
+	public static final Phrase phrasegroup_A02_1 = phrasegroup_A02_1();
+	public static final Phrase phrasegroup_A02_2 = phrasegroup_A02_2();
 	
-	public static final Hashtable<String, String> phrasegroup_N64 = phrasegroup_N64();
-	public static final Hashtable<String, String> phrasegroup_N78 = phrasegroup_N78();
+	public static final Phrase phrasegroup_N64 = phrasegroup_N64();
+	public static final Phrase phrasegroup_N78 = phrasegroup_N78();
 	*/
-	public static final Hashtable<String, String> phrasegroup_A36 = phrasegroup_A36();
+	public static final Phrase phrasegroup_A36 = phrasegroup_A36();
 	/*
-	public static final Hashtable<String, String> phrasegroup_A101 = phrasegroup_A101();
-	public static final Hashtable<String, String> phrasegroup_A03 = phrasegroup_A03();
+	public static final Phrase phrasegroup_A101 = phrasegroup_A101();
+	public static final Phrase phrasegroup_A03 = phrasegroup_A03();
 	*/
-	public static final Hashtable<String, String> phrasegroup_A102 = phrasegroup_A102();
-	public static final Hashtable<String, String> phrasegroup_Y14_3 = phrasegroup_Y14_3(); //name="phrasegroup_Y14-3"
-	public static final Hashtable<String, String> phrasegroup_Z05 = phrasegroup_Z05();
+	public static final Phrase phrasegroup_A102 = phrasegroup_A102();
+	public static final Phrase phrasegroup_Y14_3 = phrasegroup_Y14_3(); //name="phrasegroup_Y14-3"
+	public static final Phrase phrasegroup_Z05 = phrasegroup_Z05();
 	/*
-	public static final Hashtable<String, String> phrasegroup_Z02 = phrasegroup_Z02();
-	public static final Hashtable<String, String> phrasegroup_Z03 = phrasegroup_Z03();
-	public static final Hashtable<String, String> phrasegroup_Z05 = phrasegroup_Z05();
-	public static final Hashtable<String, String> phrasegroup_Z06 = phrasegroup_Z06();
-	public static final Hashtable<String, String> phrasegroup_Z08 = phrasegroup_Z08();
-	public static final Hashtable<String, String> phrasegroup_Z30 = phrasegroup_Z30();
+	public static final Phrase phrasegroup_Z02 = phrasegroup_Z02();
+	public static final Phrase phrasegroup_Z03 = phrasegroup_Z03();
+	public static final Phrase phrasegroup_Z05 = phrasegroup_Z05();
+	public static final Phrase phrasegroup_Z06 = phrasegroup_Z06();
+	public static final Phrase phrasegroup_Z08 = phrasegroup_Z08();
+	public static final Phrase phrasegroup_Z30 = phrasegroup_Z30();
 	*/
-	public static final Hashtable<String, String> phrasegroup_Z31 = phrasegroup_Z31();
+	public static final Phrase phrasegroup_Z31 = phrasegroup_Z31();
 	/*
-	public static final Hashtable<String, String> phrasegroup_Z36 = phrasegroup_Z36();
+	public static final Phrase phrasegroup_Z36 = phrasegroup_Z36();
 	*/
-	public static final Hashtable<String, String> phrasegroup_Z38 = phrasegroup_Z38();
+	public static final Phrase phrasegroup_Z38 = phrasegroup_Z38();
 	/*
-	public static final Hashtable<String, String> phrasegroup_Z39 = phrasegroup_Z39();
-	public static final Hashtable<String, String> phrasegroup_Z40 = phrasegroup_Z40();
+	public static final Phrase phrasegroup_Z39 = phrasegroup_Z39();
+	public static final Phrase phrasegroup_Z40 = phrasegroup_Z40();
 				
 
 	//Ecotox
 
-	public static final Hashtable<String, String> phrasegroup_E01 = phrasegroup_E01();
-	public static final Hashtable<String, String> phrasegroup_E02 = phrasegroup_E02();
-	public static final Hashtable<String, String> phrasegroup_E03_1 = phrasegroup_E03_1();
+	public static final Phrase phrasegroup_E01 = phrasegroup_E01();
+	public static final Phrase phrasegroup_E02 = phrasegroup_E02();
+	public static final Phrase phrasegroup_E03_1 = phrasegroup_E03_1();
 	*/
-	public static final Hashtable<String, String> phrasegroup_E04 = phrasegroup_E04();
+	public static final Phrase phrasegroup_E04 = phrasegroup_E04();
 	/*
-	public static final Hashtable<String, String> phrasegroup_E05 = phrasegroup_E05();
-	public static final Hashtable<String, String> phrasegroup_E35 = phrasegroup_E35();
-	public static final Hashtable<String, String> phrasegroup_E36 = phrasegroup_E36();
-	public static final Hashtable<String, String> phrasegroup_E102 = phrasegroup_E102();
-	public static final Hashtable<String, String> phrasegroup_E103 = phrasegroup_E103();
-	public static final Hashtable<String, String> phrasegroup_E104 = phrasegroup_E104();
-	public static final Hashtable<String, String> phrasegroup_E105 = phrasegroup_E105();
+	public static final Phrase phrasegroup_E05 = phrasegroup_E05();
+	public static final Phrase phrasegroup_E35 = phrasegroup_E35();
+	public static final Phrase phrasegroup_E36 = phrasegroup_E36();
+	public static final Phrase phrasegroup_E102 = phrasegroup_E102();
+	public static final Phrase phrasegroup_E103 = phrasegroup_E103();
+	public static final Phrase phrasegroup_E104 = phrasegroup_E104();
+	public static final Phrase phrasegroup_E105 = phrasegroup_E105();
 	
 	//TO_biodeg
-	public static final Hashtable<String, String> phrasegroup_F05 = phrasegroup_F05();
-	public static final Hashtable<String, String> phrasegroup_F102 = phrasegroup_F102();
-	public static final Hashtable<String, String> phrasegroup_F103 = phrasegroup_F103();
-	public static final Hashtable<String, String> phrasegroup_F106 = phrasegroup_F106();
-	public static final Hashtable<String, String> phrasegroup_F107 = phrasegroup_F107();
+	public static final Phrase phrasegroup_F05 = phrasegroup_F05();
+	public static final Phrase phrasegroup_F102 = phrasegroup_F102();
+	public static final Phrase phrasegroup_F103 = phrasegroup_F103();
+	public static final Phrase phrasegroup_F106 = phrasegroup_F106();
+	public static final Phrase phrasegroup_F107 = phrasegroup_F107();
 	
-	public static final Hashtable<String, String> phrasegroup_F134 = phrasegroup_F134();
-	public static final Hashtable<String, String> phrasegroup_F26_1a = phrasegroup_F26_1a(); //phrasegroup_F26-1a
-	public static final Hashtable<String, String> phrasegroup_F25_1 = phrasegroup_F25_1(); //phrasegroup_F25-1
-	public static final Hashtable<String, String> phrasegroup_F27_1 = phrasegroup_F27_1(); //phrasegroup_F27-1
+	public static final Phrase phrasegroup_F134 = phrasegroup_F134();
+	public static final Phrase phrasegroup_F26_1a = phrasegroup_F26_1a(); //phrasegroup_F26-1a
+	public static final Phrase phrasegroup_F25_1 = phrasegroup_F25_1(); //phrasegroup_F25-1
+	public static final Phrase phrasegroup_F27_1 = phrasegroup_F27_1(); //phrasegroup_F27-1
 	
-	public static final Hashtable<String, String> phrasegroup_F28 = phrasegroup_F28();
-	public static final Hashtable<String, String> phrasegroup_F29 = phrasegroup_F29();
-	public static final Hashtable<String, String> phrasegroup_F30 = phrasegroup_F30();
+	public static final Phrase phrasegroup_F28 = phrasegroup_F28();
+	public static final Phrase phrasegroup_F29 = phrasegroup_F29();
+	public static final Phrase phrasegroup_F30 = phrasegroup_F30();
 	
 	
 	//TO_ACUTE_ORAL
-	public static final Hashtable<String, String> phrasegroup_T124 = phrasegroup_T124();
-	public static final Hashtable<String, String> phrasegroup_T02_1 = phrasegroup_T02_1(); //phrasegroup_T02-1
-	public static final Hashtable<String, String> phrasegroup_T25_1 = phrasegroup_T25_1(); //phrasegroup_T25-1
-	public static final Hashtable<String, String> phrasegroup_T24 = phrasegroup_T24();
-	public static final Hashtable<String, String> phrasegroup_T23_1234 = phrasegroup_T23_1234(); //phrasegroup_T23-1234
-	public static final Hashtable<String, String> phrasegroup_T123 = phrasegroup_T123();
-	public static final Hashtable<String, String> phrasegroup_T48 = phrasegroup_T48();
-	public static final Hashtable<String, String> phrasegroup_T03 = phrasegroup_T03();
-	public static final Hashtable<String, String> phrasegroup_T148 = phrasegroup_T148();
-	public static final Hashtable<String, String> phrasegroup_T01 = phrasegroup_T01();
-	public static final Hashtable<String, String> phrasegroup_T04 = phrasegroup_T04();
-	public static final Hashtable<String, String> phrasegroup_T108 = phrasegroup_T108();
+	public static final Phrase phrasegroup_T124 = phrasegroup_T124();
+	public static final Phrase phrasegroup_T02_1 = phrasegroup_T02_1(); //phrasegroup_T02-1
+	public static final Phrase phrasegroup_T25_1 = phrasegroup_T25_1(); //phrasegroup_T25-1
+	public static final Phrase phrasegroup_T24 = phrasegroup_T24();
+	public static final Phrase phrasegroup_T23_1234 = phrasegroup_T23_1234(); //phrasegroup_T23-1234
+	public static final Phrase phrasegroup_T123 = phrasegroup_T123();
+	public static final Phrase phrasegroup_T48 = phrasegroup_T48();
+	public static final Phrase phrasegroup_T03 = phrasegroup_T03();
+	public static final Phrase phrasegroup_T148 = phrasegroup_T148();
+	public static final Phrase phrasegroup_T01 = phrasegroup_T01();
+	public static final Phrase phrasegroup_T04 = phrasegroup_T04();
+	public static final Phrase phrasegroup_T108 = phrasegroup_T108();
 	*/
-	public static final Hashtable<String, String> phrasegroup_TD340 = phrasegroup_TD340();
+	public static final Phrase phrasegroup_TD340 = phrasegroup_TD340();
 	
 	//physchem
 	/*
-	public static final Hashtable<String, String> phrasegroup_C15 = phrasegroup_C15();
-	public static final Hashtable<String, String> phrasegroup_C101 = phrasegroup_C101();
+	public static final Phrase phrasegroup_C15 = phrasegroup_C15();
+	public static final Phrase phrasegroup_C101 = phrasegroup_C101();
 	
 	*/
-	public static final Hashtable<String, String> phrasegroup_P02 = phrasegroup_P02();
+	public static final Phrase phrasegroup_P02 = phrasegroup_P02();
 	/*
-	public static final Hashtable<String, String> phrasegroup_P07 = phrasegroup_P07();
-	public static final Hashtable<String, String> phrasegroup_P36 = phrasegroup_P36();
-	public static final Hashtable<String, String> phrasegroup_P19 = phrasegroup_P19();
+	public static final Phrase phrasegroup_P07 = phrasegroup_P07();
+	public static final Phrase phrasegroup_P36 = phrasegroup_P36();
+	public static final Phrase phrasegroup_P19 = phrasegroup_P19();
 	*/
 	
-	public static final Hashtable<String, String> phrasegroup_NM03 = phrasegroup_NM03();
+	public static final Phrase phrasegroup_NM03 = phrasegroup_NM03();
 	/*
-	private static Hashtable<String, String> phrasegroup_F30() {
-		Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_F30() {
+		Phrase p = new Phrase();
 		p.put("2438","under test conditions no biodegradation observed");
 		p.put("2305","readily biodegradable");
 		p.put("2306","readily biodegradable, but failing 10-day window");
@@ -125,8 +124,8 @@ public class Phrases {
 		return p;
 	}	
 	
-	private static Hashtable<String, String> phrasegroup_F107() {
-		Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_F107() {
+		Phrase p = new Phrase();
 		p.put("1927","g O2/g test mat.");
 		p.put("2074","mg O2/g test mat.");
 		p.put("1342","other:");
@@ -134,8 +133,8 @@ public class Phrases {
 		return p;
 	}	
 	
-	private static Hashtable<String, String> phrasegroup_F106() {
-		Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_F106() {
+		Phrase p = new Phrase();
 		p.put("128","BOD5");
 		p.put("197","COD");
 		p.put("1478","BOD5*100/COD");
@@ -143,8 +142,8 @@ public class Phrases {
 		return p;
 	}	
 	
-	private static Hashtable<String, String> phrasegroup_E36() {
-		Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_E36() {
+		Phrase p = new Phrase();
 		p.put("1732","aniline");
 		p.put("1764","benzoic acid, sodium salt");
 		p.put("1681","acetic acid, sodium salt");
@@ -159,8 +158,8 @@ public class Phrases {
 	}	
 	
 	
-	private static Hashtable<String, String> phrasegroup_F103() {
-		Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_F103() {
+		Phrase p = new Phrase();
 		p.put("193","CH4 evolution");
 		p.put("196","CO2 evolution");
 		p.put("321","DOC removal");
@@ -175,8 +174,8 @@ public class Phrases {
 		return p;
 	}	
 	
-	private static Hashtable<String, String> phrasegroup_F29() {
-		Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_F29() {
+		Phrase p = new Phrase();
 		p.put("197","COD");
 		p.put("320","DOC");
 		p.put("1607","ThOD/L");
@@ -190,8 +189,8 @@ public class Phrases {
 		return p;
 	}	
 	
-	private static Hashtable<String, String> phrasegroup_F28() {
-		Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_F28() {
+		Phrase p = new Phrase();
 		p.put("1935","g/L");
 		p.put("2098","mg/L");
 		p.put("2123","mmol/L");
@@ -202,8 +201,8 @@ public class Phrases {
 		p.put("NOT_SPECIFIED", "");
 		return p;
 	}	
-	private static Hashtable<String, String> phrasegroup_F05() {
-		Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_F05() {
+		Phrase p = new Phrase();
 		p.put("2113","min");
 		p.put("1976","h");
 		p.put("1839","d");
@@ -213,8 +212,8 @@ public class Phrases {
 		p.put("NOT_SPECIFIED", "");
 		return p;
 	}	
-	private static Hashtable<String, String> phrasegroup_F27_1() {
-		Hashtable<String, String> p = new Hashtable<String,String>();	
+	private static Phrase phrasegroup_F27_1() {
+		Phrase p = new Phrase();	
 	      p.put("4464","activated sludge (adaptation not specified)");
 	      p.put("3455","activated sludge, adapted");
 	      p.put("3462","activated sludge, non-adapted");
@@ -250,8 +249,8 @@ public class Phrases {
 	      p.put("NOT_SPECIFIED","");
   		return p;
 	}
-	private static Hashtable<String, String> phrasegroup_F25_1() {
-		Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_F25_1() {
+		Phrase p = new Phrase();
 		p.put("1708","aerobic");
 		p.put("1723","anaerobic");
 		p.put("1342","other:");
@@ -259,8 +258,8 @@ public class Phrases {
 		p.put("NOT_SPECIFIED", ""); 
 		return p;
 	}
-	private static Hashtable<String, String> phrasegroup_F26_1a() {
-		Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_F26_1a() {
+		Phrase p = new Phrase();
     	p.put("1223","OECD Guideline 301 A (old version) (Ready Biodegradabiltiy: Modified AFNOR Test)");
     	p.put("1222","OECD Guideline 301 A (new version) (Ready Biodegradability: DOC Die Away Test)");
     	p.put("1224","OECD Guideline 301 B (Ready Biodegradability: CO2 Evolution Test)");
@@ -314,8 +313,8 @@ public class Phrases {
     	return p;
     }
 	
-    private static Hashtable<String, String> phrasegroup_F134() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_F134() {
+    	Phrase p = new Phrase();
     	p.put("2307", "ready biodegradability");
     	p.put("1996", "inherent biodegradability");
     	p.put("1342", "other:");
@@ -324,16 +323,16 @@ public class Phrases {
     	return p;
     }
     
-    private static Hashtable<String, String> phrasegroup_P19() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_P19() {
+    	Phrase p = new Phrase();
     	p.put("123", "Pow");
     	p.put("2043", "log Pow");
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }
     
-    private static Hashtable<String, String> phrasegroup_C101() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_C101() {
+    	Phrase p = new Phrase();
     	p.put("791", "GC");
     	p.put("816", "HPLC");
     	p.put("2266", "photometry");
@@ -344,8 +343,8 @@ public class Phrases {
     	return p;
     }
     
-    private static Hashtable<String, String> phrasegroup_P36() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_P36() {
+    	Phrase p = new Phrase();
     	p.put("4786", "shake-flask method");
     	p.put("4787", "HPLC method");
     	p.put("4787", "generator column method");
@@ -354,8 +353,8 @@ public class Phrases {
     	return p;
     }	
 
-    private static Hashtable<String, String> phrasegroup_P07() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_P07() {
+    	Phrase p = new Phrase();
     	p.put("1189", "OECD Guideline 107 (Partition Coefficient (n-octanol / water), Shake Flask Method)");
     	p.put("1197", "OECD Guideline 117 (Partition Coefficient (n-octanol / water), HPLC Method)");
     	p.put("2163", "OECD Guideline 123 (Partition Coefficient (1-Octanol / Water), Slow-Stirring Method)");
@@ -368,16 +367,16 @@ public class Phrases {
     	return p;
     }	
 	
-    private static Hashtable<String, String> phrasegroup_C15() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_C15() {
+    	Phrase p = new Phrase();
     	p.put("2214", "octanol-water");
     	p.put("1342", "other:");
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }
     
-    private static Hashtable<String, String> phrasegroup_T108() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_T108() {
+    	Phrase p = new Phrase();
     	p.put("207", "Canada pesticides");
     	p.put("208", "Canada workplace");
     	p.put("645", "EU");
@@ -393,8 +392,8 @@ public class Phrases {
     	return p;
     }
 
-    private static Hashtable<String, String> phrasegroup_E105() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_E105() {
+    	Phrase p = new Phrase();
     	p.put("1758", "test mat.");
     	p.put("1754", "act. ingr.");
     	p.put("1756", "element");
@@ -407,8 +406,8 @@ public class Phrases {
     	return p;
     }
     
-    private static Hashtable<String, String> phrasegroup_T04() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_T04() {
+    	Phrase p = new Phrase();
     	p.put("2081", "mg/kg bw");
     	p.put("2119", "mL/kg bw");
     	p.put("2103", "mg/m\u00B2");
@@ -418,8 +417,8 @@ public class Phrases {
     }		
 
     
-    private static Hashtable<String, String> phrasegroup_T01() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_T01() {
+    	Phrase p = new Phrase();
     	p.put("928", "LD0");
     	p.put("931", "LD50");
     	p.put("930", "LD100");
@@ -431,8 +430,8 @@ public class Phrases {
     	return p;
     }		
     
-    private static Hashtable<String, String> phrasegroup_T148() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_T148() {
+    	Phrase p = new Phrase();
     	p.put("2480", "yes");
     	p.put("2158", "no");
     	p.put("1173", "no data");
@@ -440,8 +439,8 @@ public class Phrases {
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }		
-    private static Hashtable<String, String> phrasegroup_T03() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_T03() {
+    	Phrase p = new Phrase();
     	p.put("1249", "OECD Guideline 401 (Acute Oral Toxicity)");
     	p.put("1268", "OECD Guideline 420 (Acute Oral ToxicityFixed Dose Method)");
     	p.put("1271", "OECD Guideline 423 (Acute Oral toxicityAcute Toxic Class Method)");
@@ -457,8 +456,8 @@ public class Phrases {
     	return p;
     }	  	
 	
-	private static Hashtable<String, String> phrasegroup_T48() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_T48() {
+    	Phrase p = new Phrase();
     	      p.put("2437","unchanged (no vehicle)");
     	      p.put("1682","acetone");
     	      p.put("1735","arachis oil");
@@ -499,8 +498,8 @@ public class Phrases {
     	return p;
     }
 	
-	private static Hashtable<String, String> phrasegroup_T123() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_T123() {
+    	Phrase p = new Phrase();
     	p.put("51", "acute toxic class method");
     	p.put("770", "fixed dose procedure");
     	p.put("1578", "standard acute method");
@@ -509,8 +508,8 @@ public class Phrases {
     	return p;
     }
 	
-	private static Hashtable<String, String> phrasegroup_T23_1234() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_T23_1234() {
+    	Phrase p = new Phrase();
           p.put("3487","Abyssinianguinea pig");
           p.put("3501","AKRmouse");
           p.put("3552","Angorarabbit");
@@ -574,8 +573,8 @@ public class Phrases {
     	return p;
     }
 	
-	private static Hashtable<String, String> phrasegroup_T24() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_T24() {
+    	Phrase p = new Phrase();
     	p.put("1904", "female");
     	p.put("2051", "male");
     	p.put("2052", "male/female");
@@ -584,8 +583,8 @@ public class Phrases {
     	return p;
     }
 	
-	private static Hashtable<String, String> phrasegroup_T25_1() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_T25_1() {
+    	Phrase p = new Phrase();
     	p.put("2229", "oral: drinking water");
     	p.put("2231", "oral: gavage");
     	p.put("2228", "oral: capsule");
@@ -596,8 +595,8 @@ public class Phrases {
     	return p;
     }
 	
-	private static Hashtable<String, String> phrasegroup_T02_1() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_T02_1() {
+    	Phrase p = new Phrase();
     	p.put("3485", "ratcommon species");
     	p.put("3530", "catother species");
     	p.put("3531", "cattleother species");
@@ -621,8 +620,8 @@ public class Phrases {
     }
 	
 	
-	private static Hashtable<String, String> phrasegroup_T124() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_T124() {
+    	Phrase p = new Phrase();
     	p.put("2286", "practically nontoxic");
     	p.put("2312", "relatively harmless");
     	p.put("2373", "sligthly toxic");
@@ -643,8 +642,8 @@ public class Phrases {
     	return p;
     }
 	
-	private static Hashtable<String, String> phrasegroup_F102() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_F102() {
+    	Phrase p = new Phrase();
     	p.put("2480", "yes");
     	p.put("2158", "no");
     	p.put("1173", "no data");
@@ -652,8 +651,8 @@ public class Phrases {
     	return p;
     }
 	
-	private static Hashtable<String, String> phrasegroup_E103() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_E103() {
+    	Phrase p = new Phrase();
     	p.put("2135", "mortality");
     	p.put("2469", "weight");
     	p.put("144", "behaviour");
@@ -664,8 +663,8 @@ public class Phrases {
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }	
-	private static Hashtable<String, String> phrasegroup_E35() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_E35() {
+    	Phrase p = new Phrase();
     	p.put("2178", "nominal");
     	p.put("2002", "meas. (initial)");
     	p.put("1941", "meas. (geom. mean)");
@@ -680,8 +679,8 @@ public class Phrases {
     	return p;
     }	
 	
-	private static Hashtable<String, String> phrasegroup_E05() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_E05() {
+    	Phrase p = new Phrase();
     	p.put("2155", "ng/L");
     	p.put("2500", "\u00B5g/L");
     	p.put("2098", "mg/L");
@@ -693,8 +692,8 @@ public class Phrases {
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }	 
-	private static Hashtable<String, String> phrasegroup_E104() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_E104() {
+    	Phrase p = new Phrase();
     	p.put("922", "LC0");
     	p.put("923", "LC10");
     	p.put("926", "LC50");
@@ -723,8 +722,8 @@ public class Phrases {
     	return p;
     }	 
 	*/
-    private static Hashtable<String, String> phrasegroup_E04() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_E04() {
+    	Phrase p = new Phrase();
     	p.put("2113", "min");
     	p.put("1976", "h");
     	p.put("1839", "d");
@@ -733,8 +732,8 @@ public class Phrases {
     	return p;
     }	  	
 	/*
-    private static Hashtable<String, String> phrasegroup_E102() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_E102() {
+    	Phrase p = new Phrase();
     	p.put("1920", "freshwater");
     	p.put("2326", "saltwater");
     	p.put("1777", "brackish water");
@@ -743,8 +742,8 @@ public class Phrases {
     	return p;
     }	  	
 	
-    private static Hashtable<String, String> phrasegroup_E01() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_E01() {
+    	Phrase p = new Phrase();
     	p.put("2392", "static");
     	p.put("2393", "semi-static");
     	p.put("1914", "flow-through");
@@ -754,8 +753,8 @@ public class Phrases {
     	return p;
     }	  
     
-    private static Hashtable<String, String> phrasegroup_E02() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_E02() {
+    	Phrase p = new Phrase();
 
 	      p.put("55"  ,"Alburnus albidus costa");
 	      p.put("56","Alburnus alburnus");
@@ -926,8 +925,8 @@ public class Phrases {
 
     	return p;
     }
-	private static Hashtable<String, String> phrasegroup_A03() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_A03() {
+    	Phrase p = new Phrase();
     	p.put("2480", "yes");
     	p.put("2158", "no");
     	p.put("1173", "no data");
@@ -935,8 +934,8 @@ public class Phrases {
     	return p;
     }
 	
-	private static Hashtable<String, String> phrasegroup_Z36() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_Z36() {
+    	Phrase p = new Phrase();
     	p.put("2480", "yes");
     	p.put("2158", "no");
     	p.put("1173", "no data");
@@ -945,8 +944,8 @@ public class Phrases {
     	return p;
     }
 	
-	private static Hashtable<String, String> phrasegroup_A101() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_A101() {
+    	Phrase p = new Phrase();
     	p.put("2682", "aerosol");
     	p.put("1808", "compact");
     	p.put("1825", "crystalline");
@@ -967,8 +966,8 @@ public class Phrases {
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }
-	private static Hashtable<String, String> phrasegroup_Z39() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_Z39() {
+    	Phrase p = new Phrase();
     	p.put("4174", "CAS name");
     	p.put("4175", "CAS number");
     	p.put("4176", "common name");
@@ -981,16 +980,16 @@ public class Phrases {
     	return p;
     }
 	*/
-	private static Hashtable<String, String> phrasegroup_Z38() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_Z38() {
+    	Phrase p = new Phrase();
     	p.put("2480", "yes");
     	p.put("2158", "no");
     	p.put("NOT_SPECIFIED", ""); 
     	return p;
     }
 	/*
-	private static Hashtable<String, String> phrasegroup_Z40() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_Z40() {
+    	Phrase p = new Phrase();
     	p.put("4179", "yes (incl. certificate)");
     	p.put("2480", "yes");
     	p.put("2158", "no");
@@ -999,8 +998,8 @@ public class Phrases {
     	return p;
     }	
     
-	private static Hashtable<String, String> phrasegroup_Z08() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_Z08() {
+    	Phrase p = new Phrase();
     	p.put("2480", "yes");
     	p.put("2158", "no");
     	p.put("1173", "no data");
@@ -1009,8 +1008,8 @@ public class Phrases {
     	return p;
     }	
 	
-	private static Hashtable<String, String> phrasegroup_E03_1() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_E03_1() {
+    	Phrase p = new Phrase();
     	p.put("1201", "OECD Guideline 203 (Fish, Acute Toxicity Test)");
     	p.put("1202", "OECD Guideline 204 (Fish, Prolonged Toxicity Test: 14-day Study)");
     	p.put("706", "EU Method C.1 (Acute Toxicity for Fish)");
@@ -1028,8 +1027,8 @@ public class Phrases {
     	return p;
     }	
     
-	private static Hashtable<String, String> phrasegroup_Z06() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+	private static Phrase phrasegroup_Z06() {
+    	Phrase p = new Phrase();
     	p.put("1680", "according to");
     	p.put("1880", "equivalent or similar to");
     	p.put("2172", "no guideline followed");
@@ -1039,8 +1038,8 @@ public class Phrases {
     	return p;
     }	
     
-    private static Hashtable<String, String> phrasegroup_Z30() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_Z30() {
+    	Phrase p = new Phrase();
     	p.put("2480", "yes");
     	p.put("4161", "yes, but willing to share");
     	p.put("4162", "yes, but not willing to share");
@@ -1049,8 +1048,8 @@ public class Phrases {
     }	
     	
 	
-    private static Hashtable<String, String> phrasegroup_Z03() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_Z03() {
+    	Phrase p = new Phrase();
     	p.put("1838", "data submitter is data owner");
     	p.put("1837", "data submitter has Letter of Access");
     	p.put("1835", "data no longer protected");
@@ -1061,8 +1060,8 @@ public class Phrases {
     	return p;
     }	
     */
-    private static Hashtable<String, String> phrasegroup_Z31() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_Z31() {
+    	Phrase p = new Phrase();
     	p.put("1586", "study report");
     	p.put("266", "other company data");
     	p.put("1443", "publication");
@@ -1074,8 +1073,8 @@ public class Phrases {
     	return p;
     }	
 	
-    private static Hashtable<String, String> phrasegroup_A36() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_A36() {
+    	Phrase p = new Phrase();
     	p.put("16", "1 (reliable without restriction)");
     	p.put("18", "2 (reliable with restrictions)");
     	p.put("22", "3 (not reliable)");
@@ -1085,8 +1084,8 @@ public class Phrases {
     	return p;
     }	
     
-    private static Hashtable<String, String> phrasegroup_P02() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_P02() {
+    	Phrase p = new Phrase();
     	p.put("1349", "Pa");
     	p.put("1954", "hPa");
     	p.put("2019", "kPa");
@@ -1102,8 +1101,8 @@ public class Phrases {
     	return p;
     }	
    
-    private static Hashtable<String, String> phrasegroup_A102() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_A102() {
+    	Phrase p = new Phrase();
     	p.put("2493", "°C");
     	p.put("3887", "K");
     	p.put("3888", "°F");
@@ -1112,8 +1111,8 @@ public class Phrases {
     }		
 
 	
-    private static Hashtable<String, String> phrasegroup_Z05() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_Z05() {
+    	Phrase p = new Phrase();
     	p.put("1895", "experimental result");
     	p.put("1896", "experimental study planned");
     	p.put("1885", "estimated by calculation");
@@ -1126,8 +1125,8 @@ public class Phrases {
     	return p;
     }	
     /*
-    private static Hashtable<String, String> phrasegroup_Z02() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_Z02() {
+    	Phrase p = new Phrase();
     	p.put("1588", "study technically not feasible");
     	p.put("1587", "study scientifically unjustified");
     	p.put("982", "exposure considerations");
@@ -1136,8 +1135,8 @@ public class Phrases {
     	return p;
     }
 	*/
-    private static Hashtable<String, String> phrasegroup_Y14_3() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_Y14_3() {
+    	Phrase p = new Phrase();
     	p.put("921", "key study");
     	p.put("1590", "supporting study");
     	p.put("1661", "weight of evidence");
@@ -1146,8 +1145,8 @@ public class Phrases {
     	return p;
     }
    /* 
-    private static Hashtable<String, String> phrasegroup_N78() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_N78() {
+    	Phrase p = new Phrase();
     	p.put("733", "EU: BPDBiocidal Products Directive 98/8/EC or EU: BPRBiocidal Products Regulation 528/2012/EC");
     	p.put("9000", "EU: CLPClassification, Labelling and Packaging");
     	p.put("735", "EU: REACHRegistration, Evaluation and Authorisation of Chemicals");
@@ -1163,8 +1162,8 @@ public class Phrases {
     	return p;
     }
 	
-    private static Hashtable<String, String> phrasegroup_N64() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_N64() {
+    	Phrase p = new Phrase();
     	p.put("2732", "CBIconfidential business information");
     	p.put("2859", "IPintellectual property");
     	p.put("3441", "no PAnot public available");
@@ -1172,8 +1171,8 @@ public class Phrases {
     	return p;
     }
 	*/
-    private static Hashtable<String, String> initPhrasegroup_N08() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase initPhrasegroup_N08() {
+    	Phrase p = new Phrase();
     	p.put("2915", "mono constituent substance");
     	p.put("2923", "multi constituent substance");
     	p.put("3401", "UVCB");
@@ -1183,8 +1182,8 @@ public class Phrases {
     	return p;
     }
 
-    private static Hashtable<String, String> phrasegroup_N24() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_N24() {
+    	Phrase p = new Phrase();
     	p.put("2505", "% (w/w)");
     	p.put("2506", "% (v/v)");
     	p.put("2098", "mg/L");
@@ -1195,8 +1194,8 @@ public class Phrases {
     	return p;
     }
 
-    private static Hashtable<String, String> initPhrasegroup_N28() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase initPhrasegroup_N28() {
+    	Phrase p = new Phrase();
     	p.put("2675", "absorbent");
     	p.put("2680", "adsorbent");
     	p.put("2693", "anticaking agent");
@@ -1239,8 +1238,8 @@ public class Phrases {
     }	    
 
 
-    private static Hashtable<String, String> phrasegroup_A02() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_A02() {
+    	Phrase p = new Phrase();
     	p.put("29", "&lt;");
     	p.put("30", "&lt;=");
     	p.put("32", "&gt;");
@@ -1251,8 +1250,8 @@ public class Phrases {
     }
 
     /*
-    private static Hashtable<String, String> phrasegroup_A02_1() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_A02_1() {
+    	Phrase p = new Phrase();
     	p.put("32", "&gt;");
     	p.put("33", "&gt;=");
     	p.put("1779", "ca.");
@@ -1260,8 +1259,8 @@ public class Phrases {
     	return p;
     }
     
-    private static Hashtable<String, String> phrasegroup_A02_2() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_A02_2() {
+    	Phrase p = new Phrase();
     	p.put("29", "&lt;");
     	p.put("30", "&lt;=");
     	p.put("1779", "ca.");
@@ -1270,8 +1269,8 @@ public class Phrases {
     }
 */
     
-    private static Hashtable<String, String> phrasegroup_TD340() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_TD340() {
+    	Phrase p = new Phrase();
     	p.put("8089", "ng/kg soil dw");
     	p.put("8088", "µg/kg soil dw");
     	p.put("2096", "mg/kg soil dw");
@@ -1303,14 +1302,14 @@ public class Phrases {
     </xsd:restriction>
   </xsd:simpleType>
      */
-    private static Hashtable<String, String> phrasegroup_TD400() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_TD400() {
+    	Phrase p = new Phrase();
 
     	return p;
     }
     
-    private static Hashtable<String, String> phrasegroup_NM03() {
-    	Hashtable<String, String> p = new Hashtable<String,String>();
+    private static Phrase phrasegroup_NM03() {
+    	Phrase p = new Phrase();
     	p.put("58289", "mV");
     	p.put("1342", "other:");    	    	
     	p.put("NOT_SPECIFIED", ""); 
@@ -1345,4 +1344,13 @@ public class Phrases {
 
 	private Phrases() {
 	}
+	
+	public static String get(Phrase phrasegroup,String key) {
+		if (key==null) return key;
+		else return phrasegroup.get(key);
+	}
+	
+
 }
+
+
