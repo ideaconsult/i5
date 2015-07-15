@@ -2315,7 +2315,7 @@ public enum I5_ROOT_OBJECTS {
 
 	@Override
 	public String getNumber() {
-	    return "7.999.9";
+	    return "7.999.8";
 	}
 
 	@Override
@@ -2329,7 +2329,28 @@ public enum I5_ROOT_OBJECTS {
 	}
 
     },
+    SUPPORTING_INFO {
+    	@Override
+    	public String getTitle() {
+    	    return "Supporting information";
+    	}
 
+    	@Override
+    	public String getNumber() {
+    	    return "7.999.9";
+    	}
+
+    	@Override
+    	public String getTopCategory() {
+    	    return "TOX";
+    	}
+
+    	@Override
+    	public boolean isIUCLID5() {
+    	    return false;
+    	}    	
+    	
+    },
     PUBCHEM_CONFIRMATORY {
 	@Override
 	public String getTopCategory() {
