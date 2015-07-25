@@ -36,6 +36,7 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
     		boolean inSciPart = false;
     		 while (reader.hasNext()) {
     			int type = reader.next();
+    			if (type == XMLStreamConstants.SPACE) continue;
 	            I5_ROOT_OBJECTS tag = null;
 	            try {
 	            	QName qname = reader.getName();
