@@ -237,34 +237,19 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
-					params.setLoValue(Double.parseDouble(node.getTextContent()));
+					effect.setErrorValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.setLoValue(node.getTextContent());	
+	
 				}
 			}		
-			public String getTag() {
-				return I5CONSTANTS.rSTD_DEV;
-			}			
+						
 		},
-		STD_DEVI_UNIT_value {
-			@Override
-			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
-				params.setUnits(node.getTextContent());
-			}				
-		},
-		STD_DEVI_UNIT_TXT {
-			@Override
-			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
-				if ("other:".equals(params.getUnits()))
-						params.setUnits(node.getTextContent());
-			}			
-		}
+		STD_DEVI_UNIT_value ,
+		STD_DEVI_UNIT_TXT 
 		;
 		public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 		}
-		public String getTag() {
-			return name();
-		}
+	
 	}
 	enum EFFECT {
 		//i5:DUSTINESS_TABLE
@@ -284,7 +269,7 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
-				useChildrenNodesParams(effect, nodes);	
+				useChildrenNodesEffect(effect, nodes);	
 			}	
 			public String getTag() {
 				return I5CONSTANTS.rSTD_DEV;
@@ -296,17 +281,7 @@ public class StudyRecordConverter
 		public void setValue(EffectRecord<String, IParams, String> effect,NodeList nodes) {
 			
 		}
-		public void useChildrenNodesParams(EffectRecord<String, IParams, String> effect,
-				NodeList nodes) {
-			if (nodes!=null) {
-				Params params = new Params();
-				effect.getConditions().put(getTag(),params);
-				for (int i=0; i < nodes.getLength(); i++) try {
-					P p = P.valueOf(nodes.item(i).getLocalName().replace(".","_"));
-					p.setValue(effect,params, nodes.item(i));
-				} catch (Exception x) {}
-			}	
-		}		
+		
 		public void useChildrenNodesEffect(EffectRecord<String, IParams, String> effect,
 				NodeList nodes) {
 			if (nodes!=null) {

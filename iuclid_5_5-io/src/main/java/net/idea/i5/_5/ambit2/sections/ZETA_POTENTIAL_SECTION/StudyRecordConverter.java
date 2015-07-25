@@ -235,7 +235,7 @@ public class StudyRecordConverter
 		STD_DEVI_UNIT_value {
 			@Override
 			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
-				params.setUnits(node.getTextContent());
+
 			}			
 		},
 		STD_DEVI_UNIT_TXT,
@@ -244,13 +244,13 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
-					params.setLoValue(Double.parseDouble(node.getTextContent()));
+					effect.setErrorValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.setLoValue(node.getTextContent());	
+	
 				}
 			}		
 			public String getTag() {
-				return I5CONSTANTS.rSTD_DEV;
+				return null;
 			}
 		},
 		//i5:PH_VALUE
@@ -313,10 +313,10 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
-				useChildrenNodesParams(effect, nodes);	
+				useChildrenNodesEffect(effect, nodes);	
 			}	
 			public String getTag() {
-				return I5CONSTANTS.rSTD_DEV;
+				return null;
 			}			
 		},
 		PH_VALUE {
@@ -347,10 +347,10 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
-				useChildrenNodesParams(effect, nodes);	
+				useChildrenNodesEffect(effect, nodes);	
 			}	
 			public String getTag() {
-				return I5CONSTANTS.rSTD_DEV;
+				return null;
 			}			
 		},
 		MEDIUM {

@@ -26,7 +26,7 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CRYSTALLINE_PHASE_SE
 
 public class StudyRecordConverter
 		extends
-		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CRYSTALLINE_PHASE_SECTION.EndpointStudyRecord,IParams,IParams> {
+		PChemStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CRYSTALLINE_PHASE_SECTION.EndpointStudyRecord, IParams,IParams> {
 	
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.CRYSTALLINE_PHASE);
@@ -168,19 +168,12 @@ public class StudyRecordConverter
 			for (int i=0; i < nodes.getLength(); i++) {
 				Node set = nodes.item(i);
 				if ("set".equals(set.getLocalName())) {
-					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-					effect.setEndpoint(endpoint);
-					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_COMMON_NAME,new Params(null));
-					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTAL_SYSTEM,new Params(null));
-					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_BRAVAIS_LATTICE,new Params(null));
-					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_POINT_GROUP,new Params(null));
-					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_SPACE_GROUP,new Params(null));
-					effect.getConditions().put(I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTGRPH_PLANES,new Params(null));
 					
-					papp.addEffect(effect);
 					NodeList r = set.getChildNodes();
 					for (int j=0; j < r.getLength(); j++) try {
 						EFFECT field = EFFECT.valueOf(r.item(j).getLocalName());
+						EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+						papp.addEffect(effect);
 						field.setValue(effect,r.item(j).getChildNodes());
 					} catch (Exception x) {
 						
@@ -231,8 +224,8 @@ public class StudyRecordConverter
 		}		
 		;
 		public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
-			params.setLoValue(node.getTextContent());
-			params.setLoQualifier(" ");
+			effect.setEndpoint(getTag());
+			effect.setTextValue(node.getTextContent());
 		}
 		public String getTag() {
 			return name();
@@ -280,22 +273,9 @@ public class StudyRecordConverter
 			return name();
 		}
 		public void setValue(EffectRecord<String, IParams, String> effect,NodeList nodes) {
-			useChildrenNodesParams(effect, nodes);
+			useChildrenNodesEffect(effect, nodes);
 		}
-		public void useChildrenNodesParams(EffectRecord<String, IParams, String> effect,
-				NodeList nodes) {
-			if (nodes!=null) {
-				Params params = (Params) effect.getConditions().get(getTag()); 
-				if (params==null) {
-					params = new Params();
-					effect.getConditions().put(getTag(),params);
-				}
-				for (int i=0; i < nodes.getLength(); i++) try {
-					P p = P.valueOf(nodes.item(i).getLocalName().replace(".","_"));
-					p.setValue(effect,params, nodes.item(i));
-				} catch (Exception x) {}
-			}	
-		}	
+		
 		public void useChildrenNodesEffect(EffectRecord<String, IParams, String> effect,
 				NodeList nodes) {
 			if (nodes!=null) {
