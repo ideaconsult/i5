@@ -522,13 +522,12 @@ public enum I5_ROOT_OBJECTS {
 
 	@Override
 	public String[] getEndpoints() {
-	    return new String[] { I5CONSTANTS.eASPECT_RATIO, I5CONSTANTS.eSHAPE };
+	    return new String[] { I5CONSTANTS.eASPECT_RATIO_X,I5CONSTANTS.eASPECT_RATIO_Y, I5CONSTANTS.eASPECT_RATIO_Z,I5CONSTANTS.eSHAPE };
 	}
 
 	@Override
 	public String[] getConditions() {
-	    return new String[] { I5CONSTANTS.eSHAPE_DESCRIPTIVE, I5CONSTANTS.X, I5CONSTANTS.Y, I5CONSTANTS.Z,
-		    I5CONSTANTS.Remark };
+	    return new String[] {  I5CONSTANTS.Remark };
 	}
 
 	@Override
