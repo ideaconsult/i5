@@ -2193,7 +2193,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cEffectType };
+			return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cEffectType };
 		}
 
 		@Override
@@ -2245,7 +2245,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cSex, I5CONSTANTS.cGeneration };
+			return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cSex, I5CONSTANTS.cGeneration };
 		}
 	},
 	TO_DEVELOPMENTAL {
@@ -2272,7 +2272,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cEffectType };
+			return new String[] {I5CONSTANTS.cSpecies, I5CONSTANTS.cEffectType };
 		}
 
 		@Override

@@ -158,6 +158,14 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 				
 				effect.getConditions().put(I5CONSTANTS.cSex,set.getSEX()==null?null:set.getSEX().getSEXValue());
 				effect.getConditions().put(I5CONSTANTS.cGeneration,set.getPHRASEOTHERGENERATION()==null?null:set.getPHRASEOTHERGENERATION().getGENERATIONValue());
+				
+
+				try {
+					effect.getConditions().put(I5CONSTANTS.cSpecies,
+							getValue(sciPart.getTOREPRODUCTION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+									sciPart.getTOREPRODUCTION().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cSpecies,null);}		
+				
 			}
 		papp.setInterpretationResult(null); 
 		papp.setInterpretationCriteria(null); 
