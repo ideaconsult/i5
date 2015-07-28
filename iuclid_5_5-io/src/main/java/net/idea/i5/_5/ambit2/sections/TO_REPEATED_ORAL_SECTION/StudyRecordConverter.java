@@ -106,12 +106,8 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		
 		parseReference(unmarshalled, papp);
 		//papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
+		//species and tets type moved to conditions
 
-		try {
-			papp.getParameters().put(I5CONSTANTS.cSpecies,
-					getValue(sciPart.getTOREPEATEDORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
-							sciPart.getTOREPEATEDORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
-		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}	
 		
 		try {
 			papp.getParameters().put(I5CONSTANTS.cRouteAdm,
@@ -121,13 +117,8 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		} catch (Exception x) {
 			papp.getParameters().put(I5CONSTANTS.cRouteAdm,null);	
 		}
-		
-		try {
-			papp.getParameters().put(I5CONSTANTS.cTestType,
-					getValue(sciPart.getTOREPEATEDORAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
-							sciPart.getTOREPEATEDORAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
-		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cTestType,null);}
-		
+
+
 		
 		StringBuilder doses = null;
 		if (sciPart.getTOREPEATEDORAL().getDOSES()!=null && sciPart.getTOREPEATEDORAL().getDOSES().getSet()!=null)
@@ -166,6 +157,18 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
 					} catch (Exception x) {}
 				}
+				
+				try {
+					effect.getConditions().put(I5CONSTANTS.cSpecies,
+							getValue(sciPart.getTOREPEATEDORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+									sciPart.getTOREPEATEDORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cSpecies,null);}			
+				try {
+					effect.getConditions().put(I5CONSTANTS.cTestType,
+							getValue(sciPart.getTOREPEATEDORAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+									sciPart.getTOREPEATEDORAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cTestType,null);}
+				
 				
 				effect.getConditions().put(I5CONSTANTS.cSex,set.getSEX()==null?null:set.getSEX().getSEXValue());
 

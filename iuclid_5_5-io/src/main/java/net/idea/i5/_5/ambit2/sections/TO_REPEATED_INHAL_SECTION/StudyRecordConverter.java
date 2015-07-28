@@ -108,23 +108,14 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		//papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
 		// Repeated tox oral
-		try {
-			papp.getParameters().put(I5CONSTANTS.cSpecies,
-					getValue(sciPart.getTOREPEATEDINHAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
-							sciPart.getTOREPEATEDINHAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
-		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}
+		//species and tets type moved to conditions
 		
 		try {
 			papp.getParameters().put(I5CONSTANTS.cRouteAdm,
 					getValue(sciPart.getTOREPEATEDINHAL().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
 							sciPart.getTOREPEATEDINHAL().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));					
 		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cRouteAdm,null);}		
-		
-		try {
-			papp.getParameters().put(I5CONSTANTS.cTestType,
-					getValue(sciPart.getTOREPEATEDINHAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
-							sciPart.getTOREPEATEDINHAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));					
-		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cTestType,null);}
+
 		
 		StringBuilder doses = null;
 		if (sciPart.getTOREPEATEDINHAL().getDOSES()!= null && sciPart.getTOREPEATEDINHAL().getDOSES().getSet()!=null)
@@ -161,6 +152,18 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 						effect.setUpQualifier(set.getPRECISIONLOQUALIFIER().getUPQUALIFIERValue());
 					} catch (Exception x) {}
 				}
+				
+
+				try {
+					effect.getConditions().put(I5CONSTANTS.cSpecies,
+							getValue(sciPart.getTOREPEATEDINHAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+									sciPart.getTOREPEATEDINHAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cSpecies,null);}
+				try {
+					effect.getConditions().put(I5CONSTANTS.cTestType,
+							getValue(sciPart.getTOREPEATEDINHAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+									sciPart.getTOREPEATEDINHAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));					
+				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cTestType,null);}
 				
 				effect.getConditions().put(I5CONSTANTS.cSex,set.getSEX()==null?null:set.getSEX().getSEXValue());
 

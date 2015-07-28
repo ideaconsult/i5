@@ -109,20 +109,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		} catch (Exception x) {
 			papp.getParameters().put(I5CONSTANTS.cTypeCoverage,null);	
 		}
-		try {
-			papp.getParameters().put(I5CONSTANTS.cSpecies,
-					getValue(sciPart.getTOREPEATEDDERMAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
-							sciPart.getTOREPEATEDDERMAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
-		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}
-
-		try {
-			papp.getParameters().put(I5CONSTANTS.cTestType,
-					getValue(
-					sciPart.getTOREPEATEDDERMAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
-					sciPart.getTOREPEATEDDERMAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()
-					));
-		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cTestType,null);}
-		
+		//species and test type assigned on effect level
 		/*
 		try {
 			papp.getParameters().put(cRouteAdm,
@@ -167,6 +154,20 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 					} catch (Exception x) {}
 				}
 				
+				try {
+					effect.getConditions().put(I5CONSTANTS.cSpecies,
+							getValue(sciPart.getTOREPEATEDDERMAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+									sciPart.getTOREPEATEDDERMAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cSpecies,null);}
+
+				try {
+					effect.getConditions().put(I5CONSTANTS.cTestType,
+							getValue(
+							sciPart.getTOREPEATEDDERMAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+							sciPart.getTOREPEATEDDERMAL().getTESTTYPETOX().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()
+							));
+				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cTestType,null);}
+								
 				effect.getConditions().put(I5CONSTANTS.cSex,set.getSEX()==null?null:set.getSEX().getSEXValue());
 
 			}
