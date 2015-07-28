@@ -4,7 +4,7 @@
   <parent>
     <artifactId>iuclid5-cli</artifactId>
     <groupId>net.idea</groupId>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.6-SNAPSHOT</version>
   </parent>
   <artifactId>iuclid_5_common</artifactId>
   <name>iuclid_5_5-common</name>
