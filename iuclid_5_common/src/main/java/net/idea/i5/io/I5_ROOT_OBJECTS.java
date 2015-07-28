@@ -2105,7 +2105,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cMetabolicActivation,
+			return new String[] { I5CONSTANTS.cTypeStudy, I5CONSTANTS.cMetabolicActivation,
 					I5CONSTANTS.cSpecies };
 		}
 
@@ -2150,7 +2150,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cToxicity, I5CONSTANTS.cSex };
+			return new String[] { I5CONSTANTS.cTypeStudy, I5CONSTANTS.cToxicity, I5CONSTANTS.cSex };
 		}
 
 		@Override

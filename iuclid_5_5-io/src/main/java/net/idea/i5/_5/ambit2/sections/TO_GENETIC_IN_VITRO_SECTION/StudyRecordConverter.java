@@ -181,6 +181,14 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 							getValue(set.getPHRASEOTHERORGANISM().getORGANISMValue(),
 									set.getPHRASEOTHERORGANISM().getORGANISMTXT()));
 				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cSpecies,null);}
+				
+				try {
+					effect.getConditions().put(I5CONSTANTS.cTypeStudy,
+							getValue(sciPart.getTOGENETICINVITRO().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
+									sciPart.getTOGENETICINVITRO().getSTUDYTYPE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+				} catch (Exception x) { 
+					effect.getConditions().put(I5CONSTANTS.cTypeStudy,null);
+				}						
 			}
 		StringBuilder interpretation = null;
 		if (sciPart.getTOGENETICINVITRO().getINTERPRETRSSUBMITTER() != null) {
