@@ -1069,7 +1069,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cDegradationParameter,
+			return new String[] {  I5CONSTANTS.cTestType,I5CONSTANTS.cDegradationParameter,
 					I5CONSTANTS.rDegradation, I5CONSTANTS.cTimePoint };
 		}
 
@@ -1098,7 +1098,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cSoilNo, // phrasegroup_F108
+			return new String[] { I5CONSTANTS.cTestType, I5CONSTANTS.cSoilNo, // phrasegroup_F108
 					I5CONSTANTS.cSoilType, // phrasegroup_F109
 					I5CONSTANTS.cOCContent // number
 			};

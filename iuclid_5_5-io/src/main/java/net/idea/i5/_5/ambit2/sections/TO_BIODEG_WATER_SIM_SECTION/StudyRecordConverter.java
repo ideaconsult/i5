@@ -131,6 +131,7 @@ public class StudyRecordConverter
 	// papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
 	// TEST TYPE
+	
 	try {
 	    papp.getParameters().put(
 		    I5CONSTANTS.cTestType,
@@ -209,6 +210,17 @@ public class StudyRecordConverter
 		// effect.getConditions().put("Compartment",
 		// set.getPHRASEOTHERCOMPARTMENT().getCOMPARTMENTValue());
 		effect.getConditions().putAll(degradation);
+		
+		try {
+			effect.getConditions().put(
+			    I5CONSTANTS.cTestType,
+			    getValue(sciPart.getTOBIODEGWATERSIM().getOXYGENCONDITIONS().getSet().getPHRASEOTHERLISTPOPFIX()
+				    .getLISTPOPFIXValue(), sciPart.getTOBIODEGWATERSIM().getOXYGENCONDITIONS().getSet()
+				    .getPHRASEOTHERLISTPOPFIX().getLISTPOPFIXTXT()));
+		} catch (Exception x) {
+			effect.getConditions().put(I5CONSTANTS.cTestType, null);
+		}
+		
 		papp.addEffect(effect);
 
 		// results
