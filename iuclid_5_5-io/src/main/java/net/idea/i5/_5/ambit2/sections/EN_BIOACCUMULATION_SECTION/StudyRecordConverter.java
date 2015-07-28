@@ -122,6 +122,12 @@ public class StudyRecordConverter extends ENVFATEStudyRecordConvertor<eu.europa.
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				try {effect.setEndpoint(set.getPHRASEOTHERTYPE().getTYPEValue());} catch (Exception x) {}
 				papp.addEffect(effect);
+				
+				try {
+					effect.getConditions().put(I5CONSTANTS.cRoute,sciPart.getENBIOACCUMULATION().getROUTE().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue());
+				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cRoute,null);}
+
+				
 				try {
 					effect.getConditions().put(I5CONSTANTS.cBioaccBasis,
 							getValue(set.getPHRASEOTHERBASIS().getBASISValue(), set.getPHRASEOTHERBASIS().getBASISTXT()));

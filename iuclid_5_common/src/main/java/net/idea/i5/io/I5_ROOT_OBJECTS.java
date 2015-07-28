@@ -1139,7 +1139,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cBioaccBasis, I5CONSTANTS.cDoses };
+			return new String[] { I5CONSTANTS.cRoute , I5CONSTANTS.cBioaccBasis, I5CONSTANTS.cDoses };
 		}
 
 		@Override
