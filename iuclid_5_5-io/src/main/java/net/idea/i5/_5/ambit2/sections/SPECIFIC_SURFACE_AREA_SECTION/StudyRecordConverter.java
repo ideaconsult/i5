@@ -15,7 +15,6 @@ import org.w3c.dom.NodeList;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
-import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.interfaces.IStructureRecord;
@@ -234,28 +233,17 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 				try {
-					params.setLoValue(Double.parseDouble(node.getTextContent()));
+					effect.setErrorValue(Double.parseDouble(node.getTextContent()));
 				} catch (Exception x) {
-					params.setLoValue(node.getTextContent());	
+	
 				}
 			}		
 			public String getTag() {
-				return I5CONSTANTS.rSTD_DEV;
+				return null;
 			}			
 		},
-		SSA_STD_DEVI_UNIT_value {
-			@Override
-			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
-				params.setUnits(node.getTextContent());
-			}				
-		},
-		SSA_STD_DEVI_UNIT_TXT {
-			@Override
-			public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
-				if ("other:".equals(params.getUnits()))
-						params.setUnits(node.getTextContent());
-			}			
-		}
+		SSA_STD_DEVI_UNIT_value,
+		SSA_STD_DEVI_UNIT_TXT 
 		;
 		public void setValue(EffectRecord<String, IParams, String> effect,IParams params,Node node) {
 		}
@@ -280,10 +268,10 @@ public class StudyRecordConverter
 			@Override
 			public void setValue(EffectRecord<String, IParams, String> effect,
 					NodeList nodes) {
-				useChildrenNodesParams(effect, nodes);	
+				useChildrenNodesEffect(effect, nodes);	
 			}	
 			public String getTag() {
-				return I5CONSTANTS.rSTD_DEV;
+				return null;
 			}			
 		},
 		REMARKS {
@@ -305,17 +293,7 @@ public class StudyRecordConverter
 		public void setValue(EffectRecord<String, IParams, String> effect,NodeList nodes) {
 			
 		}
-		public void useChildrenNodesParams(EffectRecord<String, IParams, String> effect,
-				NodeList nodes) {
-			if (nodes!=null) {
-				Params params = new Params();
-				effect.getConditions().put(getTag(),params);
-				for (int i=0; i < nodes.getLength(); i++) try {
-					P p = P.valueOf(nodes.item(i).getLocalName().replace(".","_"));
-					p.setValue(effect,params, nodes.item(i));
-				} catch (Exception x) {}
-			}	
-		}		
+	
 		public void useChildrenNodesEffect(EffectRecord<String, IParams, String> effect,
 				NodeList nodes) {
 			if (nodes!=null) {
