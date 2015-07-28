@@ -975,7 +975,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.TestCondition };
+			return new String[] { I5CONSTANTS.pReactant, I5CONSTANTS.TestCondition };
 		}
 
 		@Override
