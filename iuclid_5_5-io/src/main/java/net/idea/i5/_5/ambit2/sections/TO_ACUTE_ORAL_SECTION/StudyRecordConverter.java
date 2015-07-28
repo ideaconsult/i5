@@ -15,44 +15,65 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTIO
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.GUIDELINE.Set;
 
-
-public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord>{
+public class StudyRecordConverter
+		extends
+		TOXStudyRecordConvertor<eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord> {
 	public StudyRecordConverter() {
 		super(I5_ROOT_OBJECTS.TO_ACUTE_ORAL);
-	}	
+	}
+
 	@Override
 	protected boolean hasScientificPart(EndpointStudyRecord unmarshalled) {
-		return unmarshalled.getScientificPart()!=null;
+		return unmarshalled.getScientificPart() != null;
 	}
+
 	@Override
 	protected boolean isDataWaiving(EndpointStudyRecord unmarshalled) {
-		return unmarshalled.getDataWaiving()!=null;
-	}	
+		return unmarshalled.getDataWaiving() != null;
+	}
+
 	@Override
 	protected String getTestMaterialIdentity(EndpointStudyRecord unmarshalled) {
 		try {
-			return unmarshalled.getScientificPart().getTOACUTEORAL().getTESTMATINDICATOR().getSet().getLISTBELOWSEL().getLISTBELOWSEL();
+			return unmarshalled.getScientificPart().getTOACUTEORAL()
+					.getTESTMATINDICATOR().getSet().getLISTBELOWSEL()
+					.getLISTBELOWSEL();
 		} catch (Exception x) {
-			return null;	
+			return null;
 		}
-	}		
+	}
+
 	@Override
-	protected void parseReference(EndpointStudyRecord unmarshalled, ProtocolApplication papp) throws QACriteriaException {
+	protected void parseReference(EndpointStudyRecord unmarshalled,
+			ProtocolApplication papp) throws QACriteriaException {
 		// citation
 		QACriteriaException qax = null;
 		if (unmarshalled.getScientificPart().getTOACUTEORAL().getREFERENCE() != null)
-			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.REFERENCE.Set set : unmarshalled.getScientificPart().getTOACUTEORAL().getREFERENCE().getSet()) {
+			for (eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_ACUTE_ORAL_SECTION.EndpointStudyRecord.ScientificPart.TOACUTEORAL.REFERENCE.Set set : unmarshalled
+					.getScientificPart().getTOACUTEORAL().getREFERENCE()
+					.getSet()) {
 				try {
-					papp.setReference(set.getREFERENCEAUTHOR().getREFERENCEAUTHOR().getValue());
-				} catch (Exception x) {papp.setReference(null);}				
+					papp.setReference(set.getREFERENCEAUTHOR()
+							.getREFERENCEAUTHOR().getValue());
+				} catch (Exception x) {
+					papp.setReference(null);
+				}
 				try {
-					if (set.getREFERENCEYEAR()!=null) try {
-						papp.setReferenceYear(set.getREFERENCEYEAR().getREFERENCEYEAR().getValue());
-					} catch (Exception x) {}
+					if (set.getREFERENCEYEAR() != null)
+						try {
+							papp.setReferenceYear(set.getREFERENCEYEAR()
+									.getREFERENCEYEAR().getValue());
+						} catch (Exception x) {
+						}
 					try {
-						papp.setReferenceOwner(set.getREFERENCECOMPANYID().getREFERENCECOMPANYID().getValue());
-					} catch (Exception x) {	papp.setReferenceOwner("");}					
-					isReferenceTypeAccepted(set.getPHRASEOTHERREFERENCETYPE()==null?null:set.getPHRASEOTHERREFERENCETYPE().getREFERENCETYPE());					
+						papp.setReferenceOwner(set.getREFERENCECOMPANYID()
+								.getREFERENCECOMPANYID().getValue());
+					} catch (Exception x) {
+						papp.setReferenceOwner("");
+					}
+					isReferenceTypeAccepted(set.getPHRASEOTHERREFERENCETYPE() == null ? null
+							: set.getPHRASEOTHERREFERENCETYPE()
+									.getREFERENCETYPE());
 					return;
 				} catch (QACriteriaException x) {
 					qax = x;
@@ -62,10 +83,13 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 					continue;
 				}
 
-			}	
-		else qax = new QACriteriaException("Empty reference!");
-		if (qax!=null) throw qax;
-	}			
+			}
+		else
+			qax = new QACriteriaException("Empty reference!");
+		if (qax != null)
+			throw qax;
+	}
+
 	@Override
 	public IStructureRecord transform2record(EndpointStudyRecord unmarshalled, SubstanceRecord record) throws AmbitException {
 		if (super.transform2record(unmarshalled, record)==null) return null;
@@ -105,17 +129,13 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 		parseReference(unmarshalled, papp);
 		//papp.getParameters().put(I5CONSTANTS.cYear,papp.getReferenceYear());
 
-		// Acute tox oral
-		try {
-			papp.getParameters().put(I5CONSTANTS.cSpecies,
-					getValue(sciPart.getTOACUTEORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPValue(),
-							sciPart.getTOACUTEORAL().getORGANISM().getSet().getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
-		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSpecies,null);}				
+				
+		Object prm_sex = null;
 		// Sex
 		try {
-			papp.getParameters().put(I5CONSTANTS.cSex,
+			prm_sex = 
 					sciPart.getTOACUTEORAL().getSEX()==null?null:
-					sciPart.getTOACUTEORAL().getSEX().getSet().getLISTBELOWPOP().getLISTBELOWPOPValue());
+					sciPart.getTOACUTEORAL().getSEX().getSet().getLISTBELOWPOP().getLISTBELOWPOPValue();
 		} catch (Exception x) { papp.getParameters().put(I5CONSTANTS.cSex,null);}
 		// endpoint
 		// effect level
@@ -142,7 +162,24 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 					} catch (Exception x) {}
 				}
 				
-				effect.getConditions().put(I5CONSTANTS.cSex,set.getSEX()==null?null:set.getSEX().getSEXValue());
+
+				try {
+					effect.getConditions().put(
+							I5CONSTANTS.cSpecies,
+							getValue(sciPart.getTOACUTEORAL().getORGANISM()
+									.getSet().getPHRASEOTHERLISTPOP()
+									.getLISTPOPValue(), sciPart
+									.getTOACUTEORAL().getORGANISM().getSet()
+									.getPHRASEOTHERLISTPOP().getLISTPOPTXT()));
+
+				} catch (Exception x) {
+					effect.getConditions().put(I5CONSTANTS.cSpecies, null);
+				}
+
+				effect.getConditions().put(
+						I5CONSTANTS.cSex,
+						set.getSEX() == null ? prm_sex : set.getSEX()
+								.getSEXValue());
 
 			}
 		
@@ -170,6 +207,5 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 
 		return record;
 	}
-	
 
 }

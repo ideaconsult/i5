@@ -1671,12 +1671,12 @@ public enum I5_ROOT_OBJECTS {
 
 	@Override
 	public String[] getConditions() {
-	    return new String[] { I5CONSTANTS.cSex };
+	    return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cSex };
 	}
 
 	@Override
 	public String[] getProtocolParameters() {
-	    return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cSex };
+	    return new String[] { };
 	}
 	@Override
 	public String getOntologyURI() {
@@ -1708,12 +1708,12 @@ public enum I5_ROOT_OBJECTS {
 
 	@Override
 	public String[] getConditions() {
-	    return new String[] { I5CONSTANTS.cSex };
+	    return new String[] {  I5CONSTANTS.cSpecies, I5CONSTANTS.cSex  };
 	}
 
 	@Override
 	public String[] getProtocolParameters() {
-	    return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cSex };
+	    return new String[] {};
 	}
 	@Override
 	public String getOntologyURI() {
@@ -1745,12 +1745,12 @@ public enum I5_ROOT_OBJECTS {
 
 	@Override
 	public String[] getConditions() {
-	    return new String[] { I5CONSTANTS.cSex };
+	    return new String[] {  I5CONSTANTS.cSpecies, I5CONSTANTS.cSex  };
 	}
 
 	@Override
 	public String[] getProtocolParameters() {
-	    return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cSex };
+	    return new String[] {  };
 	}
 	@Override
 	public String getOntologyURI() {
