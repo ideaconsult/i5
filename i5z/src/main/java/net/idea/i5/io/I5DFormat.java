@@ -1,5 +1,7 @@
 package net.idea.i5.io;
 
+import java.util.List;
+
 import org.openscience.cdk.io.formats.IChemFormatMatcher;
 import org.openscience.cdk.io.formats.IResourceFormat;
 import org.openscience.cdk.tools.DataFeatures;
@@ -59,5 +61,11 @@ public class I5DFormat implements IChemFormatMatcher {
 
     public int getRequiredDataFeatures() {
 		return DataFeatures.NONE;
+	}
+
+	@Override
+	public MatchResult matches(List<String> arg0) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
