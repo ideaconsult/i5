@@ -168,7 +168,7 @@ public class I5ZReader<SUBSTANCE> extends ZipReader implements IQASettings {
 				else study.add(file);
 			}	
 		}
-		logger.log(Level.INFO,
+		logger.log(Level.FINE,
 				String.format("Reference substances %d\tSubstances %d\tStudies %d",
 				referenceSubstances.size(),
 				substances.size(),
