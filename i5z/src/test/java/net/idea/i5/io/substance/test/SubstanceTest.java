@@ -385,12 +385,12 @@ Value	2	1976	h
 				System.out.println(object);
 				System.out.println(record);
 				if (record==null) continue;
-				for (Property p : record.getProperties()) {
+				for (Property p : record.getRecordProperties()) {
 					System.out.print(p.getName());
 					System.out.print("\t");
 					System.out.print(p.getTitle());
 					System.out.print("\t");
-					System.out.println(record.getProperty(p));
+					System.out.println(record.getRecordProperty(p));
 				}
 				Assert.assertTrue(record instanceof SubstanceRecord);
 				SubstanceRecord substanceRecord = ((SubstanceRecord)record);
@@ -400,9 +400,9 @@ Value	2	1976	h
 						System.out.println(relation.getRelation());
 						
 							System.out.println(relation.getFirstStructure().getContent());
-							System.out.println(relation.getFirstStructure().getProperty(Property.getI5UUIDInstance()));
+							System.out.println(relation.getFirstStructure().getRecordProperty(Property.getI5UUIDInstance()));
 							System.out.println(relation.getSecondStructure().getContent());
-							System.out.println(relation.getSecondStructure().getProperty(Property.getI5UUIDInstance()));						
+							System.out.println(relation.getSecondStructure().getRecordProperty(Property.getI5UUIDInstance()));						
 						System.out.println();
 					}
 					System.out.println(substanceRecord.toJSON("http://localhost:8080/ambit2"));

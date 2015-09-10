@@ -68,7 +68,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				for (int i=0; i < unmarshalled.getTradeNames().getTradeName().size();i++) {
 					Property p =  Property.getInstance(String.format("Trade name %d", (i+1)), LiteratureEntry.getTradeNameReference());
 					p.setLabel(Property.opentox_TradeName);
-					record.setProperty(p,unmarshalled.getTradeNames().getTradeName().get(i).getName());
+					record.setRecordProperty(p,unmarshalled.getTradeNames().getTradeName().get(i).getName());
 					//System.out.println(unmarshalled.getTradeNames().getTradeName().get(i).getNameType().getValueID());
 					//System.out.println(unmarshalled.getTradeNames().getTradeName().get(i).getRemarks());
 					//System.out.println(unmarshalled.getTradeNames().getTradeName().get(i).getCountry().getValueID());
@@ -322,13 +322,13 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				TradeName name = unmarshalled.getTradeNames().getTradeName().get(i);
 				Property prop =  Property.getInstance(String.format("Trade name %d", (i+1)), LiteratureEntry.getI5UUIDReference());
 				prop.setLabel(Property.opentox_TradeName);
-				record.setProperty(prop,name.getName());
+				record.setRecordProperty(prop,name.getName());
 				//System.out.println(unmarshalled.getTradeNames().getTradeName().get(i).getNameType().getValueID());
 				
 				if (name.getRemarks()!=null && !"".equals(name.getRemarks())) {
 					prop =  Property.getInstance("Identifier", LiteratureEntry.getI5UUIDReference());
 					prop.setLabel(Property.opentox_TradeName);
-					record.setProperty(prop,unmarshalled.getTradeNames().getTradeName().get(i).getRemarks());
+					record.setRecordProperty(prop,unmarshalled.getTradeNames().getTradeName().get(i).getRemarks());
 				}
 
 				//System.out.println(unmarshalled.getTradeNames().getTradeName().get(i).getCountry().getValueID());
@@ -342,10 +342,10 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		if (unmarshalled.getDocumentReferencePK()!=null)
 			setReferenceSubstanceUUID(structureRecord,unmarshalled.getDocumentReferencePK());
 		if (unmarshalled.getName()!=null)
-			structureRecord.setProperty(I5ReaderSimple.nameProperty,unmarshalled.getName());
+			structureRecord.setRecordProperty(I5ReaderSimple.nameProperty,unmarshalled.getName());
 		
 		if (unmarshalled.getEcSubstanceInventoryEntryRef().getNumber()!=null)
-			structureRecord.setProperty(I5ReaderSimple.ecProperty,unmarshalled.getEcSubstanceInventoryEntryRef().getNumber());
+			structureRecord.setRecordProperty(I5ReaderSimple.ecProperty,unmarshalled.getEcSubstanceInventoryEntryRef().getNumber());
 		
 		if (unmarshalled.getReferenceSubstanceStructure()!=null) {
 			structureRecord.setFormat(MOL_TYPE.INC.name());
@@ -368,14 +368,14 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		CasInformation cas = unmarshalled.getReferenceSubstanceInformation().getCasInformation();
 		if (cas!=null) {
 			try {
-				structureRecord.setProperty(I5ReaderSimple.casProperty,casProcessor.process(cas.getCasNumber()));
+				structureRecord.setRecordProperty(I5ReaderSimple.casProperty,casProcessor.process(cas.getCasNumber()));
 			} catch (Exception x) {
-				structureRecord.setProperty(I5ReaderSimple.casProperty,cas.getCasNumber());
+				structureRecord.setRecordProperty(I5ReaderSimple.casProperty,cas.getCasNumber());
 			}
 		}
 		String iupacName = unmarshalled.getReferenceSubstanceInformation().getIupacName();
 		if ((iupacName!=null) && !"".equals(iupacName.trim()))
-			structureRecord.setProperty(Property.getNameInstance(),iupacName);
+			structureRecord.setRecordProperty(Property.getNameInstance(),iupacName);
 		
 		Synonyms synonyms = unmarshalled.getReferenceSubstanceInformation().getSynonyms();
 		if (synonyms!=null) {
@@ -384,7 +384,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				if (lookup.indexOf(synonyms.getSynonym().get(i).getName())<0)
 					lookup.add(synonyms.getSynonym().get(i).getName());
 			for (int i=0;i < lookup.size();i++)
-				structureRecord.setProperty(
+				structureRecord.setRecordProperty(
 						Property.getInstance(AmbitCONSTANTS.NAMES,
 						LiteratureEntry.getInstance(String.format("%s %s#%d",I5ReaderSimple.I5_REFERENCE,
 								ECHAPreregistrationListReader.echa_tags.SYNONYM.toString(),i+1, 
@@ -407,9 +407,9 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	protected void setReferenceSubstanceUUID(IStructureRecord record,String value) {
 		int slashpos = value.indexOf("/");
 		if (slashpos>0)
-			record.setProperty(Property.getI5UUIDInstance(),value.substring(0,slashpos));
+			record.setRecordProperty(Property.getI5UUIDInstance(),value.substring(0,slashpos));
 		else
-			record.setProperty(Property.getI5UUIDInstance(),value);
+			record.setRecordProperty(Property.getI5UUIDInstance(),value);
 	}		
 	protected void setFormat(IStructureRecord record) {
 		record.setFormat("i5._4.");
