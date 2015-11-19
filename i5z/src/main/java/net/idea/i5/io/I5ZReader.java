@@ -70,7 +70,7 @@ public class I5ZReader<SUBSTANCE> extends ZipReader implements IQASettings {
 	protected IRawReader<IStructureRecord> getItemReader(int index) throws Exception {
 		String name = files[index].getName().toLowerCase();
 		
-		if (FileState._FILE_TYPE.I5Z_INDEX.hasExtension(name)) {
+		if (FileState._FILE_TYPE.I5D_INDEX.hasExtension(name)) {
 			logger.log(Level.FINE,name);
 			try {
 				String jaxbcontextpath = getJaxbContextPath4File(files[index]);
