@@ -22,7 +22,7 @@ import org.apache.commons.io.FileUtils;
 
 import ambit2.base.exceptions.AmbitIOException;
 import ambit2.base.interfaces.IStructureRecord;
-import ambit2.core.io.FileInputState;
+import ambit2.core.io.FileState;
 import ambit2.core.io.IRawReader;
 import ambit2.core.io.ZipReader;
 
@@ -69,7 +69,8 @@ public class I5ZReader<SUBSTANCE> extends ZipReader implements IQASettings {
 	@Override
 	protected IRawReader<IStructureRecord> getItemReader(int index) throws Exception {
 		String name = files[index].getName().toLowerCase();
-		if (name.endsWith(FileInputState.extensions[FileInputState.I5D_INDEX])) {
+		
+		if (FileState._FILE_TYPE.I5Z_INDEX.hasExtension(name)) {
 			logger.log(Level.FINE,name);
 			try {
 				String jaxbcontextpath = getJaxbContextPath4File(files[index]);
@@ -116,7 +117,7 @@ public class I5ZReader<SUBSTANCE> extends ZipReader implements IQASettings {
 
 	@Override
 	protected File verifyEntry(File file) throws IOException, AmbitException {
-		if (file.getName().toLowerCase().endsWith(FileInputState.extensions[FileInputState.I5D_INDEX])) {
+		if (FileState._FILE_TYPE.I5D_INDEX.hasExtension(file)) {
 			String cp = getJaxbContextPath4File(file);
 			return cp==null?null:("".equals(cp))?null:file;
 		} else return null;
