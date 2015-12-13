@@ -30,4 +30,5 @@ Development snapshot
 
 ### Acknowledgements
 
-[CEFIC LRI EEM9.3-IC inking LRI AMBIT Chemoinformatic system with the IUCLID Substance database to Support Read-across of Substance endpoint data and Category formation](http://cefic-lri.org/projects/eem9-3-ic-linking-lri-ambit-chemoinformatic-system-with-the-iuclid-substance-database-to-support-read-across-of-substance-endpoint-data-and-category-formation)
+* [CEFIC LRI EEM9.3-IC inking LRI AMBIT Chemoinformatic system with the IUCLID Substance database to Support Read-across of Substance endpoint data and Category formation](http://cefic-lri.org/projects/eem9-3-ic-linking-lri-ambit-chemoinformatic-system-with-the-iuclid-substance-database-to-support-read-across-of-substance-endpoint-data-and-category-formation)
+* [eNanoMapper FP7 #604134](www.enanomapper.net) for the OHT templates 101-113 for nanomaterial physicochemical characterisation
