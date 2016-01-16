@@ -2,6 +2,8 @@ package net.idea.i5._4.ambit2;
 
 import java.util.Hashtable;
 
+import net.idea.i5.ambit2.phrases.Phrase;
+
 /**
  * Hack to avoid generating classes for phrases.xsdwe only need few of them so far
  * @author nina
@@ -14,7 +16,34 @@ public class Phrases {
 	public static final Hashtable<String, String> phrasegroup_A02 = phrasegroup_A02();
 	public static final Hashtable<String, String> phrasegroup_A02_1 = phrasegroup_A02_1();
 	public static final Hashtable<String, String> phrasegroup_A02_2 = phrasegroup_A02_2();
+	public static final Phrase phrasegroup_E04 = phrasegroup_E04();
+	public static final Phrase phrasegroup_TD340 = phrasegroup_TD340();
 	
+	private static Phrase phrasegroup_TD340() {
+    	Phrase p = new Phrase();
+    	p.put("8089", "ng/kg soil dw");
+    	p.put("8088", "µg/kg soil dw");
+    	p.put("2096", "mg/kg soil dw");
+    	p.put("8126", "ng/kg soil ww");
+    	p.put("8127", "µg/kg soil ww");
+    	p.put("8128", "mg/kg soil ww");    	
+    	
+    	p.put("2077", "mg/cm²");
+    	p.put("1930", "g/ha");
+    	p.put("1342", "other:");    	    	
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }
+	
+    private static Phrase phrasegroup_E04() {
+    	Phrase p = new Phrase();
+    	p.put("2113", "min");
+    	p.put("1976", "h");
+    	p.put("1839", "d");
+    	p.put("2468", "wk");
+    	p.put("NOT_SPECIFIED", ""); 
+    	return p;
+    }	  	
     private static Hashtable<String, String> initPhrasegroup_N08() {
     	Hashtable<String, String> p = new Hashtable<String,String>();
     	p.put("2915", "mono constituent substance");
