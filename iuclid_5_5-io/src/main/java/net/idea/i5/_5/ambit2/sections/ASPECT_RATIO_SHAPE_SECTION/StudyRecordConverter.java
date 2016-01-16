@@ -2,7 +2,7 @@ package net.idea.i5._5.ambit2.sections.ASPECT_RATIO_SHAPE_SECTION;
 
 import javax.xml.bind.JAXBElement;
 
-import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.ambit2.sections.PChemStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;

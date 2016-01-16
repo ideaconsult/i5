@@ -2,7 +2,7 @@ package net.idea.i5._5.ambit2.sections.CRYSTALLINE_PHASE_SECTION;
 
 import javax.xml.bind.JAXBElement;
 
-import net.idea.i5._5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.ambit2.sections.PChemStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
@@ -14,7 +14,6 @@ import org.w3c.dom.NodeList;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
-import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.interfaces.IStructureRecord;

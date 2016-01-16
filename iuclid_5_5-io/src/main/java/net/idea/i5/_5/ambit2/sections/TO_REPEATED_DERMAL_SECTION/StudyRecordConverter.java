@@ -1,7 +1,7 @@
 package net.idea.i5._5.ambit2.sections.TO_REPEATED_DERMAL_SECTION;
 
 import net.idea.i5._5.ambit2.json.Experiment;
-import net.idea.i5._5.ambit2.sections.TOXStudyRecordConvertor;
+import net.idea.i5.ambit2.sections.TOXStudyRecordConvertor;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
