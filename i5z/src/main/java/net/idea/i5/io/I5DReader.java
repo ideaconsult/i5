@@ -18,7 +18,7 @@ import ambit2.base.data.SubstanceRecord;
 import ambit2.base.interfaces.IStructureRecord;
 
 public class I5DReader extends AbstractI5DReader<IStructureRecord> {
-	protected SubstanceRecord record = new SubstanceRecord();
+	
 	protected Hashtable<String, IProcessor<Object, IStructureRecord>> processors = new Hashtable<String, IProcessor<Object, IStructureRecord>>();
 		
 
@@ -81,7 +81,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	}
 	
 	protected void initProcessors(QASettings qaSettings) {
-		
+		record = new SubstanceRecord();
 		net.idea.i5._0.ambit2.I5AmbitProcessor i50 = new net.idea.i5._0.ambit2.I5AmbitProcessor();
 		net.idea.i5._5.ambit2.I5AmbitProcessor i55 = new net.idea.i5._5.ambit2.I5AmbitProcessor();
 		net.idea.i5._4.ambit2.I5AmbitProcessor i54 = new net.idea.i5._4.ambit2.I5AmbitProcessor();
@@ -99,6 +99,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 		for (I5_ROOT_OBJECTS tag : I5_ROOT_OBJECTS.values()) 
 			if (tag.isScientificPart()) {
 				processors.put("eu.europa.echa.schemas.iuclid5._20130101.studyrecord." + tag.name() + "_SECTION.EndpointStudyRecord", i55);
+				processors.put("eu.europa.echa.schemas.iuclid5._20120101.studyrecord." + tag.name() + "_SECTION.EndpointStudyRecord", i54);
 			}
 	}
 

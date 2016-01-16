@@ -13,6 +13,7 @@ import ambit2.base.data.study.ProtocolApplication;
  * @author nina
  * 
  */
+
 public enum I5_ROOT_OBJECTS {
 	AttachmentDocument {
 		@Override
@@ -216,6 +217,10 @@ public enum I5_ROOT_OBJECTS {
 		public String getOntologyURI() {
 			// http://purl.obolibrary.org/obo/CHMO_0002119
 			return "CHMO_0002119";
+		}
+		@Override
+		public String getContextPath() {
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
 		}
 	},
 	PC_VAPOUR {
@@ -433,6 +438,10 @@ public enum I5_ROOT_OBJECTS {
 			return "NPO_1967 NPO_1968";
 			//
 		}
+		@Override
+		public String getContextPath() {
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+		}
 	},
 	CRYSTALLINE_PHASE {
 		@Override
@@ -477,6 +486,10 @@ public enum I5_ROOT_OBJECTS {
 		public String getOntologyURI() {
 			return "NPO_1512";
 		}
+		@Override
+		public String getContextPath() {
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+		}
 	},
 	CRYSTALLITE_AND_GRAIN_SIZE {
 		@Override
@@ -517,6 +530,10 @@ public enum I5_ROOT_OBJECTS {
 					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod,
 					I5CONSTANTS.pTESTMAT_FORM, I5CONSTANTS.pMATERIAL_ISOTROPIC };
+		}
+		@Override
+		public String getContextPath() {
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
 		}
 	},
 	ASPECT_RATIO_SHAPE {
@@ -563,6 +580,10 @@ public enum I5_ROOT_OBJECTS {
 		public String getOntologyURI() {
 			return "NPO_274 NPO_1365";
 		}
+		@Override
+		public String getContextPath() {
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+		}
 	},
 	SPECIFIC_SURFACE_AREA {
 		@Override
@@ -607,6 +628,10 @@ public enum I5_ROOT_OBJECTS {
 		public String getOntologyURI() {
 			return "NPO_1235";
 		}
+		@Override
+		public String getContextPath() {
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+		}
 	},
 	ZETA_POTENTIAL {
 		@Override
@@ -648,7 +673,10 @@ public enum I5_ROOT_OBJECTS {
 					I5CONSTANTS.pSAMPLING, I5CONSTANTS.pTESTMAT_FORM,
 					I5CONSTANTS.cTypeMethod };
 		}
-
+		@Override
+		public String getContextPath() {
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+		}
 		@Override
 		public String getOntologyURI() {
 			return "NPO_1302";
@@ -693,6 +721,10 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] { I5CONSTANTS.pMETHODDETAILS,
 					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod };
+		}
+		@Override
+		public String getContextPath() {
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
 		}
 	},
 	DUSTINESS {
@@ -740,6 +772,10 @@ public enum I5_ROOT_OBJECTS {
 		public String getOntologyURI() {
 			return "ENM_9000003";
 		}
+		@Override
+		public String getContextPath() {
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+		}
 	},
 	POROSITY {
 		@Override
@@ -784,6 +820,10 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "PATO_0000973";
+		}
+		@Override
+		public String getContextPath() {
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
 		}
 
 	},
@@ -830,6 +870,10 @@ public enum I5_ROOT_OBJECTS {
 		public String getOntologyURI() {
 			return "ENM_9000004";
 		}
+		@Override
+		public String getContextPath() {
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+		}
 	},
 	PHOTOCATALYTIC_ACTIVITY {
 		@Override
@@ -869,6 +913,10 @@ public enum I5_ROOT_OBJECTS {
 					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod,
 					I5CONSTANTS.pTESTMAT_FORM };
+		}
+		@Override
+		public String getContextPath() {
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
 		}
 	},
 	/*
@@ -929,7 +977,10 @@ public enum I5_ROOT_OBJECTS {
 					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod,
 					I5CONSTANTS.pTESTMAT_FORM };
 		}
-
+		@Override
+		public String getContextPath() {
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+		}
 	},
 	PC_UNKNOWN {
 		@Override
@@ -2986,10 +3037,19 @@ public enum I5_ROOT_OBJECTS {
 	}
 
 	public String getContextPath() {
+		/*
 		return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord." + name()
+				+ "_SECTION" +
+		
+		":eu.europa.echa.schemas.iuclid5._20120101.studyrecord." + name()
 				+ "_SECTION";
-	}
+		*/
+		if (isIUCLID5())
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name()) + ":" + String.format(I5CONSTANTS.I5_STUDY_SECTION,"20120101",name());
+		else return null;
 
+	}
+	//public static final String I5_STUDY_SECTION = "eu.europa.echa.schemas.iuclid5._%s.studyrecord.%s_SECTION";
 	public String toSection() {
 		return name() + "_SECTION";
 	}
@@ -3090,3 +3150,4 @@ public enum I5_ROOT_OBJECTS {
 		return record;
 	}
 }
+

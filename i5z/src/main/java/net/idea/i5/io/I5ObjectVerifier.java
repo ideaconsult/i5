@@ -38,12 +38,13 @@ public class I5ObjectVerifier extends DefaultAmbitProcessor<InputStream,I5_ROOT_
     			int type = reader.next();
     			if (type == XMLStreamConstants.SPACE) continue;
 	            I5_ROOT_OBJECTS tag = null;
+	            QName qname = null;
 	            try {
-	            	QName qname = reader.getName();
+	            	qname = reader.getName();
 	            	tag = I5_ROOT_OBJECTS.valueOf(qname.getLocalPart());
 	            } catch (Exception x) {
 	            	if (inSciPart || inStudyRecord) continue;
-	            	else throw x;
+	            	else throw new UnsupportedI5RootObject(qname==null?"":qname.getLocalPart() + x.getMessage());
 	            }
  	            switch (type) {
  	            case XMLStreamConstants.START_ELEMENT: {

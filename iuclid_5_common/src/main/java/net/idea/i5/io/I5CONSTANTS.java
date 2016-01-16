@@ -1,6 +1,7 @@
 package net.idea.i5.io;
 
 public class I5CONSTANTS {
+	public static final String I5_STUDY_SECTION = "eu.europa.echa.schemas.iuclid5._%s.studyrecord.%s_SECTION";
     public final String Physstate = "Physical state";
 
     public static final String cSpecies = "Species";
