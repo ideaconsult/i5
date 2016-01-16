@@ -7,7 +7,7 @@ JAXB generated classes from [IUCLID5.x XSD schema](http://iuclid.eu/index.php?fu
 
 Available at Maven repository http://ambit.uni-plovdiv.bg:8083/nexus/index.html#nexus-search;quick~i5z
 
-Parses IUCLID 5.5 / IUCLID 5.6 files into internal [AMBIT](http://ambit.sf.net) data model. Enables import of IUCLID 5 files into AMBIT database.
+Parses IUCLID 5.4 / IUCLID 5.5 / IUCLID 5.6 files into internal [AMBIT](http://ambit.sf.net) data model. Enables import of IUCLID 5 files into AMBIT database.
 
 Stable release
 ````
@@ -23,7 +23,7 @@ Development snapshot
 <dependency>
   <groupId>net.idea</groupId>
   <artifactId>i5z</artifactId>
-  <version>1.1.1-SNAPSHOT</version>
+  <version>1.2.0-SNAPSHOT</version>
 </dependency>
 ````
 
