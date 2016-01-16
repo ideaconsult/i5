@@ -1,9 +1,9 @@
-package net.idea.i5._5.ambit2.sections;
+package net.idea.i5.ambit2.sections;
 
 import javax.xml.bind.JAXBElement;
 
-import net.idea.i5._5.ambit2.Phrases;
 import net.idea.i5._5.ambit2.json.Experiment;
+import net.idea.i5.ambit2.phrases.Phrases;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.IStudyRecordConverter;
 import net.idea.i5.io.QACriteriaException;
