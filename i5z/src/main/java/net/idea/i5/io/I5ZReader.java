@@ -32,6 +32,14 @@ public class I5ZReader<SUBSTANCE> extends ZipReader implements IQASettings {
 	protected transient I5ObjectVerifier rootObjectVerifier;
 	protected transient File tempFolder;
 	protected QASettings qaSettings;
+	protected boolean allowMultipleSubstances = true;
+
+	public boolean isAllowMultipleSubstances() {
+		return allowMultipleSubstances;
+	}
+	public void setAllowMultipleSubstances(boolean allowMultipleSubstances) {
+		this.allowMultipleSubstances = allowMultipleSubstances;
+	}
 	@Override
 	public QASettings getQASettings() {
 		if (qaSettings==null) qaSettings = new QASettings();
@@ -164,8 +172,11 @@ public class I5ZReader<SUBSTANCE> extends ZipReader implements IQASettings {
 				logger.log(Level.FINE,cp);
 				if (cp.indexOf(".referencesubstance")>=0)
 					referenceSubstances.add(file);
-				else if (cp.indexOf(".substance")>=0)
+				else if (cp.indexOf(".substance")>=0) {
 					substances.add(file);
+					if (!allowMultipleSubstances && (substances.size()>1)) 
+						throw new AmbitIOException("Single substance mode but multiple substances in zip file " + zipfile.getAbsolutePath());
+				}	
 				else study.add(file);
 			}	
 		}
@@ -182,7 +193,7 @@ public class I5ZReader<SUBSTANCE> extends ZipReader implements IQASettings {
 				return file2cjaxbcp.get(o2.getAbsolutePath()).compareTo(file2cjaxbcp.get(o1.getAbsolutePath()));
 			}
 		});
-
+		
 		referenceSubstances.addAll(substances);
 		referenceSubstances.addAll(study);
 		substances.clear();study.clear();
