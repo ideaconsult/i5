@@ -20,8 +20,14 @@ import ambit2.base.interfaces.IStructureRecord;
 public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	
 	protected Hashtable<String, IProcessor<Object, IStructureRecord>> processors = new Hashtable<String, IProcessor<Object, IStructureRecord>>();
-		
+	protected String container = null;	
 
+	public String getContainer() {
+		return container;
+	}
+	public void setContainer(String container) {
+		this.container = container;
+	}
 	/**
 	 * Detects the I5D content and uses the correct JAXB classes to unmarshall the XML content
 	 * @param file
@@ -29,8 +35,8 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @throws FileNotFoundException
 	 * @throws AmbitException
 	 */
-	public I5DReader(File file,QASettings qaSettings) throws CDKException, FileNotFoundException, AmbitException {
-		this(file,null,qaSettings);
+	public I5DReader(String container,File file,QASettings qaSettings) throws CDKException, FileNotFoundException, AmbitException {
+		this(container,file,null,qaSettings);
 	}
 	/**
 	 * Detects the I5D content and uses the correct JAXB classes to unmarshall the XML content
@@ -40,8 +46,8 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @throws FileNotFoundException
 	 * @throws AmbitException
 	 */
-	public I5DReader(File file,I5ObjectVerifier rootObjectVerifier,QASettings qaSettings) throws CDKException, FileNotFoundException, AmbitException {
-		this(new FileInputStream(file),getJaxbContext(file,rootObjectVerifier),qaSettings);
+	public I5DReader(String container,File file,I5ObjectVerifier rootObjectVerifier,QASettings qaSettings) throws CDKException, FileNotFoundException, AmbitException {
+		this(container,new FileInputStream(file),getJaxbContext(file,rootObjectVerifier),qaSettings);
 	}	
 	
 	/**
@@ -51,12 +57,12 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @param jaxbUnmarshaller
 	 * @throws CDKException
 	 */
-	public I5DReader(InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller,QASettings qaSettings) throws CDKException {
+	public I5DReader(String container,InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller,QASettings qaSettings) throws CDKException {
 		super(in,jaxbContext, jaxbUnmarshaller);
 		initProcessors(qaSettings);
 	}
-	public I5DReader(InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller) throws CDKException {
-		this(in,jaxbContext,jaxbUnmarshaller,new QASettings());
+	public I5DReader(String container,InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller) throws CDKException {
+		this(container,in,jaxbContext,jaxbUnmarshaller,new QASettings());
 	}
 	/**
 	 * 
@@ -64,9 +70,10 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * uses default JAXB context path "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101"
 	 * @throws CDKException
 	 */
-	public I5DReader(InputStream in,QASettings qaSettings) throws CDKException {
+	public I5DReader(String container,InputStream in,QASettings qaSettings) throws CDKException {
 		super(in);
 		initProcessors(qaSettings);
+		record.setContent(container);
 	}
 
 	/**
@@ -75,13 +82,15 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @param contextPath e.g. "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101"
 	 * @throws CDKException
 	 */
-	public I5DReader(InputStream in,String contextPath,QASettings qaSettings) throws CDKException {
+	public I5DReader(String container,InputStream in,String contextPath,QASettings qaSettings) throws CDKException {
 		super(in,contextPath);
 		initProcessors(qaSettings);
+		record.setContent(container);
 	}
 	
 	protected void initProcessors(QASettings qaSettings) {
 		record = new SubstanceRecord();
+		
 		net.idea.i5._0.ambit2.I5AmbitProcessor i50 = new net.idea.i5._0.ambit2.I5AmbitProcessor();
 		net.idea.i5._5.ambit2.I5AmbitProcessor i55 = new net.idea.i5._5.ambit2.I5AmbitProcessor();
 		net.idea.i5._4.ambit2.I5AmbitProcessor i54 = new net.idea.i5._4.ambit2.I5AmbitProcessor();

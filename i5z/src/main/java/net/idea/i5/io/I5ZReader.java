@@ -33,7 +33,15 @@ public class I5ZReader<SUBSTANCE> extends ZipReader implements IQASettings {
 	protected transient File tempFolder;
 	protected QASettings qaSettings;
 	protected boolean allowMultipleSubstances = true;
+	//testing only!
+	protected int maxReferenceStructures = 3;
 
+	public int getMaxReferenceStructures() {
+		return maxReferenceStructures;
+	}
+	public void setMaxReferenceStructures(int maxReferenceStructures) {
+		this.maxReferenceStructures = maxReferenceStructures;
+	}
 	public boolean isAllowMultipleSubstances() {
 		return allowMultipleSubstances;
 	}
@@ -96,7 +104,7 @@ public class I5ZReader<SUBSTANCE> extends ZipReader implements IQASettings {
 						} else {
 							//System.out.print("CACHED");	System.out.print("\t");	System.out.println(jaxbcontextpath);
 						}
-						I5DReader reader = new I5DReader(fileReader,jaxb.jaxbContext,jaxb.getUnmarshaller(),getQASettings());
+						I5DReader reader = new I5DReader(files[index].getName(),fileReader,jaxb.jaxbContext,jaxb.getUnmarshaller(),getQASettings());
 						reader.setErrorHandler(errorHandler);
 						return reader;
 					} catch (javax.xml.bind.UnmarshalException x) {
