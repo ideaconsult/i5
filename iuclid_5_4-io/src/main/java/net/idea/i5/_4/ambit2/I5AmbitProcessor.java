@@ -42,22 +42,27 @@ import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCom
 import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCompositions.SubstanceComposition.Impurities.Impurity;
 import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.TradeNames.TradeName;
 
-public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStructureRecord> implements IQASettings {
+public class I5AmbitProcessor<Target> extends
+		DefaultAmbitProcessor<Target, IStructureRecord> implements IQASettings {
 	protected SubstanceRecord record = new SubstanceRecord();
 	protected StructureRecord structureRecord = new StructureRecord();
 	protected CASProcessor casProcessor = new CASProcessor();
-	
-	protected Hashtable<String, IStudyRecordConverter> convertors = new Hashtable<String,IStudyRecordConverter>();
+
+	protected Hashtable<String, IStudyRecordConverter> convertors = new Hashtable<String, IStudyRecordConverter>();
 	protected QASettings qaSettings;
+
 	@Override
 	public QASettings getQASettings() {
-		if (qaSettings==null) qaSettings = new QASettings();
+		if (qaSettings == null)
+			qaSettings = new QASettings();
 		return qaSettings;
 	}
+
 	@Override
 	public void setQASettings(QASettings qualityCheckEnabled) {
 		this.qaSettings = qualityCheckEnabled;
 	}
+
 	/**
 	 * 
 	 */
@@ -65,17 +70,20 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
 		if (unmarshalled instanceof Substance) {
-			if (!acceptSubstance((Substance) unmarshalled)) return null;
-			else return transform2record((Substance) unmarshalled);
-		} else if (unmarshalled instanceof ReferenceSubstance) 
+			if (!acceptSubstance((Substance) unmarshalled))
+				return null;
+			else
+				return transform2record((Substance) unmarshalled);
+		} else if (unmarshalled instanceof ReferenceSubstance)
 			return transform2record((ReferenceSubstance) unmarshalled);
-		try {	
-			IStudyRecordConverter convertor = getConvertor(unmarshalled.getClass().getName());	
+		try {
+			IStudyRecordConverter convertor = getConvertor(unmarshalled
+					.getClass().getName());
 			if (convertor != null)
 				return convertor.transform2record(unmarshalled, record);
-		} catch (QACriteriaException x) { 
-			//reliability exception
-			logger.log(Level.FINE,x.getMessage());
+		} catch (QACriteriaException x) {
+			// reliability exception
+			logger.log(Level.FINE, x.getMessage());
 			return null;
 		} catch (AmbitException x) {
 			throw x;
@@ -84,25 +92,35 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		}
 		return null;
 	}
-	
+
 	protected boolean acceptSubstance(Substance substance) {
 		return true;
 	}
-	protected IStudyRecordConverter getConvertor(String className) throws Exception {
+
+	protected IStudyRecordConverter getConvertor(String className)
+			throws Exception {
 		IStudyRecordConverter convertor = null;
-		String tagName = className.replace("eu.europa.echa.schemas.iuclid5._20120101.studyrecord.","").
-						replace("_SECTION","").replace(".EndpointStudyRecord","");
+		String tagName = className
+				.replace(
+						"eu.europa.echa.schemas.iuclid5._20120101.studyrecord.",
+						"").replace("_SECTION", "")
+				.replace(".EndpointStudyRecord", "");
 		try {
 			I5_ROOT_OBJECTS tag = I5_ROOT_OBJECTS.valueOf(tagName);
 			if (tag.isScientificPart()) {
 				convertor = convertors.get(tag.name());
 				if (convertor == null) {
-					Object cnv = Class.forName("net.idea.i5._4.ambit2.sections."+tag+"_SECTION.StudyRecordConverter").newInstance();
+					Object cnv = Class.forName(
+							"net.idea.i5._4.ambit2.sections." + tag
+									+ "_SECTION.StudyRecordConverter")
+							.newInstance();
 					if (cnv instanceof IStudyRecordConverter) {
-						convertor = (IStudyRecordConverter)cnv;
+						convertor = (IStudyRecordConverter) cnv;
 						convertor.setQASettings(getQASettings());
-						convertors.put(tag.name(),convertor);
-					} else throw new Exception("Not an instance of IStudyRecordConverter!");
+						convertors.put(tag.name(), convertor);
+					} else
+						throw new Exception(
+								"Not an instance of IStudyRecordConverter!");
 				} else {
 					convertor.setQASettings(getQASettings());
 				}
@@ -110,7 +128,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		} catch (Exception x) {
 			throw x;
 		}
-		return convertor;		
+		return convertor;
 	}
 
 	protected IStructureRecord transform2record(Substance unmarshalled) {
@@ -119,28 +137,37 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		if (unmarshalled != null) {
 			// owner
 			try {
-				setOwnerUUID(record,unmarshalled.getOwnerLegalEntity().getUniqueKey());
+				setOwnerUUID(record, unmarshalled.getOwnerLegalEntity()
+						.getUniqueKey());
 			} catch (Exception x) {
 				record.setOwnerUUID(null);
 			}
-			try {record.setOwnerName(unmarshalled.getOwnerLegalEntity().getDescription());} catch (Exception x) {record.setOwnerName("");}
+			try {
+				record.setOwnerName(unmarshalled.getOwnerLegalEntity()
+						.getDescription());
+			} catch (Exception x) {
+				record.setOwnerName("");
+			}
 			record.setSubstanceName(unmarshalled.getChemicalName());
 			record.setPublicName(unmarshalled.getPublicName());
 			setCompanyUUID(record, unmarshalled.getDocumentReferencePK());
 			// get from phrases
 			try {
-				record.setSubstancetype(getValue(
-						Phrases.phrasegroup_N08
+				record.setSubstancetype(getValue(Phrases.phrasegroup_N08
 						.get(unmarshalled.getComposition().getValueID()),
-						unmarshalled.getComposition().getOtherValue()
-						));
+						unmarshalled.getComposition().getOtherValue()));
 			} catch (Exception x) {
 				record.setSubstancetype("Error reading the composition type");
 			}
 			if (unmarshalled.getExternalSystemIdentifiers() != null)
-				for (ExternalSystemIdentifier id : unmarshalled.getExternalSystemIdentifiers().getExternalSystemIdentifier()) {
-					if (record.getExternalids()==null) record.setExternalids(new ArrayList<ExternalIdentifier>());
-					record.getExternalids().add(new ExternalIdentifier(id.getExternalSystemDesignator(),id.getID()));
+				for (ExternalSystemIdentifier id : unmarshalled
+						.getExternalSystemIdentifiers()
+						.getExternalSystemIdentifier()) {
+					if (record.getExternalids() == null)
+						record.setExternalids(new ArrayList<ExternalIdentifier>());
+					record.getExternalids()
+							.add(new ExternalIdentifier(id
+									.getExternalSystemDesignator(), id.getID()));
 				}
 
 			if (unmarshalled.getReferenceSubstanceRef() != null) {
@@ -149,29 +176,40 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			}
 
 			SubstanceCompositions sc = unmarshalled.getSubstanceCompositions();
-			if (sc!=null)
-			for (SubstanceComposition c : sc.getSubstanceComposition()) {
-				//c.getName();
-				if ((c.getAdditives() != null) && (c.getAdditives().getAdditive()!=null))
-					for (Additive a : c.getAdditives().getAdditive())
-						additive2record(c.getLocalUUID(),c.getName(), record, a);
+			if (sc != null)
+				for (SubstanceComposition c : sc.getSubstanceComposition()) {
+					// c.getName();
+					if ((c.getAdditives() != null)
+							&& (c.getAdditives().getAdditive() != null))
+						for (Additive a : c.getAdditives().getAdditive())
+							additive2record(c.getLocalUUID(), c.getName(),
+									record, a);
 
-				if ((c.getImpurities() != null) && (c.getImpurities().getImpurity()!=null))
-					for (Impurity a : c.getImpurities().getImpurity())
-						impurity2record(c.getLocalUUID(),c.getName(), record, a);
+					if ((c.getImpurities() != null)
+							&& (c.getImpurities().getImpurity() != null))
+						for (Impurity a : c.getImpurities().getImpurity())
+							impurity2record(c.getLocalUUID(), c.getName(),
+									record, a);
 
-				if (c.getConstituents() != null && (c.getConstituents().getConstituent()!=null)) 
-					for (Constituent a : c.getConstituents().getConstituent()) {
-						Substance substance = unmarshalled;
-						try {
-							if (!substance.getReferenceSubstanceRef().getUniqueKey().equals(a.getReferenceSubstance().getUniqueKey()))
-								substance = null;
-						} catch (Exception x) {
+					if (c.getConstituents() != null
+							&& (c.getConstituents().getConstituent() != null))
+						for (Constituent a : c.getConstituents()
+								.getConstituent()) {
+							Substance substance = unmarshalled;
+							try {
+								if (!substance
+										.getReferenceSubstanceRef()
+										.getUniqueKey()
+										.equals(a.getReferenceSubstance()
+												.getUniqueKey()))
+									substance = null;
+							} catch (Exception x) {
+							}
+							constituent2record(substance, c.getLocalUUID(),
+									c.getName(), record, a);
 						}
-						constituent2record(substance, c.getLocalUUID(),c.getName(), record, a);
-					}
 
-			}
+				}
 		}
 		return record;
 	}
@@ -182,8 +220,8 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	 * @param constituent
 	 * @return
 	 */
-	protected IStructureRecord additive2record(String compositionUUID,String name,
-			SubstanceRecord substance, Additive a) {
+	protected IStructureRecord additive2record(String compositionUUID,
+			String name, SubstanceRecord substance, Additive a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
 
@@ -199,7 +237,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			p.setReal_lowervalue(a.getProportionReal().getLowerValue());
 			p.setReal_uppervalue(a.getProportionReal().getUpperValue());
 			try {
-				p.setReal_lower(Phrases.get(Phrases.phrasegroup_A02,a
+				p.setReal_lower(Phrases.get(Phrases.phrasegroup_A02, a
 						.getProportionReal().getLowerPrecision().getValueID()));
 			} catch (Exception x) {
 				p.setReal_unit("");
@@ -233,15 +271,15 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				p.setTypical_unit("");
 			}
 		}
-	
+
 		try {
 			p.setFunction(Phrases.phrasegroup_N28.get(a.getFunction()
 					.getValueID()));
 		} catch (Exception x) {
 			p.setFunction("Error reading the function type");
 		}
-		IStructureRelation r = substance.addStructureRelation(compositionUUID, record,
-				STRUCTURE_RELATION.HAS_ADDITIVE, p);
+		IStructureRelation r = substance.addStructureRelation(compositionUUID,
+				record, STRUCTURE_RELATION.HAS_ADDITIVE, p);
 		r.setName(name);
 		return record;
 	}
@@ -252,8 +290,8 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	 * @param constituent
 	 * @return
 	 */
-	protected IStructureRecord impurity2record(String compositionUUID,String name,
-			SubstanceRecord substance, Impurity a) {
+	protected IStructureRecord impurity2record(String compositionUUID,
+			String name, SubstanceRecord substance, Impurity a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
 
@@ -304,9 +342,9 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 			}
 
 		}
-	
-		IStructureRelation r = substance.addStructureRelation(compositionUUID, record,
-				STRUCTURE_RELATION.HAS_IMPURITY, p);
+
+		IStructureRelation r = substance.addStructureRelation(compositionUUID,
+				record, STRUCTURE_RELATION.HAS_IMPURITY, p);
 		r.setName(name);
 		return record;
 	}
@@ -318,17 +356,18 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	 * @return
 	 */
 	protected IStructureRecord constituent2record(Substance unmarshalled,
-			String compositionUUID,String cname, 
-			SubstanceRecord substance, Constituent a) {
-	        if (a==null) return null;
+			String compositionUUID, String cname, SubstanceRecord substance,
+			Constituent a) {
+		if (a == null)
+			return null;
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
 		record.setType(STRUC_TYPE.NA);
-		if (a.getReferenceSubstance()!=null) {
-		    record.setContent(a.getReferenceSubstance().getDescription());
+		if (a.getReferenceSubstance() != null) {
+			record.setContent(a.getReferenceSubstance().getDescription());
 
-		    setReferenceSubstanceUUID(record, a.getReferenceSubstance()
-				.getUniqueKey());
+			setReferenceSubstanceUUID(record, a.getReferenceSubstance()
+					.getUniqueKey());
 		}
 
 		Proportion p = new Proportion();
@@ -370,9 +409,9 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				p.setTypical_unit("");
 			}
 		}
-		
-		IStructureRelation r = substance.addStructureRelation(compositionUUID, record,
-				STRUCTURE_RELATION.HAS_CONSTITUENT, p);
+
+		IStructureRelation r = substance.addStructureRelation(compositionUUID,
+				record, STRUCTURE_RELATION.HAS_CONSTITUENT, p);
 		r.setName(cname);
 		// Adding the tradenames to the reference structure
 		if ((unmarshalled != null) && (unmarshalled.getTradeNames() != null)) {
@@ -407,14 +446,17 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 		if (unmarshalled.getName() != null)
 			structureRecord.setRecordProperty(I5ReaderSimple.nameProperty,
 					unmarshalled.getName());
-		
-		if (unmarshalled.getEcSubstanceInventoryEntryRef()!=null) 
+
+		if (unmarshalled.getEcSubstanceInventoryEntryRef() != null)
 			if (unmarshalled.getEcSubstanceInventoryEntryRef().getNumber() != null)
-				structureRecord.setRecordProperty(I5ReaderSimple.ecProperty, unmarshalled.getEcSubstanceInventoryEntryRef().getNumber());
+				structureRecord.setRecordProperty(I5ReaderSimple.ecProperty,
+						unmarshalled.getEcSubstanceInventoryEntryRef()
+								.getNumber());
 
 		structureRecord.setFormat(null);
 		if (unmarshalled.getReferenceSubstanceStructure() != null) {
-			String inchi = unmarshalled.getReferenceSubstanceStructure().getInChI();
+			String inchi = unmarshalled.getReferenceSubstanceStructure()
+					.getInChI();
 			if (inchi != null && !"".equals(inchi)) {
 				structureRecord.setFormat(MOL_TYPE.INC.name());
 				structureRecord.setContent(inchi);
@@ -425,48 +467,55 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 				structureRecord.setType(STRUC_TYPE.NA);
 			}
 			structureRecord.setInchi(null);
-			String smiles = unmarshalled.getReferenceSubstanceStructure().getSmilesNotation();
+			String smiles = unmarshalled.getReferenceSubstanceStructure()
+					.getSmilesNotation();
 			if (smiles != null && !"".equals(smiles)) {
-				if (structureRecord.getFormat()==null) {
+				if (structureRecord.getFormat() == null) {
 					structureRecord.setFormat(MOL_TYPE.INC.name());
 					structureRecord.setContent(smiles);
 				}
 				structureRecord.setType(STRUC_TYPE.D1);
 			}
 			structureRecord.setSmiles(smiles);
-			structureRecord.setFormula(unmarshalled.getReferenceSubstanceStructure().getMolecularFormula());
+			structureRecord.setFormula(unmarshalled
+					.getReferenceSubstanceStructure().getMolecularFormula());
 		} else
 			structureRecord.setType(STRUC_TYPE.NA);
 
-		if (structureRecord.getFormat()==null) structureRecord.setFormat(MOL_TYPE.SDF.name());
-		CasInformation cas = unmarshalled.getReferenceSubstanceInformation().getCasInformation();
+		if (structureRecord.getFormat() == null)
+			structureRecord.setFormat(MOL_TYPE.SDF.name());
+		CasInformation cas = unmarshalled.getReferenceSubstanceInformation()
+				.getCasInformation();
 		if (cas != null) {
 			try {
-				structureRecord.setRecordProperty(I5ReaderSimple.casProperty,casProcessor.process(cas.getCasNumber()));
+				structureRecord.setRecordProperty(I5ReaderSimple.casProperty,
+						casProcessor.process(cas.getCasNumber()));
 			} catch (Exception x) {
-				structureRecord.setRecordProperty(I5ReaderSimple.casProperty,	cas.getCasNumber());
+				structureRecord.setRecordProperty(I5ReaderSimple.casProperty,
+						cas.getCasNumber());
 			}
-			/* CAS name
-			try {
-				structureRecord.setProperty(I5ReaderSimple.casProperty,casProcessor.process(cas.getCasNumber()));
-			} catch (Exception x) {
-				structureRecord.setProperty(I5ReaderSimple.casProperty,	cas.getCasNumber());
-			}
-			*/
+			/*
+			 * CAS name try {
+			 * structureRecord.setProperty(I5ReaderSimple.casProperty
+			 * ,casProcessor.process(cas.getCasNumber())); } catch (Exception x)
+			 * { structureRecord.setProperty(I5ReaderSimple.casProperty,
+			 * cas.getCasNumber()); }
+			 */
 		}
-		String iupacName = unmarshalled.getReferenceSubstanceInformation().getIupacName();
+		String iupacName = unmarshalled.getReferenceSubstanceInformation()
+				.getIupacName();
 		if ((iupacName != null) && !"".equals(iupacName.trim()))
-			structureRecord.setRecordProperty(Property.getNameInstance(), iupacName);
-		
-		
-		Synonyms synonyms = unmarshalled.getReferenceSubstanceInformation().getSynonyms();
+			structureRecord.setRecordProperty(Property.getNameInstance(),
+					iupacName);
+
+		Synonyms synonyms = unmarshalled.getReferenceSubstanceInformation()
+				.getSynonyms();
 		if (synonyms != null) {
 			List<String> lookup = new ArrayList<String>();
 			for (int i = 0; i < synonyms.getSynonym().size(); i++)
 				if (lookup.indexOf(synonyms.getSynonym().get(i).getName()) < 0)
 					lookup.add(synonyms.getSynonym().get(i).getName());
-			
-			
+
 			for (int i = 0; i < lookup.size(); i++) {
 				structureRecord
 						.setRecordProperty(
@@ -482,7 +531,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 														I5ReaderSimple.I5_URL),
 												I5ReaderSimple.I5_URL)), lookup
 										.get(i));
-			}	
+			}
 
 		}
 
@@ -508,6 +557,7 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	protected void setReferenceSubstanceUUID(IStructureRecord record,
 			String value) {
 		int slashpos = value.indexOf("/");
+		String prefix = value.substring(0, 4);
 		if (slashpos > 0)
 			record.setRecordProperty(Property.getI5UUIDInstance(),
 					value.substring(0, slashpos));
@@ -518,9 +568,11 @@ public class I5AmbitProcessor<Target> extends DefaultAmbitProcessor<Target, IStr
 	protected void setFormat(IStructureRecord record) {
 		record.setFormat("i5._4.");
 	}
+
 	protected String getValue(String value, JAXBElement<String> other) {
-		return value==null?value:(value.startsWith("other")?(other==null?null:other.getValue()):value);
+		return value == null ? value
+				: (value.startsWith("other") ? (other == null ? null : other
+						.getValue()) : value);
 	}
 
 }
-
