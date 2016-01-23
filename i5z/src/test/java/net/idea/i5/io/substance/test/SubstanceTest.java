@@ -453,12 +453,6 @@ Value	2	1976	h
 		URL url = SubstanceTest.class.getClassLoader().getResource(test);
 		Assert.assertEquals(10,unmarshall_i5z(new File(url.getFile()),10));		
 	}
-	@Test
-	public void test_i5z_2016() throws Exception {
-
-		String file = "F:/nina/Ideaconsult/Projects/ECHA_DISSEMINATION/echa_dissemination_i5z_export_files/5000/ECHA-9ea0077b-c4a1-4706-bf07-f14aba4fc4d4.i5z";
-		Assert.assertEquals(1018,unmarshall_i5z(new File(file),1354));		
-	}
 	
 	protected int unmarshall_i5z(File in,int nfiles) throws Exception {
 		Assert.assertNotNull(in);
