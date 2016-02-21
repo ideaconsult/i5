@@ -141,7 +141,7 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 				hasNext = false;
 				return true;
 			} catch (Exception x) {
-				try { handleError("JAXB error",x);} 
+				try { handleError(x.getMessage(),x);} 
 				catch (Exception xx) {
 					logger.log(java.util.logging.Level.SEVERE,x.getMessage(),xx);
 				}
