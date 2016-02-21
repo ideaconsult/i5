@@ -221,7 +221,7 @@ public class I5AmbitProcessor<Target> extends
 	 * @return
 	 */
 	protected IStructureRecord additive2record(String compositionUUID,
-			String name, SubstanceRecord substance, Additive a) {
+			String cname, SubstanceRecord substance, Additive a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
 
@@ -280,7 +280,7 @@ public class I5AmbitProcessor<Target> extends
 		}
 		IStructureRelation r = substance.addStructureRelation(compositionUUID,
 				record, STRUCTURE_RELATION.HAS_ADDITIVE, p);
-		r.setName(name);
+		r.setName(cname==null?null:cname.trim().toLowerCase());
 		return record;
 	}
 
@@ -291,7 +291,7 @@ public class I5AmbitProcessor<Target> extends
 	 * @return
 	 */
 	protected IStructureRecord impurity2record(String compositionUUID,
-			String name, SubstanceRecord substance, Impurity a) {
+			String cname, SubstanceRecord substance, Impurity a) {
 		IStructureRecord record = new StructureRecord();
 		setFormat(record);
 
@@ -345,7 +345,7 @@ public class I5AmbitProcessor<Target> extends
 
 		IStructureRelation r = substance.addStructureRelation(compositionUUID,
 				record, STRUCTURE_RELATION.HAS_IMPURITY, p);
-		r.setName(name);
+		r.setName(cname==null?null:cname.trim().toLowerCase());
 		return record;
 	}
 
@@ -412,7 +412,7 @@ public class I5AmbitProcessor<Target> extends
 
 		IStructureRelation r = substance.addStructureRelation(compositionUUID,
 				record, STRUCTURE_RELATION.HAS_CONSTITUENT, p);
-		r.setName(cname);
+		r.setName(cname==null?null:cname.trim().toLowerCase());
 		// Adding the tradenames to the reference structure
 		if ((unmarshalled != null) && (unmarshalled.getTradeNames() != null)) {
 			for (int i = 0; i < unmarshalled.getTradeNames().getTradeName()
