@@ -203,16 +203,26 @@ public class I5ZReader<SUBSTANCE> extends ZipReader<I5Options> implements
 			if (cp != null) {
 				logger.log(Level.FINE, cp);
 				if (cp.indexOf(".referencesubstance") >= 0) {
-					referenceSubstances.add(file);
 					if (options != null
 							&& (options.getMaxReferenceStructures() > -1)
-							&& (referenceSubstances.size() > options
-									.getMaxReferenceStructures()))
-						throw new AmbitIOException(
-								String.format(
-										"Exceeded the number of maximum reference structures (%d) in zip file %s ",
-										options.getMaxReferenceStructures(),
-										zipfile.getAbsolutePath()));
+							&& (referenceSubstances.size() >= options
+									.getMaxReferenceStructures())) {
+
+						if (options.isExceptionOnMaxReferenceStructures())
+							throw new AmbitIOException(
+									String.format(
+											"Exceeded the number of maximum reference structures (%d) in zip file %s ",
+											options.getMaxReferenceStructures(),
+											zipfile.getAbsolutePath()));
+						else {
+							//ignore the file
+							logger.log(Level.WARNING,String.format(
+									"Exceeded the number of maximum reference structures (%d) in zip file %s ",
+									options.getMaxReferenceStructures(),
+									zipfile.getAbsolutePath()));
+						}; 
+					} else
+						referenceSubstances.add(file);
 				} else if (cp.indexOf(".substance") >= 0) {
 					substances.add(file);
 					if (options != null

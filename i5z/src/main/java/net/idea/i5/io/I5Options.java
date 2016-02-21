@@ -7,7 +7,14 @@ package net.idea.i5.io;
  */
 public class I5Options {
 	protected boolean allowMultipleSubstances = false;
-
+	protected boolean exceptionOnMaxReferenceStructures = false;
+	public boolean isExceptionOnMaxReferenceStructures() {
+		return exceptionOnMaxReferenceStructures;
+	}
+	public void setExceptionOnMaxReferenceStructures(
+			boolean exceptionOnMaxReferenceStructures) {
+		this.exceptionOnMaxReferenceStructures = exceptionOnMaxReferenceStructures;
+	}
 	protected int maxReferenceStructures = -1; 
 	public int getMaxReferenceStructures() {
 		return maxReferenceStructures;
