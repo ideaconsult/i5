@@ -62,7 +62,7 @@ public class StudyRecordConverter extends TOXStudyRecordConvertor<eu.europa.echa
 				}
 
 			}	
-		else qax = new QACriteriaException("Empty reference!");
+		else if (!isReferenceTypeAccepted(null)) qax = new QACriteriaException("Empty reference!");
 		if (qax!=null) throw qax;
 	}			
 	@Override

@@ -79,7 +79,7 @@ public class StudyRecordConverter
 		}
 
 	    }
-	else
+	else if (!isReferenceTypeAccepted(null))
 	    qax = new QACriteriaException("Empty reference!");
 	if (qax != null)
 	    throw qax;

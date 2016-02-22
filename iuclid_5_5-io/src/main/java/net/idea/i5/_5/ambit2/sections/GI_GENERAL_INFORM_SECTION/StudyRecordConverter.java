@@ -65,7 +65,7 @@ public class StudyRecordConverter extends PChemStudyRecordConvertor<eu.europa.ec
 				}
 
 			}	
-		else qax = new QACriteriaException("Empty reference!");
+		else if (!isReferenceTypeAccepted(null)) qax = new QACriteriaException("Empty reference!");
 		if (qax!=null) throw qax;
 	}				
 	@Override
