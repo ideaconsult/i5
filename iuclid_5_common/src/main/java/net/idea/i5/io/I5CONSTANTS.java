@@ -158,5 +158,10 @@ public class I5CONSTANTS {
     public static final String Z = "Z";
 
     public static final String SPECIFIC_SURFACE_AREA = "SPECIFIC_SURFACE_AREA";
+    
+    //irritation
+    public static final String cReversibility = "Reversibility";
+    public static final String cMaxScore = "MaxScore";
+    
 
 }
