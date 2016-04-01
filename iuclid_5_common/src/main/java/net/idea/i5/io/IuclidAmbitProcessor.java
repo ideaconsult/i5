@@ -3,7 +3,6 @@ package net.idea.i5.io;
 import javax.xml.bind.JAXBElement;
 
 import net.idea.modbcum.p.DefaultAmbitProcessor;
-import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
 import ambit2.base.data.StructureRecord;
 import ambit2.base.data.SubstanceRecord;
@@ -19,8 +18,15 @@ public abstract class IuclidAmbitProcessor<Target> extends
 	protected SubstanceRecord record = new SubstanceRecord();
 	protected StructureRecord structureRecord = new StructureRecord();
 	protected CASProcessor casProcessor = new CASProcessor();
-
 	protected QASettings qaSettings;
+	protected String container;
+	/**
+	 * @param container the i5z file 
+	 */
+	public IuclidAmbitProcessor(String container) {
+		super();
+		this.container = container;
+	}
 
 	@Override
 	public QASettings getQASettings() {

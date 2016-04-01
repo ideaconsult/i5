@@ -59,8 +59,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 */
 	public I5DReader(String container,InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller,QASettings qaSettings) throws CDKException {
 		super(in,jaxbContext, jaxbUnmarshaller);
-		initProcessors(qaSettings);
-		record.setContent(container);
+		initProcessors(qaSettings, container);
 	}
 	public I5DReader(String container,InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller) throws CDKException {
 		this(container,in,jaxbContext,jaxbUnmarshaller,new QASettings());
@@ -73,8 +72,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 */
 	public I5DReader(String container,InputStream in,QASettings qaSettings) throws CDKException {
 		super(in);
-		initProcessors(qaSettings);
-		record.setContent(container);
+		initProcessors(qaSettings, container);
 	}
 
 	/**
@@ -85,17 +83,16 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 */
 	public I5DReader(String container,InputStream in,String contextPath,QASettings qaSettings) throws CDKException {
 		super(in,contextPath);
-		initProcessors(qaSettings);
-		record.setContent(container);
+		initProcessors(qaSettings, container);
 	}
 	
-	protected void initProcessors(QASettings qaSettings) {
+	protected void initProcessors(QASettings qaSettings, String container) {
 		record = new SubstanceRecord();
 		
 		
-		net.idea.i5._0.ambit2.I5AmbitProcessor i50 = new net.idea.i5._0.ambit2.I5AmbitProcessor();
-		net.idea.i5._5.ambit2.I5AmbitProcessor i55 = new net.idea.i5._5.ambit2.I5AmbitProcessor();
-		net.idea.i5._4.ambit2.I5AmbitProcessor i54 = new net.idea.i5._4.ambit2.I5AmbitProcessor();
+		net.idea.i5._0.ambit2.I5AmbitProcessor i50 = new net.idea.i5._0.ambit2.I5AmbitProcessor(container);
+		net.idea.i5._5.ambit2.I5AmbitProcessor i55 = new net.idea.i5._5.ambit2.I5AmbitProcessor(container);
+		net.idea.i5._4.ambit2.I5AmbitProcessor i54 = new net.idea.i5._4.ambit2.I5AmbitProcessor(container);
 		
 		i55.setQASettings(qaSettings);
 		i54.setQASettings(qaSettings);

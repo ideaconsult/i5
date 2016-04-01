@@ -44,7 +44,9 @@ public class I5AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 	private static final long serialVersionUID = 4709118915064457190L;
 	protected Hashtable<String, IStudyRecordConverter> convertors = new Hashtable<String, IStudyRecordConverter>();
 
-
+	public I5AmbitProcessor(String container) {
+		super(container);
+	}
 
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
 		if (unmarshalled instanceof Substance) {

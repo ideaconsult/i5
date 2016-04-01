@@ -23,6 +23,10 @@ public class I5AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 	 */
 	private static final long serialVersionUID = 3640668819435122630L;
 
+	public I5AmbitProcessor(String container) {
+		super(container);
+	}
+
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
 		if (unmarshalled instanceof ReferenceSubstance)
 			return transform2record((ReferenceSubstance) unmarshalled);

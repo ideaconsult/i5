@@ -48,6 +48,9 @@ public class I5AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 	/**
 	 * 
 	 */
+	public I5AmbitProcessor(String container) {
+		super(container);
+	}
 
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
 		if (unmarshalled instanceof Substance) {
@@ -261,7 +264,7 @@ public class I5AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 		}
 		IStructureRelation r = substance.addStructureRelation(compositionUUID,
 				record, STRUCTURE_RELATION.HAS_ADDITIVE, p);
-		r.setName(cname==null?null:cname.trim().toLowerCase());
+		r.setName(cname == null ? null : cname.trim().toLowerCase());
 		return record;
 	}
 
@@ -326,7 +329,7 @@ public class I5AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 		IStructureRelation r = substance.addStructureRelation(compositionUUID,
 				record, STRUCTURE_RELATION.HAS_IMPURITY, p);
-		r.setName(cname==null?null:cname.trim().toLowerCase());
+		r.setName(cname == null ? null : cname.trim().toLowerCase());
 		return record;
 	}
 
@@ -393,7 +396,7 @@ public class I5AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 		IStructureRelation r = substance.addStructureRelation(compositionUUID,
 				record, STRUCTURE_RELATION.HAS_CONSTITUENT, p);
-		r.setName(cname==null?null:cname.trim().toLowerCase());
+		r.setName(cname == null ? null : cname.trim().toLowerCase());
 		// Adding the tradenames to the reference structure
 		if ((unmarshalled != null) && (unmarshalled.getTradeNames() != null)) {
 			for (int i = 0; i < unmarshalled.getTradeNames().getTradeName()
@@ -522,6 +525,5 @@ public class I5AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 	protected void setFormat(IStructureRecord record) {
 		record.setFormat("i5._4.");
 	}
-
 
 }
