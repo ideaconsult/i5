@@ -60,6 +60,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	public I5DReader(String container,InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller,QASettings qaSettings) throws CDKException {
 		super(in,jaxbContext, jaxbUnmarshaller);
 		initProcessors(qaSettings);
+		record.setContent(container);
 	}
 	public I5DReader(String container,InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller) throws CDKException {
 		this(container,in,jaxbContext,jaxbUnmarshaller,new QASettings());

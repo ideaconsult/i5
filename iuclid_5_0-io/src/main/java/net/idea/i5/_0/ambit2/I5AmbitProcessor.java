@@ -3,14 +3,12 @@ package net.idea.i5._0.ambit2;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.idea.i5.io.IuclidAmbitProcessor;
 import net.idea.modbcum.i.exceptions.AmbitException;
-import net.idea.modbcum.p.DefaultAmbitProcessor;
 import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
-import ambit2.base.data.StructureRecord;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.base.interfaces.IStructureRecord.MOL_TYPE;
-import ambit2.base.processors.CASProcessor;
 import ambit2.core.config.AmbitCONSTANTS;
 import ambit2.core.io.ECHAPreregistrationListReader;
 import ambit2.core.io.I5ReaderSimple;
@@ -18,15 +16,12 @@ import eu.europa.echa.schemas.iuclid5._20070330.referencesubstance.ReferenceSubs
 import eu.europa.echa.schemas.iuclid5._20070330.referencesubstance.ReferenceSubstance.ReferenceSubstanceInformation.CasInformation;
 import eu.europa.echa.schemas.iuclid5._20070330.referencesubstance.ReferenceSubstance.ReferenceSubstanceInformation.Synonyms;
 
-public class I5AmbitProcessor<Target> extends
-		DefaultAmbitProcessor<Target, IStructureRecord> {
-	// protected SubstanceRecord substanceRecord = new SubstanceRecord();
-	protected StructureRecord structureRecord = new StructureRecord();
-	protected CASProcessor casProcessor = new CASProcessor();
+public class I5AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -38158314141255416L;
+	private static final long serialVersionUID = 3640668819435122630L;
 
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
 		if (unmarshalled instanceof ReferenceSubstance)
@@ -99,17 +94,6 @@ public class I5AmbitProcessor<Target> extends
 		}
 
 		return structureRecord;
-	}
-
-	protected void setReferenceSubstanceUUID(IStructureRecord record,
-			String value) {
-		int slashpos = value.indexOf("/");
-		String prefix = value.substring(0, 4);
-		if (slashpos > 0)
-			record.setRecordProperty(Property.getI5UUIDInstance(),
-					value.substring(0, slashpos));
-		else
-			record.setRecordProperty(Property.getI5UUIDInstance(), value);
 	}
 
 	protected void setFormat(IStructureRecord record) {

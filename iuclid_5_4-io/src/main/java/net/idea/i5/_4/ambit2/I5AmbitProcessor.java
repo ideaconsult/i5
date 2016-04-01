@@ -5,16 +5,12 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.logging.Level;
 
-import javax.xml.bind.JAXBElement;
-
 import net.idea.i5.ambit2.phrases.Phrases;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
-import net.idea.i5.io.IQASettings;
 import net.idea.i5.io.IStudyRecordConverter;
+import net.idea.i5.io.IuclidAmbitProcessor;
 import net.idea.i5.io.QACriteriaException;
-import net.idea.i5.io.QASettings;
 import net.idea.modbcum.i.exceptions.AmbitException;
-import net.idea.modbcum.p.DefaultAmbitProcessor;
 import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
 import ambit2.base.data.StructureRecord;
@@ -24,7 +20,6 @@ import ambit2.base.interfaces.IStructureRecord;
 import ambit2.base.interfaces.IStructureRecord.MOL_TYPE;
 import ambit2.base.interfaces.IStructureRecord.STRUC_TYPE;
 import ambit2.base.interfaces.IStructureRelation;
-import ambit2.base.processors.CASProcessor;
 import ambit2.base.relation.STRUCTURE_RELATION;
 import ambit2.base.relation.composition.Proportion;
 import ambit2.core.config.AmbitCONSTANTS;
@@ -42,31 +37,17 @@ import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCom
 import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.SubstanceCompositions.SubstanceComposition.Impurities.Impurity;
 import eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.TradeNames.TradeName;
 
-public class I5AmbitProcessor<Target> extends
-		DefaultAmbitProcessor<Target, IStructureRecord> implements IQASettings {
-	protected SubstanceRecord record = new SubstanceRecord();
-	protected StructureRecord structureRecord = new StructureRecord();
-	protected CASProcessor casProcessor = new CASProcessor();
-
-	protected Hashtable<String, IStudyRecordConverter> convertors = new Hashtable<String, IStudyRecordConverter>();
-	protected QASettings qaSettings;
-
-	@Override
-	public QASettings getQASettings() {
-		if (qaSettings == null)
-			qaSettings = new QASettings();
-		return qaSettings;
-	}
-
-	@Override
-	public void setQASettings(QASettings qualityCheckEnabled) {
-		this.qaSettings = qualityCheckEnabled;
-	}
+public class I5AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -38158314141255416L;
+	private static final long serialVersionUID = -4667995078556609950L;
+	protected Hashtable<String, IStudyRecordConverter> convertors = new Hashtable<String, IStudyRecordConverter>();
+
+	/**
+	 * 
+	 */
 
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
 		if (unmarshalled instanceof Substance) {
@@ -538,41 +519,9 @@ public class I5AmbitProcessor<Target> extends
 		return structureRecord;
 	}
 
-	protected void setCompanyUUID(SubstanceRecord record, String value) {
-		int slashpos = value.indexOf("/");
-		if (slashpos > 0)
-			record.setSubstanceUUID(value.substring(0, slashpos));
-		else
-			record.setSubstanceUUID(value);
-	}
-
-	protected void setOwnerUUID(SubstanceRecord record, String value) {
-		int slashpos = value.indexOf("/");
-		if (slashpos > 0)
-			record.setOwnerUUID(value.substring(0, slashpos));
-		else
-			record.setOwnerUUID(value);
-	}
-
-	protected void setReferenceSubstanceUUID(IStructureRecord record,
-			String value) {
-		int slashpos = value.indexOf("/");
-		String prefix = value.substring(0, 4);
-		if (slashpos > 0)
-			record.setRecordProperty(Property.getI5UUIDInstance(),
-					value.substring(0, slashpos));
-		else
-			record.setRecordProperty(Property.getI5UUIDInstance(), value);
-	}
-
 	protected void setFormat(IStructureRecord record) {
 		record.setFormat("i5._4.");
 	}
 
-	protected String getValue(String value, JAXBElement<String> other) {
-		return value == null ? value
-				: (value.startsWith("other") ? (other == null ? null : other
-						.getValue()) : value);
-	}
 
 }
