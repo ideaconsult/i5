@@ -43,10 +43,13 @@ public abstract class IuclidAmbitProcessor<Target> extends
 
 	protected void setCompanyUUID(SubstanceRecord record, String value) {
 		int slashpos = value.indexOf("/");
-		if (slashpos > 0)
+		if (slashpos > 0) {
 			record.setSubstanceUUID(value.substring(0, slashpos));
-		else
+			record.setContent(value.substring(slashpos+1));
+		} else {
 			record.setSubstanceUUID(value);
+			record.setContent(container);
+		}	
 	}
 
 	protected void setOwnerUUID(SubstanceRecord record, String value) {
@@ -61,12 +64,13 @@ public abstract class IuclidAmbitProcessor<Target> extends
 			String value) {
 		int slashpos = value.indexOf("/");
 		String prefix = value.substring(0, 4);
-		
+		Property i5uuid = Property.getInstance(Property.IUCLID5_UUID, container);
+		i5uuid.setLabel(Property.opentox_IUCLID5_UUID);
 		if (slashpos > 0)
-			record.setRecordProperty(Property.getI5UUIDInstance(),
+			record.setRecordProperty(i5uuid,
 					value.substring(0, slashpos));
 		else
-			record.setRecordProperty(Property.getI5UUIDInstance(), value);
+			record.setRecordProperty(i5uuid, value);
 	}
 
 	protected String getValue(String value, JAXBElement<String> other) {
