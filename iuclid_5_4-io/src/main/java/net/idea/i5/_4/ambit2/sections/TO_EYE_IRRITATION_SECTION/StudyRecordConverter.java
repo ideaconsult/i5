@@ -178,8 +178,11 @@ public class StudyRecordConverter
 				try {
 					EffectRecord<String, IParams, String> effect = endpointCategory
 							.createEffectRecord();
-					effect.setEndpoint(set.getPHRASEOTHERPARAMETER()
-							.getPARAMETERValue());
+
+					effect.setEndpoint(getValue(
+							set.getPHRASEOTHERPARAMETER().getPARAMETERValue(),
+							set.getPHRASEOTHERPARAMETER().getPARAMETERTXT())
+							);
 					try {
 						effect.setLoQualifier(set
 								.getPRECISIONSCORELOQUALIFIER()

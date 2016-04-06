@@ -183,8 +183,10 @@ public class StudyRecordConverter
 				try {
 					EffectRecord<String, IParams, String> effect = endpointCategory
 							.createEffectRecord();
-					effect.setEndpoint(set.getPHRASEOTHERPARAMETER()
-							.getPARAMETERValue());
+					effect.setEndpoint(getValue(
+							set.getPHRASEOTHERPARAMETER().getPARAMETERValue(),
+							set.getPHRASEOTHERPARAMETER().getPARAMETERTXT())
+							);
 					try {
 						effect.setLoQualifier(set
 								.getPRECISIONSCORELOQUALIFIER()
@@ -260,6 +262,8 @@ public class StudyRecordConverter
 
 		} else
 			setInterpretationResult(papp, null, null);
+		
+		
 
 		if (sciPart.getTOSKINIRRITATION().getCRITERIASUBMITTER() != null) {
 			papp.setInterpretationCriteria(getValue(sciPart
