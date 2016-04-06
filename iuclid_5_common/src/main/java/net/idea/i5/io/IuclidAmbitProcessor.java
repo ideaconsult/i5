@@ -1,8 +1,11 @@
 package net.idea.i5.io;
 
+import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 
 import net.idea.modbcum.p.DefaultAmbitProcessor;
+import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
 import ambit2.base.data.StructureRecord;
 import ambit2.base.data.SubstanceRecord;
@@ -76,10 +79,19 @@ public abstract class IuclidAmbitProcessor<Target> extends
 		}
 	}
 
+	protected void setIUPACName(IStructureRecord record, String value) {
+		if (value==null || "".equals(value.trim())) return;
+		Property iupacname = Property.getInstance(Property.Names, container);
+		iupacname.setLabel(Property.opentox_IupacName);
+		record.setRecordProperty(iupacname, value);
+	}
+
 	protected String getValue(String value, JAXBElement<String> other) {
 		return value == null ? value
 				: (value.startsWith("other") ? (other == null ? null : other
 						.getValue()) : value);
 	}
+	
+
 
 }

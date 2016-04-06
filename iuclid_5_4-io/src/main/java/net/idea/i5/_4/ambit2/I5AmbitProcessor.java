@@ -488,9 +488,7 @@ public class I5AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 		}
 		String iupacName = unmarshalled.getReferenceSubstanceInformation()
 				.getIupacName();
-		if ((iupacName != null) && !"".equals(iupacName.trim()))
-			structureRecord.setRecordProperty(Property.getNameInstance(),
-					iupacName);
+		setIUPACName(structureRecord,iupacName);
 
 		Synonyms synonyms = unmarshalled.getReferenceSubstanceInformation()
 				.getSynonyms();
