@@ -242,6 +242,15 @@ public class StudyRecordConverter
 
 		} else
 			setInterpretationResult(papp, null, null);
+		
+
+		if (papp.getInterpretationResult() == null)
+			try {
+				papp.setInterpretationResult(sciPart.getTOSENSITIZATION()
+						.getAPPLCL().getSet().getTEXTAREABELOW()
+						.getTEXTAREABELOW().getValue());
+			} catch (Exception x) {
+			}
 
 		if (sciPart.getTOSENSITIZATION().getCRITERIASUBMITTER() != null) {
 			papp.setInterpretationCriteria(getValue(sciPart

@@ -258,6 +258,14 @@ public class StudyRecordConverter
 		} else
 			setInterpretationResult(papp, null, null);
 
+		if (papp.getInterpretationResult() == null)
+			try {
+				papp.setInterpretationResult(sciPart.getTOEYEIRRITATION()
+						.getAPPLCL().getSet().getTEXTAREABELOW()
+						.getTEXTAREABELOW().getValue());
+			} catch (Exception x) {
+			}
+
 		if (sciPart.getTOEYEIRRITATION().getCRITERIASUBMITTER() != null) {
 			papp.setInterpretationCriteria(getValue(sciPart
 					.getTOEYEIRRITATION().getCRITERIASUBMITTER().getSet()
