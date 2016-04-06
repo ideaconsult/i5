@@ -262,7 +262,7 @@ public class StudyRecordConverter
 		} else
 			setInterpretationResult(papp, null, null);
 
-		if (papp.getInterpretationResult() == null)
+		if (papp.getInterpretationResult() == null || "".equals(papp.getInterpretationResult()))
 			try {
 				papp.setInterpretationResult(sciPart.getTOSKINIRRITATION()
 						.getAPPLCL().getSet().getTEXTAREABELOW()
