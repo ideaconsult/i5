@@ -20,8 +20,10 @@ public abstract class IuclidAmbitProcessor<Target> extends
 	protected CASProcessor casProcessor = new CASProcessor();
 	protected QASettings qaSettings;
 	protected String container;
+
 	/**
-	 * @param container the i5z file 
+	 * @param container
+	 *            the i5z file
 	 */
 	public IuclidAmbitProcessor(String container) {
 		super();
@@ -35,7 +37,6 @@ public abstract class IuclidAmbitProcessor<Target> extends
 		return qaSettings;
 	}
 
-	
 	@Override
 	public void setQASettings(QASettings qualityCheckEnabled) {
 		this.qaSettings = qualityCheckEnabled;
@@ -45,11 +46,11 @@ public abstract class IuclidAmbitProcessor<Target> extends
 		int slashpos = value.indexOf("/");
 		if (slashpos > 0) {
 			record.setSubstanceUUID(value.substring(0, slashpos));
-			record.setContent(value.substring(slashpos+1));
+			record.setContent(value.substring(slashpos + 1));
 		} else {
 			record.setSubstanceUUID(value);
 			record.setContent(container);
-		}	
+		}
 	}
 
 	protected void setOwnerUUID(SubstanceRecord record, String value) {
@@ -63,14 +64,16 @@ public abstract class IuclidAmbitProcessor<Target> extends
 	protected void setReferenceSubstanceUUID(IStructureRecord record,
 			String value) {
 		int slashpos = value.indexOf("/");
-		String prefix = value.substring(0, 4);
-		Property i5uuid = Property.getInstance(Property.IUCLID5_UUID, container);
-		i5uuid.setLabel(Property.opentox_IUCLID5_UUID);
-		if (slashpos > 0)
-			record.setRecordProperty(i5uuid,
-					value.substring(0, slashpos));
-		else
-			record.setRecordProperty(i5uuid, value);
+		String i5value = (slashpos > 0) ? value.substring(0, slashpos) : value;
+
+		if (record instanceof SubstanceRecord) {
+			((SubstanceRecord) record).setReferenceSubstanceUUID(i5value);
+		} else {
+			Property i5uuid = Property.getInstance(Property.IUCLID5_UUID,
+					container);
+			i5uuid.setLabel(Property.opentox_IUCLID5_UUID);
+			record.setRecordProperty(i5uuid, i5value);
+		}
 	}
 
 	protected String getValue(String value, JAXBElement<String> other) {
@@ -78,5 +81,5 @@ public abstract class IuclidAmbitProcessor<Target> extends
 				: (value.startsWith("other") ? (other == null ? null : other
 						.getValue()) : value);
 	}
-	
+
 }
