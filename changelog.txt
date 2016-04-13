@@ -1,0 +1,53 @@
+# i5-1.2.1
+* modified to read results of skin/eye irritation and sensitisation sections in addition to "interpretation result"
+* reading conclusions field in case the interpretation result is empty
+* reading "other" endpoints
+* store iupac names as distinct properties, with reference to the i5z file
+* Use substanceRecord specific method for setting reference substance
+* add I5UUID as different properties
+* store info of the original file
+* refactoring to move common code to a parent class
+* formatting
+
+# i5-1.2.0
+* don't throw exception on missing reference always - only if qa.isenabled
+* bug fix- the QA settings were not used for IUCLID5.4 format!
+* option to throw exception or to ignire the reference substance if more than max allowed
+* composition name lower case
+* just more useful error message
+* Options fot i5zreader
+* pass down the zip file name
+* i5z dossiers may have>1 substance and the current code does not expect it
+* cleanup
+* I5.4 support enabled
+* convertors to ambit classes
+* jaxb generated studyrecords classes for I5.4
+* and using the new module in 5.5 parser
+* new module, to hold common classes for different versions
+
+# i5-1.1.0
+* next release 1.1.0 with ambit-3.0.0
+* I5D files are within the archive
+* updated to compile with ambit-3.0.0-snapshot
+* Sync with latest Ambit refactoring (IStructureRecord interface change)
+* log level
+* updated to sync with CDK 1.5.x dependency
+* route copied to conditions
+* test type copied to conditions
+* reactant copied to conditions
+* Modified to write species as both conditions and parameters (to use the existing approach of showing the conditions in the RA matrix)
+* Modified to write TO_GENETIC_* study type as both conditions and parameters (to use the existing approach of showing the conditions in the RA matrix)
+* Modified to write TO_REPEATED_* tets atype and species as conditions (to use the existing approach of showing the conditions in the RA matrix)
+* Modified to write TO_ACUTE_* species as conditions (to use the existing approach of showing the conditions in the RA matrix)
+* refactored more NM templates to store errors and text in effect record 
+* reimplemented parsing of I5 ASPECT_RATIO_SHAPE_SECTION
+* NPE check for phrase lookup
+* don't store stdev as parameter
+* check for NPE (on missing reference substance)
+* add ontology URI placeholder
+
+
+
+
+
+
