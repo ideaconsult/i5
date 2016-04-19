@@ -229,13 +229,13 @@ public class StudyRecordConverter
 
 					try {
 						effect.getConditions().put(I5CONSTANTS.cTimePoint,
-								set.getTIMEPOINT());
+								set.getTIMEPOINT().getTIMEPOINT().getValue());
 					} catch (Exception x) {
 					}
 
 					try {
 						effect.getConditions().put(I5CONSTANTS.cMaxScore,
-								set.getSCALE().getSCALE().toString());
+								set.getSCALE().getSCALE().getValue());
 					} catch (Exception x) {
 					}
 					papp.addEffect(effect);
