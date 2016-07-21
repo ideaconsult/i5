@@ -13,6 +13,7 @@
     <module>i5z</module>
     <module>iuclid_5_common</module>
     <module>iuclid_5_sections</module>
+    <module>iuclid_6_sections</module>
   </modules>
   <distributionManagement>
     <snapshotRepository>
