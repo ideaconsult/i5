@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+  <jxb:bindings version="1.0" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jxb:extensionBindingPrefixes="xjc">
+    <jxb:globalBindings localScoping="toplevel" />
+    <jxb:bindings schemaLocation="../xsd/REFERENCE_SUBSTANCE-2.0.xsd" node="/xs:schema">
+    
+       <jxb:bindings node="//xs:element[@name='RelatedSubstances']/xs:complexType/xs:sequence/xs:element[@name='IdentifiersOfRelatedSubstances']/xs:complexType//xs:sequence/xs:element[@name='RelatedSubstances']/xs:complexType">
+        <jxb:property name="RelatedSubstancesInner" />
+      </jxb:bindings>
+    </jxb:bindings>
+  </jxb:bindings>
