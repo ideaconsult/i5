@@ -16,12 +16,12 @@
   </modules>
   <distributionManagement>
     <snapshotRepository>
-      <id>ambit-plovdiv-snapshots</id>
-      <url>http://ambit.uni-plovdiv.bg:8083/nexus/content/repositories/snapshots</url>
+      <id>nexus-idea-snapshots</id>
+      <url>https://nexus.ideaconsult.net/content/repositories/snapshots</url>
     </snapshotRepository>
     <repository>
-      <id>ambit-plovdiv-releases</id>
-      <url>http://ambit.uni-plovdiv.bg:8083/nexus/content/repositories/releases</url>
+      <id>nexus-idea-releases</id>
+      <url>https://nexus.ideaconsult.net/content/repositories/releases</url>
     </repository>
   </distributionManagement>
   <properties>
@@ -54,8 +54,8 @@
       </snapshots>
     </repository>
     <repository>
-      <id>ambit-plovdiv</id>
-      <url>http://ambit.uni-plovdiv.bg:8083/nexus/content/repositories/thirdparty</url>
+      <id>nexus-idea</id>
+      <url>https://nexus.ideaconsult.net/content/repositories/thirdparty</url>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
@@ -67,9 +67,9 @@
       <releases>
         <enabled>true</enabled>
       </releases>
-      <id>ambit-plovdiv-releases</id>
-      <name>ambit-plovdiv-releases</name>
-      <url>http://ambit.uni-plovdiv.bg:8083/nexus/content/repositories/releases</url>
+      <id>nexus-idea-releases</id>
+      <name>nexus-idea-releases</name>
+      <url>https://nexus.ideaconsult.net/content/repositories/releases</url>
     </repository>
     <repository>
       <releases>
@@ -78,9 +78,9 @@
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
-      <id>ambit-plovdiv-snapshots</id>
-      <name>ambit-plovdiv-snapshots</name>
-      <url>http://ambit.uni-plovdiv.bg:8083/nexus/content/repositories/snapshots</url>
+      <id>nexus-idea-snapshots</id>
+      <name>nexus-idea-snapshots</name>
+      <url>https://nexus.ideaconsult.net/content/repositories/snapshots</url>
     </repository>
   </repositories>
   <dependencies>
