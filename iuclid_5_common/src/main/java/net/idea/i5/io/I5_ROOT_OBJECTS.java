@@ -85,7 +85,7 @@ public enum I5_ROOT_OBJECTS {
 	GI_GENERAL_INFORM {
 		@Override
 		public String getTitle() {
-			return "Appearance";
+			return "Appearance/physical state/colour";
 		}
 
 		@Override
@@ -107,11 +107,13 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] {
-
-			};
+			return new String[] {};
 		}
 
+		@Override
+		public String getOntologyURI() {
+			return "NPO_888";
+		}
 	},
 	PC_MELTING {
 		@Override
@@ -126,8 +128,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.rDECOMPOSITION,
-					I5CONSTANTS.rSUBLIMATION };
+			return new String[] { I5CONSTANTS.rDECOMPOSITION, I5CONSTANTS.rSUBLIMATION };
 		}
 
 		@Override
@@ -145,6 +146,11 @@ public enum I5_ROOT_OBJECTS {
 
 			return "CHEMINF_000256";
 		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG102" };
+		}
 	},
 	PC_BOILING {
 		@Override
@@ -159,8 +165,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.rDECOMPOSITION,
-					I5CONSTANTS.AtmPressure };
+			return new String[] { I5CONSTANTS.rDECOMPOSITION, I5CONSTANTS.AtmPressure };
 		}
 
 		@Override
@@ -171,6 +176,37 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "CHEMINF_000257";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG103" };
+		}
+	},
+	PC_DENSITY {
+		@Override
+		public String getTitle() {
+			return "Density";
+		}
+
+		@Override
+		public String getNumber() {
+			return "4.4";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG109" };
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "CHEMINF_000416";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
 		}
 	},
 	PC_GRANULOMETRY {
@@ -196,9 +232,8 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getEndpoints() {
-			return new String[] { I5CONSTANTS.pMMD, I5CONSTANTS.pMMAD,
-					I5CONSTANTS.pGSD, I5CONSTANTS.pPARTICLESIZE
-			// I5CONSTANTS.pPARTICLESIZE + percentile
+			return new String[] { I5CONSTANTS.pMMD, I5CONSTANTS.pMMAD, I5CONSTANTS.pGSD, I5CONSTANTS.pPARTICLESIZE
+					// I5CONSTANTS.pPARTICLESIZE + percentile
 			};
 		}
 
@@ -209,8 +244,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.pTESTMAT_FORM,
-					I5CONSTANTS.pDISTRIBUTION_TYPE };
+			return new String[] { I5CONSTANTS.pTESTMAT_FORM, I5CONSTANTS.pDISTRIBUTION_TYPE };
 		}
 
 		@Override
@@ -218,9 +252,15 @@ public enum I5_ROOT_OBJECTS {
 			// http://purl.obolibrary.org/obo/CHMO_0002119
 			return "CHMO_0002119";
 		}
+
 		@Override
 		public String getContextPath() {
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name());
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG110" };
 		}
 	},
 	PC_VAPOUR {
@@ -244,6 +284,10 @@ public enum I5_ROOT_OBJECTS {
 			return "CHEMINF_000419";
 		}
 
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG104" };
+		}
 	},
 	PC_PARTITION {
 		@Override
@@ -274,6 +318,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "BAO_0002130";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG107", "TG117", "TG123" };
 		}
 	},
 	PC_WATER_SOL {
@@ -311,6 +360,11 @@ public enum I5_ROOT_OBJECTS {
 		public String getOntologyURI() {
 			return "BAO_0002775";
 		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG105" };
+		}
 	},
 	PC_SOL_ORGANIC {
 		@Override
@@ -330,8 +384,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cTemperature, I5CONSTANTS.Remark,
-					I5CONSTANTS.cSolvent };
+			return new String[] { I5CONSTANTS.cTemperature, I5CONSTANTS.Remark, I5CONSTANTS.cSolvent };
 		}
 
 		@Override
@@ -339,7 +392,213 @@ public enum I5_ROOT_OBJECTS {
 			return "BAO_0002135";
 		}
 
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG116" };
+		}
 	},
+	PC_SURFACE_TENSION {
+		@Override
+		public String getTitle() {
+			return "Surface tension";
+		}
+
+		@Override
+		public String getNumber() {
+			return "4.10";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "CHEMINF_000420";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG115" };
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+	},
+	PC_FLASH_POINT {
+		@Override
+		public String getTitle() {
+			return "Flash point";
+		}
+
+		@Override
+		public String getNumber() {
+			return "4.11";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "CHEMINF_000417";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+	},
+	PC_AUTOIGNITION {
+		@Override
+		public String getTitle() {
+			return "Auto-ignition temperature";
+		}
+
+		@Override
+		public String getNumber() {
+			return "4.12";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "CHEMINF_000444";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+	},
+	PC_FLAMMABILITY {
+		@Override
+		public String getTitle() {
+			return "Flammability";
+		}
+
+		@Override
+		public String getNumber() {
+			return "4.13";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+	},
+	PC_EXPLOSIVES {
+		@Override
+		public String getTitle() {
+			return "Explosives";
+		}
+
+		@Override
+		public String getNumber() {
+			return "4.14";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+	},
+	PC_OXIDISING_PROPERTIES {
+		@Override
+		public String getTitle() {
+			return "Oxidising properties";
+		}
+
+		@Override
+		public String getNumber() {
+			return "4.15";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+	},
+
+	PC_REDOX {
+		@Override
+		public String getTitle() {
+			return "Oxidation reduction potential";
+		}
+
+		@Override
+		public String getNumber() {
+			return "4.16";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+	},
+
+	PC_STABILITY_ORGANICSOLVENTS {
+		@Override
+		public String getTitle() {
+			return "Stability in organic solvents and identity of relevant degradation products";
+		}
+
+		@Override
+		public String getNumber() {
+			return "4.17";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+	},
+	PC_STORAGE_STABILITY {
+		@Override
+		public String getTitle() {
+			return "Storage stability and reactivity towards container material";
+		}
+
+		@Override
+		public String getNumber() {
+			return "4.18";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+	},
+	PC_STABILITY {
+		@Override
+		public String getTitle() {
+			return "Stability: thermal, sunlight, metals";
+		}
+
+		@Override
+		public String getNumber() {
+			return "4.19";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#C54072";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG113" };
+		}
+	},
+
 	PC_NON_SATURATED_PH {
 		@Override
 		public String getTitle() {
@@ -358,13 +617,17 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cTemperature, I5CONSTANTS.cDoses,
-					I5CONSTANTS.Remark };
+			return new String[] { I5CONSTANTS.cTemperature, I5CONSTANTS.cDoses, I5CONSTANTS.Remark };
 		}
 
 		@Override
 		public String getOntologyURI() {
 			return "UO_0000196";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG122" };
 		}
 	},
 	PC_DISSOCIATION {
@@ -393,6 +656,36 @@ public enum I5_ROOT_OBJECTS {
 			return "CHEMINF_000194";
 		}
 
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG112" };
+		}
+	},
+	PC_VISCOSITY {
+		@Override
+		public String getTitle() {
+			return "Viscosity";
+		}
+
+		@Override
+		public String getNumber() {
+			return "4.12";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "NPO_1857";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG114" };
+		}
 	},
 
 	AGGLOMERATION_AGGREGATION {
@@ -413,23 +706,19 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getEndpoints() {
-			return new String[] { I5CONSTANTS.AGGLO_AGGR_DIAM,
-					I5CONSTANTS.AGGLO_AGGR_SIZE,
-					I5CONSTANTS.AGGLO_AGGR_SIZE_DIST,
-					I5CONSTANTS.AGGLO_AGGREGATION_IDX };
+			return new String[] { I5CONSTANTS.AGGLO_AGGR_DIAM, I5CONSTANTS.AGGLO_AGGR_SIZE,
+					I5CONSTANTS.AGGLO_AGGR_SIZE_DIST, I5CONSTANTS.AGGLO_AGGREGATION_IDX };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.pH, I5CONSTANTS.cMEDIUM,
-					I5CONSTANTS.Remark, I5CONSTANTS.cSEQ_NUM,
+			return new String[] { I5CONSTANTS.pH, I5CONSTANTS.cMEDIUM, I5CONSTANTS.Remark, I5CONSTANTS.cSEQ_NUM,
 					I5CONSTANTS.cPERCENTILE };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.pMETHODDETAILS,
-					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
+			return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod };
 		}
 
@@ -438,9 +727,15 @@ public enum I5_ROOT_OBJECTS {
 			return "NPO_1967 NPO_1968";
 			//
 		}
+
 		@Override
 		public String getContextPath() {
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name());
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG110" };
 		}
 	},
 	CRYSTALLINE_PHASE {
@@ -476,19 +771,19 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.pMETHODDETAILS,
-					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
-					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod,
-					I5CONSTANTS.pTESTMAT_FORM, I5CONSTANTS.pMATERIAL_ISOTROPIC };
+			return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
+					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod, I5CONSTANTS.pTESTMAT_FORM,
+					I5CONSTANTS.pMATERIAL_ISOTROPIC };
 		}
 
 		@Override
 		public String getOntologyURI() {
 			return "NPO_1512";
 		}
+
 		@Override
 		public String getContextPath() {
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name());
 		}
 	},
 	CRYSTALLITE_AND_GRAIN_SIZE {
@@ -521,19 +816,24 @@ public enum I5_ROOT_OBJECTS {
 		public String[] getConditions() {
 			return new String[] {
 
-			};
+	};
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.pMETHODDETAILS,
-					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
-					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod,
-					I5CONSTANTS.pTESTMAT_FORM, I5CONSTANTS.pMATERIAL_ISOTROPIC };
+			return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
+					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod, I5CONSTANTS.pTESTMAT_FORM,
+					I5CONSTANTS.pMATERIAL_ISOTROPIC };
 		}
+
 		@Override
 		public String getContextPath() {
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name());
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG110" };
 		}
 	},
 	ASPECT_RATIO_SHAPE {
@@ -559,8 +859,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getEndpoints() {
-			return new String[] { I5CONSTANTS.eASPECT_RATIO_X,
-					I5CONSTANTS.eASPECT_RATIO_Y, I5CONSTANTS.eASPECT_RATIO_Z,
+			return new String[] { I5CONSTANTS.eASPECT_RATIO_X, I5CONSTANTS.eASPECT_RATIO_Y, I5CONSTANTS.eASPECT_RATIO_Z,
 					I5CONSTANTS.eSHAPE };
 		}
 
@@ -571,8 +870,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.pMETHODDETAILS,
-					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
+			return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod };
 		}
 
@@ -580,9 +878,15 @@ public enum I5_ROOT_OBJECTS {
 		public String getOntologyURI() {
 			return "NPO_274 NPO_1365";
 		}
+
 		@Override
 		public String getContextPath() {
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name());
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG110" };
 		}
 	},
 	SPECIFIC_SURFACE_AREA {
@@ -618,19 +922,18 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.pMETHODDETAILS,
-					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
-					I5CONSTANTS.pSAMPLING, I5CONSTANTS.pTESTMAT_FORM,
-					I5CONSTANTS.cTypeMethod };
+			return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
+					I5CONSTANTS.pSAMPLING, I5CONSTANTS.pTESTMAT_FORM, I5CONSTANTS.cTypeMethod };
 		}
 
 		@Override
 		public String getOntologyURI() {
 			return "NPO_1235";
 		}
+
 		@Override
 		public String getContextPath() {
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name());
 		}
 	},
 	ZETA_POTENTIAL {
@@ -656,27 +959,25 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getEndpoints() {
-			return new String[] { I5CONSTANTS.eZETA_POTENTIAL,
-					I5CONSTANTS.eISOELECTRIC_POINT };
+			return new String[] { I5CONSTANTS.eZETA_POTENTIAL, I5CONSTANTS.eISOELECTRIC_POINT };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cMEDIUM, I5CONSTANTS.pH,
-					I5CONSTANTS.Remark };
+			return new String[] { I5CONSTANTS.cMEDIUM, I5CONSTANTS.pH, I5CONSTANTS.Remark };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.pMETHODDETAILS,
-					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
-					I5CONSTANTS.pSAMPLING, I5CONSTANTS.pTESTMAT_FORM,
-					I5CONSTANTS.cTypeMethod };
+			return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
+					I5CONSTANTS.pSAMPLING, I5CONSTANTS.pTESTMAT_FORM, I5CONSTANTS.cTypeMethod };
 		}
+
 		@Override
 		public String getContextPath() {
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name());
 		}
+
 		@Override
 		public String getOntologyURI() {
 			return "NPO_1302";
@@ -705,26 +1006,24 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getEndpoints() {
-			return new String[] { I5CONSTANTS.eATOMIC_COMPOSITION,
-					I5CONSTANTS.eFUNCTIONAL_GROUP };
+			return new String[] { I5CONSTANTS.eATOMIC_COMPOSITION, I5CONSTANTS.eFUNCTIONAL_GROUP };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.pCOATING_DESCRIPTION,
-					I5CONSTANTS.pDESCRIPTION, I5CONSTANTS.Remark,
+			return new String[] { I5CONSTANTS.pCOATING_DESCRIPTION, I5CONSTANTS.pDESCRIPTION, I5CONSTANTS.Remark,
 					I5CONSTANTS.pELEMENT_OR_GROUP, I5CONSTANTS.pTYPE };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.pMETHODDETAILS,
-					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
+			return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
 					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod };
 		}
+
 		@Override
 		public String getContextPath() {
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name());
 		}
 	},
 	DUSTINESS {
@@ -757,24 +1056,23 @@ public enum I5_ROOT_OBJECTS {
 		public String[] getConditions() {
 			return new String[] {
 
-			};
+	};
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.pMETHODDETAILS,
-					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
-					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod,
-					I5CONSTANTS.pTESTMAT_FORM };
+			return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
+					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod, I5CONSTANTS.pTESTMAT_FORM };
 		}
 
 		@Override
 		public String getOntologyURI() {
 			return "ENM_9000003";
 		}
+
 		@Override
 		public String getContextPath() {
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name());
 		}
 	},
 	POROSITY {
@@ -800,8 +1098,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getEndpoints() {
-			return new String[] { I5CONSTANTS.ePOROSITY,
-					I5CONSTANTS.eSPECIFIC_PORE_VOLUME, };
+			return new String[] { I5CONSTANTS.ePOROSITY, I5CONSTANTS.eSPECIFIC_PORE_VOLUME, };
 		}
 
 		@Override
@@ -811,19 +1108,18 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.pMETHODDETAILS,
-					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
-					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod,
-					I5CONSTANTS.pTESTMAT_FORM };
+			return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
+					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod, I5CONSTANTS.pTESTMAT_FORM };
 		}
 
 		@Override
 		public String getOntologyURI() {
 			return "PATO_0000973";
 		}
+
 		@Override
 		public String getContextPath() {
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name());
 		}
 
 	},
@@ -860,19 +1156,18 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.pMETHODDETAILS,
-					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
-					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod,
-					I5CONSTANTS.pTESTMAT_FORM };
+			return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
+					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod, I5CONSTANTS.pTESTMAT_FORM };
 		}
 
 		@Override
 		public String getOntologyURI() {
 			return "ENM_9000004";
 		}
+
 		@Override
 		public String getContextPath() {
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name());
 		}
 	},
 	PHOTOCATALYTIC_ACTIVITY {
@@ -898,8 +1193,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getEndpoints() {
-			return new String[] { I5CONSTANTS.ePHOTOCATALYTIC_ACTIVITY,
-					I5CONSTANTS.eTURNOVERFREQUENCY };
+			return new String[] { I5CONSTANTS.ePHOTOCATALYTIC_ACTIVITY, I5CONSTANTS.eTURNOVERFREQUENCY };
 		}
 
 		@Override
@@ -909,14 +1203,13 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.pMETHODDETAILS,
-					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
-					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod,
-					I5CONSTANTS.pTESTMAT_FORM };
+			return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
+					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod, I5CONSTANTS.pTESTMAT_FORM };
 		}
+
 		@Override
 		public String getContextPath() {
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name());
 		}
 	},
 	/*
@@ -961,8 +1254,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getEndpoints() {
-			return new String[] { I5CONSTANTS.eCATALYTIC_ACTIVITY,
-					I5CONSTANTS.eTURNOVERFREQUENCY };
+			return new String[] { I5CONSTANTS.eCATALYTIC_ACTIVITY, I5CONSTANTS.eTURNOVERFREQUENCY };
 		}
 
 		@Override
@@ -972,14 +1264,13 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.pMETHODDETAILS,
-					I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
-					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod,
-					I5CONSTANTS.pTESTMAT_FORM };
+			return new String[] { I5CONSTANTS.pMETHODDETAILS, I5CONSTANTS.pDATA_GATHERING_INSTRUMENTS,
+					I5CONSTANTS.pSAMPLING, I5CONSTANTS.cTypeMethod, I5CONSTANTS.pTESTMAT_FORM };
 		}
+
 		@Override
 		public String getContextPath() {
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name());
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name());
 		}
 	},
 	PC_UNKNOWN {
@@ -1034,6 +1325,54 @@ public enum I5_ROOT_OBJECTS {
 			return new String[] { I5CONSTANTS.pReactant };
 		}
 	},
+	TO_PHOTOTRANS_WATER {
+		@Override
+		public String getTitle() {
+			return "Phototransformation in Water";
+		}
+
+		@Override
+		public String getNumber() {
+			return "5.1.1";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "ENV FATE";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG316" };
+		}
+	},
+	TO_PHOTOTRANS_SOIL {
+		@Override
+		public String getTitle() {
+			return "Phototransformation in soil";
+		}
+
+		@Override
+		public String getNumber() {
+			return "5.1.1";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "ENV FATE";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+	},
 	TO_HYDROLYSIS {
 		@Override
 		public String getTitle() {
@@ -1053,6 +1392,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getConditions() {
 			return new String[] { I5CONSTANTS.pH, I5CONSTANTS.cTemperature };
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG111" };
 		}
 	},
 	TO_BIODEG_WATER_SCREEN {
@@ -1079,10 +1423,8 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			// phrasegroup_F103
-			return new String[] { I5CONSTANTS.ePercentDegradation,
-					"CH4 evolution", "CO2 evolution", "DOC removal",
-					"inorg. C analysis", "O2 consumption", "Radiochem. meas.",
-					"Test mat. analysis", "TOC removal" };
+			return new String[] { I5CONSTANTS.ePercentDegradation, "CH4 evolution", "CO2 evolution", "DOC removal",
+					"inorg. C analysis", "O2 consumption", "Radiochem. meas.", "Test mat. analysis", "TOC removal" };
 		}
 
 		@Override
@@ -1093,6 +1435,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getProtocolParameters() {
 			return new String[] { I5CONSTANTS.cTestType };
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG301", "TG302A", "TG302B", "TG302C", "TG306", "TG310", "TG311" };
 		}
 	},
 	TO_BIODEG_WATER_SIM {
@@ -1114,19 +1461,24 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			// phrasegroup_F136
-			return new String[] { "(pseudo-)first order (= DT50)",
-					"second order", "zero order" };
+			return new String[] { "(pseudo-)first order (= DT50)", "second order", "zero order" };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] {  I5CONSTANTS.cTestType,I5CONSTANTS.cDegradationParameter,
-					I5CONSTANTS.rDegradation, I5CONSTANTS.cTimePoint };
+			return new String[] { I5CONSTANTS.cTestType, I5CONSTANTS.cDegradationParameter, I5CONSTANTS.rDegradation,
+					I5CONSTANTS.cTimePoint };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
 			return new String[] { I5CONSTANTS.cTestType };
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG303A", "TG303B", "TG308", "TG309", "TG314A", "TG314B", "TG314C", "TG314D",
+					"TG314E" };
 		}
 	},
 	EN_STABILITY_IN_SOIL {
@@ -1143,8 +1495,7 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			// phrasegroup_F136
-			return new String[] { "(pseudo-)first order (= DT50)",
-					"second order", "zero order", "other:", "no data" };
+			return new String[] { "(pseudo-)first order (= DT50)", "second order", "zero order", "other:", "no data" };
 		}
 
 		@Override
@@ -1163,6 +1514,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getTopCategory() {
 			return "ENV FATE";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG304A", "TG307" };
 		}
 
 	},
@@ -1190,7 +1546,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cRoute , I5CONSTANTS.cBioaccBasis, I5CONSTANTS.cDoses };
+			return new String[] { I5CONSTANTS.cRoute, I5CONSTANTS.cBioaccBasis, I5CONSTANTS.cDoses };
 		}
 
 		@Override
@@ -1202,6 +1558,12 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "ENV FATE";
 		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG305", "TG315" };
+		}
+
 	},
 	EN_BIOACCU_TERR {
 		@Override
@@ -1234,6 +1596,12 @@ public enum I5_ROOT_OBJECTS {
 		public String getTopCategory() {
 			return "ENV FATE";
 		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG317" };
+		}
+
 	},
 	EN_ADSORPTION {
 		@Override
@@ -1255,15 +1623,17 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cTemperature,
-					I5CONSTANTS.rOrgCarbonPercent, I5CONSTANTS.Remark };
+			return new String[] { I5CONSTANTS.cTemperature, I5CONSTANTS.rOrgCarbonPercent, I5CONSTANTS.Remark };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] {
+			return new String[] {};
+		}
 
-			};
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG106", "TG121" };
 		}
 
 		@Override
@@ -1289,8 +1659,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.Pressure,
-					I5CONSTANTS.cTemperature, I5CONSTANTS.Remark };
+			return new String[] { I5CONSTANTS.Pressure, I5CONSTANTS.cTemperature, I5CONSTANTS.Remark };
 		}
 
 		@Override
@@ -1327,27 +1696,30 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			// phrasegroup_E104
-			return new String[] { "LC0", "LC10", "LC50", "LC100", "EC0",
-					"EC10", "EC50", "EC100", "LL0", "LL10", "LL50", "LL100",
-					"EL0", "EL10", "EL50", "EL100", "IC10", "IC50", "IC100",
-					"NOELR", "LOELR", "NOEC", "LOEC" };
+			return new String[] { "LC0", "LC10", "LC50", "LC100", "EC0", "EC10", "EC50", "EC100", "LL0", "LL10", "LL50",
+					"LL100", "EL0", "EL10", "EL50", "EL100", "IC10", "IC50", "IC100", "NOELR", "LOELR", "NOEC",
+					"LOEC" };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cEffect, I5CONSTANTS.cConcType,
-					I5CONSTANTS.cMeasuredConcentration, I5CONSTANTS.cExposure };
+			return new String[] { I5CONSTANTS.cEffect, I5CONSTANTS.cConcType, I5CONSTANTS.cMeasuredConcentration,
+					I5CONSTANTS.cExposure };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cExposure,
-					I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
+			return new String[] { I5CONSTANTS.cExposure, I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
 		}
 
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000010";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG203", "TG204", "TG236" };
 		}
 	},
 	EC_CHRONFISHTOX {
@@ -1374,26 +1746,29 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			// phrasegroup_E115b
-			return new String[] { "NOEC", "LOEC", "NOELR", "LOELR", "EC10",
-					"EC50", "EL10", "EL50", "IC10", "IC50", "LC10", "LC50",
-					"LL10", "LL50" };
+			return new String[] { "NOEC", "LOEC", "NOELR", "LOELR", "EC10", "EC50", "EL10", "EL50", "IC10", "IC50",
+					"LC10", "LC50", "LL10", "LL50" };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cEffect, I5CONSTANTS.cConcType,
-					I5CONSTANTS.cMeasuredConcentration, I5CONSTANTS.cExposure };
+			return new String[] { I5CONSTANTS.cEffect, I5CONSTANTS.cConcType, I5CONSTANTS.cMeasuredConcentration,
+					I5CONSTANTS.cExposure };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cExposure,
-					I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
+			return new String[] { I5CONSTANTS.cExposure, I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
 		}
 
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000011";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG204", "TG210", "TG212", "TG215" };
 		}
 	},
 	EC_DAPHNIATOX {
@@ -1420,29 +1795,33 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			// phrasegroup_E104
-			return new String[] { "LC0", "LC10", "LC50", "LC100", "EC0",
-					"EC10", "EC50", "EC100", "LL0", "LL10", "LL50", "LL100",
-					"EL0", "EL10", "EL50", "EL100", "IC10", "IC50", "IC100",
-					"NOELR", "LOELR", "NOEC", "LOEC" };
+			return new String[] { "LC0", "LC10", "LC50", "LC100", "EC0", "EC10", "EC50", "EC100", "LL0", "LL10", "LL50",
+					"LL100", "EL0", "EL10", "EL50", "EL100", "IC10", "IC50", "IC100", "NOELR", "LOELR", "NOEC",
+					"LOEC" };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cEffect, I5CONSTANTS.cConcType,
-					I5CONSTANTS.cMeasuredConcentration, I5CONSTANTS.cExposure };
+			return new String[] { I5CONSTANTS.cEffect, I5CONSTANTS.cConcType, I5CONSTANTS.cMeasuredConcentration,
+					I5CONSTANTS.cExposure };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cExposure,
-					I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
+			return new String[] { I5CONSTANTS.cExposure, I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
 		}
 
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000006";
 		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG202" };
+		}
 	},
+
 	EC_CHRONDAPHNIATOX {
 		@Override
 		public boolean isDataRich() {
@@ -1466,22 +1845,25 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cEffect, I5CONSTANTS.cConcType,
-					I5CONSTANTS.cMeasuredConcentration, I5CONSTANTS.cExposure };
+			return new String[] { I5CONSTANTS.cEffect, I5CONSTANTS.cConcType, I5CONSTANTS.cMeasuredConcentration,
+					I5CONSTANTS.cExposure };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cExposure,
-					I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
+			return new String[] { I5CONSTANTS.cExposure, I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
 		}
 
 		@Override
 		public String[] getEndpoints() {
 			// phrasegroup_E115b
-			return new String[] { "NOEC", "LOEC", "NOELR", "LOELR", "EC10",
-					"EC50", "EL10", "EL50", "IC10", "IC50", "LC10", "LC50",
-					"LL10", "LL50" };
+			return new String[] { "NOEC", "LOEC", "NOELR", "LOELR", "EC10", "EC50", "EL10", "EL50", "IC10", "IC50",
+					"LC10", "LC50", "LL10", "LL50" };
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG211" };
 		}
 	},
 	EC_ALGAETOX {
@@ -1508,27 +1890,55 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			// phrasegroup_E110
-			return new String[] { "EC0", "EC5", "EC10", "EC20", "EC50", "EC90",
-					"EC100", "EL0", "EL5", "EL10", "EL20", "EL50", "EL90",
-					"EL100", "IC10", "IC50", "IC100", "NOEC", "NOELR", "LOEC",
-					"LOELR" };
+			return new String[] { "EC0", "EC5", "EC10", "EC20", "EC50", "EC90", "EC100", "EL0", "EL5", "EL10", "EL20",
+					"EL50", "EL90", "EL100", "IC10", "IC50", "IC100", "NOEC", "NOELR", "LOEC", "LOELR" };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cEffect, I5CONSTANTS.cConcType,
-					I5CONSTANTS.cMeasuredConcentration, I5CONSTANTS.cExposure };
+			return new String[] { I5CONSTANTS.cEffect, I5CONSTANTS.cConcType, I5CONSTANTS.cMeasuredConcentration,
+					I5CONSTANTS.cExposure };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cExposure,
-					I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
+			return new String[] { I5CONSTANTS.cExposure, I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
 		}
 
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000005";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG201" };
+		}
+	},
+	EC_AQUATICPLANTS {
+		@Override
+		public String getTitle() {
+			return "Toxicity to aquatic plants other than algae";
+		}
+
+		@Override
+		public String getNumber() {
+			return "6.1.6";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG221" };
 		}
 	},
 	EC_BACTOX {
@@ -1555,25 +1965,28 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			// phrasegroup_E107
-			return new String[] { "EC0", "EC10", "EC50", "EC100", "IC0",
-					"IC10", "IC50", "IC100", "NOEC", "LOEC" };
+			return new String[] { "EC0", "EC10", "EC50", "EC100", "IC0", "IC10", "IC50", "IC100", "NOEC", "LOEC" };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cEffect, I5CONSTANTS.cConcType,
-					I5CONSTANTS.cMeasuredConcentration, I5CONSTANTS.cExposure };
+			return new String[] { I5CONSTANTS.cEffect, I5CONSTANTS.cConcType, I5CONSTANTS.cMeasuredConcentration,
+					I5CONSTANTS.cExposure };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cExposure,
-					I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
+			return new String[] { I5CONSTANTS.cExposure, I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism };
 		}
 
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000015";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG209", "TG224" };
 		}
 	},
 	EC_SEDIMENTDWELLINGTOX {
@@ -1591,21 +2004,19 @@ public enum I5_ROOT_OBJECTS {
 		public String[] getEndpoints() {
 			return new String[] {
 					// phrasegroup_E118
-					"LC0", "LC10", "LC50", "LC100", "EC0", "EC10", "EC50",
-					"EC100", "LD0", "LD10", "LD50", "LD100", "LR0", "LR10",
-					"LR50", "LR100", "NOEC", "LOEC", "other:" };
+					"LC0", "LC10", "LC50", "LC100", "EC0", "EC10", "EC50", "EC100", "LD0", "LD10", "LD50", "LD100",
+					"LR0", "LR10", "LR50", "LR100", "NOEC", "LOEC", "other:" };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cConcType, I5CONSTANTS.cExposure,
-					I5CONSTANTS.cMeasuredConcentration, I5CONSTANTS.cEffect };
+			return new String[] { I5CONSTANTS.cConcType, I5CONSTANTS.cExposure, I5CONSTANTS.cMeasuredConcentration,
+					I5CONSTANTS.cEffect };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cTestMedium,
-					I5CONSTANTS.cTestOrganism, I5CONSTANTS.cExposure };
+			return new String[] { I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism, I5CONSTANTS.cExposure };
 		}
 
 		@Override
@@ -1616,6 +2027,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000009";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG218", "TG219", "TG225", "TG233" };
 		}
 	},
 	EC_SOILDWELLINGTOX {
@@ -1633,21 +2049,19 @@ public enum I5_ROOT_OBJECTS {
 		public String[] getEndpoints() {
 			return new String[] {
 					// phrasegroup_E118
-					"LC0", "LC10", "LC50", "LC100", "EC0", "EC10", "EC50",
-					"EC100", "LD0", "LD10", "LD50", "LD100", "LR0", "LR10",
-					"LR50", "LR100", "NOEC", "LOEC", "other:" };
+					"LC0", "LC10", "LC50", "LC100", "EC0", "EC10", "EC50", "EC100", "LD0", "LD10", "LD50", "LD100",
+					"LR0", "LR10", "LR50", "LR100", "NOEC", "LOEC", "other:" };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cConcType, I5CONSTANTS.cExposure,
-					I5CONSTANTS.cMeasuredConcentration, I5CONSTANTS.cEffect };
+			return new String[] { I5CONSTANTS.cConcType, I5CONSTANTS.cExposure, I5CONSTANTS.cMeasuredConcentration,
+					I5CONSTANTS.cEffect };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cTestMedium,
-					I5CONSTANTS.cTestOrganism, I5CONSTANTS.cExposure };
+			return new String[] { I5CONSTANTS.cTestMedium, I5CONSTANTS.cTestOrganism, I5CONSTANTS.cExposure };
 		}
 
 		@Override
@@ -1658,6 +2072,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000013";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG207", "TG220", "TG222" };
 		}
 	},
 	EC_HONEYBEESTOX {
@@ -1680,26 +2099,29 @@ public enum I5_ROOT_OBJECTS {
 		public String[] getEndpoints() {
 			return new String[] {
 					// phrasegroup_E118
-					"LC0", "LC10", "LC50", "LC100", "EC0", "EC10", "EC50",
-					"EC100", "LD0", "LD10", "LD50", "LD100", "LR0", "LR10",
-					"LR50", "LR100", "NOEC", "LOEC", "other:" };
+					"LC0", "LC10", "LC50", "LC100", "EC0", "EC10", "EC50", "EC100", "LD0", "LD10", "LD50", "LD100",
+					"LR0", "LR10", "LR50", "LR100", "NOEC", "LOEC", "other:" };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cTestOrganism,
-					I5CONSTANTS.cExposure };
+			return new String[] { I5CONSTANTS.cTestOrganism, I5CONSTANTS.cExposure };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cConcType, I5CONSTANTS.cExposure,
-					I5CONSTANTS.cMeasuredConcentration, I5CONSTANTS.cEffect };
+			return new String[] { I5CONSTANTS.cConcType, I5CONSTANTS.cExposure, I5CONSTANTS.cMeasuredConcentration,
+					I5CONSTANTS.cEffect };
 		}
 
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000016";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG213", "TG214", "TG226", "TG228", "TG232" };
 		}
 	},
 	EC_PLANTTOX {
@@ -1721,23 +2143,23 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			// phrasegroup_E121
-			return new String[] { "NOEC", "LOEC", "EC0", "EC10", "EC25",
-					"EC50", "EC100", "ER0", "ER10", "ER25", "ER50", "ER100",
-					"LC0", "LC10", "LC25", "LC50", "LC100"
+			return new String[] { "NOEC", "LOEC", "EC0", "EC10", "EC25", "EC50", "EC100", "ER0", "ER10", "ER25", "ER50",
+					"ER100", "LC0", "LC10", "LC25", "LC50", "LC100" };
+		}
 
-			};
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG208", "TG227" };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cTestMedium,
-					I5CONSTANTS.cExposure };
+			return new String[] { I5CONSTANTS.cTestMedium, I5CONSTANTS.cExposure };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cTestOrganism,
-					I5CONSTANTS.cConcType, I5CONSTANTS.cExposure,
+			return new String[] { I5CONSTANTS.cTestOrganism, I5CONSTANTS.cConcType, I5CONSTANTS.cExposure,
 					I5CONSTANTS.cMeasuredConcentration, I5CONSTANTS.cEffect };
 		}
 
@@ -1761,20 +2183,18 @@ public enum I5_ROOT_OBJECTS {
 		public String[] getEndpoints() {
 			return new String[] {
 					// phrasegroup_E128
-					"EC0", "EC10", "EC25", "EC50", "EC100", "ER0", "ER10",
-					"ER25", "ER50", "ER100", "NOEC", "other:" };
+					"EC0", "EC10", "EC25", "EC50", "EC100", "ER0", "ER10", "ER25", "ER50", "ER100", "NOEC", "other:" };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cConcType, I5CONSTANTS.cExposure,
-					I5CONSTANTS.cMeasuredConcentration, I5CONSTANTS.cEffect };
+			return new String[] { I5CONSTANTS.cConcType, I5CONSTANTS.cExposure, I5CONSTANTS.cMeasuredConcentration,
+					I5CONSTANTS.cEffect };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cTestOrganism,
-					I5CONSTANTS.cExposure };
+			return new String[] { I5CONSTANTS.cTestOrganism, I5CONSTANTS.cExposure };
 		}
 
 		@Override
@@ -1785,6 +2205,106 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000008";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG216", "TG217" };
+		}
+	},
+	EC_TOXICITY_BIRDS {
+		@Override
+		public String getTitle() {
+			return "Toxicity to birds";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "ENM_0000002";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG205", "TG206", "TG223" };
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
+
+	},
+	EC_ENDOCRINE {
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+		@Override
+		public String getTitle() {
+			return "Endocrine disrupter testing in aquatic vertebrates - in vivo";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG229", "TG230", "TG231", "TG234", "TG240", "TG241" };
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "ECOTOX";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "OAE_0000202";
+		}
+	},
+	TO_BASICTOXICOKINETICS {
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+		@Override
+		public String getTitle() {
+			return "Basic toxicokinetics";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG417" };
+		}
+	},
+	TO_DERMAL_ABSORPTION {
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+		@Override
+		public String getTitle() {
+			return "Dermal absorption";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG427", "TG428" };
 		}
 	},
 	TO_ACUTE_ORAL {
@@ -1812,8 +2332,7 @@ public enum I5_ROOT_OBJECTS {
 		public String[] getEndpoints() {
 			return new String[] {
 					// phrasegroup_T01
-					"LD0", "LD50", "LD100", "LDLo", "approx. LD50",
-					"discriminating dose" };
+					"LD0", "LD50", "LD100", "LDLo", "approx. LD50", "discriminating dose" };
 		}
 
 		@Override
@@ -1829,6 +2348,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000020";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG401", "TG420", "TG423", "TG425" };
 		}
 	},
 	TO_ACUTE_INHAL {
@@ -1868,6 +2392,11 @@ public enum I5_ROOT_OBJECTS {
 		public String getOntologyURI() {
 			return "ENM_0000023";
 		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG403", "draft TG433", "TG436" };
+		}
 	},
 	TO_ACUTE_DERMAL {
 		@Override
@@ -1889,8 +2418,7 @@ public enum I5_ROOT_OBJECTS {
 		public String[] getEndpoints() {
 			return new String[] {
 					// phrasegroup_T01
-					"LD0", "LD50", "LD100", "LDLo", "approx. LD50",
-					"discriminating dose" };
+					"LD0", "LD50", "LD100", "LDLo", "approx. LD50", "discriminating dose" };
 		}
 
 		@Override
@@ -1906,6 +2434,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000026";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG402", "TG434" };
 		}
 	},
 	TO_SKIN_IRRITATION {
@@ -1938,6 +2471,11 @@ public enum I5_ROOT_OBJECTS {
 		public String getOntologyURI() {
 			return "ENM_0000032";
 		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG404", "TG430", "TG431", "TG435", "TG439" };
+		}
 	},
 	TO_EYE_IRRITATION {
 		@Override
@@ -1969,6 +2507,11 @@ public enum I5_ROOT_OBJECTS {
 		public String getOntologyURI() {
 			return "ENM_0000033";
 		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG405", "TG437", "TG438", "TG460", "TG491", "TG492" };
+		}
 	},
 	TO_SENSITIZATION {
 		@Override
@@ -1993,13 +2536,33 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cSpecies,
-					I5CONSTANTS.cTypeMethod, I5CONSTANTS.cTypeStudy };
+			return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cTypeMethod, I5CONSTANTS.cTypeStudy };
 		}
 
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000034";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG406", "TG429", "TG442A", "TG442B" };
+		}
+	},
+	TO_RESPIRATORY_SENSITISATION {
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+		@Override
+		public String getTitle() {
+			return "Respiratory sensitisation";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
 		}
 	},
 	// TO_SENSITIZATION_HUMAN,
@@ -2023,9 +2586,8 @@ public enum I5_ROOT_OBJECTS {
 		public String[] getEndpoints() {
 			return new String[] {
 					// phrasegroup_T156
-					"NOAEL", "NOEL", "LOAEL", "LOEL", "BMD05", "BMDL05",
-					"BMDL10", "BMD", "BMC05", "BMCL05", "BMCL10", "BMC",
-					"dose level", "conc. level", "other:" };
+					"NOAEL", "NOEL", "LOAEL", "LOEL", "BMD05", "BMDL05", "BMDL10", "BMD", "BMC05", "BMCL05", "BMCL10",
+					"BMC", "dose level", "conc. level", "other:" };
 		}
 
 		@Override
@@ -2035,8 +2597,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cRouteAdm, I5CONSTANTS.cDoses
-					 };
+			return new String[] { I5CONSTANTS.cRouteAdm, I5CONSTANTS.cDoses };
 		}
 
 		@Override
@@ -2047,6 +2608,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000021";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG407", "TG408", "TG409", "TG419", "TG422", "TG424", "TG452", "TG453" };
 		}
 	},
 	TO_REPEATED_INHAL {
@@ -2064,9 +2630,8 @@ public enum I5_ROOT_OBJECTS {
 		public String[] getEndpoints() {
 			return new String[] {
 					// phrasegroup_T166
-					"NOAEL", "NOEL", "LOAEL", "LOEL", "BMD05", "BMDL05",
-					"BMDL10", "BMD", "BMC05", "BMCL05", "BMCL10", "BMC",
-					"dose level", "conc. level", "other:" };
+					"NOAEL", "NOEL", "LOAEL", "LOEL", "BMD05", "BMDL05", "BMDL10", "BMD", "BMC05", "BMCL05", "BMCL10",
+					"BMC", "dose level", "conc. level", "other:" };
 		}
 
 		@Override
@@ -2076,8 +2641,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cRouteAdm, I5CONSTANTS.cDoses,
-					 };
+			return new String[] { I5CONSTANTS.cRouteAdm, I5CONSTANTS.cDoses, };
 		}
 
 		@Override
@@ -2088,6 +2652,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000024";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG412", "TG413", "TG422", "TG452", "TG453" };
 		}
 	},
 	TO_REPEATED_DERMAL {
@@ -2105,21 +2674,18 @@ public enum I5_ROOT_OBJECTS {
 		public String[] getEndpoints() {
 			return new String[] {
 					// phrasegroup_T156
-					"NOAEL", "NOEL", "LOAEL", "LOEL", "BMD05", "BMDL05",
-					"BMDL10", "BMD", "BMC05", "BMCL05", "BMCL10", "BMC",
-					"dose level", "conc. level", "other:" };
+					"NOAEL", "NOEL", "LOAEL", "LOEL", "BMD05", "BMDL05", "BMDL10", "BMD", "BMC05", "BMCL05", "BMCL10",
+					"BMC", "dose level", "conc. level", "other:" };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cTestType,
-					I5CONSTANTS.cSex };
+			return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cTestType, I5CONSTANTS.cSex };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cTypeCoverage,
-					I5CONSTANTS.cDoses, };
+			return new String[] { I5CONSTANTS.cTypeCoverage, I5CONSTANTS.cDoses, };
 		}
 
 		@Override
@@ -2130,6 +2696,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000027";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG410", "TG411", "TG422", "TG452", "TG453" };
 		}
 	},
 	TO_GENETIC_IN_VITRO {
@@ -2156,16 +2727,13 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cTypeStudy, I5CONSTANTS.cMetabolicActivation,
-					I5CONSTANTS.cSpecies };
+			return new String[] { I5CONSTANTS.cTypeStudy, I5CONSTANTS.cMetabolicActivation, I5CONSTANTS.cSpecies };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cTypeStudy,
-					I5CONSTANTS.cMetabolicActivationSystem,
-					I5CONSTANTS.cTypeGenotoxicity, I5CONSTANTS.cTargetGene,
-					I5CONSTANTS.cSpecies };
+			return new String[] { I5CONSTANTS.cTypeStudy, I5CONSTANTS.cMetabolicActivationSystem,
+					I5CONSTANTS.cTypeGenotoxicity, I5CONSTANTS.cTargetGene, I5CONSTANTS.cSpecies };
 		}
 
 		@Override
@@ -2176,6 +2744,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "http://www.bioassayontology.org/bao#BAO_0002167";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG471", "TG472", "TG473", "TG476", "TG479", "TG480", "TG481", "TG482", "TG487" };
 		}
 	},
 	TO_GENETIC_IN_VIVO {
@@ -2206,8 +2779,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cRouteAdm,
-					I5CONSTANTS.cTypeStudy, I5CONSTANTS.cTypeGenotoxicity,
+			return new String[] { I5CONSTANTS.cRouteAdm, I5CONSTANTS.cTypeStudy, I5CONSTANTS.cTypeGenotoxicity,
 					I5CONSTANTS.cSpecies };
 		}
 
@@ -2219,6 +2791,12 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000028";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG474", "TG475", "TG477", "TG478", "TG483", "TG484", "TG485", "TG486", "TG488",
+					"TG489" };
 		}
 	},
 	TO_CARCINOGENICITY {
@@ -2235,11 +2813,9 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String[] getEndpoints() {
 			return new String[] { // phrasegroup_TD400
-			"no NOAEC identified", "no NOAEL identified", "no T25 identified",
-					"T25", "NOAEC", "NOAEL", "NOEC", "NOEL", "LOAEC", "LOAEL",
-					"LOEC", "LOEL", "BMD05", "BMDL05", "BMDL10", "BMD",
-					"BMC05", "BMCL05", "BMCL10", "BMC", "dose level",
-					"conc.level", "other:" };
+					"no NOAEC identified", "no NOAEL identified", "no T25 identified", "T25", "NOAEC", "NOAEL", "NOEC",
+					"NOEL", "LOAEC", "LOAEL", "LOEC", "LOEL", "BMD05", "BMDL05", "BMDL10", "BMD", "BMC05", "BMCL05",
+					"BMCL10", "BMC", "dose level", "conc.level", "other:" };
 		}
 
 		@Override
@@ -2249,8 +2825,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cRouteAdm,
-					I5CONSTANTS.cDoses };
+			return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cRouteAdm, I5CONSTANTS.cDoses };
 		}
 
 		@Override
@@ -2261,6 +2836,11 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			return "ENM_0000029";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG451", "TG453" };
 		}
 	},
 	TO_REPRODUCTION {
@@ -2283,20 +2863,23 @@ public enum I5_ROOT_OBJECTS {
 		public String[] getEndpoints() {
 			return new String[] {
 					// phrasegroup_T166
-					"NOAEL", "NOEL", "LOAEL", "LOEL", "BMD05", "BMDL05",
-					"BMDL10", "BMD", "BMC05", "BMCL05", "BMCL10", "BMC",
-					"dose level", "conc. level", "other:" };
+					"NOAEL", "NOEL", "LOAEL", "LOEL", "BMD05", "BMDL05", "BMDL10", "BMD", "BMC05", "BMCL05", "BMCL10",
+					"BMC", "dose level", "conc. level", "other:" };
 		}
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cRouteAdm,
-					I5CONSTANTS.cDoses };
+			return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cRouteAdm, I5CONSTANTS.cDoses };
 		}
 
 		@Override
 		public String[] getConditions() {
 			return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cSex, I5CONSTANTS.cGeneration };
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG415", "TG416", "TG421", "TG422", "TG426", "TG443" };
 		}
 	},
 	TO_DEVELOPMENTAL {
@@ -2317,22 +2900,98 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getProtocolParameters() {
-			return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cRouteAdm,
-					I5CONSTANTS.cDoses };
+			return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cRouteAdm, I5CONSTANTS.cDoses };
 		}
 
 		@Override
 		public String[] getConditions() {
-			return new String[] {I5CONSTANTS.cSpecies, I5CONSTANTS.cEffectType };
+			return new String[] { I5CONSTANTS.cSpecies, I5CONSTANTS.cEffectType };
 		}
 
 		@Override
 		public String[] getEndpoints() {
 			return new String[] {
 					// phrasegroup_T166
-					"NOAEL", "NOEL", "LOAEL", "LOEL", "BMD05", "BMDL05",
-					"BMDL10", "BMD", "BMC05", "BMCL05", "BMCL10", "BMC",
-					"dose level", "conc. level", "other:" };
+					"NOAEL", "NOEL", "LOAEL", "LOEL", "BMD05", "BMDL05", "BMDL10", "BMD", "BMC05", "BMCL05", "BMCL10",
+					"BMC", "dose level", "conc. level", "other:" };
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG414" };
+		}
+	},
+	TO_ENDOCRINEDISRUPPTOR_MAMMALIAN {
+		@Override
+		public String getTitle() {
+			return "Endocrine disruptor mammalian screening - In vivo (level 3)";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "OAE_0000202";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG440", "TG441" };
+		}
+	},
+	TO_NEUROTOXICITY {
+		@Override
+		public String getTitle() {
+			return "Neurotoxicity";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "OAE_0001215";
+		}
+
+		@Override
+		public String[] getGuidelines() {
+			return new String[] { "TG407", "TG408", "TG412", "TG413", "TG418", "TG419", "TG422", "TG424", "TG426" };
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+	},
+	TO_IMMUNOTOXICITY {
+		@Override
+		public String getTitle() {
+			return "Immunotoxicity";
+		}
+
+		@Override
+		public boolean isSupported() {
+			return false;
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "NPO_1339";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
 		}
 	},
 	CELL_VIABILITY_ASSAY {
@@ -2588,8 +3247,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String[] getConditions() {
-			return new String[] { I5CONSTANTS.cDoses, "Replicate",
-					"Emission wavelength" };
+			return new String[] { I5CONSTANTS.cDoses, "Replicate", "Emission wavelength" };
 		}
 
 		@Override
@@ -3030,7 +3688,12 @@ public enum I5_ROOT_OBJECTS {
 		public boolean isIUCLID5() {
 			return false;
 		}
+
 	};
+
+	public String[] getGuidelines() {
+		return null;
+	}
 
 	public boolean isIUCLID5() {
 		return true;
@@ -3038,18 +3701,22 @@ public enum I5_ROOT_OBJECTS {
 
 	public String getContextPath() {
 		/*
-		return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord." + name()
-				+ "_SECTION" +
-		
-		":eu.europa.echa.schemas.iuclid5._20120101.studyrecord." + name()
-				+ "_SECTION";
-		*/
+		 * return "eu.europa.echa.schemas.iuclid5._20130101.studyrecord." +
+		 * name() + "_SECTION" +
+		 * 
+		 * ":eu.europa.echa.schemas.iuclid5._20120101.studyrecord." + name() +
+		 * "_SECTION";
+		 */
 		if (isIUCLID5())
-			return String.format(I5CONSTANTS.I5_STUDY_SECTION,"20130101",name()) + ":" + String.format(I5CONSTANTS.I5_STUDY_SECTION,"20120101",name());
-		else return null;
+			return String.format(I5CONSTANTS.I5_STUDY_SECTION, "20130101", name()) + ":"
+					+ String.format(I5CONSTANTS.I5_STUDY_SECTION, "20120101", name());
+		else
+			return null;
 
 	}
-	//public static final String I5_STUDY_SECTION = "eu.europa.echa.schemas.iuclid5._%s.studyrecord.%s_SECTION";
+
+	// public static final String I5_STUDY_SECTION =
+	// "eu.europa.echa.schemas.iuclid5._%s.studyrecord.%s_SECTION";
 	public String toSection() {
 		return name() + "_SECTION";
 	}
@@ -3126,8 +3793,7 @@ public enum I5_ROOT_OBJECTS {
 	 * @param protocol
 	 * @return
 	 */
-	public ProtocolApplication<Protocol, IParams, String, IParams, String> createExperimentRecord(
-			Protocol protocol) {
+	public ProtocolApplication<Protocol, IParams, String, IParams, String> createExperimentRecord(Protocol protocol) {
 		ProtocolApplication<Protocol, IParams, String, IParams, String> experiment = new ProtocolApplication<Protocol, IParams, String, IParams, String>(
 				protocol);
 		experiment.setParameters(createProtocolParameters());
@@ -3150,4 +3816,3 @@ public enum I5_ROOT_OBJECTS {
 		return record;
 	}
 }
-
