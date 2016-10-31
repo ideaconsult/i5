@@ -250,7 +250,7 @@ public enum I5_ROOT_OBJECTS {
 		@Override
 		public String getOntologyURI() {
 			// http://purl.obolibrary.org/obo/CHMO_0002119
-			return "CHMO_0002119";
+			return "NPO_1699";
 		}
 
 		@Override
@@ -2986,7 +2986,7 @@ public enum I5_ROOT_OBJECTS {
 
 		@Override
 		public String getOntologyURI() {
-			return "NPO_1339";
+			return "ENM_0000046";
 		}
 
 		@Override
@@ -2994,6 +2994,257 @@ public enum I5_ROOT_OBJECTS {
 			return "TOX";
 		}
 	},
+	ENM_0000035 {
+		@Override
+		public String getTitle() {
+			return "Cytotoxicity";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "ENM_0000035";
+		}
+
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+		@Override
+		public String getNumber() {
+			return getOntologyURI();
+		}
+	},
+	ENM_0000036 {
+		@Override
+		public String getTitle() {
+			return "Pro-inflammatory response";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "ENM_0000036";
+		}
+
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+		@Override
+		public String getNumber() {
+			return getOntologyURI();
+		}
+	},	
+	ENM_0000037 {
+		@Override
+		public String getTitle() {
+			return "Oxidative stress";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "ENM_0000037";
+		}
+
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+		@Override
+		public String getNumber() {
+			return getOntologyURI();
+		}
+	},	
+	ENM_0000038 {
+		@Override
+		public String getTitle() {
+			return "Uptake";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "ENM_0000038";
+		}
+
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+		@Override
+		public String getNumber() {
+			return getOntologyURI();
+		}
+	},		
+	ENM_0000039 {
+		@Override
+		public String getTitle() {
+			return "Genotoxicity";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "ENM_0000039";
+		}
+
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+		@Override
+		public String getNumber() {
+			return getOntologyURI();
+		}
+	},		
+	ENM_0000040 {
+		@Override
+		public String getTitle() {
+			return "Single and double strand breaks";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "ENM_0000040";
+		}
+
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+		@Override
+		public String getNumber() {
+			return getOntologyURI();
+		}
+	},		
+	ENM_0000041 {
+		@Override
+		public String getTitle() {
+			return "base DNA damage";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "ENM_0000041";
+		}
+
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+		@Override
+		public String getNumber() {
+			return getOntologyURI();
+		}
+	},		
+	ENM_0000042 {
+		@Override
+		public String getTitle() {
+			return "Mutagenicity";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "ENM_0000042";
+		}
+
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+		@Override
+		public String getNumber() {
+			return getOntologyURI();
+		}
+	},		
+	ENM_0000044 {
+		@Override
+		public String getTitle() {
+			return "Barrier integrity";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "ENM_0000044";
+		}
+
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+		@Override
+		public String getNumber() {
+			return getOntologyURI();
+		}
+	},
+	ENM_0000045 {
+		@Override
+		public String getTitle() {
+			return "Transport of NPs across barrier";
+		}
+
+		@Override
+		public String getTopCategory() {
+			return "TOX";
+		}
+
+		@Override
+		public String getOntologyURI() {
+			return "ENM_0000045";
+		}
+
+		@Override
+		public boolean isIUCLID5() {
+			return false;
+		}
+		@Override
+		public String getNumber() {
+			return getOntologyURI();
+		}
+	},		
+	//
 	CELL_VIABILITY_ASSAY {
 		@Override
 		public String getTitle() {
