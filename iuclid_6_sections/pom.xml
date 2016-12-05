@@ -26,12 +26,14 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
+						<source>${sourceVersion}</source>
+						<target>${sourceVersion}</target>
 					</configuration>
 				</plugin>
+
 			</plugins>
 		</pluginManagement>
+		<!-- 
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -39,20 +41,50 @@
 				<version>2.2</version>
 				<executions>
 					<execution>
-						<id>xjc</id>
+						<id>generate Java classes</id>
+						<phase>generate-sources</phase>
 						<goals>
 							<goal>xjc</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<!-- generated sources -->
 					<packageName>eu.europa.echa.iuclid6</packageName>
 					<sources>
-						<source>src/main/resources/net/idea/i6/xsd/core</source>
+						<source>src/main/xsd</source>
 					</sources>
+					<addGeneratedAnnotation>false</addGeneratedAnnotation>
+					<locale>en</locale>
+					<extension>true</extension>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.1</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/src/main/xjb</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/target/generated-sources/jaxb</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+							<encoding>UTF-8</encoding>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
+		 -->
 	</build>
+	<properties>
+
+	</properties>
 </project>
