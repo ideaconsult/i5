@@ -15,6 +15,10 @@
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="demo/carrotsearch.foamtree.js"></script>    
 	<script src="demo/init.js"></script>    
+	<!--
+	<script src="demo/nr.js"></script>    
+	-->
+	<script src="demo/ont.js"></script>    
 <script language='Javascript'>
 	$(document)
 		.ready(
@@ -26,7 +30,8 @@
   					dataObject: { groups: [ { label: "loading..." }, { label: "Please wait" } ] },
   					fadeDuration: 500
 				});
-				init(foamtree,"https://apps.ideaconsult.net/enanomapper/query/study?media=application/json");
+				init(foamtree,"http://localhost:9090/ambit2/query/study?media=application/json");
+				//initlocal(foamtree,nr)
 				
 });
 </script>       
