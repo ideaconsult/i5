@@ -1,4 +1,4 @@
-package net.idea.i6.test1;
+package net.idea.i6.test;
 
 import java.io.IOException;
 import java.io.InputStream;
