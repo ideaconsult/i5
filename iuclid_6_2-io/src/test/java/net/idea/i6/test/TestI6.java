@@ -87,4 +87,49 @@ public class TestI6 {
 		}
 		g.getResultsAndDiscussion().getAnyOtherInformationOnResultsInclTables();
 	}
+	
+	@Test
+	public void testUnmarshalFormaldehyde() throws JAXBException, IOException {
+		InputStream in = null;
+		try {
+			in = getClass().getClassLoader().getResourceAsStream(
+					"IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734.i6z");
+			Assert.assertNotNull(in);
+
+			JAXBContext jaxbContext = JAXBContext
+					.newInstance(REFERENCESUBSTANCE.class);
+
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			REFERENCESUBSTANCE refsub = (REFERENCESUBSTANCE) jaxbUnmarshaller
+					.unmarshal(in);
+			System.out.println(refsub.getClass().getName());
+			System.out.println(refsub.getGeneralInfo()
+					.getReferenceSubstanceName());
+			System.out.println(refsub.getInventory().getInventoryEntry()
+					.getEntry());
+			System.out.println(refsub.getMolecularStructuralInfo().getInChl());
+			System.out.println(refsub.getMolecularStructuralInfo()
+					.getSmilesNotation());
+			System.out.println(refsub.getMolecularStructuralInfo()
+					.getStructuralFormula());
+			System.out.println(refsub.getNoInfoAvailable()
+					.getInventoryEntryJustification());
+			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo()
+					.getCASNumber());
+			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo()
+					.getCASName());
+			System.out.println(refsub.getReferenceSubstanceInfo()
+					.getIupacName());
+			System.out.println(refsub.getReferenceSubstanceInfo()
+					.getRelatedSubstances().getGroupCategoryInfo());
+			for (I6SynonymEntry s : refsub.getReferenceSubstanceInfo()
+					.getSynonyms().getEntry())
+				System.out.println(s.getName());
+
+		} finally {
+			if (in != null)
+				in.close();
+		}
+	}
+
 }

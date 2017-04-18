@@ -14,6 +14,7 @@
     <module>iuclid_5_common</module>
     <module>iuclid_5_sections</module>
     <module>iuclid_6_sections</module>
+    <module>iuclid_6_2-io</module>
   </modules>
   <distributionManagement>
     <snapshotRepository>

@@ -14,7 +14,7 @@ import ambit2.base.data.study.ProtocolApplication;
  * 
  */
 
-public enum I5_ROOT_OBJECTS {
+public enum I5_ROOT_OBJECTS implements IROOT_OBJECTS {
 	AttachmentDocument {
 		@Override
 		public boolean isScientificPart() {
