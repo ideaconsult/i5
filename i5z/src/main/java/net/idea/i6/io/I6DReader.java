@@ -10,14 +10,15 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
 import org.openscience.cdk.exception.CDKException;
+import org.w3c.dom.Node;
 
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.interfaces.IStructureRecord;
+import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import eu.europa.echa.iuclid6.namespaces.reference_substance._2.REFERENCESUBSTANCE;
 import eu.europa.echa.iuclid6.namespaces.substance._2.SUBSTANCE;
 import net.idea.i5.io.AbstractI5DReader;
 import net.idea.i5.io.I5ObjectVerifier;
-import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QASettings;
 import net.idea.modbcum.i.exceptions.AmbitException;
 import net.idea.modbcum.i.processors.IProcessor;
@@ -100,17 +101,24 @@ public class I6DReader extends AbstractI5DReader<IStructureRecord> {
 		
 		processors.put(SUBSTANCE.class.getName(),i62); 
 		processors.put(REFERENCESUBSTANCE.class.getName(),i62); 
+		processors.put(Document.class.getName(),i62);
 		//env fate
-		for (I5_ROOT_OBJECTS tag : I5_ROOT_OBJECTS.values()) 
+		for (I6_ROOT_OBJECTS tag : I6_ROOT_OBJECTS.values()) 
 			if (tag.isScientificPart()) {
 				//package eu.europa.echa.iuclid6.namespaces.endpoint_study_record_biodegradationinwaterandsedimentsimulationtests._2;
-				processors.put(String.format("eu.europa.echa.iuclid6.namespaces.%s._2.%s",tag.name().toLowerCase(),tag.name().replaceAll("_","")), i62);
+				String clazz = String.format("eu.europa.echa.iuclid6.namespaces.%s._2.%s",tag.name().toLowerCase(),tag.name().replaceAll("_",""));
+				processors.put(clazz, i62);
 			}
 	}
 
 
 	@Override
 	protected IStructureRecord transform(Object unmarshalled) throws AmbitException {
+		if (unmarshalled instanceof Document) {
+			Document doc = (Document) unmarshalled;
+			unmarshalled = doc.getContent().getAny();
+		}
+		
 		IProcessor<Object, IStructureRecord> p = processors.get(unmarshalled.getClass().getName());
 		if (p!=null) try {
 			return p.process(unmarshalled);

@@ -44,6 +44,7 @@ public class I6ManifestReader {
 					String subtype = getSubtype(doc);
 					String type = c.item(j).getTextContent();
 					if (subtype!=null && I6_ROOT_OBJECTS.ENDPOINT_STUDY_RECORD.name().equals(type) ) type=String.format("%s_%s", type,subtype);
+					//.toUpperCase();
 					try {
 						I6_ROOT_OBJECTS rootObject = I6_ROOT_OBJECTS.valueOf(type);
 						if (rootObject!=null && (!rootObject.isSupported() || rootObject.mapIUCLID5()==null

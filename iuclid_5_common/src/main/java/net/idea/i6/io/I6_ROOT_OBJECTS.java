@@ -39,7 +39,13 @@ import net.idea.i5.io.IROOT_OBJECTS;
 	},
  */
 public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
-
+	Document {
+		@Override
+		public String getContextPath() {
+			return "eu.europa.echa.iuclid6.namespaces.platform_container.v1";
+		}
+		
+	},
 	REFERENCE_SUBSTANCE {
 		@Override
 		public String getContextPath() {
@@ -463,7 +469,8 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 
 	}	
 	public boolean isScientificPart() {
-		return true;
+		I5_ROOT_OBJECTS i5 = mapIUCLID5();
+		return i5==null?false:i5.isScientificPart();
 	}
 
 	@Override
