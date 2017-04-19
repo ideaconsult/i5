@@ -26,20 +26,21 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 	}
 
 	public IStructureRecord process(Target unmarshalled) throws AmbitException {
+		Object content = unmarshalled;
 		if (unmarshalled instanceof Document) {
-
+			content = ((Document) unmarshalled).getContent().getAny();
 		}
-		if (unmarshalled instanceof SUBSTANCE) {
-			if (!acceptSubstance((SUBSTANCE) unmarshalled))
+		if (content instanceof SUBSTANCE) {
+			if (!acceptSubstance((SUBSTANCE) content))
 				return null;
 			else
-				return transform2record((SUBSTANCE) unmarshalled);
-		} else if (unmarshalled instanceof REFERENCESUBSTANCE)
-			return transform2record((REFERENCESUBSTANCE) unmarshalled);
+				return transform2record((SUBSTANCE) content);
+		} else if (content instanceof REFERENCESUBSTANCE)
+			return transform2record((REFERENCESUBSTANCE) content);
 		try {
-			IStudyRecordConverter convertor = getConvertor(unmarshalled.getClass().getName());
+			IStudyRecordConverter convertor = getConvertor(content.getClass().getName());
 			if (convertor != null)
-				return convertor.transform2record(unmarshalled, record);
+				return convertor.transform2record(new EndpointStudyRecordWrapper((Document)unmarshalled), record);
 		} catch (QACriteriaException x) {
 			// reliability exception
 			logger.log(Level.FINE, x.getMessage());
@@ -66,8 +67,9 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			if (tag.isScientificPart()) {
 				convertor = convertors.get(tag.name());
 				if (convertor == null) {
-					String clazzName = "net.idea.i6._2.ambit2.sections." + path[path.length - 3]
-							+ ".StudyRecordConverter";
+					String clazzName = "net.idea.i6._2.ambit2.sections.I6StudyRecordConverter";
+					
+					 //String clazzName = "net.idea.i6._2.ambit2.sections." + path[path.length - 3]+ ".StudyRecordConverter";
 					
 					Object cnv = Class.forName(clazzName).newInstance();
 					if (cnv instanceof IStudyRecordConverter) {
