@@ -43,10 +43,13 @@ public class I6ManifestReader {
 				if ("type" == c.item(j).getNodeName()) {
 					String subtype = getSubtype(doc);
 					String type = c.item(j).getTextContent();
-					if (subtype!=null) type=String.format("%s_%s", type,subtype);
+					if (subtype!=null && I6_ROOT_OBJECTS.ENDPOINT_STUDY_RECORD.name().equals(type) ) type=String.format("%s_%s", type,subtype);
 					try {
 						I6_ROOT_OBJECTS rootObject = I6_ROOT_OBJECTS.valueOf(type);
-						if (rootObject!=null && (!rootObject.isSupported() || rootObject.mapIUCLID5()==null)) continue;
+						if (rootObject!=null && (!rootObject.isSupported() || rootObject.mapIUCLID5()==null
+								//for initial testing
+								|| !rootObject.mapIUCLID5().isDataRich()
+								)) continue;
 						String cp = ((rootObject != null) && (rootObject.getContextPath() != null))
 								? rootObject.getContextPath() : "";
 						file2cjaxbcp.put(file.getAbsolutePath(), cp);

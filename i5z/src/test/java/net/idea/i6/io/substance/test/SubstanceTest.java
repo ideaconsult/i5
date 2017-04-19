@@ -51,7 +51,25 @@ public class SubstanceTest {
 		Assert.assertEquals(603, unmarshall_i6z(new File(url.getFile()), 603));
 		// all 880
 	}
+	
+	@Test
+	public void test_i6z_2_echa() throws Exception {
+		String test = "net/idea/i6/_2/substance/i6z/ECHA-13cdf683-927b-47d6-81a5-32d27ec38747.i6z";
+		URL url = SubstanceTest.class.getClassLoader().getResource(test);
+		Assert.assertNotNull(url);
+		Assert.assertEquals(32, unmarshall_i6z(new File(url.getFile()), 32));
+		// all 52
+	}
 
+	@Test
+	public void test_i6z_2_internal() throws Exception {
+		String test = "net/idea/i6/_2/substance/i6z/IUC5-a438545b-3c6c-403f-83e6-5cd2756d77d6.i6z";
+		URL url = SubstanceTest.class.getClassLoader().getResource(test);
+		Assert.assertNotNull(url);
+		Assert.assertEquals(38, unmarshall_i6z(new File(url.getFile()), 38));
+		// all 880
+	}
+	
 	protected int unmarshall_i6z(File in, int nfiles) throws Exception {
 		Assert.assertNotNull(in);
 		FileOutputStream output = null;

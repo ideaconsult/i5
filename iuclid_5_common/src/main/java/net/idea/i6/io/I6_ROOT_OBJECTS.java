@@ -72,6 +72,16 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 			return false;
 		}		
 	},
+	DOSSIER {
+		public boolean isSupported() {
+			return false;
+		}				
+	},
+	FLEXIBLE_RECORD {
+		public boolean isSupported() {
+			return false;
+		}
+	},
 	SUBSTANCE {
 		@Override
 		public String getContextPath() {
@@ -322,7 +332,121 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		public I5_ROOT_OBJECTS mapIUCLID5() {
 			return I5_ROOT_OBJECTS.PC_WATER_SOL;
 		}
-	};
+	},
+	ENDPOINT_STUDY_RECORD_DissociationConstant {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.PC_DISSOCIATION;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_Flammability {
+		
+	},
+	ENDPOINT_STUDY_RECORD_Granulometry {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.PC_GRANULOMETRY;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_Hydrolysis {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.TO_HYDROLYSIS;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_LongTermToxToFish {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.EC_CHRONFISHTOX;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_LongTermToxicityToAquaInv {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.EC_CHRONDAPHNIATOX;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_StabilityOrganic {
+		
+	},
+	ENDPOINT_STUDY_RECORD_SurfaceTension {
+		
+	},
+	ENDPOINT_STUDY_RECORD_ToxicityToBirds {
+		
+	},
+	ENDPOINT_STUDY_RECORD_ToxicityToSoilMacroorganismsExceptArthropods {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.EC_SOILDWELLINGTOX;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_ToxicityToSoilMicroorganisms {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.EC_SOIL_MICRO_TOX;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_ToxicityToTerrestrialArthropods {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.EC_HONEYBEESTOX;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_Viscosity {
+		
+	},
+	ENDPOINT_STUDY_RECORD_BiodegradationInSoil {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.EN_STABILITY_IN_SOIL;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_BiodegradationInWaterAndSedimentSimulationTests {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.TO_BIODEG_WATER_SIM;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_AdsorptionDesorption {
+		
+	},
+	ENDPOINT_STUDY_RECORD_BioaccumulationTerrestrial {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.EN_BIOACCU_TERR;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_DermalAbsorption {
+		
+	},
+	ENDPOINT_STUDY_RECORD_HenrysLawConstant {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.EN_HENRY_LAW;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_PhotoTransformationInSoil {
+		
+	},
+	ENDPOINT_STUDY_RECORD_Phototransformation {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.TO_PHOTOTRANS_AIR;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_SedimentToxicity {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.EC_SEDIMENTDWELLINGTOX;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_ToxicityReproductionOther {
+		
+	}
+
+	;
+	
 	public I5_ROOT_OBJECTS mapIUCLID5() {
 		return null;
 	}
