@@ -2,13 +2,12 @@ package net.idea.i5.io.substance.test;
 
 import java.util.Arrays;
 
-import junit.framework.Assert;
-import net.idea.i5._5.ambit2.json.Experiment;
-import net.idea.i5.io.I5_ROOT_OBJECTS;
-
 import org.junit.Test;
 
 import ambit2.base.data.study.Params;
+import junit.framework.Assert;
+import net.idea.i5.io.Experiment;
+import net.idea.i5.io.I5_ROOT_OBJECTS;
 
 public class TagsTest {
 	@Test

@@ -1,4 +1,4 @@
-package net.idea.i5._5.ambit2.json;
+package net.idea.i5.io;
 
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Protocol;

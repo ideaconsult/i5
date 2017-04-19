@@ -2,13 +2,6 @@ package net.idea.i5._5.ambit2.sections.CATALYTIC_ACTIVITY_SECTION;
 
 import javax.xml.bind.JAXBElement;
 
-import net.idea.i5._5.ambit2.json.Experiment;
-import net.idea.i5.ambit2.sections.PChemStudyRecordConvertor;
-import net.idea.i5.io.I5CONSTANTS;
-import net.idea.i5.io.I5_ROOT_OBJECTS;
-import net.idea.i5.io.QACriteriaException;
-import net.idea.modbcum.i.exceptions.AmbitException;
-
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -23,6 +16,12 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CATALYTIC_ACTIVITY_S
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CATALYTIC_ACTIVITY_SECTION.EndpointStudyRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CATALYTIC_ACTIVITY_SECTION.EndpointStudyRecord.ScientificPart;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.CATALYTIC_ACTIVITY_SECTION.EndpointStudyRecord.ScientificPart.CATALYTICACTIVITY.REFERENCE.Set;
+import net.idea.i5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.Experiment;
+import net.idea.i5.io.I5CONSTANTS;
+import net.idea.i5.io.I5_ROOT_OBJECTS;
+import net.idea.i5.io.QACriteriaException;
+import net.idea.modbcum.i.exceptions.AmbitException;
 
 
 public class StudyRecordConverter

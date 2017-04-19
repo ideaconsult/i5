@@ -1,11 +1,5 @@
 package net.idea.i5._4.ambit2.sections.EC_BACTOX_SECTION;
 
-import net.idea.i5._5.ambit2.json.Experiment;
-import net.idea.i5.ambit2.sections.ECOTOXStudyRecordConvertor;
-import net.idea.i5.io.I5CONSTANTS;
-import net.idea.i5.io.I5_ROOT_OBJECTS;
-import net.idea.i5.io.QACriteriaException;
-import net.idea.modbcum.i.exceptions.AmbitException;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
@@ -15,6 +9,12 @@ import ambit2.base.interfaces.IStructureRecord;
 import eu.europa.echa.schemas.iuclid5._20120101.studyrecord.EC_BACTOX_SECTION.DocumentTypeType;
 import eu.europa.echa.schemas.iuclid5._20120101.studyrecord.EC_BACTOX_SECTION.EndpointStudyRecord;
 import eu.europa.echa.schemas.iuclid5._20120101.studyrecord.EC_BACTOX_SECTION.EndpointStudyRecord.ScientificPart.ECBACTOX.REFERENCE.Set;
+import net.idea.i5.ambit2.sections.ECOTOXStudyRecordConvertor;
+import net.idea.i5.io.Experiment;
+import net.idea.i5.io.I5CONSTANTS;
+import net.idea.i5.io.I5_ROOT_OBJECTS;
+import net.idea.i5.io.QACriteriaException;
+import net.idea.modbcum.i.exceptions.AmbitException;
 
 public class StudyRecordConverter
 	extends

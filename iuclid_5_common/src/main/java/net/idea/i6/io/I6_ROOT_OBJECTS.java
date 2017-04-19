@@ -1,5 +1,7 @@
 package net.idea.i6.io;
 
+import ambit2.base.data.study.IParams;
+import ambit2.base.data.study.Params;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.IROOT_OBJECTS;
@@ -343,5 +345,19 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 	@Override
 	public boolean isSupported() {
 		return true;
+	}
+	
+	public String toSection() {
+		I5_ROOT_OBJECTS i5 = mapIUCLID5();
+		return i5==null?(name() + "_SECTION"):i5.toSection();
+	}
+	
+	public String getTopCategory() {
+		I5_ROOT_OBJECTS i5 = mapIUCLID5();
+		return i5==null?"P-CHEM":i5.getTopCategory();
+	}
+	public IParams createProtocolParameters() {
+		I5_ROOT_OBJECTS i5 = mapIUCLID5();
+		return i5==null?new Params():i5.createProtocolParameters();
 	}
 }

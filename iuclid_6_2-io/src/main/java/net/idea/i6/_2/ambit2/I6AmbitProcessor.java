@@ -68,19 +68,16 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 	protected IStudyRecordConverter getConvertor(String className)
 			throws Exception {
 		IStudyRecordConverter convertor = null;
-		String tagName = className
-				.replace(
-						"eu.europa.echa.schemas.iuclid5._20130101.studyrecord.",
-						"").replace("_SECTION", "")
-				.replace(".EndpointStudyRecord", "");
+		String[] path  = className.split("\\.");
+		String tagName = path[path.length-1];
 		try {
 			I6_ROOT_OBJECTS tag = I6_ROOT_OBJECTS.valueOf(tagName);
 			if (tag.isScientificPart()) {
 				convertor = convertors.get(tag.name());
 				if (convertor == null) {
 					Object cnv = Class.forName(
-							"net.idea.i6._6.ambit2.sections." + tag
-									+ "_SECTION.StudyRecordConverter")
+							"net.idea.i6._2.ambit2.sections." + tag
+									+ ".StudyRecordConverter")
 							.newInstance();
 					if (cnv instanceof IStudyRecordConverter) {
 						convertor = (IStudyRecordConverter) cnv;

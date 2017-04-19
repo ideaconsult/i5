@@ -2,13 +2,6 @@ package net.idea.i5._5.ambit2.sections.POROSITY_SECTION;
 
 import javax.xml.bind.JAXBElement;
 
-import net.idea.i5._5.ambit2.json.Experiment;
-import net.idea.i5.ambit2.sections.PChemStudyRecordConvertor;
-import net.idea.i5.io.I5CONSTANTS;
-import net.idea.i5.io.I5_ROOT_OBJECTS;
-import net.idea.i5.io.QACriteriaException;
-import net.idea.modbcum.i.exceptions.AmbitException;
-
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -22,6 +15,12 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.POROSITY_SECTION.Doc
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.POROSITY_SECTION.EndpointStudyRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.POROSITY_SECTION.EndpointStudyRecord.ScientificPart;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.POROSITY_SECTION.EndpointStudyRecord.ScientificPart.POROSITY.REFERENCE.Set;
+import net.idea.i5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.Experiment;
+import net.idea.i5.io.I5CONSTANTS;
+import net.idea.i5.io.I5_ROOT_OBJECTS;
+import net.idea.i5.io.QACriteriaException;
+import net.idea.modbcum.i.exceptions.AmbitException;
 
 
 public class StudyRecordConverter

@@ -1,9 +1,7 @@
 package net.idea.i6.test;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -11,15 +9,12 @@ import javax.xml.bind.Unmarshaller;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.w3c.dom.Document;
 
-import ambit2.base.data.SubstanceRecord;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_acutetoxicitydermal._2.ENDPOINTSTUDYRECORDAcuteToxicityDermal;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._2.ENDPOINTSTUDYRECORDGranulometry;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._2.ENDPOINTSTUDYRECORDGranulometry.ResultsAndDiscussion.ParticleSizeDistribution.Entry;
 import eu.europa.echa.iuclid6.namespaces.reference_substance._2.I6SynonymEntry;
 import eu.europa.echa.iuclid6.namespaces.reference_substance._2.REFERENCESUBSTANCE;
-import net.idea.i6.io.I6ManifestReader;
 
 public class TestI6 {
 
