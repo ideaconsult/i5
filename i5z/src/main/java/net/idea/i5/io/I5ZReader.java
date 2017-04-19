@@ -2,10 +2,12 @@ package net.idea.i5.io;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -13,9 +15,10 @@ import ambit2.base.exceptions.AmbitIOException;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.core.io.FileState;
 import ambit2.core.io.IRawReader;
+import net.idea.modbcum.i.exceptions.AmbitException;
 
-public class I5ZReader<SUBSTANCE> extends IZReader<SUBSTANCE,I5_ROOT_OBJECTS, I5ObjectVerifier> {
-
+public class I5ZReader<SUBSTANCE> extends IZReader<SUBSTANCE,I5_ROOT_OBJECTS> {
+	protected transient I5ObjectVerifier rootObjectVerifier;
 	/**
 	 * Uncompresses the .i5z archive content, detects the correct JAXB context
 	 * path and unmarshall the XML content using JAXB generated classes
@@ -99,11 +102,35 @@ public class I5ZReader<SUBSTANCE> extends IZReader<SUBSTANCE,I5_ROOT_OBJECTS, I5
 		throw new Exception("Unsupported format " + name);
 	}
 
-	@Override
 	protected I5ObjectVerifier createObjectVerifier() {
 		return new I5ObjectVerifier();
 	}
-
+	@Override
+	protected String getJaxbContextPath4File(File file) throws AmbitException, IOException {
+		if (file2cjaxbcp == null)
+			file2cjaxbcp = new Hashtable<String, String>();
+		String cp = file2cjaxbcp.get(file.getAbsolutePath());
+		if (cp != null)
+			return cp;
+		// read the file and find out if the object is supported. Then return
+		// the JAXB context path.
+		if (rootObjectVerifier == null)
+			rootObjectVerifier = createObjectVerifier();
+		try {
+			IROOT_OBJECTS rootObject = rootObjectVerifier.process(new FileInputStream(file));
+			cp = ((rootObject != null) && (rootObject.getContextPath() != null)) ? rootObject.getContextPath() : "";
+			file2cjaxbcp.put(file.getAbsolutePath(), cp);
+			return cp;
+		} catch (Exception x) {
+			logger.log(Level.FINE, x.getMessage());
+			return null;
+		}
+	}
+	@Override
+	protected void finalize() throws Throwable {
+		super.finalize();
+		rootObjectVerifier = null;
+	}
 	@Override
 	public File[] unzip(File zipfile, File directory, I5Options options) throws AmbitIOException {
 		tempFolder = directory;

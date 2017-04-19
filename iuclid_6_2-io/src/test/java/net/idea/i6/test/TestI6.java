@@ -1,7 +1,9 @@
 package net.idea.i6.test;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -9,50 +11,42 @@ import javax.xml.bind.Unmarshaller;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.w3c.dom.Document;
 
+import ambit2.base.data.SubstanceRecord;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_acutetoxicitydermal._2.ENDPOINTSTUDYRECORDAcuteToxicityDermal;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._2.ENDPOINTSTUDYRECORDGranulometry;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._2.ENDPOINTSTUDYRECORDGranulometry.ResultsAndDiscussion.ParticleSizeDistribution.Entry;
 import eu.europa.echa.iuclid6.namespaces.reference_substance._2.I6SynonymEntry;
 import eu.europa.echa.iuclid6.namespaces.reference_substance._2.REFERENCESUBSTANCE;
+import net.idea.i6.io.I6ManifestReader;
 
 public class TestI6 {
+
+
 	@Test
 	public void testUnmarshal() throws JAXBException, IOException {
 		InputStream in = null;
 		try {
-			in = getClass().getClassLoader().getResourceAsStream(
-					"0a40853b-refsub.i6d");
+			in = getClass().getClassLoader().getResourceAsStream("0a40853b-refsub.i6d");
 			Assert.assertNotNull(in);
 
-			JAXBContext jaxbContext = JAXBContext
-					.newInstance(REFERENCESUBSTANCE.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(REFERENCESUBSTANCE.class);
 
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			REFERENCESUBSTANCE refsub = (REFERENCESUBSTANCE) jaxbUnmarshaller
-					.unmarshal(in);
+			REFERENCESUBSTANCE refsub = (REFERENCESUBSTANCE) jaxbUnmarshaller.unmarshal(in);
 			System.out.println(refsub.getClass().getName());
-			System.out.println(refsub.getGeneralInfo()
-					.getReferenceSubstanceName());
-			System.out.println(refsub.getInventory().getInventoryEntry()
-					.getEntry());
+			System.out.println(refsub.getGeneralInfo().getReferenceSubstanceName());
+			System.out.println(refsub.getInventory().getInventoryEntry().getEntry());
 			System.out.println(refsub.getMolecularStructuralInfo().getInChl());
-			System.out.println(refsub.getMolecularStructuralInfo()
-					.getSmilesNotation());
-			System.out.println(refsub.getMolecularStructuralInfo()
-					.getStructuralFormula());
-			System.out.println(refsub.getNoInfoAvailable()
-					.getInventoryEntryJustification());
-			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo()
-					.getCASNumber());
-			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo()
-					.getCASName());
-			System.out.println(refsub.getReferenceSubstanceInfo()
-					.getIupacName());
-			System.out.println(refsub.getReferenceSubstanceInfo()
-					.getRelatedSubstances().getGroupCategoryInfo());
-			for (I6SynonymEntry s : refsub.getReferenceSubstanceInfo()
-					.getSynonyms().getEntry())
+			System.out.println(refsub.getMolecularStructuralInfo().getSmilesNotation());
+			System.out.println(refsub.getMolecularStructuralInfo().getStructuralFormula());
+			System.out.println(refsub.getNoInfoAvailable().getInventoryEntryJustification());
+			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo().getCASNumber());
+			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo().getCASName());
+			System.out.println(refsub.getReferenceSubstanceInfo().getIupacName());
+			System.out.println(refsub.getReferenceSubstanceInfo().getRelatedSubstances().getGroupCategoryInfo());
+			for (I6SynonymEntry s : refsub.getReferenceSubstanceInfo().getSynonyms().getEntry())
 				System.out.println(s.getName());
 
 		} finally {
@@ -70,11 +64,12 @@ public class TestI6 {
 		e.getMaterialsAndMethods();
 		e.getOverallRemarksAttachments();
 		e.getResultsAndDiscussion();
-		
+
 		ENDPOINTSTUDYRECORDGranulometry g = new ENDPOINTSTUDYRECORDGranulometry();
 		Assert.assertNotNull(g);
 		Assert.assertNotNull(g.getMaterialsAndMethods());
-		for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._2.ENDPOINTSTUDYRECORDGranulometry.MaterialsAndMethods.Guideline.Entry entry :g.getMaterialsAndMethods().getGuideline().getEntry()) {
+		for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._2.ENDPOINTSTUDYRECORDGranulometry.MaterialsAndMethods.Guideline.Entry entry : g
+				.getMaterialsAndMethods().getGuideline().getEntry()) {
 			entry.getGuideline().getValue();
 		}
 		g.getResultsAndDiscussion().getAerodynamicDiameter();
@@ -87,43 +82,30 @@ public class TestI6 {
 		}
 		g.getResultsAndDiscussion().getAnyOtherInformationOnResultsInclTables();
 	}
-	
+
 	@Test
 	public void testUnmarshalFormaldehyde() throws JAXBException, IOException {
 		InputStream in = null;
 		try {
-			in = getClass().getClassLoader().getResourceAsStream(
-					"IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734.i6z");
+			in = getClass().getClassLoader().getResourceAsStream("IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734.i6z");
 			Assert.assertNotNull(in);
 
-			JAXBContext jaxbContext = JAXBContext
-					.newInstance(REFERENCESUBSTANCE.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(REFERENCESUBSTANCE.class);
 
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			REFERENCESUBSTANCE refsub = (REFERENCESUBSTANCE) jaxbUnmarshaller
-					.unmarshal(in);
+			REFERENCESUBSTANCE refsub = (REFERENCESUBSTANCE) jaxbUnmarshaller.unmarshal(in);
 			System.out.println(refsub.getClass().getName());
-			System.out.println(refsub.getGeneralInfo()
-					.getReferenceSubstanceName());
-			System.out.println(refsub.getInventory().getInventoryEntry()
-					.getEntry());
+			System.out.println(refsub.getGeneralInfo().getReferenceSubstanceName());
+			System.out.println(refsub.getInventory().getInventoryEntry().getEntry());
 			System.out.println(refsub.getMolecularStructuralInfo().getInChl());
-			System.out.println(refsub.getMolecularStructuralInfo()
-					.getSmilesNotation());
-			System.out.println(refsub.getMolecularStructuralInfo()
-					.getStructuralFormula());
-			System.out.println(refsub.getNoInfoAvailable()
-					.getInventoryEntryJustification());
-			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo()
-					.getCASNumber());
-			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo()
-					.getCASName());
-			System.out.println(refsub.getReferenceSubstanceInfo()
-					.getIupacName());
-			System.out.println(refsub.getReferenceSubstanceInfo()
-					.getRelatedSubstances().getGroupCategoryInfo());
-			for (I6SynonymEntry s : refsub.getReferenceSubstanceInfo()
-					.getSynonyms().getEntry())
+			System.out.println(refsub.getMolecularStructuralInfo().getSmilesNotation());
+			System.out.println(refsub.getMolecularStructuralInfo().getStructuralFormula());
+			System.out.println(refsub.getNoInfoAvailable().getInventoryEntryJustification());
+			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo().getCASNumber());
+			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo().getCASName());
+			System.out.println(refsub.getReferenceSubstanceInfo().getIupacName());
+			System.out.println(refsub.getReferenceSubstanceInfo().getRelatedSubstances().getGroupCategoryInfo());
+			for (I6SynonymEntry s : refsub.getReferenceSubstanceInfo().getSynonyms().getEntry())
 				System.out.println(s.getName());
 
 		} finally {

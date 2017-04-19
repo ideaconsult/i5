@@ -1,12 +1,24 @@
 package net.idea.i6.io;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.logging.Level;
+
+import org.w3c.dom.Document;
 
 import ambit2.base.exceptions.AmbitIOException;
+import ambit2.base.interfaces.IStructureRecord;
 import ambit2.core.io.FileState;
+import ambit2.core.io.IRawReader;
 import net.idea.i5.io.I5Options;
 import net.idea.i5.io.IZReader;
+import net.idea.modbcum.i.exceptions.AmbitException;
 
 /**
  * Support for .i6z files
@@ -15,7 +27,7 @@ import net.idea.i5.io.IZReader;
  *
  * @param <SUBSTANCE>
  */
-public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS, I6ObjectVerifier> {
+public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 
 	public I6ZReader(InputStream stream) throws AmbitIOException {
 		this(stream, new I5Options());
@@ -35,12 +47,143 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS, I
 
 	@Override
 	protected boolean isSupported(String name) {
-		return FileState._FILE_TYPE.I6D_INDEX.hasExtension(name);
+		return name.endsWith("manifest.xml") || FileState._FILE_TYPE.I6D_INDEX.hasExtension(name);
+	}
+
+
+	@Override
+	protected String getJaxbContextPath4File(File file) throws AmbitException, IOException {
+		return file2cjaxbcp == null ? null : file2cjaxbcp.get(file.getAbsolutePath());
 	}
 
 	@Override
-	protected I6ObjectVerifier createObjectVerifier() {
-		return new I6ObjectVerifier();
+	protected File verifyEntry(File file) throws IOException, AmbitException {
+		return file;
+	}
+
+	@Override
+	public File[] unzip(File zipfile, File directory, I5Options options) throws AmbitIOException {
+
+		tempFolder = directory;
+		File[] files = super.unzip(zipfile, directory, options);
+		if (files == null)
+			throw new AmbitIOException(String.format("Failed to unzip %s into %s", zipfile.getAbsolutePath(),
+					directory.getAbsolutePath()));
+		List<File> referenceSubstances = new ArrayList<File>();
+		List<File> substances = new ArrayList<File>();
+		List<File> study = new ArrayList<File>();
+		for (File file : files)
+			if (file.getName().endsWith("manifest.xml")) {
+				I6ManifestReader reader = new I6ManifestReader();
+				try (FileInputStream in = new FileInputStream(file)) {
+					Document manifest = reader.read(in);
+					file2cjaxbcp = reader.parseFiles(manifest, directory);
+				} catch (Exception x) {
+					throw new AmbitIOException();
+				}
+				break;
+			}
+
+		for (File file : files) {
+			if (file.getName().equals("manifest.xml"))
+				continue;
+			String cp = file2cjaxbcp.get(file.getAbsolutePath());
+			if (cp != null) {
+				logger.log(Level.FINE, cp);
+				if (cp.indexOf(".REFERENCESUBSTANCE") >= 0) {
+					if (options != null && (options.getMaxReferenceStructures() > -1)
+							&& (referenceSubstances.size() >= options.getMaxReferenceStructures())) {
+
+						if (options.isExceptionOnMaxReferenceStructures())
+							throw new AmbitIOException(String.format(
+									"Exceeded the number of maximum reference structures (%d) in zip file %s ",
+									options.getMaxReferenceStructures(), zipfile.getAbsolutePath()));
+						else {
+							// ignore the file
+							logger.log(Level.WARNING,
+									String.format(
+											"Exceeded the number of maximum reference structures (%d) in zip file %s ",
+											options.getMaxReferenceStructures(), zipfile.getAbsolutePath()));
+						}
+						;
+					} else
+						referenceSubstances.add(file);
+				} else if (cp.indexOf(".SUBSTANCE") >= 0) {
+					substances.add(file);
+					if (options != null && (!options.isAllowMultipleSubstances() && (substances.size() > 1)))
+						throw new AmbitIOException("Single substance mode but multiple substances in zip file "
+								+ zipfile.getAbsolutePath());
+				} else if (cp.indexOf("endpoint_study_record") >= 0) {
+					study.add(file);
+				}
+			}
+		}
+		logger.log(Level.FINE, String.format("Reference substances %d\tSubstances %d\tStudies %d",
+				referenceSubstances.size(), substances.size(), study.size()));
+
+		// sort by jaxb context so that we reuse JAXBContext and cache it only
+		// once!
+		Collections.sort(study, new Comparator<File>() {
+			@Override
+			public int compare(File o1, File o2) {
+				return file2cjaxbcp.get(o2.getAbsolutePath()).compareTo(file2cjaxbcp.get(o1.getAbsolutePath()));
+			}
+		});
+
+		referenceSubstances.addAll(substances);
+		referenceSubstances.addAll(study);
+		substances.clear();
+		study.clear();
+
+		return referenceSubstances.toArray(new File[referenceSubstances.size()]);
+	}
+
+	@Override
+	protected IRawReader<IStructureRecord> getItemReader(int index) throws Exception {
+		String name = files[index].getName().toLowerCase();
+
+		if (isSupported(name)) {
+			logger.log(Level.FINE, name);
+			try {
+				String jaxbcontextpath = getJaxbContextPath4File(files[index]);
+
+				if (jaxbcontextpath != null && !"".equals(jaxbcontextpath)) {
+					InputStream fileReader = new FileInputStream(files[index]);
+					try {
+						JAXBStuff jaxb = jaxbCache.get(jaxbcontextpath);
+						if (jaxb == null) {
+							jaxb = new JAXBStuff(jaxbcontextpath);
+
+							jaxbCache.clear();
+							jaxbCache.put(jaxbcontextpath, jaxb);
+							// System.out.print(jaxbCache.size());
+							// System.out.print("\t");
+							// System.out.println(jaxbcontextpath);
+						} else {
+							// System.out.print("CACHED");
+							// System.out.print("\t");
+							// System.out.println(jaxbcontextpath);
+						}
+						I6DReader reader = new I6DReader(files[index].getName(), fileReader, jaxb.getJaxbContext(),
+								jaxb.getUnmarshaller(), getQASettings());
+						reader.setErrorHandler(errorHandler);
+						return reader;
+					} catch (javax.xml.bind.UnmarshalException x) {
+						throw x;
+					} catch (Exception x) {
+						throw x;
+
+					} finally {
+						// stream closed by closeItemReader
+					}
+				}
+			} catch (Exception x) {
+				logger.log(Level.WARNING, String.format("%s\t%s\tFile: %s", x.getClass().getName(), x.getMessage(),
+						files[index].getName()));
+				throw x;
+			}
+		}
+		throw new Exception("Unsupported format " + name);
 	}
 
 }

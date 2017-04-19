@@ -14,6 +14,12 @@
 			<version>${project.version}</version>
 			<type>jar</type>
 		</dependency>
+		<dependency>
+			<groupId>net.idea</groupId>
+			<artifactId>iuclid_5_common</artifactId>
+			<version>${project.version}</version>
+			<type>jar</type>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

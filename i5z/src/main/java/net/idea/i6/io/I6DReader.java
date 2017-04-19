@@ -1,4 +1,4 @@
-package net.idea.i5.io;
+package net.idea.i6.io;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,15 +9,20 @@ import java.util.Hashtable;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
-import net.idea.modbcum.i.exceptions.AmbitException;
-import net.idea.modbcum.i.processors.IProcessor;
-
 import org.openscience.cdk.exception.CDKException;
 
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.interfaces.IStructureRecord;
+import eu.europa.echa.iuclid6.namespaces.reference_substance._2.REFERENCESUBSTANCE;
+import eu.europa.echa.iuclid6.namespaces.substance._2.SUBSTANCE;
+import net.idea.i5.io.AbstractI5DReader;
+import net.idea.i5.io.I5ObjectVerifier;
+import net.idea.i5.io.I5_ROOT_OBJECTS;
+import net.idea.i5.io.QASettings;
+import net.idea.modbcum.i.exceptions.AmbitException;
+import net.idea.modbcum.i.processors.IProcessor;
 
-public class I5DReader extends AbstractI5DReader<IStructureRecord> {
+public class I6DReader extends AbstractI5DReader<IStructureRecord> {
 	
 	protected Hashtable<String, IProcessor<Object, IStructureRecord>> processors = new Hashtable<String, IProcessor<Object, IStructureRecord>>();
 	protected String container = null;	
@@ -35,7 +40,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @throws FileNotFoundException
 	 * @throws AmbitException
 	 */
-	public I5DReader(String container,File file,QASettings qaSettings) throws CDKException, FileNotFoundException, AmbitException {
+	public I6DReader(String container,File file,QASettings qaSettings) throws CDKException, FileNotFoundException, AmbitException {
 		this(container,file,null,qaSettings);
 	}
 	/**
@@ -46,7 +51,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @throws FileNotFoundException
 	 * @throws AmbitException
 	 */
-	public I5DReader(String container,File file,I5ObjectVerifier rootObjectVerifier,QASettings qaSettings) throws CDKException, FileNotFoundException, AmbitException {
+	public I6DReader(String container,File file,I5ObjectVerifier rootObjectVerifier,QASettings qaSettings) throws CDKException, FileNotFoundException, AmbitException {
 		this(container,new FileInputStream(file),getJaxbContext(file,rootObjectVerifier),qaSettings);
 	}	
 	
@@ -57,11 +62,11 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @param jaxbUnmarshaller
 	 * @throws CDKException
 	 */
-	public I5DReader(String container,InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller,QASettings qaSettings) throws CDKException {
+	public I6DReader(String container,InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller,QASettings qaSettings) throws CDKException {
 		super(in,jaxbContext, jaxbUnmarshaller);
 		initProcessors(qaSettings, container);
 	}
-	public I5DReader(String container,InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller) throws CDKException {
+	public I6DReader(String container,InputStream in,JAXBContext jaxbContext,Unmarshaller jaxbUnmarshaller) throws CDKException {
 		this(container,in,jaxbContext,jaxbUnmarshaller,new QASettings());
 	}
 	/**
@@ -70,7 +75,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * uses default JAXB context path "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101"
 	 * @throws CDKException
 	 */
-	public I5DReader(String container,InputStream in,QASettings qaSettings) throws CDKException {
+	public I6DReader(String container,InputStream in,QASettings qaSettings) throws CDKException {
 		super(in);
 		initProcessors(qaSettings, container);
 	}
@@ -81,7 +86,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	 * @param contextPath e.g. "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101"
 	 * @throws CDKException
 	 */
-	public I5DReader(String container,InputStream in,String contextPath,QASettings qaSettings) throws CDKException {
+	public I6DReader(String container,InputStream in,String contextPath,QASettings qaSettings) throws CDKException {
 		super(in,contextPath);
 		initProcessors(qaSettings, container);
 	}
@@ -89,26 +94,17 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 	protected void initProcessors(QASettings qaSettings, String container) {
 		record = new SubstanceRecord();
 		
+		net.idea.i6._2.ambit2.I6AmbitProcessor i62 = new net.idea.i6._2.ambit2.I6AmbitProcessor(container);
 		
-		net.idea.i5._0.ambit2.I5AmbitProcessor i50 = new net.idea.i5._0.ambit2.I5AmbitProcessor(container);
-		net.idea.i6._2.ambit2.I6AmbitProcessor i55 = new net.idea.i6._2.ambit2.I6AmbitProcessor(container);
-		net.idea.i5._4.ambit2.I5AmbitProcessor i54 = new net.idea.i5._4.ambit2.I5AmbitProcessor(container);
+		i62.setQASettings(qaSettings);
 		
-		i55.setQASettings(qaSettings);
-		i54.setQASettings(qaSettings);
-		
-		processors.put(eu.europa.echa.schemas.iuclid5._20070330.referencesubstance.ReferenceSubstance.class.getName(), i50); 
-		
-		processors.put(eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.class.getName(), i54);
-		processors.put(eu.europa.echa.schemas.iuclid5._20120101.referencesubstance.ReferenceSubstance.class.getName(), i54); 
-
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.substance.Substance.class.getName(),i55); 
-		processors.put(eu.europa.echa.schemas.iuclid5._20130101.referencesubstance.ReferenceSubstance.class.getName(),i55); 
+		processors.put(SUBSTANCE.class.getName(),i62); 
+		processors.put(REFERENCESUBSTANCE.class.getName(),i62); 
 		//env fate
 		for (I5_ROOT_OBJECTS tag : I5_ROOT_OBJECTS.values()) 
 			if (tag.isScientificPart()) {
-				processors.put("eu.europa.echa.schemas.iuclid5._20130101.studyrecord." + tag.name() + "_SECTION.EndpointStudyRecord", i55);
-				processors.put("eu.europa.echa.schemas.iuclid5._20120101.studyrecord." + tag.name() + "_SECTION.EndpointStudyRecord", i54);
+				//package eu.europa.echa.iuclid6.namespaces.endpoint_study_record_biodegradationinwaterandsedimentsimulationtests._2;
+				processors.put(String.format("eu.europa.echa.iuclid6.namespaces.%s._2.%s",tag.name().toLowerCase(),tag.name().replaceAll("_","")), i62);
 			}
 	}
 
