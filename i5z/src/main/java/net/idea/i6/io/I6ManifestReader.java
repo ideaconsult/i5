@@ -49,7 +49,7 @@ public class I6ManifestReader {
 						I6_ROOT_OBJECTS rootObject = I6_ROOT_OBJECTS.valueOf(type);
 						if (rootObject!=null && (!rootObject.isSupported() || rootObject.mapIUCLID5()==null
 								//for initial testing
-								|| !rootObject.mapIUCLID5().isDataRich()
+								//|| !rootObject.mapIUCLID5().isDataRich()
 								)) continue;
 						String cp = ((rootObject != null) && (rootObject.getContextPath() != null))
 								? rootObject.getContextPath() : "";

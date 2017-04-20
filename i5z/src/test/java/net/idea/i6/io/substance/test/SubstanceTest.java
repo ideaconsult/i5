@@ -33,7 +33,7 @@ public class SubstanceTest {
 
 	@Test
 	public void readManifest() throws Exception {
-		File file = new File(getClass().getClassLoader().getResource("net/idea/i6/_2/substance/manifest.xml").getFile());
+		File file = new File(getClass().getClassLoader().getResource("net/idea/i6/_2/substance/manifest_i5.xml").getFile());
 		Assert.assertTrue(file.exists());
 		File folder = file.getParentFile();
 		try (InputStream in = new FileInputStream(file)) {
@@ -43,8 +43,15 @@ public class SubstanceTest {
 			Map<String, String> file2cjaxbcp = r.parseFiles(manifest, folder);
 			System.out.println(file2cjaxbcp);
 
-			File test = new File(folder,"IUC4-05eb6a0b-c37d-3a08-a9a3-718494b352ef_0.i6d");
-			Assert.assertEquals("eu.europa.echa.iuclid6.namespaces.endpoint_study_record_watersolubility._2", file2cjaxbcp.get(test.getAbsolutePath()));
+			//File test = new File(folder,"IUC4-05eb6a0b-c37d-3a08-a9a3-718494b352ef_0.i6d");
+			//File test = new File(folder,"IUC5-10ca3210-3ac0-4b6f-9c00-b3790a20260e_0.i6d");
+			//File test = new File(folder,"IUC5-c533941d-3908-415d-93ff-e92bdde5ab01_0.i6d");
+			File test = new File(folder,"IUC5-db3f935f-5a8e-42d2-be08-cd76afd0fc6a_0.i6d");
+			//File test = new File(folder,"IUC5-848a57ae-94a6-436a-965c-d7d6bd3c1a1f_0.i6d");
+			
+			//Assert.assertEquals("eu.europa.echa.iuclid6.namespaces.endpoint_study_record_watersolubility._2", file2cjaxbcp.get(test.getAbsolutePath()));
+			System.out.println(file2cjaxbcp.get(test.getAbsolutePath()));
+			Assert.assertNotNull(file2cjaxbcp.get(test.getAbsolutePath()));
 
 			String jaxbcontextpath = "eu.europa.echa.iuclid6.namespaces.platform_container.v1:"
 					+ "eu.europa.echa.iuclid6.namespaces.platform_fields.v1:"
@@ -63,13 +70,14 @@ public class SubstanceTest {
 					Assert.assertNotNull(((SubstanceRecord)o).getMeasurements());
 					for (ProtocolApplication<Protocol, IParams, String, IParams,String> papp : ((SubstanceRecord)o).getMeasurements()) {
 						Protocol p = papp.getProtocol();
-						System.out.println(p);
-						Assert.assertEquals(I5_ROOT_OBJECTS.PC_WATER_SOL.name(), p.getCategory());
-						Assert.assertEquals("Water solubility, IUC4#1/Ch.2.6.1", p.getEndpoint());
-						Assert.assertEquals("Method: other", p.getGuideline().get(0));
+						System.out.println(papp);
+						Assert.assertNotNull(I5_ROOT_OBJECTS.valueOf(p.getCategory()));
+						Assert.assertNotNull(p.getEndpoint());
+						Assert.assertNotNull(p.getGuideline());
+						Assert.assertNotNull(p.getGuideline().get(0));
 						
 						Assert.assertNotNull(papp.getReliability());
-						System.out.println(papp.getReliability());
+						
 					}
 					c++;
 				}
@@ -82,7 +90,7 @@ public class SubstanceTest {
 			r.parseDocuments(manifest, substance);
 			Assert.assertNotNull(substance.getSubstanceUUID());
 			Assert.assertNotNull(substance.getContent());
-			Assert.assertEquals("IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734", substance.getSubstanceUUID());
+			//Assert.assertEquals("IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734", substance.getSubstanceUUID());
 			Assert.assertNotNull(substance.getReferenceSubstanceUUID());
 
 		}
