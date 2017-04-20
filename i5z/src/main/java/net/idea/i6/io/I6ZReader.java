@@ -146,7 +146,10 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 			logger.log(Level.FINE, name);
 			try {
 				//String jaxbcontextpath = getJaxbContextPath4File(files[index]);
-				String jaxbcontextpath = "eu.europa.echa.iuclid6.namespaces.platform_container.v1:" + getJaxbContextPath4File(files[index]);
+				String jaxbcontextpath = "eu.europa.echa.iuclid6.namespaces.platform_container.v1:" + 
+						"eu.europa.echa.iuclid6.namespaces.platform_fields.v1:"+
+						"eu.europa.echa.iuclid6.namespaces.platform_metadata.v1:"+
+						getJaxbContextPath4File(files[index]);
 				if (jaxbcontextpath != null && !"".equals(jaxbcontextpath)) {
 					InputStream fileReader = new FileInputStream(files[index]);
 					try {

@@ -114,12 +114,13 @@ public class I6DReader extends AbstractI5DReader<IStructureRecord> {
 
 	@Override
 	protected IStructureRecord transform(Object unmarshalled) throws AmbitException {
+		String key = unmarshalled.getClass().getName();
 		if (unmarshalled instanceof Document) {
 			Document doc = (Document) unmarshalled;
-			unmarshalled = doc.getContent().getAny();
+			key = doc.getContent().getAny().getClass().getName();
 		}
 		
-		IProcessor<Object, IStructureRecord> p = processors.get(unmarshalled.getClass().getName());
+		IProcessor<Object, IStructureRecord> p = processors.get(key);
 		if (p!=null) try {
 			return p.process(unmarshalled);
 		} catch (Exception x) {
