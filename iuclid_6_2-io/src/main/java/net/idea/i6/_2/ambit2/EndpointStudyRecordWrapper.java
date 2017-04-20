@@ -2,6 +2,7 @@ package net.idea.i6._2.ambit2;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -14,8 +15,11 @@ import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.ReliabilityParams;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistField;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithLargeTextRemarks;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithMultiLineTextRemarks;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithSmallTextRemarks;
 import net.idea.i5.io.Experiment;
+import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import net.idea.i5.io.QASettings;
@@ -28,6 +32,8 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 	protected Document doc;
 	protected I6_ROOT_OBJECTS rootObject;
 	protected String parentDocumentKey;
+	protected Object materialsAndMethods = null;
+	protected Object administrativeData = null;
 
 	public I6_ROOT_OBJECTS getRootObject() {
 		return rootObject;
@@ -44,7 +50,8 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 				getPlatformMetadataValue("documentSubType")));
 		// this should be substanceUUID
 		parentDocumentKey = getPlatformMetadataValue("parentDocumentKey");
-
+		materialsAndMethods = getContentValue("getMaterialsAndMethods");
+		administrativeData = getContentValue("getAdministrativeData");
 	}
 
 	public Object getStudyRecord() {
@@ -103,7 +110,21 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		return true;
 	}
 
+	/**
+	 * Check
+	 * 
+	 * @return
+	 */
 	public boolean isDataWaiving() {
+		try {
+			if (administrativeData != null) {
+				PicklistField dw = (PicklistField) call(administrativeData, "getDataWaiving", null);
+				return Boolean.parseBoolean(dw.getValue());
+			}
+		} catch (Exception x) {
+			logger.warning(x.getMessage());
+		}
+
 		return false;
 	}
 
@@ -125,20 +146,21 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 
 	public void assignGuidelines(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
 		try {
-			Object mm = getContentValue("getMaterialsAndMethods");
-			if (mm != null) {
-				Object guideline = call(mm, "getGuideline", null);
-				if (guideline != null) {
-					Object entries = call(guideline, "getEntry", null);
-					if (entries != null && entries instanceof List)
-						for (Object o : (List) entries) {
-							papp.getProtocol().addGuideline(o.toString());
-						}
-					// getMethodNoGuideline
-					Object methodNoGuideline = call(mm, "getMethodNoGuideline", null);
-					if (methodNoGuideline != null)
-						papp.getProtocol().addGuideline(methodNoGuideline.toString());
-				}
+
+			Object guideline = call(materialsAndMethods, "getGuideline", null);
+			if (guideline != null) {
+				Object entries = call(guideline, "getEntry", null);
+				if (entries != null && entries instanceof List)
+					for (Object o : (List) entries) {
+						PicklistField g = (PicklistField) call(o, "getGuideline", null);
+						Object value = getMethodValue(g);
+						if (value != null && !"".equals(value))
+							papp.getProtocol().addGuideline(value.toString());
+					}
+				// getMethodNoGuideline
+				Object methodNoGuideline = call(materialsAndMethods, "getMethodNoGuideline", null);
+				if (methodNoGuideline != null && !"".equals(methodNoGuideline))
+					papp.getProtocol().addGuideline(methodNoGuideline.toString());
 			}
 
 		} catch (Exception x) {
@@ -147,8 +169,141 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 
 	}
 
-	public void assignProtocolParameters(ProtocolApplication papp) {
+	public void assignProtocolParameters(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
 
+		if (materialsAndMethods == null)
+			return;
+		IParams p = papp.getParameters();
+		try {
+			PicklistFieldWithSmallTextRemarks m = (PicklistFieldWithSmallTextRemarks) call(materialsAndMethods,
+					"getMethodType", null);
+			if (m != null)
+				p.put(I5CONSTANTS.methodType, getMethodValue(m));
+		} catch (Exception x) {
+			logger.warning(x.getMessage());
+		}
+
+		try {
+			Object studyDesign = call(materialsAndMethods, "getStudyDesign", null);
+			Method[] allMethods = studyDesign.getClass().getDeclaredMethods();
+			for (Method m : allMethods)
+				if (m.getName().startsWith("get")) {
+					Object r = m.invoke(studyDesign);
+					if (r == null)
+						continue;
+					String key = m.getName();
+					Object value = _getMethodValue(r, p);
+					if (value != null) {
+						if (!"".equals(value))
+							p.put(methodname2key(key), value);
+					}
+
+				}
+		} catch (Exception x) {
+			logger.warning(x.getMessage());
+		}
+
+		Method[] allMethods = materialsAndMethods.getClass().getDeclaredMethods();
+		for (Method m : allMethods)
+			try {
+				if ("getGuideline".equals(m.getName()))
+					continue;
+				if ("getMethodType".equals(m.getName()))
+					continue;
+				if ("getStudyDesign".equals(m.getName()))
+					continue;
+				if ("getMethodNoGuideline".equals(m.getName()))
+					continue;
+				if ("getTestMaterials".equals(m.getName()))
+					continue;
+
+				if (m.getName().startsWith("get")) {
+					Object r = m.invoke(materialsAndMethods);
+					if (r == null)
+						continue;
+					String key = m.getName();
+					Object value = _getMethodValue(r, p);
+					if (value != null) {
+						if (!"".equals(value))
+							p.put(methodname2key(key), value);
+					}
+				}
+			} catch (Exception x) {
+				logger.warning(x.getMessage());
+			}
+	}
+
+	/**
+	 * Used to assign protocol parameters
+	 * 
+	 * @param methodname
+	 * @return
+	 */
+	protected String methodname2key(String methodname) {
+		// TODO match with I5Constants
+		return methodname.replace("\\(", "").replaceAll("\\)", "").replace("get", "");
+	}
+
+	private Object _getMethodValue(Object r, IParams params) {
+		Object value = r;
+		if (r instanceof String)
+			return r;
+		else if (r instanceof Number)
+			return r;
+		else if (r instanceof List) {
+			List l = new ArrayList<>();
+			for (Object e : (List) r) {
+				Object v = _getMethodValue(e, params);
+				if ((v != null) && (!"".equals(v.toString())))
+					l.add(v);
+			}
+			value = (((List) l).size()) > 0 ? l : null;
+		} else if (r instanceof PicklistField)
+			value = getMethodValue((PicklistField) r);
+		else if (r instanceof PicklistFieldWithSmallTextRemarks)
+			value = getMethodValue((PicklistFieldWithSmallTextRemarks) r);
+		else if (r instanceof PicklistFieldWithLargeTextRemarks)
+			value = getMethodValue((PicklistFieldWithLargeTextRemarks) r);
+		else if (r instanceof PicklistFieldWithMultiLineTextRemarks)
+			value = getMethodValue((PicklistFieldWithMultiLineTextRemarks) r);
+		else {
+			Method[] allMethods = value.getClass().getDeclaredMethods();
+
+			for (Method m : allMethods)
+				if (m.getName().startsWith("get"))
+					try {
+						Object rr = m.invoke(value);
+						if (rr == null)
+							continue;
+						String key = m.getName();
+						Object subvalue = _getMethodValue(rr, params);
+						if (subvalue != null && !"".equals(subvalue.toString()))
+							params.put(methodname2key(key), subvalue);
+
+					} catch (Exception x) {
+						logger.warning(x.getMessage());
+					}
+			// value = params.size()==0?null:params;
+			value = null;
+		}
+		return value;
+
+	}
+
+	protected Object getMethodValue(PicklistField f) {
+		return ("1342".equals(f.getValue()) ? f.getOther() : f.getValue());
+	}
+
+	protected Object getMethodValue(PicklistFieldWithSmallTextRemarks f) {
+		return ("1342".equals(f.getValue()) ? f.getOther() : f.getValue());
+	}
+
+	protected Object getMethodValue(PicklistFieldWithLargeTextRemarks f) {
+		return ("1342".equals(f.getValue()) ? f.getOther() : f.getValue());
+	}
+
+	protected Object getMethodValue(PicklistFieldWithMultiLineTextRemarks f) {
+		return ("1342".equals(f.getValue()) ? f.getOther() : f.getValue());
 	}
 
 	public void assignEffectLevels(ProtocolApplication papp) {
@@ -156,7 +311,18 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 	}
 
 	public void assignInterpretationResult(ProtocolApplication papp) {
+		try {
+			Object mm = getContentValue("getApplicantSummaryAndConclusion");
+			if (mm != null) {
+				Object conclusions = call(mm, "getConclusions", null);
+				Object summary = call(mm, "getExecutiveSummary", null);
+				papp.setInterpretationResult(conclusions == null ? null : conclusions.toString());
+				papp.setInterpretationCriteria(summary == null ? null : summary.toString());
+			}
 
+		} catch (Exception x) {
+			logger.warning(x.getMessage());
+		}
 	}
 
 	protected IParams createProtocolParameters() {
@@ -183,35 +349,18 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		return papp;
 	}
 
-	/*
-	 * public String getReliability() { return null; }
-	 * 
-	 * public boolean isRobustStudy() { return false; }
-	 * 
-	 * public boolean isUsedForMSDS() { return false; }
-	 * 
-	 * public boolean isUsedForClassification() { return false; }
-	 * 
-	 * public String getStudyResultType() { return null; }
-	 * 
-	 * public String getPurposeFlag() { return null; }
-	 * 
-	 * 
-	 */
-
 	public Params parseReliability(ProtocolApplication papp, QASettings qasettings) throws AmbitException {
 		ReliabilityParams reliability = new ReliabilityParams();
 		try {
-			Object mm = getContentValue("getAdministrativeData");
-			if (mm == null)
+			if (administrativeData == null)
 				return null;
-			PicklistField reliabilityID = (PicklistField) call(mm, "getReliability", null);
-			PicklistField purposeFlagCode = (PicklistField) call(mm, "getPurposeFlag", null);
-			boolean isRobustStudy = (boolean) call(mm, "getRobustStudy", null);
-			boolean isUsedforClassification = (boolean) call(mm, "getUsedForClassification", null);
-			boolean isUsedforMSDS = (boolean) call(mm, "getUsedForMSDS", null);
-			PicklistFieldWithSmallTextRemarks studyResultTypeID = (PicklistFieldWithSmallTextRemarks) call(mm,
-					"getStudyResultType", null);
+			PicklistField reliabilityID = (PicklistField) call(administrativeData, "getReliability", null);
+			PicklistField purposeFlagCode = (PicklistField) call(administrativeData, "getPurposeFlag", null);
+			boolean isRobustStudy = (boolean) call(administrativeData, "getRobustStudy", null);
+			boolean isUsedforClassification = (boolean) call(administrativeData, "getUsedForClassification", null);
+			boolean isUsedforMSDS = (boolean) call(administrativeData, "getUsedForMSDS", null);
+			PicklistFieldWithSmallTextRemarks studyResultTypeID = (PicklistFieldWithSmallTextRemarks) call(
+					administrativeData, "getStudyResultType", null);
 
 			String testMaterialIndicator = getTestMaterialIdentity();
 
