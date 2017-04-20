@@ -2,6 +2,10 @@ package net.idea.i6._2.ambit2;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
+import java.util.logging.Logger;
+
+import javax.xml.bind.JAXBElement;
 
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
@@ -9,23 +13,38 @@ import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.ReliabilityParams;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistField;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithSmallTextRemarks;
 import net.idea.i5.io.Experiment;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import net.idea.i5.io.QASettings;
 import net.idea.i6.ambti2.phrases.Phrases;
+import net.idea.i6.io.I6_ROOT_OBJECTS;
 import net.idea.modbcum.i.exceptions.AmbitException;
 
 public class EndpointStudyRecordWrapper<STUDYRECORD> {
+	protected static Logger logger = Logger.getLogger(EndpointStudyRecordWrapper.class.getName());
 	protected Document doc;
+	protected I6_ROOT_OBJECTS rootObject;
+	protected String parentDocumentKey;
+
+	public I6_ROOT_OBJECTS getRootObject() {
+		return rootObject;
+	}
 
 	public Document getDoc() {
 		return doc;
 	}
 
-	public EndpointStudyRecordWrapper(Document doc) {
+	public EndpointStudyRecordWrapper(Document doc) throws Exception {
 		super();
 		this.doc = doc;
+		rootObject = I6_ROOT_OBJECTS.valueOf(String.format("%s_%s", getPlatformMetadataValue("documentType"),
+				getPlatformMetadataValue("documentSubType")));
+		// this should be substanceUUID
+		parentDocumentKey = getPlatformMetadataValue("parentDocumentKey");
+
 	}
 
 	public Object getStudyRecord() {
@@ -48,16 +67,36 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		return false;
 	}
 
-	public String getDocumentReferencePK() {
+	private Object getContentValue(String methodName) {
+		try {
+			return call(doc.getContent().getAny(), methodName, null);
+		} catch (Exception x) {
+			logger.fine(x.getMessage());
+			return null;
+		}
+
+	}
+
+	private final String prefix = "http://iuclid6.echa.europa.eu/namespaces/platform-metadata/v1";
+
+	private String getPlatformMetadataValue(String name) {
+		for (Object o : doc.getPlatformMetadata().getAny())
+			if (name.equals(((JAXBElement) o).getName().getLocalPart())) {
+				return ((JAXBElement) o).getValue().toString();
+			}
 		return null;
+	}
+
+	public String getDocumentReferencePK() {
+		return getPlatformMetadataValue("documentKey");
 	}
 
 	public String getName() {
-		return null;
+		return getPlatformMetadataValue("name");
 	}
 
 	public String getTopCategory() {
-		return null;
+		return rootObject.getTopCategory();
 	}
 
 	public boolean hasScientificPart() {
@@ -73,31 +112,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 	}
 
 	public I5_ROOT_OBJECTS getEndpointCategory() {
-		return null;
-	}
-
-	public String getReliability() {
-		return null;
-	}
-
-	public boolean isRobustStudy() {
-		return false;
-	}
-
-	public boolean isUsedForMSDS() {
-		return false;
-	}
-
-	public boolean isUsedForClassification() {
-		return false;
-	}
-
-	public String getStudyResultType() {
-		return null;
-	}
-
-	public String getPurposeFlag() {
-		return null;
+		return rootObject.mapIUCLID5();
 	}
 
 	public String getTestMaterialIdentity() {
@@ -108,20 +123,28 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		return null;
 	}
 
-	public void assignGuidelines(ProtocolApplication papp) {
-		/*
-		 * if (sciPart.getTOACUTEORAL().getGUIDELINE() != null) for (Set set :
-		 * sciPart.getTOACUTEORAL().getGUIDELINE().getSet()) try {
-		 * papp.getProtocol().addGuideline(getGuideline(set.
-		 * getPHRASEOTHERGUIDELINE().getGUIDELINEValue(),
-		 * set.getPHRASEOTHERGUIDELINE().getGUIDELINETXT())); } catch (Exception
-		 * x) { } if (sciPart.getTOACUTEORAL().getMETHODNOGUIDELINE() != null)
-		 * try { papp.getProtocol().addGuideline(sciPart.getTOACUTEORAL().
-		 * getMETHODNOGUIDELINE().getSet()
-		 * .getTEXTAREABELOW().getTEXTAREABELOW().getValue()); } catch
-		 * (Exception x) { }
-		 * 
-		 */
+	public void assignGuidelines(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
+		try {
+			Object mm = getContentValue("getMaterialsAndMethods");
+			if (mm != null) {
+				Object guideline = call(mm, "getGuideline", null);
+				if (guideline != null) {
+					Object entries = call(guideline, "getEntry", null);
+					if (entries != null && entries instanceof List)
+						for (Object o : (List) entries) {
+							papp.getProtocol().addGuideline(o.toString());
+						}
+					// getMethodNoGuideline
+					Object methodNoGuideline = call(mm, "getMethodNoGuideline", null);
+					if (methodNoGuideline != null)
+						papp.getProtocol().addGuideline(methodNoGuideline.toString());
+				}
+			}
+
+		} catch (Exception x) {
+			logger.warning(x.getMessage());
+		}
+
 	}
 
 	public void assignProtocolParameters(ProtocolApplication papp) {
@@ -144,7 +167,9 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 	}
 
 	public Experiment<IParams, IParams> createProtocolApplication() {
-		Experiment<IParams, IParams> papp = new Experiment<IParams, IParams>(new Protocol(getName()));
+		Protocol protocol = new Protocol(getName());
+
+		Experiment<IParams, IParams> papp = new Experiment<IParams, IParams>(protocol);
 		papp.setDocumentUUID(getDocumentReferencePK());
 		papp.getProtocol().setTopCategory(getTopCategory());
 		try {
@@ -158,40 +183,64 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		return papp;
 	}
 
+	/*
+	 * public String getReliability() { return null; }
+	 * 
+	 * public boolean isRobustStudy() { return false; }
+	 * 
+	 * public boolean isUsedForMSDS() { return false; }
+	 * 
+	 * public boolean isUsedForClassification() { return false; }
+	 * 
+	 * public String getStudyResultType() { return null; }
+	 * 
+	 * public String getPurposeFlag() { return null; }
+	 * 
+	 * 
+	 */
+
 	public Params parseReliability(ProtocolApplication papp, QASettings qasettings) throws AmbitException {
-
-		String valueID = getReliability();
-		boolean isRobustStudy = isRobustStudy();
-		boolean isUsedforClassification = isUsedForClassification();
-		boolean isUsedforMSDS = isUsedForMSDS();
-		String purposeFlagCode = getPurposeFlag();
-		String studyResultTypeID = getStudyResultType();
-		String testMaterialIndicator = getTestMaterialIdentity();
-
-		if (qasettings.isEnabled()) {
-			isPurposeflagAccepted(purposeFlagCode, qasettings);
-			isStudyResultAccepted(studyResultTypeID, qasettings);
-			isReliabilityAccepted(valueID, qasettings);
-			isTestMaterialIdentityAccepted(testMaterialIndicator, qasettings);
-		}
-		// else System.out.println("No quality check");
-
 		ReliabilityParams reliability = new ReliabilityParams();
-		reliability.setId(valueID);
-		reliability.setValue(Phrases.phrasegroup_A36.get(valueID));
-		reliability.setIsRobustStudy(isRobustStudy);
-		reliability.setIsUsedforClassification(isUsedforClassification);
-		reliability.setIsUsedforMSDS(isUsedforMSDS);
 		try {
-			reliability.setPurposeFlag(Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
-		} catch (Exception x) {
+			Object mm = getContentValue("getAdministrativeData");
+			if (mm == null)
+				return null;
+			PicklistField reliabilityID = (PicklistField) call(mm, "getReliability", null);
+			PicklistField purposeFlagCode = (PicklistField) call(mm, "getPurposeFlag", null);
+			boolean isRobustStudy = (boolean) call(mm, "getRobustStudy", null);
+			boolean isUsedforClassification = (boolean) call(mm, "getUsedForClassification", null);
+			boolean isUsedforMSDS = (boolean) call(mm, "getUsedForMSDS", null);
+			PicklistFieldWithSmallTextRemarks studyResultTypeID = (PicklistFieldWithSmallTextRemarks) call(mm,
+					"getStudyResultType", null);
 
-		}
-		try {
-			reliability.setStudyResultType(Phrases.phrasegroup_Z05.get(studyResultTypeID));
-		} catch (Exception x) {
-		}
+			String testMaterialIndicator = getTestMaterialIdentity();
 
+			if (qasettings.isEnabled()) {
+				isPurposeflagAccepted(purposeFlagCode.getValue(), qasettings);
+				isStudyResultAccepted(studyResultTypeID.getValue(), qasettings);
+				isReliabilityAccepted(reliabilityID.getValue(), qasettings);
+				isTestMaterialIdentityAccepted(testMaterialIndicator, qasettings);
+			}
+			// else System.out.println("No quality check");
+
+			reliability.setId(reliabilityID.getValue());
+			reliability.setValue(Phrases.phrasegroup_A36.get(reliabilityID.getValue()));
+			reliability.setIsRobustStudy(isRobustStudy);
+			reliability.setIsUsedforClassification(isUsedforClassification);
+			reliability.setIsUsedforMSDS(isUsedforMSDS);
+			try {
+				reliability.setPurposeFlag(Phrases.phrasegroup_Y14_3.get(purposeFlagCode.getValue()));
+			} catch (Exception x) {
+
+			}
+			try {
+				reliability.setStudyResultType(Phrases.phrasegroup_Z05.get(studyResultTypeID.getValue()));
+			} catch (Exception x) {
+			}
+
+		} catch (Exception x) {
+			logger.warning(x.getMessage());
+		}
 		papp.setReliability(reliability);
 		return reliability;
 	};
@@ -238,4 +287,5 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		} else
 			return true;
 	}
+
 }

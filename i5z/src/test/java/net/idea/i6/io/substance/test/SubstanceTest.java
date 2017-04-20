@@ -16,9 +16,13 @@ import org.openscience.cdk.io.IChemObjectReaderErrorHandler;
 import org.w3c.dom.Document;
 
 import ambit2.base.data.SubstanceRecord;
+import ambit2.base.data.study.IParams;
+import ambit2.base.data.study.Protocol;
+import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.base.relation.composition.CompositionRelation;
 import junit.framework.Assert;
+import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QASettings;
 import net.idea.i6.io.I6DReader;
 import net.idea.i6.io.I6ManifestReader;
@@ -51,10 +55,25 @@ public class SubstanceTest {
 			System.out.println(jaxbcontextpath);
 			try (InputStream fileReader = new FileInputStream(test)) {
 				I6DReader reader = new I6DReader(test.getAbsolutePath(), fileReader, jaxbContext, jaxbUnmarshaller, new QASettings(false));
+				int c = 0;
 				while (reader.hasNext()) {
 					Object o = reader.next();
 					Assert.assertNotNull(o);
+					Assert.assertTrue(o instanceof SubstanceRecord);
+					Assert.assertNotNull(((SubstanceRecord)o).getMeasurements());
+					for (ProtocolApplication<Protocol, IParams, String, IParams,String> papp : ((SubstanceRecord)o).getMeasurements()) {
+						Protocol p = papp.getProtocol();
+						System.out.println(p);
+						Assert.assertEquals(I5_ROOT_OBJECTS.PC_WATER_SOL.name(), p.getCategory());
+						Assert.assertEquals("Water solubility, IUC4#1/Ch.2.6.1", p.getEndpoint());
+						Assert.assertEquals("Method: other", p.getGuideline().get(0));
+						
+						Assert.assertNotNull(papp.getReliability());
+						System.out.println(papp.getReliability());
+					}
+					c++;
 				}
+				Assert.assertEquals(1, c);
 			} catch (Exception x) {
 				x.printStackTrace();
 			}
