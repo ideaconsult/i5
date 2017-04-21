@@ -4,6 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,7 +26,6 @@ import net.idea.i5.io.Experiment;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import net.idea.i5.io.QASettings;
-import net.idea.i6.ambti2.phrases.Phrases;
 import net.idea.i6.io.I6_ROOT_OBJECTS;
 import net.idea.modbcum.i.exceptions.AmbitException;
 
@@ -36,6 +37,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 	protected Object materialsAndMethods = null;
 	protected Object administrativeData = null;
 	protected Object resultsAndDiscussion = null;
+	protected static ResourceBundle phr = ResourceBundle.getBundle("PhraseResourceBundle", Locale.ENGLISH);
 
 	public I6_ROOT_OBJECTS getRootObject() {
 		return rootObject;
@@ -55,10 +57,19 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		materialsAndMethods = getContentValue("getMaterialsAndMethods");
 		administrativeData = getContentValue("getAdministrativeData");
 		resultsAndDiscussion = getContentValue("getResultsAndDiscussion");
+
+	}
+
+	public static String getPhrase(String key) {
+		try {
+			return phr.getString(key);
+		} catch (Exception x) {
+			return key;
+		}
 	}
 
 	public STUDYRECORD getStudyRecord() {
-		return (STUDYRECORD)doc.getContent().getAny();
+		return (STUDYRECORD) doc.getContent().getAny();
 	}
 
 	protected Object call(Object obj, String methodName, Object... params)
@@ -125,7 +136,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 				return Boolean.parseBoolean(dw.getValue());
 			}
 		} catch (Exception x) {
-			logger.log(Level.WARNING,x.getMessage(),x);
+			logger.log(Level.WARNING, x.getMessage(), x);
 		}
 
 		return false;
@@ -158,7 +169,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 						PicklistField g = (PicklistField) call(o, "getGuideline", null);
 						Object value = getMethodValue(g);
 						if (value != null && !"".equals(value))
-							papp.getProtocol().addGuideline(value.toString());
+							papp.getProtocol().addGuideline(getPhrase(value.toString()));
 					}
 				// getMethodNoGuideline
 				Object methodNoGuideline = call(materialsAndMethods, "getMethodNoGuideline", null);
@@ -167,7 +178,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 			}
 
 		} catch (Exception x) {
-			logger.log(Level.WARNING,x.getMessage(),x);
+			logger.log(Level.WARNING, x.getMessage(), x);
 		}
 
 	}
@@ -200,7 +211,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 					}
 				}
 			} catch (Exception x) {
-				logger.log(Level.WARNING,x.getMessage(),x);
+				logger.log(Level.WARNING, x.getMessage(), x);
 			}
 	}
 
@@ -222,7 +233,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		else if (r instanceof Number)
 			return r;
 		else if (r instanceof Boolean)
-			return r;		
+			return r;
 		else if (r instanceof List) {
 			List l = new ArrayList<>();
 			for (Object e : (List) r) {
@@ -254,7 +265,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 							params.put(methodname2key(key), subvalue);
 
 					} catch (Exception x) {
-						logger.log(Level.WARNING,String.format("%s\t%s",value.getClass().getName(),m.getName()),x);
+						logger.log(Level.WARNING, String.format("%s\t%s", value.getClass().getName(), m.getName()), x);
 					}
 			// value = params.size()==0?null:params;
 			value = null;
@@ -264,19 +275,19 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 	}
 
 	protected Object getMethodValue(PicklistField f) {
-		return ("1342".equals(f.getValue()) ? f.getOther() : f.getValue());
+		return ("1342".equals(f.getValue()) ? f.getOther() : getPhrase(f.getValue()));
 	}
 
 	protected Object getMethodValue(PicklistFieldWithSmallTextRemarks f) {
-		return ("1342".equals(f.getValue()) ? f.getOther() : f.getValue());
+		return ("1342".equals(f.getValue()) ? f.getOther() : getPhrase(f.getValue()));
 	}
 
 	protected Object getMethodValue(PicklistFieldWithLargeTextRemarks f) {
-		return ("1342".equals(f.getValue()) ? f.getOther() : f.getValue());
+		return ("1342".equals(f.getValue()) ? f.getOther() : getPhrase(f.getValue()));
 	}
 
 	protected Object getMethodValue(PicklistFieldWithMultiLineTextRemarks f) {
-		return ("1342".equals(f.getValue()) ? f.getOther() : f.getValue());
+		return ("1342".equals(f.getValue()) ? f.getOther() : getPhrase(f.getValue()));
 	}
 
 	private void _params2effectrecord(EffectRecord<String, IParams, String> effectRecord, IParams values) {
@@ -371,7 +382,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 			}
 
 		} catch (Exception x) {
-			logger.log(Level.WARNING,x.getMessage(),x);
+			logger.log(Level.WARNING, x.getMessage(), x);
 		}
 	}
 
@@ -423,22 +434,22 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 			// else System.out.println("No quality check");
 
 			reliability.setId(reliabilityID.getValue());
-			reliability.setValue(Phrases.phrasegroup_A36.get(reliabilityID.getValue()));
+			reliability.setValue(getPhrase(reliabilityID.getValue()));
 			reliability.setIsRobustStudy(isRobustStudy);
 			reliability.setIsUsedforClassification(isUsedforClassification);
 			reliability.setIsUsedforMSDS(isUsedforMSDS);
 			try {
-				reliability.setPurposeFlag(Phrases.phrasegroup_Y14_3.get(purposeFlagCode.getValue()));
+				reliability.setPurposeFlag(getPhrase(purposeFlagCode.getValue()));
 			} catch (Exception x) {
 
 			}
 			try {
-				reliability.setStudyResultType(Phrases.phrasegroup_Z05.get(studyResultTypeID.getValue()));
+				reliability.setStudyResultType(getPhrase(studyResultTypeID.getValue()));
 			} catch (Exception x) {
 			}
 
 		} catch (Exception x) {
-			logger.log(Level.WARNING,x.getMessage(),x);
+			logger.log(Level.WARNING, x.getMessage(), x);
 		}
 		papp.setReliability(reliability);
 		return reliability;
@@ -449,14 +460,14 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		if (qaSettings.isTestMaterialIdentityAccepted(testMaterialCode))
 			return true; // yes
 		throw new QACriteriaException("Test material identity ", testMaterialCode,
-				testMaterialCode == null ? null : Phrases.phrasegroup_Z38.get(testMaterialCode));
+				testMaterialCode == null ? null : getPhrase(testMaterialCode));
 	}
 
 	protected boolean isPurposeflagAccepted(String purposeFlagCode, QASettings qaSettings) throws QACriteriaException {
 		if (qaSettings.isPurposeflagAccepted(purposeFlagCode))
 			return true; // key study, supporting study
 		throw new QACriteriaException("Purpose flag ", purposeFlagCode,
-				purposeFlagCode == null ? null : Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
+				purposeFlagCode == null ? null : getPhrase(purposeFlagCode));
 	}
 
 	protected boolean isStudyResultAccepted(String studyResultTypeID, QASettings qaSettings)
@@ -464,7 +475,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		if (qaSettings.isStudyResultAccepted(studyResultTypeID))
 			return true; // experimental result
 		throw new QACriteriaException("Study result ", studyResultTypeID,
-				studyResultTypeID == null ? null : Phrases.phrasegroup_Z05.get(studyResultTypeID));
+				studyResultTypeID == null ? null : getPhrase(studyResultTypeID));
 	}
 
 	protected boolean isReliabilityAccepted(String valueID, QASettings qaSettings) throws QACriteriaException {
@@ -472,7 +483,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 			return true; // "1 (reliable without restriction)", "2 (reliable
 							// with restrictions)"
 		throw new QACriteriaException("Reliability ", valueID,
-				valueID == null ? null : Phrases.phrasegroup_A36.get(valueID));
+				valueID == null ? null : getPhrase(valueID));
 	}
 
 	protected boolean isReferenceTypeAccepted(String referenceTypeCode, QASettings qaSettings)
@@ -482,7 +493,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 							// handbook"
 		if (qaSettings.isEnabled()) {
 			throw new QACriteriaException("Reference type ", referenceTypeCode,
-					referenceTypeCode == null ? null : Phrases.phrasegroup_Z31.get(referenceTypeCode));
+					referenceTypeCode == null ? null : getPhrase(referenceTypeCode));
 		} else
 			return true;
 	}

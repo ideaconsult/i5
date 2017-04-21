@@ -34,17 +34,17 @@ public class GeneticToxicityVitro_RecordWrapper extends EndpointStudyRecordWrapp
 			*/
 			EffectRecord<String, IParams, String> effect = rootObject.mapIUCLID5().createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.eGenotoxicity);
-			effect.setTextValue(e.getGenotoxicity().getValue());
+			effect.setTextValue(getPhrase(e.getGenotoxicity().getValue()));
 			papp.addEffect(effect);
 			
 			try {
-				effect.getConditions().put(I5CONSTANTS.cMetabolicActivation,e.getMetActIndicator().getValue());
+				effect.getConditions().put(I5CONSTANTS.cMetabolicActivation,getPhrase(e.getMetActIndicator().getValue()));
 			} catch (Exception x) {
 				effect.getConditions().put(I5CONSTANTS.cMetabolicActivation,null);
 			}
 			if (e.getOrganism()!=null) 
 				try {
-					effect.getConditions().put(I5CONSTANTS.cSpecies,e.getOrganism().getValue());
+					effect.getConditions().put(I5CONSTANTS.cSpecies,getPhrase(e.getOrganism().getValue()));
 				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cSpecies,null);}	
 												
 
