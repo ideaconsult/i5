@@ -1,6 +1,6 @@
 package net.idea.i6._2.ambit2;
 
-import java.util.Hashtable;
+import java.lang.reflect.Constructor;
 import java.util.logging.Level;
 
 import ambit2.base.interfaces.IStructureRecord;
@@ -10,6 +10,7 @@ import eu.europa.echa.iuclid6.namespaces.substance._2.SUBSTANCE;
 import net.idea.i5.io.IStudyRecordConverter;
 import net.idea.i5.io.IuclidAmbitProcessor;
 import net.idea.i5.io.QACriteriaException;
+import net.idea.i6._2.ambit2.sections.I6StudyRecordConverter;
 import net.idea.i6.io.I6_ROOT_OBJECTS;
 import net.idea.modbcum.i.exceptions.AmbitException;
 
@@ -19,7 +20,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 	 * 
 	 */
 	private static final long serialVersionUID = 4709118915064457190L;
-	protected Hashtable<String, IStudyRecordConverter> convertors = new Hashtable<String, IStudyRecordConverter>();
+	protected I6StudyRecordConverter convertor;
 
 	public I6AmbitProcessor(String container) {
 		super(container);
@@ -40,7 +41,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 		try {
 			IStudyRecordConverter convertor = getConvertor(content.getClass().getName());
 			if (convertor != null)
-				return convertor.transform2record(new EndpointStudyRecordWrapper((Document)unmarshalled), record);
+				return convertor.transform2record(getWrapper((Document) unmarshalled, content.getClass().getName()),
+						record);
 		} catch (QACriteriaException x) {
 			// reliability exception
 			logger.log(Level.FINE, x.getMessage());
@@ -57,35 +59,42 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 		return true;
 	}
 
+	protected EndpointStudyRecordWrapper getWrapper(Document doc, String className) throws Exception {
+
+		String[] path = className.split("\\.");
+		String tagName = path[path.length - 1].replaceAll("ENDPOINTSTUDYRECORD","");
+
+		String clazzName = String.format("net.idea.i6._2.ambit2.wrappers.%s_RecordWrapper", tagName);
+		try {
+			Class<?> c = Class.forName(clazzName);
+			Constructor<?> cons = c.getConstructor(Document.class);
+			Object cnv = cons.newInstance(doc);
+			if (cnv instanceof EndpointStudyRecordWrapper) {
+				return (EndpointStudyRecordWrapper) cnv;
+			}
+		} catch (Exception x) {
+			logger.log(Level.WARNING, String.format("%s\t%s", "Class not found, using default EndpointStudyRecordWrapper", x.getMessage()));
+		}
+		return new EndpointStudyRecordWrapper(doc);
+	}
+
 	protected IStudyRecordConverter getConvertor(String className) throws Exception {
-		IStudyRecordConverter convertor = null;
+
 		String[] path = className.split("\\.");
 		String tagName = path[path.length - 1];
 		try {
 			I6_ROOT_OBJECTS tag = I6_ROOT_OBJECTS
 					.valueOf(tagName.replace("ENDPOINTSTUDYRECORD", "ENDPOINT_STUDY_RECORD_"));
 			if (tag.isScientificPart()) {
-				convertor = convertors.get(tag.name());
-				if (convertor == null) {
-					String clazzName = "net.idea.i6._2.ambit2.sections.I6StudyRecordConverter";
-					
-					 //String clazzName = "net.idea.i6._2.ambit2.sections." + path[path.length - 3]+ ".StudyRecordConverter";
-					
-					Object cnv = Class.forName(clazzName).newInstance();
-					if (cnv instanceof IStudyRecordConverter) {
-						convertor = (IStudyRecordConverter) cnv;
-						convertor.setQASettings(getQASettings());
-						convertors.put(tag.name(), convertor);
-					} else
-						throw new Exception("Not an instance of IStudyRecordConverter!");
-				} else {
-					convertor.setQASettings(getQASettings());
-				}
+				convertor = new I6StudyRecordConverter<>();
+				String clazzName = "net.idea.i6._2.ambit2.sections.I6StudyRecordConverter";
+				convertor.setQASettings(getQASettings());
+				return convertor;
 			}
 		} catch (Exception x) {
 			throw x;
 		}
-		return convertor;
+		return null;
 	}
 
 	// net.idea.i6._2.ambit2.sections.endpoint_study_record_watersolubility.StudyRecordConverter

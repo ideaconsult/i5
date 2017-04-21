@@ -57,8 +57,8 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		resultsAndDiscussion = getContentValue("getResultsAndDiscussion");
 	}
 
-	public Object getStudyRecord() {
-		return doc.getContent().getAny();
+	public STUDYRECORD getStudyRecord() {
+		return (STUDYRECORD)doc.getContent().getAny();
 	}
 
 	protected Object call(Object obj, String methodName, Object... params)
@@ -298,7 +298,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 
 			Method[] allMethods = resultsAndDiscussion.getClass().getDeclaredMethods();
 			for (Method m : allMethods)
-				if (m.getName().equals("getEffectLevels")) {
+				if (m.getName().equals("getEffectLevels") || m.getName().equals("getTestRs")) {
 					Object effectLevels = m.invoke(resultsAndDiscussion);
 					if (effectLevels != null) {
 						Object entries = call(effectLevels, "getEntry");
