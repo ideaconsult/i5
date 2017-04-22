@@ -29,7 +29,7 @@
    <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.8.1</junit.version>
-    <ambit.version>3.0.3-SNAPSHOT</ambit.version>
+    <ambit.version>3.1.0-SNAPSHOT</ambit.version>
   </properties>
   <scm>
     <connection>scm:git:git://github.com/ideaconsult/i5.git</connection>
