@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
-
-import org.w3c.dom.Document;
 
 import ambit2.base.exceptions.AmbitIOException;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.core.io.FileState;
 import ambit2.core.io.IRawReader;
+import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i5.io.I5Options;
 import net.idea.i5.io.IZReader;
 import net.idea.modbcum.i.exceptions.AmbitException;
@@ -28,6 +28,7 @@ import net.idea.modbcum.i.exceptions.AmbitException;
  * @param <SUBSTANCE>
  */
 public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
+	protected Map<String, Document> library;
 
 	public I6ZReader(InputStream stream) throws AmbitIOException {
 		this(stream, new I5Options());
@@ -50,7 +51,6 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 		return name.endsWith("manifest.xml") || FileState._FILE_TYPE.I6D_INDEX.hasExtension(name);
 	}
 
-
 	@Override
 	protected String getJaxbContextPath4File(File file) throws AmbitException, IOException {
 		return file2cjaxbcp == null ? null : file2cjaxbcp.get(file.getAbsolutePath());
@@ -72,11 +72,12 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 		List<File> referenceSubstances = new ArrayList<File>();
 		List<File> substances = new ArrayList<File>();
 		List<File> study = new ArrayList<File>();
+		List<File> linkedentries = new ArrayList<File>();
 		for (File file : files)
 			if (file.getName().endsWith("manifest.xml")) {
 				I6ManifestReader reader = new I6ManifestReader();
 				try (FileInputStream in = new FileInputStream(file)) {
-					Document manifest = reader.read(in);
+					org.w3c.dom.Document manifest = reader.read(in);
 					file2cjaxbcp = reader.parseFiles(manifest, directory);
 				} catch (Exception x) {
 					throw new AmbitIOException();
@@ -90,7 +91,13 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 			String cp = file2cjaxbcp.get(file.getAbsolutePath());
 			if (cp != null) {
 				logger.log(Level.FINE, cp);
-				if (cp.indexOf(".REFERENCESUBSTANCE") >= 0) {
+				if (cp.indexOf(".literature.") >= 0) {
+					linkedentries.add(file);
+				} else if (cp.indexOf(".flexible_record_substancecomposition.") >= 0) {
+					linkedentries.add(file);					
+				//} else if (cp.indexOf(".test_material_information.") >= 0) {
+				//	linkedentries.add(file);
+				} else if (cp.indexOf(".reference_substance.") >= 0) {
 					if (options != null && (options.getMaxReferenceStructures() > -1)
 							&& (referenceSubstances.size() >= options.getMaxReferenceStructures())) {
 
@@ -108,7 +115,7 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 						;
 					} else
 						referenceSubstances.add(file);
-				} else if (cp.indexOf(".SUBSTANCE") >= 0) {
+				} else if (cp.indexOf(".substance.") >= 0) {
 					substances.add(file);
 					if (options != null && (!options.isAllowMultipleSubstances() && (substances.size() > 1)))
 						throw new AmbitIOException("Single substance mode but multiple substances in zip file "
@@ -130,6 +137,12 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 			}
 		});
 
+		if (linkedentries.size() > 0)
+			try {
+				library = I6ManifestReader.parseLinkedEntry(linkedentries);
+			} catch (Exception x) {
+				logger.log(Level.WARNING, x.getMessage(), x);
+			}
 		referenceSubstances.addAll(substances);
 		referenceSubstances.addAll(study);
 		substances.clear();
@@ -145,11 +158,12 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 		if (isSupported(name)) {
 			logger.log(Level.FINE, name);
 			try {
-				//String jaxbcontextpath = getJaxbContextPath4File(files[index]);
-				String jaxbcontextpath = "eu.europa.echa.iuclid6.namespaces.platform_container.v1:" + 
-						"eu.europa.echa.iuclid6.namespaces.platform_fields.v1:"+
-						"eu.europa.echa.iuclid6.namespaces.platform_metadata.v1:"+
-						getJaxbContextPath4File(files[index]);
+				// String jaxbcontextpath =
+				// getJaxbContextPath4File(files[index]);
+				String jaxbcontextpath = "eu.europa.echa.iuclid6.namespaces.platform_container.v1:"
+						+ "eu.europa.echa.iuclid6.namespaces.platform_fields.v1:"
+						+ "eu.europa.echa.iuclid6.namespaces.platform_metadata.v1:"
+						+ "eu.europa.echa.iuclid6.namespaces.literature._1:" + getJaxbContextPath4File(files[index]);
 				if (jaxbcontextpath != null && !"".equals(jaxbcontextpath)) {
 					InputStream fileReader = new FileInputStream(files[index]);
 					try {
@@ -159,16 +173,10 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 
 							jaxbCache.clear();
 							jaxbCache.put(jaxbcontextpath, jaxb);
-							// System.out.print(jaxbCache.size());
-							// System.out.print("\t");
-							// System.out.println(jaxbcontextpath);
 						} else {
-							// System.out.print("CACHED");
-							// System.out.print("\t");
-							// System.out.println(jaxbcontextpath);
 						}
 						I6DReader reader = new I6DReader(files[index].getName(), fileReader, jaxb.getJaxbContext(),
-								jaxb.getUnmarshaller(), getQASettings());
+								jaxb.getUnmarshaller(), getQASettings(), library);
 						reader.setErrorHandler(errorHandler);
 						return reader;
 					} catch (javax.xml.bind.UnmarshalException x) {

@@ -1,5 +1,6 @@
 package net.idea.i6.io;
 
+import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
 import net.idea.i5.io.I5CONSTANTS;
@@ -87,6 +88,11 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		public boolean isSupported() {
 			return false;
 		}
+	},
+	FLEXIBLE_RECORD_SubstanceComposition {
+		public boolean isSupported() {
+			return false;
+		}	
 	},
 	SUBSTANCE {
 		@Override
@@ -490,5 +496,11 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 	public IParams createProtocolParameters() {
 		I5_ROOT_OBJECTS i5 = mapIUCLID5();
 		return i5==null?new Params():i5.createProtocolParameters();
+	}
+	public EffectRecord<String, IParams, String> createEffectRecord() {
+		I5_ROOT_OBJECTS i5 = mapIUCLID5();
+		if (i5 == null) {
+			return new EffectRecord<String,IParams,String>();
+		} else return i5.createEffectRecord();
 	}
 }

@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -21,9 +22,11 @@ import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.base.relation.composition.CompositionRelation;
+import eu.europa.echa.iuclid6.namespaces.literature._1.LITERATURE;
 import junit.framework.Assert;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QASettings;
+import net.idea.i6._2.ambit2.EndpointStudyRecordWrapper;
 import net.idea.i6.io.I6DReader;
 import net.idea.i6.io.I6ManifestReader;
 import net.idea.i6.io.I6ZReader;
@@ -32,8 +35,16 @@ public class SubstanceTest {
 	protected static Logger logger = Logger.getLogger(SubstanceTest.class.getName());
 
 	@Test
+	public void testPhrases() throws Exception {
+		Assert.assertEquals("OECD Guideline 471 (Bacterial Reverse Mutation Assay)",
+				EndpointStudyRecordWrapper.getPhrase("1287"));
+		Assert.assertEquals("XXX", EndpointStudyRecordWrapper.getPhrase("XXX"));
+	}
+
+	@Test
 	public void readManifest() throws Exception {
-		File file = new File(getClass().getClassLoader().getResource("net/idea/i6/_2/substance/manifest_i5.xml").getFile());
+		File file = new File(
+				getClass().getClassLoader().getResource("net/idea/i6/_2/substance/manifest_i5.xml").getFile());
 		Assert.assertTrue(file.exists());
 		File folder = file.getParentFile();
 		try (InputStream in = new FileInputStream(file)) {
@@ -43,41 +54,52 @@ public class SubstanceTest {
 			Map<String, String> file2cjaxbcp = r.parseFiles(manifest, folder);
 			System.out.println(file2cjaxbcp);
 
-			//File test = new File(folder,"IUC4-05eb6a0b-c37d-3a08-a9a3-718494b352ef_0.i6d");
-			//File test = new File(folder,"IUC5-10ca3210-3ac0-4b6f-9c00-b3790a20260e_0.i6d");
-			//File test = new File(folder,"IUC5-c533941d-3908-415d-93ff-e92bdde5ab01_0.i6d");
+			// File test = new
+			// File(folder,"IUC4-05eb6a0b-c37d-3a08-a9a3-718494b352ef_0.i6d");
+			//File test = new File(folder, "IUC5-10ca3210-3ac0-4b6f-9c00-b3790a20260e_0.i6d");
+			// File test = new
+			// File(folder,"IUC5-c533941d-3908-415d-93ff-e92bdde5ab01_0.i6d");
 			File test = new File(folder,"IUC5-db3f935f-5a8e-42d2-be08-cd76afd0fc6a_0.i6d");
 			//File test = new File(folder,"IUC5-848a57ae-94a6-436a-965c-d7d6bd3c1a1f_0.i6d");
-			
-			//Assert.assertEquals("eu.europa.echa.iuclid6.namespaces.endpoint_study_record_watersolubility._2", file2cjaxbcp.get(test.getAbsolutePath()));
+
+			// Assert.assertEquals("eu.europa.echa.iuclid6.namespaces.endpoint_study_record_watersolubility._2",
+			// file2cjaxbcp.get(test.getAbsolutePath()));
 			System.out.println(file2cjaxbcp.get(test.getAbsolutePath()));
 			Assert.assertNotNull(file2cjaxbcp.get(test.getAbsolutePath()));
 
 			String jaxbcontextpath = "eu.europa.echa.iuclid6.namespaces.platform_container.v1:"
 					+ "eu.europa.echa.iuclid6.namespaces.platform_fields.v1:"
-					+ "eu.europa.echa.iuclid6.namespaces.platform_metadata.v1:" + file2cjaxbcp.get(test.getAbsolutePath());
+					+ "eu.europa.echa.iuclid6.namespaces.platform_metadata.v1:"
+					+ file2cjaxbcp.get(test.getAbsolutePath());
 
 			JAXBContext jaxbContext = JAXBContext.newInstance(jaxbcontextpath);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			System.out.println(jaxbcontextpath);
+			File i5folder = new File(folder, "/i6z/IUC5-a438545b-3c6c-403f-83e6-5cd2756d77d6");
+			List<File> libraryFiles = r.listFiles(manifest, i5folder, "LITERATURE");
+			Map<String, eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document> library = I6ManifestReader.parseLiteratureFile(libraryFiles);
+			Assert.assertNotNull(library);
+			Assert.assertTrue(library.size()>0);
 			try (InputStream fileReader = new FileInputStream(test)) {
-				I6DReader reader = new I6DReader(test.getAbsolutePath(), fileReader, jaxbContext, jaxbUnmarshaller, new QASettings(false));
+				I6DReader reader = new I6DReader(test.getAbsolutePath(), fileReader, jaxbContext, jaxbUnmarshaller,
+						new QASettings(false), library);
 				int c = 0;
 				while (reader.hasNext()) {
 					Object o = reader.next();
 					Assert.assertNotNull(o);
 					Assert.assertTrue(o instanceof SubstanceRecord);
-					Assert.assertNotNull(((SubstanceRecord)o).getMeasurements());
-					for (ProtocolApplication<Protocol, IParams, String, IParams,String> papp : ((SubstanceRecord)o).getMeasurements()) {
+					Assert.assertNotNull(((SubstanceRecord) o).getMeasurements());
+					for (ProtocolApplication<Protocol, IParams, String, IParams, String> papp : ((SubstanceRecord) o)
+							.getMeasurements()) {
 						Protocol p = papp.getProtocol();
 						System.out.println(papp);
 						Assert.assertNotNull(I5_ROOT_OBJECTS.valueOf(p.getCategory()));
 						Assert.assertNotNull(p.getEndpoint());
 						Assert.assertNotNull(p.getGuideline());
 						Assert.assertNotNull(p.getGuideline().get(0));
-						
+
 						Assert.assertNotNull(papp.getReliability());
-						
+
 					}
 					c++;
 				}
@@ -90,7 +112,8 @@ public class SubstanceTest {
 			r.parseDocuments(manifest, substance);
 			Assert.assertNotNull(substance.getSubstanceUUID());
 			Assert.assertNotNull(substance.getContent());
-			//Assert.assertEquals("IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734", substance.getSubstanceUUID());
+			// Assert.assertEquals("IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734",
+			// substance.getSubstanceUUID());
 			Assert.assertNotNull(substance.getReferenceSubstanceUUID());
 
 		}
