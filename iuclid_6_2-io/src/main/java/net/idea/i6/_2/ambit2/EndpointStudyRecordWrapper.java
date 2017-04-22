@@ -4,12 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.xml.bind.JAXBElement;
 
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
@@ -17,7 +12,9 @@ import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.ReliabilityParams;
+import eu.europa.echa.iuclid6.namespaces.literature._1.LITERATURE;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.DocumentReferenceMultipleField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithLargeTextRemarks;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithMultiLineTextRemarks;
@@ -27,20 +24,16 @@ import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import net.idea.i5.io.QASettings;
 import net.idea.i6.io.I6_ROOT_OBJECTS;
-import net.idea.modbcum.i.exceptions.AmbitException;
 
-public class EndpointStudyRecordWrapper<STUDYRECORD> {
-	protected static Logger logger = Logger.getLogger(EndpointStudyRecordWrapper.class.getName());
-	protected Document doc;
-	protected I6_ROOT_OBJECTS rootObject;
+public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper {
+	protected I6_ROOT_OBJECTS endpointCategory;
 	protected String parentDocumentKey;
 	protected Object materialsAndMethods = null;
 	protected Object administrativeData = null;
 	protected Object resultsAndDiscussion = null;
-	protected static ResourceBundle phr = ResourceBundle.getBundle("PhraseResourceBundle", Locale.ENGLISH);
 
 	public I6_ROOT_OBJECTS getRootObject() {
-		return rootObject;
+		return endpointCategory;
 	}
 
 	public Document getDoc() {
@@ -48,9 +41,8 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 	}
 
 	public EndpointStudyRecordWrapper(Document doc) throws Exception {
-		super();
-		this.doc = doc;
-		rootObject = I6_ROOT_OBJECTS.valueOf(String.format("%s_%s", getPlatformMetadataValue("documentType"),
+		super(doc);
+		endpointCategory = I6_ROOT_OBJECTS.valueOf(String.format("%s_%s", getPlatformMetadataValue("documentType"),
 				getPlatformMetadataValue("documentSubType")));
 		// this should be substanceUUID
 		parentDocumentKey = getPlatformMetadataValue("parentDocumentKey");
@@ -60,24 +52,10 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 
 	}
 
-	public static String getPhrase(String key) {
-		try {
-			return phr.getString(key);
-		} catch (Exception x) {
-			return key;
-		}
-	}
-
 	public STUDYRECORD getStudyRecord() {
 		return (STUDYRECORD) doc.getContent().getAny();
 	}
 
-	protected Object call(Object obj, String methodName, Object... params)
-			throws SecurityException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-
-		Method method = obj.getClass().getMethod(methodName);
-		return method.invoke(obj);
-	}
 
 	protected boolean hasDataTransferCriteriaFulfilled() {
 		if (!hasScientificPart())
@@ -98,26 +76,9 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 
 	}
 
-	private final String prefix = "http://iuclid6.echa.europa.eu/namespaces/platform-metadata/v1";
-
-	private String getPlatformMetadataValue(String name) {
-		for (Object o : doc.getPlatformMetadata().getAny())
-			if (name.equals(((JAXBElement) o).getName().getLocalPart())) {
-				return ((JAXBElement) o).getValue().toString();
-			}
-		return null;
-	}
-
-	public String getDocumentReferencePK() {
-		return getPlatformMetadataValue("documentKey");
-	}
-
-	public String getName() {
-		return getPlatformMetadataValue("name");
-	}
 
 	public String getTopCategory() {
-		return rootObject.getTopCategory();
+		return endpointCategory.getTopCategory();
 	}
 
 	public boolean hasScientificPart() {
@@ -143,11 +104,29 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 	}
 
 	public void parseReference(ProtocolApplication papp) throws QACriteriaException {
-
+		try {
+			Object dataSource = getContentValue("getDataSource");
+			DocumentReferenceMultipleField ref = (DocumentReferenceMultipleField) call(dataSource, "getReference",
+					null);
+			for (String key : ref.getKey()) {
+				Document doc = library.get(key.replace("/", "_"));
+				if (doc.getContent().getAny() instanceof LITERATURE) {
+					LITERATURE bib = (LITERATURE) doc.getContent().getAny();
+					papp.setReference(String.format("%s %s",
+							bib.getGeneralInfo().getAuthor() == null ? "" : (bib.getGeneralInfo().getAuthor() + ","),
+							bib.getGeneralInfo().getName()));
+					papp.setReferenceYear(Integer.toString(bib.getGeneralInfo().getReferenceYear()));
+					papp.setReferenceOwner(bib.getGeneralInfo().getCompanyOwner());
+				}
+			}
+		} catch (Exception x) {
+			logger.log(Level.WARNING, x.getMessage());
+		}
 	}
 
+	
 	public I5_ROOT_OBJECTS getEndpointCategory() {
-		return rootObject.mapIUCLID5();
+		return endpointCategory.mapIUCLID5();
 	}
 
 	public String getTestMaterialIdentity() {
@@ -300,7 +279,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		if (values.get("UpperValue") != null)
 			effectRecord.setUpValue(Double.parseDouble(values.get("UpperValue").toString()));
 		if (values.get("UnitCode") != null)
-			effectRecord.setUnit(values.get("UnitCode").toString());
+			effectRecord.setUnit(getPhrase(values.get("UnitCode").toString()));
 	}
 
 	public void assignEffectLevels(ProtocolApplication papp) {
@@ -311,43 +290,46 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 			for (Method m : allMethods)
 				if (m.getName().equals("getEffectLevels") || m.getName().equals("getTestRs")) {
 					Object effectLevels = m.invoke(resultsAndDiscussion);
-					if (effectLevels != null) {
-						Object entries = call(effectLevels, "getEntry");
-						if (entries != null && entries instanceof List) {
-							for (Object e : (List) entries) {
-								EffectRecord<String, IParams, String> effectRecord = new EffectRecord<String, IParams, String>();
-								IParams p = new Params();
-								effectRecord.setConditions(p);
-								papp.addEffect(effectRecord);
+					if (effectLevels != null)
+						try {
+							Object entries = call(effectLevels, "getEntry");
+							if (entries != null && entries instanceof List) {
+								for (Object e : (List) entries) {
+									EffectRecord<String, IParams, String> effectRecord = new EffectRecord<String, IParams, String>();
+									IParams p = new Params();
+									effectRecord.setConditions(p);
+									papp.addEffect(effectRecord);
 
-								Method[] eMethods = e.getClass().getDeclaredMethods();
-								for (Method em : eMethods)
-									if (em.getName().startsWith("get")) {
-										Object r = em.invoke(e);
-										if ("getEndpoint".equals(em.getName()))
-											effectRecord.setEndpoint(_getMethodValue(r, p).toString());
-										else if ("getCl".equals(em.getName())) {
-											EffectRecord<String, IParams, String> cl95 = new EffectRecord<String, IParams, String>();
-											cl95.setEndpoint("95% CL");
-											papp.addEffect(cl95);
-											Params values = new Params();
-											_getMethodValue(r, values);
-											_params2effectrecord(cl95, values);
-										} else if ("getEffectLevel".equals(em.getName())) {
-											Params values = new Params();
-											_getMethodValue(r, values);
-											_params2effectrecord(effectRecord, values);
-										} else {
-											String key = methodname2key(em.getName());
-											Object value = _getMethodValue(r, p);
-											if (value != null)
-												p.put(key, value);
+									Method[] eMethods = e.getClass().getDeclaredMethods();
+									for (Method em : eMethods)
+										if (em.getName().startsWith("get")) {
+											Object r = em.invoke(e);
+											if ("getEndpoint".equals(em.getName()))
+												effectRecord.setEndpoint(_getMethodValue(r, p).toString());
+											else if ("getCl".equals(em.getName())) {
+												EffectRecord<String, IParams, String> cl95 = new EffectRecord<String, IParams, String>();
+												cl95.setEndpoint("95% CL");
+												papp.addEffect(cl95);
+												Params values = new Params();
+												_getMethodValue(r, values);
+												_params2effectrecord(cl95, values);
+											} else if ("getEffectLevel".equals(em.getName())) {
+												Params values = new Params();
+												_getMethodValue(r, values);
+												_params2effectrecord(effectRecord, values);
+											} else {
+												String key = methodname2key(em.getName());
+												Object value = _getMethodValue(r, p);
+												if (value != null)
+													p.put(key, value);
+											}
 										}
-									}
 
+								}
 							}
+						} catch (Exception x) {
+							logger.log(Level.WARNING, x.getMessage());
 						}
-					}
 				} else if (m.getName().startsWith("get")) {
 					IParams params = new Params();
 					Object r = m.invoke(resultsAndDiscussion);
@@ -410,26 +392,40 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		return papp;
 	}
 
-	public Params parseReliability(ProtocolApplication papp, QASettings qasettings) throws AmbitException {
+	public Params parseReliability(ProtocolApplication papp, QASettings qasettings) throws QACriteriaException {
 		ReliabilityParams reliability = new ReliabilityParams();
+
+		if (administrativeData == null)
+			return null;
+		PicklistField reliabilityID = null;
+		PicklistField purposeFlagCode = null;
+		boolean isRobustStudy = false;
+		boolean isUsedforClassification = false;
+		boolean isUsedforMSDS = false;
+		PicklistFieldWithSmallTextRemarks studyResultTypeID = null;
+		String testMaterialIndicator;
 		try {
-			if (administrativeData == null)
-				return null;
-			PicklistField reliabilityID = (PicklistField) call(administrativeData, "getReliability", null);
-			PicklistField purposeFlagCode = (PicklistField) call(administrativeData, "getPurposeFlag", null);
-			boolean isRobustStudy = (boolean) call(administrativeData, "getRobustStudy", null);
-			boolean isUsedforClassification = (boolean) call(administrativeData, "getUsedForClassification", null);
-			boolean isUsedforMSDS = (boolean) call(administrativeData, "getUsedForMSDS", null);
-			PicklistFieldWithSmallTextRemarks studyResultTypeID = (PicklistFieldWithSmallTextRemarks) call(
-					administrativeData, "getStudyResultType", null);
+			reliabilityID = (PicklistField) call(administrativeData, "getReliability", null);
+			purposeFlagCode = (PicklistField) call(administrativeData, "getPurposeFlag", null);
+			isRobustStudy = (boolean) call(administrativeData, "getRobustStudy", null);
+			isUsedforClassification = (boolean) call(administrativeData, "getUsedForClassification", null);
+			isUsedforMSDS = (boolean) call(administrativeData, "getUsedForMSDS", null);
+			studyResultTypeID = (PicklistFieldWithSmallTextRemarks) call(administrativeData, "getStudyResultType",
+					null);
 
-			String testMaterialIndicator = getTestMaterialIdentity();
-
+			testMaterialIndicator = getTestMaterialIdentity();
+		} catch (NoSuchMethodException x) {
+		} catch (IllegalAccessException x) {
+		} catch (InvocationTargetException x) {
+		}
+		try {
 			if (qasettings.isEnabled()) {
 				isPurposeflagAccepted(purposeFlagCode.getValue(), qasettings);
 				isStudyResultAccepted(studyResultTypeID.getValue(), qasettings);
 				isReliabilityAccepted(reliabilityID.getValue(), qasettings);
-				isTestMaterialIdentityAccepted(testMaterialIndicator, qasettings);
+				// TODO
+				// isTestMaterialIdentityAccepted(testMaterialIndicator,
+				// qasettings);
 			}
 			// else System.out.println("No quality check");
 
@@ -448,11 +444,13 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 			} catch (Exception x) {
 			}
 
-		} catch (Exception x) {
-			logger.log(Level.WARNING, x.getMessage(), x);
+			papp.setReliability(reliability);
+			return reliability;
+
+		} catch (QACriteriaException x) {
+			throw x;
 		}
-		papp.setReliability(reliability);
-		return reliability;
+
 	};
 
 	protected boolean isTestMaterialIdentityAccepted(String testMaterialCode, QASettings qaSettings)
@@ -482,8 +480,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		if (qaSettings.isReliabilityAccepted(valueID))
 			return true; // "1 (reliable without restriction)", "2 (reliable
 							// with restrictions)"
-		throw new QACriteriaException("Reliability ", valueID,
-				valueID == null ? null : getPhrase(valueID));
+		throw new QACriteriaException("Reliability ", valueID, valueID == null ? null : getPhrase(valueID));
 	}
 
 	protected boolean isReferenceTypeAccepted(String referenceTypeCode, QASettings qaSettings)
@@ -497,5 +494,9 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> {
 		} else
 			return true;
 	}
+	/*
+	 * protected static Value q2value(PhysicalQuantityField field) { Value v =
+	 * new Value(); field. }
+	 */
 
 }

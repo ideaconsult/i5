@@ -32,7 +32,7 @@ public class GeneticToxicityVitro_RecordWrapper extends EndpointStudyRecordWrapp
 			e.getRemarksOnResults()
 			e.getVehContrValid()
 			*/
-			EffectRecord<String, IParams, String> effect = rootObject.mapIUCLID5().createEffectRecord();
+			EffectRecord<String, IParams, String> effect = endpointCategory.mapIUCLID5().createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.eGenotoxicity);
 			effect.setTextValue(getPhrase(e.getGenotoxicity().getValue()));
 			papp.addEffect(effect);

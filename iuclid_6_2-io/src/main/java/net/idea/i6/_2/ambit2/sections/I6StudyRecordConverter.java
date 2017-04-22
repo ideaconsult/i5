@@ -12,7 +12,6 @@ import net.idea.i5.io.IStudyRecordConverter;
 import net.idea.i5.io.QACriteriaException;
 import net.idea.i5.io.QASettings;
 import net.idea.i6._2.ambit2.EndpointStudyRecordWrapper;
-import net.idea.i6.ambti2.phrases.Phrases;
 import net.idea.modbcum.i.exceptions.AmbitException;
 
 public class I6StudyRecordConverter<T extends EndpointStudyRecordWrapper, PROTOCOLPARAMS extends IParams, CONDITIONS extends IParams>
@@ -62,21 +61,21 @@ public class I6StudyRecordConverter<T extends EndpointStudyRecordWrapper, PROTOC
 		if (qaSettings.isTestMaterialIdentityAccepted(testMaterialCode))
 			return true; // yes
 		throw new QACriteriaException("Test material identity ", testMaterialCode,
-				testMaterialCode == null ? null : Phrases.phrasegroup_Z38.get(testMaterialCode));
+				testMaterialCode == null ? null : EndpointStudyRecordWrapper.getPhrase(testMaterialCode));
 	}
 
 	protected boolean isPurposeflagAccepted(String purposeFlagCode) throws QACriteriaException {
 		if (qaSettings.isPurposeflagAccepted(purposeFlagCode))
 			return true; // key study, supporting study
 		throw new QACriteriaException("Purpose flag ", purposeFlagCode,
-				purposeFlagCode == null ? null : Phrases.phrasegroup_Y14_3.get(purposeFlagCode));
+				purposeFlagCode == null ? null : EndpointStudyRecordWrapper.getPhrase(purposeFlagCode));
 	}
 
 	protected boolean isStudyResultAccepted(String studyResultTypeID) throws QACriteriaException {
 		if (qaSettings.isStudyResultAccepted(studyResultTypeID))
 			return true; // experimental result
 		throw new QACriteriaException("Study result ", studyResultTypeID,
-				studyResultTypeID == null ? null : Phrases.phrasegroup_Z05.get(studyResultTypeID));
+				studyResultTypeID == null ? null : EndpointStudyRecordWrapper.getPhrase(studyResultTypeID));
 	}
 
 	protected boolean isReliabilityAccepted(String valueID) throws QACriteriaException {
@@ -84,7 +83,7 @@ public class I6StudyRecordConverter<T extends EndpointStudyRecordWrapper, PROTOC
 			return true; // "1 (reliable without restriction)", "2 (reliable
 							// with restrictions)"
 		throw new QACriteriaException("Reliability ", valueID,
-				valueID == null ? null : Phrases.phrasegroup_A36.get(valueID));
+				valueID == null ? null : EndpointStudyRecordWrapper.getPhrase(valueID));
 	}
 
 	protected boolean isReferenceTypeAccepted(String referenceTypeCode) throws QACriteriaException {
@@ -93,7 +92,7 @@ public class I6StudyRecordConverter<T extends EndpointStudyRecordWrapper, PROTOC
 							// handbook"
 		if (getQASettings().isEnabled()) {
 			throw new QACriteriaException("Reference type ", referenceTypeCode,
-					referenceTypeCode == null ? null : Phrases.phrasegroup_Z31.get(referenceTypeCode));
+					referenceTypeCode == null ? null : EndpointStudyRecordWrapper.getPhrase(referenceTypeCode));
 		} else
 			return true;
 	}
