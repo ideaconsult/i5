@@ -94,7 +94,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				return convertor.transform2record(getWrapper(doc, content.getClass().getName()), record);
 		} catch (QACriteriaException x) {
 			// reliability exception
-			logger.log(Level.FINE, x.getMessage());
+			logger.log(Level.FINE, x.getMessage(),x);
 			return null;
 		} catch (AmbitException x) {
 			throw x;

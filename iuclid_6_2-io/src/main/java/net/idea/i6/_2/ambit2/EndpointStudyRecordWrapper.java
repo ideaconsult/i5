@@ -16,6 +16,7 @@ import ambit2.base.data.study.Value;
 import eu.europa.echa.iuclid6.namespaces.literature._1.LITERATURE;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.DocumentReferenceMultipleField;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PhysicalQuantityField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PhysicalQuantityHalfBoundedField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PhysicalQuantityRangeField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistField;
@@ -217,7 +218,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		return methodname.replace("\\(", "").replaceAll("\\)", "").replace("get", "");
 	}
 
-	private Object _getMethodValue(Object r, IParams params) {
+	protected Object _getMethodValue(Object r, IParams params) {
 		Object value = r;
 		if (r instanceof String)
 			return r;
@@ -519,7 +520,8 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 	}
 
 	protected String p2Value(Object field) {
-		if (field instanceof PicklistField)
+		if (field==null) return null;
+		else if (field instanceof PicklistField)
 			return p2Value((PicklistField) field);
 		else if (field instanceof PicklistFieldWithLargeTextRemarks)
 			return p2Value((PicklistFieldWithLargeTextRemarks) field);
@@ -579,6 +581,5 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 			effectrecord.setUpValue(field.getUpperValue().doubleValue());
 		if (field.getUnitCode() != null)
 			effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
-
 	}
 }
