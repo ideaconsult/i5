@@ -319,12 +319,15 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 											if ("getEndpoint".equals(em.getName()))
 												effectRecord.setEndpoint(_getMethodValue(r, p).toString());
 											else if ("getCl".equals(em.getName())) {
-												EffectRecord<String, IParams, String> cl95 = new EffectRecord<String, IParams, String>();
-												cl95.setEndpoint("95% CL");
-												papp.addEffect(cl95);
+
 												Params values = new Params();
-												_getMethodValue(r, values);
-												_params2effectrecord(cl95, values);
+												Object o = _getMethodValue(r, values);
+												if (o != null) {
+													EffectRecord<String, IParams, String> cl95 = new EffectRecord<String, IParams, String>();
+													cl95.setEndpoint("95% CL");
+													_params2effectrecord(cl95, values);
+													papp.addEffect(cl95);
+												}
 											} else if ("getEffectLevel".equals(em.getName())) {
 												Params values = new Params();
 												_getMethodValue(r, values);
@@ -368,13 +371,19 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 	public void assignInterpretationResult(ProtocolApplication papp, STUDYRECORD studyRecord) {
 		try {
 			Object mm = getContentValue("getApplicantSummaryAndConclusion");
-			if (mm != null) {
+			if (mm == null)
+				return;
+			try {
+				Object interpretation = call(mm, "getInterpretationOfResults", null);
+				if (interpretation != null)
+					papp.setInterpretationResult(p2Value(interpretation));
+			} catch (Exception x) {
+			}
+			try {
 				Object conclusions = call(mm, "getConclusions", null);
-				Object summary = call(mm, "getExecutiveSummary", null);
-				papp.setInterpretationResult(conclusions == null ? null : conclusions.toString());
-
-				papp.setInterpretationCriteria(
-						summary == null ? null : "".equals(summary.toString()) ? null : summary.toString());
+				if (conclusions != null)
+					papp.setInterpretationCriteria(p2Value(conclusions));
+			} catch (Exception x) {
 			}
 
 		} catch (Exception x) {
@@ -507,6 +516,35 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 					referenceTypeCode == null ? null : getPhrase(referenceTypeCode));
 		} else
 			return true;
+	}
+
+	protected String p2Value(Object field) {
+		if (field instanceof PicklistField)
+			return p2Value((PicklistField) field);
+		else if (field instanceof PicklistFieldWithLargeTextRemarks)
+			return p2Value((PicklistFieldWithLargeTextRemarks) field);
+		else if (field instanceof PicklistFieldWithSmallTextRemarks)
+			return p2Value((PicklistFieldWithSmallTextRemarks) field);
+		else if (field instanceof PicklistFieldWithMultiLineTextRemarks)
+			return p2Value((PicklistFieldWithMultiLineTextRemarks) field);
+		else
+			return field.toString();
+	}
+
+	protected String p2Value(PicklistField field) {
+		return getPhrase(field.getValue(), field.getOther());
+	}
+
+	protected String p2Value(PicklistFieldWithLargeTextRemarks field) {
+		return getPhrase(field.getValue(), field.getOther());
+	}
+
+	protected String p2Value(PicklistFieldWithSmallTextRemarks field) {
+		return getPhrase(field.getValue(), field.getOther());
+	}
+	
+	protected String p2Value(PicklistFieldWithMultiLineTextRemarks field) {
+		return getPhrase(field.getValue(), field.getOther());
 	}
 
 	protected static Value q2value(PhysicalQuantityHalfBoundedField field) {
