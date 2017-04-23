@@ -197,7 +197,7 @@ public class I6StudyRecordConverter<T extends EndpointStudyRecordWrapper, PROTOC
 		unmarshalled.parseReference(papp);
 		unmarshalled.assignProtocolParameters(papp);
 		unmarshalled.assignEffectLevels(papp, unmarshalled.getStudyRecord());
-		unmarshalled.assignInterpretationResult(papp);
+		unmarshalled.assignInterpretationResult(papp, unmarshalled.getStudyRecord());
 
 		return record;
 	}

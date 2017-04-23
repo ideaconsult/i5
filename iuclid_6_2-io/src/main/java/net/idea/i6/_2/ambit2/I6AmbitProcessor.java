@@ -122,7 +122,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				wrapper = (EndpointStudyRecordWrapper) cnv;
 			}
 		} catch (Exception x) {
-			logger.log(Level.FINER, String.format("%s\t%s", "Class not found, using default EndpointStudyRecordWrapper",
+			logger.log(Level.WARNING, String.format("%s\t%s", "Class not found, using default EndpointStudyRecordWrapper",
 					x.getMessage()));
 		}
 		if (wrapper == null)
@@ -288,7 +288,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				setSubstanceUUID(record, getDocumentReferencePK());
 
 				try {
-					record.setSubstancetype(getPhrase(unmarshalled.getTypeOfSubstance().getComposition().getValue()));
+					record.setSubstancetype(getPhrase(unmarshalled.getTypeOfSubstance().getComposition().getValue(),unmarshalled.getTypeOfSubstance().getComposition().getOther()));
 				} catch (Exception x) {
 					record.setSubstancetype("Error reading the composition type");
 				}
@@ -339,7 +339,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				}
 
 			} catch (Exception x) {
-				logger.log(Level.WARNING, x.getMessage());
+				logger.log(Level.WARNING, x.getMessage(),x);
 			}
 		}
 

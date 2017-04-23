@@ -353,7 +353,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		}
 	}
 
-	public void assignInterpretationResult(ProtocolApplication papp) {
+	public void assignInterpretationResult(ProtocolApplication papp, STUDYRECORD studyRecord) {
 		try {
 			Object mm = getContentValue("getApplicantSummaryAndConclusion");
 			if (mm != null) {
@@ -527,7 +527,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 			effectrecord.setLoValue(field.getLowerValue().doubleValue());
 		if (field.getUpperValue() != null)
 			effectrecord.setUpValue(field.getUpperValue().doubleValue());
-
+		if (field.getUnitCode()!=null)
 		effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
 
 	}
