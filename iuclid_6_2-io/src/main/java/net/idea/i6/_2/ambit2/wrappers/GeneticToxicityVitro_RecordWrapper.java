@@ -17,10 +17,10 @@ public class GeneticToxicityVitro_RecordWrapper extends EndpointStudyRecordWrapp
 	}
 
 	@Override
-	public void assignEffectLevels(ProtocolApplication papp) {
-		ENDPOINTSTUDYRECORDGeneticToxicityVitro record = getStudyRecord();
-		record.getResultsAndDiscussion().getResultsDetails();
-		TestRs resutls = record.getResultsAndDiscussion().getTestRs();
+	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDGeneticToxicityVitro studyrecord) {
+
+		studyrecord.getResultsAndDiscussion().getResultsDetails();
+		TestRs resutls = studyrecord.getResultsAndDiscussion().getTestRs();
 		for (Entry e : resutls.getEntry()) {
 			/*
 			e.getCytotoxicity()

@@ -37,6 +37,11 @@ public class AbstractDocWrapper {
 			return key;
 		}
 	}
+	
+	public static String getPhrase(String key,String other) {
+		return ("1342".equals(key))?other:getPhrase(key);
+	}
+
 
 	private final String prefix = "http://iuclid6.echa.europa.eu/namespaces/platform-metadata/v1";
 

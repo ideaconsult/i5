@@ -12,9 +12,12 @@ import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.ReliabilityParams;
+import ambit2.base.data.study.Value;
 import eu.europa.echa.iuclid6.namespaces.literature._1.LITERATURE;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.DocumentReferenceMultipleField;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PhysicalQuantityHalfBoundedField;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PhysicalQuantityRangeField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithLargeTextRemarks;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithMultiLineTextRemarks;
@@ -56,7 +59,6 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		return (STUDYRECORD) doc.getContent().getAny();
 	}
 
-
 	protected boolean hasDataTransferCriteriaFulfilled() {
 		if (!hasScientificPart())
 			return false;
@@ -75,7 +77,6 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		}
 
 	}
-
 
 	public String getTopCategory() {
 		return endpointCategory.getTopCategory();
@@ -124,7 +125,6 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		}
 	}
 
-	
 	public I5_ROOT_OBJECTS getEndpointCategory() {
 		return endpointCategory.mapIUCLID5();
 	}
@@ -282,7 +282,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 			effectRecord.setUnit(getPhrase(values.get("UnitCode").toString()));
 	}
 
-	public void assignEffectLevels(ProtocolApplication papp) {
+	public void assignEffectLevels(ProtocolApplication papp, STUDYRECORD studyrecord) {
 
 		try {
 
@@ -382,7 +382,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		papp.setDocumentUUID(getDocumentReferencePK());
 		papp.getProtocol().setTopCategory(getTopCategory());
 		try {
-			papp.getProtocol().setCategory(getEndpointCategory().name());
+			papp.getProtocol().setCategory(getEndpointCategory().toSection());
 		} catch (Exception x) {
 		}
 		try {
@@ -494,9 +494,33 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		} else
 			return true;
 	}
-	/*
-	 * protected static Value q2value(PhysicalQuantityField field) { Value v =
-	 * new Value(); field. }
-	 */
 
+	protected static Value q2value(PhysicalQuantityHalfBoundedField field) {
+		Value v = new Value();
+		v.setLoQualifier(field.getQualifier());
+		v.setLoValue(field.getValue().doubleValue());
+		v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
+		return v;
+	}
+
+	protected static Value q2value(PhysicalQuantityRangeField field) {
+		Value v = new Value();
+		v.setLoQualifier(field.getLowerQualifier());
+		v.setUpQualifier(field.getUpperQualifier());
+		v.setLoValue(field.getLowerValue().doubleValue());
+		v.setUpValue(field.getUpperValue().doubleValue());
+		v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
+		return v;
+	}
+
+	protected static void q2effectrecord(PhysicalQuantityRangeField field,
+			EffectRecord<String, IParams, String> effectrecord) {
+
+		effectrecord.setLoQualifier(field.getLowerQualifier());
+		effectrecord.setUpQualifier(field.getUpperQualifier());
+		effectrecord.setLoValue(field.getLowerValue().doubleValue());
+		effectrecord.setUpValue(field.getUpperValue().doubleValue());
+		effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
+
+	}
 }

@@ -6,25 +6,25 @@ import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.Value;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_watersolubility._2.ENDPOINTSTUDYRECORDWaterSolubility;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_watersolubility._2.ENDPOINTSTUDYRECORDWaterSolubility.ResultsAndDiscussion.WaterSolubility.Entry;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_watersolubility._2.ENDPOINTSTUDYRECORDWaterSolubility.ResultsAndDiscussion.WaterSolubility.Entry.Temp;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_partition._2.ENDPOINTSTUDYRECORDPartition;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_partition._2.ENDPOINTSTUDYRECORDPartition.ResultsAndDiscussion.Partcoeff.Entry;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_partition._2.ENDPOINTSTUDYRECORDPartition.ResultsAndDiscussion.Partcoeff.Entry.Temp;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i6._2.ambit2.EndpointStudyRecordWrapper;
 
-public class WaterSolubility_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDWaterSolubility> {
+public class Partition_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDPartition> {
 
-	public WaterSolubility_RecordWrapper(Document doc) throws Exception {
+	public Partition_RecordWrapper(Document doc) throws Exception {
 		super(doc);
 	}
 
 	@Override
-	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDWaterSolubility studyrecord) {
+	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDPartition studyrecord) {
 
-		for (Entry e : studyrecord.getResultsAndDiscussion().getWaterSolubility().getEntry()) {
+		for (Entry e : studyrecord.getResultsAndDiscussion().getPartcoeff().getEntry()) {
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-			effect.setEndpoint(I5CONSTANTS.eWaterSolubility);
+			effect.setEndpoint(getPhrase(e.getType().getValue(),e.getType().getOther()));
 			papp.addEffect(effect);
 
 			try {
@@ -41,18 +41,10 @@ public class WaterSolubility_RecordWrapper extends EndpointStudyRecordWrapper<EN
 				logger.log(Level.FINE, x.getMessage(), x);
 			}
 
-			try {
-				effect.getConditions().put(I5CONSTANTS.Remark,
-						getPhrase(e.getRemarksOnResults().getValue(), e.getRemarksOnResults().getOther()));
-			} catch (Exception x) {
-				effect.getConditions().put(I5CONSTANTS.Remark, null);
-			}
 
-			q2effectrecord(e.getSolubility(), effect);
+			q2effectrecord(e.getPartition(), effect);
 		}
-
 	}
-
 	protected static Value q2value(Temp field) {
 		Value v = new Value();
 		v.setLoValue(field.getValue());
