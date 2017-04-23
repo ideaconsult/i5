@@ -360,7 +360,9 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 				Object conclusions = call(mm, "getConclusions", null);
 				Object summary = call(mm, "getExecutiveSummary", null);
 				papp.setInterpretationResult(conclusions == null ? null : conclusions.toString());
-				papp.setInterpretationCriteria(summary == null ? null : summary.toString());
+
+				papp.setInterpretationCriteria(
+						summary == null ? null : "".equals(summary.toString()) ? null : summary.toString());
 			}
 
 		} catch (Exception x) {
@@ -498,7 +500,8 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 	protected static Value q2value(PhysicalQuantityHalfBoundedField field) {
 		Value v = new Value();
 		v.setLoQualifier(field.getQualifier());
-		v.setLoValue(field.getValue().doubleValue());
+		if (field.getValue() != null)
+			v.setLoValue(field.getValue().doubleValue());
 		v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
 		return v;
 	}
@@ -507,8 +510,10 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		Value v = new Value();
 		v.setLoQualifier(field.getLowerQualifier());
 		v.setUpQualifier(field.getUpperQualifier());
-		v.setLoValue(field.getLowerValue().doubleValue());
-		v.setUpValue(field.getUpperValue().doubleValue());
+		if (field.getLowerValue() != null)
+			v.setLoValue(field.getLowerValue().doubleValue());
+		if (field.getUpperValue() != null)
+			v.setUpValue(field.getUpperValue().doubleValue());
 		v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
 		return v;
 	}
@@ -518,8 +523,11 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 
 		effectrecord.setLoQualifier(field.getLowerQualifier());
 		effectrecord.setUpQualifier(field.getUpperQualifier());
-		effectrecord.setLoValue(field.getLowerValue().doubleValue());
-		effectrecord.setUpValue(field.getUpperValue().doubleValue());
+		if (field.getLowerValue() != null)
+			effectrecord.setLoValue(field.getLowerValue().doubleValue());
+		if (field.getUpperValue() != null)
+			effectrecord.setUpValue(field.getUpperValue().doubleValue());
+
 		effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
 
 	}
