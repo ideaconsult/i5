@@ -2207,7 +2207,8 @@ public enum I5_ROOT_OBJECTS implements IROOT_OBJECTS {
 		@Override
 		public String[] getProtocolParameters() {
 			return new String[] { I5CONSTANTS.cRouteAdm,
-					I5CONSTANTS.cTypeStudy, I5CONSTANTS.cTypeGenotoxicity,
+					I5CONSTANTS.cTypeStudy,
+					//I5CONSTANTS.cTypeGenotoxicity,
 					I5CONSTANTS.cSpecies };
 		}
 
