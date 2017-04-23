@@ -16,6 +16,7 @@ public class AbstractDocWrapper {
 	protected static Logger logger = Logger.getLogger(EndpointStudyRecordWrapper.class.getName());
 	protected Document doc;
 	protected static ResourceBundle phr = ResourceBundle.getBundle("PhraseResourceBundle", Locale.ENGLISH);
+	protected static ResourceBundle ppr = ResourceBundle.getBundle("ProtocolParametersResourceBundle", Locale.ENGLISH);
 	protected Map<String, Document> library;
 
 	public AbstractDocWrapper(Document doc) throws Exception {

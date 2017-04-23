@@ -186,12 +186,24 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 					Object value = _getMethodValue(r, p);
 					if (value != null) {
 						if (!"".equals(value))
-							p.put(methodname2key(key), value);
+							p.put(dictionaryParams(methodname2key(key)), value);
 					}
 				}
 			} catch (Exception x) {
 				logger.log(Level.WARNING, x.getMessage(), x);
 			}
+	}
+
+	protected String dictionaryEndpoint(String key) {
+		return key;
+	}
+
+	protected String dictionaryParams(String key) {
+		try {
+			return ppr.getString(key);
+		} catch (Exception x) {
+			return key;
+		}
 	}
 
 	/**
@@ -241,7 +253,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 						String key = m.getName();
 						Object subvalue = _getMethodValue(rr, params);
 						if (subvalue != null && !"".equals(subvalue.toString()))
-							params.put(methodname2key(key), subvalue);
+							params.put(dictionaryParams(methodname2key(key)), subvalue);
 
 					} catch (Exception x) {
 						logger.log(Level.WARNING, String.format("%s\t%s", value.getClass().getName(), m.getName()), x);
@@ -321,7 +333,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 												String key = methodname2key(em.getName());
 												Object value = _getMethodValue(r, p);
 												if (value != null)
-													p.put(key, value);
+													p.put(dictionaryParams(key), value);
 											}
 										}
 
@@ -340,7 +352,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 					if (value != null) {
 						if (!"".equals(value)) {
 							EffectRecord<String, IParams, String> effectRecord = new EffectRecord<String, IParams, String>();
-							effectRecord.setEndpoint(methodname2key(key));
+							effectRecord.setEndpoint(dictionaryEndpoint(methodname2key(key)));
 							effectRecord.setTextValue(value);
 							effectRecord.setConditions(params);
 							papp.addEffect(effectRecord);
@@ -527,8 +539,8 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 			effectrecord.setLoValue(field.getLowerValue().doubleValue());
 		if (field.getUpperValue() != null)
 			effectrecord.setUpValue(field.getUpperValue().doubleValue());
-		if (field.getUnitCode()!=null)
-		effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
+		if (field.getUnitCode() != null)
+			effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
 
 	}
 }

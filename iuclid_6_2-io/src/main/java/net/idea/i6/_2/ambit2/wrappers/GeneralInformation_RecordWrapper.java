@@ -48,7 +48,7 @@ public class GeneralInformation_RecordWrapper
 
 		EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 		effect.setEndpoint(physstate == null ? null : physstate.toString());
-		effect.getConditions().put(I5CONSTANTS.Remark, form == null ? "" : form);
+		effect.getConditions().put(I5CONSTANTS.Remark, form == null ? null : form.toString());
 		papp.addEffect(effect);
 	}
 
