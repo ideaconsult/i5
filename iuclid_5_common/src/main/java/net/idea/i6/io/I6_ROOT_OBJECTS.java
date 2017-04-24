@@ -201,7 +201,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 			return I5_ROOT_OBJECTS.TO_CARCINOGENICITY;
 		}
 	},
-	ENDPOINT_STUDY_RECORD_Density {
+	ENDPOINT_STUDY_RECORD_PourDensity {
 		@Override
 		public I5_ROOT_OBJECTS mapIUCLID5() {
 			return I5_ROOT_OBJECTS.POUR_DENSITY;
