@@ -10,9 +10,9 @@ import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i6._2.ambit2.EndpointStudyRecordWrapper;
 
-public class PhototransformationInAir extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDPhototransformationInAir> {
+public class PhototransformationInAir_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDPhototransformationInAir> {
 
-	public PhototransformationInAir(Document doc) throws Exception {
+	public PhototransformationInAir_RecordWrapper(Document doc) throws Exception {
 		super(doc);
 	}
 
@@ -35,6 +35,11 @@ public class PhototransformationInAir extends EndpointStudyRecordWrapper<ENDPOIN
 
 			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_phototransformationinair._2.ENDPOINTSTUDYRECORDPhototransformationInAir.ResultsAndDiscussion.DegradationRateConstant.Entry e : studyrecord
 					.getResultsAndDiscussion().getDegradationRateConstant().getEntry()) {
+				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+				effect.setEndpoint(I5CONSTANTS.rDegradation);
+				papp.addEffect(effect);
+				q2effectrecord(e.getRateConstant(), effect);
+				papp.addEffect(effect);
 				if (reactant == null)
 					reactant = new StringBuilder();
 				else
