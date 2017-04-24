@@ -44,10 +44,12 @@ public abstract class IuclidAmbitProcessor<Target> extends DefaultAmbitProcessor
 
 	/**
 	 * @deprecated Use setSubstanceUUID() instead
-	 * @param record SubstanceRecord
-	 * @param value the substance UUID
+	 * @param record
+	 *            SubstanceRecord
+	 * @param value
+	 *            the substance UUID
 	 */
-	@Deprecated  
+	@Deprecated
 	protected void setCompanyUUID(SubstanceRecord record, String value) {
 		setSubstanceUUID(record, value);
 	}
@@ -72,15 +74,21 @@ public abstract class IuclidAmbitProcessor<Target> extends DefaultAmbitProcessor
 	}
 
 	protected void setReferenceSubstanceUUID(IStructureRecord record, String value) {
-		int slashpos = value.indexOf("/");
-		String i5value = (slashpos > 0) ? value.substring(0, slashpos) : value;
-
-		if (record instanceof SubstanceRecord) {
-			((SubstanceRecord) record).setReferenceSubstanceUUID(i5value);
+		if (value == null || "".equals(value)) {
+			if (record instanceof SubstanceRecord)
+				((SubstanceRecord) record).setReferenceSubstanceUUID(null);
 		} else {
-			Property i5uuid = Property.getInstance(Property.IUCLID5_UUID, container);
-			i5uuid.setLabel(Property.opentox_IUCLID5_UUID);
-			record.setRecordProperty(i5uuid, i5value);
+
+			int slashpos = value.indexOf("/");
+			String i5value = (slashpos > 0) ? value.substring(0, slashpos) : value;
+
+			if (record instanceof SubstanceRecord) {
+				((SubstanceRecord) record).setReferenceSubstanceUUID(i5value);
+			} else {
+				Property i5uuid = Property.getInstance(Property.IUCLID5_UUID, container);
+				i5uuid.setLabel(Property.opentox_IUCLID5_UUID);
+				record.setRecordProperty(i5uuid, i5value);
+			}
 		}
 	}
 
