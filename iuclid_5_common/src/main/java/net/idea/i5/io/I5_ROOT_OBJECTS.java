@@ -830,7 +830,7 @@ public enum I5_ROOT_OBJECTS implements IROOT_OBJECTS {
 	POUR_DENSITY {
 		@Override
 		public String getTitle() {
-			return "Nanomaterial pour density";
+			return "Density";
 		}
 
 		@Override
