@@ -322,7 +322,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				Iterator<Entry<String, Document>> i = library.entrySet().iterator();
 				while (i.hasNext()) {
 					Entry<String, Document> e = i.next();
-					logger.log(Level.INFO, e.getValue().getContent().getAny().getClass().getName());
+					//logger.log(Level.INFO, e.getValue().getContent().getAny().getClass().getName());
 					if (e.getValue().getContent().getAny() instanceof FIXEDRECORDIdentifiers) {
 
 						FIXEDRECORDIdentifiers sc = (FIXEDRECORDIdentifiers) e.getValue().getContent().getAny();
