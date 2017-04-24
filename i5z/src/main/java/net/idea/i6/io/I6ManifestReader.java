@@ -42,6 +42,8 @@ public class I6ManifestReader {
 				return String.format("%s_%s", type, subtype);
 			else if (I6_ROOT_OBJECTS.FLEXIBLE_RECORD.name().equals(type))
 				return String.format("%s_%s", type, subtype);
+			else if (I6_ROOT_OBJECTS.FIXED_RECORD.name().equals(type))
+				return String.format("%s_%s", type, subtype);			
 		} 
 		return type;
 	}
@@ -70,6 +72,8 @@ public class I6ManifestReader {
 							break;
 						case FLEXIBLE_RECORD_SubstanceComposition:
 							break;
+						case FIXED_RECORD_Identifiers: 
+							break;
 						default:
 							if (!rootObject.isSupported() || rootObject.mapIUCLID5() == null)
 								continue;
@@ -80,6 +84,7 @@ public class I6ManifestReader {
 						file2cjaxbcp.put(file.getAbsolutePath(), cp);
 					} catch (Exception x) {
 						//System.err.println(x.getMessage());
+						
 					}
 				}
 		}
@@ -255,6 +260,7 @@ public class I6ManifestReader {
 				+ "eu.europa.echa.iuclid6.namespaces.platform_metadata.v1:"
 				+ "eu.europa.echa.iuclid6.namespaces.literature._1:"
 				+ "eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._2:"
+				+ "eu.europa.echa.iuclid6.namespaces.fixed_record_identifiers._2:"
 				+ "eu.europa.echa.iuclid6.namespaces.test_material_information._2";
 
 		JAXBContext jaxbContext = JAXBContext.newInstance(jaxbcontextpath);

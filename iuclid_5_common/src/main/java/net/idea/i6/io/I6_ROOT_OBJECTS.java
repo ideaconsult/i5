@@ -94,6 +94,16 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 			return false;
 		}	
 	},
+	FIXED_RECORD {
+		public boolean isSupported() {
+			return false;
+		}
+	},	
+	FIXED_RECORD_Identifiers {
+		public boolean isSupported() {
+			return false;
+		}		
+	},
 	SUBSTANCE {
 		@Override
 		public String getContextPath() {

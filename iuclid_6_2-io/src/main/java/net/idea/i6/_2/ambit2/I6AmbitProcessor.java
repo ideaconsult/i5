@@ -12,6 +12,7 @@ import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
 import ambit2.base.data.StructureRecord;
 import ambit2.base.data.SubstanceRecord;
+import ambit2.base.data.substance.ExternalIdentifier;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.base.interfaces.IStructureRecord.MOL_TYPE;
 import ambit2.base.interfaces.IStructureRecord.STRUC_TYPE;
@@ -21,6 +22,8 @@ import ambit2.base.relation.composition.Proportion;
 import ambit2.core.config.AmbitCONSTANTS;
 import ambit2.core.io.ECHAPreregistrationListReader;
 import ambit2.core.io.I5ReaderSimple;
+import eu.europa.echa.iuclid6.namespaces.fixed_record_identifiers._2.FIXEDRECORDIdentifiers;
+import eu.europa.echa.iuclid6.namespaces.fixed_record_identifiers._2.RegulatoryProgrammeIdentifiersEntry;
 import eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._2.AdditivesEntry;
 import eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._2.ConstituentsEntry;
 import eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._2.FLEXIBLERECORDSubstanceComposition;
@@ -77,7 +80,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					w.setLibrary(library);
 					return w.transform2record(record);
 				} catch (Exception x) {
-					logger.log(Level.WARNING, x.getMessage());
+					logger.log(Level.WARNING, x.getMessage(), x);
 				}
 		} else if (content instanceof REFERENCESUBSTANCE)
 			try {
@@ -85,7 +88,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				w.setLibrary(library);
 				return w.transform2record(structureRecord);
 			} catch (Exception x) {
-				logger.log(Level.WARNING, x.getMessage());
+				logger.log(Level.WARNING, x.getMessage(), x);
 			}
 
 		try {
@@ -94,7 +97,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				return convertor.transform2record(getWrapper(doc, content.getClass().getName()), record);
 		} catch (QACriteriaException x) {
 			// reliability exception
-			logger.log(Level.FINE, x.getMessage(),x);
+			logger.log(Level.FINE, x.getMessage(), x);
 			return null;
 		} catch (AmbitException x) {
 			throw x;
@@ -122,8 +125,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				wrapper = (EndpointStudyRecordWrapper) cnv;
 			}
 		} catch (Exception x) {
-			logger.log(Level.WARNING, String.format("%s\t%s", "Class not found, using default EndpointStudyRecordWrapper",
-					x.getMessage()));
+			logger.log(Level.WARNING, String.format("%s\t%s",
+					"Class not found, using default EndpointStudyRecordWrapper", x.getMessage()),x);
 		}
 		if (wrapper == null)
 			wrapper = new EndpointStudyRecordWrapper(doc);
@@ -288,7 +291,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				setSubstanceUUID(record, getDocumentReferencePK());
 
 				try {
-					record.setSubstancetype(getPhrase(unmarshalled.getTypeOfSubstance().getComposition().getValue(),unmarshalled.getTypeOfSubstance().getComposition().getOther()));
+					record.setSubstancetype(getPhrase(unmarshalled.getTypeOfSubstance().getComposition().getValue(),
+							unmarshalled.getTypeOfSubstance().getComposition().getOther()));
 				} catch (Exception x) {
 					record.setSubstancetype("Error reading the composition type");
 				}
@@ -307,8 +311,40 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				}
 
 				parseComposition(record);
+				parseIdentifiers(record);
 			}
 			return record;
+		}
+
+		public void parseIdentifiers(SubstanceRecord record) {
+			try {
+				ArrayList<ExternalIdentifier> a = new ArrayList<ExternalIdentifier>();
+				Iterator<Entry<String, Document>> i = library.entrySet().iterator();
+				while (i.hasNext()) {
+					Entry<String, Document> e = i.next();
+					logger.log(Level.INFO, e.getValue().getContent().getAny().getClass().getName());
+					if (e.getValue().getContent().getAny() instanceof FIXEDRECORDIdentifiers) {
+
+						FIXEDRECORDIdentifiers sc = (FIXEDRECORDIdentifiers) e.getValue().getContent().getAny();
+						for (eu.europa.echa.iuclid6.namespaces.fixed_record_identifiers._2.Entry id : sc
+								.getExternalSystemIdentifiers().getExternalSystemIdentifiers().getEntry()) {
+							a.add(new ExternalIdentifier(id.getExternalSystemDesignator(), id.getId()));
+						}
+						/* 
+						for (RegulatoryProgrammeIdentifiersEntry id : sc.getRegulatoryProgrammeIdentifiers()
+								.getRegulatoryProgrammeIdentifiers().getEntry()) {
+							a.add(new ExternalIdentifier(getPhrase(id.getRegulatoryProgramme().getValue(),
+									id.getRegulatoryProgramme().getOther()), id.getId()));
+						}
+						*/
+
+					}
+				}
+				record.setExternalids(a);
+			} catch (Exception x) {
+				logger.log(Level.WARNING, x.getMessage(), x);
+			}
+
 		}
 
 		public void parseComposition(SubstanceRecord record) {
@@ -320,37 +356,47 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 						FLEXIBLERECORDSubstanceComposition sc = (FLEXIBLERECORDSubstanceComposition) e.getValue()
 								.getContent().getAny();
-						String compositionUUID = cleanCompositionUUID(getPlatformMetadataValue(e.getValue(), "documentKey"));
+						String compositionUUID = cleanCompositionUUID(
+								getPlatformMetadataValue(e.getValue(), "documentKey"));
 						String cname = sc.getGeneralInformation().getName();
 						if (sc.getImpurities() != null)
-							for (ImpuritiesEntry c : sc.getImpurities().getImpurities().getEntry()) {
-								impurity2record(compositionUUID, cname, record, c);
-							}
+							for (ImpuritiesEntry c : sc.getImpurities().getImpurities().getEntry())
+								try {
+									impurity2record(compositionUUID, cname, record, c);
+								} catch (Exception x) {
+									logger.log(Level.WARNING, x.getMessage(), x);
+								}
 						if (sc.getAdditives() != null)
-							for (AdditivesEntry c : sc.getAdditives().getAdditives().getEntry()) {
-								additive2record(compositionUUID, cname, record, c);
-							}
+							for (AdditivesEntry c : sc.getAdditives().getAdditives().getEntry())
+								try {
+									additive2record(compositionUUID, cname, record, c);
+								} catch (Exception x) {
+									logger.log(Level.WARNING, x.getMessage(), x);
+								}
 						if (sc.getConstituents() != null)
-							for (ConstituentsEntry c : sc.getConstituents().getConstituents().getEntry()) {
-								constituent2record(unmarshalled, compositionUUID, cname, record, c);
-							}
+							for (ConstituentsEntry c : sc.getConstituents().getConstituents().getEntry())
+								try {
+									constituent2record(unmarshalled, compositionUUID, cname, record, c);
+								} catch (Exception x) {
+									logger.log(Level.WARNING, x.getMessage(), x);
+								}
 
 					}
 				}
 
 			} catch (Exception x) {
-				logger.log(Level.WARNING, x.getMessage(),x);
+				logger.log(Level.WARNING, x.getMessage(), x);
 			}
 		}
 
 		protected String cleanCompositionUUID(String value) {
 			int slashpos = value.indexOf("/");
 			if (slashpos > 0)
-				return("L6-"+value.substring(0, slashpos));
+				return ("L6-" + value.substring(0, slashpos));
 			else
-				return("L6-"+value);
+				return ("L6-" + value);
 		}
-		
+
 		protected void setOwnerUUID(SubstanceRecord record, String value) {
 			int slashpos = value.indexOf("/");
 			if (slashpos > 0)
@@ -372,8 +418,10 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 			Proportion p = new Proportion();
 			if (a.getConcentration() != null) {
-				p.setReal_lowervalue(a.getConcentration().getLowerValue().doubleValue());
-				p.setReal_uppervalue(a.getConcentration().getUpperValue().doubleValue());
+				if (a.getConcentration().getLowerValue() != null)
+					p.setReal_lowervalue(a.getConcentration().getLowerValue().doubleValue());
+				if (a.getConcentration().getUpperValue() != null)
+					p.setReal_uppervalue(a.getConcentration().getUpperValue().doubleValue());
 				try {
 					p.setReal_lower(a.getConcentration().getLowerQualifier());
 				} catch (Exception x) {
@@ -392,7 +440,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 			}
 			if (a.getProportionTypical() != null) {
-				p.setTypical_value(a.getProportionTypical().getValue().doubleValue());
+				if (a.getProportionTypical().getValue() != null)
+					p.setTypical_value(a.getProportionTypical().getValue().doubleValue());
 				try {
 					p.setTypical(a.getProportionTypical().getQualifier());
 				} catch (Exception x) {
@@ -520,7 +569,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			}
 			if (a.getProportionTypical() != null) {
 				try {
-				p.setTypical_value(a.getProportionTypical().getValue().doubleValue());
+					p.setTypical_value(a.getProportionTypical().getValue().doubleValue());
 				} catch (Exception x) {
 				}
 				try {

@@ -257,7 +257,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 							params.put(dictionaryParams(methodname2key(key)), subvalue);
 
 					} catch (Exception x) {
-						logger.log(Level.WARNING, String.format("%s\t%s", value.getClass().getName(), m.getName()), x);
+						logger.log(Level.WARNING, String.format("%s\t%s", value==null?null:value.getClass().getName(), m.getName()), x);
 					}
 			// value = params.size()==0?null:params;
 			value = null;
@@ -344,7 +344,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 								}
 							}
 						} catch (Exception x) {
-							logger.log(Level.WARNING, x.getMessage());
+							logger.log(Level.WARNING, x.getMessage(),x);
 						}
 				} else if (m.getName().startsWith("get")) {
 					IParams params = new Params();
