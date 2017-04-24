@@ -16,7 +16,6 @@ import ambit2.base.data.study.Value;
 import eu.europa.echa.iuclid6.namespaces.literature._1.LITERATURE;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.DocumentReferenceMultipleField;
-import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PhysicalQuantityField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PhysicalQuantityHalfBoundedField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PhysicalQuantityRangeField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistField;
@@ -186,8 +185,9 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 					String key = m.getName();
 					Object value = _getMethodValue(r, p);
 					if (value != null) {
-						if (!"".equals(value))
-							p.put(dictionaryParams(methodname2key(key)), value);
+						if (!"".equals(value)) {
+							p.put(dictionaryParams(methodname2key(key)), p2Value(value));
+						}	
 					}
 				}
 			} catch (Exception x) {
@@ -376,16 +376,21 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 				return;
 			try {
 				Object interpretation = call(mm, "getInterpretationOfResults", null);
-				if (interpretation != null)
+				if (interpretation != null) {
+					if (interpretation instanceof PicklistFieldWithMultiLineTextRemarks)
+						papp.setInterpretationCriteria(
+								((PicklistFieldWithMultiLineTextRemarks) interpretation).getRemarks());
 					papp.setInterpretationResult(p2Value(interpretation));
+				}
 			} catch (Exception x) {
 			}
-			try {
-				Object conclusions = call(mm, "getConclusions", null);
-				if (conclusions != null)
-					papp.setInterpretationCriteria(p2Value(conclusions));
-			} catch (Exception x) {
-			}
+			if (papp.getInterpretationResult() == null)
+				try {
+					Object conclusions = call(mm, "getConclusions", null);
+					if (conclusions != null)
+						papp.setInterpretationResult(p2Value(conclusions));
+				} catch (Exception x) {
+				}
 
 		} catch (Exception x) {
 			logger.log(Level.WARNING, x.getMessage(), x);
@@ -519,8 +524,11 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 			return true;
 	}
 
+	private static final int max_field_len = 1024;
+
 	protected String p2Value(Object field) {
-		if (field==null) return null;
+		if (field == null)
+			return null;
 		else if (field instanceof PicklistField)
 			return p2Value((PicklistField) field);
 		else if (field instanceof PicklistFieldWithLargeTextRemarks)
@@ -529,8 +537,13 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 			return p2Value((PicklistFieldWithSmallTextRemarks) field);
 		else if (field instanceof PicklistFieldWithMultiLineTextRemarks)
 			return p2Value((PicklistFieldWithMultiLineTextRemarks) field);
-		else
-			return field.toString();
+		else {
+			String f = field.toString();	
+			if (max_field_len < f.length())
+				return f.substring(0, max_field_len);
+			else
+				return f;
+		}
 	}
 
 	protected String p2Value(PicklistField field) {
@@ -544,7 +557,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 	protected String p2Value(PicklistFieldWithSmallTextRemarks field) {
 		return getPhrase(field.getValue(), field.getOther());
 	}
-	
+
 	protected String p2Value(PicklistFieldWithMultiLineTextRemarks field) {
 		return getPhrase(field.getValue(), field.getOther());
 	}
