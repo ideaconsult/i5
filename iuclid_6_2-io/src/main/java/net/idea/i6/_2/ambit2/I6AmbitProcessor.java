@@ -320,7 +320,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 						FLEXIBLERECORDSubstanceComposition sc = (FLEXIBLERECORDSubstanceComposition) e.getValue()
 								.getContent().getAny();
-						String compositionUUID = getPlatformMetadataValue(e.getValue(), "documentKey");
+						String compositionUUID = cleanCompositionUUID(getPlatformMetadataValue(e.getValue(), "documentKey"));
 						String cname = sc.getGeneralInformation().getName();
 						if (sc.getImpurities() != null)
 							for (ImpuritiesEntry c : sc.getImpurities().getImpurities().getEntry()) {
@@ -343,6 +343,14 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			}
 		}
 
+		protected String cleanCompositionUUID(String value) {
+			int slashpos = value.indexOf("/");
+			if (slashpos > 0)
+				return("L6-"+value.substring(0, slashpos));
+			else
+				return("L6-"+value);
+		}
+		
 		protected void setOwnerUUID(SubstanceRecord record, String value) {
 			int slashpos = value.indexOf("/");
 			if (slashpos > 0)
