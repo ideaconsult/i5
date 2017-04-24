@@ -103,10 +103,12 @@ public class I5CONSTANTS {
     public static final String eAGGLO_AGGREGATION_ID = "AGGLOMERATION AGGREGATION ID";
 
     public static final String pDISTRIBUTION_TYPE = "DISTRIBUTION_TYPE";
+    public static final String pDISTRIBUTION = "DISTRIBUTION";
     public static final String pMMD = "MASS MEDIAN DIAMETER";
     public static final String pMMAD = "MASS MEDIAN AERODYNAMIC DIAMETER";
     public static final String pGSD = "GEOMETRIC STANDARD DEVIATION";
     public static final String pPARTICLESIZE = "PARTICLE SIZE";
+    
     public static final String pCOATING = "COATING";
     public static final String pFUNCTIONALIZATION = "FUNCTIONALIZATION";
     public static final String pTYPE = "TYPE";
