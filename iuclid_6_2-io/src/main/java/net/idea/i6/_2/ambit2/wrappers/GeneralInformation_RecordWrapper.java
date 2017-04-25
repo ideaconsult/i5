@@ -38,7 +38,8 @@ public class GeneralInformation_RecordWrapper
 					form = new StringBuilder();
 				else
 					form.append(" ");
-				form.append(p2Value(e.getForm().getValue()));
+				if (e.getForm()!=null)
+				form.append(p2Value(e.getForm()));
 			}
 
 		} catch (Exception x) {
@@ -46,7 +47,7 @@ public class GeneralInformation_RecordWrapper
 		}
 
 		EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-		effect.setEndpoint(physstate == null ? null : physstate.toString());
+		effect.setEndpoint(physstate == null ? "" : physstate.toString());
 		effect.getConditions().put(I5CONSTANTS.Remark, form == null ? "" : form.toString());
 		papp.addEffect(effect);
 	}

@@ -65,7 +65,7 @@ public class SedimentToxicity_RecordWrapper extends EndpointStudyRecordWrapper<E
 
 				effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
 				effect.getConditions().put(I5CONSTANTS.cConcType, p2Value(e.getConcBasedOn()));
-				effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration, p2Value(e.getEffectConc()));
+				effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,p2Value(e.getNominalMeasured()));
 			}
 	}
 

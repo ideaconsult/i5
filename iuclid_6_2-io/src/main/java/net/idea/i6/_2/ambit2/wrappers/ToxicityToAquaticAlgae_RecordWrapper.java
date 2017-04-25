@@ -40,8 +40,7 @@ public class ToxicityToAquaticAlgae_RecordWrapper
 
 			effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
 			effect.getConditions().put(I5CONSTANTS.cConcType, p2Value(e.getConcBasedOn()));
-			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,
-					e.getEffectConc() == null ? null : q2value(e.getEffectConc()));
+			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,p2Value(e.getNominalMeasured()));
 
 			effect.getConditions().put(I5CONSTANTS.cExposure, q2value(e.getDuration()));
 		}
