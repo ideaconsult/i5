@@ -202,4 +202,8 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 		throw new Exception("Unsupported format " + name);
 	}
 
+	@Override
+	protected void assignName(IStructureRecord record) {
+
+	}
 }

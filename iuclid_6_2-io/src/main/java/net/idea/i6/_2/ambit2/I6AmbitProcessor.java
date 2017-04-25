@@ -183,6 +183,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					for (InventoryEntry e : unmarshalled.getInventory().getInventoryEntry().getEntry()) {
 						if ("EC".equals(e.getInventoryCode()))
 							structureRecord.setRecordProperty(I5ReaderSimple.ecProperty, e.getNumberInInventory());
+						//else 
+							//System.out.println(String.format("%s\t%s",e.getInventoryCode(),e.getNumberInInventory()));
 					}
 
 			structureRecord.setFormat(null);
@@ -231,7 +233,17 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			if (synonyms != null) {
 				List<String> lookup = new ArrayList<String>();
 				for (I6SynonymEntry e : synonyms.getEntry()) {
-					if (lookup.indexOf(e.getName()) < 0)
+					String nameType = getPhrase(e.getIdentifier().getValue(), e.getIdentifier().getOther());
+					
+					if ("CAS number".equals(nameType)) {
+						structureRecord.setRecordProperty(Property.getCASInstance(), e.getName());
+					} else if ("EC number".equals(nameType)) {
+						structureRecord.setRecordProperty(Property.getEINECSInstance(), e.getName());
+					} else if ("trade namer".equals(nameType)) {
+						Property prop = Property.getNameInstance();
+						prop.setLabel(Property.opentox_TradeName);
+						structureRecord.setRecordProperty(prop, e.getName());
+					} else if (lookup.indexOf(e.getName()) < 0)
 						lookup.add(e.getName());
 				}
 
@@ -298,16 +310,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				} catch (Exception x) {
 					record.setSubstancetype("Error reading the composition type");
 				}
-				/*
-				 * if (unmarshalled.getExternalSystemIdentifiers() != null) for
-				 * (ExternalSystemIdentifier id :
-				 * unmarshalled.getExternalSystemIdentifiers()
-				 * .getExternalSystemIdentifier()) { if (record.getExternalids()
-				 * == null) record.setExternalids(new
-				 * ArrayList<ExternalIdentifier>()); record.getExternalids()
-				 * .add(new ExternalIdentifier(id.getExternalSystemDesignator(),
-				 * id.getID())); }
-				 */
+
 				if (unmarshalled.getReferenceSubstance() != null) {
 					setReferenceSubstanceUUID(record, unmarshalled.getReferenceSubstance().getReferenceSubstance());
 				}
@@ -338,7 +341,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				Iterator<Entry<String, Document>> i = library.entrySet().iterator();
 				while (i.hasNext()) {
 					Entry<String, Document> e = i.next();
-					logger.log(Level.INFO, e.getValue().getContent().getAny().getClass().getName());
+					// logger.log(Level.INFO,
+					// e.getValue().getContent().getAny().getClass().getName());
 					if (e.getValue().getContent().getAny() instanceof FIXEDRECORDIdentifiers) {
 
 						FIXEDRECORDIdentifiers sc = (FIXEDRECORDIdentifiers) e.getValue().getContent().getAny();
@@ -608,17 +612,44 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			IStructureRelation r = substance.addStructureRelation(compositionUUID, record,
 					STRUCTURE_RELATION.HAS_CONSTITUENT, p);
 			r.setName(cname);
+
+			/*
+			 * "common name","EC name" CLP alternative name trade name E number
+			 * INCI name CAS name
+			 * 
+			 * FEMA number ISO name UN name/number
+			 */
+
 			if ((unmarshalled != null) && (unmarshalled.getOtherNames() != null)) {
 				int i = 0;
 				for (eu.europa.echa.iuclid6.namespaces.substance._2.SUBSTANCE.OtherNames.Entry name : unmarshalled
 						.getOtherNames().getEntry()) {
 
-					String nameType = getPhrase(name.getNameType().getValue());
+					String nameType = getPhrase(name.getNameType().getValue(),name.getNameType().getOther());
+					
 					Property prop = Property.getInstance(String.format("%s %d", nameType, (i + 1)),
 							LiteratureEntry.getI5UUIDReference());
-					prop.setLabel(Property.opentox_TradeName);
+					if ("CAS number".equals(nameType))
+						prop = Property.getCASInstance();
+					else if ("EC number".equals(nameType))
+						prop = Property.getEINECSInstance();
+					else if ("CAS name".equals(nameType))
+						prop = Property.getNameInstance();
+					else if ("EC name".equals(nameType))
+						prop = Property.getNameInstance();
+					else if ("common name".equals(nameType))
+						prop = Property.getNameInstance();
+					else if ("ISO name".equals(nameType))
+						prop = Property.getNameInstance();
+					else if ("INCO name".equals(nameType))
+						prop = Property.getNameInstance();
+					else if ("IUPAC name".equals(nameType))
+						prop = Property.getNameInstance();					
+					else if ("trade name".equals(nameType)) {
+						prop = Property.getNameInstance();
+						prop.setLabel(Property.opentox_TradeName);
+					}
 					record.setRecordProperty(prop, name.getName());
-
 					if (name.getRemarks() != null && !"".equals(name.getRemarks())) {
 						prop = Property.getInstance("Identifier", LiteratureEntry.getI5UUIDReference());
 						prop.setLabel(Property.opentox_TradeName);
