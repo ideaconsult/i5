@@ -1,5 +1,7 @@
 package net.idea.i6._2.ambit2.wrappers;
 
+import java.util.logging.Level;
+
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.ProtocolApplication;
@@ -44,11 +46,15 @@ public class BiodegradationInWaterScreeningTests_RecordWrapper
 	@Override
 	public void assignInterpretationResult(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDBiodegradationInWaterScreeningTests studyRecord) {
+		try {
 		papp.setInterpretationResult(
 				p2Value(studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults()));
 		papp.setInterpretationCriteria(
 				studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults().getRemarks());
 
+		} catch (Exception x) {
+			logger.log(Level.WARNING, x.getMessage(),x);
+		}
 	}
 
 	protected static Value q2value(SamplingTime field) {
