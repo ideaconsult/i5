@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
+import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_repeateddosetoxicityinhalation._2.ENDPOINTSTUDYRECORDRepeatedDoseToxicityInhalation;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_repeateddosetoxicityinhalation._2.EfflevelEntry;
@@ -18,6 +19,17 @@ public class RepeatedDoseToxicityInhalation_RecordWrapper extends RepeatedDoseTo
 
 	public RepeatedDoseToxicityInhalation_RecordWrapper(Document doc) throws Exception {
 		super(doc);
+	}
+	
+	@Override
+	public void assignProtocolParameters(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
+		super.assignProtocolParameters(papp);
+		try {
+			IParams params = ((IParams) papp.getParameters());
+			params.put(I5CONSTANTS.cTestType, p2Value(getStudyRecord().getAdministrativeData().getEndpoint()).trim());
+		} catch (Exception x) {
+			logger.log(Level.WARNING, x.getMessage());
+		}
 	}
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
@@ -46,6 +58,8 @@ public class RepeatedDoseToxicityInhalation_RecordWrapper extends RepeatedDoseTo
 
 				effect.getConditions().put(I5CONSTANTS.cSpecies,
 						p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSpecies()));
+				effect.getConditions().put(I5CONSTANTS.cTestType,((IParams)papp.getParameters()).get(I5CONSTANTS.cTestType));
+				effect.getConditions().put(I5CONSTANTS.cTestType,((IParams)papp.getParameters()).get(I5CONSTANTS.cTestType));
 
 			}
 		if (studyrecord.getResultsAndDiscussion().getResultsOfExaminations() != null) {

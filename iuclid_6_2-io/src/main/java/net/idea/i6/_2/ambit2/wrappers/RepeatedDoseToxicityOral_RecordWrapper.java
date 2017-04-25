@@ -30,6 +30,13 @@ public class RepeatedDoseToxicityOral_RecordWrapper
 		// i6 migrations moves the doses into remarks ...
 		if (doses == null || "".equals(doses.toString()))
 			papp.getParameters().put(I5CONSTANTS.cDoses, remarks);
+		
+		try {
+			IParams params = ((IParams) papp.getParameters());
+			params.put(I5CONSTANTS.cTestType, p2Value(getStudyRecord().getAdministrativeData().getEndpoint()).trim());
+		} catch (Exception x) {
+			logger.log(Level.WARNING, x.getMessage());
+		}
 	}
 
 	@Override
@@ -59,6 +66,7 @@ public class RepeatedDoseToxicityOral_RecordWrapper
 
 				effect.getConditions().put(I5CONSTANTS.cSpecies,
 						p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSpecies()));
+				effect.getConditions().put(I5CONSTANTS.cTestType,((IParams)papp.getParameters()).get(I5CONSTANTS.cTestType));
 
 			}
 		if (studyrecord.getResultsAndDiscussion().getResultsOfExaminations() != null) {

@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
+import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_repeateddosetoxicitydermal._2.ENDPOINTSTUDYRECORDRepeatedDoseToxicityDermal;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_repeateddosetoxicitydermal._2.EfflevelEntry;
@@ -21,6 +22,17 @@ public class RepeatedDoseToxicityDermal_RecordWrapper
 		super(doc);
 	}
 
+	@Override
+	public void assignProtocolParameters(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
+		super.assignProtocolParameters(papp);
+		try {
+			IParams params = ((IParams) papp.getParameters());
+			params.put(I5CONSTANTS.cTestType, p2Value(getStudyRecord().getAdministrativeData().getEndpoint()).trim());
+		} catch (Exception x) {
+			logger.log(Level.WARNING, x.getMessage());
+		}
+		
+	}
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDRepeatedDoseToxicityDermal studyrecord) {

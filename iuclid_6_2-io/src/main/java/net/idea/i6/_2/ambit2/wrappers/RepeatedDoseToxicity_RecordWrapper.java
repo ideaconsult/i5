@@ -1,5 +1,7 @@
 package net.idea.i6._2.ambit2.wrappers;
 
+import java.util.logging.Level;
+
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
@@ -13,6 +15,7 @@ public abstract class RepeatedDoseToxicity_RecordWrapper<T>
 	public RepeatedDoseToxicity_RecordWrapper(Document doc) throws Exception {
 		super(doc);
 	}
+
 
 	@Override
 	public void assignProtocolParameters(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
