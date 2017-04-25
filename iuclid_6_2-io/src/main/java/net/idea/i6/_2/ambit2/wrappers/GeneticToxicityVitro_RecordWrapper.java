@@ -1,7 +1,10 @@
 package net.idea.i6._2.ambit2.wrappers;
 
+import java.util.logging.Level;
+
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
+import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_genetictoxicityvitro._2.ENDPOINTSTUDYRECORDGeneticToxicityVitro;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_genetictoxicityvitro._2.ENDPOINTSTUDYRECORDGeneticToxicityVitro.ResultsAndDiscussion.TestRs;
@@ -11,6 +14,7 @@ import net.idea.i5.io.I5CONSTANTS;
 
 public class GeneticToxicityVitro_RecordWrapper
 		extends RepeatedDoseToxicity_RecordWrapper<ENDPOINTSTUDYRECORDGeneticToxicityVitro> {
+	private static final String _MIGRATED_GENOTOXTYPE = "MIGRATED_GENOTOXTYPE";
 
 	public GeneticToxicityVitro_RecordWrapper(Document doc) throws Exception {
 		super(doc);
@@ -24,6 +28,19 @@ public class GeneticToxicityVitro_RecordWrapper
 			return I5CONSTANTS.cTypeStudy;
 		else
 			return super.dictionaryParams(key);
+	}
+
+	@Override
+	public void assignProtocolParameters(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
+		super.assignProtocolParameters(papp);
+		try {
+			IParams params = ((IParams) papp.getParameters());
+			params.put(I5CONSTANTS.cTypeStudy, p2Value(getStudyRecord().getAdministrativeData().getEndpoint()).trim());
+			params.put(I5CONSTANTS.cTypeGenotoxicity, getStudyRecord().getAdministrativeData()
+					.getEndpoint().getRemarks().replace(msg.getString(_MIGRATED_GENOTOXTYPE), "").trim());
+		} catch (Exception x) {
+			logger.log(Level.WARNING, x.getMessage());
+		}
 	}
 
 	@Override
@@ -43,8 +60,7 @@ public class GeneticToxicityVitro_RecordWrapper
 			papp.addEffect(effect);
 
 			try {
-				effect.getConditions().put(I5CONSTANTS.cMetabolicActivation,
-						p2Value(e.getMetActIndicator()));
+				effect.getConditions().put(I5CONSTANTS.cMetabolicActivation, p2Value(e.getMetActIndicator()));
 			} catch (Exception x) {
 				effect.getConditions().put(I5CONSTANTS.cMetabolicActivation, null);
 			}
@@ -58,6 +74,7 @@ public class GeneticToxicityVitro_RecordWrapper
 			// copied to conditions
 			effect.getConditions().put(I5CONSTANTS.cTypeStudy,
 					((IParams) papp.getParameters()).get(I5CONSTANTS.cTypeStudy));
+
 		}
 
 	}
@@ -65,8 +82,9 @@ public class GeneticToxicityVitro_RecordWrapper
 	@Override
 	public void assignInterpretationResult(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDGeneticToxicityVitro studyRecord) {
-		//i6 migrated into a different field 
-		papp.setInterpretationResult(studyRecord.getApplicantSummaryAndConclusion().getConclusions().replace(msg.getString(_MIGRATED), ""));
+		// i6 migrated into a different field
+		papp.setInterpretationResult(
+				studyRecord.getApplicantSummaryAndConclusion().getConclusions().replace(msg.getString(_MIGRATED), ""));
 		papp.setInterpretationCriteria(studyRecord.getApplicantSummaryAndConclusion().getConclusions());
 	}
 }

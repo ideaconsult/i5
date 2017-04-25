@@ -1,5 +1,7 @@
 package net.idea.i6._2.ambit2.wrappers;
 
+import java.util.logging.Level;
+
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Protocol;
@@ -25,11 +27,18 @@ public class GeneticToxicityVivo_RecordWrapper
 			return I5CONSTANTS.cTypeStudy;
 		else return super.dictionaryParams(key);
 	}
+	
 	@Override
 	public void assignProtocolParameters(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
 		super.assignProtocolParameters(papp);
-		ENDPOINTSTUDYRECORDGeneticToxicityVivo studyrecord = getStudyRecord();
-		//studyrecord.getMaterialsAndMethods().get	
+		try {
+			IParams params = ((IParams) papp.getParameters());
+			params.put(I5CONSTANTS.cTypeStudy, p2Value(getStudyRecord().getAdministrativeData().getEndpoint()).trim());
+			params.put(I5CONSTANTS.cTypeGenotoxicity, getStudyRecord().getAdministrativeData()
+					.getEndpoint().getRemarks());
+		} catch (Exception x) {
+			logger.log(Level.WARNING, x.getMessage());
+		}
 	}
 
 	@Override
