@@ -25,8 +25,7 @@ public class GeneralInformation_RecordWrapper
 		StringBuilder physstate = new StringBuilder();
 		try {
 			if (studyrecord.getResultsAndDiscussion().getSubstancePhysicalState() != null)
-				physstate.append(getPhrase(studyrecord.getResultsAndDiscussion().getSubstancePhysicalState().getValue(),
-						studyrecord.getResultsAndDiscussion().getSubstancePhysicalState().getOther()));
+				physstate.append(p2Value(studyrecord.getResultsAndDiscussion().getSubstancePhysicalState()));
 		} catch (Exception x) {
 			logger.log(Level.WARNING, x.getMessage(), x);
 		}
@@ -56,8 +55,7 @@ public class GeneralInformation_RecordWrapper
 	public void assignInterpretationResult(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDGeneralInformation studyRecord) {
 		try {
-			papp.setInterpretationResult(getPhrase(studyRecord.getResultsAndDiscussion().getSubstanceType().getValue(),
-					studyRecord.getResultsAndDiscussion().getSubstanceType().getOther()));
+			papp.setInterpretationResult(p2Value(studyRecord.getResultsAndDiscussion().getSubstanceType()));
 		} catch (Exception x) {
 			papp.setInterpretationResult("");
 		}

@@ -2,7 +2,6 @@ package net.idea.i6._2.ambit2.wrappers;
 
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
-import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.Value;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicitytomicroorganisms._2.ENDPOINTSTUDYRECORDToxicityToMicroorganisms;
@@ -22,13 +21,14 @@ public class ToxicityToMicroorganisms_RecordWrapper
 
 	@Override
 	protected String dictionaryParams(String key) {
-		if ("TestOrganismsSpecies".equals(key)) return I5CONSTANTS.cTestOrganism;
+		if ("TestOrganismsSpecies".equals(key))
+			return I5CONSTANTS.cTestOrganism;
 		return super.dictionaryParams(key);
 	}
 
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDToxicityToMicroorganisms studyrecord) {
-		
+
 		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
 			return;
 
@@ -39,22 +39,10 @@ public class ToxicityToMicroorganisms_RecordWrapper
 			effect.setEndpoint(getPhrase(e.getEndpoint().getValue(), e.getEndpoint().getOther()));
 			papp.addEffect(effect);
 
-			try {
-				effect.getConditions().put(I5CONSTANTS.cEffect,
-						getPhrase(e.getBasisForEffect().getValue(), e.getBasisForEffect().getOther()));
-			} catch (Exception x) {
-				effect.getConditions().put(I5CONSTANTS.cEffect, null);
-			}
+			effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
 
-			try {
-
-				effect.getConditions().put(I5CONSTANTS.cConcType,
-						getPhrase(e.getConcBasedOn().getValue(), e.getConcBasedOn().getOther()));
-			} catch (Exception x) {
-				effect.getConditions().put(I5CONSTANTS.cConcType, null);
-			}
-			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,
-					e.getEffectConc() == null ? null : q2value(e.getEffectConc()));
+			effect.getConditions().put(I5CONSTANTS.cConcType, p2Value(e.getConcBasedOn().getValue()));
+			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration, q2value(e.getEffectConc()));
 
 			effect.getConditions().put(I5CONSTANTS.cExposure, q2value(e.getDuration()));
 		}

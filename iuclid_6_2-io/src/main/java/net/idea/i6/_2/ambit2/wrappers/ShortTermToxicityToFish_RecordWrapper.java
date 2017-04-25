@@ -20,9 +20,11 @@ public class ShortTermToxicityToFish_RecordWrapper
 
 	@Override
 	protected String dictionaryParams(String key) {
-		if ("TestOrganismsSpecies".equals(key)) return I5CONSTANTS.cTestOrganism;
+		if ("TestOrganismsSpecies".equals(key))
+			return I5CONSTANTS.cTestOrganism;
 		return super.dictionaryParams(key);
 	}
+
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDShortTermToxicityToFish studyrecord) {
 
@@ -32,29 +34,15 @@ public class ShortTermToxicityToFish_RecordWrapper
 
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			try {
-				effect.setEndpoint(getPhrase(e.getEndpoint().getValue(), e.getEndpoint().getOther()));
+				effect.setEndpoint(p2Value(e.getEndpoint()));
 			} catch (Exception x) {
 				effect.setEndpoint(null);
 			}
 			papp.addEffect(effect);
 
-			try {
-				effect.getConditions().put(I5CONSTANTS.cEffect,
-						getPhrase(e.getBasisForEffect().getValue(), e.getBasisForEffect().getOther()));
-			} catch (Exception x) {
-				effect.getConditions().put(I5CONSTANTS.cEffect, null);
-			}
-
-			try {
-
-				effect.getConditions().put(I5CONSTANTS.cConcType,
-						getPhrase(e.getConcBasedOn().getValue(), e.getConcBasedOn().getOther()));
-			} catch (Exception x) {
-				effect.getConditions().put(I5CONSTANTS.cConcType, null);
-			}
-			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,
-					e.getEffectConc() == null ? null : q2value(e.getEffectConc()));
-
+			effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
+			effect.getConditions().put(I5CONSTANTS.cConcType, p2Value(e.getConcBasedOn()));
+			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,q2value(e.getEffectConc()));
 			effect.getConditions().put(I5CONSTANTS.cExposure, q2value(e.getDuration()));
 		}
 

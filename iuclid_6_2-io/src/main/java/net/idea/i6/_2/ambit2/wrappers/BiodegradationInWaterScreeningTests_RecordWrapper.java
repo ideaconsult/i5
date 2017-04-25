@@ -30,7 +30,7 @@ public class BiodegradationInWaterScreeningTests_RecordWrapper
 			q2effectrecord(e.getDegr(), effect);
 			effect.setEndpoint(I5CONSTANTS.ePercentDegradation);
 			try {
-				effect.setEndpoint(getPhrase(e.getParameter().getValue(), e.getParameter().getOther()));
+				effect.setEndpoint(p2Value(e.getParameter()));
 			} catch (Exception x) {
 			}
 			papp.addEffect(effect);

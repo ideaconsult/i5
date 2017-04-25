@@ -20,15 +20,15 @@ public class ShortTermToxicityToAquaInv_RecordWrapper
 
 	@Override
 	protected String dictionaryParams(String key) {
-		if ("TestOrganismsSpecies".equals(key)) return I5CONSTANTS.cTestOrganism;
+		if ("TestOrganismsSpecies".equals(key))
+			return I5CONSTANTS.cTestOrganism;
 		return super.dictionaryParams(key);
 	}
 
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDShortTermToxicityToAquaInv studyrecord) {
-		
-		
+
 		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
 			return;
 
@@ -36,12 +36,11 @@ public class ShortTermToxicityToAquaInv_RecordWrapper
 
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			q2effectrecord(e.getEffectConc(), effect);
-			effect.setEndpoint(getPhrase(e.getEndpoint().getValue(), e.getEndpoint().getOther()));
+			effect.setEndpoint(p2Value(e.getEndpoint()));
 			papp.addEffect(effect);
 
 			try {
-				effect.getConditions().put(I5CONSTANTS.cEffect,
-						getPhrase(e.getBasisForEffect().getValue(), e.getBasisForEffect().getOther()));
+				effect.getConditions().put(I5CONSTANTS.cEffect,p2Value(e.getBasisForEffect()));
 			} catch (Exception x) {
 				effect.getConditions().put(I5CONSTANTS.cEffect, null);
 			}

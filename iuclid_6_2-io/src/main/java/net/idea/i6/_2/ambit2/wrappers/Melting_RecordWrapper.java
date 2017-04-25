@@ -22,35 +22,35 @@ public class Melting_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTST
 		EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 		effect.setEndpoint(I5CONSTANTS.eMELTINGPOINT);
 		papp.addEffect(effect);
-		
+
 		try {
 			for (Entry e : studyrecord.getResultsAndDiscussion().getMeltingPoint().getEntry()) {
-				
-				
-				//pressure should be a condition
-				//decomposition and sublimation are actually readouts not conditions...
+
+				// pressure should be a condition
+				// decomposition and sublimation are actually readouts not
+				// conditions...
 				try {
-					effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION,	getPhrase(e.getDecompIndicator().getValue(),e.getDecompIndicator().getOther()));
+					effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION, p2Value(e.getDecompIndicator()));
 				} catch (Exception x) {
-					effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION,null);
+					effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION, null);
 				}
 				try {
-					effect.getConditions().put(I5CONSTANTS.rSUBLIMATION,	getPhrase(e.getSublimationIndicator().getValue(),e.getSublimationIndicator().getOther()));
+					effect.getConditions().put(I5CONSTANTS.rSUBLIMATION, p2Value(e.getSublimationIndicator()));
 				} catch (Exception x) {
-					effect.getConditions().put(I5CONSTANTS.rSUBLIMATION,null);
+					effect.getConditions().put(I5CONSTANTS.rSUBLIMATION, null);
 				}
-				
-				effect.getConditions().put(I5CONSTANTS.Pressure,q2value(e.getPressure()));
-				effect.getConditions().put("Sublimation T",q2value(e.getSublimationTemp()));
-				effect.getConditions().put("Decomposition T",q2value(e.getDecompTemp()));
-				
+
+				effect.getConditions().put(I5CONSTANTS.Pressure, q2value(e.getPressure()));
+				effect.getConditions().put("Sublimation T", q2value(e.getSublimationTemp()));
+				effect.getConditions().put("Decomposition T", q2value(e.getDecompTemp()));
+
 				effect.setTextValue(e.getRemarksOnResults());
-				q2effectrecord(e.getMeltingPoint(),effect);
+				q2effectrecord(e.getMeltingPoint(), effect);
 
 			}
 		} catch (Exception x) {
-			logger.log(Level.WARNING, x.getMessage(),x);
+			logger.log(Level.WARNING, x.getMessage(), x);
 		}
-		
+
 	}
 }

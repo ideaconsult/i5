@@ -23,8 +23,9 @@ public class SkinSensitisation_RecordWrapper extends EndpointStudyRecordWrapper<
 	public void assignInterpretationResult(ProtocolApplication papp, ENDPOINTSTUDYRECORDSkinSensitisation studyRecord) {
 		super.assignInterpretationResult(papp, studyRecord);
 		papp.setInterpretationResult(
-				getPhrase(studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults().getValue(),studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults().getOther()));
-		papp.setInterpretationCriteria(studyRecord.getApplicantSummaryAndConclusion().getConclusions());
+				p2Value(studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults()));
+		papp.setInterpretationCriteria(
+				studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults().getRemarks());
 	}
 
 	@Override
@@ -45,7 +46,7 @@ public class SkinSensitisation_RecordWrapper extends EndpointStudyRecordWrapper<
 					.getResultsAndDiscussion().getInVitroInChemico().getResults().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				q2effectrecord(e.getValue(), effect);
-				effect.setEndpoint(getPhrase(e.getParameter().getValue(), e.getParameter().getOther()));
+				effect.setEndpoint(p2Value(e.getParameter()));
 				papp.addEffect(effect);
 			}
 
@@ -54,7 +55,7 @@ public class SkinSensitisation_RecordWrapper extends EndpointStudyRecordWrapper<
 					.getResultsAndDiscussion().getInVivoLLNA().getResults().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				q2effectrecord(e.getValue(), effect);
-				effect.setEndpoint(getPhrase(e.getParameter().getValue(), e.getParameter().getOther()));
+				effect.setEndpoint(p2Value(e.getParameter()));
 				papp.addEffect(effect);
 
 			}

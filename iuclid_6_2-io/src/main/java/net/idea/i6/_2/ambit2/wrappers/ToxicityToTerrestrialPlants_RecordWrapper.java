@@ -17,51 +17,37 @@ public class ToxicityToTerrestrialPlants_RecordWrapper
 	public ToxicityToTerrestrialPlants_RecordWrapper(Document doc) throws Exception {
 		super(doc);
 	}
+
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDToxicityToTerrestrialPlants studyrecord) {
-			
-			if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
-				return;
 
-			for (EffectConcentrationsEntry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {
+		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
+			return;
 
-				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				q2effectrecord(e.getEffectConc(), effect);
-				effect.setEndpoint(getPhrase(e.getEndpoint().getValue(), e.getEndpoint().getOther()));
-				papp.addEffect(effect);
+		for (EffectConcentrationsEntry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {
 
-				try {
-					effect.getConditions().put(I5CONSTANTS.cEffect,
-							getPhrase(e.getBasisForEffect().getValue(), e.getBasisForEffect().getOther()));
-				} catch (Exception x) {
-					effect.getConditions().put(I5CONSTANTS.cEffect, null);
-				}
+			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+			q2effectrecord(e.getEffectConc(), effect);
+			effect.setEndpoint(p2Value(e.getEndpoint().getValue()));
+			papp.addEffect(effect);
+			effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
+			effect.getConditions().put(I5CONSTANTS.cConcType, p2Value(e.getConcBasedOn()));
+			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,q2value(e.getEffectConc()));
+			effect.getConditions().put(I5CONSTANTS.cExposure, q2value(e.getDuration()));
+		}
+	}
 
-				try {
-
-					effect.getConditions().put(I5CONSTANTS.cConcType,
-							getPhrase(e.getConcBasedOn().getValue(), e.getConcBasedOn().getOther()));
-				} catch (Exception x) {
-					effect.getConditions().put(I5CONSTANTS.cConcType, null);
-				}
-				effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,
-						e.getEffectConc() == null ? null : q2value(e.getEffectConc()));
-
-				effect.getConditions().put(I5CONSTANTS.cExposure, q2value(e.getDuration()));
-			}
+	protected static Value q2value(Duration field) {
+		try {
+			Value v = new Value();
+			v.setLoValue(Double.parseDouble(field.getValue()));
+			v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
+			return v;
+		} catch (Exception x) {
+			return null;
 		}
 
-		protected static Value q2value(Duration field) {
-			try {
-				Value v = new Value();
-				v.setLoValue(Double.parseDouble(field.getValue()));
-				v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
-				return v;
-			} catch (Exception x) {
-				return null;
-			}
-
-		}
+	}
 
 }

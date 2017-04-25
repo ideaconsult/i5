@@ -39,18 +39,18 @@ public class GeneticToxicityVitro_RecordWrapper
 			 */
 			EffectRecord<String, IParams, String> effect = endpointCategory.mapIUCLID5().createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.eGenotoxicity);
-			effect.setTextValue(getPhrase(e.getGenotoxicity().getValue()));
+			effect.setTextValue(p2Value(e.getGenotoxicity()));
 			papp.addEffect(effect);
 
 			try {
 				effect.getConditions().put(I5CONSTANTS.cMetabolicActivation,
-						getPhrase(e.getMetActIndicator().getValue()));
+						p2Value(e.getMetActIndicator()));
 			} catch (Exception x) {
 				effect.getConditions().put(I5CONSTANTS.cMetabolicActivation, null);
 			}
 			if (e.getOrganism() != null)
 				try {
-					effect.getConditions().put(I5CONSTANTS.cSpecies, getPhrase(e.getOrganism().getValue()));
+					effect.getConditions().put(I5CONSTANTS.cSpecies, p2Value(e.getOrganism()));
 				} catch (Exception x) {
 					effect.getConditions().put(I5CONSTANTS.cSpecies, null);
 				}

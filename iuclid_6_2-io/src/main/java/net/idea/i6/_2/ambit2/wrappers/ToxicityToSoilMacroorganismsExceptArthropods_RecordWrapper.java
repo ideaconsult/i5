@@ -28,7 +28,7 @@ public class ToxicityToSoilMacroorganismsExceptArthropods_RecordWrapper
 
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			q2effectrecord(e.getEffectConc(), effect);
-			effect.setEndpoint(getPhrase(e.getEndpoint().getValue(), e.getEndpoint().getOther()));
+			effect.setEndpoint(p2Value(e.getEndpoint()));
 			papp.addEffect(effect);
 
 			effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));

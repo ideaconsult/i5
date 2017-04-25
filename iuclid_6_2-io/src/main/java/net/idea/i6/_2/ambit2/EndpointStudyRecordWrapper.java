@@ -459,17 +459,17 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 			// else System.out.println("No quality check");
 
 			reliability.setId(reliabilityID.getValue());
-			reliability.setValue(getPhrase(reliabilityID.getValue()));
+			reliability.setValue(getPhrase(reliabilityID.getValue(),reliabilityID.getOther()));
 			reliability.setIsRobustStudy(isRobustStudy);
 			reliability.setIsUsedforClassification(isUsedforClassification);
 			reliability.setIsUsedforMSDS(isUsedforMSDS);
 			try {
-				reliability.setPurposeFlag(getPhrase(purposeFlagCode.getValue()));
+				reliability.setPurposeFlag(getPhrase(purposeFlagCode.getValue(),purposeFlagCode.getOther()));
 			} catch (Exception x) {
 
 			}
 			try {
-				reliability.setStudyResultType(getPhrase(studyResultTypeID.getValue()));
+				reliability.setStudyResultType(getPhrase(studyResultTypeID.getValue(),studyResultTypeID.getOther()));
 			} catch (Exception x) {
 			}
 
@@ -563,6 +563,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 	}
 
 	protected static Value q2value(PhysicalQuantityHalfBoundedField field) {
+		if (field==null) return null;
 		Value v = new Value();
 		v.setLoQualifier(field.getQualifier());
 		if (field.getValue() != null)
@@ -572,6 +573,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 	}
 
 	protected static Value q2value(PhysicalQuantityRangeField field) {
+		if (field==null) return null;
 		Value v = new Value();
 		v.setLoQualifier(field.getLowerQualifier());
 		v.setUpQualifier(field.getUpperQualifier());
@@ -585,7 +587,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 
 	protected static void q2effectrecord(PhysicalQuantityRangeField field,
 			EffectRecord<String, IParams, String> effectrecord) {
-
+		if (field==null) return;
 		effectrecord.setLoQualifier(field.getLowerQualifier());
 		effectrecord.setUpQualifier(field.getUpperQualifier());
 		if (field.getLowerValue() != null)

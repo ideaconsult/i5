@@ -27,7 +27,7 @@ public class BoilingPoint_RecordWrapper extends EndpointStudyRecordWrapper<ENDPO
 				//pressure should be a condition
 				//decomposition and sublimation are actually readouts not conditions...
 				try {
-					effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION,	getPhrase(e.getDecomposition().getValue(),e.getDecomposition().getOther()));
+					effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION,	p2Value(e.getDecomposition()));
 				} catch (Exception x) {
 					effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION,null);
 				}

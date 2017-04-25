@@ -23,7 +23,7 @@ public class BioaccumulationAquaticSediment_RecordWrapper
 			for (Entry e : studyrecord.getResultsAndDiscussion().getBioaccumulationFactor().getEntry()) {
 				
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				try {effect.setEndpoint(getPhrase(e.getType().getValue(),e.getType().getValue()));} catch (Exception x) {}
+				try {effect.setEndpoint(p2Value(e.getType()));} catch (Exception x) {}
 				papp.addEffect(effect);
 				
 				/* ???
@@ -34,7 +34,7 @@ public class BioaccumulationAquaticSediment_RecordWrapper
 
 				
 				try {
-					effect.getConditions().put(I5CONSTANTS.cBioaccBasis, getPhrase(e.getBasis().getValue(),e.getBasis().getOther()));
+					effect.getConditions().put(I5CONSTANTS.cBioaccBasis, p2Value(e.getBasis()));
 				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cBioaccBasis,null);}
 				try {
 					effect.getConditions().put(I5CONSTANTS.cDoses, q2value(e.getConcInEnvironmentDose()));

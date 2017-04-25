@@ -433,7 +433,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setReal_unit("");
 				}
 				try {
-					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode()));
+					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(),a.getConcentration().getUnitOther()));
 				} catch (Exception x) {
 					p.setReal_unit("");
 				}
@@ -448,14 +448,14 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setTypical("");
 				}
 				try {
-					p.setTypical_unit(getPhrase(a.getProportionTypical().getUnitCode()));
+					p.setTypical_unit(getPhrase(a.getProportionTypical().getUnitCode(),a.getConcentration().getUnitCode()));
 				} catch (Exception x) {
 					p.setTypical_unit("");
 				}
 			}
 
 			try {
-				p.setFunction(getPhrase(a.getFunction().getValue()));
+				p.setFunction(getPhrase(a.getFunction().getValue(),a.getFunction().getOther()));
 			} catch (Exception x) {
 				p.setFunction("Error reading the function type");
 			}
@@ -497,7 +497,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setReal_unit("");
 				}
 				try {
-					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode()));
+					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(),a.getConcentration().getUnitOther()));
 				} catch (Exception x) {
 					p.setReal_unit("");
 				}
@@ -514,7 +514,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setTypical("");
 				}
 				try {
-					p.setTypical_unit(getPhrase(a.getProportionTypical().getUnitCode()));
+					p.setTypical_unit(getPhrase(a.getProportionTypical().getUnitCode(),a.getConcentration().getUnitOther()));
 				} catch (Exception x) {
 					p.setTypical_unit("");
 				}
@@ -562,7 +562,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setReal_lower("");
 				}
 				try {
-					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode()));
+					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(),a.getConcentration().getUnitOther()));
 				} catch (Exception x) {
 					p.setReal_unit("");
 				}
@@ -578,7 +578,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setTypical("");
 				}
 				try {
-					p.setTypical_unit(getPhrase(a.getProportionTypical().getUnitCode()));
+					p.setTypical_unit(getPhrase(a.getProportionTypical().getUnitCode(),a.getConcentration().getUnitOther()));
 				} catch (Exception x) {
 					p.setTypical_unit("");
 				}

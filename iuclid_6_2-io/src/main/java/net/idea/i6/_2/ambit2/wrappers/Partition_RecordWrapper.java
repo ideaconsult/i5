@@ -24,7 +24,7 @@ public class Partition_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINT
 
 		for (Entry e : studyrecord.getResultsAndDiscussion().getPartcoeff().getEntry()) {
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-			effect.setEndpoint(getPhrase(e.getType().getValue(),e.getType().getOther()));
+			effect.setEndpoint(p2Value(e.getType()));
 			papp.addEffect(effect);
 
 			try {
@@ -41,10 +41,10 @@ public class Partition_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINT
 				logger.log(Level.FINE, x.getMessage(), x);
 			}
 
-
 			q2effectrecord(e.getPartition(), effect);
 		}
 	}
+
 	protected static Value q2value(Temp field) {
 		Value v = new Value();
 		v.setLoValue(field.getValue());

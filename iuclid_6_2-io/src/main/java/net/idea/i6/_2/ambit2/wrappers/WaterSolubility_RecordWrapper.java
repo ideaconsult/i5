@@ -41,12 +41,7 @@ public class WaterSolubility_RecordWrapper extends EndpointStudyRecordWrapper<EN
 				logger.log(Level.FINE, x.getMessage(), x);
 			}
 
-			try {
-				effect.getConditions().put(I5CONSTANTS.Remark,
-						getPhrase(e.getRemarksOnResults().getValue(), e.getRemarksOnResults().getOther()));
-			} catch (Exception x) {
-				effect.getConditions().put(I5CONSTANTS.Remark, null);
-			}
+			effect.getConditions().put(I5CONSTANTS.Remark, p2Value(e.getRemarksOnResults()));
 
 			q2effectrecord(e.getSolubility(), effect);
 		}

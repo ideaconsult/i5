@@ -17,15 +17,17 @@ public class ToxicityToAquaticAlgae_RecordWrapper
 	public ToxicityToAquaticAlgae_RecordWrapper(Document doc) throws Exception {
 		super(doc);
 	}
+
 	@Override
 	protected String dictionaryParams(String key) {
-		if ("TestOrganismsSpecies".equals(key)) return I5CONSTANTS.cTestOrganism;
+		if ("TestOrganismsSpecies".equals(key))
+			return I5CONSTANTS.cTestOrganism;
 		return super.dictionaryParams(key);
 	}
 
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDToxicityToAquaticAlgae studyrecord) {
-		
+
 		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
 			return;
 
@@ -33,23 +35,11 @@ public class ToxicityToAquaticAlgae_RecordWrapper
 
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			q2effectrecord(e.getEffectConc(), effect);
-			effect.setEndpoint(getPhrase(e.getEndpoint().getValue(), e.getEndpoint().getOther()));
+			effect.setEndpoint(p2Value(e.getEndpoint()));
 			papp.addEffect(effect);
 
-			try {
-				effect.getConditions().put(I5CONSTANTS.cEffect,
-						getPhrase(e.getBasisForEffect().getValue(), e.getBasisForEffect().getOther()));
-			} catch (Exception x) {
-				effect.getConditions().put(I5CONSTANTS.cEffect, null);
-			}
-
-			try {
-
-				effect.getConditions().put(I5CONSTANTS.cConcType,
-						getPhrase(e.getConcBasedOn().getValue(), e.getConcBasedOn().getOther()));
-			} catch (Exception x) {
-				effect.getConditions().put(I5CONSTANTS.cConcType, null);
-			}
+			effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
+			effect.getConditions().put(I5CONSTANTS.cConcType, p2Value(e.getConcBasedOn()));
 			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,
 					e.getEffectConc() == null ? null : q2value(e.getEffectConc()));
 
