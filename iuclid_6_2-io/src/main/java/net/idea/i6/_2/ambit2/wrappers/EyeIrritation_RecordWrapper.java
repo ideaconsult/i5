@@ -16,9 +16,14 @@ public class EyeIrritation_RecordWrapper extends EndpointStudyRecordWrapper<ENDP
 	}
 
 	@Override
+	protected String dictionaryParams(String key) {
+		if (I5CONSTANTS.cSpecies.equals(key)) return key;
+		else return super.dictionaryParams(key);
+	}
+	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDEyeIrritation studyrecord) {
 		//studyrecord.getResultsAndDiscussion().getResultsOfExVivoInVitroStudy()
-		if (studyrecord.getResultsAndDiscussion().getIrritationCorrosionResults() != null)
+		if (studyrecord.getResultsAndDiscussion().getIrritationCorrosionResults() != null) {
 			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_eyeirritation._2.ENDPOINTSTUDYRECORDEyeIrritation.ResultsAndDiscussion.IrritationCorrosionResults.Entry e : studyrecord.getResultsAndDiscussion().getIrritationCorrosionResults().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(p2Value(e.getParameter()));
@@ -32,8 +37,10 @@ public class EyeIrritation_RecordWrapper extends EndpointStudyRecordWrapper<ENDP
 				} catch (Exception x) {
 				}
 			}
+			((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "in vivo");
+		}
 
-		if (studyrecord.getResultsAndDiscussion().getResultsOfExVivoInVitroStudy() != null)
+		if (studyrecord.getResultsAndDiscussion().getResultsOfExVivoInVitroStudy() != null) {
 			for (Entry e : studyrecord.getResultsAndDiscussion().getResultsOfExVivoInVitroStudy().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(p2Value(e.getIrritationParameter()));
@@ -41,5 +48,7 @@ public class EyeIrritation_RecordWrapper extends EndpointStudyRecordWrapper<ENDP
 				papp.addEffect(effect);
 				effect.getConditions().put(I5CONSTANTS.cBasisForEffect, p2Value(e.getRunExperiment()));
 			}
+			((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "in vitro");
+		}
 	}
 }
