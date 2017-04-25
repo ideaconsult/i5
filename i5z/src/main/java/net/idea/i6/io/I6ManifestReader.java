@@ -43,7 +43,8 @@ public class I6ManifestReader {
 			else if (I6_ROOT_OBJECTS.FLEXIBLE_RECORD.name().equals(type))
 				return String.format("%s_%s", type, subtype);
 			else if (I6_ROOT_OBJECTS.FIXED_RECORD.name().equals(type))
-				return String.format("%s_%s", type, subtype);			
+				return String.format("%s_%s", type, subtype);
+
 		} 
 		return type;
 	}
@@ -70,6 +71,8 @@ public class I6ManifestReader {
 							break;
 						case LITERATURE:
 							break;
+						case LEGAL_ENTITY:
+							break;							
 						case FLEXIBLE_RECORD_SubstanceComposition:
 							break;
 						case FIXED_RECORD_Identifiers: 
@@ -261,6 +264,7 @@ public class I6ManifestReader {
 				+ "eu.europa.echa.iuclid6.namespaces.literature._1:"
 				+ "eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._2:"
 				+ "eu.europa.echa.iuclid6.namespaces.fixed_record_identifiers._2:"
+				+ "eu.europa.echa.iuclid6.namespaces.legal_entity._2:" 
 				+ "eu.europa.echa.iuclid6.namespaces.test_material_information._2";
 
 		JAXBContext jaxbContext = JAXBContext.newInstance(jaxbcontextpath);

@@ -23,11 +23,11 @@ import ambit2.core.config.AmbitCONSTANTS;
 import ambit2.core.io.ECHAPreregistrationListReader;
 import ambit2.core.io.I5ReaderSimple;
 import eu.europa.echa.iuclid6.namespaces.fixed_record_identifiers._2.FIXEDRECORDIdentifiers;
-import eu.europa.echa.iuclid6.namespaces.fixed_record_identifiers._2.RegulatoryProgrammeIdentifiersEntry;
 import eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._2.AdditivesEntry;
 import eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._2.ConstituentsEntry;
 import eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._2.FLEXIBLERECORDSubstanceComposition;
 import eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._2.ImpuritiesEntry;
+import eu.europa.echa.iuclid6.namespaces.legal_entity._2.LEGALENTITY;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.InventoryEntry;
 import eu.europa.echa.iuclid6.namespaces.reference_substance._2.CASInfo;
@@ -126,7 +126,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			}
 		} catch (Exception x) {
 			logger.log(Level.WARNING, String.format("%s\t%s",
-					"Class not found, using default EndpointStudyRecordWrapper", x.getMessage()),x);
+					"Class not found, using default EndpointStudyRecordWrapper", x.getMessage()), x);
 		}
 		if (wrapper == null)
 			wrapper = new EndpointStudyRecordWrapper(doc);
@@ -282,6 +282,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					// TODO need to parse the manifest / legal entity to get
 					// this
 					// record.setOwnerName(unmarshalled.getOwnerLegalEntity().getDescription());
+					LEGALENTITY le = parseLegalEntity(unmarshalled.getOwnerLegalEntity());
+					record.setOwnerName(le.getGeneralInfo().getLegalEntityName());
 				} catch (Exception x) {
 					record.setOwnerName("");
 				}
@@ -316,13 +318,27 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			return record;
 		}
 
+		public LEGALENTITY parseLegalEntity(String uuid) {
+			try {
+
+				Document doc = library.get(uuid.replace("/", "_"));
+				if (doc != null)
+					if (doc.getContent().getAny() instanceof LEGALENTITY)
+						return (LEGALENTITY) doc.getContent().getAny();
+
+			} catch (Exception x) {
+				logger.log(Level.WARNING, x.getMessage(), x);
+			}
+			return null;
+		}
+
 		public void parseIdentifiers(SubstanceRecord record) {
 			try {
 				ArrayList<ExternalIdentifier> a = new ArrayList<ExternalIdentifier>();
 				Iterator<Entry<String, Document>> i = library.entrySet().iterator();
 				while (i.hasNext()) {
 					Entry<String, Document> e = i.next();
-					//logger.log(Level.INFO, e.getValue().getContent().getAny().getClass().getName());
+					logger.log(Level.INFO, e.getValue().getContent().getAny().getClass().getName());
 					if (e.getValue().getContent().getAny() instanceof FIXEDRECORDIdentifiers) {
 
 						FIXEDRECORDIdentifiers sc = (FIXEDRECORDIdentifiers) e.getValue().getContent().getAny();
@@ -330,13 +346,15 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 								.getExternalSystemIdentifiers().getExternalSystemIdentifiers().getEntry()) {
 							a.add(new ExternalIdentifier(id.getExternalSystemDesignator(), id.getId()));
 						}
-						/* 
-						for (RegulatoryProgrammeIdentifiersEntry id : sc.getRegulatoryProgrammeIdentifiers()
-								.getRegulatoryProgrammeIdentifiers().getEntry()) {
-							a.add(new ExternalIdentifier(getPhrase(id.getRegulatoryProgramme().getValue(),
-									id.getRegulatoryProgramme().getOther()), id.getId()));
-						}
-						*/
+						/*
+						 * for (RegulatoryProgrammeIdentifiersEntry id :
+						 * sc.getRegulatoryProgrammeIdentifiers()
+						 * .getRegulatoryProgrammeIdentifiers().getEntry()) {
+						 * a.add(new ExternalIdentifier(getPhrase(id.
+						 * getRegulatoryProgramme().getValue(),
+						 * id.getRegulatoryProgramme().getOther()),
+						 * id.getId())); }
+						 */
 
 					}
 				}
@@ -433,7 +451,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setReal_unit("");
 				}
 				try {
-					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(),a.getConcentration().getUnitOther()));
+					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(), a.getConcentration().getUnitOther()));
 				} catch (Exception x) {
 					p.setReal_unit("");
 				}
@@ -448,14 +466,15 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setTypical("");
 				}
 				try {
-					p.setTypical_unit(getPhrase(a.getProportionTypical().getUnitCode(),a.getConcentration().getUnitCode()));
+					p.setTypical_unit(
+							getPhrase(a.getProportionTypical().getUnitCode(), a.getConcentration().getUnitCode()));
 				} catch (Exception x) {
 					p.setTypical_unit("");
 				}
 			}
 
 			try {
-				p.setFunction(getPhrase(a.getFunction().getValue(),a.getFunction().getOther()));
+				p.setFunction(getPhrase(a.getFunction().getValue(), a.getFunction().getOther()));
 			} catch (Exception x) {
 				p.setFunction("Error reading the function type");
 			}
@@ -497,7 +516,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setReal_unit("");
 				}
 				try {
-					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(),a.getConcentration().getUnitOther()));
+					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(), a.getConcentration().getUnitOther()));
 				} catch (Exception x) {
 					p.setReal_unit("");
 				}
@@ -514,7 +533,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setTypical("");
 				}
 				try {
-					p.setTypical_unit(getPhrase(a.getProportionTypical().getUnitCode(),a.getConcentration().getUnitOther()));
+					p.setTypical_unit(
+							getPhrase(a.getProportionTypical().getUnitCode(), a.getConcentration().getUnitOther()));
 				} catch (Exception x) {
 					p.setTypical_unit("");
 				}
@@ -562,7 +582,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setReal_lower("");
 				}
 				try {
-					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(),a.getConcentration().getUnitOther()));
+					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(), a.getConcentration().getUnitOther()));
 				} catch (Exception x) {
 					p.setReal_unit("");
 				}
@@ -578,7 +598,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setTypical("");
 				}
 				try {
-					p.setTypical_unit(getPhrase(a.getProportionTypical().getUnitCode(),a.getConcentration().getUnitOther()));
+					p.setTypical_unit(
+							getPhrase(a.getProportionTypical().getUnitCode(), a.getConcentration().getUnitOther()));
 				} catch (Exception x) {
 					p.setTypical_unit("");
 				}

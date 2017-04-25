@@ -95,6 +95,8 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 					linkedentries.add(file);
 				} if (cp.indexOf(".fixed_record_identifiers.") >= 0) {	
 					linkedentries.add(file);
+				} if (cp.indexOf(".legal_entity.") >= 0) {	
+					linkedentries.add(file);					
 				} else if (cp.indexOf(".flexible_record_substancecomposition.") >= 0) {
 					linkedentries.add(file);					
 				//} else if (cp.indexOf(".test_material_information.") >= 0) {
