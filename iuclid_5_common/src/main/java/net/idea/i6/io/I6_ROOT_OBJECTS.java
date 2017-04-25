@@ -3,7 +3,6 @@ package net.idea.i6.io;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
-import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.IROOT_OBJECTS;
 
@@ -45,7 +44,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		public String getContextPath() {
 			return "eu.europa.echa.iuclid6.namespaces.platform_container.v1";
 		}
-		
+
 	},
 	REFERENCE_SUBSTANCE {
 		@Override
@@ -57,6 +56,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		public boolean isScientificPart() {
 			return false;
 		}
+
 		@Override
 		public I5_ROOT_OBJECTS mapIUCLID5() {
 			return I5_ROOT_OBJECTS.Substance;
@@ -72,17 +72,17 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		public boolean isSupported() {
 			return false;
 		}
-		
+
 	},
 	CONTACT {
 		public boolean isSupported() {
 			return false;
-		}		
+		}
 	},
 	DOSSIER {
 		public boolean isSupported() {
 			return false;
-		}				
+		}
 	},
 	FLEXIBLE_RECORD {
 		public boolean isSupported() {
@@ -92,17 +92,17 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 	FLEXIBLE_RECORD_SubstanceComposition {
 		public boolean isSupported() {
 			return false;
-		}	
+		}
 	},
 	FIXED_RECORD {
 		public boolean isSupported() {
 			return false;
 		}
-	},	
+	},
 	FIXED_RECORD_Identifiers {
 		public boolean isSupported() {
 			return false;
-		}		
+		}
 	},
 	SUBSTANCE {
 		@Override
@@ -114,6 +114,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		public boolean isScientificPart() {
 			return false;
 		}
+
 		@Override
 		public I5_ROOT_OBJECTS mapIUCLID5() {
 			return I5_ROOT_OBJECTS.Substance;
@@ -226,7 +227,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		}
 	},
 	ENDPOINT_STUDY_RECORD_FlashPoint {
-		
+
 	},
 	ENDPOINT_STUDY_RECORD_GeneralInformation {
 		@Override
@@ -257,7 +258,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 	ENDPOINT_STUDY_RECORD_OtherDistributionData {
 	},
 	ENDPOINT_STUDY_RECORD_OxidisingProperties {
-		
+
 	},
 	ENDPOINT_STUDY_RECORD_Partition {
 		@Override
@@ -355,6 +356,14 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 			return I5_ROOT_OBJECTS.PC_WATER_SOL;
 		}
 	},
+	ENDPOINT_STUDY_RECORD_SolubilityOrganic {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			// TODO Auto-generated method stub
+			return I5_ROOT_OBJECTS.PC_SOL_ORGANIC;
+		}
+	},
+
 	ENDPOINT_STUDY_RECORD_DissociationConstant {
 		@Override
 		public I5_ROOT_OBJECTS mapIUCLID5() {
@@ -362,7 +371,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		}
 	},
 	ENDPOINT_STUDY_RECORD_Flammability {
-		
+
 	},
 	ENDPOINT_STUDY_RECORD_Granulometry {
 		@Override
@@ -389,13 +398,13 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		}
 	},
 	ENDPOINT_STUDY_RECORD_StabilityOrganic {
-		
+
 	},
 	ENDPOINT_STUDY_RECORD_SurfaceTension {
-		
+
 	},
 	ENDPOINT_STUDY_RECORD_ToxicityToBirds {
-		
+
 	},
 	ENDPOINT_STUDY_RECORD_ToxicityToSoilMacroorganismsExceptArthropods {
 		@Override
@@ -416,7 +425,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		}
 	},
 	ENDPOINT_STUDY_RECORD_Viscosity {
-		
+
 	},
 	ENDPOINT_STUDY_RECORD_BiodegradationInSoil {
 		@Override
@@ -431,7 +440,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		}
 	},
 	ENDPOINT_STUDY_RECORD_AdsorptionDesorption {
-		
+
 	},
 	ENDPOINT_STUDY_RECORD_BioaccumulationTerrestrial {
 		@Override
@@ -440,7 +449,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		}
 	},
 	ENDPOINT_STUDY_RECORD_DermalAbsorption {
-		
+
 	},
 	ENDPOINT_STUDY_RECORD_HenrysLawConstant {
 		@Override
@@ -449,7 +458,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		}
 	},
 	ENDPOINT_STUDY_RECORD_PhotoTransformationInSoil {
-		
+
 	},
 	ENDPOINT_STUDY_RECORD_Phototransformation {
 		@Override
@@ -464,53 +473,61 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		}
 	},
 	ENDPOINT_STUDY_RECORD_ToxicityReproductionOther {
-		
+
 	}
 
 	;
-	
+
 	public I5_ROOT_OBJECTS mapIUCLID5() {
 		return null;
 	}
+
 	public boolean isIUCLID6() {
 		return true;
 	}
+
 	public String getContextPath() {
 
 		if (isIUCLID6())
-			//package eu.europa.echa.iuclid6.namespaces.endpoint_study_record_directobservationsclinicalcases._2;
-			return String.format("eu.europa.echa.iuclid6.namespaces.%s._2",name().toLowerCase());
+			// package
+			// eu.europa.echa.iuclid6.namespaces.endpoint_study_record_directobservationsclinicalcases._2;
+			return String.format("eu.europa.echa.iuclid6.namespaces.%s._2", name().toLowerCase());
 
-		else return null;
+		else
+			return null;
 
-	}	
+	}
+
 	public boolean isScientificPart() {
 		I5_ROOT_OBJECTS i5 = mapIUCLID5();
-		return i5==null?false:i5.isScientificPart();
+		return i5 == null ? false : i5.isScientificPart();
 	}
 
 	@Override
 	public boolean isSupported() {
 		return true;
 	}
-	
+
 	public String toSection() {
 		I5_ROOT_OBJECTS i5 = mapIUCLID5();
-		return i5==null?(name() + "_SECTION"):i5.toSection();
+		return i5 == null ? (name() + "_SECTION") : i5.toSection();
 	}
-	
+
 	public String getTopCategory() {
 		I5_ROOT_OBJECTS i5 = mapIUCLID5();
-		return i5==null?"P-CHEM":i5.getTopCategory();
+		return i5 == null ? "P-CHEM" : i5.getTopCategory();
 	}
+
 	public IParams createProtocolParameters() {
 		I5_ROOT_OBJECTS i5 = mapIUCLID5();
-		return i5==null?new Params():i5.createProtocolParameters();
+		return i5 == null ? new Params() : i5.createProtocolParameters();
 	}
+
 	public EffectRecord<String, IParams, String> createEffectRecord() {
 		I5_ROOT_OBJECTS i5 = mapIUCLID5();
 		if (i5 == null) {
-			return new EffectRecord<String,IParams,String>();
-		} else return i5.createEffectRecord();
+			return new EffectRecord<String, IParams, String>();
+		} else
+			return i5.createEffectRecord();
 	}
 }
