@@ -32,19 +32,18 @@ public class GeneralInformation_RecordWrapper
 		// TODO move these into separate effectrecords with textvalues
 		StringBuilder form = null;
 
-		try {
-			for (Entry e : studyrecord.getResultsAndDiscussion().getFormBlock().getEntry()) {
+		for (Entry e : studyrecord.getResultsAndDiscussion().getFormBlock().getEntry())
+			try {
 				if (form == null)
 					form = new StringBuilder();
 				else
 					form.append(" ");
-				if (e.getForm()!=null)
-				form.append(p2Value(e.getForm()));
-			}
+				if (e.getForm().getValue() != null)
+					form.append(p2Value(e.getForm()));
 
-		} catch (Exception x) {
-			logger.log(Level.WARNING, x.getMessage(), x);
-		}
+			} catch (Exception x) {
+				logger.log(Level.WARNING, x.getMessage(), x);
+			}
 
 		EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 		effect.setEndpoint(physstate == null ? "" : physstate.toString());
