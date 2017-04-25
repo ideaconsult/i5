@@ -51,8 +51,7 @@ public class GeneticToxicityVivo_RecordWrapper
 	@Override
 	public void assignInterpretationResult(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDGeneticToxicityVivo studyRecord) {
-		super.assignInterpretationResult(papp, studyRecord);
-		if (papp.getInterpretationResult() != null)
-			papp.setInterpretationResult(studyRecord.getResultsAndDiscussion().getResultsDetails());
+		papp.setInterpretationResult(studyRecord.getApplicantSummaryAndConclusion().getConclusions().replace(msg.getString(_MIGRATED), ""));
+		papp.setInterpretationCriteria(studyRecord.getApplicantSummaryAndConclusion().getConclusions());
 	}
 }

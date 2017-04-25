@@ -187,7 +187,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 					if (value != null) {
 						if (!"".equals(value)) {
 							p.put(dictionaryParams(methodname2key(key)), p2Value(value));
-						}	
+						}
 					}
 				}
 			} catch (Exception x) {
@@ -257,7 +257,9 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 							params.put(dictionaryParams(methodname2key(key)), subvalue);
 
 					} catch (Exception x) {
-						logger.log(Level.WARNING, String.format("%s\t%s", value==null?null:value.getClass().getName(), m.getName()), x);
+						logger.log(Level.WARNING,
+								String.format("%s\t%s", value == null ? null : value.getClass().getName(), m.getName()),
+								x);
 					}
 			// value = params.size()==0?null:params;
 			value = null;
@@ -344,7 +346,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 								}
 							}
 						} catch (Exception x) {
-							logger.log(Level.WARNING, x.getMessage(),x);
+							logger.log(Level.WARNING, x.getMessage(), x);
 						}
 				} else if (m.getName().startsWith("get")) {
 					IParams params = new Params();
@@ -368,7 +370,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 			logger.log(Level.WARNING, x.getMessage(), x);
 		}
 	}
-
+	
 	public void assignInterpretationResult(ProtocolApplication papp, STUDYRECORD studyRecord) {
 		try {
 			Object mm = getContentValue("getApplicantSummaryAndConclusion");
@@ -379,18 +381,15 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 				if (interpretation != null) {
 					if (interpretation instanceof PicklistFieldWithMultiLineTextRemarks)
 						papp.setInterpretationCriteria(
-								((PicklistFieldWithMultiLineTextRemarks) interpretation).getRemarks());
+								p2Remarks((PicklistFieldWithMultiLineTextRemarks) interpretation));
+					else if (interpretation instanceof PicklistFieldWithSmallTextRemarks)
+						papp.setInterpretationCriteria(p2Remarks((PicklistFieldWithSmallTextRemarks) interpretation));
+					else if (interpretation instanceof PicklistFieldWithLargeTextRemarks)
+						papp.setInterpretationCriteria(p2Remarks((PicklistFieldWithLargeTextRemarks) interpretation));
 					papp.setInterpretationResult(p2Value(interpretation));
 				}
 			} catch (Exception x) {
 			}
-			if (papp.getInterpretationResult() == null)
-				try {
-					Object conclusions = call(mm, "getConclusions", null);
-					if (conclusions != null)
-						papp.setInterpretationResult(p2Value(conclusions));
-				} catch (Exception x) {
-				}
 
 		} catch (Exception x) {
 			logger.log(Level.WARNING, x.getMessage(), x);
@@ -459,17 +458,17 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 			// else System.out.println("No quality check");
 
 			reliability.setId(reliabilityID.getValue());
-			reliability.setValue(getPhrase(reliabilityID.getValue(),reliabilityID.getOther()));
+			reliability.setValue(getPhrase(reliabilityID.getValue(), reliabilityID.getOther()));
 			reliability.setIsRobustStudy(isRobustStudy);
 			reliability.setIsUsedforClassification(isUsedforClassification);
 			reliability.setIsUsedforMSDS(isUsedforMSDS);
 			try {
-				reliability.setPurposeFlag(getPhrase(purposeFlagCode.getValue(),purposeFlagCode.getOther()));
+				reliability.setPurposeFlag(getPhrase(purposeFlagCode.getValue(), purposeFlagCode.getOther()));
 			} catch (Exception x) {
 
 			}
 			try {
-				reliability.setStudyResultType(getPhrase(studyResultTypeID.getValue(),studyResultTypeID.getOther()));
+				reliability.setStudyResultType(getPhrase(studyResultTypeID.getValue(), studyResultTypeID.getOther()));
 			} catch (Exception x) {
 			}
 
@@ -538,7 +537,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		else if (field instanceof PicklistFieldWithMultiLineTextRemarks)
 			return p2Value((PicklistFieldWithMultiLineTextRemarks) field);
 		else {
-			String f = field.toString();	
+			String f = field.toString();
 			if (max_field_len < f.length())
 				return f.substring(0, max_field_len);
 			else
@@ -562,8 +561,21 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		return getPhrase(field.getValue(), field.getOther());
 	}
 
+	protected String p2Remarks(PicklistFieldWithLargeTextRemarks field) {
+		return field.getRemarks();
+	}
+
+	protected String p2Remarks(PicklistFieldWithSmallTextRemarks field) {
+		return field.getRemarks();
+	}
+
+	protected String p2Remarks(PicklistFieldWithMultiLineTextRemarks field) {
+		return field.getRemarks();
+	}
+
 	protected static Value q2value(PhysicalQuantityHalfBoundedField field) {
-		if (field==null) return null;
+		if (field == null)
+			return null;
 		Value v = new Value();
 		v.setLoQualifier(field.getQualifier());
 		if (field.getValue() != null)
@@ -573,7 +585,8 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 	}
 
 	protected static Value q2value(PhysicalQuantityRangeField field) {
-		if (field==null) return null;
+		if (field == null)
+			return null;
 		Value v = new Value();
 		v.setLoQualifier(field.getLowerQualifier());
 		v.setUpQualifier(field.getUpperQualifier());
@@ -587,7 +600,8 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 
 	protected static void q2effectrecord(PhysicalQuantityRangeField field,
 			EffectRecord<String, IParams, String> effectrecord) {
-		if (field==null) return;
+		if (field == null)
+			return;
 		effectrecord.setLoQualifier(field.getLowerQualifier());
 		effectrecord.setUpQualifier(field.getUpperQualifier());
 		if (field.getLowerValue() != null)

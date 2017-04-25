@@ -40,12 +40,15 @@ public class BiodegradationInWaterScreeningTests_RecordWrapper
 		}
 
 	}
+
 	@Override
 	public void assignInterpretationResult(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDBiodegradationInWaterScreeningTests studyRecord) {
-		super.assignInterpretationResult(papp, studyRecord);
-		if (studyRecord.getResultsAndDiscussion().getResultsDetails()!=null)
-			papp.setInterpretationResult(studyRecord.getResultsAndDiscussion().getResultsDetails());
+		papp.setInterpretationResult(
+				p2Value(studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults()));
+		papp.setInterpretationCriteria(
+				studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults().getRemarks());
+
 	}
 
 	protected static Value q2value(SamplingTime field) {

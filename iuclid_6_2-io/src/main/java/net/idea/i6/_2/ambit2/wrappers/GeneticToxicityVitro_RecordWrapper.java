@@ -65,8 +65,8 @@ public class GeneticToxicityVitro_RecordWrapper
 	@Override
 	public void assignInterpretationResult(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDGeneticToxicityVitro studyRecord) {
-		super.assignInterpretationResult(papp, studyRecord);
-		if (papp.getInterpretationResult() != null)
-			papp.setInterpretationResult(studyRecord.getResultsAndDiscussion().getResultsDetails());
+		//i6 migrated into a different field 
+		papp.setInterpretationResult(studyRecord.getApplicantSummaryAndConclusion().getConclusions().replace(msg.getString(_MIGRATED), ""));
+		papp.setInterpretationCriteria(studyRecord.getApplicantSummaryAndConclusion().getConclusions());
 	}
 }

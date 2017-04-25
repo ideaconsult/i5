@@ -17,7 +17,9 @@ public class AbstractDocWrapper {
 	protected Document doc;
 	protected static ResourceBundle phr = ResourceBundle.getBundle("PhraseResourceBundle", Locale.ENGLISH);
 	protected static ResourceBundle ppr = ResourceBundle.getBundle("ProtocolParametersResourceBundle", Locale.ENGLISH);
+	protected static ResourceBundle msg = ResourceBundle.getBundle("ResourceBundle", Locale.ENGLISH);
 	protected Map<String, Document> library;
+	protected static final String _MIGRATED="MIGRATED";
 
 	public AbstractDocWrapper(Document doc) throws Exception {
 		this.doc = doc;
