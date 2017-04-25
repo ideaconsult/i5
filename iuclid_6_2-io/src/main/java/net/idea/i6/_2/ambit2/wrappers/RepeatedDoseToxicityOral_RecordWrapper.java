@@ -38,11 +38,13 @@ public class RepeatedDoseToxicityOral_RecordWrapper
 		if (studyrecord.getResultsAndDiscussion().getEffectLevels() != null)
 			for (EfflevelEntry e : studyrecord.getResultsAndDiscussion().getEffectLevels().getEfflevel().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+				
 				try {
 					effect.setEndpoint(p2Value(e.getEndpoint()));
 				} catch (Exception x) {
 					effect.setEndpoint(null);
 				}
+				q2effectrecord(e.getEffectLevel(), effect);
 				papp.addEffect(effect);
 				try {
 					effect.getConditions().put(I5CONSTANTS.cSex, p2Value(e.getSex()));

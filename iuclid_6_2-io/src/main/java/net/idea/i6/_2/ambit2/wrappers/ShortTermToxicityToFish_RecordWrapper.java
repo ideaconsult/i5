@@ -33,6 +33,7 @@ public class ShortTermToxicityToFish_RecordWrapper
 		for (Entry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {
 
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+			q2effectrecord(e.getEffectConc(), effect);
 			try {
 				effect.setEndpoint(p2Value(e.getEndpoint()));
 			} catch (Exception x) {

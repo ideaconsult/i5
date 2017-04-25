@@ -26,6 +26,7 @@ public class RepeatedDoseToxicityInhalation_RecordWrapper extends RepeatedDoseTo
 		if (studyrecord.getResultsAndDiscussion().getEffectLevels() != null)
 			for (EfflevelEntry e : studyrecord.getResultsAndDiscussion().getEffectLevels().getEfflevel().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+				q2effectrecord(e.getEffectLevel(), effect);
 				try {
 					effect.setEndpoint(p2Value(e.getEndpoint()));
 				} catch (Exception x) {

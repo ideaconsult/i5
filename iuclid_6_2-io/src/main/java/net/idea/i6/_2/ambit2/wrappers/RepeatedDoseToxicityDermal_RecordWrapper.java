@@ -33,6 +33,7 @@ public class RepeatedDoseToxicityDermal_RecordWrapper
 				} catch (Exception x) {
 					effect.setEndpoint(null);
 				}
+				q2effectrecord(e.getEffectLevel(), effect);
 				papp.addEffect(effect);
 				try {
 					effect.getConditions().put(I5CONSTANTS.cSex, p2Value(e.getSex()));
