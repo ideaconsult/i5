@@ -113,14 +113,21 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 				Document doc = library.get(key.replace("/", "_"));
 				if (doc.getContent().getAny() instanceof LITERATURE) {
 					LITERATURE bib = (LITERATURE) doc.getContent().getAny();
-					papp.setReference(String.format("%s %s",
-							bib.getGeneralInfo().getAuthor() == null ? "" : (bib.getGeneralInfo().getAuthor() + ","),
-							bib.getGeneralInfo().getName()));
-					papp.setReferenceYear(Integer.toString(bib.getGeneralInfo().getReferenceYear()));
-					papp.setReferenceOwner(bib.getGeneralInfo().getCompanyOwner());
+
+					if (bib != null && bib.getGeneralInfo() != null) {
+						papp.setReference(
+								String.format("%s %s",
+										bib.getGeneralInfo().getAuthor() == null ? ""
+												: (bib.getGeneralInfo().getAuthor() + ","),
+										bib.getGeneralInfo().getName()));
+						if (bib.getGeneralInfo().getReferenceYear() != null)
+							papp.setReferenceYear(Integer.toString(bib.getGeneralInfo().getReferenceYear()));
+						papp.setReferenceOwner(bib.getGeneralInfo().getCompanyOwner());
+					}
 				}
 			}
 		} catch (Exception x) {
+			
 			logger.log(Level.WARNING, x.getMessage());
 		}
 	}
@@ -370,7 +377,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 			logger.log(Level.WARNING, x.getMessage(), x);
 		}
 	}
-	
+
 	public void assignInterpretationResult(ProtocolApplication papp, STUDYRECORD studyRecord) {
 		try {
 			Object mm = getContentValue("getApplicantSummaryAndConclusion");
