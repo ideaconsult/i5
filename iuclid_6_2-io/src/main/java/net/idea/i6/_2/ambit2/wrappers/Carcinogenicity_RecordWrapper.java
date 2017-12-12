@@ -38,7 +38,8 @@ public class Carcinogenicity_RecordWrapper
 
 			for (EfflevelEntry e : studyrecord.getResultsAndDiscussion().getEffectLevels().getEfflevel().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				effect.setEndpoint(p2Value(effect.getEndpoint()));
+				
+				effect.setEndpoint(p2Value(e.getEndpoint()));
 				q2effectrecord(e.getEffectLevel(), effect);
 				papp.addEffect(effect);
 
