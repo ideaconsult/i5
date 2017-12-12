@@ -21,7 +21,11 @@ public class ToxicityToSoilMicroorganisms_RecordWrapper
 	protected String dictionaryParams(String key) {
 		if ("TestOrganismsSpecies".equals(key))
 			return I5CONSTANTS.cTestOrganism;
+		else if ("TestOrganismsInoculum".equals(key))
+			return I5CONSTANTS.cTestOrganism;
+		
 		return super.dictionaryParams(key);
+		
 	}
 
 	@Override

@@ -19,6 +19,18 @@ public class ToxicityToSoilMacroorganismsExceptArthropods_RecordWrapper
 	}
 
 	@Override
+	protected String dictionaryParams(String key) {
+		if ("TestOrganismsSpecies".equals(key))
+			return I5CONSTANTS.cTestOrganism;
+		else if ("Species".equals(key))
+			return I5CONSTANTS.cTestOrganism;
+		
+		return super.dictionaryParams(key);
+		
+	}
+
+	
+	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDToxicityToSoilMacroorganismsExceptArthropods studyrecord) {
 		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)

@@ -15,7 +15,8 @@ public class BioaccumulationAquaticSediment_RecordWrapper
 	public BioaccumulationAquaticSediment_RecordWrapper(Document doc) throws Exception {
 		super(doc);
 	}
-
+	
+	
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDBioaccumulationAquaticSediment studyrecord) {
@@ -26,12 +27,8 @@ public class BioaccumulationAquaticSediment_RecordWrapper
 				try {effect.setEndpoint(p2Value(e.getType()));} catch (Exception x) {}
 				papp.addEffect(effect);
 				
-				/* ???
-				try {
-					effect.getConditions().put(I5CONSTANTS.cRoute, studyrecord.get);
-				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cRoute,null);}
-				*/
-
+				effect.getConditions().put(I5CONSTANTS.cRoute,
+						p2Value(studyrecord.getMaterialsAndMethods().getStudyDesign().getRouteOfExposure()));
 				
 				try {
 					effect.getConditions().put(I5CONSTANTS.cBioaccBasis, p2Value(e.getBasis()));
@@ -39,7 +36,10 @@ public class BioaccumulationAquaticSediment_RecordWrapper
 				try {
 					effect.getConditions().put(I5CONSTANTS.cDoses, q2value(e.getConcInEnvironmentDose()));
 
-				} catch (Exception x) { effect.getConditions().put(I5CONSTANTS.cDoses,null);}
+				} catch (Exception x) { 
+					effect.getConditions().put(I5CONSTANTS.cDoses,null);
+					
+				}
 				
 				q2effectrecord(e.getValue(),effect);
 				
