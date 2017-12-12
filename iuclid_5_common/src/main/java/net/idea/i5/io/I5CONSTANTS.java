@@ -39,6 +39,7 @@ public class I5CONSTANTS {
 
     public static final String rOrgCarbonPercent = "% Org.Carbon";
     public static final String rDegradation = "Degradation";
+    public static final String rDegradationRateConstant = "DegradationRateConstant";
     public static final String cDegradationParameter = "Degradation Parameter";
     public static final String cBioaccBasis = "Bioacc. basis";
     public static final String cTestType = "Test type";
@@ -168,6 +169,7 @@ public class I5CONSTANTS {
     public static final String CriticalEffectsObserved = "CriticalEffectsObserved";
     public static final String ReproductiveEffectsObserved = "ReproductiveEffectsObserved";
     public static final String RelationToOtherToxicEffects = "RelationToOtherToxicEffects";
+    public static final String DevelopmentalEffectsObserved = "DevelopmentalEffectsObserved";
     public static final String TreatmentRelated = "TreatmentRelated";
     public static final String DoseResponseRelationship = "DoseResponseRelationship";
     public static final String KeyResult = "KeyResult";

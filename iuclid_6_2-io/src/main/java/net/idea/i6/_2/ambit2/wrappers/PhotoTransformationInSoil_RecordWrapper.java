@@ -30,7 +30,7 @@ public class PhotoTransformationInSoil_RecordWrapper
 			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_phototransformationinsoil._2.ENDPOINTSTUDYRECORDPhotoTransformationInSoil.ResultsAndDiscussion.Degradation.Entry e : studyrecord
 					.getResultsAndDiscussion().getDegradation().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				effect.setEndpoint(I5CONSTANTS.rDegradation);
+				effect.setEndpoint(I5CONSTANTS.rDegradationRateConstant);
 				papp.addEffect(effect);
 				q2effectrecord(e.getDegradationPercent(), effect);
 				papp.addEffect(effect);
