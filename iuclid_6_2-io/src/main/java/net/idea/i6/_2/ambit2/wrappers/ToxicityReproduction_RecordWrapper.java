@@ -34,39 +34,47 @@ public class ToxicityReproduction_RecordWrapper
 
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDToxicityReproduction studyrecord) {
-		
-		if (studyrecord.getResultsAndDiscussion().getResultsOfExaminationsParentalAnimals() != null) try {
-			for (EffectLevelsP0Entry e : studyrecord.getResultsAndDiscussion().getResultsOfExaminationsParentalAnimals().getEffectLevelsP0().getEfflevel().getEntry()) {
-				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				effect.setEndpoint(p2Value(e.getEndpoint()));
-				q2effectrecord(e.getEffectLevel(), effect);
-				papp.addEffect(effect);
-				effect.getConditions().put(I5CONSTANTS.cGeneration, "P");
-				effect.getConditions().put(I5CONSTANTS.cSex, p2Value(e.getSex()));
-				effect.getConditions().put(I5CONSTANTS.cSpecies,
-						((IParams) papp.getParameters()).get(I5CONSTANTS.cSpecies));
-				
+
+		if (studyrecord.getResultsAndDiscussion().getResultsOfExaminationsParentalAnimals() != null)
+			try {
+				for (EffectLevelsP0Entry e : studyrecord.getResultsAndDiscussion()
+						.getResultsOfExaminationsParentalAnimals().getEffectLevelsP0().getEfflevel().getEntry()) {
+					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+					effect.setEndpoint(p2Value(e.getEndpoint()));
+					q2effectrecord(e.getEffectLevel(), effect);
+					papp.addEffect(effect);
+					effect.getConditions().put(I5CONSTANTS.cGeneration, "P");
+					effect.getConditions().put(I5CONSTANTS.cSex, p2Value(e.getSex()));
+					effect.getConditions().put(I5CONSTANTS.cSpecies,
+							((IParams) papp.getParameters()).get(I5CONSTANTS.cSpecies));
+					effect.getConditions().put(I5CONSTANTS.ReproductiveEffectsObserved, null);
+					effect.getConditions().put(I5CONSTANTS.RelationToOtherToxicEffects, null);
+
+				}
+			} catch (Exception x) {
+				logger.log(Level.WARNING, x.getMessage());
 			}
-		} catch (Exception x) {
-			logger.log(Level.WARNING,x.getMessage());
-		}
-		
-		if (studyrecord.getResultsAndDiscussion().getResultsOfExaminationsOffspring() != null) try {
-			for (EffectLevelsF1Entry e : studyrecord.getResultsAndDiscussion().getResultsOfExaminationsOffspring().getEffectLevelsF1().getEfflevel().getEntry()) {
-				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				effect.setEndpoint(p2Value(e.getEndpoint()));
-				q2effectrecord(e.getEffectLevel(), effect);
-				papp.addEffect(effect);
-				effect.getConditions().put(I5CONSTANTS.cGeneration, "F1");
-				effect.getConditions().put(I5CONSTANTS.cSex, p2Value(e.getSex()));
-				effect.getConditions().put(I5CONSTANTS.cSpecies,
-						((IParams) papp.getParameters()).get(I5CONSTANTS.cSpecies));
-				
+
+		if (studyrecord.getResultsAndDiscussion().getResultsOfExaminationsOffspring() != null)
+			try {
+				for (EffectLevelsF1Entry e : studyrecord.getResultsAndDiscussion().getResultsOfExaminationsOffspring()
+						.getEffectLevelsF1().getEfflevel().getEntry()) {
+					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+					effect.setEndpoint(p2Value(e.getEndpoint()));
+					q2effectrecord(e.getEffectLevel(), effect);
+					papp.addEffect(effect);
+					effect.getConditions().put(I5CONSTANTS.cGeneration, "F1");
+					effect.getConditions().put(I5CONSTANTS.cSex, p2Value(e.getSex()));
+					effect.getConditions().put(I5CONSTANTS.cSpecies,
+							((IParams) papp.getParameters()).get(I5CONSTANTS.cSpecies));
+					effect.getConditions().put(I5CONSTANTS.ReproductiveEffectsObserved, null);
+					effect.getConditions().put(I5CONSTANTS.RelationToOtherToxicEffects, null);
+
+				}
+			} catch (Exception x) {
+				logger.log(Level.WARNING, x.getMessage());
 			}
-		} catch (Exception x) {
-			logger.log(Level.WARNING,x.getMessage());
-		}		
-		if (studyrecord.getResultsAndDiscussion().getResultsF2Generation() != null)			
+		if (studyrecord.getResultsAndDiscussion().getResultsF2Generation() != null)
 			for (EffectLevelsF2Entry e : studyrecord.getResultsAndDiscussion().getResultsF2Generation()
 					.getEffectLevelsF2().getEfflevel().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
@@ -77,6 +85,8 @@ public class ToxicityReproduction_RecordWrapper
 				effect.getConditions().put(I5CONSTANTS.cSex, p2Value(e.getSex()));
 				effect.getConditions().put(I5CONSTANTS.cSpecies,
 						((IParams) papp.getParameters()).get(I5CONSTANTS.cSpecies));
+				effect.getConditions().put(I5CONSTANTS.ReproductiveEffectsObserved, null);
+				effect.getConditions().put(I5CONSTANTS.RelationToOtherToxicEffects, null);
 			}
 
 		if (studyrecord.getResultsAndDiscussion().getResultsP1SecondParentalGeneration() != null)
@@ -90,6 +100,47 @@ public class ToxicityReproduction_RecordWrapper
 				effect.getConditions().put(I5CONSTANTS.cSex, p2Value(e.getSex()));
 				effect.getConditions().put(I5CONSTANTS.cSpecies,
 						((IParams) papp.getParameters()).get(I5CONSTANTS.cSpecies));
+				effect.getConditions().put(I5CONSTANTS.ReproductiveEffectsObserved, null);
+				effect.getConditions().put(I5CONSTANTS.RelationToOtherToxicEffects, null);
+			}
+
+		if (studyrecord.getResultsAndDiscussion().getReproductiveToxicity() != null)
+			for (Entry entry : studyrecord.getResultsAndDiscussion().getReproductiveToxicity().getReproductiveToxicity()
+					.getEntry()) {
+
+				String reproeffects = p2Value(entry.getReproductiveEffectsObserved());
+				String relation2othertoxiceffects = p2Value(entry.getRelationToOtherToxicEffects());
+				String treatmentRelated = p2Value(entry.getTreatmentRelated());
+				String dr = p2Value(entry.getDoseResponseRelationship());
+				String kr = p2Value(entry.getKeyResult());
+
+				try {
+					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+					effect.setEndpoint("LOEL");
+					if (entry.getLowestEffectiveDoseConc().getValue() != null
+							&& !"".equals(entry.getLowestEffectiveDoseConc()))
+						q2effectrecord(entry.getLowestEffectiveDoseConc(), effect);
+					else
+						effect.setTextValue("-");
+
+					effect.getConditions().put(I5CONSTANTS.ReproductiveEffectsObserved, reproeffects);
+					effect.getConditions().put(I5CONSTANTS.RelationToOtherToxicEffects, relation2othertoxiceffects);
+					
+					if (treatmentRelated != null)
+						effect.getConditions().put(I5CONSTANTS.TreatmentRelated, treatmentRelated);
+					if (dr != null)
+						effect.getConditions().put(I5CONSTANTS.DoseResponseRelationship, dr);
+					if (kr != null)
+						effect.getConditions().put(I5CONSTANTS.KeyResult, kr);
+					effect.getConditions().put(I5CONSTANTS.cSpecies,
+							p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSpecies()));
+					effect.getConditions().put(I5CONSTANTS.cSex,
+							p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSex()));
+					papp.addEffect(effect);
+				} catch (Exception x) {
+					x.printStackTrace();
+				}
+
 			}
 
 	}

@@ -164,6 +164,14 @@ public class I5CONSTANTS {
     //irritation
     public static final String cReversibility = "Reversibility";
     public static final String cMaxScore = "MaxScore";
-    
+
+    public static final String CriticalEffectsObserved = "CriticalEffectsObserved";
+    public static final String ReproductiveEffectsObserved = "ReproductiveEffectsObserved";
+    public static final String RelationToOtherToxicEffects = "RelationToOtherToxicEffects";
+    public static final String TreatmentRelated = "TreatmentRelated";
+    public static final String DoseResponseRelationship = "DoseResponseRelationship";
+    public static final String KeyResult = "KeyResult";
+    public static final String Organ = "Organ";
+    public static final String System = "System";
 
 }

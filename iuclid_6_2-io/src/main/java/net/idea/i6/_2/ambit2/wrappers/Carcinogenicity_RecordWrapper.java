@@ -1,10 +1,15 @@
 package net.idea.i6._2.ambit2.wrappers;
 
+import java.lang.reflect.Method;
+import java.util.logging.Level;
+
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
+import ambit2.base.data.study.Params;
 import ambit2.base.data.study.ProtocolApplication;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_carcinogenicity._2.ENDPOINTSTUDYRECORDCarcinogenicity;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_carcinogenicity._2.EfflevelEntry;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_carcinogenicity._2.TargetSystemOrganToxicityEntry;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i5.io.I5CONSTANTS;
 
@@ -41,8 +46,84 @@ public class Carcinogenicity_RecordWrapper
 
 				effect.getConditions().put(I5CONSTANTS.cSpecies,
 						((IParams) papp.getParameters()).get(I5CONSTANTS.cSpecies));
+				effect.getConditions().put(I5CONSTANTS.Organ, null);
+				effect.getConditions().put(I5CONSTANTS.CriticalEffectsObserved, null);
 
 			}
+
+		if (importResultsOfExaminations && studyrecord.getResultsAndDiscussion().getResultsOfExaminations() != null) {
+
+			Method[] allMethods = studyrecord.getResultsAndDiscussion().getResultsOfExaminations().getClass()
+					.getDeclaredMethods();
+			for (Method m : allMethods)
+				try {
+					if (m.getName().startsWith("get"))
+						try {
+							Object r = m.invoke(studyrecord.getResultsAndDiscussion().getResultsOfExaminations());
+							if (r == null)
+								continue;
+							String key = m.getName();
+							IParams p = new Params();
+							Object value = _getMethodValue(r, p);
+							if (value != null && !"".equals(value)) {
+								EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+								effect.setEndpoint(dictionaryEndpoint(methodname2key(key)));
+								effect.setTextValue(p2Value(value));
+								papp.addEffect(effect);
+							}
+						} catch (Exception xx) {
+							xx.printStackTrace();
+						}
+				} catch (Exception x) {
+					logger.log(Level.WARNING, x.getMessage(), x);
+				}
+		}
+		if (studyrecord.getResultsAndDiscussion().getTargetSystemOrganToxicity() != null) {
+			for (TargetSystemOrganToxicityEntry entry : studyrecord.getResultsAndDiscussion()
+					.getTargetSystemOrganToxicity().getTargetSystemOrganToxicity().getEntry()) {
+
+				String criticaleffects = p2Value(entry.getCriticalEffectsObserved());
+				String organ = p2Value(entry.getOrgan());
+				String system = p2Value(entry.getSystem());
+				String treatmentRelated = p2Value(entry.getTreatmentRelated());
+				String dr = p2Value(entry.getDoseResponseRelationship());
+				String kr = p2Value(entry.getKeyResult());
+
+					try {
+						EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+						effect.setEndpoint("LOEL");
+
+						if (entry.getLowestEffectiveDoseConc().getValue() != null
+								&& !"".equals(entry.getLowestEffectiveDoseConc()))
+							q2effectrecord(entry.getLowestEffectiveDoseConc(), effect);
+						else
+							effect.setTextValue("-");
+
+						effect.getConditions().put(I5CONSTANTS.CriticalEffectsObserved, criticaleffects);
+						
+						
+						q2effectrecord(entry.getLowestEffectiveDoseConc(), effect);
+						if (system != null)
+							effect.getConditions().put(I5CONSTANTS.System, system);
+
+						effect.getConditions().put(I5CONSTANTS.Organ, organ);
+						if (treatmentRelated != null)
+							effect.getConditions().put(I5CONSTANTS.TreatmentRelated, treatmentRelated);
+						if (dr != null)
+							effect.getConditions().put(I5CONSTANTS.DoseResponseRelationship, dr);
+						if (kr != null)
+							effect.getConditions().put(I5CONSTANTS.KeyResult, kr);
+						effect.getConditions().put(I5CONSTANTS.cSpecies,
+								p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSpecies()));
+						papp.addEffect(effect);
+					} catch (Exception x) {
+						x.printStackTrace();
+					}
+
+				
+
+			}
+		}
 	}
 
 }

@@ -13,6 +13,7 @@ import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.ReliabilityParams;
 import ambit2.base.data.study.Value;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_carcinogenicity._2.LowestEffectiveDoseConc;
 import eu.europa.echa.iuclid6.namespaces.literature._1.LITERATURE;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.DocumentReferenceMultipleField;
@@ -127,7 +128,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 				}
 			}
 		} catch (Exception x) {
-			
+
 			logger.log(Level.WARNING, x.getMessage());
 		}
 	}
@@ -537,7 +538,17 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 			return null;
 		else if (field instanceof PicklistField)
 			return p2Value((PicklistField) field);
-		else if (field instanceof PicklistFieldWithLargeTextRemarks)
+		else if (field instanceof List) {
+			StringBuilder b = new StringBuilder();
+			for (Object f : (List) field) {
+				String v = p2Value(f);
+				if (v != null && !"null".equals(v) && !"".equals(v)) {
+					b.append(p2Value(f));
+					b.append(" ");
+				}
+			}
+			return b.toString().trim();
+		} else if (field instanceof PicklistFieldWithLargeTextRemarks)
 			return p2Value((PicklistFieldWithLargeTextRemarks) field);
 		else if (field instanceof PicklistFieldWithSmallTextRemarks)
 			return p2Value((PicklistFieldWithSmallTextRemarks) field);
@@ -605,6 +616,24 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		return v;
 	}
 
+	protected static void q2effectrecord(LowestEffectiveDoseConc field,
+			EffectRecord<String, IParams, String> effectrecord) {
+		
+		if (field == null)
+			return;
+
+		if (field.getValue() != null)
+			try {
+				effectrecord.setLoValue(Double.parseDouble(field.getValue()));
+			} catch (Exception x) {
+				// now we have string value with units ...
+				effectrecord.setTextValue(field.getValue());
+			}
+
+		effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
+
+	}
+
 	protected static void q2effectrecord(PhysicalQuantityRangeField field,
 			EffectRecord<String, IParams, String> effectrecord) {
 		if (field == null)
@@ -618,4 +647,5 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		if (field.getUnitCode() != null)
 			effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
 	}
+
 }

@@ -1,7 +1,5 @@
 package net.idea.i6._2.ambit2.wrappers;
 
-import java.util.logging.Level;
-
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
@@ -9,13 +7,20 @@ import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i6._2.ambit2.EndpointStudyRecordWrapper;
 
-public abstract class RepeatedDoseToxicity_RecordWrapper<T>
-		extends EndpointStudyRecordWrapper<T> {
+public abstract class RepeatedDoseToxicity_RecordWrapper<T> extends EndpointStudyRecordWrapper<T> {
+	boolean importResultsOfExaminations = false;
+
+	public boolean isImportResultsOfExaminations() {
+		return importResultsOfExaminations;
+	}
+
+	public void setImportResultsOfExaminations(boolean importResultsOfExaminations) {
+		this.importResultsOfExaminations = importResultsOfExaminations;
+	}
 
 	public RepeatedDoseToxicity_RecordWrapper(Document doc) throws Exception {
 		super(doc);
 	}
-
 
 	@Override
 	public void assignProtocolParameters(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
