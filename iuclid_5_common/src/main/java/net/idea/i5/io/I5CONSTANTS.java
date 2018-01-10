@@ -39,6 +39,7 @@ public class I5CONSTANTS {
 
     public static final String rOrgCarbonPercent = "% Org.Carbon";
     public static final String rDegradation = "Degradation";
+    public static final String rDegradationRateConstant = "DegradationRateConstant";
     public static final String cDegradationParameter = "Degradation Parameter";
     public static final String cBioaccBasis = "Bioacc. basis";
     public static final String cTestType = "Test type";
@@ -103,10 +104,12 @@ public class I5CONSTANTS {
     public static final String eAGGLO_AGGREGATION_ID = "AGGLOMERATION AGGREGATION ID";
 
     public static final String pDISTRIBUTION_TYPE = "DISTRIBUTION_TYPE";
+    public static final String pDISTRIBUTION = "DISTRIBUTION";
     public static final String pMMD = "MASS MEDIAN DIAMETER";
     public static final String pMMAD = "MASS MEDIAN AERODYNAMIC DIAMETER";
     public static final String pGSD = "GEOMETRIC STANDARD DEVIATION";
     public static final String pPARTICLESIZE = "PARTICLE SIZE";
+    
     public static final String pCOATING = "COATING";
     public static final String pFUNCTIONALIZATION = "FUNCTIONALIZATION";
     public static final String pTYPE = "TYPE";
@@ -162,6 +165,15 @@ public class I5CONSTANTS {
     //irritation
     public static final String cReversibility = "Reversibility";
     public static final String cMaxScore = "MaxScore";
-    
+
+    public static final String CriticalEffectsObserved = "CriticalEffectsObserved";
+    public static final String ReproductiveEffectsObserved = "ReproductiveEffectsObserved";
+    public static final String RelationToOtherToxicEffects = "RelationToOtherToxicEffects";
+    public static final String DevelopmentalEffectsObserved = "DevelopmentalEffectsObserved";
+    public static final String TreatmentRelated = "TreatmentRelated";
+    public static final String DoseResponseRelationship = "DoseResponseRelationship";
+    public static final String KeyResult = "KeyResult";
+    public static final String Organ = "Organ";
+    public static final String System = "System";
 
 }

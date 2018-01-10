@@ -8,7 +8,7 @@ public class QASettings {
 	/**
 	 * {@link net.idea.i5._5.ambit2.Phrases.phrasegroup_Z38}
 	 */
-	protected Set<String> testMaterialIdentity;
+	//protected Set<String> testMaterialIdentity;
 	/**
 	 * {@link net.idea.i5._5.ambit2.Phrases#phrasegroup_Y14_3}
 	 */
@@ -48,7 +48,6 @@ public class QASettings {
 	public void clear() {
 		setEnabled(false);
 		purposeFlag.clear();
-		testMaterialIdentity.clear();
 		reliability.clear();
 		studyResultType.clear();
 		referenceType.clear();
@@ -61,7 +60,6 @@ public class QASettings {
 
 	protected void initSets() {
 		purposeFlag = new HashSet<String>();
-		testMaterialIdentity = new HashSet<String>();
 		reliability = new HashSet<String>();
 		studyResultType = new HashSet<String>();
 		referenceType = new HashSet<String>();
@@ -72,7 +70,6 @@ public class QASettings {
 		purposeFlag.add("921");
 		purposeFlag.add("1590");
 		// yes
-		testMaterialIdentity.add("2480");
 		// "1 (reliable without restriction)", "2 (reliable with restrictions)"
 		reliability.add("16");
 		reliability.add("18");
@@ -91,10 +88,7 @@ public class QASettings {
 		purposeFlag.add("1661");
 		purposeFlag.add("8108");
 		purposeFlag.add("NOT_SPECIFIED");
-		// yes
-		testMaterialIdentity.add("2480");
-		testMaterialIdentity.add("2158");
-		testMaterialIdentity.add("NOT_SPECIFIED");
+
 		// "1 (reliable without restriction)", "2 (reliable with restrictions)"
 		reliability.add("16");
 		reliability.add("18");
@@ -122,13 +116,22 @@ public class QASettings {
 		referenceType.add("1342");
 		referenceType.add("NOT_SPECIFIED");
 	}
-
+	/**
+	 * Do not use. This option is removed  as the concept of test material in IUCLDI6 is different than in IUCLID5 
+	 * @param testMaterialCode
+	 */
+	@Deprecated
 	public void addTestMaterialIdentityOption(String testMaterialCode) {
-		testMaterialIdentity.add(testMaterialCode);
 	}
-
+	/**
+	 * Do not use. 
+	 * Changed to always return true, as the concept of test material in IUCLDI6 is different than in IUCLID5
+	 * @param testMaterialCode 
+	 * @return
+	 */
+	@Deprecated
 	public boolean isTestMaterialIdentityAccepted(String testMaterialCode) {
-		return testMaterialIdentity.contains(testMaterialCode);
+		return true;
 	}
 
 	public void addPurposeflagOption(String purposeFlagCode) {

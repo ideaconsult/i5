@@ -1,11 +1,5 @@
 package net.idea.i5._5.ambit2.sections.TO_BIODEG_WATER_SIM_SECTION;
 
-import net.idea.i5._5.ambit2.json.Experiment;
-import net.idea.i5.ambit2.sections.ENVFATEStudyRecordConvertor;
-import net.idea.i5.io.I5CONSTANTS;
-import net.idea.i5.io.I5_ROOT_OBJECTS;
-import net.idea.i5.io.QACriteriaException;
-import net.idea.modbcum.i.exceptions.AmbitException;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
@@ -17,6 +11,12 @@ import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.ScientificPart;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.TO_BIODEG_WATER_SIM_SECTION.EndpointStudyRecord.ScientificPart.TOBIODEGWATERSIM.REFERENCE.Set;
+import net.idea.i5.ambit2.sections.ENVFATEStudyRecordConvertor;
+import net.idea.i5.io.Experiment;
+import net.idea.i5.io.I5CONSTANTS;
+import net.idea.i5.io.I5_ROOT_OBJECTS;
+import net.idea.i5.io.QACriteriaException;
+import net.idea.modbcum.i.exceptions.AmbitException;
 
 public class StudyRecordConverter
 	extends

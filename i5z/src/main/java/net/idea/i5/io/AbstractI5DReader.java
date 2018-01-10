@@ -53,7 +53,7 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 	 * 
 	 * @param in
 	 * uses default JAXB context path "eu.europa.echa.schemas.iuclid5._20130101.substance:eu.europa.echa.schemas.iuclid5._20120101.substance"
-	 * See {@link I5ObjectVerifier.I5_ROOT_OBJECTS} for supported paths.
+	 * See {@link I6ObjectVerifier.I5_ROOT_OBJECTS} for supported paths.
 	 * @throws CDKException
 	 */
 	public AbstractI5DReader( InputStream in) throws CDKException {
