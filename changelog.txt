@@ -1,3 +1,6 @@
+# i6-2.0.0
+* IUCLID6 support
+
 # i5-1.2.1
 * modified to read results of skin/eye irritation and sensitisation sections in addition to "interpretation result"
 * reading conclusions field in case the interpretation result is empty
