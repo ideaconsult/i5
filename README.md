@@ -5,7 +5,7 @@ IUCLID5 and IUCLID6 support
 
 JAXB generated classes from [IUCLID5.4 , IUCLI5.5 ,IUCLID5.6 and IUCLID6 XSD schema](http://iuclid.eu/index.php?fuseaction=home.format&type=public) 
 
-Available at [Maven repository](https://nexus.ideaconsult.net/#nexus-search;quick~i5)
+Available at [Maven repository](https://nexus.ideaconsult.net/#nexus-search;quick~i5z)
 
 Parses IUCLID 5.4 / IUCLID 5.5 / IUCLID 5.6 / IUCLID 6 files into internal [AMBIT](http://ambit.sf.net) data model. 
 Enables import of IUCLID 5 & IUCLID6 files into AMBIT database.
