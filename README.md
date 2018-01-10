@@ -1,20 +1,21 @@
 i5
 ==
 
-IUCLID5 support
+IUCLID5 and IUCLID6 support
 
-JAXB generated classes from [IUCLID5.4 and IUCLI5.5 XSD schema](http://iuclid.eu/index.php?fuseaction=home.format&type=public) 
+JAXB generated classes from [IUCLID5.4 , IUCLI5.5 ,IUCLID5.6 and IUCLID6 XSD schema](http://iuclid.eu/index.php?fuseaction=home.format&type=public) 
 
-Available at [Maven repository](http://ambit.uni-plovdiv.bg:8083/nexus/index.html#nexus-search;quick~i5z)
+Available at [Maven repository](https://nexus.ideaconsult.net/#nexus-search;quick~i5)
 
-Parses IUCLID 5.4 / IUCLID 5.5 / IUCLID 5.6 files into internal [AMBIT](http://ambit.sf.net) data model. Enables import of IUCLID 5 files into AMBIT database.
+Parses IUCLID 5.4 / IUCLID 5.5 / IUCLID 5.6 / IUCLID 6 files into internal [AMBIT](http://ambit.sf.net) data model. 
+Enables import of IUCLID 5 & IUCLID6 files into AMBIT database.
 
 Stable release
 ````
 <dependency>
   <groupId>net.idea</groupId>
   <artifactId>i5z</artifactId>
-  <version>1.2.1</version>
+  <version>2.0.0</version>
 </dependency>
 ````
 
@@ -23,7 +24,7 @@ Development snapshot
 <dependency>
   <groupId>net.idea</groupId>
   <artifactId>i5z</artifactId>
-  <version>1.2.2-SNAPSHOT</version>
+  <version>2.0.1-SNAPSHOT</version>
 </dependency>
 ````
 
