@@ -91,7 +91,7 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 		
 		
 		net.idea.i5._0.ambit2.I5AmbitProcessor i50 = new net.idea.i5._0.ambit2.I5AmbitProcessor(container);
-		net.idea.i6._2.ambit2.I6AmbitProcessor i55 = new net.idea.i6._2.ambit2.I6AmbitProcessor(container);
+		net.idea.i5._5.ambit2.I5AmbitProcessor i55 = new net.idea.i5._5.ambit2.I5AmbitProcessor(container);
 		net.idea.i5._4.ambit2.I5AmbitProcessor i54 = new net.idea.i5._4.ambit2.I5AmbitProcessor(container);
 		
 		i55.setQASettings(qaSettings);
@@ -110,12 +110,15 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 				processors.put("eu.europa.echa.schemas.iuclid5._20130101.studyrecord." + tag.name() + "_SECTION.EndpointStudyRecord", i55);
 				processors.put("eu.europa.echa.schemas.iuclid5._20120101.studyrecord." + tag.name() + "_SECTION.EndpointStudyRecord", i54);
 			}
+		System.out.println(processors.get("eu.europa.echa.schemas.iuclid5._20130101.substance.Substance").getClass().getName());
 	}
 
 
 	@Override
 	protected IStructureRecord transform(Object unmarshalled) throws AmbitException {
+		System.out.println(unmarshalled.getClass().getName());
 		IProcessor<Object, IStructureRecord> p = processors.get(unmarshalled.getClass().getName());
+		System.out.println(p.getClass().getName());
 		if (p!=null) try {
 			return p.process(unmarshalled);
 		} catch (Exception x) {
