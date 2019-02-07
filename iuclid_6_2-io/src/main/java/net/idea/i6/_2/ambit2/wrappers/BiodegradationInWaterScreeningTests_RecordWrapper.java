@@ -6,11 +6,11 @@ import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.Value;
+import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_biodegradationinwaterscreeningtests._2.ENDPOINTSTUDYRECORDBiodegradationInWaterScreeningTests;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_biodegradationinwaterscreeningtests._2.ENDPOINTSTUDYRECORDBiodegradationInWaterScreeningTests.ResultsAndDiscussion.Degradation.Entry;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_biodegradationinwaterscreeningtests._2.ENDPOINTSTUDYRECORDBiodegradationInWaterScreeningTests.ResultsAndDiscussion.Degradation.Entry.SamplingTime;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
-import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i6._2.ambit2.EndpointStudyRecordWrapper;
 
 public class BiodegradationInWaterScreeningTests_RecordWrapper

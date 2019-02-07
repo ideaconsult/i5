@@ -5,10 +5,10 @@ import java.util.logging.Level;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.ProtocolApplication;
+import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_vapour._2.ENDPOINTSTUDYRECORDVapour;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_vapour._2.ENDPOINTSTUDYRECORDVapour.ResultsAndDiscussion.Vapourpr.Entry;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
-import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i6._2.ambit2.EndpointStudyRecordWrapper;
 
 public class Vapour_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDVapour> {

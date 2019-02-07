@@ -2,12 +2,6 @@ package net.idea.i5._5.ambit2.sections.DUSTINESS_SECTION;
 
 import javax.xml.bind.JAXBElement;
 
-import net.idea.i5.ambit2.sections.PChemStudyRecordConvertor;
-import net.idea.i5.io.I5CONSTANTS;
-import net.idea.i5.io.I5_ROOT_OBJECTS;
-import net.idea.i5.io.QACriteriaException;
-import net.idea.modbcum.i.exceptions.AmbitException;
-
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -17,10 +11,15 @@ import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.interfaces.IStructureRecord;
+import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.DUSTINESS_SECTION.DocumentTypeType;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.DUSTINESS_SECTION.EndpointStudyRecord;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.DUSTINESS_SECTION.EndpointStudyRecord.ScientificPart;
 import eu.europa.echa.schemas.iuclid5._20130101.studyrecord.DUSTINESS_SECTION.EndpointStudyRecord.ScientificPart.DUSTINESS.REFERENCE.Set;
+import net.idea.i5.ambit2.sections.PChemStudyRecordConvertor;
+import net.idea.i5.io.I5_ROOT_OBJECTS;
+import net.idea.i5.io.QACriteriaException;
+import net.idea.modbcum.i.exceptions.AmbitException;
 
 
 public class StudyRecordConverter

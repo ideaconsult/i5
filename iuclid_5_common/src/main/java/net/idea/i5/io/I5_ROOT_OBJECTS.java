@@ -5,6 +5,7 @@ import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
+import ambit2.base.ro.I5CONSTANTS;
 
 /**
  * https://github.com/ideaconsult/i5/blob/master/iuclid_5_common/src/main/java/

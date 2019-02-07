@@ -3,6 +3,7 @@ package net.idea.i6._2.ambit2.wrappers;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.ProtocolApplication;
+import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._2.DevelopmentalToxicityEntry;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._2.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._2.EffectLevelsFetusesEfflevelEntry;
@@ -10,7 +11,6 @@ import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxi
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._2.LowestEffectiveDoseConc;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithLargeTextRemarks;
-import net.idea.i5.io.I5CONSTANTS;
 
 public class DevelopmentalToxicityTeratogenicity_RecordWrapper
 		extends RepeatedDoseToxicity_RecordWrapper<ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity> {

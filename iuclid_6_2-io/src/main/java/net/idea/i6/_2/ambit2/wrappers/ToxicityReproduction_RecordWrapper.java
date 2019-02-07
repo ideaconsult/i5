@@ -5,6 +5,7 @@ import java.util.logging.Level;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.ProtocolApplication;
+import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._2.ENDPOINTSTUDYRECORDToxicityReproduction;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._2.EffectLevelsF1Entry;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._2.EffectLevelsF2Entry;
@@ -13,7 +14,6 @@ import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduct
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._2.Entry;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._2.LowestEffectiveDoseConc;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
-import net.idea.i5.io.I5CONSTANTS;
 
 public class ToxicityReproduction_RecordWrapper
 		extends RepeatedDoseToxicity_RecordWrapper<ENDPOINTSTUDYRECORDToxicityReproduction> {

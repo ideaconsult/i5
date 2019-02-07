@@ -6,11 +6,11 @@ import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
+import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_genetictoxicityvitro._2.ENDPOINTSTUDYRECORDGeneticToxicityVitro;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_genetictoxicityvitro._2.ENDPOINTSTUDYRECORDGeneticToxicityVitro.ResultsAndDiscussion.TestRs;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_genetictoxicityvitro._2.ENDPOINTSTUDYRECORDGeneticToxicityVitro.ResultsAndDiscussion.TestRs.Entry;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
-import net.idea.i5.io.I5CONSTANTS;
 
 public class GeneticToxicityVitro_RecordWrapper
 		extends RepeatedDoseToxicity_RecordWrapper<ENDPOINTSTUDYRECORDGeneticToxicityVitro> {

@@ -6,6 +6,7 @@ import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.Value;
 import ambit2.base.interfaces.IStructureRecord;
+import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.schemas.iuclid5._20120101.studyrecord.PC_BOILING_SECTION.DocumentTypeType;
 import eu.europa.echa.schemas.iuclid5._20120101.studyrecord.PC_BOILING_SECTION.EndpointStudyRecord;
 import eu.europa.echa.schemas.iuclid5._20120101.studyrecord.PC_BOILING_SECTION.EndpointStudyRecord.ScientificPart;
@@ -13,7 +14,6 @@ import eu.europa.echa.schemas.iuclid5._20120101.studyrecord.PC_BOILING_SECTION.E
 import net.idea.i5.ambit2.phrases.Phrases;
 import net.idea.i5.ambit2.sections.PChemStudyRecordConvertor;
 import net.idea.i5.io.Experiment;
-import net.idea.i5.io.I5CONSTANTS;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
 import net.idea.modbcum.i.exceptions.AmbitException;

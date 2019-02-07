@@ -8,12 +8,12 @@ import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
 import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
+import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_repeateddosetoxicityoral._2.ENDPOINTSTUDYRECORDRepeatedDoseToxicityOral;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_repeateddosetoxicityoral._2.EfflevelEntry;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_repeateddosetoxicityoral._2.Entry;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_repeateddosetoxicityoral._2.LowestEffectiveDoseConc;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
-import net.idea.i5.io.I5CONSTANTS;
 
 public class RepeatedDoseToxicityOral_RecordWrapper
 		extends RepeatedDoseToxicity_RecordWrapper<ENDPOINTSTUDYRECORDRepeatedDoseToxicityOral> {
