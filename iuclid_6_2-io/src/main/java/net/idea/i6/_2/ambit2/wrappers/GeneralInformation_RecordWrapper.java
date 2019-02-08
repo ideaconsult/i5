@@ -4,7 +4,9 @@ import java.util.logging.Level;
 
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
+import ambit2.base.data.study.Params;
 import ambit2.base.data.study.ProtocolApplication;
+import ambit2.base.data.study.Value;
 import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_generalinformation._2.ENDPOINTSTUDYRECORDGeneralInformation;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_generalinformation._2.ENDPOINTSTUDYRECORDGeneralInformation.ResultsAndDiscussion.FormBlock.Entry;
@@ -22,33 +24,63 @@ public class GeneralInformation_RecordWrapper
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDGeneralInformation studyrecord) {
 		if (studyrecord.getResultsAndDiscussion() == null)
 			return;
-		StringBuilder physstate = new StringBuilder();
+		String physstate = null;
 		try {
-			if (studyrecord.getResultsAndDiscussion().getSubstancePhysicalState() != null)
-				physstate.append(p2Value(studyrecord.getResultsAndDiscussion().getSubstancePhysicalState()));
+			physstate = p2Value(studyrecord.getResultsAndDiscussion().getSubstancePhysicalState());
+			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+			effect.setEndpoint(I5CONSTANTS.Physstate);
+			effect.setTextValue(physstate.toString());
+			// Physical state at 20°C and 1013 hPa
+
+			effect.setConditions(new Params());
+			Value<Double> t = new Value<Double>();
+			t.setUnits("\u2103");
+			t.setLoValue(20.0);
+			effect.getConditions().put(I5CONSTANTS.cTemperature, t);
+			Value<Double> pressure = new Value<Double>();
+			pressure.setUnits("hPa");
+			pressure.setLoValue(1013.0);
+			effect.getConditions().put(I5CONSTANTS.AtmPressure, pressure);
+			papp.addEffect(effect);
+
 		} catch (Exception x) {
 			logger.log(Level.WARNING, x.getMessage(), x);
 		}
-		// TODO move these into separate effectrecords with textvalues
-		StringBuilder form = null;
 
-		for (Entry e : studyrecord.getResultsAndDiscussion().getFormBlock().getEntry())
-			try {
-				if (form == null)
-					form = new StringBuilder();
-				else
-					form.append(" ");
-				if (e.getForm().getValue() != null)
-					form.append(p2Value(e.getForm()));
+		for (Entry e : studyrecord.getResultsAndDiscussion().getFormBlock().getEntry()) {
+			if (e.getForm() != null)
+				try {
+					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+					effect.setEndpoint(I5CONSTANTS.Form);
+					effect.setTextValue(e.getForm().getValue());
+					papp.addEffect(effect);
 
-			} catch (Exception x) {
-				logger.log(Level.WARNING, x.getMessage(), x);
-			}
+				} catch (Exception x) {
+					logger.log(Level.WARNING, x.getMessage(), x);
+				}
+			if (e.getSubstanceColour() != null)
+				try {
+					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+					effect.setEndpoint(I5CONSTANTS.Color);
+					effect.setTextValue(e.getSubstanceColour());
+					papp.addEffect(effect);
 
-		EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-		effect.setEndpoint(physstate == null ? "" : physstate.toString());
-		effect.getConditions().put(I5CONSTANTS.Remark, form == null ? "" : form.toString());
-		papp.addEffect(effect);
+				} catch (Exception x) {
+					logger.log(Level.WARNING, x.getMessage(), x);
+				}
+			if (e.getOdour() != null)
+				try {
+					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+					effect.setEndpoint(I5CONSTANTS.Odor);
+					effect.setTextValue(getPhrase(e.getOdour().getValue(), e.getOdour().getOther()));
+					papp.addEffect(effect);
+
+				} catch (Exception x) {
+					logger.log(Level.WARNING, x.getMessage(), x);
+				}
+
+		}
+
 	}
 
 	@Override
