@@ -9,9 +9,9 @@ import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_crystallinephase.
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i6._2.ambit2.EndpointStudyRecordWrapper;
 
-public class CrystallinePhase_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDCrystallinePhase> {
+public class NM_CrystallinePhase_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDCrystallinePhase> {
 
-	public CrystallinePhase_RecordWrapper(Document doc) throws Exception {
+	public NM_CrystallinePhase_RecordWrapper(Document doc) throws Exception {
 		super(doc);
 	}
 

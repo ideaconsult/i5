@@ -11,10 +11,10 @@ import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PhysicalQuantityRangeField;
 import net.idea.i6._2.ambit2.EndpointStudyRecordWrapper;
 
-public class AgglomerationAggregation_RecordWrapper
+public class NM_AgglomerationAggregation_RecordWrapper
 		extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDAgglomerationAggregation> {
 
-	public AgglomerationAggregation_RecordWrapper(Document doc) throws Exception {
+	public NM_AgglomerationAggregation_RecordWrapper(Document doc) throws Exception {
 		super(doc);
 
 	}
