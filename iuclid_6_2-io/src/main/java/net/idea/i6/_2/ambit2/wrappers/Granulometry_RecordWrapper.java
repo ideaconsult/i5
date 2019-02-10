@@ -2,6 +2,7 @@ package net.idea.i6._2.ambit2.wrappers;
 
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
+import ambit2.base.data.study.Params;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._2.ENDPOINTSTUDYRECORDGranulometry;
@@ -29,21 +30,46 @@ public class Granulometry_RecordWrapper extends EndpointStudyRecordWrapper<ENDPO
 				} catch (Exception x) {
 				}
 			}
+		int n = 0;
 		if (studyrecord.getResultsAndDiscussion().getParticleSizeDistribution() != null)
-			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._2.ENDPOINTSTUDYRECORDGranulometry.ResultsAndDiscussion.ParticleSizeDistribution.Entry e : studyrecord
+
+			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._2.ENDPOINTSTUDYRECORDGranulometry.ResultsAndDiscussion.ParticleSizeDistribution.Entry entry : studyrecord
 					.getResultsAndDiscussion().getParticleSizeDistribution().getEntry()) {
+
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.pPARTICLESIZE);
-				q2effectrecord(e.getSize(), effect);
-				effect.getConditions().put(I5CONSTANTS.pDISTRIBUTION, q2value(e.getDistribution()));
-				effect.getConditions().put(I5CONSTANTS.Remark, p2Value(e.getRemarksOnResults()));
-				q2effectrecord(studyrecord.getResultsAndDiscussion().getAerodynamicDiameter(), effect);
+				effect.setEndpointGroup(n);
+				q2effectrecord(entry.getSize(), effect);
+				papp.addEffect(effect);
+				IParams p = new Params();
+				p.put(I5CONSTANTS.Remark,
+						getPhrase(entry.getRemarksOnResults().getRemarks(), entry.getRemarksOnResults().getOther()));
+				effect.setConditions(p);
+
+				effect = endpointCategory.createEffectRecord();
+				effect.setEndpointGroup(n);
+				effect.setEndpoint(I5CONSTANTS.pDISTRIBUTION);
+				q2effectrecord(entry.getDistribution(), effect);
+				papp.addEffect(effect);
+				p = new Params();
+				p.put(I5CONSTANTS.Remark,
+						getPhrase(entry.getRemarksOnResults().getRemarks(), entry.getRemarksOnResults().getOther()));
+				effect.setConditions(p);
+				n++;
 			}
 
 		if (studyrecord.getResultsAndDiscussion().getAerodynamicDiameter() != null) {
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-			effect.setEndpoint(I5CONSTANTS.pMMAD);
+			effect.setEndpoint(I5CONSTANTS.eAERODYNAMIC_DIAMETER);
+			effect.setEndpointType(I5CONSTANTS.endpoint_type_MEDIAN_MASS);
 			q2effectrecord(studyrecord.getResultsAndDiscussion().getAerodynamicDiameter(), effect);
+			try {
+				effect.setErrorValue(studyrecord.getResultsAndDiscussion().getGeometricStandardDeviation()
+						.getLowerValue().doubleValue());
+				effect.setErrQualifier(I5CONSTANTS.pGSD);
+			} catch (Exception x) {
+
+			}
 			papp.addEffect(effect);
 		}
 

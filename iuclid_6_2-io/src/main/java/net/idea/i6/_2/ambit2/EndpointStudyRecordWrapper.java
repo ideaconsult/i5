@@ -13,6 +13,8 @@ import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.ReliabilityParams;
 import ambit2.base.data.study.Value;
+import ambit2.base.ro.I5CONSTANTS;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_aspectratioshape._2.ENDPOINTSTUDYRECORDAspectRatioShape.ResultsAndDiscussion.ShapeDescription.Entry.PercentageValue;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_carcinogenicity._2.LowestEffectiveDoseConc;
 import eu.europa.echa.iuclid6.namespaces.literature._1.LITERATURE;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
@@ -618,7 +620,24 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 
 	protected static void q2effectrecord(LowestEffectiveDoseConc field,
 			EffectRecord<String, IParams, String> effectrecord) {
-		
+
+		if (field == null)
+			return;
+
+		if (field.getValue() != null)
+			try {
+				effectrecord.setLoValue(Double.parseDouble(field.getValue()));
+			} catch (Exception x) {
+				// now we have string value with units ...
+				effectrecord.setTextValue(field.getValue());
+			}
+
+		effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
+
+	}
+
+	protected static void q2effectrecord(PercentageValue field, EffectRecord<String, IParams, String> effectrecord) {
+
 		if (field == null)
 			return;
 
@@ -648,4 +667,56 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 			effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
 	}
 
+	protected EffectRecord<String, IParams, String> addEffectRecord_meanstdev(ProtocolApplication papp, String endpoint,
+			PhysicalQuantityRangeField mean, String stdev, String endpointType) {
+		Double sd = null;
+		try {
+			sd = Double.parseDouble(stdev);
+		} catch (Exception x) {
+			sd = null;
+		}
+		return addEffectRecord_meanstdev(papp, endpoint, mean, sd, endpointType);
+	}
+
+	protected EffectRecord<String, IParams, String> addEffectRecord_meanstdev(ProtocolApplication papp, String endpoint,
+			PhysicalQuantityRangeField mean, double stdev, String endpointType) {
+		try {
+			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+			effect.setEndpoint(endpoint);
+			effect.setEndpointType(endpointType);
+
+			q2effectrecord(mean, effect);
+			try {
+				effect.setErrorValue(stdev);
+				effect.setErrQualifier(I5CONSTANTS.effect_stdev);
+			} catch (Exception x) {
+			}
+			papp.addEffect(effect);
+			return effect;
+		} catch (Exception x) {
+			logger.log(Level.WARNING, x.getMessage());
+			return null;
+		}
+	}
+
+	protected EffectRecord<String, IParams, String> addEffectRecord_meanstdev(ProtocolApplication papp, String endpoint,
+			PercentageValue mean, String stdev, String endpointType) {
+		try {
+			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+			effect.setEndpoint(endpoint);
+			effect.setEndpointType(endpointType);
+
+			q2effectrecord(mean, effect);
+			try {
+				effect.setErrorValue(Double.parseDouble(stdev));
+				effect.setErrQualifier(I5CONSTANTS.effect_stdev);
+			} catch (Exception x) {
+			}
+			papp.addEffect(effect);
+			return effect;
+		} catch (Exception x) {
+			logger.log(Level.WARNING, x.getMessage());
+			return null;
+		}
+	}
 }
