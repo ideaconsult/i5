@@ -41,6 +41,7 @@ public class GeneralInformation_RecordWrapper
 			pressure.setUnits("hPa");
 			pressure.setLoValue(1013.0);
 			effect.getConditions().put(I5CONSTANTS.AtmPressure, pressure);
+			effect.getConditions().put(I5CONSTANTS.Remark, studyrecord.getResultsAndDiscussion().getSubstancePhysicalState().getRemarks());
 			papp.addEffect(effect);
 
 		} catch (Exception x) {

@@ -75,7 +75,7 @@ public class NM_CrystallinePhase_RecordWrapper extends EndpointStudyRecordWrappe
 			}
 			if (entry.getCommonName() != null) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				effect.setEndpoint(I5CONSTANTS.rCRYSTALLINE_PHASE_COMMON_NAME);
+				effect.setEndpoint(I5CONSTANTS.eCRYSTALLINE_PHASE);
 				effect.setTextValue(entry.getCommonName());
 				effect.setEndpointGroup(endpointGroup);
 				papp.addEffect(effect);
