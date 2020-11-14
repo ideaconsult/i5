@@ -17,6 +17,7 @@
     <module>iuclid_5_sections</module>
     <module>iuclid_6_sections</module>
     <module>iuclid_6_2-io</module>
+    <module>iuclid_6_4-io</module>
   </modules>
   <distributionManagement>
     <snapshotRepository>
@@ -103,7 +104,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.2</version>
+          <version>3.8.1</version>
           <configuration>
             <source>${sourceVersion}</source>
             <target>${sourceVersion}</target>
@@ -112,7 +113,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.6</version>
+          <version>3.0.0-M5</version>
           <configuration>
             <skip>true</skip>
             <disableXmlReport>true</disableXmlReport>
