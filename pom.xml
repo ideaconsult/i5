@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.idea</groupId>
   <artifactId>iuclid5-cli</artifactId>
@@ -26,7 +28,7 @@
       <url>https://nexus.ideaconsult.net/content/repositories/releases</url>
     </repository>
   </distributionManagement>
-   <properties>
+  <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.8.1</junit.version>
     <ambit.version>4.0.0-SNAPSHOT</ambit.version>
@@ -60,29 +62,27 @@
       <url>https://nexus.ideaconsult.net/content/repositories/thirdparty</url>
       <snapshots>
         <enabled>false</enabled>
+        <updatePolicy>always</updatePolicy>
       </snapshots>
+
     </repository>
     <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
       <id>nexus-idea-releases</id>
-      <name>nexus-idea-releases</name>
       <url>https://nexus.ideaconsult.net/content/repositories/releases</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
     </repository>
     <repository>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
+      <id>nexus-idea-snapshots</id>
+      <url>https://nexus.ideaconsult.net/content/repositories/snapshots</url>
       <snapshots>
         <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
       </snapshots>
-      <id>nexus-idea-snapshots</id>
-      <name>nexus-idea-snapshots</name>
-      <url>https://nexus.ideaconsult.net/content/repositories/snapshots</url>
     </repository>
   </repositories>
   <dependencies>
