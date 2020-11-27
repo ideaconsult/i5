@@ -1,1 +1,0 @@
-xjb directory should exist, even if empty, otherwise maven jaxb plugin does not work
