@@ -11,6 +11,7 @@ import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_repeateddosetoxicityoral._5.ENDPOINTSTUDYRECORDRepeatedDoseToxicityOral;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_repeateddosetoxicityoral._5.ENDPOINTSTUDYRECORDRepeatedDoseToxicityOral.ResultsAndDiscussion.EffectLevels.Efflevel.Entry;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_repeateddosetoxicityoral._5.ENDPOINTSTUDYRECORDRepeatedDoseToxicityOral.ResultsAndDiscussion.TargetSystemOrganToxicitySet.TargetSystemOrganToxicity.Entry.LowestEffectiveDoseConc;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 
 public class RepeatedDoseToxicityOral_RecordWrapper
@@ -143,7 +144,7 @@ public class RepeatedDoseToxicityOral_RecordWrapper
 
 	}
 
-	protected static void q2effectrecord(LowestEffectiveDoseConc field,
+	protected void q2effectrecord(LowestEffectiveDoseConc field,
 			EffectRecord<String, IParams, String> effectrecord) {
 
 		if (field.getValue() != null)
@@ -153,6 +154,6 @@ public class RepeatedDoseToxicityOral_RecordWrapper
 				effectrecord.setTextValue(field.getValue());
 			}
 		if (field.getUnitCode() != null)
-			effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
+			effectrecord.setUnit(getPhrase(field.getUnitCode(), joinMultiTextFieldSmall(field.getUnitOther())));
 	}
 }

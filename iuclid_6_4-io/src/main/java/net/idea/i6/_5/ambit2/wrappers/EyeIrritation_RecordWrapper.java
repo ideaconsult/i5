@@ -23,30 +23,60 @@ public class EyeIrritation_RecordWrapper extends EndpointStudyRecordWrapper<ENDP
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDEyeIrritation studyrecord) {
 		//studyrecord.getResultsAndDiscussion().getResultsOfExVivoInVitroStudy()
-		if (studyrecord.getResultsAndDiscussion().getIrritationCorrosionResults() != null) {
-			for (Entry e : studyrecord.getResultsAndDiscussion().getIrritationCorrosionResults().getEntry()) {
-				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				effect.setEndpoint(p2Value(e.getParameter()));
-				q2effectrecord(e.getScore(), effect);
-				papp.addEffect(effect);
-				effect.getConditions().put(I5CONSTANTS.cBasisForEffect, p2Value(e.getBasis()));
-				effect.getConditions().put(I5CONSTANTS.cReversibility, p2Value(e.getReversibility()));
-				effect.getConditions().put(I5CONSTANTS.cTimePoint, p2Value(e.getTimePoint()));
-				try {
-					effect.getConditions().put(I5CONSTANTS.cMaxScore, p2Value(e.getScale().intValue()));
-				} catch (Exception x) {
-				}
-			}
-			((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "in vivo");
-		}
-
-		if (studyrecord.getResultsAndDiscussion().getResultsOfExVivoInVitroStudy() != null) {
-			for (Entry e : studyrecord.getResultsAndDiscussion().getResultsOfExVivoInVitroStudy().getEntry()) {
+		if (studyrecord.getResultsAndDiscussion().getInVitro() != null) {
+			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_eyeirritation._5.ENDPOINTSTUDYRECORDEyeIrritation.ResultsAndDiscussion.InVitro.ResultsOfExVivoInVitroStudy.Entry e : studyrecord.getResultsAndDiscussion().getInVitro().getResultsOfExVivoInVitroStudy().getEntry()) {
+				
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(p2Value(e.getIrritationParameter()));
 				q2effectrecord(e.getValue(), effect);
 				papp.addEffect(effect);
+				
+				effect.getConditions().put("negative_controls", p2Value(e.getNegativeControlsValid().getValue()));
+				effect.getConditions().put("positive_controls", p2Value(e.getPositiveControlsValid().getValue()));
+				effect.getConditions().put("vehicle_controls", p2Value(e.getVehicleControlsValid().getValue()));
+				
 				effect.getConditions().put(I5CONSTANTS.cBasisForEffect, p2Value(e.getRunExperiment()));
+				
+			}
+			((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "in vitro");
+		}
+		if (studyrecord.getResultsAndDiscussion().getInVivo() != null) {
+			for (Entry e : studyrecord.getResultsAndDiscussion().getInVivo().getIrritationCorrosionResults().getEntry()) {
+				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+				effect.setEndpoint(p2Value(e.getParameter()));
+				q2effectrecord(e.getScore(), effect);
+				papp.addEffect(effect);
+				
+				effect.getConditions().put(I5CONSTANTS.cBasisForEffect, p2Value(e.getBasis()));
+				effect.getConditions().put(I5CONSTANTS.cReversibility, p2Value(e.getReversibility()));
+				effect.getConditions().put(I5CONSTANTS.cTimePoint, p2Value(e.getTimePoint()));
+				effect.getConditions().put(I5CONSTANTS.Remark, joinMultiTextField(e.getRemarksOnResults().getRemarks()));
+				try {
+					effect.getConditions().put(I5CONSTANTS.cMaxScore, p2Value(e.getScale().getValue().intValue()));
+				} catch (Exception x) {
+				}
+				
+			}
+			((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "in vivo");
+		}		
+
+		if (studyrecord.getResultsAndDiscussion().getResultsOfExVivoInVitroStudy() != null) {
+			for (Entry e : studyrecord.getResultsAndDiscussion().getResultsOfExVivoInVitroStudy().getEntry()) {
+				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+				effect.setEndpoint(p2Value(e.getParameter()));
+				q2effectrecord(e.getScore(), effect);
+				effect.getConditions().put(I5CONSTANTS.cTimePoint, p2Value(e.getTimePoint()));
+				effect.getConditions().put(I5CONSTANTS.cBasisForEffect, p2Value(e.getBasis()));
+				effect.getConditions().put(I5CONSTANTS.cReversibility, p2Value(e.getReversibility()));
+				effect.getConditions().put(I5CONSTANTS.cReversibility, p2Value(e.getReversibility()));
+				effect.getConditions().put(I5CONSTANTS.Remark, joinMultiTextField(e.getRemarksOnResults().getRemarks()));
+				try {
+					effect.getConditions().put(I5CONSTANTS.cMaxScore, p2Value(e.getScale().getValue().intValue()));
+				} catch (Exception x) {
+				}
+				papp.addEffect(effect);
+				
+
 			}
 			((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "in vitro");
 		}

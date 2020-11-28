@@ -43,7 +43,7 @@ public class Granulometry_RecordWrapper extends EndpointStudyRecordWrapper<ENDPO
 				papp.addEffect(effect);
 				IParams p = new Params();
 				p.put(I5CONSTANTS.Remark,
-						getPhrase(entry.getRemarksOnResults().getRemarks(), entry.getRemarksOnResults().getOther()));
+						getPhrase(joinMultiTextField(entry.getRemarksOnResults().getRemarks()), joinMultiTextFieldSmall(entry.getRemarksOnResults().getOther())));
 				effect.setConditions(p);
 
 				effect = endpointCategory.createEffectRecord();
@@ -53,7 +53,7 @@ public class Granulometry_RecordWrapper extends EndpointStudyRecordWrapper<ENDPO
 				papp.addEffect(effect);
 				p = new Params();
 				p.put(I5CONSTANTS.Remark,
-						getPhrase(entry.getRemarksOnResults().getRemarks(), entry.getRemarksOnResults().getOther()));
+						getPhrase(joinMultiTextField(entry.getRemarksOnResults().getRemarks()), joinMultiTextFieldSmall(entry.getRemarksOnResults().getOther())));
 				effect.setConditions(p);
 				n++;
 			}

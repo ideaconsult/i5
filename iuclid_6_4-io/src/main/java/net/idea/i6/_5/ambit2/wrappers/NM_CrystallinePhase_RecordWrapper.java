@@ -18,7 +18,8 @@ public class NM_CrystallinePhase_RecordWrapper extends EndpointStudyRecordWrappe
 	@Override
 	public void assignInterpretationResult(ProtocolApplication papp, ENDPOINTSTUDYRECORDCrystallinePhase studyRecord) {
 		try {
-			papp.setInterpretationResult(joinMultiTextField(studyRecord.getResultsAndDiscussion().getCrystallographicComposition()));
+			papp.setInterpretationResult(
+					joinMultiTextField(studyRecord.getResultsAndDiscussion().getCrystallographicComposition()));
 		} catch (Exception x) {
 			papp.setInterpretationResult(null);
 		}
@@ -40,15 +41,15 @@ public class NM_CrystallinePhase_RecordWrapper extends EndpointStudyRecordWrappe
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.rCRYSTALLINE_PHASE_BRAVAIS_LATTICE);
 				effect.setTextValue(
-						getPhrase(entry.getBravaisLattice().getValue(), entry.getBravaisLattice().getOther()));
+						getPhrase(entry.getBravaisLattice().getValue()));
 				effect.setEndpointGroup(endpointGroup);
 				papp.addEffect(effect);
 			}
 			if (entry.getCrystalSystem() != null) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTAL_SYSTEM);
-				effect.setTextValue(
-						getPhrase(entry.getCrystalSystem().getValue(), entry.getCrystalSystem().getOther()));
+				effect.setTextValue(getPhrase(entry.getCrystalSystem().getValue(),
+						joinMultiTextFieldSmall(entry.getCrystalSystem().getOther())));
 				effect.setEndpointGroup(endpointGroup);
 				papp.addEffect(effect);
 			}
@@ -97,8 +98,8 @@ public class NM_CrystallinePhase_RecordWrapper extends EndpointStudyRecordWrappe
 			if (entry.getRemarksOnResults() != null) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.Remark);
-				effect.setTextValue(
-						getPhrase(entry.getRemarksOnResults().getValue(), entry.getRemarksOnResults().getOther()));
+				effect.setTextValue(getPhrase(entry.getRemarksOnResults().getValue(),
+						joinMultiTextFieldSmall(entry.getRemarksOnResults().getOther())));
 				effect.setEndpointGroup(endpointGroup);
 				papp.addEffect(effect);
 			}

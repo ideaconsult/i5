@@ -7,9 +7,10 @@ import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.Value;
 import ambit2.base.ro.I5CONSTANTS;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_adsorptiondesorption._5.ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.Temp;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_partition._5.ENDPOINTSTUDYRECORDPartition;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_partition._5.ENDPOINTSTUDYRECORDPartition.ResultsAndDiscussion.Partcoeff.Entry;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_partition._5.ENDPOINTSTUDYRECORDPartition.ResultsAndDiscussion.Partcoeff.Entry.Ph;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_partition._5.ENDPOINTSTUDYRECORDPartition.ResultsAndDiscussion.Partcoeff.Entry.Temp;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
 
@@ -45,9 +46,20 @@ public class Partition_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINT
 		}
 	}
 
-	protected static Value q2value(Temp field) {
+	protected Value q2value(Ph field) {
 		Value v = new Value();
-		v.setLoValue(field.getValue());
+		if (field.getLowerValue() != null)
+			v.setLoValue(field.getLowerValue().doubleValue());
+		if (field.getUpperValue() != null)
+			v.setLoValue(field.getUpperValue().doubleValue());
+		v.setLoQualifier(field.getLowerQualifier());
+		v.setUpQualifier(field.getUpperQualifier());
+		return v;
+	}
+	protected Value q2value(Temp field) {
+		Value v = new Value();
+		if (field.getValue() != null)
+			v.setLoValue(Double.parseDouble(field.getValue()));
 		v.setUnits(getPhrase(field.getUnitCode()));
 		return v;
 	}

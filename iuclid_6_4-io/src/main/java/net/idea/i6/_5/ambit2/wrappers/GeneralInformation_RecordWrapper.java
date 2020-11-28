@@ -41,7 +41,8 @@ public class GeneralInformation_RecordWrapper
 			pressure.setUnits("hPa");
 			pressure.setLoValue(1013.0);
 			effect.getConditions().put(I5CONSTANTS.AtmPressure, pressure);
-			effect.getConditions().put(I5CONSTANTS.Remark, studyrecord.getResultsAndDiscussion().getSubstancePhysicalState().getRemarks());
+			effect.getConditions().put(I5CONSTANTS.Remark,
+					studyrecord.getResultsAndDiscussion().getSubstancePhysicalState().getRemarks());
 			papp.addEffect(effect);
 
 		} catch (Exception x) {
@@ -73,7 +74,8 @@ public class GeneralInformation_RecordWrapper
 				try {
 					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint(I5CONSTANTS.Odor);
-					effect.setTextValue(getPhrase(e.getOdour().getValue(), e.getOdour().getOther()));
+					effect.setTextValue(
+							getPhrase(e.getOdour().getValue(), joinMultiTextFieldSmall(e.getOdour().getOther())));
 					papp.addEffect(effect);
 
 				} catch (Exception x) {

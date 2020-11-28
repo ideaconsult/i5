@@ -31,10 +31,10 @@ public class ToxicityReproduction_RecordWrapper
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDToxicityReproduction studyrecord) {
 
-		if (studyrecord.getResultsAndDiscussion().getResultsOfExaminationsParentalAnimals() != null)
+		if (studyrecord.getResultsAndDiscussion().getResultsOfExaminationsParentalGeneration() != null)
 			try {
-				for (Entry e : studyrecord.getResultsAndDiscussion()
-						.getResultsOfExaminationsParentalAnimals().getEffectLevelsP0().getEfflevel().getEntry()) {
+				for (Entry e : studyrecord.getResultsAndDiscussion().getResultsOfExaminationsParentalGeneration()
+						.getEffectLevelsP0().getEfflevel().getEntry()) {
 					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint(p2Value(e.getEndpoint()));
 					q2effectrecord(e.getEffectLevel(), effect);
@@ -53,8 +53,9 @@ public class ToxicityReproduction_RecordWrapper
 
 		if (studyrecord.getResultsAndDiscussion().getResultsOfExaminationsOffspring() != null)
 			try {
-				for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._5.ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1.Efflevel.Entry e : studyrecord.getResultsAndDiscussion().getResultsOfExaminationsOffspring()
-						.getEffectLevelsF1().getEfflevel().getEntry()) {
+				for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._5.ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1.Efflevel.Entry e : studyrecord
+						.getResultsAndDiscussion().getResultsOfExaminationsOffspring().getEffectLevelsF1().getEfflevel()
+						.getEntry()) {
 					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint(p2Value(e.getEndpoint()));
 					q2effectrecord(e.getEffectLevel(), effect);
@@ -71,8 +72,8 @@ public class ToxicityReproduction_RecordWrapper
 				logger.log(Level.WARNING, x.getMessage());
 			}
 		if (studyrecord.getResultsAndDiscussion().getResultsF2Generation() != null)
-			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._5.ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2.Efflevel.Entry e : studyrecord.getResultsAndDiscussion().getResultsF2Generation()
-					.getEffectLevelsF2().getEfflevel().getEntry()) {
+			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._5.ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2.Efflevel.Entry e : studyrecord
+					.getResultsAndDiscussion().getResultsF2Generation().getEffectLevelsF2().getEfflevel().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(p2Value(e.getEndpoint()));
 				q2effectrecord(e.getEffectLevel(), effect);
@@ -86,8 +87,9 @@ public class ToxicityReproduction_RecordWrapper
 			}
 
 		if (studyrecord.getResultsAndDiscussion().getResultsP1SecondParentalGeneration() != null)
-			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._5.ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1.Efflevel.Entry e : studyrecord.getResultsAndDiscussion().getResultsP1SecondParentalGeneration()
-					.getEffectLevelsP1().getEfflevel().getEntry()) {
+			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._5.ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1.Efflevel.Entry e : studyrecord
+					.getResultsAndDiscussion().getResultsP1SecondParentalGeneration().getEffectLevelsP1().getEfflevel()
+					.getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(p2Value(e.getEndpoint()));
 				q2effectrecord(e.getEffectLevel(), effect);
@@ -101,8 +103,8 @@ public class ToxicityReproduction_RecordWrapper
 			}
 
 		if (studyrecord.getResultsAndDiscussion().getReproductiveToxicity() != null)
-			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._5.ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry entry : studyrecord.getResultsAndDiscussion().getReproductiveToxicity().getReproductiveToxicity()
-					.getEntry()) {
+			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._5.ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry entry : studyrecord
+					.getResultsAndDiscussion().getReproductiveToxicity().getReproductiveToxicity().getEntry()) {
 
 				String reproeffects = p2Value(entry.getReproductiveEffectsObserved());
 				String relation2othertoxiceffects = p2Value(entry.getRelationToOtherToxicEffects());
@@ -121,7 +123,7 @@ public class ToxicityReproduction_RecordWrapper
 
 					effect.getConditions().put(I5CONSTANTS.ReproductiveEffectsObserved, reproeffects);
 					effect.getConditions().put(I5CONSTANTS.RelationToOtherToxicEffects, relation2othertoxiceffects);
-					
+
 					if (treatmentRelated != null)
 						effect.getConditions().put(I5CONSTANTS.TreatmentRelated, treatmentRelated);
 					if (dr != null)
@@ -148,8 +150,7 @@ public class ToxicityReproduction_RecordWrapper
 		papp.setInterpretationCriteria(null);
 	}
 
-	protected static void q2effectrecord(LowestEffectiveDoseConc field,
-			EffectRecord<String, IParams, String> effectrecord) {
+	protected void q2effectrecord(LowestEffectiveDoseConc field, EffectRecord<String, IParams, String> effectrecord) {
 
 		if (field.getValue() != null)
 			try {
@@ -158,7 +159,7 @@ public class ToxicityReproduction_RecordWrapper
 				effectrecord.setTextValue(field.getValue());
 			}
 		if (field.getUnitCode() != null)
-			effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
+			effectrecord.setUnit(getPhrase(field.getUnitCode(), joinMultiTextFieldSmall(field.getUnitOther())));
 	}
 
 }

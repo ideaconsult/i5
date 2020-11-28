@@ -24,9 +24,9 @@ public class ToxicityToSoilMicroorganisms_RecordWrapper
 			return I5CONSTANTS.cTestOrganism;
 		else if ("TestOrganismsInoculum".equals(key))
 			return I5CONSTANTS.cTestOrganism;
-		
+
 		return super.dictionaryParams(key);
-		
+
 	}
 
 	@Override
@@ -35,17 +35,17 @@ public class ToxicityToSoilMicroorganisms_RecordWrapper
 		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
 			return;
 
-		for (Entry e : studyrecord
-				.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {
+		for (Entry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {
 
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			q2effectrecord(e.getEffectConc(), effect);
-			effect.setEndpoint(getPhrase(e.getEndpoint().getValue(), e.getEndpoint().getOther()));
+			effect.setEndpoint(
+					getPhrase(e.getEndpoint().getValue(), joinMultiTextFieldSmall(e.getEndpoint().getOther())));
 			papp.addEffect(effect);
 
 			effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
 			effect.getConditions().put(I5CONSTANTS.cConcType, p2Value(e.getConcBasedOn()));
-			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,p2Value(e.getNominalMeasured()));
+			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration, p2Value(e.getNominalMeasured()));
 			effect.getConditions().put(I5CONSTANTS.cExposure, q2value(e.getDuration()));
 		}
 
@@ -55,7 +55,7 @@ public class ToxicityToSoilMicroorganisms_RecordWrapper
 		try {
 			Value v = new Value();
 			v.setLoValue(Double.parseDouble(field.getValue()));
-			v.setUnits(getPhrase(field.getUnitCode(), null));
+			v.setUnits(getPhrase(field.getUnitCode()));
 			return v;
 		} catch (Exception x) {
 			return null;

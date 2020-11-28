@@ -36,8 +36,9 @@ public class GeneticToxicityVitro_RecordWrapper
 		try {
 			IParams params = ((IParams) papp.getParameters());
 			params.put(I5CONSTANTS.cTypeStudy, p2Value(getStudyRecord().getAdministrativeData().getEndpoint()).trim());
-			params.put(I5CONSTANTS.cTypeGenotoxicity, getStudyRecord().getAdministrativeData()
-					.getEndpoint().getRemarks().replace(msg.getString(_MIGRATED_GENOTOXTYPE), "").trim());
+			params.put(I5CONSTANTS.cTypeGenotoxicity,
+					joinMultiTextField(getStudyRecord().getAdministrativeData().getEndpoint().getRemarks())
+							.replace(msg.getString(_MIGRATED_GENOTOXTYPE), "").trim());
 		} catch (Exception x) {
 			logger.log(Level.WARNING, x.getMessage());
 		}
@@ -84,7 +85,9 @@ public class GeneticToxicityVitro_RecordWrapper
 			ENDPOINTSTUDYRECORDGeneticToxicityVitro studyRecord) {
 		// i6 migrated into a different field
 		papp.setInterpretationResult(
-				studyRecord.getApplicantSummaryAndConclusion().getConclusions().replace(msg.getString(_MIGRATED), ""));
-		papp.setInterpretationCriteria(joinMultiTextFieldLarge(studyRecord.getApplicantSummaryAndConclusion().getConclusions()));
+				joinMultiTextFieldLarge(studyRecord.getApplicantSummaryAndConclusion().getConclusions())
+						.replace(msg.getString(_MIGRATED), ""));
+		papp.setInterpretationCriteria(
+				joinMultiTextFieldLarge(studyRecord.getApplicantSummaryAndConclusion().getConclusions()));
 	}
 }

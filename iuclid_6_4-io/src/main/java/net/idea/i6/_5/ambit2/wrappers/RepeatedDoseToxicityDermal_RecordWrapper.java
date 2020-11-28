@@ -91,8 +91,9 @@ public class RepeatedDoseToxicityDermal_RecordWrapper
 				}
 		}
 		if (studyrecord.getResultsAndDiscussion().getTargetSystemOrganToxicity() != null) {
-			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_repeateddosetoxicitydermal._5.ENDPOINTSTUDYRECORDRepeatedDoseToxicityDermal.ResultsAndDiscussion.TargetSystemOrganToxicitySet.TargetSystemOrganToxicity.Entry entry : studyrecord.getResultsAndDiscussion().getTargetSystemOrganToxicity()
-					.getTargetSystemOrganToxicity().getEntry()) {
+			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_repeateddosetoxicitydermal._5.ENDPOINTSTUDYRECORDRepeatedDoseToxicityDermal.ResultsAndDiscussion.TargetSystemOrganToxicitySet.TargetSystemOrganToxicity.Entry entry : studyrecord
+					.getResultsAndDiscussion().getTargetSystemOrganToxicity().getTargetSystemOrganToxicity()
+					.getEntry()) {
 				String criticaleffects = p2Value(entry.getCriticalEffectsObserved());
 				String organ = p2Value(entry.getOrgan());
 				String system = p2Value(entry.getSystem());
@@ -136,7 +137,7 @@ public class RepeatedDoseToxicityDermal_RecordWrapper
 
 	}
 
-	protected static void q2effectrecord(LowestEffectiveDoseConc field,
+	protected void q2effectrecord(LowestEffectiveDoseConc field,
 			EffectRecord<String, IParams, String> effectrecord) {
 
 		if (field.getValue() != null)
@@ -146,7 +147,7 @@ public class RepeatedDoseToxicityDermal_RecordWrapper
 				effectrecord.setTextValue(field.getValue());
 			}
 		if (field.getUnitCode() != null)
-			effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
+			effectrecord.setUnit(getPhrase(field.getUnitCode(), joinMultiTextFieldSmall(field.getUnitOther())));
 	}
 
 }

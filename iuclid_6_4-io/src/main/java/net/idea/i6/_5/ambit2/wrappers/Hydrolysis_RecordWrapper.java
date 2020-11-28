@@ -3,9 +3,7 @@ package net.idea.i6._5.ambit2.wrappers;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.ProtocolApplication;
-import ambit2.base.data.study.Value;
 import ambit2.base.ro.I5CONSTANTS;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_adsorptiondesorption._5.ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.Temp;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_hydrolysis._5.ENDPOINTSTUDYRECORDHydrolysis;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_hydrolysis._5.ENDPOINTSTUDYRECORDHydrolysis.ResultsAndDiscussion.DissipationHalfLifeOfParentCompound.Entry;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
@@ -35,15 +33,5 @@ public class Hydrolysis_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOIN
 			}
 	}
 
-	protected static Value q2value(Temp field) {
-		Value v = new Value();
-		if (field.getValue() != null)
-			try {
-				v.setLoValue(Double.parseDouble(field.getValue()));
-			} catch (Exception x) {
-			}
-		v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
-		return v;
-	}
 
 }

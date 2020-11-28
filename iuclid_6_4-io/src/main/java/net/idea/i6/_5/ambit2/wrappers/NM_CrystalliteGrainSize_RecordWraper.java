@@ -19,8 +19,8 @@ public class NM_CrystalliteGrainSize_RecordWraper
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDCrystalliteGrainSize studyrecord) {
 		EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-		effect.setTextValue(getPhrase(studyrecord.getResultsAndDiscussion().getMaterialIsotropic().getValue(),
-				studyrecord.getResultsAndDiscussion().getMaterialIsotropic().getOther()));
+		effect.setTextValue(getPhrase(studyrecord.getResultsAndDiscussion().getMaterialIsotropic().getValue()
+				));
 		effect.setEndpoint(I5CONSTANTS.pMATERIAL_ISOTROPIC);
 		papp.addEffect(effect);
 

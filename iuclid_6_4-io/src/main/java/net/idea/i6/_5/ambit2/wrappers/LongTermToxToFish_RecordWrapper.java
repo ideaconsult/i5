@@ -5,8 +5,8 @@ import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.Value;
 import ambit2.base.ro.I5CONSTANTS;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_endocrinedisruptertestinginaqua._5.ENDPOINTSTUDYRECORDEndocrineDisrupterTestingInAqua.MaterialsAndMethods.StudyDesign.TotalExposureDuration;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_longtermtoxtofish._5.ENDPOINTSTUDYRECORDLongTermToxToFish;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_longtermtoxtofish._5.ENDPOINTSTUDYRECORDLongTermToxToFish.MaterialsAndMethods.StudyDesign.TotalExposureDuration;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_longtermtoxtofish._5.ENDPOINTSTUDYRECORDLongTermToxToFish.ResultsAndDiscussion.EffectConcentrations.Entry;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
@@ -43,7 +43,7 @@ public class LongTermToxToFish_RecordWrapper extends EndpointStudyRecordWrapper<
 				v.setLoValue(Double.parseDouble(field.getValue()));
 			} catch (Exception x) {
 			}
-		v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
+		v.setUnits(getPhrase(field.getUnitCode()));
 		return v;
 	}
 

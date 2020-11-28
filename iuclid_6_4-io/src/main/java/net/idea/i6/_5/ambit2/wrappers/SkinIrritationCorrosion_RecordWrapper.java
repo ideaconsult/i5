@@ -36,7 +36,7 @@ public class SkinIrritationCorrosion_RecordWrapper
 				effect.getConditions().put(I5CONSTANTS.cReversibility, p2Value(e.getReversibility()));
 				effect.getConditions().put(I5CONSTANTS.cTimePoint, p2Value(e.getTimePoint()));
 				try {
-					effect.getConditions().put(I5CONSTANTS.cMaxScore, p2Value(e.getScale().intValue()));
+					effect.getConditions().put(I5CONSTANTS.cMaxScore, p2Value(e.getScale().getValue().intValue()));
 				} catch (Exception x) {
 				}
 			}

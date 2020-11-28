@@ -7,6 +7,7 @@ import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._5.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._5.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity.ResultsAndDiscussion.DevelopmentalToxicitySet.DevelopmentalToxicity.Entry.LowestEffectiveDoseConc;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._5.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity.ResultsAndDiscussion.ResultsMaternalAnimals.EffectLevelsMaternalAnimals.Efflevel.Entry;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._5.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity.ResultsAndDiscussion.ResultsMaternalAnimals.EffectLevelsMaternalAnimals.Efflevel.Entry.Basis;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithLargeTextRemarks;
 
@@ -43,7 +44,7 @@ public class DevelopmentalToxicityTeratogenicity_RecordWrapper
 
 				StringBuilder basis4effectlevel = null;
 				if (e.getBasis() != null)
-					for (PicklistFieldWithLargeTextRemarks b : e.getBasis()) {
+					for (Basis b : e.getBasis()) {
 						if (basis4effectlevel == null)
 							basis4effectlevel = new StringBuilder();
 						else
@@ -69,7 +70,7 @@ public class DevelopmentalToxicityTeratogenicity_RecordWrapper
 
 				StringBuilder basis4effectlevel = null;
 				if (e.getBasis() != null)
-					for (PicklistFieldWithLargeTextRemarks b : e.getBasis()) {
+					for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._5.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity.ResultsAndDiscussion.ResultsFetuses.EffectLevelsFetuses.Efflevel.Entry.Basis b : e.getBasis()) {
 						if (basis4effectlevel == null)
 							basis4effectlevel = new StringBuilder();
 						else
@@ -129,7 +130,7 @@ public class DevelopmentalToxicityTeratogenicity_RecordWrapper
 		papp.setInterpretationResult(null);
 	}
 
-	protected static void q2effectrecord(LowestEffectiveDoseConc field,
+	protected void q2effectrecord(LowestEffectiveDoseConc field,
 			EffectRecord<String, IParams, String> effectrecord) {
 
 		if (field == null)
@@ -143,7 +144,7 @@ public class DevelopmentalToxicityTeratogenicity_RecordWrapper
 				effectrecord.setTextValue(field.getValue());
 			}
 
-		effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
+		effectrecord.setUnit(getPhrase(field.getUnitCode(), joinMultiTextFieldSmall(field.getUnitOther())));
 
 	}
 }

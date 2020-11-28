@@ -44,7 +44,7 @@ public class PhototransformationInAir_RecordWrapper extends EndpointStudyRecordW
 					reactant = new StringBuilder();
 				else
 					reactant.append(", ");
-				reactant.append(getPhrase(e.getReactionWith().getValue(), e.getReactionWith().getOther()));
+				reactant.append(getPhrase(e.getReactionWith().getValue(), joinMultiTextFieldSmall(e.getReactionWith().getOther())));
 			}
 		}
 		try {

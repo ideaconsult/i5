@@ -2,6 +2,7 @@ package net.idea.i6._5.ambit2;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,12 +18,10 @@ import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_aspectratioshape._5.ENDPOINTSTUDYRECORDAspectRatioShape.ResultsAndDiscussion.ShapeDescription.Entry.PercentageValue;
 import eu.europa.echa.iuclid6.namespaces.literature._5.LITERATURE;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.BasePhysicalQuantityField;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.BasePhysicalQuantityRangeField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.DocumentReferenceMultipleField;
-import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.MultilingualTextField;
-import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.MultilingualTextFieldLarge;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.MultilingualTextFieldSmall;
-import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PhysicalQuantityHalfBoundedField;
-import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PhysicalQuantityRangeField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithLargeTextRemarks;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithMultiLineTextRemarks;
@@ -409,20 +408,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		}
 	}
 	
-	protected String joinMultiTextField(List<MultilingualTextField> value) {
-		StringBuilder  b = new StringBuilder();
-		for (MultilingualTextField t : value) {
-			b.append(t.getValue()); b.append(" ");
-		}
-		return b.toString().trim();
-	}
-	protected String joinMultiTextFieldLarge(List<MultilingualTextFieldLarge> value) {
-		StringBuilder  b = new StringBuilder();
-		for (MultilingualTextFieldLarge t : value) {
-			b.append(t.getValue()); b.append(" ");
-		}
-		return b.toString().trim();
-	}
+
 	protected IParams createProtocolParameters() {
 		if (getEndpointCategory() == null)
 			return new Params();
@@ -610,69 +596,137 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		return field.getRemarks();
 	}
 
-	protected static Value q2value(PhysicalQuantityHalfBoundedField field) {
+	protected Value q2value(BasePhysicalQuantityField field) {
+		
 		if (field == null)
 			return null;
 		Value v = new Value();
-		v.setLoQualifier(field.getQualifier());
-		if (field.getValue() != null)
-			v.setLoValue(field.getValue().doubleValue());
-		v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
+
+		try {
+			v.setLoValue(Double.parseDouble(field.getClass().getDeclaredMethod("getValue").invoke(field).toString()));
+		} catch (Exception x) {
+            x.printStackTrace();
+        }		
+
+		try {
+			
+			v.setUnits(getPhrase((field.getClass().getDeclaredMethod("getUnitCode").invoke(field)).toString()));
+        } catch (Exception x) {
+            x.printStackTrace();
+        }					
+		
 		return v;
 	}
-
-	protected static Value q2value(PhysicalQuantityRangeField field) {
+	
+	protected Value q2value(BasePhysicalQuantityRangeField field) {
+		
 		if (field == null)
 			return null;
 		Value v = new Value();
-		v.setLoQualifier(field.getLowerQualifier());
-		v.setUpQualifier(field.getUpperQualifier());
-		if (field.getLowerValue() != null)
-			v.setLoValue(field.getLowerValue().doubleValue());
-		if (field.getUpperValue() != null)
-			v.setUpValue(field.getUpperValue().doubleValue());
-		v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
+		
+		try {
+			v.setLoQualifier(field.getClass().getDeclaredMethod("getLowerQualifier").invoke(field).toString());
+		} catch (Exception x) {
+            x.printStackTrace();
+        }
+		try {
+			v.setLoQualifier(field.getClass().getDeclaredMethod("getUpperQualifier").invoke(field).toString());
+		} catch (Exception x) {
+            x.printStackTrace();
+        }		
+		try {
+			v.setLoValue(((BigDecimal)field.getClass().getDeclaredMethod("getLowerValue").invoke(field)).doubleValue());
+		} catch (Exception x) {
+            x.printStackTrace();
+        }		
+		try {
+			v.setUpValue(((BigDecimal)field.getClass().getDeclaredMethod("getUpperValue").invoke(field)).doubleValue());
+		} catch (Exception x) {
+            x.printStackTrace();
+        }			
+		String unitother = null;
+		try {
+			
+			unitother = joinMultiTextFieldSmall((List<MultilingualTextFieldSmall>)(field.getClass().getDeclaredMethod("getUnitOther").invoke(field)));
+        } catch (Exception x) {
+            x.printStackTrace();
+        }			
+		try {
+			
+			v.setUnits(getPhrase((field.getClass().getDeclaredMethod("getUnitCode").invoke(field).toString()),unitother));
+        } catch (Exception x) {
+            x.printStackTrace();
+        }					
+		
 		return v;
 	}
 
-	protected static void q2effectrecord(PercentageValue field, EffectRecord<String, IParams, String> effectrecord) {
-
-		if (field == null)
-			return;
-
-		if (field.getValue() != null)
-			try {
-				effectrecord.setLoValue(Double.parseDouble(field.getValue()));
-			} catch (Exception x) {
-				// now we have string value with units ...
-				effectrecord.setTextValue(field.getValue());
-			}
-		StringBuilder b = new StringBuilder();
-		if (field.getUnitOther()!=null)
-			for (MultilingualTextFieldSmall t : field.getUnitOther())  {
-				b.append(t);
-				b.append(" ");
-			}	
-		effectrecord.setUnit(getPhrase(field.getUnitCode(), b.toString().trim()));
-
-	}
-
-	protected static void q2effectrecord(PhysicalQuantityRangeField field,
+	protected void q2effectrecord(BasePhysicalQuantityRangeField field,
 			EffectRecord<String, IParams, String> effectrecord) {
 		if (field == null)
 			return;
-		effectrecord.setLoQualifier(field.getLowerQualifier());
-		effectrecord.setUpQualifier(field.getUpperQualifier());
-		if (field.getLowerValue() != null)
-			effectrecord.setLoValue(field.getLowerValue().doubleValue());
-		if (field.getUpperValue() != null)
-			effectrecord.setUpValue(field.getUpperValue().doubleValue());
-		if (field.getUnitCode() != null)
-			effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
+
+		
+		try {
+			effectrecord.setLoQualifier(field.getClass().getDeclaredMethod("getLowerQualifier").invoke(field).toString());
+		} catch (Exception x) {
+            x.printStackTrace();
+        }
+		try {
+			effectrecord.setLoQualifier(field.getClass().getDeclaredMethod("getUpperQualifier").invoke(field).toString());
+		} catch (Exception x) {
+            x.printStackTrace();
+        }		
+		try {
+			effectrecord.setLoValue(((BigDecimal)field.getClass().getDeclaredMethod("getLowerValue").invoke(field)).doubleValue());
+		} catch (Exception x) {
+            x.printStackTrace();
+        }		
+		try {
+			effectrecord.setUpValue(((BigDecimal)field.getClass().getDeclaredMethod("getUpperValue").invoke(field)).doubleValue());
+		} catch (Exception x) {
+            x.printStackTrace();
+        }	
+		String unitother = null;
+		try {
+			
+			unitother = joinMultiTextFieldSmall((List<MultilingualTextFieldSmall>)(field.getClass().getDeclaredMethod("getUnitOther").invoke(field)));
+        } catch (Exception x) {
+            x.printStackTrace();
+        }					
+		try {
+			effectrecord.setUnit(getPhrase((field.getClass().getDeclaredMethod("getUnitCode").invoke(field)).toString(),unitother));
+        } catch (Exception x) {
+            x.printStackTrace();
+        }					
+	}
+
+	protected void q2effectrecord(BasePhysicalQuantityField field,
+			EffectRecord<String, IParams, String> effectrecord) {
+		if (field == null)
+			return;
+
+		try {
+			effectrecord.setLoValue(Double.parseDouble(field.getClass().getDeclaredMethod("getValue").invoke(field).toString()));
+		} catch (Exception x) {
+            x.printStackTrace();
+        }		
+		String unitother = null;
+		try {
+			
+			unitother = joinMultiTextFieldSmall((List<MultilingualTextFieldSmall>)(field.getClass().getDeclaredMethod("getUnitOther").invoke(field)));
+        } catch (Exception x) {
+            x.printStackTrace();
+        }					
+		try {
+			effectrecord.setUnit(getPhrase((field.getClass().getDeclaredMethod("getUnitCode").invoke(field)).toString(),unitother));
+        } catch (Exception x) {
+            x.printStackTrace();
+        }					
 	}
 
 	protected EffectRecord<String, IParams, String> addEffectRecord_meanstdev(ProtocolApplication papp, String endpoint,
-			PhysicalQuantityRangeField mean, String stdev, String endpointType) {
+			BasePhysicalQuantityRangeField mean, String stdev, String endpointType) {
 		Double sd = null;
 		try {
 			sd = Double.parseDouble(stdev);
@@ -683,7 +737,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 	}
 
 	protected EffectRecord<String, IParams, String> addEffectRecord_meanstdev(ProtocolApplication papp, String endpoint,
-			PhysicalQuantityRangeField mean, double stdev, String endpointType) {
+			BasePhysicalQuantityRangeField mean, double stdev, String endpointType) {
 		try {
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(endpoint);

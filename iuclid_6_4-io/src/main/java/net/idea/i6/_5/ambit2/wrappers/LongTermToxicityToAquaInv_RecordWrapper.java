@@ -7,7 +7,7 @@ import ambit2.base.data.study.Value;
 import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_longtermtoxicitytoaquainv._5.ENDPOINTSTUDYRECORDLongTermToxicityToAquaInv;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_longtermtoxicitytoaquainv._5.ENDPOINTSTUDYRECORDLongTermToxicityToAquaInv.ResultsAndDiscussion.EffectConcentrations.Entry;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicitytosoilmacroorganismsexceptarthropods._5.ENDPOINTSTUDYRECORDToxicityToSoilMacroorganismsExceptArthropods.ResultsAndDiscussion.EffectConcentrations.Entry.Duration;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_longtermtoxicitytoaquainv._5.ENDPOINTSTUDYRECORDLongTermToxicityToAquaInv.ResultsAndDiscussion.EffectConcentrations.Entry.Duration;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
 
@@ -50,7 +50,7 @@ public class LongTermToxicityToAquaInv_RecordWrapper
 				v.setLoValue(Double.parseDouble(field.getValue()));
 			} catch (Exception x) {
 			}
-		v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
+		v.setUnits(getPhrase(field.getUnitCode()));
 		return v;
 	}
 }

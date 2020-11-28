@@ -5,9 +5,9 @@ import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.Value;
 import ambit2.base.ro.I5CONSTANTS;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_adsorptiondesorption._5.ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.Temp;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_solubilityorganic._5.ENDPOINTSTUDYRECORDSolubilityOrganic;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_solubilityorganic._5.ENDPOINTSTUDYRECORDSolubilityOrganic.ResultsAndDiscussion.SolubilityOrganic.Entry;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_solubilityorganic._5.ENDPOINTSTUDYRECORDSolubilityOrganic.ResultsAndDiscussion.SolubilityOrganic.Entry.Temp;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
 
@@ -38,7 +38,7 @@ public class SolubilityOrganic_RecordWrapper extends EndpointStudyRecordWrapper<
 			return null;
 		Value v = new Value();
 		v.setLoValue(Double.parseDouble(temp.getValue()));
-		v.setUnits(getPhrase(temp.getUnitCode(), temp.getUnitOther()));
+		v.setUnits(getPhrase(temp.getUnitCode()));
 		return v;
 	}
 

@@ -25,12 +25,11 @@ public class ToxicityToSoilMacroorganismsExceptArthropods_RecordWrapper
 			return I5CONSTANTS.cTestOrganism;
 		else if ("Species".equals(key))
 			return I5CONSTANTS.cTestOrganism;
-		
+
 		return super.dictionaryParams(key);
-		
+
 	}
 
-	
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDToxicityToSoilMacroorganismsExceptArthropods studyrecord) {
@@ -46,28 +45,26 @@ public class ToxicityToSoilMacroorganismsExceptArthropods_RecordWrapper
 
 			effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
 			effect.getConditions().put(I5CONSTANTS.cConcType, p2Value(e.getConcBasedOn()));
-			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,p2Value(e.getNominalMeasured()));
+			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration, p2Value(e.getNominalMeasured()));
 			effect.getConditions().put(I5CONSTANTS.cExposure, q2value(e.getDuration()));
 		}
 	}
 
-	protected static void q2effectrecord(EffectConc field,
-			EffectRecord<String, IParams, String> effectrecord) {
+	protected void q2effectrecord(EffectConc field, EffectRecord<String, IParams, String> effectrecord) {
 
 		if (field == null)
 			return;
+		Value v = new Value();
+		if (field.getLowerValue() != null)
+			v.setLoValue(field.getLowerValue().doubleValue());
+		if (field.getUpperValue() != null)
+			v.setLoValue(field.getUpperValue().doubleValue());
+		v.setLoQualifier(field.getLowerQualifier());
+		v.setUpQualifier(field.getUpperQualifier());
+		effectrecord.setUnit(getPhrase(field.getUnitCode(), joinMultiTextFieldSmall(field.getUnitOther())));
 
-		if (field.getValue() != null)
-			try {
-				effectrecord.setLoValue(Double.parseDouble(field.getValue()));
-			} catch (Exception x) {
-				// now we have string value with units ...
-				effectrecord.setTextValue(field.getValue());
-			}
+	}
 
-		effectrecord.setUnit(getPhrase(field.getUnitCode(), field.getUnitOther()));
-
-	}	
 	protected static Value q2value(Duration field) {
 		try {
 			Value v = new Value();

@@ -64,7 +64,7 @@ public class BiodegradationInWaterScreeningTests_RecordWrapper
 		Value v = new Value();
 		if (field.getValue() != null)
 			v.setLoValue(Double.parseDouble(field.getValue()));
-		v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
+		v.setUnits(getPhrase(field.getUnitCode()));
 		return v;
 	}
 

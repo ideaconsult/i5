@@ -19,12 +19,12 @@ public class NM_SurfaceChemistry_RecordWrapper extends EndpointStudyRecordWrappe
 		EffectRecord<String, IParams, String> effect;
 		effect = endpointCategory.createEffectRecord();
 		effect.setEndpoint(I5CONSTANTS.pCOATING);
-		effect.setTextValue(getPhrase(studyrecord.getResultsAndDiscussion().getCoatingFunctionalisation().getValue(),studyrecord.getResultsAndDiscussion().getCoatingFunctionalisation().getOther()));
+		effect.setTextValue(getPhrase(studyrecord.getResultsAndDiscussion().getCoatingFunctionalisation().getValue()));
 		papp.addEffect(effect);
 
 		effect = endpointCategory.createEffectRecord();
 		effect.setEndpoint(I5CONSTANTS.pCOATING_DESCRIPTION);
-		effect.setTextValue(getPhrase(studyrecord.getResultsAndDiscussion().getCoating().getCoating().getValue(),studyrecord.getResultsAndDiscussion().getCoating().getCoating().getOther()));
+		effect.setTextValue(getPhrase(studyrecord.getResultsAndDiscussion().getCoating().getCoating().getValue()));
 		papp.addEffect(effect);		
 		for (Entry entry : studyrecord.getResultsAndDiscussion().getCoating().getAtomicComposition().getEntry()) {
 			effect = addEffectRecord_meanstdev(papp, I5CONSTANTS.eFRACTION, entry.getFraction(),

@@ -12,6 +12,8 @@ import javax.xml.bind.JAXBElement;
 
 import ambit2.base.interfaces.IStructureRecord;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.MultilingualTextField;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.MultilingualTextFieldLarge;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.MultilingualTextFieldSmall;
 
 public class AbstractDocWrapper {
@@ -46,16 +48,6 @@ public class AbstractDocWrapper {
 	public static String getPhrase(String key,String other) {
 		return ("1342".equals(key))?other:getPhrase(key);
 	}
-
-	public static String getPhrase(String key,List<MultilingualTextFieldSmall> other) {
-		StringBuilder b = new StringBuilder();
-		if (other!=null) 
-			for (MultilingualTextFieldSmall t : other) {
-				b.append(t.getValue());
-				b.append(" ");
-			}
-		return ("1342".equals(key))?b.toString().trim():getPhrase(key);
-	}
 	
 	private final String prefix = "http://iuclid6.echa.europa.eu/namespaces/platform-metadata/v1";
 
@@ -87,6 +79,34 @@ public class AbstractDocWrapper {
 	}
 
 	protected void setFormat(IStructureRecord record) {
-		record.setFormat("i6._2.");
+		record.setFormat("i6._5.");
 	}
+	
+	protected String joinMultiTextField(List<MultilingualTextField> value) {
+		StringBuilder  b = new StringBuilder();
+		for (MultilingualTextField t : value) {
+			b.append(String.format("%s:%s",t.getLang(),t.getValue())); 
+			//b.append(t.getValue()); 
+			b.append(" ");
+		}
+		return b.toString().trim();
+	}
+	protected String joinMultiTextFieldLarge(List<MultilingualTextFieldLarge> value) {
+		StringBuilder  b = new StringBuilder();
+		for (MultilingualTextFieldLarge t : value) {
+			b.append(String.format("%s:%s",t.getLang(),t.getValue())); 
+			//b.append(t.getValue()); 
+			b.append(" ");
+		}
+		return b.toString().trim();
+	}
+	protected String joinMultiTextFieldSmall(List<MultilingualTextFieldSmall> value) {
+		StringBuilder  b = new StringBuilder();
+		for (MultilingualTextFieldSmall t : value) {
+			b.append(String.format("%s:%s",t.getLang(),t.getValue())); 
+			//b.append(t.getValue()); 
+			b.append(" ");
+		}
+		return b.toString().trim();
+	}	
 }

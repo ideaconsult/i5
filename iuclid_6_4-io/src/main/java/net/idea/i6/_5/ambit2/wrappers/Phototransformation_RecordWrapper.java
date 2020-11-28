@@ -6,9 +6,8 @@ import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.data.study.Value;
 import ambit2.base.ro.I5CONSTANTS;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_biodegradationinsoil._5.ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.SamplingTime;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_phototransformation._5.ENDPOINTSTUDYRECORDPhototransformation;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_phototransformationinsoil._5.ENDPOINTSTUDYRECORDPhotoTransformationInSoil.ResultsAndDiscussion.Degradation.Entry;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_phototransformation._5.ENDPOINTSTUDYRECORDPhototransformation.ResultsAndDiscussion.Degradation.Entry.SamplingTime;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
 
@@ -77,11 +76,11 @@ public class Phototransformation_RecordWrapper
 		}
 	}
 
-	protected static Value q2value(SamplingTime field) {
+	protected Value q2value(SamplingTime field) {
 		Value v = new Value();
 		if (field.getValue() != null)
 			v.setLoValue(Double.parseDouble(field.getValue()));
-		v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
+		v.setUnits(getPhrase(field.getUnitCode()));
 		return v;
 	}
 }

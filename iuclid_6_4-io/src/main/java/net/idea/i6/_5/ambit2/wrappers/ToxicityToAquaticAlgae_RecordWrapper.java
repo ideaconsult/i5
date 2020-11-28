@@ -7,7 +7,7 @@ import ambit2.base.data.study.Value;
 import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicitytoaquaticalgae._5.ENDPOINTSTUDYRECORDToxicityToAquaticAlgae;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicitytoaquaticalgae._5.ENDPOINTSTUDYRECORDToxicityToAquaticAlgae.ResultsAndDiscussion.EffectConcentrations.Entry;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicitytosoilmacroorganismsexceptarthropods._5.ENDPOINTSTUDYRECORDToxicityToSoilMacroorganismsExceptArthropods.ResultsAndDiscussion.EffectConcentrations.Entry.Duration;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicitytoaquaticalgae._5.ENDPOINTSTUDYRECORDToxicityToAquaticAlgae.ResultsAndDiscussion.EffectConcentrations.Entry.Duration;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
 
@@ -46,11 +46,11 @@ public class ToxicityToAquaticAlgae_RecordWrapper
 		}
 	}
 
-	protected static Value q2value(Duration field) {
+	protected Value q2value(Duration field) {
 		try {
 			Value v = new Value();
 			v.setLoValue(Double.parseDouble(field.getValue()));
-			v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
+			v.setUnits(getPhrase(field.getUnitCode()));
 			return v;
 		} catch (Exception x) {
 			return null;

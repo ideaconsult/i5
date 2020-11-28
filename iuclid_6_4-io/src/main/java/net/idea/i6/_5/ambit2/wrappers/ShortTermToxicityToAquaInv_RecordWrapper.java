@@ -7,7 +7,7 @@ import ambit2.base.data.study.Value;
 import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_shorttermtoxicitytoaquainv._5.ENDPOINTSTUDYRECORDShortTermToxicityToAquaInv;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_shorttermtoxicitytoaquainv._5.ENDPOINTSTUDYRECORDShortTermToxicityToAquaInv.ResultsAndDiscussion.EffectConcentrations.Entry;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicitytosoilmacroorganismsexceptarthropods._5.ENDPOINTSTUDYRECORDToxicityToSoilMacroorganismsExceptArthropods.ResultsAndDiscussion.EffectConcentrations.Entry.Duration;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_shorttermtoxicitytoaquainv._5.ENDPOINTSTUDYRECORDShortTermToxicityToAquaInv.ResultsAndDiscussion.EffectConcentrations.Entry.Duration;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
 

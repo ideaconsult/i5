@@ -42,7 +42,7 @@ public class ToxicityToTerrestrialPlants_RecordWrapper
 		try {
 			Value v = new Value();
 			v.setLoValue(Double.parseDouble(field.getValue()));
-			v.setUnits(getPhrase(field.getUnitCode(), null));
+			v.setUnits(getPhrase(field.getUnitCode()));
 			return v;
 		} catch (Exception x) {
 			return null;

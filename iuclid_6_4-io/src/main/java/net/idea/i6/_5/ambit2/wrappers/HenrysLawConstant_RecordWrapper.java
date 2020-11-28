@@ -39,7 +39,7 @@ public class HenrysLawConstant_RecordWrapper extends EndpointStudyRecordWrapper<
 		Value v = new Value();
 		if (field.getValue() != null)
 			v.setLoValue(Double.parseDouble(field.getValue()));
-		v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
+		v.setUnits(getPhrase(field.getUnitCode(), joinMultiTextFieldSmall(field.getUnitOther())));
 		return v;
 	}
 
@@ -48,7 +48,7 @@ public class HenrysLawConstant_RecordWrapper extends EndpointStudyRecordWrapper<
 		Value v = new Value();
 		if (field.getValue() != null)
 			v.setLoValue(Double.parseDouble(field.getValue()));
-		v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
+		v.setUnits(getPhrase(field.getUnitCode()));
 		return v;
 	}
 

@@ -7,7 +7,7 @@ import ambit2.base.data.study.Value;
 import ambit2.base.ro.I5CONSTANTS;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicitytomicroorganisms._5.ENDPOINTSTUDYRECORDToxicityToMicroorganisms;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicitytomicroorganisms._5.ENDPOINTSTUDYRECORDToxicityToMicroorganisms.ResultsAndDiscussion.EffectConcentrations.Entry;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicitytosoilmacroorganismsexceptarthropods._5.ENDPOINTSTUDYRECORDToxicityToSoilMacroorganismsExceptArthropods.ResultsAndDiscussion.EffectConcentrations.Entry.Duration;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicitytomicroorganisms._5.ENDPOINTSTUDYRECORDToxicityToMicroorganisms.ResultsAndDiscussion.EffectConcentrations.Entry.Duration;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
 
@@ -36,7 +36,7 @@ public class ToxicityToMicroorganisms_RecordWrapper
 
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			q2effectrecord(e.getEffectConc(), effect);
-			effect.setEndpoint(getPhrase(e.getEndpoint().getValue(), e.getEndpoint().getOther()));
+			effect.setEndpoint(getPhrase(e.getEndpoint().getValue(),joinMultiTextFieldSmall( e.getEndpoint().getOther())));
 			papp.addEffect(effect);
 
 			effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
@@ -52,7 +52,7 @@ public class ToxicityToMicroorganisms_RecordWrapper
 		try {
 			Value v = new Value();
 			v.setLoValue(Double.parseDouble(field.getValue()));
-			v.setUnits(getPhrase(field.getUnitCode(), field.getUnitOther()));
+			v.setUnits(getPhrase(field.getUnitCode()));
 			return v;
 		} catch (Exception x) {
 			return null;
