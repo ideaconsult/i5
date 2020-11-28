@@ -191,6 +191,10 @@ public class SubstanceTest {
 		String test = "net/idea/i6/_5/substance/i6z/f63698f5-6751-4bca-9ca8-8388de4fdea9.i6z";
 		URL url = SubstanceTest.class.getClassLoader().getResource(test);
 		Assert.assertNotNull(url);
+		//pchem 172
+		//env fate 26
+		// ecotox 73
+		//tox 402
 		Assert.assertEquals(603, unmarshall_i6z(new File(url.getFile()), 603));
 		// all ???
 	}
@@ -200,7 +204,7 @@ public class SubstanceTest {
 		String test = "net/idea/i6/_5/substance/i6z/306f1166-e1b1-4300-bade-8f3729c6c638.i6z";
 		URL url = SubstanceTest.class.getClassLoader().getResource(test);
 		Assert.assertNotNull(url);
-		Assert.assertEquals(32, unmarshall_i6z(new File(url.getFile()), 32));
+		Assert.assertEquals(2, unmarshall_i6z(new File(url.getFile()), 32));
 		// all 52
 	}
 

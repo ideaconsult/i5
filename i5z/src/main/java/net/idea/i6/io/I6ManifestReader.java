@@ -261,9 +261,10 @@ public class I6ManifestReader {
 		String jaxbcontextpath = "eu.europa.echa.iuclid6.namespaces.platform_container.v1:"
 				+ "eu.europa.echa.iuclid6.namespaces.platform_fields.v1:"
 				+ "eu.europa.echa.iuclid6.namespaces.platform_metadata.v1:"
-				+ "eu.europa.echa.iuclid6.namespaces.literature._1:"
+				+ "eu.europa.echa.iuclid6.namespaces.platform_modification_history.v1:"
+				+ "eu.europa.echa.iuclid6.namespaces.literature._5:"
 				+ "eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._5:"
-				+ "eu.europa.echa.iuclid6.namespaces.fixed_record_identifiers._5:"
+				+ "eu.europa.echa.iuclid6.namespaces.flexible_record_identifiers._5:"
 				+ "eu.europa.echa.iuclid6.namespaces.legal_entity._5:" 
 				+ "eu.europa.echa.iuclid6.namespaces.test_material_information._5";
 
