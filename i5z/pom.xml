@@ -27,7 +27,7 @@
     </dependency>
     <dependency>
       <groupId>net.idea</groupId>
-      <artifactId>iuclid_6_2-io</artifactId>
+      <artifactId>iuclid_6_4-io</artifactId>
       <version>${project.version}</version>
       <type>jar</type>
     </dependency>    
@@ -78,7 +78,7 @@
     </dependency>
     <dependency>
       <groupId>net.idea</groupId>
-      <artifactId>iuclid_6_2-io</artifactId>
+      <artifactId>iuclid_6_4-io</artifactId>
       <version>${project.version}</version>
       <classifier>tests</classifier>
       <scope>test</scope>

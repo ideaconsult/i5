@@ -112,7 +112,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 		String[] path = className.split("\\.");
 		String tagName = path[path.length - 1].replaceAll("ENDPOINTSTUDYRECORD", "");
 
-		String clazzName = String.format("net.idea.i6._2.ambit2.wrappers.%s_RecordWrapper", tagName);
+		String clazzName = String.format("net.idea.i6._5.ambit2.wrappers.%s_RecordWrapper", tagName);
 		try {
 			Class<?> c = Class.forName(clazzName);
 			Constructor<?> cons = c.getConstructor(Document.class);
@@ -149,7 +149,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 	}
 
 	protected void setFormat(IStructureRecord record) {
-		record.setFormat("i6._2.");
+		record.setFormat("i6._5.");
 	}
 
 	class ReferenceSubstanceRecordWrapper extends AbstractDocWrapper {

@@ -49,7 +49,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 	REFERENCE_SUBSTANCE {
 		@Override
 		public String getContextPath() {
-			return "eu.europa.echa.iuclid6.namespaces.reference_substance._2";
+			return "eu.europa.echa.iuclid6.namespaces.reference_substance._5";
 		}
 
 		@Override
@@ -107,7 +107,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 	SUBSTANCE {
 		@Override
 		public String getContextPath() {
-			return "eu.europa.echa.iuclid6.namespaces.substance._2";
+			return "eu.europa.echa.iuclid6.namespaces.substance._5";
 		}
 
 		@Override
@@ -491,7 +491,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		if (isIUCLID6())
 			// package
 			// eu.europa.echa.iuclid6.namespaces.endpoint_study_record_directobservationsclinicalcases._2;
-			return String.format("eu.europa.echa.iuclid6.namespaces.%s._2", name().toLowerCase());
+			return String.format("eu.europa.echa.iuclid6.namespaces.%s._5", name().toLowerCase());
 
 		else
 			return null;

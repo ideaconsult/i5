@@ -26,12 +26,12 @@ import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.base.relation.composition.CompositionRelation;
-import eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._2.FLEXIBLERECORDSubstanceComposition;
-import eu.europa.echa.iuclid6.namespaces.substance._2.SUBSTANCE;
+import eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._5.FLEXIBLERECORDSubstanceComposition;
+import eu.europa.echa.iuclid6.namespaces.substance._5.SUBSTANCE;
 import junit.framework.Assert;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QASettings;
-import net.idea.i6._2.ambit2.EndpointStudyRecordWrapper;
+import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
 import net.idea.i6.io.I6DReader;
 import net.idea.i6.io.I6ManifestReader;
 import net.idea.i6.io.I6ZReader;
@@ -51,7 +51,7 @@ public class SubstanceTest {
 	public void readManifest() throws Exception {
 
 		File file = new File(
-				getClass().getClassLoader().getResource("net/idea/i6/_2/substance/manifest_i5c.xml").getFile());
+				getClass().getClassLoader().getResource("net/idea/i6/_5/substance/manifest_i5c.xml").getFile());
 		Assert.assertTrue(file.exists());
 		File folder = file.getParentFile();
 		// File i5folder = new File(folder,
@@ -81,7 +81,7 @@ public class SubstanceTest {
 			// File test = new
 			// File(folder,"IUC5-848a57ae-94a6-436a-965c-d7d6bd3c1a1f_0.i6d");
 
-			// Assert.assertEquals("eu.europa.echa.iuclid6.namespaces.endpoint_study_record_watersolubility._2",
+			// Assert.assertEquals("eu.europa.echa.iuclid6.namespaces.endpoint_study_record_watersolubility._5",
 			// file2cjaxbcp.get(test.getAbsolutePath()));
 			System.out.println(file2cjaxbcp.get(test.getAbsolutePath()));
 			Assert.assertNotNull(file2cjaxbcp.get(test.getAbsolutePath()));
@@ -89,7 +89,7 @@ public class SubstanceTest {
 			String jaxbcontextpath = "eu.europa.echa.iuclid6.namespaces.platform_container.v1:"
 					+ "eu.europa.echa.iuclid6.namespaces.platform_fields.v1:"
 					+ "eu.europa.echa.iuclid6.namespaces.platform_metadata.v1:"
-					+ "eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._2:"
+					+ "eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._5:"
 					+ file2cjaxbcp.get(test.getAbsolutePath());
 
 			JAXBContext jaxbContext = JAXBContext.newInstance(jaxbcontextpath);
@@ -187,17 +187,17 @@ public class SubstanceTest {
 	}
 
 	@Test
-	public void test_i6z_2() throws Exception {
-		String test = "net/idea/i6/_2/substance/i6z/IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734.i6z";
+	public void test_i6z_5_endpointstudyrecords() throws Exception {
+		String test = "net/idea/i6/_5/substance/i6z/f63698f5-6751-4bca-9ca8-8388de4fdea9.i6z";
 		URL url = SubstanceTest.class.getClassLoader().getResource(test);
 		Assert.assertNotNull(url);
 		Assert.assertEquals(603, unmarshall_i6z(new File(url.getFile()), 603));
-		// all 880
+		// all ???
 	}
 
 	@Test
-	public void test_i6z_2_echa() throws Exception {
-		String test = "net/idea/i6/_2/substance/i6z/ECHA-13cdf683-927b-47d6-81a5-32d27ec38747.i6z";
+	public void test_i6z_5() throws Exception {
+		String test = "net/idea/i6/_5/substance/i6z/306f1166-e1b1-4300-bade-8f3729c6c638.i6z";
 		URL url = SubstanceTest.class.getClassLoader().getResource(test);
 		Assert.assertNotNull(url);
 		Assert.assertEquals(32, unmarshall_i6z(new File(url.getFile()), 32));
@@ -205,8 +205,8 @@ public class SubstanceTest {
 	}
 
 	@Test
-	public void test_i6z_2_internal() throws Exception {
-		String test = "net/idea/i6/_2/substance/i6z/IUC5-541ccdba-0033-45ee-8136-406478deb0f4.i6z";
+	public void test_i6z_5_internal() throws Exception {
+		String test = "net/idea/i6/_5/substance/i6z/f63698f5-6751-4bca-9ca8-8388de4fdea9.i6z";
 		URL url = SubstanceTest.class.getClassLoader().getResource(test);
 		Assert.assertNotNull(url);
 		try (I6ZReader<IStructureRecord> reader = new I6ZReader<>(new File(url.getFile()))) {

@@ -15,8 +15,8 @@ import org.openscience.cdk.exception.CDKException;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.interfaces.IStructureRecord;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
-import eu.europa.echa.iuclid6.namespaces.reference_substance._2.REFERENCESUBSTANCE;
-import eu.europa.echa.iuclid6.namespaces.substance._2.SUBSTANCE;
+import eu.europa.echa.iuclid6.namespaces.reference_substance._5.REFERENCESUBSTANCE;
+import eu.europa.echa.iuclid6.namespaces.substance._5.SUBSTANCE;
 import net.idea.i5.io.AbstractI5DReader;
 import net.idea.i5.io.I5ObjectVerifier;
 import net.idea.i5.io.QASettings;
@@ -114,7 +114,7 @@ public class I6DReader extends AbstractI5DReader<IStructureRecord> {
 	protected void initProcessors(QASettings qaSettings, String container, Map<String,Document> library) {
 		record = new SubstanceRecord();
 
-		net.idea.i6._2.ambit2.I6AmbitProcessor i62 = new net.idea.i6._2.ambit2.I6AmbitProcessor(container);
+		net.idea.i6._5.ambit2.I6AmbitProcessor i62 = new net.idea.i6._5.ambit2.I6AmbitProcessor(container);
 		i62.setLibrary(library);
 		i62.setQASettings(qaSettings);
 
@@ -125,8 +125,8 @@ public class I6DReader extends AbstractI5DReader<IStructureRecord> {
 		for (I6_ROOT_OBJECTS tag : I6_ROOT_OBJECTS.values())
 			if (tag.isScientificPart()) {
 				// package
-				// eu.europa.echa.iuclid6.namespaces.endpoint_study_record_biodegradationinwaterandsedimentsimulationtests._2;
-				String clazz = String.format("eu.europa.echa.iuclid6.namespaces.%s._2.%s", tag.name().toLowerCase(),
+				// eu.europa.echa.iuclid6.namespaces.endpoint_study_record_biodegradationinwaterandsedimentsimulationtests._5;
+				String clazz = String.format("eu.europa.echa.iuclid6.namespaces.%s._5.%s", tag.name().toLowerCase(),
 						tag.name().replaceAll("_", ""));
 				processors.put(clazz, i62);
 			}
