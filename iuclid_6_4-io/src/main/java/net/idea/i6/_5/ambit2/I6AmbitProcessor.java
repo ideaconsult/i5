@@ -212,7 +212,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			if (structureRecord.getFormat() == null)
 				structureRecord.setFormat(MOL_TYPE.SDF.name());
 
-			CASInfo cas = unmarshalled.getReferenceSubstanceInfo()==null?null:unmarshalled.getReferenceSubstanceInfo().getCASInfo();
+			CASInfo cas = unmarshalled.getReferenceSubstanceInfo() == null ? null
+					: unmarshalled.getReferenceSubstanceInfo().getCASInfo();
 			if (cas != null) {
 				try {
 					structureRecord.setRecordProperty(I5ReaderSimple.casProperty,
@@ -222,14 +223,18 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				}
 				// TODO cas name
 			}
-			String iupacName = unmarshalled.getReferenceSubstanceInfo()==null?null:unmarshalled.getReferenceSubstanceInfo().getIupacName();
+			String iupacName = unmarshalled.getReferenceSubstanceInfo() == null ? null
+					: unmarshalled.getReferenceSubstanceInfo().getIupacName();
 			setIUPACName(structureRecord, iupacName);
 
-			Synonyms synonyms = unmarshalled.getReferenceSubstanceInfo()==null?null:unmarshalled.getReferenceSubstanceInfo().getSynonyms();
+			Synonyms synonyms = unmarshalled.getReferenceSubstanceInfo() == null ? null
+					: unmarshalled.getReferenceSubstanceInfo().getSynonyms();
 			if (synonyms != null) {
 				List<String> lookup = new ArrayList<String>();
-				for (eu.europa.echa.iuclid6.namespaces.reference_substance._5.REFERENCESUBSTANCE.ReferenceSubstanceInfo.Synonyms.Entry e : synonyms.getEntry()) {
-					String nameType = getPhrase(e.getIdentifier().getValue(), joinMultiTextFieldSmall(e.getIdentifier().getOther()));
+				for (eu.europa.echa.iuclid6.namespaces.reference_substance._5.REFERENCESUBSTANCE.ReferenceSubstanceInfo.Synonyms.Entry e : synonyms
+						.getEntry()) {
+					String nameType = getPhrase(e.getIdentifier().getValue(),
+							joinMultiTextFieldSmall(e.getIdentifier().getOther()));
 
 					if ("CAS number".equals(nameType)) {
 						structureRecord.setRecordProperty(Property.getCASInstance(), e.getName());
@@ -342,7 +347,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					if (e.getValue().getContent().getAny() instanceof FLEXIBLERECORDIdentifiers) {
 
 						FLEXIBLERECORDIdentifiers sc = (FLEXIBLERECORDIdentifiers) e.getValue().getContent().getAny();
-						for (eu.europa.echa.iuclid6.namespaces.flexible_record_identifiers._5.FLEXIBLERECORDIdentifiers.ExternalSystemIdentifiersSet.ExternalSystemIdentifiers.Entry id : sc.getExternalSystemIdentifiers().getExternalSystemIdentifiers().getEntry()) {
+						for (eu.europa.echa.iuclid6.namespaces.flexible_record_identifiers._5.FLEXIBLERECORDIdentifiers.ExternalSystemIdentifiersSet.ExternalSystemIdentifiers.Entry id : sc
+								.getExternalSystemIdentifiers().getExternalSystemIdentifiers().getEntry()) {
 							a.add(new ExternalIdentifier(id.getExternalSystemDesignator(), id.getId()));
 						}
 						/*
@@ -375,21 +381,24 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 								getPlatformMetadataValue(e.getValue(), "documentKey"));
 						String cname = sc.getGeneralInformation().getName();
 						if (sc.getImpurities() != null)
-							for (eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._5.FLEXIBLERECORDSubstanceComposition.ImpuritiesSet.Impurities.Entry c : sc.getImpurities().getImpurities().getEntry())
+							for (eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._5.FLEXIBLERECORDSubstanceComposition.ImpuritiesSet.Impurities.Entry c : sc
+									.getImpurities().getImpurities().getEntry())
 								try {
 									impurity2record(compositionUUID, cname, record, c);
 								} catch (Exception x) {
 									logger.log(Level.WARNING, x.getMessage(), x);
 								}
 						if (sc.getAdditives() != null)
-							for (eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._5.FLEXIBLERECORDSubstanceComposition.AdditivesSetSet.Additives.Entry c : sc.getAdditives().getAdditives().getEntry())
+							for (eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._5.FLEXIBLERECORDSubstanceComposition.AdditivesSetSet.Additives.Entry c : sc
+									.getAdditives().getAdditives().getEntry())
 								try {
 									additive2record(compositionUUID, cname, record, c);
 								} catch (Exception x) {
 									logger.log(Level.WARNING, x.getMessage(), x);
 								}
 						if (sc.getConstituents() != null)
-							for (eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._5.FLEXIBLERECORDSubstanceComposition.ConstituentsSet.Constituents.Entry c : sc.getConstituents().getConstituents().getEntry())
+							for (eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._5.FLEXIBLERECORDSubstanceComposition.ConstituentsSet.Constituents.Entry c : sc
+									.getConstituents().getConstituents().getEntry())
 								try {
 									constituent2record(unmarshalled, compositionUUID, cname, record, c);
 								} catch (Exception x) {
@@ -448,7 +457,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setReal_unit("");
 				}
 				try {
-					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(), joinMultiTextFieldSmall(a.getConcentration().getUnitOther())));
+					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(),
+							joinMultiTextFieldSmall(a.getConcentration().getUnitOther())));
 				} catch (Exception x) {
 					p.setReal_unit("");
 				}
@@ -471,7 +481,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			}
 
 			try {
-				p.setFunction(getPhrase(a.getFunction().getValue(), joinMultiTextFieldSmall(a.getFunction().getOther())));
+				p.setFunction(
+						getPhrase(a.getFunction().getValue(), joinMultiTextFieldSmall(a.getFunction().getOther())));
 			} catch (Exception x) {
 				p.setFunction("Error reading the function type");
 			}
@@ -513,7 +524,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setReal_unit("");
 				}
 				try {
-					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(), joinMultiTextFieldSmall(a.getConcentration().getUnitOther())));
+					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(),
+							joinMultiTextFieldSmall(a.getConcentration().getUnitOther())));
 				} catch (Exception x) {
 					p.setReal_unit("");
 				}
@@ -530,8 +542,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setTypical("");
 				}
 				try {
-					p.setTypical_unit(
-							getPhrase(a.getProportionTypical().getUnitCode(), joinMultiTextFieldSmall(a.getConcentration().getUnitOther())));
+					p.setTypical_unit(getPhrase(a.getProportionTypical().getUnitCode(),
+							joinMultiTextFieldSmall(a.getConcentration().getUnitOther())));
 				} catch (Exception x) {
 					p.setTypical_unit("");
 				}
@@ -544,7 +556,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 		}
 
 		protected IStructureRecord constituent2record(SUBSTANCE unmarshalled, String compositionUUID, String cname,
-				SubstanceRecord substance, eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._5.FLEXIBLERECORDSubstanceComposition.ConstituentsSet.Constituents.Entry a)
+				SubstanceRecord substance,
+				eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._5.FLEXIBLERECORDSubstanceComposition.ConstituentsSet.Constituents.Entry a)
 
 		{
 			if (a == null)
@@ -579,7 +592,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setReal_lower("");
 				}
 				try {
-					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(), joinMultiTextFieldSmall(a.getConcentration().getUnitOther())));
+					p.setReal_unit(getPhrase(a.getConcentration().getUnitCode(),
+							joinMultiTextFieldSmall(a.getConcentration().getUnitOther())));
 				} catch (Exception x) {
 					p.setReal_unit("");
 				}
@@ -595,8 +609,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setTypical("");
 				}
 				try {
-					p.setTypical_unit(
-							getPhrase(a.getProportionTypical().getUnitCode(), joinMultiTextFieldSmall(a.getConcentration().getUnitOther())));
+					p.setTypical_unit(getPhrase(a.getProportionTypical().getUnitCode(),
+							joinMultiTextFieldSmall(a.getConcentration().getUnitOther())));
 				} catch (Exception x) {
 					p.setTypical_unit("");
 				}
@@ -618,17 +632,17 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				for (eu.europa.echa.iuclid6.namespaces.substance._5.SUBSTANCE.OtherNames.Entry name : unmarshalled
 						.getOtherNames().getEntry()) {
 
-				    
-				    
-				    String nameType = null;
-				    try {
-				      nameType = name.getNameType()==null?null:getPhrase(name.getNameType().getValue(), joinMultiTextFieldSmall(name.getNameType().getOther()));
-				    } catch (Exception x) {
-				       x.printStackTrace();
-				    }
-				    Property prop =  Property.getNameInstance();
-					if (nameType==null)
-					  prop =  Property.getNameInstance();
+					String nameType = null;
+					try {
+						nameType = name.getNameType() == null ? null
+								: getPhrase(name.getNameType().getValue(),
+										joinMultiTextFieldSmall(name.getNameType().getOther()));
+					} catch (Exception x) {
+						x.printStackTrace();
+					}
+					Property prop = Property.getNameInstance();
+					if (nameType == null)
+						prop = Property.getNameInstance();
 					else if ("CAS number".equals(nameType))
 						prop = Property.getCASInstance();
 					else if ("EC number".equals(nameType))
@@ -648,10 +662,10 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					else if ("trade name".equals(nameType)) {
 						prop = Property.getNameInstance();
 						prop.setLabel(Property.opentox_TradeName);
-					} else 
-					   prop = Property.getInstance(String.format("%s %d", nameType, (i + 1)),
-                          LiteratureEntry.getI5UUIDReference());
-					
+					} else
+						prop = Property.getInstance(String.format("%s %d", nameType, (i + 1)),
+								LiteratureEntry.getI5UUIDReference());
+
 					record.setRecordProperty(prop, name.getName());
 					if (name.getRemarks() != null && !"".equals(name.getRemarks())) {
 						prop = Property.getInstance("Identifier", LiteratureEntry.getI5UUIDReference());

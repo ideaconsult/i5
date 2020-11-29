@@ -189,7 +189,7 @@ public class I6StudyRecordConverter<T extends EndpointStudyRecordWrapper, PROTOC
 		try {
 			setCompanyUUID(record, unmarshalled.getSubstanceUUID());
 		} catch (Exception x) {
-
+			x.printStackTrace();
 		}
 		// TODO data owner - it's probably not in this file
 

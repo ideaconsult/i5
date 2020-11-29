@@ -98,7 +98,7 @@ public class DevelopmentalToxicityTeratogenicity_RecordWrapper
 				try {
 					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint("LOEL");
-					if (entry.getLowestEffectiveDoseConc().getValue() != null
+					if (entry.getLowestEffectiveDoseConc()!=null && entry.getLowestEffectiveDoseConc().getValue() != null
 							&& !"".equals(entry.getLowestEffectiveDoseConc()))
 						q2effectrecord(entry.getLowestEffectiveDoseConc(), effect);
 					else
