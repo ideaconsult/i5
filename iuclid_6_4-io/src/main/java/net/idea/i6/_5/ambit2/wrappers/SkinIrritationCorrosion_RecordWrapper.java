@@ -29,7 +29,7 @@ public class SkinIrritationCorrosion_RecordWrapper
 
   @Override
   public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDSkinIrritationCorrosion studyrecord) {
-
+	  if (studyrecord.getResultsAndDiscussion()==null) return;
     if (studyrecord.getResultsAndDiscussion().getInVivo() != null) {
       for (Entry e : studyrecord.getResultsAndDiscussion().getInVivo().getResults().getEntry()) {
         EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();

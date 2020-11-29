@@ -196,7 +196,7 @@ public class SubstanceTest {
 		// ecotox 73
 		//tox 402
 		try {
-		  Assert.assertEquals(603, unmarshall_i6z(new File(url.getFile()), 372));
+		  Assert.assertEquals(372, unmarshall_i6z(new File(url.getFile()), 372));
 		} catch (Exception x) {
 		  Assert.fail(x.getMessage());
 		}
@@ -276,10 +276,12 @@ public class SubstanceTest {
 					if (((SubstanceRecord) next).getMeasurements()!=null) {
 					  for (ProtocolApplication<Protocol, IParams, String, IParams, String> papp : ((SubstanceRecord)next).getMeasurements()) {
 					      System.out.println(papp.getProtocol().getCategory());
+					      System.out.println(papp.getDocumentUUID());
 					  }
 					}
 				} else if (next instanceof IStructureRecord) {
 					System.out.println(((IStructureRecord) next).getContent());
+					
 				}
 				logger.info(next == null ? "null entry" : next.toString());
 				count++;

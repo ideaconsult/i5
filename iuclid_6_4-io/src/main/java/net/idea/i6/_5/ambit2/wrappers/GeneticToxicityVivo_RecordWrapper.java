@@ -24,17 +24,18 @@ public class GeneticToxicityVivo_RecordWrapper
 			return key;
 		else if ("Studytype".equals(key))
 			return I5CONSTANTS.cTypeStudy;
-		else return super.dictionaryParams(key);
+		else
+			return super.dictionaryParams(key);
 	}
-	
+
 	@Override
 	public void assignProtocolParameters(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
 		super.assignProtocolParameters(papp);
 		try {
 			IParams params = ((IParams) papp.getParameters());
 			params.put(I5CONSTANTS.cTypeStudy, p2Value(getStudyRecord().getAdministrativeData().getEndpoint()).trim());
-			params.put(I5CONSTANTS.cTypeGenotoxicity, getStudyRecord().getAdministrativeData()
-					.getEndpoint().getRemarks());
+			params.put(I5CONSTANTS.cTypeGenotoxicity,
+					getStudyRecord().getAdministrativeData().getEndpoint().getRemarks());
 		} catch (Exception x) {
 			logger.log(Level.WARNING, x.getMessage());
 		}
@@ -42,7 +43,7 @@ public class GeneticToxicityVivo_RecordWrapper
 
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDGeneticToxicityVivo studyrecord) {
-		if (studyrecord.getResultsAndDiscussion().getTestRs() == null)
+		if (studyrecord.getResultsAndDiscussion()==null || studyrecord.getResultsAndDiscussion().getTestRs() == null)
 			return;
 		for (Entry e : studyrecord.getResultsAndDiscussion().getTestRs().getEntry()) {
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
@@ -53,13 +54,20 @@ public class GeneticToxicityVivo_RecordWrapper
 			effect.getConditions().put(I5CONSTANTS.cSex, p2Value(e.getSex()));
 
 			// copied to conditions
-			effect.getConditions().put(I5CONSTANTS.cTypeStudy, ((IParams)papp.getParameters()).get(I5CONSTANTS.cTypeStudy));
+			effect.getConditions().put(I5CONSTANTS.cTypeStudy,
+					((IParams) papp.getParameters()).get(I5CONSTANTS.cTypeStudy));
 		}
 	}
+
 	@Override
 	public void assignInterpretationResult(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDGeneticToxicityVivo studyRecord) {
-		papp.setInterpretationResult(joinMultiTextFieldLarge(studyRecord.getApplicantSummaryAndConclusion().getConclusions()).replace(msg.getString(_MIGRATED), ""));
-		papp.setInterpretationCriteria(joinMultiTextFieldLarge(studyRecord.getApplicantSummaryAndConclusion().getConclusions()));
+		if (studyRecord.getApplicantSummaryAndConclusion() != null) {
+			papp.setInterpretationResult(
+					joinMultiTextFieldLarge(studyRecord.getApplicantSummaryAndConclusion().getConclusions())
+							.replace(msg.getString(_MIGRATED), ""));
+			papp.setInterpretationCriteria(
+					joinMultiTextFieldLarge(studyRecord.getApplicantSummaryAndConclusion().getConclusions()));
+		}
 	}
 }

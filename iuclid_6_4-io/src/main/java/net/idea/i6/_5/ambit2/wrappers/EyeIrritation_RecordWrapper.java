@@ -23,6 +23,7 @@ public class EyeIrritation_RecordWrapper extends EndpointStudyRecordWrapper<ENDP
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDEyeIrritation studyrecord) {
 		//studyrecord.getResultsAndDiscussion().getResultsOfExVivoInVitroStudy()
+		if (studyrecord.getResultsAndDiscussion()==null) return;
 		if (studyrecord.getResultsAndDiscussion().getInVitro() != null) {
 			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_eyeirritation._5.ENDPOINTSTUDYRECORDEyeIrritation.ResultsAndDiscussion.InVitro.ResultsOfExVivoInVitroStudy.Entry e : studyrecord.getResultsAndDiscussion().getInVitro().getResultsOfExVivoInVitroStudy().getEntry()) {
 				

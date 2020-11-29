@@ -26,6 +26,7 @@ public class AcuteToxicityDermal_RecordWrapper
 
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDAcuteToxicityDermal studyrecord) {
+		if (studyrecord.getResultsAndDiscussion()==null) return;
 		if (studyrecord.getResultsAndDiscussion().getEffectLevels() == null)
 			return;
 		for (Entry e : studyrecord.getResultsAndDiscussion().getEffectLevels().getEntry()) {

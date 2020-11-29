@@ -56,6 +56,7 @@ public class SedimentToxicity_RecordWrapper extends EndpointStudyRecordWrapper<E
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDSedimentToxicity studyrecord) {
 		// I5_ROOT_OBJECTS.EC_SEDIMENTDWELLINGTOX
+		if (studyrecord.getResultsAndDiscussion()==null) return;
 		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() != null)
 			for (Entry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();

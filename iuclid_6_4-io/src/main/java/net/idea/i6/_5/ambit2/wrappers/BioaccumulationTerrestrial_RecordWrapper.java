@@ -20,6 +20,7 @@ public class BioaccumulationTerrestrial_RecordWrapper
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDBioaccumulationTerrestrial studyrecord) {
+		if (studyrecord.getResultsAndDiscussion()==null) return;
 		if (studyrecord.getResultsAndDiscussion().getBioaccumulationFactor() != null)
 			for (Entry e : studyrecord.getResultsAndDiscussion().getBioaccumulationFactor().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();

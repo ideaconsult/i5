@@ -46,7 +46,7 @@ public class GeneticToxicityVitro_RecordWrapper
 
   @Override
   public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDGeneticToxicityVitro studyrecord) {
-
+	  if (studyrecord.getResultsAndDiscussion()==null) return;
     studyrecord.getResultsAndDiscussion().getResultsDetails();
     TestRs resutls = studyrecord.getResultsAndDiscussion().getTestRs();
     for (Entry e : resutls.getEntry()) {

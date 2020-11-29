@@ -36,7 +36,7 @@ public class Phototransformation_RecordWrapper
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDPhototransformation studyrecord) {
 
 		StringBuilder reactant = null;
-
+		if (studyrecord.getResultsAndDiscussion()==null) return;
 		if (studyrecord.getResultsAndDiscussion().getDegradation() != null) {
 
 			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_phototransformation._5.ENDPOINTSTUDYRECORDPhototransformation.ResultsAndDiscussion.Degradation.Entry e : studyrecord.getResultsAndDiscussion().getDegradation().getEntry()) {
