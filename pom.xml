@@ -11,7 +11,7 @@
   <modules>
     <module>iuclid_5_5-io</module>
     <module>iuclid_5_4-io</module>
-    <module>iuclid_5_0-io</module>
+    
     <module>i5z</module>
     <module>iuclid_5_common</module>
     <module>iuclid_5_sections</module>
@@ -32,7 +32,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>4.8.1</junit.version>
-    <ambit.version>4.0.0-SNAPSHOT</ambit.version>
+    <ambit.version>4.0.1-SNAPSHOT</ambit.version>
   </properties>
   <scm>
     <connection>scm:git:git://github.com/ideaconsult/i5.git</connection>

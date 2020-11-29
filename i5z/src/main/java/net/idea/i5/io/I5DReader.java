@@ -90,14 +90,14 @@ public class I5DReader extends AbstractI5DReader<IStructureRecord> {
 		record = new SubstanceRecord();
 		
 		
-		net.idea.i5._0.ambit2.I5AmbitProcessor i50 = new net.idea.i5._0.ambit2.I5AmbitProcessor(container);
+		//net.idea.i5._0.ambit2.I5AmbitProcessor i50 = new net.idea.i5._0.ambit2.I5AmbitProcessor(container);
 		net.idea.i5._5.ambit2.I5AmbitProcessor i55 = new net.idea.i5._5.ambit2.I5AmbitProcessor(container);
 		net.idea.i5._4.ambit2.I5AmbitProcessor i54 = new net.idea.i5._4.ambit2.I5AmbitProcessor(container);
 		
 		i55.setQASettings(qaSettings);
 		i54.setQASettings(qaSettings);
 		
-		processors.put(eu.europa.echa.schemas.iuclid5._20070330.referencesubstance.ReferenceSubstance.class.getName(), i50); 
+		//processors.put(eu.europa.echa.schemas.iuclid5._20070330.referencesubstance.ReferenceSubstance.class.getName(), i50); 
 		
 		processors.put(eu.europa.echa.schemas.iuclid5._20120101.substance.Substance.class.getName(), i54);
 		processors.put(eu.europa.echa.schemas.iuclid5._20120101.referencesubstance.ReferenceSubstance.class.getName(), i54); 

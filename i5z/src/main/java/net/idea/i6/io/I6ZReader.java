@@ -93,7 +93,7 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 				logger.log(Level.FINE, cp);
 				if (cp.indexOf(".literature.") >= 0) {
 					linkedentries.add(file);
-				} if (cp.indexOf(".fixed_record_identifiers.") >= 0) {	
+				} if (cp.indexOf(".flexible_record_identifiers.") >= 0) {	
 					linkedentries.add(file);
 				} if (cp.indexOf(".legal_entity.") >= 0) {	
 					linkedentries.add(file);					
@@ -167,7 +167,7 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 				String jaxbcontextpath = "eu.europa.echa.iuclid6.namespaces.platform_container.v1:"
 						+ "eu.europa.echa.iuclid6.namespaces.platform_fields.v1:"
 						+ "eu.europa.echa.iuclid6.namespaces.platform_metadata.v1:"
-						+ "eu.europa.echa.iuclid6.namespaces.fixed_record_identifiers._5:"
+						+ "eu.europa.echa.iuclid6.namespaces.flexible_record_identifiers._5:"
 						+ "eu.europa.echa.iuclid6.namespaces.literature._5:" + getJaxbContextPath4File(files[index]);
 				if (jaxbcontextpath != null && !"".equals(jaxbcontextpath)) {
 					InputStream fileReader = new FileInputStream(files[index]);

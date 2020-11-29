@@ -195,7 +195,11 @@ public class SubstanceTest {
 		//env fate 26
 		// ecotox 73
 		//tox 402
-		Assert.assertEquals(603, unmarshall_i6z(new File(url.getFile()), 603));
+		try {
+		  Assert.assertEquals(603, unmarshall_i6z(new File(url.getFile()), 372));
+		} catch (Exception x) {
+		  Assert.fail(x.getMessage());
+		}
 		// all ???
 	}
 
@@ -261,13 +265,19 @@ public class SubstanceTest {
 			while (reader.hasNext()) {
 				Object next = reader.nextRecord();
 				if (next instanceof SubstanceRecord) {
-					Assert.assertNotNull(((SubstanceRecord) next).getSubstanceUUID());
+					Assert.assertNotNull("Substance without UUID!",((SubstanceRecord) next).getSubstanceUUID());
+					System.out.println(((SubstanceRecord) next).getSubstanceUUID());
 					// Assert.assertNotNull(((SubstanceRecord)
 					// next).getContent());
 					if (((SubstanceRecord) next).getRelatedStructures() != null)
 						for (CompositionRelation r : ((SubstanceRecord) next).getRelatedStructures()) {
 							Assert.assertNotNull(r.getCompositionUUID());
 						}
+					if (((SubstanceRecord) next).getMeasurements()!=null) {
+					  for (ProtocolApplication<Protocol, IParams, String, IParams, String> papp : ((SubstanceRecord)next).getMeasurements()) {
+					      System.out.println(papp.getProtocol().getCategory());
+					  }
+					}
 				} else if (next instanceof IStructureRecord) {
 					System.out.println(((IStructureRecord) next).getContent());
 				}

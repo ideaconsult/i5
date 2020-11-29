@@ -75,7 +75,7 @@ public class I6ManifestReader {
 							break;							
 						case FLEXIBLE_RECORD_SubstanceComposition:
 							break;
-						case FIXED_RECORD_Identifiers: 
+						case FLEXIBLE_RECORD_Identifiers: 
 							break;
 						default:
 							if (!rootObject.isSupported() || rootObject.mapIUCLID5() == null)
