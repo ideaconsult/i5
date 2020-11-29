@@ -24,6 +24,7 @@ import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.BasePhysicalQuantity
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.BasePhysicalQuantityRangeField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.BasePicklistField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.DocumentReferenceMultipleField;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.MultilingualTextFieldLarge;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.MultilingualTextFieldSmall;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistField;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithLargeTextRemarks;
@@ -146,7 +147,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
   }
 
   public String getSubstanceUUID() {
-    return null;
+    return parentDocumentKey;
   }
 
   public void assignGuidelines(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
@@ -157,15 +158,22 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
         Object entries = call(guideline, "getEntry", null);
         if (entries != null && entries instanceof List)
           for (Object o : (List) entries) {
-            PicklistField g = (PicklistField) call(o, "getGuideline", null);
-            Object value = getMethodValue(g);
-            if (value != null && !"".equals(value))
-              papp.getProtocol().addGuideline(getPhrase(value.toString()));
+            Object g = call(o, "getGuideline", null);
+            if (g!=null) {
+              String value = (String) call(g, "getValue", null);
+              List<MultilingualTextFieldSmall> other = (List<MultilingualTextFieldSmall> ) call(g, "getOther", null); 
+              if (value != null && !"".equals(value))
+                papp.getProtocol().addGuideline(getPhrase(value.toString(),joinMultiTextFieldSmall(other)));
+            } else {
+              System.err.println(">>>>>> no guideline");
+            }
+            
+            //g = call(o, "getQualifier", null);
           }
         // getMethodNoGuideline
         Object methodNoGuideline = call(materialsAndMethods, "getMethodNoGuideline", null);
         if (methodNoGuideline != null && !"".equals(methodNoGuideline))
-          papp.getProtocol().addGuideline(methodNoGuideline.toString());
+          papp.getProtocol().addGuideline(joinMultiTextFieldLarge((List<MultilingualTextFieldLarge>)methodNoGuideline));
       }
 
     } catch (Exception x) {
@@ -381,7 +389,11 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
       logger.log(Level.WARNING, x.getMessage(), x);
     }
   }
-
+  /**
+   * @TODO getOther, getRemarks
+   * @param papp
+   * @param studyRecord
+   */
   public void assignInterpretationResult(ProtocolApplication papp, STUDYRECORD studyRecord) {
     try {
       Object mm = getContentValue("getApplicantSummaryAndConclusion");
@@ -390,18 +402,13 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
       try {
         Object interpretation = call(mm, "getInterpretationOfResults", null);
         if (interpretation != null) {
-          if (interpretation instanceof PicklistFieldWithMultiLineTextRemarks)
-            papp.setInterpretationCriteria(p2Remarks((PicklistFieldWithMultiLineTextRemarks) interpretation));
-          else if (interpretation instanceof PicklistFieldWithSmallTextRemarks)
-            papp.setInterpretationCriteria(p2Remarks((PicklistFieldWithSmallTextRemarks) interpretation));
-          else if (interpretation instanceof PicklistFieldWithLargeTextRemarks)
-            papp.setInterpretationCriteria(p2Remarks((PicklistFieldWithLargeTextRemarks) interpretation));
-          papp.setInterpretationResult(p2Value(interpretation));
+          papp.setInterpretationResult((String)call(interpretation,"getValue"));
         }
-      } catch (Exception x) {
-        x.printStackTrace();
-      }
+      } catch (NoSuchMethodException x) {
 
+      } catch (Exception x) {
+        System.err.println(x);
+      }
     } catch (Exception x) {
       logger.log(Level.WARNING, x.getMessage(), x);
     }
@@ -443,31 +450,32 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 
     String reliabilityID_value = null;
     List<MultilingualTextFieldSmall> reliabilityID_othervalue = null;
-    String purposeFlag_value =null;
+    String purposeFlag_value = null;
     String studyResultType_value = null;
     List<MultilingualTextFieldSmall> studyResultType_other = null;
-    
-    
+
     String testMaterialIndicator;
     try {
       BasePicklistField reliabilityID = (BasePicklistField) call(administrativeData, "getReliability", null);
       BasePicklistField purposeFlagCode = (BasePicklistField) call(administrativeData, "getPurposeFlag", null);
-      JAXBElement<Boolean> isRobustStudy_value = (JAXBElement<Boolean>) call(administrativeData, "getRobustStudy", null);
-      isRobustStudy = isRobustStudy_value==null?false:isRobustStudy_value.getValue();
-      
-      JAXBElement<Boolean> isUsedforClassification_value = (JAXBElement<Boolean>) call(administrativeData, "getUsedForClassification", null);
-      isUsedforClassification = isRobustStudy_value==null?false:isUsedforClassification_value.getValue();
-      
-      JAXBElement<Boolean> isUsedforMSDS_value = (JAXBElement<Boolean>) call(administrativeData, "getUsedForMSDS", null);
-      isUsedforMSDS = isUsedforMSDS_value==null?false:isUsedforMSDS_value.getValue();
-      
+      JAXBElement<Boolean> isRobustStudy_value = (JAXBElement<Boolean>) call(administrativeData, "getRobustStudy",
+          null);
+      isRobustStudy = isRobustStudy_value == null ? false : isRobustStudy_value.getValue();
+
+      JAXBElement<Boolean> isUsedforClassification_value = (JAXBElement<Boolean>) call(administrativeData,
+          "getUsedForClassification", null);
+      isUsedforClassification = isRobustStudy_value == null ? false : isUsedforClassification_value.getValue();
+
+      JAXBElement<Boolean> isUsedforMSDS_value = (JAXBElement<Boolean>) call(administrativeData, "getUsedForMSDS",
+          null);
+      isUsedforMSDS = isUsedforMSDS_value == null ? false : isUsedforMSDS_value.getValue();
+
       BasePicklistField studyResultTypeID = (BasePicklistField) call(administrativeData, "getStudyResultType", null);
 
       testMaterialIndicator = getTestMaterialIdentity();
 
       reliabilityID_value = (String) call(reliabilityID, "getValue");
-      reliabilityID_othervalue = (List<MultilingualTextFieldSmall>) call(reliabilityID,
-          "getOther");
+      reliabilityID_othervalue = (List<MultilingualTextFieldSmall>) call(reliabilityID, "getOther");
 
       purposeFlag_value = (String) call(purposeFlagCode, "getValue");
 
@@ -475,11 +483,11 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
       studyResultType_other = (List<MultilingualTextFieldSmall>) call(studyResultTypeID, "getOther");
 
     } catch (NoSuchMethodException x) {
-        x.printStackTrace();
+      x.printStackTrace();
     } catch (IllegalAccessException x) {
-        x.printStackTrace();
+      x.printStackTrace();
     } catch (InvocationTargetException x) {
-        x.printStackTrace();
+      x.printStackTrace();
     }
 
     try {
@@ -650,38 +658,40 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
     Value v = new Value();
 
     try {
-      v.setLoQualifier(field.getClass().getDeclaredMethod("getLowerQualifier").invoke(field).toString());
+      v.setLoQualifier((String) call(field, "getLowerQualifier"));
     } catch (Exception x) {
       x.printStackTrace();
     }
     try {
-      v.setLoQualifier(field.getClass().getDeclaredMethod("getUpperQualifier").invoke(field).toString());
+      v.setUpQualifier((String) call(field, "getUpperQualifier"));
     } catch (Exception x) {
       x.printStackTrace();
     }
     try {
-      v.setLoValue(((BigDecimal) field.getClass().getDeclaredMethod("getLowerValue").invoke(field)).doubleValue());
+      Object value = call(field, "getLowerValue");
+      if (value != null)
+        v.setLoValue(((BigDecimal) value).doubleValue());
     } catch (Exception x) {
       x.printStackTrace();
     }
     try {
-      v.setUpValue(((BigDecimal) field.getClass().getDeclaredMethod("getUpperValue").invoke(field)).doubleValue());
+      Object value = call(field, "getUpperValue");
+      if (value != null)
+        v.setUpValue(((BigDecimal) value).doubleValue());
     } catch (Exception x) {
       x.printStackTrace();
     }
     String unitother = null;
     try {
 
-      unitother = joinMultiTextFieldSmall(
-          (List<MultilingualTextFieldSmall>) (field.getClass().getDeclaredMethod("getUnitOther").invoke(field)));
+      unitother = joinMultiTextFieldSmall((List<MultilingualTextFieldSmall>) call(field, "getUnitOther"));
     } catch (Exception x) {
       x.printStackTrace();
     }
     try {
 
-      v.setUnits(getPhrase((field.getClass().getDeclaredMethod("getUnitCode").invoke(field).toString()), unitother));
+      v.setUnits(getPhrase((String)call(field,"getUnitCode"), unitother));
     } catch (Exception x) {
-      x.printStackTrace();
     }
 
     return v;
@@ -693,40 +703,37 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
       return;
 
     try {
-      effectrecord.setLoQualifier(field.getClass().getDeclaredMethod("getLowerQualifier").invoke(field).toString());
+      effectrecord.setLoQualifier((String) call(field, "getLowerQualifier"));
     } catch (Exception x) {
       x.printStackTrace();
     }
     try {
-      effectrecord.setLoQualifier(field.getClass().getDeclaredMethod("getUpperQualifier").invoke(field).toString());
+      effectrecord.setUpQualifier((String) call(field, "getUpperQualifier"));
     } catch (Exception x) {
       x.printStackTrace();
     }
     try {
-      effectrecord
-          .setLoValue(((BigDecimal) field.getClass().getDeclaredMethod("getLowerValue").invoke(field)).doubleValue());
+      Object loValue = call(field, "getLowerValue");
+      if (loValue != null)
+        effectrecord.setLoValue(((BigDecimal) loValue).doubleValue());
     } catch (Exception x) {
       x.printStackTrace();
     }
     try {
-      effectrecord
-          .setUpValue(((BigDecimal) field.getClass().getDeclaredMethod("getUpperValue").invoke(field)).doubleValue());
+      Object upValue = call(field, "getUpperValue");
+      if (upValue != null)
+        effectrecord.setUpValue(((BigDecimal) upValue).doubleValue());
     } catch (Exception x) {
       x.printStackTrace();
     }
     String unitother = null;
     try {
-
-      unitother = joinMultiTextFieldSmall(
-          (List<MultilingualTextFieldSmall>) (field.getClass().getDeclaredMethod("getUnitOther").invoke(field)));
+      unitother = joinMultiTextFieldSmall((List<MultilingualTextFieldSmall>) call(field, "getUnitOther"));
     } catch (Exception x) {
-      x.printStackTrace();
     }
     try {
-      effectrecord
-          .setUnit(getPhrase((field.getClass().getDeclaredMethod("getUnitCode").invoke(field)).toString(), unitother));
+      effectrecord.setUnit(getPhrase((String) call(field, "getUnitCode"), unitother));
     } catch (Exception x) {
-      x.printStackTrace();
     }
   }
 
@@ -735,22 +742,19 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
       return;
 
     try {
-      effectrecord
-          .setLoValue(Double.parseDouble(field.getClass().getDeclaredMethod("getValue").invoke(field).toString()));
+      effectrecord.setLoValue(Double.parseDouble((String) call(field, "getValue")));
     } catch (Exception x) {
-      x.printStackTrace();
+      System.err.println(x);
     }
     String unitother = null;
     try {
 
-      unitother = joinMultiTextFieldSmall(
-          (List<MultilingualTextFieldSmall>) (field.getClass().getDeclaredMethod("getUnitOther").invoke(field)));
+      unitother = joinMultiTextFieldSmall((List<MultilingualTextFieldSmall>) (call(field, "getUnitOther")));
     } catch (Exception x) {
       x.printStackTrace();
     }
     try {
-      effectrecord
-          .setUnit(getPhrase((field.getClass().getDeclaredMethod("getUnitCode").invoke(field)).toString(), unitother));
+      effectrecord.setUnit(getPhrase((String) call(field, "getUnitCode"), unitother));
     } catch (Exception x) {
       x.printStackTrace();
     }
