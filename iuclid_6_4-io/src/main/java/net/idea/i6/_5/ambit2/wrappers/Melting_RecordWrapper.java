@@ -44,7 +44,7 @@ public class Melting_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTST
 				effect.getConditions().put("Sublimation T", q2value(e.getSublimationTemp()));
 				effect.getConditions().put("Decomposition T", q2value(e.getDecompTemp()));
 
-				effect.setTextValue(e.getRemarksOnResults());
+				effect.setTextValue(remarks2Value(e.getRemarksOnResults()));
 				q2effectrecord(e.getMeltingPoint(), effect);
 
 			}

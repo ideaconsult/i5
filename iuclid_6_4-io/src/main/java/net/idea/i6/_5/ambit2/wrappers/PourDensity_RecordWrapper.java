@@ -31,7 +31,7 @@ public class PourDensity_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOI
 				} catch (Exception x) {
 				}
 
-				effect.getConditions().put(I5CONSTANTS.Remark, p2Value(e.getRemarksOnResults()));
+				effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(e.getRemarksOnResults()));
 
 			}
 	}

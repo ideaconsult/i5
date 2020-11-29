@@ -29,7 +29,7 @@ public class ToxicityToTerrestrialPlants_RecordWrapper
 
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			q2effectrecord(e.getEffectConc(), effect);
-			effect.setEndpoint(p2Value(e.getEndpoint().getValue()));
+			effect.setEndpoint(p2Value(e.getEndpoint()));
 			papp.addEffect(effect);
 			effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
 			effect.getConditions().put(I5CONSTANTS.cConcType, p2Value(e.getConcBasedOn()));

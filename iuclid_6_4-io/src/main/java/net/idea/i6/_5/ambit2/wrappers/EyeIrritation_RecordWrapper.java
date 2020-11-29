@@ -50,7 +50,7 @@ public class EyeIrritation_RecordWrapper extends EndpointStudyRecordWrapper<ENDP
 				effect.getConditions().put(I5CONSTANTS.cBasisForEffect, p2Value(e.getBasis()));
 				effect.getConditions().put(I5CONSTANTS.cReversibility, p2Value(e.getReversibility()));
 				effect.getConditions().put(I5CONSTANTS.cTimePoint, p2Value(e.getTimePoint()));
-				effect.getConditions().put(I5CONSTANTS.Remark, joinMultiTextField(e.getRemarksOnResults().getRemarks()));
+				effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(e.getRemarksOnResults()));
 				try {
 					effect.getConditions().put(I5CONSTANTS.cMaxScore, p2Value(e.getScale().getValue().intValue()));
 				} catch (Exception x) {
@@ -69,7 +69,7 @@ public class EyeIrritation_RecordWrapper extends EndpointStudyRecordWrapper<ENDP
 				effect.getConditions().put(I5CONSTANTS.cBasisForEffect, p2Value(e.getBasis()));
 				effect.getConditions().put(I5CONSTANTS.cReversibility, p2Value(e.getReversibility()));
 				effect.getConditions().put(I5CONSTANTS.cReversibility, p2Value(e.getReversibility()));
-				effect.getConditions().put(I5CONSTANTS.Remark, joinMultiTextField(e.getRemarksOnResults().getRemarks()));
+				effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(e.getRemarksOnResults()));
 				try {
 					effect.getConditions().put(I5CONSTANTS.cMaxScore, p2Value(e.getScale().getValue().intValue()));
 				} catch (Exception x) {

@@ -35,7 +35,7 @@ public class BoilingPoint_RecordWrapper extends EndpointStudyRecordWrapper<ENDPO
 				effect.getConditions().put(I5CONSTANTS.AtmPressure,q2value(e.getPressure()));
 				effect.getConditions().put("Decomposition T",q2value(e.getDecompositionTemp()));
 				
-				effect.setTextValue(e.getRemarksOnResults());
+				effect.setTextValue(remarks2Value(e.getRemarksOnResults()));
 				q2effectrecord(e.getBoilingPoint(),effect);
 
 			}

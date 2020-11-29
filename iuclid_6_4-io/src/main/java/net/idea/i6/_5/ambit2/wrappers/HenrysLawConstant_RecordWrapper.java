@@ -29,7 +29,7 @@ public class HenrysLawConstant_RecordWrapper extends EndpointStudyRecordWrapper<
 				papp.addEffect(effect);
 
 				effect.getConditions().put(I5CONSTANTS.Pressure, q2value(e.getAtmPressure()));
-				effect.getConditions().put(I5CONSTANTS.Remark, p2Value(e.getRemarksOnResults()));
+				effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(e.getRemarksOnResults()));
 				effect.getConditions().put(I5CONSTANTS.cTemperature, q2value(e.getTemp()));
 
 			}

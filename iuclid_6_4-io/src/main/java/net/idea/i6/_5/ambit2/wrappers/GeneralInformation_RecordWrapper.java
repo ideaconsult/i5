@@ -42,7 +42,7 @@ public class GeneralInformation_RecordWrapper
 			pressure.setLoValue(1013.0);
 			effect.getConditions().put(I5CONSTANTS.AtmPressure, pressure);
 			effect.getConditions().put(I5CONSTANTS.Remark,
-					studyrecord.getResultsAndDiscussion().getSubstancePhysicalState().getRemarks());
+					joinMultiTextField(studyrecord.getResultsAndDiscussion().getSubstancePhysicalState().getRemarks()));
 			papp.addEffect(effect);
 
 		} catch (Exception x) {
@@ -54,7 +54,7 @@ public class GeneralInformation_RecordWrapper
 				try {
 					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint(I5CONSTANTS.Form);
-					effect.setTextValue(e.getForm().getValue());
+					effect.setTextValue(p2Value(e.getForm()));
 					papp.addEffect(effect);
 
 				} catch (Exception x) {
@@ -64,7 +64,7 @@ public class GeneralInformation_RecordWrapper
 				try {
 					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint(I5CONSTANTS.Color);
-					effect.setTextValue(e.getSubstanceColour());
+					effect.setTextValue(joinMultiTextFieldMultiLine(e.getSubstanceColour()));
 					papp.addEffect(effect);
 
 				} catch (Exception x) {
@@ -74,8 +74,7 @@ public class GeneralInformation_RecordWrapper
 				try {
 					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 					effect.setEndpoint(I5CONSTANTS.Odor);
-					effect.setTextValue(
-							getPhrase(e.getOdour().getValue(), joinMultiTextFieldSmall(e.getOdour().getOther())));
+					effect.setTextValue(p2Value(e.getOdour()));
 					papp.addEffect(effect);
 
 				} catch (Exception x) {

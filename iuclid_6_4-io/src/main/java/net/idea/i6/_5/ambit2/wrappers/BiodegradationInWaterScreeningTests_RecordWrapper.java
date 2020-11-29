@@ -51,7 +51,7 @@ public class BiodegradationInWaterScreeningTests_RecordWrapper
   public void assignInterpretationResult(ProtocolApplication papp,
       ENDPOINTSTUDYRECORDBiodegradationInWaterScreeningTests studyRecord) {
     try {
-      if (studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults() != null) {
+      if (studyRecord.getApplicantSummaryAndConclusion() != null && studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults() != null) {
         papp.setInterpretationResult(
             p2Value(studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults()));
         papp.setInterpretationCriteria(joinMultiTextField(

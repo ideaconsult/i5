@@ -27,7 +27,7 @@ public class SolubilityOrganic_RecordWrapper extends EndpointStudyRecordWrapper<
 				q2effectrecord(e.getSolubility(), effect);
 
 				effect.getConditions().put(I5CONSTANTS.cTemperature, q2value(e.getTemp()));
-				effect.getConditions().put(I5CONSTANTS.Remark, p2Value(e.getRemarksOnResults()));
+				effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(e.getRemarksOnResults()));
 				effect.getConditions().put(I5CONSTANTS.cSolvent, p2Value(e.getMedium()));
 
 			}

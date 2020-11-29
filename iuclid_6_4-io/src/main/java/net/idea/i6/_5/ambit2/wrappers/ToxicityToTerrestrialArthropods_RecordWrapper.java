@@ -35,7 +35,7 @@ public class ToxicityToTerrestrialArthropods_RecordWrapper
 				effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
 				effect.getConditions().put(I5CONSTANTS.cConcType, p2Value(e.getConcBasedOn()));
 				effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,p2Value(e.getNominalMeasured()));
-				effect.getConditions().put(I5CONSTANTS.cExposure, e.getDuration());
+				effect.getConditions().put(I5CONSTANTS.cExposure, q2value(e.getDuration()));
 			}
 	}
 

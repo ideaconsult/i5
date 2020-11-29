@@ -28,9 +28,6 @@ import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.DocumentReferenceMul
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.MultilingualTextFieldLarge;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.MultilingualTextFieldSmall;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistField;
-import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithLargeTextRemarks;
-import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithMultiLineTextRemarks;
-import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithSmallTextRemarks;
 import net.idea.i5.io.Experiment;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QACriteriaException;
@@ -152,8 +149,12 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
   }
 
   public void assignGuidelines(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
+    if (materialsAndMethods==null) {
+      logger.log(Level.WARNING,"No materials and methods record! " + endpointCategory);
+      return;
+    }
     try {
-
+      
       Object guideline = call(materialsAndMethods, "getGuideline", null);
       if (guideline != null) {
         Object entries = call(guideline, "getEntry", null);
@@ -166,7 +167,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
               if (value != null && !"".equals(value))
                 papp.getProtocol().addGuideline(getPhrase(value.toString(),joinMultiTextFieldSmall(other)));
             } else {
-              System.err.println(">>>>>> no guideline");
+              //System.err.println(">>>>>> no guideline");
             }
             
             //g = call(o, "getQualifier", null);
@@ -255,14 +256,8 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
           l.add(v);
       }
       value = (((List) l).size()) > 0 ? l : null;
-    } else if (r instanceof PicklistField)
-      value = getMethodValue((PicklistField) r);
-    else if (r instanceof PicklistFieldWithSmallTextRemarks)
-      value = getMethodValue((PicklistFieldWithSmallTextRemarks) r);
-    else if (r instanceof PicklistFieldWithLargeTextRemarks)
-      value = getMethodValue((PicklistFieldWithLargeTextRemarks) r);
-    else if (r instanceof PicklistFieldWithMultiLineTextRemarks)
-      value = getMethodValue((PicklistFieldWithMultiLineTextRemarks) r);
+    } else if (r instanceof BasePicklistField)
+      value = getMethodValue((BasePicklistField) r);
     else {
       Method[] allMethods = value.getClass().getDeclaredMethods();
 
@@ -288,20 +283,21 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 
   }
 
-  protected Object getMethodValue(PicklistField f) {
-    return ("1342".equals(f.getValue()) ? f.getOther() : getPhrase(f.getValue()));
-  }
-
-  protected Object getMethodValue(PicklistFieldWithSmallTextRemarks f) {
-    return ("1342".equals(f.getValue()) ? f.getOther() : getPhrase(f.getValue()));
-  }
-
-  protected Object getMethodValue(PicklistFieldWithLargeTextRemarks f) {
-    return ("1342".equals(f.getValue()) ? f.getOther() : getPhrase(f.getValue()));
-  }
-
-  protected Object getMethodValue(PicklistFieldWithMultiLineTextRemarks f) {
-    return ("1342".equals(f.getValue()) ? f.getOther() : getPhrase(f.getValue()));
+  protected Object getMethodValue(BasePicklistField field) {
+    
+    String value = "";
+    String other = null;
+    try {
+      value = (String) call(field,"getValue");
+    } catch (Exception x) {
+      
+    }
+    try {
+      other = joinMultiTextFieldSmall(((List<MultilingualTextFieldSmall>) call(field,"getOther")));
+    } catch (Exception x) {
+      
+    }    
+    return getPhrase(value, other);    
   }
 
   private void _params2effectrecord(EffectRecord<String, IParams, String> effectRecord, IParams values) {
@@ -575,9 +571,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
   protected String p2Value(Object field) {
     if (field == null)
       return null;
-    else if (field instanceof PicklistField)
-      return p2Value((PicklistField) field);
-    else if (field instanceof List) {
+    if (field instanceof List) {
       StringBuilder b = new StringBuilder();
       for (Object f : (List) field) {
         String v = p2Value(f);
@@ -587,14 +581,11 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
         }
       }
       return b.toString().trim();
-    } else if (field instanceof PicklistFieldWithLargeTextRemarks)
-      return p2Value((PicklistFieldWithLargeTextRemarks) field);
-    else if (field instanceof PicklistFieldWithSmallTextRemarks)
-      return p2Value((PicklistFieldWithSmallTextRemarks) field);
-    else if (field instanceof PicklistFieldWithMultiLineTextRemarks)
-      return p2Value((PicklistFieldWithMultiLineTextRemarks) field);
+    } else if (field instanceof BasePicklistField)
+      return p2Value((BasePicklistField) field);
     else {
       String f = field.toString();
+      //System.err.println(f.getClass().getName());
       if (max_field_len < f.length())
         return f.substring(0, max_field_len);
       else
@@ -602,34 +593,44 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
     }
   }
 
-  protected String p2Value(PicklistField field) {
-    return getPhrase(field.getValue(), field.getOther());
-  }
 
-  protected String p2Value(PicklistFieldWithLargeTextRemarks field) {
-    return getPhrase(field.getValue(), field.getOther());
+  protected String p2Value(BasePicklistField field) {
+    String value = "";
+    String other = null;
+    try {
+      value = (String) call(field,"getValue");
+    } catch (Exception x) {
+      
+    }
+    try {
+      other = joinMultiTextFieldSmall(((List<MultilingualTextFieldSmall>) call(field,"getOther")));
+    } catch (Exception x) {
+      
+    }    
+    return getPhrase(value, other);
   }
-
-  protected String p2Value(PicklistFieldWithSmallTextRemarks field) {
-    return getPhrase(field.getValue(), field.getOther());
+  
+  protected String remarks2Value(BasePicklistField field) {
+    String value = "";
+    String other = null;
+    String remarks = "";
+    try {
+      value = (String) call(field,"getValue");
+    } catch (Exception x) {
+              
+    }
+    try {
+      remarks = joinMultiTextFieldSmall(((List<MultilingualTextFieldSmall>) call(field,"getRemarks")));
+    } catch (Exception x) {
+    }
+    try {
+      other = joinMultiTextFieldSmall(((List<MultilingualTextFieldSmall>) call(field,"getOther")));
+    } catch (Exception x) {
+      
+    }    
+    return getPhrase(value, other) + remarks ;
   }
-
-  protected String p2Value(PicklistFieldWithMultiLineTextRemarks field) {
-    return getPhrase(field.getValue(), field.getOther());
-  }
-
-  protected String p2Remarks(PicklistFieldWithLargeTextRemarks field) {
-    return field.getRemarks();
-  }
-
-  protected String p2Remarks(PicklistFieldWithSmallTextRemarks field) {
-    return field.getRemarks();
-  }
-
-  protected String p2Remarks(PicklistFieldWithMultiLineTextRemarks field) {
-    return field.getRemarks();
-  }
-
+  
   protected Value q2value(BasePhysicalQuantityField field) {
 
     if (field == null)
@@ -661,33 +662,27 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
     try {
       v.setLoQualifier((String) call(field, "getLowerQualifier"));
     } catch (Exception x) {
-      x.printStackTrace();
     }
     try {
       v.setUpQualifier((String) call(field, "getUpperQualifier"));
     } catch (Exception x) {
-      x.printStackTrace();
     }
     try {
       Object value = call(field, "getLowerValue");
       if (value != null)
         v.setLoValue(((BigDecimal) value).doubleValue());
     } catch (Exception x) {
-      x.printStackTrace();
     }
     try {
       Object value = call(field, "getUpperValue");
       if (value != null)
         v.setUpValue(((BigDecimal) value).doubleValue());
     } catch (Exception x) {
-      x.printStackTrace();
     }
     String unitother = null;
     try {
-
       unitother = joinMultiTextFieldSmall((List<MultilingualTextFieldSmall>) call(field, "getUnitOther"));
     } catch (Exception x) {
-      x.printStackTrace();
     }
     try {
 

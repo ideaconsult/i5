@@ -106,7 +106,7 @@ public class ToxicityReproduction_RecordWrapper
         String relation2othertoxiceffects = p2Value(entry.getRelationToOtherToxicEffects());
         String treatmentRelated = p2Value(entry.getTreatmentRelated());
         String dr = p2Value(entry.getDoseResponseRelationship());
-        String kr = p2Value(entry.getKeyResult());
+        Boolean kr = entry.getKeyResult()==null?null:entry.getKeyResult().getValue();
 
         try {
           EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
@@ -127,7 +127,7 @@ public class ToxicityReproduction_RecordWrapper
           if (kr != null)
             effect.getConditions().put(I5CONSTANTS.KeyResult, kr);
 
-          if (studyrecord.getMaterialsAndMethods().getTestAnimals() != null) {
+          if (studyrecord.getMaterialsAndMethods()!= null && studyrecord.getMaterialsAndMethods().getTestAnimals() != null) {
             effect.getConditions().put(I5CONSTANTS.cSpecies,
                 p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSpecies()));
             effect.getConditions().put(I5CONSTANTS.cSex,

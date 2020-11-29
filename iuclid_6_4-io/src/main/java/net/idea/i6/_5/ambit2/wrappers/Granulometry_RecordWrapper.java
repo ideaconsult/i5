@@ -24,7 +24,7 @@ public class Granulometry_RecordWrapper extends EndpointStudyRecordWrapper<ENDPO
 				effect.setEndpoint(p2Value(e.getPercentile()));
 				papp.addEffect(effect);
 				q2effectrecord(e.getMean(), effect);
-				effect.getConditions().put(I5CONSTANTS.Remark, p2Value(e.getRemarksOnResults()));
+				effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(e.getRemarksOnResults()));
 				try {
 					effect.setErrorValue(e.getStDev().getValue().doubleValue());
 				} catch (Exception x) {

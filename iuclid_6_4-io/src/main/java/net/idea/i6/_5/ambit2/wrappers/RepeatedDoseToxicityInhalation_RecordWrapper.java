@@ -102,7 +102,7 @@ public class RepeatedDoseToxicityInhalation_RecordWrapper
 				String system = p2Value(entry.getSystem());
 				String treatmentRelated = p2Value(entry.getTreatmentRelated());
 				String dr = p2Value(entry.getDoseResponseRelationship());
-				String kr = p2Value(entry.getKeyResult());
+				Boolean kr = entry.getKeyResult()==null?null:entry.getKeyResult().getValue();
 				if (entry.getLowestEffectiveDoseConc().getValue() != null
 						&& !"".equals(entry.getLowestEffectiveDoseConc()))
 					try {
