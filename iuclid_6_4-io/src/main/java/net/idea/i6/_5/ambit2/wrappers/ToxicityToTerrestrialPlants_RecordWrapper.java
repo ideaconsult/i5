@@ -22,7 +22,7 @@ public class ToxicityToTerrestrialPlants_RecordWrapper
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDToxicityToTerrestrialPlants studyrecord) {
 
-		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
+		if (studyrecord.getResultsAndDiscussion()==null || studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
 			return;
 
 		for (Entry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {

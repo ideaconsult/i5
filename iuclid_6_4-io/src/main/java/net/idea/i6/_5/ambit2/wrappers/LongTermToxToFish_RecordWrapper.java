@@ -19,6 +19,7 @@ public class LongTermToxToFish_RecordWrapper extends EndpointStudyRecordWrapper<
 
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDLongTermToxToFish studyrecord) {
+	    if (studyrecord.getResultsAndDiscussion()==null) return;
 		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() != null)
 			for (Entry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();

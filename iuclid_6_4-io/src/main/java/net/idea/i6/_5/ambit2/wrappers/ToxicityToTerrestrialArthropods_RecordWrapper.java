@@ -26,7 +26,7 @@ public class ToxicityToTerrestrialArthropods_RecordWrapper
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDToxicityToTerrestrialArthropods studyrecord) {
 		// I5_ROOT_OBJECTS.EC_HONEYBEESTOX
-		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() != null)
+		if (studyrecord.getResultsAndDiscussion()!=null && studyrecord.getResultsAndDiscussion().getEffectConcentrations() != null)
 			for (Entry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(p2Value(e.getEndpoint()));

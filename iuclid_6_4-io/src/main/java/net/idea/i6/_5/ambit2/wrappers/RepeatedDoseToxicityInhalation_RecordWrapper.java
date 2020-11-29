@@ -103,7 +103,7 @@ public class RepeatedDoseToxicityInhalation_RecordWrapper
 				String treatmentRelated = p2Value(entry.getTreatmentRelated());
 				String dr = p2Value(entry.getDoseResponseRelationship());
 				Boolean kr = entry.getKeyResult()==null?null:entry.getKeyResult().getValue();
-				if (entry.getLowestEffectiveDoseConc().getValue() != null
+				if (entry.getLowestEffectiveDoseConc()!=null && entry.getLowestEffectiveDoseConc().getValue() != null
 						&& !"".equals(entry.getLowestEffectiveDoseConc()))
 					try {
 						EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();

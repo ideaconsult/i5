@@ -13,44 +13,47 @@ import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
 
 public class Melting_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDMelting> {
 
-	public Melting_RecordWrapper(Document doc) throws Exception {
-		super(doc);
-	}
+  public Melting_RecordWrapper(Document doc) throws Exception {
+    super(doc);
+  }
 
-	@Override
-	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDMelting studyrecord) {
-		EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-		effect.setEndpoint(I5CONSTANTS.eMELTINGPOINT);
-		papp.addEffect(effect);
+  @Override
+  public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDMelting studyrecord) {
+    if (studyrecord.getResultsAndDiscussion() == null)
+      return;
 
-		try {
-			for (Entry e : studyrecord.getResultsAndDiscussion().getMeltingPoint().getEntry()) {
+    EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+    effect.setEndpoint(I5CONSTANTS.eMELTINGPOINT);
+    papp.addEffect(effect);
 
-				// pressure should be a condition
-				// decomposition and sublimation are actually readouts not
-				// conditions...
-				try {
-					effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION, p2Value(e.getDecompIndicator()));
-				} catch (Exception x) {
-					effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION, null);
-				}
-				try {
-					effect.getConditions().put(I5CONSTANTS.rSUBLIMATION, p2Value(e.getSublimationIndicator()));
-				} catch (Exception x) {
-					effect.getConditions().put(I5CONSTANTS.rSUBLIMATION, null);
-				}
+    try {
+      for (Entry e : studyrecord.getResultsAndDiscussion().getMeltingPoint().getEntry()) {
 
-				effect.getConditions().put(I5CONSTANTS.Pressure, q2value(e.getPressure()));
-				effect.getConditions().put("Sublimation T", q2value(e.getSublimationTemp()));
-				effect.getConditions().put("Decomposition T", q2value(e.getDecompTemp()));
+        // pressure should be a condition
+        // decomposition and sublimation are actually readouts not
+        // conditions...
+        try {
+          effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION, p2Value(e.getDecompIndicator()));
+        } catch (Exception x) {
+          effect.getConditions().put(I5CONSTANTS.rDECOMPOSITION, null);
+        }
+        try {
+          effect.getConditions().put(I5CONSTANTS.rSUBLIMATION, p2Value(e.getSublimationIndicator()));
+        } catch (Exception x) {
+          effect.getConditions().put(I5CONSTANTS.rSUBLIMATION, null);
+        }
 
-				effect.setTextValue(remarks2Value(e.getRemarksOnResults()));
-				q2effectrecord(e.getMeltingPoint(), effect);
+        effect.getConditions().put(I5CONSTANTS.Pressure, q2value(e.getPressure()));
+        effect.getConditions().put("Sublimation T", q2value(e.getSublimationTemp()));
+        effect.getConditions().put("Decomposition T", q2value(e.getDecompTemp()));
 
-			}
-		} catch (Exception x) {
-			logger.log(Level.WARNING, x.getMessage(), x);
-		}
+        effect.setTextValue(remarks2Value(e.getRemarksOnResults()));
+        q2effectrecord(e.getMeltingPoint(), effect);
 
-	}
+      }
+    } catch (Exception x) {
+      logger.log(Level.WARNING, x.getMessage(), x);
+    }
+
+  }
 }

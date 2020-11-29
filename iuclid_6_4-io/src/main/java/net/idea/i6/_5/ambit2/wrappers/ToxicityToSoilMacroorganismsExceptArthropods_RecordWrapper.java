@@ -33,7 +33,7 @@ public class ToxicityToSoilMacroorganismsExceptArthropods_RecordWrapper
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDToxicityToSoilMacroorganismsExceptArthropods studyrecord) {
-		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
+		if (studyrecord.getResultsAndDiscussion()==null || studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
 			return;
 
 		for (Entry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {

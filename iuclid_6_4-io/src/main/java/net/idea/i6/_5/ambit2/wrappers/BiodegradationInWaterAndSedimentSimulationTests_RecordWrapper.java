@@ -23,7 +23,8 @@ public class BiodegradationInWaterAndSedimentSimulationTests_RecordWrapper
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDBiodegradationInWaterAndSedimentSimulationTests studyrecord) {
-
+	    if (studyrecord.getResultsAndDiscussion()==null)
+	      return;
 		Params degradation = new Params();
 		if (studyrecord.getResultsAndDiscussion().getDegradation() != null)
 			for (Entry e : studyrecord.getResultsAndDiscussion().getDegradation().getEntry()) {

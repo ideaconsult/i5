@@ -12,34 +12,35 @@ import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
 
 public class DissociationConstant_RecordWrapper
-		extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDDissociationConstant> {
+    extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDDissociationConstant> {
 
-	public DissociationConstant_RecordWrapper(Document doc) throws Exception {
-		super(doc);
-	}
+  public DissociationConstant_RecordWrapper(Document doc) throws Exception {
+    super(doc);
+  }
 
-	@Override
-	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDDissociationConstant studyrecord) {
-		if (studyrecord.getResultsAndDiscussion().getDissociationConstant() != null)
-			for (Entry e : studyrecord.getResultsAndDiscussion().getDissociationConstant().getEntry()) {
-				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				effect.setEndpoint(I5CONSTANTS.pKa);
-				q2effectrecord(e.getPka(), effect);
-				papp.addEffect(effect);
+  @Override
+  public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDDissociationConstant studyrecord) {
+    if (studyrecord.getResultsAndDiscussion().getDissociationConstant() != null)
+      for (Entry e : studyrecord.getResultsAndDiscussion().getDissociationConstant().getEntry()) {
+        EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+        effect.setEndpoint(I5CONSTANTS.pKa);
+        q2effectrecord(e.getPka(), effect);
+        papp.addEffect(effect);
+        if (e.getTemp() != null)
+          effect.getConditions().put(I5CONSTANTS.cTemperature, q2value(e.getTemp()));
+        if (e.getNo() != null)
+          effect.getConditions().put(I5CONSTANTS.rNo, p2Value(e.getNo()));
+      }
+  }
 
-				effect.getConditions().put(I5CONSTANTS.cTemperature, q2value(e.getTemp()));
-				effect.getConditions().put(I5CONSTANTS.rNo, p2Value(e.getNo()));
-			}
-	}
-
-	protected static Value q2value(Temp field) {
-		Value v = new Value();
-		if (field.getValue() != null)
-			try {
-				v.setLoValue(Double.parseDouble(field.getValue()));
-			} catch (Exception x) {
-			}
-		v.setUnits(getPhrase(field.getUnitCode()));
-		return v;
-	}
+  protected static Value q2value(Temp field) {
+    Value v = new Value();
+    if (field.getValue() != null)
+      try {
+        v.setLoValue(Double.parseDouble(field.getValue()));
+      } catch (Exception x) {
+      }
+    v.setUnits(getPhrase(field.getUnitCode()));
+    return v;
+  }
 }

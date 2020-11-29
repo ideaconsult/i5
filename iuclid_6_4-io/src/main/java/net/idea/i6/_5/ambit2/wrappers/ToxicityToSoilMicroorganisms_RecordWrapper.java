@@ -32,7 +32,7 @@ public class ToxicityToSoilMicroorganisms_RecordWrapper
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDToxicityToSoilMicroorganisms studyrecord) {
-		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
+		if (studyrecord.getResultsAndDiscussion()== null || studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
 			return;
 
 		for (Entry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {

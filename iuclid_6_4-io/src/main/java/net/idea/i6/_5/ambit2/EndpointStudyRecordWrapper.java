@@ -471,13 +471,17 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 
       testMaterialIndicator = getTestMaterialIdentity();
 
-      reliabilityID_value = (String) call(reliabilityID, "getValue");
-      reliabilityID_othervalue = (List<MultilingualTextFieldSmall>) call(reliabilityID, "getOther");
+      if (reliabilityID!=null) {
+        reliabilityID_value = (String) call(reliabilityID, "getValue");
+        reliabilityID_othervalue = (List<MultilingualTextFieldSmall>) call(reliabilityID, "getOther");
+      }
+      if (purposeFlagCode!=null)
+        purposeFlag_value = (String) call(purposeFlagCode, "getValue");
 
-      purposeFlag_value = (String) call(purposeFlagCode, "getValue");
-
-      studyResultType_value = (String) call(studyResultTypeID, "getValue");
-      studyResultType_other = (List<MultilingualTextFieldSmall>) call(studyResultTypeID, "getOther");
+      if (studyResultTypeID!=null) {
+        studyResultType_value = (String) call(studyResultTypeID, "getValue");
+        studyResultType_other = (List<MultilingualTextFieldSmall>) call(studyResultTypeID, "getOther");
+      }
 
     } catch (NoSuchMethodException x) {
       x.printStackTrace();
@@ -507,13 +511,11 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
       try {
         reliability.setPurposeFlag(getPhrase(purposeFlag_value));
       } catch (Exception x) {
-        x.printStackTrace();
       }
       try {
         reliability
             .setStudyResultType(getPhrase(studyResultType_value, joinMultiTextFieldSmall(studyResultType_other)));
       } catch (Exception x) {
-        x.printStackTrace();
       }
 
       papp.setReliability(reliability);

@@ -17,6 +17,7 @@ public class Hydrolysis_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOIN
 
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDHydrolysis studyrecord) {
+	    if (studyrecord.getResultsAndDiscussion()==null) return;
 		if (studyrecord.getResultsAndDiscussion().getDissipationHalfLifeOfParentCompound() != null)
 			for (Entry e : studyrecord.getResultsAndDiscussion().getDissipationHalfLifeOfParentCompound().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();

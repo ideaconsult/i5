@@ -18,80 +18,83 @@ import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
  */
 public class SkinSensitisation_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDSkinSensitisation> {
 
-	public SkinSensitisation_RecordWrapper(Document doc) throws Exception {
-		super(doc);
-	}
+  public SkinSensitisation_RecordWrapper(Document doc) throws Exception {
+    super(doc);
+  }
 
-	@Override
-	public void assignInterpretationResult(ProtocolApplication papp, ENDPOINTSTUDYRECORDSkinSensitisation studyRecord) {
-		super.assignInterpretationResult(papp, studyRecord);
-		papp.setInterpretationResult(
-				p2Value(studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults()));
-		papp.setInterpretationCriteria(joinMultiTextField(studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults().getRemarks()));
-	}
+  @Override
+  public void assignInterpretationResult(ProtocolApplication papp, ENDPOINTSTUDYRECORDSkinSensitisation studyRecord) {
+    super.assignInterpretationResult(papp, studyRecord);
+    if (studyRecord.getApplicantSummaryAndConclusion() != null) {
+      papp.setInterpretationResult(
+          p2Value(studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults()));
+      papp.setInterpretationCriteria(
+          joinMultiTextField(studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults().getRemarks()));
+    }
+  }
 
-	@Override
-	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDSkinSensitisation studyRecord) {
+  @Override
+  public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDSkinSensitisation studyRecord) {
+    if (studyRecord.getResultsAndDiscussion() == null)
+      return;
+    // TODO should be different protocol application
+    if (studyRecord.getResultsAndDiscussion().getTraditionalSensitisationTest() != null)
+      for (Entry e : studyRecord.getResultsAndDiscussion().getTraditionalSensitisationTest().getResultsOfTest()
+          .getEntry()) {
+        EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+        effect.setEndpoint("ClinicalObservation");
+        effect.setTextValue(e.getClinicalObservations());
+        papp.addEffect(effect);
+      }
 
-		// TODO should be different protocol application
-		if (studyRecord.getResultsAndDiscussion().getTraditionalSensitisationTest() != null)
-			for (Entry e : studyRecord.getResultsAndDiscussion().getTraditionalSensitisationTest().getResultsOfTest()
-					.getEntry()) {
-				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				effect.setEndpoint("ClinicalObservation");
-				effect.setTextValue(e.getClinicalObservations());
-				papp.addEffect(effect);
-			}
+    if (studyRecord.getResultsAndDiscussion().getInVitroInChemico() != null)
+      for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_skinsensitisation._5.ENDPOINTSTUDYRECORDSkinSensitisation.ResultsAndDiscussion.InVitroInChemico.Results.Entry e : studyRecord
+          .getResultsAndDiscussion().getInVitroInChemico().getResults().getEntry()) {
+        EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+        q2effectrecord(e.getValue(), effect);
+        effect.setEndpoint(p2Value(e.getParameter()));
+        papp.addEffect(effect);
+      }
 
-		if (studyRecord.getResultsAndDiscussion().getInVitroInChemico() != null)
-			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_skinsensitisation._5.ENDPOINTSTUDYRECORDSkinSensitisation.ResultsAndDiscussion.InVitroInChemico.Results.Entry e : studyRecord
-					.getResultsAndDiscussion().getInVitroInChemico().getResults().getEntry()) {
-				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				q2effectrecord(e.getValue(), effect);
-				effect.setEndpoint(p2Value(e.getParameter()));
-				papp.addEffect(effect);
-			}
+    if (studyRecord.getResultsAndDiscussion().getInVivoLLNA() != null)
+      for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_skinsensitisation._5.ENDPOINTSTUDYRECORDSkinSensitisation.ResultsAndDiscussion.InVivoLLNA.Results.Entry e : studyRecord
+          .getResultsAndDiscussion().getInVivoLLNA().getResults().getEntry()) {
+        EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+        q2effectrecord(e.getValue(), effect);
+        effect.setEndpoint(p2Value(e.getParameter()));
+        papp.addEffect(effect);
 
-		if (studyRecord.getResultsAndDiscussion().getInVivoLLNA() != null)
-			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_skinsensitisation._5.ENDPOINTSTUDYRECORDSkinSensitisation.ResultsAndDiscussion.InVivoLLNA.Results.Entry e : studyRecord
-					.getResultsAndDiscussion().getInVivoLLNA().getResults().getEntry()) {
-				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				q2effectrecord(e.getValue(), effect);
-				effect.setEndpoint(p2Value(e.getParameter()));
-				papp.addEffect(effect);
+      }
+  }
 
-			}
-	}
-	
+  protected void q2effectrecord(Value field, EffectRecord<String, IParams, String> effectrecord) {
+    if (field == null)
+      return;
 
-	  protected void q2effectrecord(Value field, EffectRecord<String, IParams, String> effectrecord) {
-	    if (field == null)
-	      return;
+    try {
+      effectrecord.setLoQualifier(field.getLowerQualifier());
+    } catch (Exception x) {
+      x.printStackTrace();
+    }
+    try {
+      effectrecord.setUpQualifier(field.getUpperQualifier());
+    } catch (Exception x) {
+      x.printStackTrace();
+    }
+    try {
+      Object loValue = field.getLowerValue();
+      if (loValue != null)
+        effectrecord.setLoValue(((BigDecimal) loValue).doubleValue());
+    } catch (Exception x) {
+      x.printStackTrace();
+    }
+    try {
+      Object upValue = field.getUpperValue();
+      if (upValue != null)
+        effectrecord.setUpValue(((BigDecimal) upValue).doubleValue());
+    } catch (Exception x) {
+      x.printStackTrace();
+    }
 
-	    try {
-	      effectrecord.setLoQualifier(field.getLowerQualifier());
-	    } catch (Exception x) {
-	      x.printStackTrace();
-	    }
-	    try {
-	      effectrecord.setUpQualifier(field.getUpperQualifier());
-	    } catch (Exception x) {
-	      x.printStackTrace();
-	    }
-	    try {
-	      Object loValue = field.getLowerValue();
-	      if (loValue != null)
-	        effectrecord.setLoValue(((BigDecimal) loValue).doubleValue());
-	    } catch (Exception x) {
-	      x.printStackTrace();
-	    }
-	    try {
-	      Object upValue = field.getUpperValue();
-	      if (upValue != null)
-	        effectrecord.setUpValue(((BigDecimal) upValue).doubleValue());
-	    } catch (Exception x) {
-	      x.printStackTrace();
-	    }
-
-	  }
+  }
 }

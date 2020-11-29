@@ -29,7 +29,7 @@ public class LongTermToxicityToAquaInv_RecordWrapper
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDLongTermToxicityToAquaInv studyrecord) {
 
-		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() != null)
+		if (studyrecord.getResultsAndDiscussion()!=null && studyrecord.getResultsAndDiscussion().getEffectConcentrations() != null)
 			for (Entry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(p2Value(e.getEndpoint()));

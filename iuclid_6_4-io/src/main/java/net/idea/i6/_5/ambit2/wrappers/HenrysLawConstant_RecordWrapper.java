@@ -14,42 +14,44 @@ import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
 
 public class HenrysLawConstant_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDHenrysLawConstant> {
 
-	public HenrysLawConstant_RecordWrapper(Document doc) throws Exception {
-		super(doc);
-	}
+  public HenrysLawConstant_RecordWrapper(Document doc) throws Exception {
+    super(doc);
+  }
 
-	@Override
-	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDHenrysLawConstant studyrecord) {
-		// I5_ROOT_OBJECTS.EN_HENRY_LAW
-		if (studyrecord.getResultsAndDiscussion().getHenrysLawConstantH() != null)
-			for (Entry e : studyrecord.getResultsAndDiscussion().getHenrysLawConstantH().getEntry()) {
-				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				effect.setEndpoint(I5CONSTANTS.HLC);
-				q2effectrecord(e.getH(), effect);
-				papp.addEffect(effect);
+  @Override
+  public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDHenrysLawConstant studyrecord) {
+    // I5_ROOT_OBJECTS.EN_HENRY_LAW
+    if (studyrecord.getResultsAndDiscussion().getHenrysLawConstantH() != null)
+      for (Entry e : studyrecord.getResultsAndDiscussion().getHenrysLawConstantH().getEntry()) {
+        EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+        effect.setEndpoint(I5CONSTANTS.HLC);
+        q2effectrecord(e.getH(), effect);
+        papp.addEffect(effect);
+        if (e.getAtmPressure() != null)
+          effect.getConditions().put(I5CONSTANTS.Pressure, q2value(e.getAtmPressure()));
+        effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(e.getRemarksOnResults()));
+        if (e.getTemp() != null)
+          effect.getConditions().put(I5CONSTANTS.cTemperature, q2value(e.getTemp()));
 
-				effect.getConditions().put(I5CONSTANTS.Pressure, q2value(e.getAtmPressure()));
-				effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(e.getRemarksOnResults()));
-				effect.getConditions().put(I5CONSTANTS.cTemperature, q2value(e.getTemp()));
+      }
+  }
 
-			}
-	}
+  private Value q2value(AtmPressure field) {
 
-	private Value q2value(AtmPressure field) {
-		Value v = new Value();
-		if (field.getValue() != null)
-			v.setLoValue(Double.parseDouble(field.getValue()));
-		v.setUnits(getPhrase(field.getUnitCode(), joinMultiTextFieldSmall(field.getUnitOther())));
-		return v;
-	}
+    Value v = new Value();
+    if (field.getValue() != null)
+      v.setLoValue(Double.parseDouble(field.getValue()));
+    v.setUnits(getPhrase(field.getUnitCode(), joinMultiTextFieldSmall(field.getUnitOther())));
+    return v;
+  }
 
-	private Value q2value(Temp field) {
+  private Value q2value(Temp field) {
 
-		Value v = new Value();
-		if (field.getValue() != null)
-			v.setLoValue(Double.parseDouble(field.getValue()));
-		v.setUnits(getPhrase(field.getUnitCode()));
-		return v;
-	}
+    Value v = new Value();
+    if (field.getValue() != null)
+      v.setLoValue(Double.parseDouble(field.getValue()));
+    v.setUnits(getPhrase(field.getUnitCode()));
+    return v;
+  }
 
 }

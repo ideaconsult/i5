@@ -45,9 +45,11 @@ public class AcuteToxicityDermal_RecordWrapper
 	@Override
 	public void assignInterpretationResult(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDAcuteToxicityDermal studyRecord) {
+	    if (studyRecord.getApplicantSummaryAndConclusion()!=null) {
 		papp.setInterpretationResult(
 				p2Value(studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults()));
 		papp.setInterpretationCriteria(joinMultiTextField(studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults().getRemarks()));
+	    }
 	}
 
 }

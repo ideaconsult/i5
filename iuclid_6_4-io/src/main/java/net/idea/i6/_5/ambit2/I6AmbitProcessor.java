@@ -99,6 +99,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 		} catch (AmbitException x) {
 			throw x;
 		} catch (Exception x) {
+		    x.printStackTrace();
 			throw new AmbitException(x);
 		}
 		return null;

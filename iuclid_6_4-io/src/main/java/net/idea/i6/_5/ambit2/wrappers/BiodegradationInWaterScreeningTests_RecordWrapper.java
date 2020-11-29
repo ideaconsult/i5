@@ -36,14 +36,15 @@ public class BiodegradationInWaterScreeningTests_RecordWrapper
       } catch (Exception x) {
       }
       papp.addEffect(effect);
-
-      effect.getConditions().put(I5CONSTANTS.cTimePoint, q2value(e.getSamplingTime()));
+      if (e.getSamplingTime() != null)
+        effect.getConditions().put(I5CONSTANTS.cTimePoint, q2value(e.getSamplingTime()));
       // we have decided previously to copy this to conditions
       effect.getConditions().put(I5CONSTANTS.cTestType, ((IParams) papp.getParameters()).get(I5CONSTANTS.cTestType));
 
     }
 
   }
+
   /**
    * @TODO interpretationof results
    */
@@ -51,7 +52,8 @@ public class BiodegradationInWaterScreeningTests_RecordWrapper
   public void assignInterpretationResult(ProtocolApplication papp,
       ENDPOINTSTUDYRECORDBiodegradationInWaterScreeningTests studyRecord) {
     try {
-      if (studyRecord.getApplicantSummaryAndConclusion() != null && studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults() != null) {
+      if (studyRecord.getApplicantSummaryAndConclusion() != null
+          && studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults() != null) {
         papp.setInterpretationResult(
             p2Value(studyRecord.getApplicantSummaryAndConclusion().getInterpretationOfResults()));
         papp.setInterpretationCriteria(joinMultiTextField(
