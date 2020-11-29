@@ -2,6 +2,7 @@ package net.idea.i6._5.ambit2.sections;
 
 import javax.xml.bind.JAXBElement;
 
+import ambit2.base.data.I5Utils;
 import ambit2.base.data.SubstanceRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
@@ -38,9 +39,9 @@ public class I6StudyRecordConverter<T extends EndpointStudyRecordWrapper, PROTOC
 	protected void setCompanyUUID(SubstanceRecord record, String value) {
 		int slashpos = value.indexOf("/");
 		if (slashpos > 0)
-			record.setSubstanceUUID(value.substring(0, slashpos));
+			record.setSubstanceUUID(I5Utils.getPrefixedUUID("IUC6", value.substring(0, slashpos)));
 		else
-			record.setSubstanceUUID(value);
+			record.setSubstanceUUID(I5Utils.getPrefixedUUID("IUC6",value));
 	}
 
 	public I6StudyRecordConverter() {

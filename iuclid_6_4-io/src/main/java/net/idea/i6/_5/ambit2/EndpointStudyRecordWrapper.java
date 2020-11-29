@@ -9,6 +9,7 @@ import java.util.logging.Level;
 
 import javax.xml.bind.JAXBElement;
 
+import ambit2.base.data.I5Utils;
 import ambit2.base.data.study.EffectRecord;
 import ambit2.base.data.study.IParams;
 import ambit2.base.data.study.Params;
@@ -425,7 +426,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
     Protocol protocol = new Protocol(getName());
 
     Experiment<IParams, IParams> papp = new Experiment<IParams, IParams>(protocol);
-    papp.setDocumentUUID(getDocumentReferencePK());
+    papp.setDocumentUUID(I5Utils.getPrefixedUUID("IUC6", getDocumentReferencePK()));
     papp.getProtocol().setTopCategory(getTopCategory());
     try {
       papp.getProtocol().setCategory(getEndpointCategory().toSection());

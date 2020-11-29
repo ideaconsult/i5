@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 
+import ambit2.base.data.I5Utils;
 import ambit2.base.data.LiteratureEntry;
 import ambit2.base.data.Property;
 import ambit2.base.data.StructureRecord;
@@ -168,7 +169,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			structureRecord.clear();
 			setFormat(structureRecord);
 
-			setReferenceSubstanceUUID(structureRecord, getDocumentReferencePK());
+			setReferenceSubstanceUUID(structureRecord, I5Utils.getPrefixedUUID("IUC6", getDocumentReferencePK()));
 
 			if (unmarshalled.getGeneralInfo().getReferenceSubstanceName() != null)
 				structureRecord.setRecordProperty(I5ReaderSimple.nameProperty,
@@ -210,7 +211,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				structureRecord.setType(STRUC_TYPE.NA);
 
 			if (structureRecord.getFormat() == null)
-				structureRecord.setFormat(MOL_TYPE.SDF.name());
+				structureRecord.setFormat(MOL_TYPE.INC.name());
+				//structureRecord.setFormat(MOL_TYPE.SDF.name());
 
 			CASInfo cas = unmarshalled.getReferenceSubstanceInfo() == null ? null
 					: unmarshalled.getReferenceSubstanceInfo().getCASInfo();
@@ -287,7 +289,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				// owner
 				try {
 					// in I6 this is the key
-					setOwnerUUID(record, unmarshalled.getOwnerLegalEntity());
+					setOwnerUUID(record,  I5Utils.getPrefixedUUID("IUC6",unmarshalled.getOwnerLegalEntity()));
 				} catch (Exception x) {
 					record.setOwnerUUID(null);
 				}
@@ -303,7 +305,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				record.setSubstanceName(unmarshalled.getChemicalName());
 				record.setPublicName(unmarshalled.getPublicName());
 
-				setSubstanceUUID(record, getDocumentReferencePK());
+				setSubstanceUUID(record,  I5Utils.getPrefixedUUID("IUC6", getDocumentReferencePK()));
 
 				try {
 					record.setSubstancetype(getPhrase(unmarshalled.getTypeOfSubstance().getComposition().getValue(),
@@ -313,7 +315,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				}
 
 				if (unmarshalled.getReferenceSubstance() != null) {
-					setReferenceSubstanceUUID(record, unmarshalled.getReferenceSubstance().getReferenceSubstance());
+					setReferenceSubstanceUUID(record,  I5Utils.getPrefixedUUID("IUC6",unmarshalled.getReferenceSubstance().getReferenceSubstance()));
 				}
 
 				parseComposition(record);
@@ -437,7 +439,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			record.setType(STRUC_TYPE.NA);
 			if (a.getReferenceSubstance() != null) {
 				record.setContent(a.getReferenceSubstance());
-				setReferenceSubstanceUUID(record, a.getReferenceSubstance());
+				setReferenceSubstanceUUID(record,  I5Utils.getPrefixedUUID("IUC6", a.getReferenceSubstance()));
 			}
 
 			Proportion p = new Proportion();
@@ -568,7 +570,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 			if (a.getReferenceSubstance() != null) {
 				record.setContent(a.getReferenceSubstance());
-				setReferenceSubstanceUUID(record, a.getReferenceSubstance());
+				setReferenceSubstanceUUID(record,  I5Utils.getPrefixedUUID("IUC6",a.getReferenceSubstance()));
 			}
 
 			Proportion p = new Proportion();
