@@ -83,6 +83,7 @@ public class AbstractDocWrapper {
 	}
 	
 	protected String joinMultiTextField(List<MultilingualTextField> value) {
+	    if (value==null) return null;
 		StringBuilder  b = new StringBuilder();
 		for (MultilingualTextField t : value) {
 			b.append(String.format("%s:%s",t.getLang(),t.getValue())); 
@@ -92,6 +93,7 @@ public class AbstractDocWrapper {
 		return b.toString().trim();
 	}
 	protected String joinMultiTextFieldLarge(List<MultilingualTextFieldLarge> value) {
+	    if (value==null) return null;
 		StringBuilder  b = new StringBuilder();
 		for (MultilingualTextFieldLarge t : value) {
 			b.append(String.format("%s:%s",t.getLang(),t.getValue())); 
@@ -101,6 +103,7 @@ public class AbstractDocWrapper {
 		return b.toString().trim();
 	}
 	protected String joinMultiTextFieldSmall(List<MultilingualTextFieldSmall> value) {
+	  if (value==null) return null;
 		StringBuilder  b = new StringBuilder();
 		for (MultilingualTextFieldSmall t : value) {
 			b.append(String.format("%s:%s",t.getLang(),t.getValue())); 

@@ -212,7 +212,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			if (structureRecord.getFormat() == null)
 				structureRecord.setFormat(MOL_TYPE.SDF.name());
 
-			CASInfo cas = unmarshalled.getReferenceSubstanceInfo().getCASInfo();
+			CASInfo cas = unmarshalled.getReferenceSubstanceInfo()==null?null:unmarshalled.getReferenceSubstanceInfo().getCASInfo();
 			if (cas != null) {
 				try {
 					structureRecord.setRecordProperty(I5ReaderSimple.casProperty,
@@ -222,10 +222,10 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				}
 				// TODO cas name
 			}
-			String iupacName = unmarshalled.getReferenceSubstanceInfo().getIupacName();
+			String iupacName = unmarshalled.getReferenceSubstanceInfo()==null?null:unmarshalled.getReferenceSubstanceInfo().getIupacName();
 			setIUPACName(structureRecord, iupacName);
 
-			Synonyms synonyms = unmarshalled.getReferenceSubstanceInfo().getSynonyms();
+			Synonyms synonyms = unmarshalled.getReferenceSubstanceInfo()==null?null:unmarshalled.getReferenceSubstanceInfo().getSynonyms();
 			if (synonyms != null) {
 				List<String> lookup = new ArrayList<String>();
 				for (eu.europa.echa.iuclid6.namespaces.reference_substance._5.REFERENCESUBSTANCE.ReferenceSubstanceInfo.Synonyms.Entry e : synonyms.getEntry()) {
@@ -618,11 +618,18 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				for (eu.europa.echa.iuclid6.namespaces.substance._5.SUBSTANCE.OtherNames.Entry name : unmarshalled
 						.getOtherNames().getEntry()) {
 
-					String nameType = getPhrase(name.getNameType().getValue(), joinMultiTextFieldSmall(name.getNameType().getOther()));
-
-					Property prop = Property.getInstance(String.format("%s %d", nameType, (i + 1)),
-							LiteratureEntry.getI5UUIDReference());
-					if ("CAS number".equals(nameType))
+				    
+				    
+				    String nameType = null;
+				    try {
+				      nameType = name.getNameType()==null?null:getPhrase(name.getNameType().getValue(), joinMultiTextFieldSmall(name.getNameType().getOther()));
+				    } catch (Exception x) {
+				       x.printStackTrace();
+				    }
+				    Property prop =  Property.getNameInstance();
+					if (nameType==null)
+					  prop =  Property.getNameInstance();
+					else if ("CAS number".equals(nameType))
 						prop = Property.getCASInstance();
 					else if ("EC number".equals(nameType))
 						prop = Property.getEINECSInstance();
@@ -641,7 +648,10 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					else if ("trade name".equals(nameType)) {
 						prop = Property.getNameInstance();
 						prop.setLabel(Property.opentox_TradeName);
-					}
+					} else 
+					   prop = Property.getInstance(String.format("%s %d", nameType, (i + 1)),
+                          LiteratureEntry.getI5UUIDReference());
+					
 					record.setRecordProperty(prop, name.getName());
 					if (name.getRemarks() != null && !"".equals(name.getRemarks())) {
 						prop = Property.getInstance("Identifier", LiteratureEntry.getI5UUIDReference());
