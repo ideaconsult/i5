@@ -63,7 +63,7 @@ public class BiodegradationInSoil_RecordWrapper
         p.put(I5CONSTANTS.rDegradation, q2value(e.getDegr()));
         p.put(I5CONSTANTS.cTimePoint, p2Value(e.getParameter()));
         if (e.getKeyResult() != null)
-          p.put(I5CONSTANTS.KeyResult, e.getKeyResult().getValue());
+          p.put(I5CONSTANTS.KeyResult, e.getKeyResult().getValue().booleanValue());
         soil.put(soilno, p);
       }
 
