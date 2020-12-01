@@ -39,7 +39,7 @@ public class EyeIrritation_RecordWrapper extends EndpointStudyRecordWrapper<ENDP
 				effect.getConditions().put(I5CONSTANTS.cBasisForEffect, p2Value(e.getRunExperiment()));
 				
 			}
-			((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "in vitro");
+			((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, I5CONSTANTS.p_invitro);
 		}
 		if (studyrecord.getResultsAndDiscussion().getInVivo() != null) {
 			for (Entry e : studyrecord.getResultsAndDiscussion().getInVivo().getIrritationCorrosionResults().getEntry()) {
@@ -58,7 +58,7 @@ public class EyeIrritation_RecordWrapper extends EndpointStudyRecordWrapper<ENDP
 				}
 				
 			}
-			((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "in vivo");
+			((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, I5CONSTANTS.p_invivo);
 		}		
 
 		if (studyrecord.getResultsAndDiscussion().getResultsOfExVivoInVitroStudy() != null) {
@@ -79,7 +79,7 @@ public class EyeIrritation_RecordWrapper extends EndpointStudyRecordWrapper<ENDP
 				
 
 			}
-			((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "in vitro");
+			((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, I5CONSTANTS.p_invitro);
 		}
 	}
 }

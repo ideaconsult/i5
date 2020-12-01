@@ -25,7 +25,7 @@ public class AcuteToxicityInhalation_RecordWrapper
 
   @Override
   public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDAcuteToxicityInhalation studyrecord) {
-    if (studyrecord.getResultsAndDiscussion().getEffectLevels() == null)
+    if (studyrecord.getResultsAndDiscussion()==null || studyrecord.getResultsAndDiscussion().getEffectLevels() == null)
       return;
     for (Entry e : studyrecord.getResultsAndDiscussion().getEffectLevels().getEntry()) {
       EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();

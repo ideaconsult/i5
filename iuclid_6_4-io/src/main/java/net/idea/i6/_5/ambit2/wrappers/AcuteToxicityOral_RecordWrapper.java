@@ -24,7 +24,7 @@ public class AcuteToxicityOral_RecordWrapper extends EndpointStudyRecordWrapper<
 
   @Override
   public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDAcuteToxicityOral studyrecord) {
-    if (studyrecord.getResultsAndDiscussion().getEffectLevels() == null)
+    if (studyrecord.getResultsAndDiscussion()==null || studyrecord.getResultsAndDiscussion().getEffectLevels() == null)
       return;
     for (Entry e : studyrecord.getResultsAndDiscussion().getEffectLevels().getEntry()) {
       EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();

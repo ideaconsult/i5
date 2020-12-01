@@ -36,7 +36,7 @@ public class RepeatedDoseToxicityDermal_RecordWrapper
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDRepeatedDoseToxicityDermal studyrecord) {
-
+	    if (studyrecord.getResultsAndDiscussion()==null) return;
 		if (studyrecord.getResultsAndDiscussion().getEffectLevels() != null)
 			for (Entry e : studyrecord.getResultsAndDiscussion().getEffectLevels().getEfflevel().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();

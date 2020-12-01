@@ -149,33 +149,34 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
   }
 
   public void assignGuidelines(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
-    if (materialsAndMethods==null) {
-      logger.log(Level.WARNING,"No materials and methods record! " + endpointCategory);
+    if (materialsAndMethods == null) {
+      logger.log(Level.WARNING, "No materials and methods record! " + endpointCategory);
       return;
     }
     try {
-      
+
       Object guideline = call(materialsAndMethods, "getGuideline", null);
       if (guideline != null) {
         Object entries = call(guideline, "getEntry", null);
         if (entries != null && entries instanceof List)
           for (Object o : (List) entries) {
             Object g = call(o, "getGuideline", null);
-            if (g!=null) {
+            if (g != null) {
               String value = (String) call(g, "getValue", null);
-              List<MultilingualTextFieldSmall> other = (List<MultilingualTextFieldSmall> ) call(g, "getOther", null); 
+              List<MultilingualTextFieldSmall> other = (List<MultilingualTextFieldSmall>) call(g, "getOther", null);
               if (value != null && !"".equals(value))
-                papp.getProtocol().addGuideline(getPhrase(value.toString(),joinMultiTextFieldSmall(other)));
+                papp.getProtocol().addGuideline(getPhrase(value.toString(), joinMultiTextFieldSmall(other)));
             } else {
-              //System.err.println(">>>>>> no guideline");
+              // System.err.println(">>>>>> no guideline");
             }
-            
-            //g = call(o, "getQualifier", null);
+
+            // g = call(o, "getQualifier", null);
           }
         // getMethodNoGuideline
         Object methodNoGuideline = call(materialsAndMethods, "getMethodNoGuideline", null);
         if (methodNoGuideline != null && !"".equals(methodNoGuideline))
-          papp.getProtocol().addGuideline(joinMultiTextFieldLarge((List<MultilingualTextFieldLarge>)methodNoGuideline));
+          papp.getProtocol()
+              .addGuideline(joinMultiTextFieldLarge((List<MultilingualTextFieldLarge>) methodNoGuideline));
       }
 
     } catch (Exception x) {
@@ -284,20 +285,20 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
   }
 
   protected Object getMethodValue(BasePicklistField field) {
-    
+
     String value = "";
     String other = null;
     try {
-      value = (String) call(field,"getValue");
+      value = (String) call(field, "getValue");
     } catch (Exception x) {
-      
+
     }
     try {
-      other = joinMultiTextFieldSmall(((List<MultilingualTextFieldSmall>) call(field,"getOther")));
+      other = joinMultiTextFieldSmall(((List<MultilingualTextFieldSmall>) call(field, "getOther")));
     } catch (Exception x) {
-      
-    }    
-    return getPhrase(value, other);    
+
+    }
+    return getPhrase(value, other);
   }
 
   private void _params2effectrecord(EffectRecord<String, IParams, String> effectRecord, IParams values) {
@@ -386,6 +387,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
       logger.log(Level.WARNING, x.getMessage(), x);
     }
   }
+
   /**
    * @TODO getOther, getRemarks
    * @param papp
@@ -399,7 +401,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
       try {
         Object interpretation = call(mm, "getInterpretationOfResults", null);
         if (interpretation != null) {
-          papp.setInterpretationResult((String)call(interpretation,"getValue"));
+          papp.setInterpretationResult((String) call(interpretation, "getValue"));
         }
       } catch (NoSuchMethodException x) {
 
@@ -471,14 +473,14 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 
       testMaterialIndicator = getTestMaterialIdentity();
 
-      if (reliabilityID!=null) {
+      if (reliabilityID != null) {
         reliabilityID_value = (String) call(reliabilityID, "getValue");
         reliabilityID_othervalue = (List<MultilingualTextFieldSmall>) call(reliabilityID, "getOther");
       }
-      if (purposeFlagCode!=null)
+      if (purposeFlagCode != null)
         purposeFlag_value = (String) call(purposeFlagCode, "getValue");
 
-      if (studyResultTypeID!=null) {
+      if (studyResultTypeID != null) {
         studyResultType_value = (String) call(studyResultTypeID, "getValue");
         studyResultType_other = (List<MultilingualTextFieldSmall>) call(studyResultTypeID, "getOther");
       }
@@ -587,7 +589,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
       return p2Value((BasePicklistField) field);
     else {
       String f = field.toString();
-      //System.err.println(f.getClass().getName());
+      // System.err.println(f.getClass().getName());
       if (max_field_len < f.length())
         return f.substring(0, max_field_len);
       else
@@ -595,44 +597,45 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
     }
   }
 
-
   protected String p2Value(BasePicklistField field) {
     String value = "";
     String other = null;
     try {
-      value = (String) call(field,"getValue");
+      value = (String) call(field, "getValue");
     } catch (Exception x) {
-      
+
     }
     try {
-      other = joinMultiTextFieldSmall(((List<MultilingualTextFieldSmall>) call(field,"getOther")));
+      other = joinMultiTextFieldSmall(((List<MultilingualTextFieldSmall>) call(field, "getOther")));
     } catch (Exception x) {
-      
-    }    
+
+    }
     return getPhrase(value, other);
   }
-  
+
   protected String remarks2Value(BasePicklistField field) {
+    if (field == null)
+      return "";
     String value = "";
     String other = null;
     String remarks = "";
     try {
-      value = (String) call(field,"getValue");
+      value = (String) call(field, "getValue");
     } catch (Exception x) {
-              
+
     }
     try {
-      remarks = joinMultiTextFieldSmall(((List<MultilingualTextFieldSmall>) call(field,"getRemarks")));
+      remarks = joinMultiTextFieldSmall(((List<MultilingualTextFieldSmall>) call(field, "getRemarks")));
     } catch (Exception x) {
     }
     try {
-      other = joinMultiTextFieldSmall(((List<MultilingualTextFieldSmall>) call(field,"getOther")));
+      other = joinMultiTextFieldSmall(((List<MultilingualTextFieldSmall>) call(field, "getOther")));
     } catch (Exception x) {
-      
-    }    
-    return getPhrase(value, other) + remarks ;
+
+    }
+    return getPhrase(value, other) + remarks;
   }
-  
+
   protected Value q2value(BasePhysicalQuantityField field) {
 
     if (field == null)
@@ -688,7 +691,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
     }
     try {
 
-      v.setUnits(getPhrase((String)call(field,"getUnitCode"), unitother));
+      v.setUnits(getPhrase((String) call(field, "getUnitCode"), unitother));
     } catch (Exception x) {
     }
 
@@ -770,18 +773,20 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
   }
 
   protected EffectRecord<String, IParams, String> addEffectRecord_meanstdev(ProtocolApplication papp, String endpoint,
-      BasePhysicalQuantityRangeField mean, double stdev, String endpointType) {
+      BasePhysicalQuantityRangeField mean, Double stdev, String endpointType) {
     try {
       EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
       effect.setEndpoint(endpoint);
       effect.setEndpointType(endpointType);
 
       q2effectrecord(mean, effect);
-      try {
-        effect.setErrorValue(stdev);
-        effect.setErrQualifier(I5CONSTANTS.effect_stdev);
-      } catch (Exception x) {
-      }
+      if (stdev != null)
+        try {
+
+          effect.setErrorValue(stdev);
+          effect.setErrQualifier(I5CONSTANTS.effect_stdev);
+        } catch (Exception x) {
+        }
       papp.addEffect(effect);
       return effect;
     } catch (Exception x) {
@@ -795,7 +800,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
     try {
       EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
       effect.setEndpoint(endpoint);
-      effect.setEndpointType(endpointType);
+      effect.setEndpointType(endpointType == null ? I5CONSTANTS.endpoint_type_MEAN : endpointType);
 
       q2effectrecord(mean, effect);
       try {

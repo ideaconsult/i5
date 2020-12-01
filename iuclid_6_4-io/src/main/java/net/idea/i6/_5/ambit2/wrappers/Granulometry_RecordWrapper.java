@@ -24,6 +24,10 @@ public class Granulometry_RecordWrapper extends EndpointStudyRecordWrapper<ENDPO
 				effect.setEndpoint(p2Value(e.getPercentile()));
 				papp.addEffect(effect);
 				q2effectrecord(e.getMean(), effect);
+				if (e.getStDev()!=null) {
+				  effect.setErrorValue( e.getStDev().getValue().doubleValue());
+				  effect.setErrQualifier("SD");
+				}
 				effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(e.getRemarksOnResults()));
 				try {
 					effect.setErrorValue(e.getStDev().getValue().doubleValue());
@@ -42,8 +46,7 @@ public class Granulometry_RecordWrapper extends EndpointStudyRecordWrapper<ENDPO
 				q2effectrecord(entry.getSize(), effect);
 				papp.addEffect(effect);
 				IParams p = new Params();
-				p.put(I5CONSTANTS.Remark,
-						getPhrase(joinMultiTextField(entry.getRemarksOnResults().getRemarks()), joinMultiTextFieldSmall(entry.getRemarksOnResults().getOther())));
+				p.put(I5CONSTANTS.Remark,remarks2Value(entry.getRemarksOnResults()));
 				effect.setConditions(p);
 
 				effect = endpointCategory.createEffectRecord();
@@ -52,8 +55,7 @@ public class Granulometry_RecordWrapper extends EndpointStudyRecordWrapper<ENDPO
 				q2effectrecord(entry.getDistribution(), effect);
 				papp.addEffect(effect);
 				p = new Params();
-				p.put(I5CONSTANTS.Remark,
-						getPhrase(joinMultiTextField(entry.getRemarksOnResults().getRemarks()), joinMultiTextFieldSmall(entry.getRemarksOnResults().getOther())));
+				p.put(I5CONSTANTS.Remark,remarks2Value(entry.getRemarksOnResults()));
 				effect.setConditions(p);
 				n++;
 			}

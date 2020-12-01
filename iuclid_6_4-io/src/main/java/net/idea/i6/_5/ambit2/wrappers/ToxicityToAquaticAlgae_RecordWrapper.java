@@ -12,49 +12,49 @@ import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
 
 public class ToxicityToAquaticAlgae_RecordWrapper
-		extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDToxicityToAquaticAlgae> {
+    extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDToxicityToAquaticAlgae> {
 
-	public ToxicityToAquaticAlgae_RecordWrapper(Document doc) throws Exception {
-		super(doc);
-	}
+  public ToxicityToAquaticAlgae_RecordWrapper(Document doc) throws Exception {
+    super(doc);
+  }
 
-	@Override
-	protected String dictionaryParams(String key) {
-		if ("TestOrganismsSpecies".equals(key))
-			return I5CONSTANTS.cTestOrganism;
-		return super.dictionaryParams(key);
-	}
+  @Override
+  protected String dictionaryParams(String key) {
+    if ("TestOrganismsSpecies".equals(key))
+      return I5CONSTANTS.cTestOrganism;
+    return super.dictionaryParams(key);
+  }
 
-	@Override
-	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDToxicityToAquaticAlgae studyrecord) {
+  @Override
+  public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDToxicityToAquaticAlgae studyrecord) {
 
-		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
-			return;
+    if (studyrecord.getResultsAndDiscussion() == null)
+      return;
+    if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() != null)
+      for (Entry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {
 
-		for (Entry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {
+        EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+        q2effectrecord(e.getEffectConc(), effect);
+        effect.setEndpoint(p2Value(e.getEndpoint()));
+        papp.addEffect(effect);
 
-			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-			q2effectrecord(e.getEffectConc(), effect);
-			effect.setEndpoint(p2Value(e.getEndpoint()));
-			papp.addEffect(effect);
+        effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
+        effect.getConditions().put(I5CONSTANTS.cConcType, p2Value(e.getConcBasedOn()));
+        effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration, p2Value(e.getNominalMeasured()));
 
-			effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
-			effect.getConditions().put(I5CONSTANTS.cConcType, p2Value(e.getConcBasedOn()));
-			effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration,p2Value(e.getNominalMeasured()));
+        effect.getConditions().put(I5CONSTANTS.cExposure, q2value(e.getDuration()));
+      }
+  }
 
-			effect.getConditions().put(I5CONSTANTS.cExposure, q2value(e.getDuration()));
-		}
-	}
+  protected Value q2value(Duration field) {
+    try {
+      Value v = new Value();
+      v.setLoValue(Double.parseDouble(field.getValue()));
+      v.setUnits(getPhrase(field.getUnitCode()));
+      return v;
+    } catch (Exception x) {
+      return null;
+    }
 
-	protected Value q2value(Duration field) {
-		try {
-			Value v = new Value();
-			v.setLoValue(Double.parseDouble(field.getValue()));
-			v.setUnits(getPhrase(field.getUnitCode()));
-			return v;
-		} catch (Exception x) {
-			return null;
-		}
-
-	}
+  }
 }

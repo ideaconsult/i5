@@ -28,7 +28,7 @@ public class ToxicityToMicroorganisms_RecordWrapper
 
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDToxicityToMicroorganisms studyrecord) {
-
+	    if (studyrecord.getResultsAndDiscussion()==null) return;
 		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
 			return;
 

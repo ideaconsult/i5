@@ -20,7 +20,7 @@ public class BioaccumulationAquaticSediment_RecordWrapper
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDBioaccumulationAquaticSediment studyrecord) {
-		if (studyrecord.getResultsAndDiscussion().getBioaccumulationFactor()!=null) {
+		if (studyrecord.getResultsAndDiscussion()!=null && studyrecord.getResultsAndDiscussion().getBioaccumulationFactor()!=null) {
 			for (Entry e : studyrecord.getResultsAndDiscussion().getBioaccumulationFactor().getEntry()) {
 				
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();

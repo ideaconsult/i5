@@ -9,47 +9,47 @@ import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_crystallinephase.
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i6._5.ambit2.EndpointStudyRecordWrapper;
 
-public class NM_CrystallinePhase_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDCrystallinePhase> {
+public class CrystallinePhase_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTSTUDYRECORDCrystallinePhase> {
 
-	public NM_CrystallinePhase_RecordWrapper(Document doc) throws Exception {
-		super(doc);
-	}
+  public CrystallinePhase_RecordWrapper(Document doc) throws Exception {
+    super(doc);
+  }
 
-	@Override
-	public void assignInterpretationResult(ProtocolApplication papp, ENDPOINTSTUDYRECORDCrystallinePhase studyRecord) {
-		try {
-			papp.setInterpretationResult(
-					joinMultiTextField(studyRecord.getResultsAndDiscussion().getCrystallographicComposition()));
-		} catch (Exception x) {
-			papp.setInterpretationResult(null);
-		}
+  @Override
+  public void assignInterpretationResult(ProtocolApplication papp, ENDPOINTSTUDYRECORDCrystallinePhase studyRecord) {
+    try {
+      papp.setInterpretationResult(
+          joinMultiTextField(studyRecord.getResultsAndDiscussion().getCrystallographicComposition()));
+    } catch (Exception x) {
+      papp.setInterpretationResult(null);
+    }
 
-	}
+  }
 
-	@Override
-	protected String dictionaryParams(String key) {
-		if (I5CONSTANTS.cSpecies.equals(key))
-			return key;
-		return super.dictionaryParams(key);
-	}
+  @Override
+  protected String dictionaryParams(String key) {
+    if (I5CONSTANTS.cSpecies.equals(key))
+      return key;
+    return super.dictionaryParams(key);
+  }
 
-	@Override
+  @Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDCrystallinePhase studyrecord) {
+	   if (studyrecord.getResultsAndDiscussion()==null) return;
+	   if (studyrecord.getResultsAndDiscussion().getCrystallinePhase()!=null)
 		for (Entry entry : studyrecord.getResultsAndDiscussion().getCrystallinePhase().getEntry()) {
 			int endpointGroup = 1;
 			if (entry.getBravaisLattice() != null) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.rCRYSTALLINE_PHASE_BRAVAIS_LATTICE);
-				effect.setTextValue(
-						getPhrase(entry.getBravaisLattice().getValue()));
+				effect.setTextValue(p2Value(entry.getBravaisLattice()));
 				effect.setEndpointGroup(endpointGroup);
 				papp.addEffect(effect);
 			}
 			if (entry.getCrystalSystem() != null) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTAL_SYSTEM);
-				effect.setTextValue(getPhrase(entry.getCrystalSystem().getValue(),
-						joinMultiTextFieldSmall(entry.getCrystalSystem().getOther())));
+				effect.setTextValue(p2Value(entry.getCrystalSystem()));
 				effect.setEndpointGroup(endpointGroup);
 				papp.addEffect(effect);
 			}
@@ -63,7 +63,7 @@ public class NM_CrystallinePhase_RecordWrapper extends EndpointStudyRecordWrappe
 			if (entry.getPointGroup() != null) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.rCRYSTALLINE_PHASE_POINT_GROUP);
-				effect.setTextValue(entry.getPointGroup());
+				effect.setTextValue(joinMultiTextFieldMultiLine(entry.getPointGroup()));
 				effect.setEndpointGroup(endpointGroup);
 				papp.addEffect(effect);
 			}
@@ -84,22 +84,21 @@ public class NM_CrystallinePhase_RecordWrapper extends EndpointStudyRecordWrappe
 			if (entry.getCrystallographicPlanes() != null) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTGRPH_PLANES);
-				effect.setTextValue(entry.getCrystallographicPlanes());
+				effect.setTextValue(joinMultiTextFieldMultiLine(entry.getCrystallographicPlanes()));
 				effect.setEndpointGroup(endpointGroup);
 				papp.addEffect(effect);
 			}
 			if (entry.getCrystallographicPlanes() != null) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.rCRYSTALLINE_PHASE_CRYSTGRPH_PLANES);
-				effect.setTextValue(entry.getCrystallographicPlanes());
+				effect.setTextValue(joinMultiTextFieldMultiLine(entry.getCrystallographicPlanes()));
 				effect.setEndpointGroup(endpointGroup);
 				papp.addEffect(effect);
 			}
 			if (entry.getRemarksOnResults() != null) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.Remark);
-				effect.setTextValue(getPhrase(entry.getRemarksOnResults().getValue(),
-						joinMultiTextFieldSmall(entry.getRemarksOnResults().getOther())));
+				effect.setTextValue(remarks2Value(entry.getRemarksOnResults()));
 				effect.setEndpointGroup(endpointGroup);
 				papp.addEffect(effect);
 			}

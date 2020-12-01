@@ -20,6 +20,7 @@ public class DissociationConstant_RecordWrapper
 
   @Override
   public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDDissociationConstant studyrecord) {
+    if (studyrecord.getResultsAndDiscussion()==null) return;
     if (studyrecord.getResultsAndDiscussion().getDissociationConstant() != null)
       for (Entry e : studyrecord.getResultsAndDiscussion().getDissociationConstant().getEntry()) {
         EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();

@@ -33,9 +33,9 @@ public class ToxicityToSoilMacroorganismsExceptArthropods_RecordWrapper
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp,
 			ENDPOINTSTUDYRECORDToxicityToSoilMacroorganismsExceptArthropods studyrecord) {
-		if (studyrecord.getResultsAndDiscussion()==null || studyrecord.getResultsAndDiscussion().getEffectConcentrations() == null)
-			return;
-
+		if (studyrecord.getResultsAndDiscussion()==null ) return;
+		
+		if (studyrecord.getResultsAndDiscussion().getEffectConcentrations() != null)
 		for (Entry e : studyrecord.getResultsAndDiscussion().getEffectConcentrations().getEntry()) {
 
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();

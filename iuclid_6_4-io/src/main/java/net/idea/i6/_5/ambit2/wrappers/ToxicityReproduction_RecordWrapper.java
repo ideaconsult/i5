@@ -30,7 +30,7 @@ public class ToxicityReproduction_RecordWrapper
 
   @Override
   public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDToxicityReproduction studyrecord) {
-
+     if (studyrecord.getResultsAndDiscussion()==null) return;
     if (studyrecord.getResultsAndDiscussion().getResultsOfExaminationsParentalGeneration() != null)
       try {
         for (Entry e : studyrecord.getResultsAndDiscussion().getResultsOfExaminationsParentalGeneration()
@@ -125,7 +125,7 @@ public class ToxicityReproduction_RecordWrapper
           if (dr != null)
             effect.getConditions().put(I5CONSTANTS.DoseResponseRelationship, dr);
           if (kr != null)
-            effect.getConditions().put(I5CONSTANTS.KeyResult, kr);
+            effect.getConditions().put(I5CONSTANTS.KeyResult, kr.booleanValue());
 
           if (studyrecord.getMaterialsAndMethods()!= null && studyrecord.getMaterialsAndMethods().getTestAnimals() != null) {
             effect.getConditions().put(I5CONSTANTS.cSpecies,

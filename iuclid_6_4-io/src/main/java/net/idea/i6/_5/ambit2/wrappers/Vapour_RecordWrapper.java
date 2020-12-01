@@ -26,6 +26,7 @@ public class Vapour_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTSTU
 
   @Override
   public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDVapour studyrecord) {
+    if (studyrecord.getResultsAndDiscussion()==null) return;
     for (Entry e : studyrecord.getResultsAndDiscussion().getVapourpr().getEntry()) {
       EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
       effect.setEndpoint(I5CONSTANTS.eVapourPressure);

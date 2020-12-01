@@ -40,7 +40,7 @@ public class RepeatedDoseToxicityOral_RecordWrapper
 
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDRepeatedDoseToxicityOral studyrecord) {
-
+	    if (studyrecord.getResultsAndDiscussion()==null) return;
 		if (studyrecord.getResultsAndDiscussion().getEffectLevels() != null)
 			for (Entry e : studyrecord.getResultsAndDiscussion().getEffectLevels().getEfflevel().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
@@ -129,7 +129,7 @@ public class RepeatedDoseToxicityOral_RecordWrapper
 						if (dr != null)
 							effect.getConditions().put(I5CONSTANTS.DoseResponseRelationship, dr);
 						if (kr != null)
-							effect.getConditions().put(I5CONSTANTS.KeyResult, kr);
+							effect.getConditions().put(I5CONSTANTS.KeyResult, kr.booleanValue());
 						effect.getConditions().put(I5CONSTANTS.cSpecies,
 								p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSpecies()));
 						effect.getConditions().put(I5CONSTANTS.cSex,

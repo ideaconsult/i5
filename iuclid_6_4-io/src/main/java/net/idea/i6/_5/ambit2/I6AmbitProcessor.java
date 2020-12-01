@@ -123,8 +123,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				wrapper = (EndpointStudyRecordWrapper) cnv;
 			}
 		} catch (Exception x) {
-			logger.log(Level.WARNING, String.format("%s\t%s",
-					"Class not found, using default EndpointStudyRecordWrapper", x.getMessage()), x);
+			logger.log(Level.SEVERE, String.format("%s\t%s",
+					"Class not found, using default EndpointStudyRecordWrapper", clazzName), x);
 		}
 		if (wrapper == null)
 			wrapper = new EndpointStudyRecordWrapper(doc);
@@ -133,7 +133,6 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 	}
 
 	protected IStudyRecordConverter getConvertor(String className) throws Exception {
-
 		String[] path = className.split("\\.");
 		String tagName = path[path.length - 1];
 		try {
@@ -147,6 +146,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 		} catch (Exception x) {
 			throw x;
 		}
+		
 		return null;
 	}
 

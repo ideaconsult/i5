@@ -29,7 +29,8 @@ public class SkinIrritationCorrosion_RecordWrapper
 
   @Override
   public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDSkinIrritationCorrosion studyrecord) {
-	  if (studyrecord.getResultsAndDiscussion()==null) return;
+    if (studyrecord.getResultsAndDiscussion() == null)
+      return;
     if (studyrecord.getResultsAndDiscussion().getInVivo() != null) {
       for (Entry e : studyrecord.getResultsAndDiscussion().getInVivo().getResults().getEntry()) {
         EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
@@ -44,8 +45,9 @@ public class SkinIrritationCorrosion_RecordWrapper
           effect.getConditions().put(I5CONSTANTS.cMaxScore, p2Value(e.getScale().getValue().intValue()));
         } catch (Exception x) {
         }
+        effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(e.getRemarksOnResults()));
       }
-      ((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "in vivo");
+      ((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, I5CONSTANTS.p_invivo);
     }
     if (studyrecord.getResultsAndDiscussion().getInVitro() != null) {
       for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_skinirritationcorrosion._5.ENDPOINTSTUDYRECORDSkinIrritationCorrosion.ResultsAndDiscussion.InVitro.Results.Entry e : studyrecord
@@ -54,9 +56,10 @@ public class SkinIrritationCorrosion_RecordWrapper
 
         effect.setEndpoint(p2Value(e.getIrritationCorrosionParameter()));
         q2effectrecord(e.getValue(), effect);
+        effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(e.getRemarksOnResults()));
         papp.addEffect(effect);
       }
-      ((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "in vitro");
+      ((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, I5CONSTANTS.p_invitro);
     }
   }
 

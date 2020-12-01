@@ -9,142 +9,146 @@ import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxi
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._5.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity.ResultsAndDiscussion.ResultsMaternalAnimals.EffectLevelsMaternalAnimals.Efflevel.Entry;
 import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._5.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity.ResultsAndDiscussion.ResultsMaternalAnimals.EffectLevelsMaternalAnimals.Efflevel.Entry.Basis;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
-import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.PicklistFieldWithLargeTextRemarks;
 
 public class DevelopmentalToxicityTeratogenicity_RecordWrapper
-		extends RepeatedDoseToxicity_RecordWrapper<ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity> {
+    extends RepeatedDoseToxicity_RecordWrapper<ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity> {
 
-	public DevelopmentalToxicityTeratogenicity_RecordWrapper(Document doc) throws Exception {
-		super(doc);
+  public DevelopmentalToxicityTeratogenicity_RecordWrapper(Document doc) throws Exception {
+    super(doc);
 
-	}
+  }
 
-	@Override
-	protected String dictionaryParams(String key) {
-		if (I5CONSTANTS.cSpecies.equals(key))
-			return key;
-		else
-			return super.dictionaryParams(key);
-		// else if ("Studytype".equals(key)) return I5CONSTANTS.cTypeStudy;
+  @Override
+  protected String dictionaryParams(String key) {
+    if (I5CONSTANTS.cSpecies.equals(key))
+      return key;
+    else
+      return super.dictionaryParams(key);
+    // else if ("Studytype".equals(key)) return I5CONSTANTS.cTypeStudy;
 
-	}
+  }
 
-	public void assignEffectLevels(ambit2.base.data.study.ProtocolApplication papp,
-			ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity studyrecord) {
+  public void assignEffectLevels(ambit2.base.data.study.ProtocolApplication papp,
+      ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity studyrecord) {
+    if (studyrecord.getResultsAndDiscussion() == null)
+      return;
+    if (studyrecord.getResultsAndDiscussion().getResultsMaternalAnimals() != null) {
+      if (studyrecord.getResultsAndDiscussion().getResultsMaternalAnimals().getEffectLevelsMaternalAnimals() != null)
+        for (Entry e : studyrecord.getResultsAndDiscussion().getResultsMaternalAnimals()
+            .getEffectLevelsMaternalAnimals().getEfflevel().getEntry()) {
 
-		if (studyrecord.getResultsAndDiscussion().getResultsMaternalAnimals() != null)
+          EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+          q2effectrecord(e.getEffectLevel(), effect);
+          effect.setEndpoint(p2Value(e.getEndpoint()));
+          papp.addEffect(effect);
 
-			for (Entry e : studyrecord.getResultsAndDiscussion()
-					.getResultsMaternalAnimals().getEffectLevelsMaternalAnimals().getEfflevel().getEntry()) {
+          StringBuilder basis4effectlevel = null;
+          if (e.getBasis() != null)
+            for (Basis b : e.getBasis()) {
+              if (basis4effectlevel == null)
+                basis4effectlevel = new StringBuilder();
+              else
+                basis4effectlevel.append(" ");
+              basis4effectlevel.append(p2Value(b));
+            }
 
-				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				q2effectrecord(e.getEffectLevel(), effect);
-				effect.setEndpoint(p2Value(e.getEndpoint()));
-				papp.addEffect(effect);
+          effect.getConditions().put(I5CONSTANTS.cEffectType,
+              basis4effectlevel == null ? null : basis4effectlevel.toString());
+          effect.getConditions().put(I5CONSTANTS.cSpecies, ((IParams) papp.getParameters()).get(I5CONSTANTS.cSpecies));
+          effect.getConditions().put(I5CONSTANTS.DevelopmentalEffectsObserved, null);
+          effect.getConditions().put(I5CONSTANTS.RelationToOtherToxicEffects, null);
 
-				StringBuilder basis4effectlevel = null;
-				if (e.getBasis() != null)
-					for (Basis b : e.getBasis()) {
-						if (basis4effectlevel == null)
-							basis4effectlevel = new StringBuilder();
-						else
-							basis4effectlevel.append(" ");
-						basis4effectlevel.append(p2Value(b));
-					}
+        }
+    }
+    if (studyrecord.getResultsAndDiscussion().getResultsFetuses() != null) {
+      if (studyrecord.getResultsAndDiscussion().getResultsFetuses().getEffectLevelsFetuses() != null)
+        for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._5.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity.ResultsAndDiscussion.ResultsFetuses.EffectLevelsFetuses.Efflevel.Entry e : studyrecord
+            .getResultsAndDiscussion().getResultsFetuses().getEffectLevelsFetuses().getEfflevel().getEntry()) {
+          EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+          q2effectrecord(e.getEffectLevel(), effect);
+          effect.setEndpoint(p2Value(e.getEndpoint()));
+          papp.addEffect(effect);
 
-				effect.getConditions().put(I5CONSTANTS.cEffectType,
-						basis4effectlevel == null ? null : basis4effectlevel.toString());
-				effect.getConditions().put(I5CONSTANTS.cSpecies,
-						((IParams) papp.getParameters()).get(I5CONSTANTS.cSpecies));
-				effect.getConditions().put(I5CONSTANTS.DevelopmentalEffectsObserved, null);
-				effect.getConditions().put(I5CONSTANTS.RelationToOtherToxicEffects,null);
+          StringBuilder basis4effectlevel = null;
+          if (e.getBasis() != null)
+            for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._5.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity.ResultsAndDiscussion.ResultsFetuses.EffectLevelsFetuses.Efflevel.Entry.Basis b : e
+                .getBasis()) {
+              if (basis4effectlevel == null)
+                basis4effectlevel = new StringBuilder();
+              else
+                basis4effectlevel.append(" ");
+              basis4effectlevel.append(p2Value(b));
+            }
+          effect.getConditions().put(I5CONSTANTS.cEffectType,
+              basis4effectlevel == null ? null : basis4effectlevel.toString());
+          effect.getConditions().put(I5CONSTANTS.cSex, p2Value(e.getSex()));
+          effect.getConditions().put(I5CONSTANTS.cSpecies, ((IParams) papp.getParameters()).get(I5CONSTANTS.cSpecies));
+          effect.getConditions().put(I5CONSTANTS.DevelopmentalEffectsObserved, null);
+          effect.getConditions().put(I5CONSTANTS.RelationToOtherToxicEffects, null);
+        }
+    }
 
-			}
-		if (studyrecord.getResultsAndDiscussion().getResultsFetuses() != null)
-			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._5.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity.ResultsAndDiscussion.ResultsFetuses.EffectLevelsFetuses.Efflevel.Entry e : studyrecord.getResultsAndDiscussion().getResultsFetuses()
-					.getEffectLevelsFetuses().getEfflevel().getEntry()) {
-				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-				q2effectrecord(e.getEffectLevel(), effect);
-				effect.setEndpoint(p2Value(e.getEndpoint()));
-				papp.addEffect(effect);
+    if (studyrecord.getResultsAndDiscussion().getDevelopmentalToxicity() != null) {
+      if (studyrecord.getResultsAndDiscussion().getDevelopmentalToxicity().getDevelopmentalToxicity() != null)
+        for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._5.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity.ResultsAndDiscussion.DevelopmentalToxicitySet.DevelopmentalToxicity.Entry entry : studyrecord
+            .getResultsAndDiscussion().getDevelopmentalToxicity().getDevelopmentalToxicity().getEntry()) {
+          String deveffects = p2Value(entry.getDevelopmentalEffectsObserved());
+          String relation2othertoxiceffects = p2Value(entry.getRelationToMaternalToxicity());
+          String treatmentRelated = p2Value(entry.getTreatmentRelated());
+          String dr = p2Value(entry.getDoseResponseRelationship());
+          Boolean kr = entry.getKeyResult() == null ? null : entry.getKeyResult().getValue();
 
-				StringBuilder basis4effectlevel = null;
-				if (e.getBasis() != null)
-					for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._5.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity.ResultsAndDiscussion.ResultsFetuses.EffectLevelsFetuses.Efflevel.Entry.Basis b : e.getBasis()) {
-						if (basis4effectlevel == null)
-							basis4effectlevel = new StringBuilder();
-						else
-							basis4effectlevel.append(" ");
-						basis4effectlevel.append(p2Value(b));
-					}
-				effect.getConditions().put(I5CONSTANTS.cEffectType,
-						basis4effectlevel == null ? null : basis4effectlevel.toString());
-				effect.getConditions().put(I5CONSTANTS.cSex, p2Value(e.getSex()));
-				effect.getConditions().put(I5CONSTANTS.cSpecies,
-						((IParams) papp.getParameters()).get(I5CONSTANTS.cSpecies));
-				effect.getConditions().put(I5CONSTANTS.DevelopmentalEffectsObserved, null);
-				effect.getConditions().put(I5CONSTANTS.RelationToOtherToxicEffects,null);
-			}
+          try {
+            EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+            effect.setEndpoint("LOEL");
+            if (entry.getLowestEffectiveDoseConc() != null && entry.getLowestEffectiveDoseConc().getValue() != null
+                && !"".equals(entry.getLowestEffectiveDoseConc()))
+              q2effectrecord(entry.getLowestEffectiveDoseConc(), effect);
+            else
+              effect.setTextValue("-");
 
-		if (studyrecord.getResultsAndDiscussion().getDevelopmentalToxicity() != null)
-			for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_developmentaltoxicityteratogenicity._5.ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity.ResultsAndDiscussion.DevelopmentalToxicitySet.DevelopmentalToxicity.Entry entry : studyrecord.getResultsAndDiscussion().getDevelopmentalToxicity()
-					.getDevelopmentalToxicity().getEntry()) {
-				String deveffects = p2Value(entry.getDevelopmentalEffectsObserved());
-				String relation2othertoxiceffects = p2Value(entry.getRelationToMaternalToxicity());
-				String treatmentRelated = p2Value(entry.getTreatmentRelated());
-				String dr = p2Value(entry.getDoseResponseRelationship());
-				Boolean kr = entry.getKeyResult()==null?null:entry.getKeyResult().getValue();
+            effect.getConditions().put(I5CONSTANTS.DevelopmentalEffectsObserved, deveffects);
+            effect.getConditions().put(I5CONSTANTS.RelationToOtherToxicEffects, relation2othertoxiceffects);
 
-				try {
-					EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-					effect.setEndpoint("LOEL");
-					if (entry.getLowestEffectiveDoseConc()!=null && entry.getLowestEffectiveDoseConc().getValue() != null
-							&& !"".equals(entry.getLowestEffectiveDoseConc()))
-						q2effectrecord(entry.getLowestEffectiveDoseConc(), effect);
-					else
-						effect.setTextValue("-");
+            if (treatmentRelated != null)
+              effect.getConditions().put(I5CONSTANTS.TreatmentRelated, treatmentRelated);
+            if (dr != null)
+              effect.getConditions().put(I5CONSTANTS.DoseResponseRelationship, dr);
+            if (kr != null)
+              effect.getConditions().put(I5CONSTANTS.KeyResult, kr);
+            if (studyrecord.getMaterialsAndMethods()!=null && studyrecord.getMaterialsAndMethods().getTestAnimals() != null)
+              effect.getConditions().put(I5CONSTANTS.cSpecies,
+                  p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSpecies()));
 
-					effect.getConditions().put(I5CONSTANTS.DevelopmentalEffectsObserved, deveffects);
-					effect.getConditions().put(I5CONSTANTS.RelationToOtherToxicEffects, relation2othertoxiceffects);
+            papp.addEffect(effect);
+          } catch (Exception x) {
+            x.printStackTrace();
+          }
+        }
+    }
+  };
 
-					if (treatmentRelated != null)
-						effect.getConditions().put(I5CONSTANTS.TreatmentRelated, treatmentRelated);
-					if (dr != null)
-						effect.getConditions().put(I5CONSTANTS.DoseResponseRelationship, dr);
-					if (kr != null)
-						effect.getConditions().put(I5CONSTANTS.KeyResult, kr);
-					effect.getConditions().put(I5CONSTANTS.cSpecies,
-							p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSpecies()));
-					
-					papp.addEffect(effect);
-				} catch (Exception x) {
-					x.printStackTrace();
-				}
-			}
-	};
+  @Override
+  public void assignInterpretationResult(ProtocolApplication papp,
+      ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity studyRecord) {
+    papp.setInterpretationCriteria(null);
+    papp.setInterpretationResult(null);
+  }
 
-	@Override
-	public void assignInterpretationResult(ProtocolApplication papp,
-			ENDPOINTSTUDYRECORDDevelopmentalToxicityTeratogenicity studyRecord) {
-		papp.setInterpretationCriteria(null);
-		papp.setInterpretationResult(null);
-	}
+  protected void q2effectrecord(LowestEffectiveDoseConc field, EffectRecord<String, IParams, String> effectrecord) {
 
-	protected void q2effectrecord(LowestEffectiveDoseConc field,
-			EffectRecord<String, IParams, String> effectrecord) {
+    if (field == null)
+      return;
 
-		if (field == null)
-			return;
+    if (field.getValue() != null)
+      try {
+        effectrecord.setLoValue(Double.parseDouble(field.getValue()));
+      } catch (Exception x) {
+        // now we have string value with units ...
+        effectrecord.setTextValue(field.getValue());
+      }
 
-		if (field.getValue() != null)
-			try {
-				effectrecord.setLoValue(Double.parseDouble(field.getValue()));
-			} catch (Exception x) {
-				// now we have string value with units ...
-				effectrecord.setTextValue(field.getValue());
-			}
+    effectrecord.setUnit(getPhrase(field.getUnitCode(), joinMultiTextFieldSmall(field.getUnitOther())));
 
-		effectrecord.setUnit(getPhrase(field.getUnitCode(), joinMultiTextFieldSmall(field.getUnitOther())));
-
-	}
+  }
 }

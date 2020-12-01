@@ -43,10 +43,12 @@ public class SkinSensitisation_RecordWrapper extends EndpointStudyRecordWrapper<
       for (Entry e : studyRecord.getResultsAndDiscussion().getTraditionalSensitisationTest().getResultsOfTest()
           .getEntry()) {
         EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-        ((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "in-vivo");
+        ((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, I5CONSTANTS.p_invivo);
 
-        effect.setEndpoint(I5CONSTANTS.e_nowithreactions);
-        effect.setLoValue(e.getNoWithReactions().getValue().intValue());
+        if (e.getNoWithReactions()!=null) {
+          effect.setEndpoint(I5CONSTANTS.e_nowithreactions);
+          effect.setLoValue(e.getNoWithReactions().getValue().intValue());
+        }
 
         // e_totalnoingroup
         if (e.getTotalNoInGroup() != null) {
@@ -78,7 +80,7 @@ public class SkinSensitisation_RecordWrapper extends EndpointStudyRecordWrapper<
       for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_skinsensitisation._5.ENDPOINTSTUDYRECORDSkinSensitisation.ResultsAndDiscussion.InVitroInChemico.Results.Entry e : studyRecord
           .getResultsAndDiscussion().getInVitroInChemico().getResults().getEntry()) {
         EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-        ((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "in-chemico");
+        ((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, I5CONSTANTS.p_chemico);
         q2effectrecord(e.getValue(), effect);
 
         effect.setEndpoint(p2Value(e.getParameter()));
@@ -89,7 +91,7 @@ public class SkinSensitisation_RecordWrapper extends EndpointStudyRecordWrapper<
       for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_skinsensitisation._5.ENDPOINTSTUDYRECORDSkinSensitisation.ResultsAndDiscussion.InVivoLLNA.Results.Entry e : studyRecord
           .getResultsAndDiscussion().getInVivoLLNA().getResults().getEntry()) {
         EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-        ((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, "LLNA");
+        ((IParams) papp.getParameters()).put(I5CONSTANTS.cTypeMethod, I5CONSTANTS.p_invivo);
         if (e.getValue() != null) {
           q2effectrecord(e.getValue(), effect);
 

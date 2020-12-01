@@ -22,7 +22,7 @@ public class Partition_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINT
 
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDPartition studyrecord) {
-
+	    if (studyrecord.getResultsAndDiscussion()==null) return;
 		for (Entry e : studyrecord.getResultsAndDiscussion().getPartcoeff().getEntry()) {
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(p2Value(e.getType()));

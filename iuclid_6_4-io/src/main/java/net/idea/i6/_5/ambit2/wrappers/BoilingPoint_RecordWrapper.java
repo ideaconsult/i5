@@ -18,6 +18,7 @@ public class BoilingPoint_RecordWrapper extends EndpointStudyRecordWrapper<ENDPO
 	}
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDBoilingPoint studyrecord) {
+	    if (studyrecord.getResultsAndDiscussion()==null) return;
 		EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 		effect.setEndpoint(I5CONSTANTS.BOILINGPOINT);
 		papp.addEffect(effect);

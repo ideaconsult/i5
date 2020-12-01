@@ -23,7 +23,7 @@ public class BiodegradationInWaterScreeningTests_RecordWrapper
   @Override
   public void assignEffectLevels(ProtocolApplication papp,
       ENDPOINTSTUDYRECORDBiodegradationInWaterScreeningTests studyrecord) {
-    if (studyrecord.getResultsAndDiscussion().getDegradation() == null)
+    if (studyrecord.getResultsAndDiscussion()==null || studyrecord.getResultsAndDiscussion().getDegradation() == null)
       return;
 
     for (Entry e : studyrecord.getResultsAndDiscussion().getDegradation().getEntry()) {
