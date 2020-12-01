@@ -33,9 +33,11 @@ public class GeneticToxicityVivo_RecordWrapper
 		super.assignProtocolParameters(papp);
 		try {
 			IParams params = ((IParams) papp.getParameters());
+			try {
 			params.put(I5CONSTANTS.cTypeStudy, p2Value(getStudyRecord().getAdministrativeData().getEndpoint()).trim());
+			} catch (Exception x) {}
 			params.put(I5CONSTANTS.cTypeGenotoxicity,
-					getStudyRecord().getAdministrativeData().getEndpoint().getRemarks());
+					joinMultiTextField(getStudyRecord().getAdministrativeData().getEndpoint().getRemarks()));
 		} catch (Exception x) {
 			logger.log(Level.WARNING, x.getMessage());
 		}
@@ -54,8 +56,10 @@ public class GeneticToxicityVivo_RecordWrapper
 			effect.getConditions().put(I5CONSTANTS.cSex, p2Value(e.getSex()));
 
 			// copied to conditions
+			try {
 			effect.getConditions().put(I5CONSTANTS.cTypeStudy,
 					((IParams) papp.getParameters()).get(I5CONSTANTS.cTypeStudy));
+			} catch (Exception x) {}
 		}
 	}
 
