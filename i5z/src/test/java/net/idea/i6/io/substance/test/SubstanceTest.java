@@ -188,7 +188,8 @@ public class SubstanceTest {
 
 	@Test
 	public void test_i6z_5_endpointstudyrecords() throws Exception {
-		String test = "net/idea/i6/_5/substance/i6z/f63698f5-6751-4bca-9ca8-8388de4fdea9.i6z";
+		//String test = "net/idea/i6/_5/substance/i6z/f63698f5-6751-4bca-9ca8-8388de4fdea9.i6z"; //formaldehyde
+		String test = "net/idea/i6/_5/substance/i6z/5c5ef19c-816f-4e97-96c4-a9cb90d893bf.i6z";
 		URL url = SubstanceTest.class.getClassLoader().getResource(test);
 		Assert.assertNotNull(url);
 		//pchem 172

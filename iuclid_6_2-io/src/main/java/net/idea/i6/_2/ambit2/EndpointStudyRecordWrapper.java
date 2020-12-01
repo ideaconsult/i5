@@ -557,6 +557,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 		else if (field instanceof PicklistFieldWithMultiLineTextRemarks)
 			return p2Value((PicklistFieldWithMultiLineTextRemarks) field);
 		else {
+		   System.err.println(field.getClass().getName());
 			String f = field.toString();
 			if (max_field_len < f.length())
 				return f.substring(0, max_field_len);

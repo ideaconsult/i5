@@ -21,6 +21,7 @@ public class HenrysLawConstant_RecordWrapper extends EndpointStudyRecordWrapper<
   @Override
   public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDHenrysLawConstant studyrecord) {
     // I5_ROOT_OBJECTS.EN_HENRY_LAW
+    if (studyrecord.getResultsAndDiscussion()==null) return;
     if (studyrecord.getResultsAndDiscussion().getHenrysLawConstantH() != null)
       for (Entry e : studyrecord.getResultsAndDiscussion().getHenrysLawConstantH().getEntry()) {
         EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();

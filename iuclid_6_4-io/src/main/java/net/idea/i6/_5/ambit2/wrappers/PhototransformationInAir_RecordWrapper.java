@@ -35,7 +35,7 @@ public class PhototransformationInAir_RecordWrapper
   public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDPhototransformationInAir studyrecord) {
 
     StringBuilder reactant = null;
-
+    if (studyrecord.getResultsAndDiscussion()==null) return;
     if (studyrecord.getResultsAndDiscussion().getDegradationRateConstant() != null) {
 
       for (Entry e : studyrecord.getResultsAndDiscussion().getDegradationRateConstant().getEntry()) {

@@ -26,12 +26,16 @@ public class LongTermToxToFish_RecordWrapper extends EndpointStudyRecordWrapper<
 				effect.setEndpoint(p2Value(e.getEndpoint()));
 				q2effectrecord(e.getEffectConc(), effect);
 				papp.addEffect(effect);
-
+				if (e.getBasisForEffect()!=null)
 				effect.getConditions().put(I5CONSTANTS.cEffect, p2Value(e.getBasisForEffect()));
+				if (e.getConcBasedOn()!=null)
 				effect.getConditions().put(I5CONSTANTS.cConcType, p2Value(e.getConcBasedOn()));
+				if (e.getNominalMeasured()!=null)
 				effect.getConditions().put(I5CONSTANTS.cMeasuredConcentration, p2Value(e.getNominalMeasured()));
+				try {
 				effect.getConditions().put(I5CONSTANTS.cExposure,
 						p2value(studyrecord.getMaterialsAndMethods().getStudyDesign().getTotalExposureDuration()));
+				} catch (Exception x) {}
 
 			}
 		
