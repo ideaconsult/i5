@@ -70,7 +70,7 @@ public class CrystallinePhase_RecordWrapper extends EndpointStudyRecordWrapper<E
 			if (entry.getSpaceGroup() != null) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.rCRYSTALLINE_PHASE_SPACE_GROUP);
-				effect.setTextValue(entry.getSpaceGroup());
+				effect.setTextValue(joinMultiTextFieldMultiLine(entry.getSpaceGroup()));
 				effect.setEndpointGroup(endpointGroup);
 				papp.addEffect(effect);
 			}
