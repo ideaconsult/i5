@@ -18,6 +18,7 @@ public class Granulometry_RecordWrapper extends EndpointStudyRecordWrapper<ENDPO
 
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDGranulometry studyrecord) {
+	   if (studyrecord.getResultsAndDiscussion()==null) return;
 		if (studyrecord.getResultsAndDiscussion().getParticleSize() != null)
 			for (Entry e : studyrecord.getResultsAndDiscussion().getParticleSize().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
