@@ -10,10 +10,9 @@ import javax.xml.bind.Unmarshaller;
 import org.junit.Assert;
 import org.junit.Test;
 
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_acutetoxicitydermal._5.ENDPOINTSTUDYRECORDAcuteToxicityDermal;
-import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._5.ENDPOINTSTUDYRECORDGranulometry;
-import eu.europa.echa.iuclid6.namespaces.reference_substance._5.REFERENCESUBSTANCE;
-import eu.europa.echa.iuclid6.namespaces.reference_substance._5.REFERENCESUBSTANCE.ReferenceSubstanceInfo.Synonyms.Entry;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_acutetoxicitydermal._6.ENDPOINTSTUDYRECORDAcuteToxicityDermal;
+import eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._6.ENDPOINTSTUDYRECORDGranulometry;
+import eu.europa.echa.iuclid6.namespaces.reference_substance._6.REFERENCESUBSTANCE;
 
 public class TestI6 {
 
@@ -30,17 +29,17 @@ public class TestI6 {
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			REFERENCESUBSTANCE refsub = (REFERENCESUBSTANCE) jaxbUnmarshaller.unmarshal(in);
 			System.out.println(refsub.getClass().getName());
-			System.out.println(refsub.getGeneralInfo().getReferenceSubstanceName());
+			System.out.println(refsub.getReferenceSubstanceName());
 			System.out.println(refsub.getInventory().getInventoryEntry().getEntry());
 			System.out.println(refsub.getMolecularStructuralInfo().getInChl());
 			System.out.println(refsub.getMolecularStructuralInfo().getSmilesNotation());
 			System.out.println(refsub.getMolecularStructuralInfo().getStructuralFormula());
-			System.out.println(refsub.getNoInfoAvailable().getInventoryEntryJustification());
-			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo().getCASNumber());
-			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo().getCASName());
-			System.out.println(refsub.getReferenceSubstanceInfo().getIupacName());
-			System.out.println(refsub.getReferenceSubstanceInfo().getRelatedSubstances().getGroupCategoryInfo());
-			for (Entry s : refsub.getReferenceSubstanceInfo().getSynonyms().getEntry())
+			System.out.println(refsub.getInventory().getInventoryEntryJustification());
+			System.out.println(refsub.getInventory().getCASNumber());
+			System.out.println(refsub.getInventory().getCASName());
+			System.out.println(refsub.getIupacName());
+			System.out.println(refsub.getRelatedSubstances().getGroupCategoryInfo());
+			for (eu.europa.echa.iuclid6.namespaces.reference_substance._6.REFERENCESUBSTANCE.SynonymSet.Synonyms.Entry s : refsub.getSynonyms().getSynonyms().getEntry())
 				System.out.println(s.getName());
 
 		} finally {
@@ -62,13 +61,13 @@ public class TestI6 {
 		ENDPOINTSTUDYRECORDGranulometry g = new ENDPOINTSTUDYRECORDGranulometry();
 		Assert.assertNotNull(g);
 		Assert.assertNotNull(g.getMaterialsAndMethods());
-		for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._5.ENDPOINTSTUDYRECORDGranulometry.MaterialsAndMethods.Guidelines.Entry entry : g.getMaterialsAndMethods().getGuideline().getEntry()) {
+		for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._6.ENDPOINTSTUDYRECORDGranulometry.MaterialsAndMethods.Guidelines.Entry entry : g.getMaterialsAndMethods().getGuideline().getEntry()) {
 			entry.getGuideline().getValue();
 		}
 		g.getResultsAndDiscussion().getAerodynamicDiameter();
 		g.getResultsAndDiscussion().getGeometricStandardDeviation();
 		g.getResultsAndDiscussion().getParticleSize().getEntry();
-		for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._5.ENDPOINTSTUDYRECORDGranulometry.ResultsAndDiscussion.ParticleSizeDistribution.Entry entry : g.getResultsAndDiscussion().getParticleSizeDistribution().getEntry()) {
+		for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._6.ENDPOINTSTUDYRECORDGranulometry.ResultsAndDiscussion.ParticleSizeDistribution.Entry entry : g.getResultsAndDiscussion().getParticleSizeDistribution().getEntry()) {
 			entry.getDistribution();
 			entry.getSize();
 			entry.getRemarksOnResults();
@@ -80,7 +79,7 @@ public class TestI6 {
 	public void testUnmarshalFormaldehyde() throws JAXBException, IOException {
 		InputStream in = null;
 		try {
-			in = getClass().getClassLoader().getResourceAsStream("net/idea/i6/_5/substance/i6z/f63698f5-6751-4bca-9ca8-8388de4fdea9.i6z");
+			in = getClass().getClassLoader().getResourceAsStream("net/idea/i6/_6/substance/i6z/56e49ed8-0bec-49a2-8050-f8e87844b2e8.i6z");
 			Assert.assertNotNull(in);
 
 			JAXBContext jaxbContext = JAXBContext.newInstance(REFERENCESUBSTANCE.class);
@@ -88,17 +87,18 @@ public class TestI6 {
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			REFERENCESUBSTANCE refsub = (REFERENCESUBSTANCE) jaxbUnmarshaller.unmarshal(in);
 			System.out.println(refsub.getClass().getName());
-			System.out.println(refsub.getGeneralInfo().getReferenceSubstanceName());
+			System.out.println(refsub.getClass().getName());
+			System.out.println(refsub.getReferenceSubstanceName());
 			System.out.println(refsub.getInventory().getInventoryEntry().getEntry());
 			System.out.println(refsub.getMolecularStructuralInfo().getInChl());
 			System.out.println(refsub.getMolecularStructuralInfo().getSmilesNotation());
 			System.out.println(refsub.getMolecularStructuralInfo().getStructuralFormula());
-			System.out.println(refsub.getNoInfoAvailable().getInventoryEntryJustification());
-			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo().getCASNumber());
-			System.out.println(refsub.getReferenceSubstanceInfo().getCASInfo().getCASName());
-			System.out.println(refsub.getReferenceSubstanceInfo().getIupacName());
-			System.out.println(refsub.getReferenceSubstanceInfo().getRelatedSubstances().getGroupCategoryInfo());
-			for (Entry s : refsub.getReferenceSubstanceInfo().getSynonyms().getEntry())
+			System.out.println(refsub.getInventory().getInventoryEntryJustification());
+			System.out.println(refsub.getInventory().getCASNumber());
+			System.out.println(refsub.getInventory().getCASName());
+			System.out.println(refsub.getIupacName());
+			System.out.println(refsub.getRelatedSubstances().getGroupCategoryInfo());
+			for (eu.europa.echa.iuclid6.namespaces.reference_substance._6.REFERENCESUBSTANCE.SynonymSet.Synonyms.Entry s : refsub.getSynonyms().getSynonyms().getEntry())
 				System.out.println(s.getName());
 
 		} finally {

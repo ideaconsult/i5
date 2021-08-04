@@ -1,0 +1,2094 @@
+
+package eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._6;
+
+import java.math.BigDecimal;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
+import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._6 package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _ENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryKeyResult_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", "KeyResult");
+    private final static QName _ENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataRobustStudy_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", "RobustStudy");
+    private final static QName _ENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataUsedForClassification_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", "UsedForClassification");
+    private final static QName _ENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataUsedForMSDS_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", "UsedForMSDS");
+    private final static QName _ENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAdministrationExposureGeometricStandardDeviation_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", "GeometricStandardDeviation");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._6
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction createENDPOINTSTUDYRECORDToxicityReproduction() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.OverallRemarksAttachments }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.OverallRemarksAttachments createENDPOINTSTUDYRECORDToxicityReproductionOverallRemarksAttachments() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.OverallRemarksAttachments();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.OverallRemarksAttachments.AttachedBackgroundMaterial }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.OverallRemarksAttachments.AttachedBackgroundMaterial createENDPOINTSTUDYRECORDToxicityReproductionOverallRemarksAttachmentsAttachedBackgroundMaterial() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.OverallRemarksAttachments.AttachedBackgroundMaterial();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussion() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionReproductiveToxicitySet() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionReproductiveToxicitySetReproductiveToxicity() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionReproductiveToxicitySetReproductiveToxicityEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2Generation() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationTargetSystemOrganToxicityF2() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationTargetSystemOrganToxicityF2TargetSystemOrganToxicity() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationTargetSystemOrganToxicityF2TargetSystemOrganToxicityEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationEffectLevelsF2() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationEffectLevelsF2Efflevel() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationEffectLevelsF2EfflevelEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DevelopmentalImmunotoxicityOfF1Generation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DevelopmentalImmunotoxicityOfF1Generation createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationDevelopmentalImmunotoxicityOfF1Generation() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DevelopmentalImmunotoxicityOfF1Generation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DevelopmentalNeurotoxicityOfF1Generation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DevelopmentalNeurotoxicityOfF1Generation createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationDevelopmentalNeurotoxicityOfF1Generation() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DevelopmentalNeurotoxicityOfF1Generation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringTargetSystemOrganToxicityF1() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringTargetSystemOrganToxicityF1TargetSystemOrganToxicity() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringTargetSystemOrganToxicityF1TargetSystemOrganToxicityEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1Efflevel() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DevelopmentalImmunotoxicityF1 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DevelopmentalImmunotoxicityF1 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringDevelopmentalImmunotoxicityF1() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DevelopmentalImmunotoxicityF1();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DevelopmentalNeurotoxicityF1 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DevelopmentalNeurotoxicityF1 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringDevelopmentalNeurotoxicityF1() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DevelopmentalNeurotoxicityF1();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGeneration() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationTargetSystemOrganToxicityP1() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationTargetSystemOrganToxicityP1TargetSystemOrganToxicity() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationTargetSystemOrganToxicityP1TargetSystemOrganToxicityEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationEffectLevelsP1() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationEffectLevelsP1Efflevel() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationEffectLevelsP1EfflevelEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.ReproductiveFunctionPerformanceP1 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.ReproductiveFunctionPerformanceP1 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationReproductiveFunctionPerformanceP1() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.ReproductiveFunctionPerformanceP1();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGeneration() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationTargetSystemOrganToxicityP0() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationTargetSystemOrganToxicityP0TargetSystemOrganToxicity() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationTargetSystemOrganToxicityP0TargetSystemOrganToxicityEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationEffectLevelsP0() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationEffectLevelsP0Efflevel() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationEffectLevelsP0EfflevelEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.ReproductiveFunctionPerformanceP0 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.ReproductiveFunctionPerformanceP0 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationReproductiveFunctionPerformanceP0() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.ReproductiveFunctionPerformanceP0();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethods() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAdministrationExposure() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.DosesConcentrations }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.DosesConcentrations createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAdministrationExposureDosesConcentrations() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.DosesConcentrations();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.DosesConcentrations.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.DosesConcentrations.Entry createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAdministrationExposureDosesConcentrationsEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.DosesConcentrations.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestAnimals }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestAnimals createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsTestAnimals() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestAnimals();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsGuidelines() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines.Entry createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsGuidelinesEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.DataSource }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.DataSource createENDPOINTSTUDYRECORDToxicityReproductionDataSource() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.DataSource();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeData() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.CrossReference }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.CrossReference createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataCrossReference() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.CrossReference();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.CrossReference.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.CrossReference.Entry createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataCrossReferenceEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.CrossReference.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.AttachedJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.AttachedJustification createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataAttachedJustification() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.AttachedJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.AttachedJustification.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.AttachedJustification.Entry createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataAttachedJustificationEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.AttachedJustification.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.DataProtection }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.DataProtection createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataDataProtection() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.DataProtection();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ApplicantSummaryAndConclusion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ApplicantSummaryAndConclusion createENDPOINTSTUDYRECORDToxicityReproductionApplicantSummaryAndConclusion() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ApplicantSummaryAndConclusion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry createENDPOINTSTUDYRECORDToxicityReproductionOverallRemarksAttachmentsAttachedBackgroundMaterialEntry() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionAnyOtherInformationOnResultsInclTables() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.ReproductiveEffectsObserved }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.ReproductiveEffectsObserved createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionReproductiveToxicitySetReproductiveToxicityEntryReproductiveEffectsObserved() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.ReproductiveEffectsObserved();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.LowestEffectiveDoseConc }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.LowestEffectiveDoseConc createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionReproductiveToxicitySetReproductiveToxicityEntryLowestEffectiveDoseConc() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.LowestEffectiveDoseConc();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.TreatmentRelated }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.TreatmentRelated createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionReproductiveToxicitySetReproductiveToxicityEntryTreatmentRelated() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.TreatmentRelated();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.RelationToOtherToxicEffects }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.RelationToOtherToxicEffects createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionReproductiveToxicitySetReproductiveToxicityEntryRelationToOtherToxicEffects() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.RelationToOtherToxicEffects();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.DoseResponseRelationship }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.DoseResponseRelationship createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionReproductiveToxicitySetReproductiveToxicityEntryDoseResponseRelationship() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.DoseResponseRelationship();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.RelevantForHumans }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.RelevantForHumans createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionReproductiveToxicitySetReproductiveToxicityEntryRelevantForHumans() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.RelevantForHumans();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DetailsOnResultsF2 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DetailsOnResultsF2 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationDetailsOnResultsF2() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DetailsOnResultsF2();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.CriticalEffectsObserved }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.CriticalEffectsObserved createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationTargetSystemOrganToxicityF2TargetSystemOrganToxicityEntryCriticalEffectsObserved() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.CriticalEffectsObserved();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.LowestEffectiveDoseConc }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.LowestEffectiveDoseConc createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationTargetSystemOrganToxicityF2TargetSystemOrganToxicityEntryLowestEffectiveDoseConc() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.LowestEffectiveDoseConc();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.System }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.System createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationTargetSystemOrganToxicityF2TargetSystemOrganToxicityEntrySystem() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.System();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.Organ }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.Organ createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationTargetSystemOrganToxicityF2TargetSystemOrganToxicityEntryOrgan() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.Organ();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.TreatmentRelated }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.TreatmentRelated createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationTargetSystemOrganToxicityF2TargetSystemOrganToxicityEntryTreatmentRelated() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.TreatmentRelated();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.DoseResponseRelationship }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.DoseResponseRelationship createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationTargetSystemOrganToxicityF2TargetSystemOrganToxicityEntryDoseResponseRelationship() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.DoseResponseRelationship();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.RelevantForHumans }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.RelevantForHumans createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationTargetSystemOrganToxicityF2TargetSystemOrganToxicityEntryRelevantForHumans() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.RelevantForHumans();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.Endpoint }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.Endpoint createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationEffectLevelsF2EfflevelEntryEndpoint() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.Endpoint();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.Generation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.Generation createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationEffectLevelsF2EfflevelEntryGeneration() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.Generation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.EffectLevel }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.EffectLevel createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationEffectLevelsF2EfflevelEntryEffectLevel() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.EffectLevel();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.BasedOn }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.BasedOn createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationEffectLevelsF2EfflevelEntryBasedOn() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.BasedOn();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.Sex }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.Sex createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationEffectLevelsF2EfflevelEntrySex() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.Sex();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.Basis }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.Basis createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationEffectLevelsF2EfflevelEntryBasis() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.Basis();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.RemarksOnResults }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.RemarksOnResults createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationEffectLevelsF2EfflevelEntryRemarksOnResults() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.RemarksOnResults();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DevelopmentalImmunotoxicityOfF1Generation.DevelopmentalImmunotoxicity }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DevelopmentalImmunotoxicityOfF1Generation.DevelopmentalImmunotoxicity createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationDevelopmentalImmunotoxicityOfF1GenerationDevelopmentalImmunotoxicity() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DevelopmentalImmunotoxicityOfF1Generation.DevelopmentalImmunotoxicity();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DevelopmentalNeurotoxicityOfF1Generation.BehaviourFunctionalFindings }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DevelopmentalNeurotoxicityOfF1Generation.BehaviourFunctionalFindings createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationDevelopmentalNeurotoxicityOfF1GenerationBehaviourFunctionalFindings() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.DevelopmentalNeurotoxicityOfF1Generation.BehaviourFunctionalFindings();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservClinOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservClinOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservClinOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservClinOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .DermalIrritationOffspringIfDermalStudy }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .DermalIrritationOffspringIfDermalStudy createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2DermalIrritationOffspringIfDermalStudy() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .DermalIrritationOffspringIfDermalStudy();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservViabilityOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservViabilityOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservViabilityOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservViabilityOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservBodyweightOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservBodyweightOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservBodyweightOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservBodyweightOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservFoodConsumOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservFoodConsumOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservFoodConsumOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservFoodConsumOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservFoodEfficiencyOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservFoodEfficiencyOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservFoodEfficiencyOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservFoodEfficiencyOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservWaterConsumOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservWaterConsumOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservWaterConsumOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservWaterConsumOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservOphthalmOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservOphthalmOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservOphthalmOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservOphthalmOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservHaematolOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservHaematolOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservHaematolOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservHaematolOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservClinChemOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservClinChemOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservClinChemOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservClinChemOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservUrinOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservUrinOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservUrinOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservUrinOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservMaturationOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservMaturationOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservMaturationOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservMaturationOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .AnogenitalDistance }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .AnogenitalDistance createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2AnogenitalDistance() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .AnogenitalDistance();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .NippleRetentionInMalePups }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .NippleRetentionInMalePups createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2NippleRetentionInMalePups() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .NippleRetentionInMalePups();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservOrganWeightsOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservOrganWeightsOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservOrganWeightsOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservOrganWeightsOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservGrpatholOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservGrpatholOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservGrpatholOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservGrpatholOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservHistopatholOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservHistopatholOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2ObservHistopatholOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .ObservHistopatholOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .OtherEffectsOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .OtherEffectsOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationGeneralToxicityF2OtherEffectsOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.GeneralToxicityF2 .OtherEffectsOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DetailsOnResultsF1 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DetailsOnResultsF1 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringDetailsOnResultsF1() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DetailsOnResultsF1();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.CriticalEffectsObserved }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.CriticalEffectsObserved createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringTargetSystemOrganToxicityF1TargetSystemOrganToxicityEntryCriticalEffectsObserved() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.CriticalEffectsObserved();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.LowestEffectiveDoseConc }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.LowestEffectiveDoseConc createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringTargetSystemOrganToxicityF1TargetSystemOrganToxicityEntryLowestEffectiveDoseConc() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.LowestEffectiveDoseConc();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.System }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.System createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringTargetSystemOrganToxicityF1TargetSystemOrganToxicityEntrySystem() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.System();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.Organ }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.Organ createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringTargetSystemOrganToxicityF1TargetSystemOrganToxicityEntryOrgan() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.Organ();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.TreatmentRelated }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.TreatmentRelated createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringTargetSystemOrganToxicityF1TargetSystemOrganToxicityEntryTreatmentRelated() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.TreatmentRelated();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.DoseResponseRelationship }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.DoseResponseRelationship createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringTargetSystemOrganToxicityF1TargetSystemOrganToxicityEntryDoseResponseRelationship() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.DoseResponseRelationship();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.RelevantForHumans }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.RelevantForHumans createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringTargetSystemOrganToxicityF1TargetSystemOrganToxicityEntryRelevantForHumans() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.RelevantForHumans();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.Endpoint }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.Endpoint createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryEndpoint() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.Endpoint();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.Generation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.Generation createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryGeneration() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.Generation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.EffectLevel }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.EffectLevel createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryEffectLevel() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.EffectLevel();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.BasedOn }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.BasedOn createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryBasedOn() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.BasedOn();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.Sex }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.Sex createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntrySex() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.Sex();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.Basis }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.Basis createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryBasis() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.Basis();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.RemarksOnResults }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.RemarksOnResults createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryRemarksOnResults() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.RemarksOnResults();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DevelopmentalImmunotoxicityF1 .DevelopmentalImmunotoxicity }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DevelopmentalImmunotoxicityF1 .DevelopmentalImmunotoxicity createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringDevelopmentalImmunotoxicityF1DevelopmentalImmunotoxicity() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DevelopmentalImmunotoxicityF1 .DevelopmentalImmunotoxicity();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DevelopmentalNeurotoxicityF1 .BehaviourFunctionalFindings }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DevelopmentalNeurotoxicityF1 .BehaviourFunctionalFindings createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringDevelopmentalNeurotoxicityF1BehaviourFunctionalFindings() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.DevelopmentalNeurotoxicityF1 .BehaviourFunctionalFindings();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservClinOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservClinOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservClinOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservClinOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .DermalIrritationOffspringIfDermalStudy }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .DermalIrritationOffspringIfDermalStudy createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1DermalIrritationOffspringIfDermalStudy() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .DermalIrritationOffspringIfDermalStudy();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservViabilityOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservViabilityOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservViabilityOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservViabilityOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservBodyweightOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservBodyweightOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservBodyweightOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservBodyweightOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservFoodConsumOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservFoodConsumOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservFoodConsumOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservFoodConsumOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservFoodEfficiencyOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservFoodEfficiencyOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservFoodEfficiencyOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservFoodEfficiencyOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservWaterConsumOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservWaterConsumOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservWaterConsumOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservWaterConsumOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservOphthalmOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservOphthalmOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservOphthalmOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservOphthalmOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservHaematolOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservHaematolOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservHaematolOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservHaematolOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservClinChemOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservClinChemOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservClinChemOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservClinChemOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservUrinOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservUrinOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservUrinOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservUrinOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservMaturationOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservMaturationOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservMaturationOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservMaturationOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .AnogenitalDistance }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .AnogenitalDistance createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1AnogenitalDistance() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .AnogenitalDistance();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .NippleRetentionInMalePups }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .NippleRetentionInMalePups createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1NippleRetentionInMalePups() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .NippleRetentionInMalePups();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservOrganWeightsOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservOrganWeightsOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservOrganWeightsOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservOrganWeightsOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservGrpatholOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservGrpatholOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservGrpatholOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservGrpatholOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservHistopatholOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservHistopatholOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1ObservHistopatholOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .ObservHistopatholOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .OtherEffectsOffspring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .OtherEffectsOffspring createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringGeneralToxicityF1OtherEffectsOffspring() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.GeneralToxicityF1 .OtherEffectsOffspring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.DetailsOnResultsP1 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.DetailsOnResultsP1 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationDetailsOnResultsP1() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.DetailsOnResultsP1();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.CriticalEffectsObserved }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.CriticalEffectsObserved createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationTargetSystemOrganToxicityP1TargetSystemOrganToxicityEntryCriticalEffectsObserved() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.CriticalEffectsObserved();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.LowestEffectiveDoseConc }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.LowestEffectiveDoseConc createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationTargetSystemOrganToxicityP1TargetSystemOrganToxicityEntryLowestEffectiveDoseConc() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.LowestEffectiveDoseConc();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.System }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.System createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationTargetSystemOrganToxicityP1TargetSystemOrganToxicityEntrySystem() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.System();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.Organ }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.Organ createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationTargetSystemOrganToxicityP1TargetSystemOrganToxicityEntryOrgan() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.Organ();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.TreatmentRelated }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.TreatmentRelated createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationTargetSystemOrganToxicityP1TargetSystemOrganToxicityEntryTreatmentRelated() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.TreatmentRelated();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.DoseResponseRelationship }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.DoseResponseRelationship createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationTargetSystemOrganToxicityP1TargetSystemOrganToxicityEntryDoseResponseRelationship() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.DoseResponseRelationship();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.RelevantForHumans }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.RelevantForHumans createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationTargetSystemOrganToxicityP1TargetSystemOrganToxicityEntryRelevantForHumans() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.RelevantForHumans();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.Endpoint }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.Endpoint createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationEffectLevelsP1EfflevelEntryEndpoint() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.Endpoint();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.EffectLevel }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.EffectLevel createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationEffectLevelsP1EfflevelEntryEffectLevel() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.EffectLevel();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.BasedOn }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.BasedOn createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationEffectLevelsP1EfflevelEntryBasedOn() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.BasedOn();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.Sex }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.Sex createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationEffectLevelsP1EfflevelEntrySex() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.Sex();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.Basis }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.Basis createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationEffectLevelsP1EfflevelEntryBasis() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.Basis();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.RemarksOnResults }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.RemarksOnResults createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationEffectLevelsP1EfflevelEntryRemarksOnResults() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.RemarksOnResults();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.ReproductiveFunctionPerformanceP1 .ReproductiveFunctionEstrousCycle }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.ReproductiveFunctionPerformanceP1 .ReproductiveFunctionEstrousCycle createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationReproductiveFunctionPerformanceP1ReproductiveFunctionEstrousCycle() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.ReproductiveFunctionPerformanceP1 .ReproductiveFunctionEstrousCycle();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.ReproductiveFunctionPerformanceP1 .ReproductiveFunctionSpermMeasures }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.ReproductiveFunctionPerformanceP1 .ReproductiveFunctionSpermMeasures createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationReproductiveFunctionPerformanceP1ReproductiveFunctionSpermMeasures() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.ReproductiveFunctionPerformanceP1 .ReproductiveFunctionSpermMeasures();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.ReproductiveFunctionPerformanceP1 .ReproductivePerformance }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.ReproductiveFunctionPerformanceP1 .ReproductivePerformance createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationReproductiveFunctionPerformanceP1ReproductivePerformance() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.ReproductiveFunctionPerformanceP1 .ReproductivePerformance();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservClinSigns }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservClinSigns createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservClinSigns() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservClinSigns();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservDermalIrritationIfDermalStudy }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservDermalIrritationIfDermalStudy createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservDermalIrritationIfDermalStudy() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservDermalIrritationIfDermalStudy();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservMortality }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservMortality createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservMortality() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservMortality();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservBodyweight }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservBodyweight createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservBodyweight() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservBodyweight();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservFoodConsum }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservFoodConsum createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservFoodConsum() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservFoodConsum();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservFoodEfficiency }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservFoodEfficiency createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservFoodEfficiency() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservFoodEfficiency();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservWaterConsum }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservWaterConsum createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservWaterConsum() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservWaterConsum();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservOphthalm }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservOphthalm createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservOphthalm() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservOphthalm();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservHaematol }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservHaematol createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservHaematol() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservHaematol();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservClinChem }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservClinChem createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservClinChem() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservClinChem();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .EndocrineFindings }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .EndocrineFindings createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1EndocrineFindings() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .EndocrineFindings();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservUrin }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservUrin createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservUrin() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservUrin();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservNeurobehaviour }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservNeurobehaviour createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservNeurobehaviour() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservNeurobehaviour();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ImmunologicalFindings }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ImmunologicalFindings createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ImmunologicalFindings() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ImmunologicalFindings();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservOrganWeights }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservOrganWeights createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservOrganWeights() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservOrganWeights();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservGrpathol }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservGrpathol createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservGrpathol() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservGrpathol();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservNeuropathol }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservNeuropathol createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservNeuropathol() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservNeuropathol();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservHistopathol }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservHistopathol createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservHistopathol() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservHistopathol();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservHistopatholNeoplastic }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservHistopatholNeoplastic createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1ObservHistopatholNeoplastic() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .ObservHistopatholNeoplastic();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .OtherEffects }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .OtherEffects createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationGeneralToxicityP1OtherEffects() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.GeneralToxicityP1 .OtherEffects();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.DetailsOnResultsP0 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.DetailsOnResultsP0 createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationDetailsOnResultsP0() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.DetailsOnResultsP0();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.CriticalEffectsObserved }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.CriticalEffectsObserved createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationTargetSystemOrganToxicityP0TargetSystemOrganToxicityEntryCriticalEffectsObserved() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.CriticalEffectsObserved();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.LowestEffectiveDoseConc }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.LowestEffectiveDoseConc createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationTargetSystemOrganToxicityP0TargetSystemOrganToxicityEntryLowestEffectiveDoseConc() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.LowestEffectiveDoseConc();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.System }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.System createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationTargetSystemOrganToxicityP0TargetSystemOrganToxicityEntrySystem() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.System();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.Organ }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.Organ createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationTargetSystemOrganToxicityP0TargetSystemOrganToxicityEntryOrgan() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.Organ();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.TreatmentRelated }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.TreatmentRelated createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationTargetSystemOrganToxicityP0TargetSystemOrganToxicityEntryTreatmentRelated() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.TreatmentRelated();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.DoseResponseRelationship }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.DoseResponseRelationship createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationTargetSystemOrganToxicityP0TargetSystemOrganToxicityEntryDoseResponseRelationship() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.DoseResponseRelationship();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.RelevantForHumans }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.RelevantForHumans createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationTargetSystemOrganToxicityP0TargetSystemOrganToxicityEntryRelevantForHumans() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.RelevantForHumans();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.Endpoint }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.Endpoint createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationEffectLevelsP0EfflevelEntryEndpoint() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.Endpoint();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.EffectLevel }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.EffectLevel createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationEffectLevelsP0EfflevelEntryEffectLevel() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.EffectLevel();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.BasedOn }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.BasedOn createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationEffectLevelsP0EfflevelEntryBasedOn() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.BasedOn();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.Sex }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.Sex createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationEffectLevelsP0EfflevelEntrySex() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.Sex();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.Basis }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.Basis createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationEffectLevelsP0EfflevelEntryBasis() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.Basis();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.RemarksOnResults }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.RemarksOnResults createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationEffectLevelsP0EfflevelEntryRemarksOnResults() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.RemarksOnResults();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.ReproductiveFunctionPerformanceP0 .ObservEstrousParent }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.ReproductiveFunctionPerformanceP0 .ObservEstrousParent createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationReproductiveFunctionPerformanceP0ObservEstrousParent() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.ReproductiveFunctionPerformanceP0 .ObservEstrousParent();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.ReproductiveFunctionPerformanceP0 .ObservSpermParent }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.ReproductiveFunctionPerformanceP0 .ObservSpermParent createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationReproductiveFunctionPerformanceP0ObservSpermParent() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.ReproductiveFunctionPerformanceP0 .ObservSpermParent();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.ReproductiveFunctionPerformanceP0 .ObservReproPerformParent }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.ReproductiveFunctionPerformanceP0 .ObservReproPerformParent createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationReproductiveFunctionPerformanceP0ObservReproPerformParent() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.ReproductiveFunctionPerformanceP0 .ObservReproPerformParent();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservClinSigns }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservClinSigns createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservClinSigns() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservClinSigns();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservDermalIrritationIfDermalStudy }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservDermalIrritationIfDermalStudy createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservDermalIrritationIfDermalStudy() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservDermalIrritationIfDermalStudy();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservMortality }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservMortality createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservMortality() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservMortality();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservBodyweight }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservBodyweight createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservBodyweight() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservBodyweight();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservFoodConsum }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservFoodConsum createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservFoodConsum() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservFoodConsum();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservFoodEfficiency }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservFoodEfficiency createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservFoodEfficiency() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservFoodEfficiency();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservWaterConsum }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservWaterConsum createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservWaterConsum() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservWaterConsum();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservOphthalm }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservOphthalm createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservOphthalm() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservOphthalm();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservHaematol }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservHaematol createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservHaematol() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservHaematol();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservClinChem }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservClinChem createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservClinChem() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservClinChem();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .EndocrineFindings }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .EndocrineFindings createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0EndocrineFindings() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .EndocrineFindings();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservUrin }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservUrin createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservUrin() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservUrin();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservNeurobehaviour }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservNeurobehaviour createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservNeurobehaviour() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservNeurobehaviour();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ImmunologicalFindings }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ImmunologicalFindings createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ImmunologicalFindings() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ImmunologicalFindings();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservOrganWeights }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservOrganWeights createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservOrganWeights() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservOrganWeights();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservGrpathol }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservGrpathol createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservGrpathol() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservGrpathol();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservNeuropathol }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservNeuropathol createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservNeuropathol() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservNeuropathol();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservHistopathol }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservHistopathol createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservHistopathol() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservHistopathol();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservHistopatholNeoplastic }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservHistopatholNeoplastic createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0ObservHistopatholNeoplastic() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .ObservHistopatholNeoplastic();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .OtherEffects }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .OtherEffects createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationGeneralToxicityP0OtherEffects() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.GeneralToxicityP0 .OtherEffects();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.GLPComplianceStatement }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.GLPComplianceStatement createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsGLPComplianceStatement() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.GLPComplianceStatement();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.LimitTest }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.LimitTest createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsLimitTest() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.LimitTest();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestMaterials }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestMaterials createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsTestMaterials() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestMaterials();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Examinations }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Examinations createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsExaminations() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Examinations();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAnyOtherInformationOnMaterialsAndMethodsInclTables() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.RouteOfAdministration }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.RouteOfAdministration createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAdministrationExposureRouteOfAdministration() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.RouteOfAdministration();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.TypeOfInhalationExposureIfApplicable }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.TypeOfInhalationExposureIfApplicable createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAdministrationExposureTypeOfInhalationExposureIfApplicable() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.TypeOfInhalationExposureIfApplicable();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.MassMedianAerodynamicDiameter }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.MassMedianAerodynamicDiameter createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAdministrationExposureMassMedianAerodynamicDiameter() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.MassMedianAerodynamicDiameter();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.Vehicle }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.Vehicle createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAdministrationExposureVehicle() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.Vehicle();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.AnalyticalVerificationOfDosesOrConcentrations }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.AnalyticalVerificationOfDosesOrConcentrations createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAdministrationExposureAnalyticalVerificationOfDosesOrConcentrations() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.AnalyticalVerificationOfDosesOrConcentrations();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.ControlAnimals }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.ControlAnimals createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAdministrationExposureControlAnimals() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.ControlAnimals();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.DosesConcentrations.Entry.DoseConc }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.DosesConcentrations.Entry.DoseConc createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAdministrationExposureDosesConcentrationsEntryDoseConc() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.DosesConcentrations.Entry.DoseConc();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestAnimals.Species }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestAnimals.Species createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsTestAnimalsSpecies() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestAnimals.Species();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestAnimals.Strain }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestAnimals.Strain createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsTestAnimalsStrain() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestAnimals.Strain();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestAnimals.Sex }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestAnimals.Sex createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsTestAnimalsSex() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.TestAnimals.Sex();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines.Entry.Qualifier }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines.Entry.Qualifier createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsGuidelinesEntryQualifier() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines.Entry.Qualifier();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines.Entry.Guideline }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines.Entry.Guideline createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsGuidelinesEntryGuideline() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines.Entry.Guideline();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines.Entry.Deviation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines.Entry.Deviation createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsGuidelinesEntryDeviation() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.Guidelines.Entry.Deviation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.DataSource.DataAccess }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.DataSource.DataAccess createENDPOINTSTUDYRECORDToxicityReproductionDataSourceDataAccess() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.DataSource.DataAccess();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.DataSource.DataProtectionClaimed }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.DataSource.DataProtectionClaimed createENDPOINTSTUDYRECORDToxicityReproductionDataSourceDataProtectionClaimed() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.DataSource.DataProtectionClaimed();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.Endpoint }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.Endpoint createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataEndpoint() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.Endpoint();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.StudyResultType }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.StudyResultType createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataStudyResultType() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.StudyResultType();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.PurposeFlag }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.PurposeFlag createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataPurposeFlag() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.PurposeFlag();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.Reliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.Reliability createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataReliability() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.Reliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.RationalReliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.RationalReliability createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataRationalReliability() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.RationalReliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.DataWaiving }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.DataWaiving createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataDataWaiving() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.DataWaiving();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.DataWaivingJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.DataWaivingJustification createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataDataWaivingJustification() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.DataWaivingJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.CrossReference.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.CrossReference.Entry.ReasonPurpose createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataCrossReferenceEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.CrossReference.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.AttachedJustification.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.AttachedJustification.Entry.ReasonPurpose createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataAttachedJustificationEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.AttachedJustification.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.DataProtection.Legislation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.DataProtection.Legislation createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataDataProtectionLegislation() {
+        return new ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.DataProtection.Legislation();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1 .Efflevel.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionReproductiveToxicitySetReproductiveToxicityEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ReproductiveToxicitySet.ReproductiveToxicity.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationTargetSystemOrganToxicityP1TargetSystemOrganToxicityEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.TargetSystemOrganToxicityP1 .TargetSystemOrganToxicity.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationTargetSystemOrganToxicityP0TargetSystemOrganToxicityEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.TargetSystemOrganToxicityP0 .TargetSystemOrganToxicity.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsParentalGenerationEffectLevelsP0EfflevelEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsParentalGeneration.EffectLevelsP0 .Efflevel.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationTargetSystemOrganToxicityF2TargetSystemOrganToxicityEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.TargetSystemOrganToxicityF2 .TargetSystemOrganToxicity.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", name = "RobustStudy", scope = ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataRobustStudy(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataRobustStudy_QNAME, Boolean.class, ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", name = "UsedForClassification", scope = ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataUsedForClassification(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataUsedForClassification_QNAME, Boolean.class, ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", name = "UsedForMSDS", scope = ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataUsedForMSDS(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDToxicityReproductionAdministrativeDataUsedForMSDS_QNAME, Boolean.class, ENDPOINTSTUDYRECORDToxicityReproduction.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsF2GenerationEffectLevelsF2EfflevelEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2 .Efflevel.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsP1SecondParentalGenerationEffectLevelsP1EfflevelEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1 .Efflevel.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", name = "GeometricStandardDeviation", scope = ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.class)
+    public JAXBElement<BigDecimal> createENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAdministrationExposureGeometricStandardDeviation(BigDecimal value) {
+        return new JAXBElement<BigDecimal>(_ENDPOINTSTUDYRECORDToxicityReproductionMaterialsAndMethodsAdministrationExposureGeometricStandardDeviation_QNAME, BigDecimal.class, ENDPOINTSTUDYRECORDToxicityReproduction.MaterialsAndMethods.AdministrationExposure.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ToxicityReproduction/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringTargetSystemOrganToxicityF1TargetSystemOrganToxicityEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDToxicityReproductionResultsAndDiscussionResultsOfExaminationsOffspringEffectLevelsF1EfflevelEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.TargetSystemOrganToxicityF1 .TargetSystemOrganToxicity.Entry.class, value);
+    }
+
+}

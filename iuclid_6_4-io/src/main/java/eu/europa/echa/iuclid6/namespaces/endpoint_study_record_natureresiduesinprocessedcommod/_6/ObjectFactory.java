@@ -1,0 +1,417 @@
+
+package eu.europa.echa.iuclid6.namespaces.endpoint_study_record_natureresiduesinprocessedcommod._6;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
+import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the eu.europa.echa.iuclid6.namespaces.endpoint_study_record_natureresiduesinprocessedcommod._6 package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataUsedForClassification_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-NatureResiduesInProcessedCommod/6.0", "UsedForClassification");
+    private final static QName _ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataUsedForMSDS_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-NatureResiduesInProcessedCommod/6.0", "UsedForMSDS");
+    private final static QName _ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataRobustStudy_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-NatureResiduesInProcessedCommod/6.0", "RobustStudy");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.europa.echa.iuclid6.namespaces.endpoint_study_record_natureresiduesinprocessedcommod._6
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.OverallRemarksAttachments }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.OverallRemarksAttachments createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodOverallRemarksAttachments() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.OverallRemarksAttachments();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.OverallRemarksAttachments.AttachedBackgroundMaterial }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.OverallRemarksAttachments.AttachedBackgroundMaterial createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodOverallRemarksAttachmentsAttachedBackgroundMaterial() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.OverallRemarksAttachments.AttachedBackgroundMaterial();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodResultsAndDiscussion() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodResultsAndDiscussionTotalRadioactiveResiduesTRR() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR.Entry createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodResultsAndDiscussionTotalRadioactiveResiduesTRREntry() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodMaterialsAndMethods() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.TestMaterials }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.TestMaterials createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodMaterialsAndMethodsTestMaterials() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.TestMaterials();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodMaterialsAndMethodsGuidelines() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines.Entry createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodMaterialsAndMethodsGuidelinesEntry() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.DataSource }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.DataSource createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodDataSource() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.DataSource();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeData() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.CrossReference }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.CrossReference createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataCrossReference() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.CrossReference();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.CrossReference.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.CrossReference.Entry createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataCrossReferenceEntry() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.CrossReference.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.AttachedJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.AttachedJustification createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataAttachedJustification() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.AttachedJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.AttachedJustification.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.AttachedJustification.Entry createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataAttachedJustificationEntry() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.AttachedJustification.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.DataProtection }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.DataProtection createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataDataProtection() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.DataProtection();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ApplicantSummaryAndConclusion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ApplicantSummaryAndConclusion createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodApplicantSummaryAndConclusion() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ApplicantSummaryAndConclusion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodOverallRemarksAttachmentsAttachedBackgroundMaterialEntry() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodResultsAndDiscussionAnyOtherInformationOnResultsInclTables() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR.Entry.TRRComponentNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR.Entry.TRRComponentNo createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodResultsAndDiscussionTotalRadioactiveResiduesTRREntryTRRComponentNo() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR.Entry.TRRComponentNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR.Entry.TRRConcentration }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR.Entry.TRRConcentration createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodResultsAndDiscussionTotalRadioactiveResiduesTRREntryTRRConcentration() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR.Entry.TRRConcentration();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR.Entry.TRRPercentage }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR.Entry.TRRPercentage createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodResultsAndDiscussionTotalRadioactiveResiduesTRREntryTRRPercentage() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.ResultsAndDiscussion.TotalRadioactiveResiduesTRR.Entry.TRRPercentage();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.ProductType }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.ProductType createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodMaterialsAndMethodsProductType() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.ProductType();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.GLPComplianceStatement }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.GLPComplianceStatement createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodMaterialsAndMethodsGLPComplianceStatement() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.GLPComplianceStatement();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.StudyDesign }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.StudyDesign createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodMaterialsAndMethodsStudyDesign() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.StudyDesign();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.SamplingAndAnalyticalMethodology }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.SamplingAndAnalyticalMethodology createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodMaterialsAndMethodsSamplingAndAnalyticalMethodology() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.SamplingAndAnalyticalMethodology();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodMaterialsAndMethodsAnyOtherInformationOnMaterialsAndMethodsInclTables() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.TestMaterials.Radiolabelling }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.TestMaterials.Radiolabelling createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodMaterialsAndMethodsTestMaterialsRadiolabelling() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.TestMaterials.Radiolabelling();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines.Entry.Qualifier }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines.Entry.Qualifier createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodMaterialsAndMethodsGuidelinesEntryQualifier() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines.Entry.Qualifier();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines.Entry.Guideline }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines.Entry.Guideline createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodMaterialsAndMethodsGuidelinesEntryGuideline() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines.Entry.Guideline();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines.Entry.Deviation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines.Entry.Deviation createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodMaterialsAndMethodsGuidelinesEntryDeviation() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.MaterialsAndMethods.Guidelines.Entry.Deviation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.DataSource.DataAccess }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.DataSource.DataAccess createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodDataSourceDataAccess() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.DataSource.DataAccess();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.DataSource.DataProtectionClaimed }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.DataSource.DataProtectionClaimed createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodDataSourceDataProtectionClaimed() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.DataSource.DataProtectionClaimed();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.Endpoint }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.Endpoint createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataEndpoint() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.Endpoint();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.StudyResultType }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.StudyResultType createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataStudyResultType() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.StudyResultType();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.PurposeFlag }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.PurposeFlag createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataPurposeFlag() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.PurposeFlag();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.Reliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.Reliability createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataReliability() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.Reliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.RationalReliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.RationalReliability createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataRationalReliability() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.RationalReliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.DataWaiving }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.DataWaiving createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataDataWaiving() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.DataWaiving();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.DataWaivingJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.DataWaivingJustification createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataDataWaivingJustification() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.DataWaivingJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.CrossReference.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.CrossReference.Entry.ReasonPurpose createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataCrossReferenceEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.CrossReference.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.AttachedJustification.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.AttachedJustification.Entry.ReasonPurpose createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataAttachedJustificationEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.AttachedJustification.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.DataProtection.Legislation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.DataProtection.Legislation createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataDataProtectionLegislation() {
+        return new ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.DataProtection.Legislation();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-NatureResiduesInProcessedCommod/6.0", name = "UsedForClassification", scope = ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataUsedForClassification(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataUsedForClassification_QNAME, Boolean.class, ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-NatureResiduesInProcessedCommod/6.0", name = "UsedForMSDS", scope = ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataUsedForMSDS(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataUsedForMSDS_QNAME, Boolean.class, ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-NatureResiduesInProcessedCommod/6.0", name = "RobustStudy", scope = ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataRobustStudy(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommodAdministrativeDataRobustStudy_QNAME, Boolean.class, ENDPOINTSTUDYRECORDNatureResiduesInProcessedCommod.AdministrativeData.class, value);
+    }
+
+}

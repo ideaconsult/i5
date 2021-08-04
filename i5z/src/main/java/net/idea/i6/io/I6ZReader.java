@@ -167,8 +167,8 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 				String jaxbcontextpath = "eu.europa.echa.iuclid6.namespaces.platform_container.v1:"
 						+ "eu.europa.echa.iuclid6.namespaces.platform_fields.v1:"
 						+ "eu.europa.echa.iuclid6.namespaces.platform_metadata.v1:"
-						+ "eu.europa.echa.iuclid6.namespaces.flexible_record_identifiers._5:"
-						+ "eu.europa.echa.iuclid6.namespaces.literature._5:" + getJaxbContextPath4File(files[index]);
+						+ "eu.europa.echa.iuclid6.namespaces.flexible_record_identifiers._6:"
+						+ "eu.europa.echa.iuclid6.namespaces.literature._6:" + getJaxbContextPath4File(files[index]);
 				if (jaxbcontextpath != null && !"".equals(jaxbcontextpath)) {
 					InputStream fileReader = new FileInputStream(files[index]);
 					try {

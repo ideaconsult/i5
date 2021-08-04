@@ -1,0 +1,393 @@
+
+package eu.europa.echa.iuclid6.namespaces.endpoint_study_record_sensitisationdata._6;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
+import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the eu.europa.echa.iuclid6.namespaces.endpoint_study_record_sensitisationdata._6 package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _ENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataRobustStudy_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-SensitisationData/6.0", "RobustStudy");
+    private final static QName _ENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataUsedForMSDS_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-SensitisationData/6.0", "UsedForMSDS");
+    private final static QName _ENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataUsedForClassification_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-SensitisationData/6.0", "UsedForClassification");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.europa.echa.iuclid6.namespaces.endpoint_study_record_sensitisationdata._6
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData createENDPOINTSTUDYRECORDSensitisationData() {
+        return new ENDPOINTSTUDYRECORDSensitisationData();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.OverallRemarksAttachments }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.OverallRemarksAttachments createENDPOINTSTUDYRECORDSensitisationDataOverallRemarksAttachments() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.OverallRemarksAttachments();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.OverallRemarksAttachments.AttachedBackgroundMaterial }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.OverallRemarksAttachments.AttachedBackgroundMaterial createENDPOINTSTUDYRECORDSensitisationDataOverallRemarksAttachmentsAttachedBackgroundMaterial() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.OverallRemarksAttachments.AttachedBackgroundMaterial();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.ResultsAndDiscussion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.ResultsAndDiscussion createENDPOINTSTUDYRECORDSensitisationDataResultsAndDiscussion() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.ResultsAndDiscussion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethods() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Method }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Method createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsMethod() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Method();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsGuidelines() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines.Entry createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsGuidelinesEntry() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.DataSource }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.DataSource createENDPOINTSTUDYRECORDSensitisationDataDataSource() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.DataSource();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData createENDPOINTSTUDYRECORDSensitisationDataAdministrativeData() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.CrossReference }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.CrossReference createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataCrossReference() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.CrossReference();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.CrossReference.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.CrossReference.Entry createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataCrossReferenceEntry() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.CrossReference.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.AttachedJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.AttachedJustification createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataAttachedJustification() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.AttachedJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.AttachedJustification.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.AttachedJustification.Entry createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataAttachedJustificationEntry() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.AttachedJustification.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.DataProtection }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.DataProtection createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataDataProtection() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.DataProtection();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.ApplicantSummaryAndConclusion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.ApplicantSummaryAndConclusion createENDPOINTSTUDYRECORDSensitisationDataApplicantSummaryAndConclusion() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.ApplicantSummaryAndConclusion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry createENDPOINTSTUDYRECORDSensitisationDataOverallRemarksAttachmentsAttachedBackgroundMaterialEntry() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables createENDPOINTSTUDYRECORDSensitisationDataResultsAndDiscussionAnyOtherInformationOnResultsInclTables() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.TypeOfSensitisationStudied }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.TypeOfSensitisationStudied createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsTypeOfSensitisationStudied() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.TypeOfSensitisationStudied();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.StudyType }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.StudyType createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsStudyType() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.StudyType();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.GLPComplianceStatement }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.GLPComplianceStatement createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsGLPComplianceStatement() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.GLPComplianceStatement();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.TestMaterials }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.TestMaterials createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsTestMaterials() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.TestMaterials();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsAnyOtherInformationOnMaterialsAndMethodsInclTables() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Method.TypeOfPopulation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Method.TypeOfPopulation createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsMethodTypeOfPopulation() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Method.TypeOfPopulation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Method.EthicalApproval }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Method.EthicalApproval createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsMethodEthicalApproval() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Method.EthicalApproval();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Method.RouteOfAdministration }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Method.RouteOfAdministration createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsMethodRouteOfAdministration() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Method.RouteOfAdministration();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines.Entry.Qualifier }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines.Entry.Qualifier createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsGuidelinesEntryQualifier() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines.Entry.Qualifier();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines.Entry.Guideline }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines.Entry.Guideline createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsGuidelinesEntryGuideline() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines.Entry.Guideline();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines.Entry.Deviation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines.Entry.Deviation createENDPOINTSTUDYRECORDSensitisationDataMaterialsAndMethodsGuidelinesEntryDeviation() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.MaterialsAndMethods.Guidelines.Entry.Deviation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.DataSource.DataAccess }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.DataSource.DataAccess createENDPOINTSTUDYRECORDSensitisationDataDataSourceDataAccess() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.DataSource.DataAccess();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.DataSource.DataProtectionClaimed }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.DataSource.DataProtectionClaimed createENDPOINTSTUDYRECORDSensitisationDataDataSourceDataProtectionClaimed() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.DataSource.DataProtectionClaimed();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.Endpoint }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.Endpoint createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataEndpoint() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.Endpoint();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.StudyResultType }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.StudyResultType createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataStudyResultType() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.StudyResultType();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.PurposeFlag }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.PurposeFlag createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataPurposeFlag() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.PurposeFlag();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.Reliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.Reliability createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataReliability() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.Reliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.RationalReliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.RationalReliability createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataRationalReliability() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.RationalReliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.DataWaiving }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.DataWaiving createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataDataWaiving() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.DataWaiving();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.DataWaivingJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.DataWaivingJustification createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataDataWaivingJustification() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.DataWaivingJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.CrossReference.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.CrossReference.Entry.ReasonPurpose createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataCrossReferenceEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.CrossReference.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.AttachedJustification.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.AttachedJustification.Entry.ReasonPurpose createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataAttachedJustificationEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.AttachedJustification.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.DataProtection.Legislation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.DataProtection.Legislation createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataDataProtectionLegislation() {
+        return new ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.DataProtection.Legislation();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-SensitisationData/6.0", name = "RobustStudy", scope = ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataRobustStudy(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataRobustStudy_QNAME, Boolean.class, ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-SensitisationData/6.0", name = "UsedForMSDS", scope = ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataUsedForMSDS(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataUsedForMSDS_QNAME, Boolean.class, ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-SensitisationData/6.0", name = "UsedForClassification", scope = ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataUsedForClassification(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDSensitisationDataAdministrativeDataUsedForClassification_QNAME, Boolean.class, ENDPOINTSTUDYRECORDSensitisationData.AdministrativeData.class, value);
+    }
+
+}

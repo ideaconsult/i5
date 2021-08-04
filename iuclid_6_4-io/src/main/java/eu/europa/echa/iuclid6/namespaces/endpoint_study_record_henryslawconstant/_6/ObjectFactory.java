@@ -1,0 +1,411 @@
+
+package eu.europa.echa.iuclid6.namespaces.endpoint_study_record_henryslawconstant._6;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
+import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the eu.europa.echa.iuclid6.namespaces.endpoint_study_record_henryslawconstant._6 package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _ENDPOINTSTUDYRECORDHenrysLawConstantResultsAndDiscussionHenrysLawConstantHEntryKeyResult_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-HenrysLawConstant/6.0", "KeyResult");
+    private final static QName _ENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataRobustStudy_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-HenrysLawConstant/6.0", "RobustStudy");
+    private final static QName _ENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataUsedForClassification_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-HenrysLawConstant/6.0", "UsedForClassification");
+    private final static QName _ENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataUsedForMSDS_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-HenrysLawConstant/6.0", "UsedForMSDS");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.europa.echa.iuclid6.namespaces.endpoint_study_record_henryslawconstant._6
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant createENDPOINTSTUDYRECORDHenrysLawConstant() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.OverallRemarksAttachments }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.OverallRemarksAttachments createENDPOINTSTUDYRECORDHenrysLawConstantOverallRemarksAttachments() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.OverallRemarksAttachments();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.OverallRemarksAttachments.AttachedBackgroundMaterial }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.OverallRemarksAttachments.AttachedBackgroundMaterial createENDPOINTSTUDYRECORDHenrysLawConstantOverallRemarksAttachmentsAttachedBackgroundMaterial() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.OverallRemarksAttachments.AttachedBackgroundMaterial();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion createENDPOINTSTUDYRECORDHenrysLawConstantResultsAndDiscussion() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH createENDPOINTSTUDYRECORDHenrysLawConstantResultsAndDiscussionHenrysLawConstantH() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry createENDPOINTSTUDYRECORDHenrysLawConstantResultsAndDiscussionHenrysLawConstantHEntry() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods createENDPOINTSTUDYRECORDHenrysLawConstantMaterialsAndMethods() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines createENDPOINTSTUDYRECORDHenrysLawConstantMaterialsAndMethodsGuidelines() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines.Entry createENDPOINTSTUDYRECORDHenrysLawConstantMaterialsAndMethodsGuidelinesEntry() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.DataSource }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.DataSource createENDPOINTSTUDYRECORDHenrysLawConstantDataSource() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.DataSource();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeData() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.CrossReference }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.CrossReference createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataCrossReference() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.CrossReference();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.CrossReference.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.CrossReference.Entry createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataCrossReferenceEntry() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.CrossReference.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.AttachedJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.AttachedJustification createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataAttachedJustification() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.AttachedJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.AttachedJustification.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.AttachedJustification.Entry createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataAttachedJustificationEntry() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.AttachedJustification.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.DataProtection }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.DataProtection createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataDataProtection() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.DataProtection();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.ApplicantSummaryAndConclusion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.ApplicantSummaryAndConclusion createENDPOINTSTUDYRECORDHenrysLawConstantApplicantSummaryAndConclusion() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.ApplicantSummaryAndConclusion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry createENDPOINTSTUDYRECORDHenrysLawConstantOverallRemarksAttachmentsAttachedBackgroundMaterialEntry() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables createENDPOINTSTUDYRECORDHenrysLawConstantResultsAndDiscussionAnyOtherInformationOnResultsInclTables() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.H }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.H createENDPOINTSTUDYRECORDHenrysLawConstantResultsAndDiscussionHenrysLawConstantHEntryH() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.H();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.Temp }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.Temp createENDPOINTSTUDYRECORDHenrysLawConstantResultsAndDiscussionHenrysLawConstantHEntryTemp() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.Temp();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.AtmPressure }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.AtmPressure createENDPOINTSTUDYRECORDHenrysLawConstantResultsAndDiscussionHenrysLawConstantHEntryAtmPressure() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.AtmPressure();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.RemarksOnResults }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.RemarksOnResults createENDPOINTSTUDYRECORDHenrysLawConstantResultsAndDiscussionHenrysLawConstantHEntryRemarksOnResults() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.RemarksOnResults();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.GLPComplianceStatement }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.GLPComplianceStatement createENDPOINTSTUDYRECORDHenrysLawConstantMaterialsAndMethodsGLPComplianceStatement() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.GLPComplianceStatement();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.TestMaterials }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.TestMaterials createENDPOINTSTUDYRECORDHenrysLawConstantMaterialsAndMethodsTestMaterials() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.TestMaterials();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.StudyDesign }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.StudyDesign createENDPOINTSTUDYRECORDHenrysLawConstantMaterialsAndMethodsStudyDesign() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.StudyDesign();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables createENDPOINTSTUDYRECORDHenrysLawConstantMaterialsAndMethodsAnyOtherInformationOnMaterialsAndMethodsInclTables() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines.Entry.Qualifier }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines.Entry.Qualifier createENDPOINTSTUDYRECORDHenrysLawConstantMaterialsAndMethodsGuidelinesEntryQualifier() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines.Entry.Qualifier();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines.Entry.Guideline }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines.Entry.Guideline createENDPOINTSTUDYRECORDHenrysLawConstantMaterialsAndMethodsGuidelinesEntryGuideline() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines.Entry.Guideline();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines.Entry.Deviation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines.Entry.Deviation createENDPOINTSTUDYRECORDHenrysLawConstantMaterialsAndMethodsGuidelinesEntryDeviation() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.MaterialsAndMethods.Guidelines.Entry.Deviation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.DataSource.DataAccess }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.DataSource.DataAccess createENDPOINTSTUDYRECORDHenrysLawConstantDataSourceDataAccess() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.DataSource.DataAccess();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.DataSource.DataProtectionClaimed }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.DataSource.DataProtectionClaimed createENDPOINTSTUDYRECORDHenrysLawConstantDataSourceDataProtectionClaimed() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.DataSource.DataProtectionClaimed();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.Endpoint }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.Endpoint createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataEndpoint() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.Endpoint();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.StudyResultType }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.StudyResultType createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataStudyResultType() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.StudyResultType();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.PurposeFlag }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.PurposeFlag createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataPurposeFlag() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.PurposeFlag();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.Reliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.Reliability createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataReliability() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.Reliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.RationalReliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.RationalReliability createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataRationalReliability() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.RationalReliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.DataWaiving }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.DataWaiving createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataDataWaiving() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.DataWaiving();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.DataWaivingJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.DataWaivingJustification createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataDataWaivingJustification() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.DataWaivingJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.CrossReference.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.CrossReference.Entry.ReasonPurpose createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataCrossReferenceEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.CrossReference.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.AttachedJustification.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.AttachedJustification.Entry.ReasonPurpose createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataAttachedJustificationEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.AttachedJustification.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.DataProtection.Legislation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.DataProtection.Legislation createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataDataProtectionLegislation() {
+        return new ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.DataProtection.Legislation();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-HenrysLawConstant/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDHenrysLawConstantResultsAndDiscussionHenrysLawConstantHEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDHenrysLawConstantResultsAndDiscussionHenrysLawConstantHEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDHenrysLawConstant.ResultsAndDiscussion.HenrysLawConstantH.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-HenrysLawConstant/6.0", name = "RobustStudy", scope = ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataRobustStudy(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataRobustStudy_QNAME, Boolean.class, ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-HenrysLawConstant/6.0", name = "UsedForClassification", scope = ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataUsedForClassification(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataUsedForClassification_QNAME, Boolean.class, ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-HenrysLawConstant/6.0", name = "UsedForMSDS", scope = ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataUsedForMSDS(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDHenrysLawConstantAdministrativeDataUsedForMSDS_QNAME, Boolean.class, ENDPOINTSTUDYRECORDHenrysLawConstant.AdministrativeData.class, value);
+    }
+
+}

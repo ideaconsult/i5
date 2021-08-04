@@ -1,0 +1,914 @@
+
+package eu.europa.echa.iuclid6.namespaces.endpoint_study_record_biodegradationinsoil._6;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
+import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.namespace.QName;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the eu.europa.echa.iuclid6.namespaces.endpoint_study_record_biodegradationinsoil._6 package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _ENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntrySamplingDate_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", "SamplingDate");
+    private final static QName _ENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntryStDev_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", "StDev");
+    private final static QName _ENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntryRecovery_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", "Recovery");
+    private final static QName _ENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignYear_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", "Year");
+    private final static QName _ENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionHalfLifeOfParentCompoundEntryKeyResult_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", "KeyResult");
+    private final static QName _ENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataRobustStudy_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", "RobustStudy");
+    private final static QName _ENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataUsedForMSDS_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", "UsedForMSDS");
+    private final static QName _ENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataUsedForClassification_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", "UsedForClassification");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.europa.echa.iuclid6.namespaces.endpoint_study_record_biodegradationinsoil._6
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil createENDPOINTSTUDYRECORDBiodegradationInSoil() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.OverallRemarksAttachments }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.OverallRemarksAttachments createENDPOINTSTUDYRECORDBiodegradationInSoilOverallRemarksAttachments() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.OverallRemarksAttachments();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.OverallRemarksAttachments.AttachedBackgroundMaterial }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.OverallRemarksAttachments.AttachedBackgroundMaterial createENDPOINTSTUDYRECORDBiodegradationInSoilOverallRemarksAttachmentsAttachedBackgroundMaterial() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.OverallRemarksAttachments.AttachedBackgroundMaterial();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussion() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.IdentityTransformation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.IdentityTransformation createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionIdentityTransformation() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.IdentityTransformation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.IdentityTransformation.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.IdentityTransformation.Entry createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionIdentityTransformationEntry() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.IdentityTransformation.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionHalfLifeOfParentCompound() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionHalfLifeOfParentCompoundEntry() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionDegradation() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionDegradationEntry() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalance() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntry() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethods() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesign() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.ExperimentalConditions }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.ExperimentalConditions createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignExperimentalConditions() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.ExperimentalConditions();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.ExperimentalConditions.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.ExperimentalConditions.Entry createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignExperimentalConditionsEntry() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.ExperimentalConditions.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignInitialTestSubstanceConcentration() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration.Entry createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignInitialTestSubstanceConcentrationEntry() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.DurationOfTestContactTime }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.DurationOfTestContactTime createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignDurationOfTestContactTime() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.DurationOfTestContactTime();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.DurationOfTestContactTime.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.DurationOfTestContactTime.Entry createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignDurationOfTestContactTimeEntry() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.DurationOfTestContactTime.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignSoilProperties() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignSoilPropertiesEntry() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.TestMaterials }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.TestMaterials createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsTestMaterials() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.TestMaterials();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsGuidelines() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines.Entry createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsGuidelinesEntry() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.DataSource }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.DataSource createENDPOINTSTUDYRECORDBiodegradationInSoilDataSource() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.DataSource();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeData() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.CrossReference }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.CrossReference createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataCrossReference() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.CrossReference();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.CrossReference.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.CrossReference.Entry createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataCrossReferenceEntry() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.CrossReference.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.AttachedJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.AttachedJustification createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataAttachedJustification() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.AttachedJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.AttachedJustification.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.AttachedJustification.Entry createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataAttachedJustificationEntry() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.AttachedJustification.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.DataProtection }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.DataProtection createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataDataProtection() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.DataProtection();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ApplicantSummaryAndConclusion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ApplicantSummaryAndConclusion createENDPOINTSTUDYRECORDBiodegradationInSoilApplicantSummaryAndConclusion() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ApplicantSummaryAndConclusion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry createENDPOINTSTUDYRECORDBiodegradationInSoilOverallRemarksAttachmentsAttachedBackgroundMaterialEntry() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.TransformationProducts }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.TransformationProducts createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionTransformationProducts() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.TransformationProducts();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.EvaporationOfParentCompound }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.EvaporationOfParentCompound createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionEvaporationOfParentCompound() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.EvaporationOfParentCompound();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.VolatileMetabolites }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.VolatileMetabolites createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionVolatileMetabolites() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.VolatileMetabolites();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Residues }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Residues createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionResidues() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Residues();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionAnyOtherInformationOnResultsInclTables() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.IdentityTransformation.Entry.No }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.IdentityTransformation.Entry.No createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionIdentityTransformationEntryNo() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.IdentityTransformation.Entry.No();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.SoilNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.SoilNo createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionHalfLifeOfParentCompoundEntrySoilNo() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.SoilNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.HalfLife }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.HalfLife createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionHalfLifeOfParentCompoundEntryHalfLife() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.HalfLife();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.Type }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.Type createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionHalfLifeOfParentCompoundEntryType() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.Type();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.Temp }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.Temp createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionHalfLifeOfParentCompoundEntryTemp() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.Temp();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.RemarksOnResults }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.RemarksOnResults createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionHalfLifeOfParentCompoundEntryRemarksOnResults() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.RemarksOnResults();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.ParentProduct }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.ParentProduct createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionDegradationEntryParentProduct() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.ParentProduct();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.SoilNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.SoilNo createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionDegradationEntrySoilNo() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.SoilNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.Degr }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.Degr createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionDegradationEntryDegr() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.Degr();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.Parameter }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.Parameter createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionDegradationEntryParameter() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.Parameter();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.SamplingTime }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.SamplingTime createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionDegradationEntrySamplingTime() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.SamplingTime();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.RemarksOnResults }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.RemarksOnResults createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionDegradationEntryRemarksOnResults() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.RemarksOnResults();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.SoilNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.SoilNo createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntrySoilNo() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.SoilNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.TotalExtractable }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.TotalExtractable createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntryTotalExtractable() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.TotalExtractable();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.NonExtractable }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.NonExtractable createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntryNonExtractable() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.NonExtractable();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.CO2 }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.CO2 createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntryCO2() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.CO2();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.OtherVolatiles }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.OtherVolatiles createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntryOtherVolatiles() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.OtherVolatiles();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.RemarksOnResults }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.RemarksOnResults createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntryRemarksOnResults() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.RemarksOnResults();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.GLPComplianceStatement }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.GLPComplianceStatement createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsGLPComplianceStatement() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.GLPComplianceStatement();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.TestType }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.TestType createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsTestType() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.TestType();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsAnyOtherInformationOnMaterialsAndMethodsInclTables() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.OxygenConditions }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.OxygenConditions createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignOxygenConditions() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.OxygenConditions();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilClassification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilClassification createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignSoilClassification() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilClassification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.ParameterFollowed }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.ParameterFollowed createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignParameterFollowed() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.ParameterFollowed();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.ExperimentalConditions.Entry.SoilNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.ExperimentalConditions.Entry.SoilNo createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignExperimentalConditionsEntrySoilNo() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.ExperimentalConditions.Entry.SoilNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration.Entry.SoilNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration.Entry.SoilNo createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignInitialTestSubstanceConcentrationEntrySoilNo() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration.Entry.SoilNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration.Entry.InitialConc }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration.Entry.InitialConc createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignInitialTestSubstanceConcentrationEntryInitialConc() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration.Entry.InitialConc();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration.Entry.BasedOn }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration.Entry.BasedOn createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignInitialTestSubstanceConcentrationEntryBasedOn() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.InitialTestSubstanceConcentration.Entry.BasedOn();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.DurationOfTestContactTime.Entry.SoilNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.DurationOfTestContactTime.Entry.SoilNo createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignDurationOfTestContactTimeEntrySoilNo() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.DurationOfTestContactTime.Entry.SoilNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.DurationOfTestContactTime.Entry.Duration }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.DurationOfTestContactTime.Entry.Duration createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignDurationOfTestContactTimeEntryDuration() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.DurationOfTestContactTime.Entry.Duration();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.SoilNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.SoilNo createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignSoilPropertiesEntrySoilNo() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.SoilNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.SoilType }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.SoilType createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignSoilPropertiesEntrySoilType() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.SoilType();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.Clay }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.Clay createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignSoilPropertiesEntryClay() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.Clay();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.Silt }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.Silt createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignSoilPropertiesEntrySilt() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.Silt();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.Sand }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.Sand createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignSoilPropertiesEntrySand() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.Sand();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.OrgC }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.OrgC createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignSoilPropertiesEntryOrgC() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.OrgC();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.Ph }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.Ph createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignSoilPropertiesEntryPh() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.Ph();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.CEC }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.CEC createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignSoilPropertiesEntryCEC() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.CEC();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.BulkDensityGCm }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.BulkDensityGCm createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignSoilPropertiesEntryBulkDensityGCm() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.BulkDensityGCm();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.MoistureContent }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.MoistureContent createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignSoilPropertiesEntryMoistureContent() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.SoilProperties.Entry.MoistureContent();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.TestMaterials.Radiolabelling }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.TestMaterials.Radiolabelling createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsTestMaterialsRadiolabelling() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.TestMaterials.Radiolabelling();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines.Entry.Qualifier }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines.Entry.Qualifier createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsGuidelinesEntryQualifier() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines.Entry.Qualifier();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines.Entry.Guideline }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines.Entry.Guideline createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsGuidelinesEntryGuideline() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines.Entry.Guideline();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines.Entry.Deviation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines.Entry.Deviation createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsGuidelinesEntryDeviation() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.Guidelines.Entry.Deviation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.DataSource.DataAccess }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.DataSource.DataAccess createENDPOINTSTUDYRECORDBiodegradationInSoilDataSourceDataAccess() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.DataSource.DataAccess();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.DataSource.DataProtectionClaimed }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.DataSource.DataProtectionClaimed createENDPOINTSTUDYRECORDBiodegradationInSoilDataSourceDataProtectionClaimed() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.DataSource.DataProtectionClaimed();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.Endpoint }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.Endpoint createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataEndpoint() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.Endpoint();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.StudyResultType }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.StudyResultType createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataStudyResultType() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.StudyResultType();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.PurposeFlag }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.PurposeFlag createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataPurposeFlag() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.PurposeFlag();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.Reliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.Reliability createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataReliability() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.Reliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.RationalReliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.RationalReliability createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataRationalReliability() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.RationalReliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.DataWaiving }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.DataWaiving createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataDataWaiving() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.DataWaiving();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.DataWaivingJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.DataWaivingJustification createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataDataWaivingJustification() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.DataWaivingJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.CrossReference.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.CrossReference.Entry.ReasonPurpose createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataCrossReferenceEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.CrossReference.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.AttachedJustification.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.AttachedJustification.Entry.ReasonPurpose createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataAttachedJustificationEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.AttachedJustification.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.DataProtection.Legislation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.DataProtection.Legislation createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataDataProtectionLegislation() {
+        return new ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.DataProtection.Legislation();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", name = "SamplingDate", scope = ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.class)
+    public JAXBElement<XMLGregorianCalendar> createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntrySamplingDate(XMLGregorianCalendar value) {
+        return new JAXBElement<XMLGregorianCalendar>(_ENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntrySamplingDate_QNAME, XMLGregorianCalendar.class, ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", name = "StDev", scope = ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.class)
+    public JAXBElement<BigDecimal> createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntryStDev(BigDecimal value) {
+        return new JAXBElement<BigDecimal>(_ENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntryStDev_QNAME, BigDecimal.class, ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", name = "Recovery", scope = ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.class)
+    public JAXBElement<BigDecimal> createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntryRecovery(BigDecimal value) {
+        return new JAXBElement<BigDecimal>(_ENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntryRecovery_QNAME, BigDecimal.class, ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.MaterialMassBalance.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigInteger }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", name = "Year", scope = ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.class)
+    public JAXBElement<BigInteger> createENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignYear(BigInteger value) {
+        return new JAXBElement<BigInteger>(_ENDPOINTSTUDYRECORDBiodegradationInSoilMaterialsAndMethodsStudyDesignYear_QNAME, BigInteger.class, ENDPOINTSTUDYRECORDBiodegradationInSoil.MaterialsAndMethods.StudyDesign.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", name = "StDev", scope = ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.class)
+    public JAXBElement<BigDecimal> createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionHalfLifeOfParentCompoundEntryStDev(BigDecimal value) {
+        return new JAXBElement<BigDecimal>(_ENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntryStDev_QNAME, BigDecimal.class, ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionHalfLifeOfParentCompoundEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionHalfLifeOfParentCompoundEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.HalfLifeOfParentCompound.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", name = "RobustStudy", scope = ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataRobustStudy(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataRobustStudy_QNAME, Boolean.class, ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", name = "UsedForMSDS", scope = ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataUsedForMSDS(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataUsedForMSDS_QNAME, Boolean.class, ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", name = "UsedForClassification", scope = ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataUsedForClassification(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDBiodegradationInSoilAdministrativeDataUsedForClassification_QNAME, Boolean.class, ENDPOINTSTUDYRECORDBiodegradationInSoil.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link XMLGregorianCalendar }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", name = "SamplingDate", scope = ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.class)
+    public JAXBElement<XMLGregorianCalendar> createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionDegradationEntrySamplingDate(XMLGregorianCalendar value) {
+        return new JAXBElement<XMLGregorianCalendar>(_ENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntrySamplingDate_QNAME, XMLGregorianCalendar.class, ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", name = "StDev", scope = ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.class)
+    public JAXBElement<BigDecimal> createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionDegradationEntryStDev(BigDecimal value) {
+        return new JAXBElement<BigDecimal>(_ENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionMaterialMassBalanceEntryStDev_QNAME, BigDecimal.class, ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-BiodegradationInSoil/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionDegradationEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDBiodegradationInSoilResultsAndDiscussionHalfLifeOfParentCompoundEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDBiodegradationInSoil.ResultsAndDiscussion.Degradation.Entry.class, value);
+    }
+
+}

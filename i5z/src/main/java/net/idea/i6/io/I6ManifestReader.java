@@ -262,11 +262,11 @@ public class I6ManifestReader {
 				+ "eu.europa.echa.iuclid6.namespaces.platform_fields.v1:"
 				+ "eu.europa.echa.iuclid6.namespaces.platform_metadata.v1:"
 				+ "eu.europa.echa.iuclid6.namespaces.platform_modification_history.v1:"
-				+ "eu.europa.echa.iuclid6.namespaces.literature._5:"
-				+ "eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._5:"
-				+ "eu.europa.echa.iuclid6.namespaces.flexible_record_identifiers._5:"
-				+ "eu.europa.echa.iuclid6.namespaces.legal_entity._5:" 
-				+ "eu.europa.echa.iuclid6.namespaces.test_material_information._5";
+				+ "eu.europa.echa.iuclid6.namespaces.literature._6:"
+				+ "eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._6:"
+				+ "eu.europa.echa.iuclid6.namespaces.flexible_record_identifiers._6:"
+				+ "eu.europa.echa.iuclid6.namespaces.legal_entity._6:" 
+				+ "eu.europa.echa.iuclid6.namespaces.test_material_information._6";
 
 		JAXBContext jaxbContext = JAXBContext.newInstance(jaxbcontextpath);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();

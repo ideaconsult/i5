@@ -1,0 +1,930 @@
+
+package eu.europa.echa.iuclid6.namespaces.endpoint_study_record_adsorptiondesorption._6;
+
+import java.math.BigDecimal;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
+import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the eu.europa.echa.iuclid6.namespaces.endpoint_study_record_adsorptiondesorption._6 package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _ENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryKeyResult_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", "KeyResult");
+    private final static QName _ENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryPh_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", "Ph");
+    private final static QName _ENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataRobustStudy_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", "RobustStudy");
+    private final static QName _ENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataUsedForClassification_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", "UsedForClassification");
+    private final static QName _ENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataUsedForMSDS_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", "UsedForMSDS");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.europa.echa.iuclid6.namespaces.endpoint_study_record_adsorptiondesorption._6
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption createENDPOINTSTUDYRECORDAdsorptionDesorption() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ApplicantSummaryAndConclusion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ApplicantSummaryAndConclusion createENDPOINTSTUDYRECORDAdsorptionDesorptionApplicantSummaryAndConclusion() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ApplicantSummaryAndConclusion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.OverallRemarksAttachments }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.OverallRemarksAttachments createENDPOINTSTUDYRECORDAdsorptionDesorptionOverallRemarksAttachments() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.OverallRemarksAttachments();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.OverallRemarksAttachments.AttachedBackgroundMaterial }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.OverallRemarksAttachments.AttachedBackgroundMaterial createENDPOINTSTUDYRECORDAdsorptionDesorptionOverallRemarksAttachmentsAttachedBackgroundMaterial() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.OverallRemarksAttachments.AttachedBackgroundMaterial();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussion() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethod() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.IdentityTransformation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.IdentityTransformation createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodIdentityTransformation() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.IdentityTransformation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.IdentityTransformation.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.IdentityTransformation.Entry createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodIdentityTransformationEntry() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.IdentityTransformation.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodMassBalanceAtEndOfDesorptionPhase() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodMassBalanceAtEndOfDesorptionPhaseEntry() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodMassBalanceAtEndOfAdsorptionPhase() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodMassBalanceAtEndOfAdsorptionPhaseEntry() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionOther() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionOtherEntry() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficient() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntry() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethods() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesign() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethod() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfDesorptionEquilibration() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfDesorptionEquilibrationEntry() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfAdsorptionEquilibration() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfAdsorptionEquilibrationEntry() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodMatrixProperties() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodMatrixPropertiesEntry() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.TestMaterials }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.TestMaterials createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsTestMaterials() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.TestMaterials();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsGuidelines() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines.Entry createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsGuidelinesEntry() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.DataSource }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.DataSource createENDPOINTSTUDYRECORDAdsorptionDesorptionDataSource() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.DataSource();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeData() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.CrossReference }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.CrossReference createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataCrossReference() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.CrossReference();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.CrossReference.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.CrossReference.Entry createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataCrossReferenceEntry() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.CrossReference.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.AttachedJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.AttachedJustification createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataAttachedJustification() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.AttachedJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.AttachedJustification.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.AttachedJustification.Entry createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataAttachedJustificationEntry() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.AttachedJustification.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.DataProtection }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.DataProtection createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataDataProtection() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.DataProtection();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ApplicantSummaryAndConclusion.ValidityCriteriaFulfilled }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ApplicantSummaryAndConclusion.ValidityCriteriaFulfilled createENDPOINTSTUDYRECORDAdsorptionDesorptionApplicantSummaryAndConclusionValidityCriteriaFulfilled() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ApplicantSummaryAndConclusion.ValidityCriteriaFulfilled();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry createENDPOINTSTUDYRECORDAdsorptionDesorptionOverallRemarksAttachmentsAttachedBackgroundMaterialEntry() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsHplcMethod }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsHplcMethod createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsHplcMethod() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsHplcMethod();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAnyOtherInformationOnResultsInclTables() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.TransformationProducts }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.TransformationProducts createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodTransformationProducts() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.TransformationProducts();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.IdentityTransformation.Entry.No }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.IdentityTransformation.Entry.No createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodIdentityTransformationEntryNo() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.IdentityTransformation.Entry.No();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry.SampleNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry.SampleNo createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodMassBalanceAtEndOfDesorptionPhaseEntrySampleNo() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry.SampleNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry.Duration }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry.Duration createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodMassBalanceAtEndOfDesorptionPhaseEntryDuration() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry.Duration();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry.DesorptionPercentage }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry.DesorptionPercentage createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodMassBalanceAtEndOfDesorptionPhaseEntryDesorptionPercentage() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry.DesorptionPercentage();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry.RemarksOnResults }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry.RemarksOnResults createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodMassBalanceAtEndOfDesorptionPhaseEntryRemarksOnResults() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfDesorptionPhase.Entry.RemarksOnResults();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry.SampleNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry.SampleNo createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodMassBalanceAtEndOfAdsorptionPhaseEntrySampleNo() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry.SampleNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry.Duration }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry.Duration createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodMassBalanceAtEndOfAdsorptionPhaseEntryDuration() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry.Duration();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry.AdsorptionPercentage }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry.AdsorptionPercentage createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodMassBalanceAtEndOfAdsorptionPhaseEntryAdsorptionPercentage() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry.AdsorptionPercentage();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry.RemarksOnResults }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry.RemarksOnResults createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionResultsBatchEquilibriumOrOtherMethodMassBalanceAtEndOfAdsorptionPhaseEntryRemarksOnResults() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.ResultsBatchEquilibriumOrOtherMethod.MassBalanceAtEndOfAdsorptionPhase.Entry.RemarksOnResults();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.SampleNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.SampleNo createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionOtherEntrySampleNo() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.SampleNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.PhaseSystem }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.PhaseSystem createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionOtherEntryPhaseSystem() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.PhaseSystem();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.Type }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.Type createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionOtherEntryType() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.Type();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.Value }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.Value createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionOtherEntryValue() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.Value();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.Temp }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.Temp createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionOtherEntryTemp() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.Temp();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.OrgCarbon }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.OrgCarbon createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionOtherEntryOrgCarbon() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.OrgCarbon();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.RemarksOnResults }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.RemarksOnResults createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionOtherEntryRemarksOnResults() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.RemarksOnResults();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.SampleNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.SampleNo createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntrySampleNo() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.SampleNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.Type }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.Type createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryType() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.Type();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.Value }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.Value createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryValue() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.Value();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.Temp }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.Temp createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryTemp() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.Temp();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.PercentageOfOrganicCarbon }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.PercentageOfOrganicCarbon createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryPercentageOfOrganicCarbon() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.PercentageOfOrganicCarbon();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.RemarksOnResults }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.RemarksOnResults createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryRemarksOnResults() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.RemarksOnResults();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.GLPComplianceStatement }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.GLPComplianceStatement createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsGLPComplianceStatement() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.GLPComplianceStatement();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.MethodType }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.MethodType createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsMethodType() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.MethodType();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Media }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Media createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsMedia() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Media();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsAnyOtherInformationOnMaterialsAndMethodsInclTables() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.HPLCMethod }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.HPLCMethod createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignHPLCMethod() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.HPLCMethod();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.AnalyticalMonitoring }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.AnalyticalMonitoring createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodAnalyticalMonitoring() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.AnalyticalMonitoring();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.SampleNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.SampleNo createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfDesorptionEquilibrationEntrySampleNo() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.SampleNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.Duration }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.Duration createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfDesorptionEquilibrationEntryDuration() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.Duration();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.ConcOfAdsorbedTestMat }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.ConcOfAdsorbedTestMat createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfDesorptionEquilibrationEntryConcOfAdsorbedTestMat() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.ConcOfAdsorbedTestMat();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.Temp }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.Temp createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfDesorptionEquilibrationEntryTemp() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.Temp();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.SampleNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.SampleNo createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfAdsorptionEquilibrationEntrySampleNo() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.SampleNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.Duration }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.Duration createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfAdsorptionEquilibrationEntryDuration() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.Duration();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.InitialConcMeasured }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.InitialConcMeasured createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfAdsorptionEquilibrationEntryInitialConcMeasured() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.InitialConcMeasured();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.Temp }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.Temp createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfAdsorptionEquilibrationEntryTemp() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.Temp();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.MatrixNo }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.MatrixNo createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodMatrixPropertiesEntryMatrixNo() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.MatrixNo();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.MatrixType }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.MatrixType createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodMatrixPropertiesEntryMatrixType() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.MatrixType();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.Clay }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.Clay createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodMatrixPropertiesEntryClay() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.Clay();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.Silt }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.Silt createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodMatrixPropertiesEntrySilt() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.Silt();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.Sand }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.Sand createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodMatrixPropertiesEntrySand() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.Sand();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.OrgCarbon }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.OrgCarbon createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodMatrixPropertiesEntryOrgCarbon() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.OrgCarbon();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.Ph }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.Ph createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodMatrixPropertiesEntryPh() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.Ph();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.CEC }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.CEC createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodMatrixPropertiesEntryCEC() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.CEC();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.BulkDensityGCm }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.BulkDensityGCm createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodMatrixPropertiesEntryBulkDensityGCm() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.MatrixProperties.Entry.BulkDensityGCm();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.TestMaterials.Radiolabelling }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.TestMaterials.Radiolabelling createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsTestMaterialsRadiolabelling() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.TestMaterials.Radiolabelling();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines.Entry.Qualifier }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines.Entry.Qualifier createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsGuidelinesEntryQualifier() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines.Entry.Qualifier();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines.Entry.Guideline }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines.Entry.Guideline createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsGuidelinesEntryGuideline() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines.Entry.Guideline();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines.Entry.Deviation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines.Entry.Deviation createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsGuidelinesEntryDeviation() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.Guidelines.Entry.Deviation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.DataSource.DataAccess }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.DataSource.DataAccess createENDPOINTSTUDYRECORDAdsorptionDesorptionDataSourceDataAccess() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.DataSource.DataAccess();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.DataSource.DataProtectionClaimed }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.DataSource.DataProtectionClaimed createENDPOINTSTUDYRECORDAdsorptionDesorptionDataSourceDataProtectionClaimed() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.DataSource.DataProtectionClaimed();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.Endpoint }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.Endpoint createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataEndpoint() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.Endpoint();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.StudyResultType }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.StudyResultType createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataStudyResultType() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.StudyResultType();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.PurposeFlag }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.PurposeFlag createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataPurposeFlag() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.PurposeFlag();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.Reliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.Reliability createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataReliability() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.Reliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.RationalReliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.RationalReliability createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataRationalReliability() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.RationalReliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.DataWaiving }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.DataWaiving createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataDataWaiving() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.DataWaiving();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.DataWaivingJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.DataWaivingJustification createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataDataWaivingJustification() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.DataWaivingJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.CrossReference.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.CrossReference.Entry.ReasonPurpose createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataCrossReferenceEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.CrossReference.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.AttachedJustification.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.AttachedJustification.Entry.ReasonPurpose createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataAttachedJustificationEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.AttachedJustification.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.DataProtection.Legislation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.DataProtection.Legislation createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataDataProtectionLegislation() {
+        return new ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.DataProtection.Legislation();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", name = "Ph", scope = ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.class)
+    public JAXBElement<BigDecimal> createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryPh(BigDecimal value) {
+        return new JAXBElement<BigDecimal>(_ENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryPh_QNAME, BigDecimal.class, ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionCoefficient.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", name = "RobustStudy", scope = ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataRobustStudy(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataRobustStudy_QNAME, Boolean.class, ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", name = "UsedForClassification", scope = ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataUsedForClassification(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataUsedForClassification_QNAME, Boolean.class, ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", name = "UsedForMSDS", scope = ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataUsedForMSDS(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDAdsorptionDesorptionAdministrativeDataUsedForMSDS_QNAME, Boolean.class, ENDPOINTSTUDYRECORDAdsorptionDesorption.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", name = "Ph", scope = ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.class)
+    public JAXBElement<BigDecimal> createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfDesorptionEquilibrationEntryPh(BigDecimal value) {
+        return new JAXBElement<BigDecimal>(_ENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryPh_QNAME, BigDecimal.class, ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfDesorptionEquilibration.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", name = "Ph", scope = ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.class)
+    public JAXBElement<BigDecimal> createENDPOINTSTUDYRECORDAdsorptionDesorptionMaterialsAndMethodsStudyDesignBatchEquilibriumOrOtherMethodDurationOfAdsorptionEquilibrationEntryPh(BigDecimal value) {
+        return new JAXBElement<BigDecimal>(_ENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryPh_QNAME, BigDecimal.class, ENDPOINTSTUDYRECORDAdsorptionDesorption.MaterialsAndMethods.StudyDesign.BatchEquilibriumOrOtherMethod.DurationOfAdsorptionEquilibration.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", name = "KeyResult", scope = ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionOtherEntryKeyResult(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryKeyResult_QNAME, Boolean.class, ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-AdsorptionDesorption/6.0", name = "Ph", scope = ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.class)
+    public JAXBElement<BigDecimal> createENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionOtherEntryPh(BigDecimal value) {
+        return new JAXBElement<BigDecimal>(_ENDPOINTSTUDYRECORDAdsorptionDesorptionResultsAndDiscussionAdsorptionCoefficientEntryPh_QNAME, BigDecimal.class, ENDPOINTSTUDYRECORDAdsorptionDesorption.ResultsAndDiscussion.AdsorptionOther.Entry.class, value);
+    }
+
+}
