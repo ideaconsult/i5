@@ -227,7 +227,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			String iupacName = unmarshalled.getIupacName();
 			setIUPACName(structureRecord, iupacName);
 
-			Synonyms synonyms = unmarshalled.getSynonyms().getSynonyms();
+			Synonyms synonyms = unmarshalled.getSynonyms()==null?null:unmarshalled.getSynonyms().getSynonyms();
 			if (synonyms != null) {
 				List<String> lookup = new ArrayList<String>();
 				for (eu.europa.echa.iuclid6.namespaces.reference_substance._6.REFERENCESUBSTANCE.SynonymSet.Synonyms.Entry e : synonyms

@@ -60,6 +60,7 @@ public class TestI6 {
 
 		ENDPOINTSTUDYRECORDGranulometry g = new ENDPOINTSTUDYRECORDGranulometry();
 		Assert.assertNotNull(g);
+		
 		Assert.assertNotNull(g.getMaterialsAndMethods());
 		for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_granulometry._6.ENDPOINTSTUDYRECORDGranulometry.MaterialsAndMethods.Guidelines.Entry entry : g.getMaterialsAndMethods().getGuideline().getEntry()) {
 			entry.getGuideline().getValue();
@@ -75,11 +76,12 @@ public class TestI6 {
 		g.getResultsAndDiscussion().getAnyOtherInformationOnResultsInclTables();
 	}
 
+
 	@Test
-	public void testUnmarshalFormaldehyde() throws JAXBException, IOException {
+	public void testUnmarshal_IronOre() throws JAXBException, IOException {
 		InputStream in = null;
 		try {
-			in = getClass().getClassLoader().getResourceAsStream("net/idea/i6/_6/substance/i6z/56e49ed8-0bec-49a2-8050-f8e87844b2e8.i6z");
+			in = getClass().getClassLoader().getResourceAsStream("net/idea/i6/_6/substance/i6z/REFERENCE_SUBSTANCE/92d2b64b-38b2-4070-ae4c-676fcdbdc747_56e49ed8-0bec-49a2-8050-f8e87844b2e8.i6d");
 			Assert.assertNotNull(in);
 
 			JAXBContext jaxbContext = JAXBContext.newInstance(REFERENCESUBSTANCE.class);

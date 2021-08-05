@@ -114,13 +114,13 @@ public class I6DReader extends AbstractI5DReader<IStructureRecord> {
 	protected void initProcessors(QASettings qaSettings, String container, Map<String,Document> library) {
 		record = new SubstanceRecord();
 
-		net.idea.i6._6.ambit2.I6AmbitProcessor i62 = new net.idea.i6._6.ambit2.I6AmbitProcessor(container);
-		i62.setLibrary(library);
-		i62.setQASettings(qaSettings);
+		net.idea.i6._6.ambit2.I6AmbitProcessor i66 = new net.idea.i6._6.ambit2.I6AmbitProcessor(container);
+		i66.setLibrary(library);
+		i66.setQASettings(qaSettings);
 
-		processors.put(SUBSTANCE.class.getName(), i62);
-		processors.put(REFERENCESUBSTANCE.class.getName(), i62);
-		processors.put(Document.class.getName(), i62);
+		processors.put(SUBSTANCE.class.getName(), i66);
+		processors.put(REFERENCESUBSTANCE.class.getName(), i66);
+		processors.put(Document.class.getName(), i66);
 		// env fate
 		for (I6_ROOT_OBJECTS tag : I6_ROOT_OBJECTS.values())
 			if (tag.isScientificPart()) {
@@ -128,7 +128,7 @@ public class I6DReader extends AbstractI5DReader<IStructureRecord> {
 				// eu.europa.echa.iuclid6.namespaces.endpoint_study_record_biodegradationinwaterandsedimentsimulationtests._5;
 				String clazz = String.format("eu.europa.echa.iuclid6.namespaces.%s._6.%s", tag.name().toLowerCase(),
 						tag.name().replaceAll("_", ""));
-				processors.put(clazz, i62);
+				processors.put(clazz, i66);
 			}
 	}
 
