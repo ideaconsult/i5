@@ -115,6 +115,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
     try {
       Object dataSource = getContentValue("getDataSource");
       DocumentReferenceMultipleField ref = (DocumentReferenceMultipleField) call(dataSource, "getReference", null);
+      if (ref==null) return;
       for (String key : ref.getKey()) {
         Document doc = library.get(key.replace("/", "_"));
         if (doc.getContent().getAny() instanceof LITERATURE) {
@@ -150,7 +151,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 
   public void assignGuidelines(ProtocolApplication<Protocol, IParams, String, IParams, String> papp) {
     if (materialsAndMethods == null) {
-      logger.log(Level.WARNING, "No materials and methods record! " + endpointCategory);
+      logger.log(Level.FINE, "No materials and methods record! " + endpointCategory);
       return;
     }
     try {
@@ -180,6 +181,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
       }
 
     } catch (Exception x) {
+    	x.printStackTrace();
       logger.log(Level.WARNING, x.getMessage(), x);
     }
 

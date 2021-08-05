@@ -480,10 +480,11 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			}
 
 			try {
+				if (a.getFunction()!=null)
 				p.setFunction(
 						getPhrase(a.getFunction().getValue(), joinMultiTextFieldSmall(a.getFunction().getOther())));
 			} catch (Exception x) {
-				p.setFunction("Error reading the function type");
+				p.setFunction("Error reading the function type %s".formatted(x.getMessage()));
 			}
 			IStructureRelation r = substance.addStructureRelation(compositionUUID, record,
 					STRUCTURE_RELATION.HAS_ADDITIVE, p);
@@ -495,7 +496,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._6.FLEXIBLERECORDSubstanceComposition.ImpuritiesSet.Impurities.Entry a) {
 			IStructureRecord record = new StructureRecord();
 			setFormat(record);
-
+		
 			record.setType(STRUC_TYPE.NA);
 			if (a.getReferenceSubstance() != null) {
 				record.setContent(a.getReferenceSubstance());
@@ -547,7 +548,12 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					p.setTypical_unit("");
 				}
 			}
-
+			if (a.getRelevantForClassificationLabeling().getValue())
+			try {
+				p.setFunction("relevant for the classification and labelling");
+			} catch (Exception x) {
+				p.setFunction(x.getMessage());
+			}	
 			IStructureRelation r = substance.addStructureRelation(compositionUUID, record,
 					STRUCTURE_RELATION.HAS_IMPURITY, p);
 			r.setName(name);

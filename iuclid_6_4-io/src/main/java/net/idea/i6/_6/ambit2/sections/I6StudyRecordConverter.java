@@ -1,5 +1,7 @@
 package net.idea.i6._6.ambit2.sections;
 
+import java.util.logging.Level;
+
 import javax.xml.bind.JAXBElement;
 
 import ambit2.base.data.I5Utils;
@@ -41,7 +43,7 @@ public class I6StudyRecordConverter<T extends EndpointStudyRecordWrapper, PROTOC
 		if (slashpos > 0)
 			record.setSubstanceUUID(I5Utils.getPrefixedUUID("IUC6", value.substring(0, slashpos)));
 		else
-			record.setSubstanceUUID(I5Utils.getPrefixedUUID("IUC6",value));
+			record.setSubstanceUUID(I5Utils.getPrefixedUUID("IUC6", value));
 	}
 
 	public I6StudyRecordConverter() {
@@ -125,6 +127,7 @@ public class I6StudyRecordConverter<T extends EndpointStudyRecordWrapper, PROTOC
 		if (qaSettings == null)
 			qaSettings = new QASettings();
 		return qaSettings;
+
 	}
 
 	@Override
@@ -183,22 +186,47 @@ public class I6StudyRecordConverter<T extends EndpointStudyRecordWrapper, PROTOC
 
 		record.clear();
 		Experiment<IParams, IParams> papp = unmarshalled.createProtocolApplication();
-		unmarshalled.parseReliability(papp, getQASettings());
+		try {
+			unmarshalled.parseReliability(papp, getQASettings());
+		} catch (Exception x) {
+			T.getLogger().log(Level.WARNING, x.getMessage(), x);
+		}
 		record.addMeasurement(papp);
 
 		// UUID
 		try {
 			setCompanyUUID(record, unmarshalled.getSubstanceUUID());
 		} catch (Exception x) {
-			x.printStackTrace();
+			T.getLogger().log(Level.WARNING, x.getMessage(), x);
 		}
 		// TODO data owner - it's probably not in this file
-
-		unmarshalled.assignGuidelines(papp);
-		unmarshalled.parseReference(papp);
-		unmarshalled.assignProtocolParameters(papp);
-		unmarshalled.assignEffectLevels(papp, unmarshalled.getStudyRecord());
-		unmarshalled.assignInterpretationResult(papp, unmarshalled.getStudyRecord());
+		try {
+			unmarshalled.assignGuidelines(papp);
+		} catch (Exception x) {
+			T.getLogger().log(Level.WARNING, x.getMessage(), x);
+		}
+		try {
+			unmarshalled.parseReference(papp);
+		} catch (Exception x) {
+			T.getLogger().log(Level.WARNING, x.getMessage(), x);
+		}
+		try {
+			unmarshalled.assignProtocolParameters(papp);
+		} catch (Exception x) {
+			T.getLogger().log(Level.WARNING, x.getMessage(), x);
+		}
+		try {
+			unmarshalled.assignEffectLevels(papp, unmarshalled.getStudyRecord());
+		} catch (Exception x) {
+			T.getLogger().log(Level.WARNING, x.getMessage(), x);
+		}
+		try {
+			unmarshalled.assignInterpretationResult(papp, unmarshalled.getStudyRecord());
+		} catch (NullPointerException x) {
+			T.getLogger().log(Level.FINEST, x.getMessage(), x);
+		} catch (Exception x) {
+			T.getLogger().log(Level.WARNING, x.getMessage(), x);
+		}
 
 		return record;
 	}

@@ -74,7 +74,7 @@ public class AbstractDocWrapper {
 
   protected Object call(Object obj, String methodName, Object... params)
       throws SecurityException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-
+	if (obj == null) return null;  
     Method method = obj.getClass().getMethod(methodName);
     return method.invoke(obj);
   }
@@ -147,5 +147,9 @@ public class AbstractDocWrapper {
       }
     }
     return b.toString().trim();
+  }
+
+  public static Logger getLogger() {
+	  return logger;
   }
 }
