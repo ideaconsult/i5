@@ -305,10 +305,15 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				setSubstanceUUID(record, I5Utils.getPrefixedUUID("IUC6", getDocumentReferencePK()));
 
 				try {
-					record.setSubstancetype(getPhrase(unmarshalled.getTypeOfSubstance().getComposition().getValue(),
-							joinMultiTextFieldSmall(unmarshalled.getTypeOfSubstance().getComposition().getOther())));
+					String substanceType = getPhrase(unmarshalled.getTypeOfSubstance().getComposition().getValue(),
+							joinMultiTextFieldSmall(unmarshalled.getTypeOfSubstance().getComposition().getOther()));
+					
+					String origin = getPhrase(unmarshalled.getTypeOfSubstance().getOrigin().getValue(),
+							joinMultiTextFieldSmall(unmarshalled.getTypeOfSubstance().getOrigin().getOther()));
+					record.setSubstancetype(String.format("%s/%s",substanceType,origin));
 				} catch (Exception x) {
-					record.setSubstancetype("Error reading the composition type");
+					logger.warning(x.getMessage());
+					record.setSubstancetype(x.getMessage());
 				}
 
 				if (unmarshalled.getReferenceSubstance() != null) {
@@ -484,7 +489,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				p.setFunction(
 						getPhrase(a.getFunction().getValue(), joinMultiTextFieldSmall(a.getFunction().getOther())));
 			} catch (Exception x) {
-				p.setFunction("Error reading the function type %s".formatted(x.getMessage()));
+				p.setFunction(String.format("Error reading the function type %s",x.getMessage()));
 			}
 			IStructureRelation r = substance.addStructureRelation(compositionUUID, record,
 					STRUCTURE_RELATION.HAS_ADDITIVE, p);
