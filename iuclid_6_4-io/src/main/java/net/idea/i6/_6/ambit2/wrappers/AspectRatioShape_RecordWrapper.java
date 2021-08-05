@@ -43,7 +43,7 @@ public class AspectRatioShape_RecordWrapper extends EndpointStudyRecordWrapper<E
 
         if (entry.getYDimension() != null) {
           effect = addEffectRecord_meanstdev(papp, I5CONSTANTS.eASPECT_RATIO_Y, entry.getYDimension(),
-              entry.getXDimensionDeviation() == null ? null : entry.getYDimensionDeviation().getValue().doubleValue(),
+              entry.getYDimensionDeviation() == null ? null : entry.getYDimensionDeviation().getValue().doubleValue(),
               null);
           effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(entry.getRemarksOnResults()));
           if (entry.getKeyResult() != null)
@@ -51,7 +51,7 @@ public class AspectRatioShape_RecordWrapper extends EndpointStudyRecordWrapper<E
         }
         if (entry.getZDimension() != null) {
           effect = addEffectRecord_meanstdev(papp, I5CONSTANTS.eASPECT_RATIO_Z, entry.getZDimension(),
-              entry.getXDimensionDeviation() == null ? null : entry.getZDimensionDeviation().getValue().doubleValue(),
+              entry.getZDimensionDeviation() == null ? null : entry.getZDimensionDeviation().getValue().doubleValue(),
               null);
           effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(entry.getRemarksOnResults()));
           if (entry.getKeyResult() != null)
