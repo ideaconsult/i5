@@ -178,7 +178,7 @@ public enum I5_ROOT_OBJECTS implements IROOT_OBJECTS {
 			return "NPO_1852";
 		}
 	},	
-	PC_SURFACE_TENSION {
+	SURFACE_TENSION {
 		@Override
 		public boolean isDataRich() {
 			return true;
@@ -1973,7 +1973,7 @@ public enum I5_ROOT_OBJECTS implements IROOT_OBJECTS {
 			return "ENM_0000026";
 		}
 	},
-	TO_ACUTE_OTHERROUTES {
+	TO_ACUTE_OTHER {
 		@Override
 		public boolean isDataRich() {
 			return true;

@@ -174,7 +174,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 	ENDPOINT_STUDY_RECORD_AcuteToxicityOtherRoutes {
 		@Override
 		public I5_ROOT_OBJECTS mapIUCLID5() {
-			return I5_ROOT_OBJECTS.TO_ACUTE_OTHERROUTES;
+			return I5_ROOT_OBJECTS.TO_ACUTE_OTHER;
 		}
 	},
 
@@ -435,7 +435,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 	ENDPOINT_STUDY_RECORD_SurfaceTension {
 		@Override
 		public I5_ROOT_OBJECTS mapIUCLID5() {
-			return I5_ROOT_OBJECTS.PC_SURFACE_TENSION;
+			return I5_ROOT_OBJECTS.SURFACE_TENSION;
 		}
 	},
 	ENDPOINT_STUDY_RECORD_ToxicityToBirds {
