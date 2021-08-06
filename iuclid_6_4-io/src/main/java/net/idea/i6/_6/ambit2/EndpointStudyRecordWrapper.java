@@ -254,8 +254,7 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 	protected Object _getMethodValue(Object r, IParams params) {
 
 		Object value = r;
-		if (r instanceof Module)
-			return null;
+
 		if (r instanceof String)
 			return r;
 		else if (r instanceof Number)
