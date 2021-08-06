@@ -19,7 +19,7 @@ public class SolubilityOrganic_RecordWrapper extends EndpointStudyRecordWrapper<
 
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDSolubilityOrganic studyrecord) {
-		if (studyrecord.getResultsAndDiscussion().getSolubilityOrganic() != null)
+		if (studyrecord.getResultsAndDiscussion()!=null && studyrecord.getResultsAndDiscussion().getSolubilityOrganic() != null)
 			for (Entry e : studyrecord.getResultsAndDiscussion().getSolubilityOrganic().getEntry()) {
 				EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 				effect.setEndpoint(I5CONSTANTS.eSOLUBILITY_ORG_SOLVENT);

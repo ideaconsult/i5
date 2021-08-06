@@ -30,7 +30,8 @@ public class SurfaceTension_RecordWrapper extends EndpointStudyRecordWrapper<END
 				papp.addEffect(effect);
 
 				effect.getConditions().put(I5CONSTANTS.cTemperature, q2value(e.getTemp()));
-				effect.getConditions().put(I5CONSTANTS.cConc, q2value(e.getConc()));
+				if (e.getConc()!=null)
+					effect.getConditions().put(I5CONSTANTS.cConc, q2value(e.getConc()));
 				effect.getConditions().put(I5CONSTANTS.Remark, remarks2Value(e.getRemarksOnResults()));
 				if (e.getKeyResult() != null)
 					effect.getConditions().put(I5CONSTANTS.KeyResult, e.getKeyResult().getValue().booleanValue());

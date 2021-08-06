@@ -92,8 +92,9 @@ public class Carcinogenicity_RecordWrapper
 					try {
 						EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 						effect.setEndpoint("LOEL");
-
-						if (entry.getLowestEffectiveDoseConc().getValue() != null
+						
+						if (entry.getLowestEffectiveDoseConc()!=null && 
+								entry.getLowestEffectiveDoseConc().getValue() != null
 								&& !"".equals(entry.getLowestEffectiveDoseConc()))
 							q2effectrecord(entry.getLowestEffectiveDoseConc(), effect);
 						else
@@ -113,6 +114,7 @@ public class Carcinogenicity_RecordWrapper
 							effect.getConditions().put(I5CONSTANTS.DoseResponseRelationship, dr);
 						if (kr != null)
 							effect.getConditions().put(I5CONSTANTS.KeyResult, kr.booleanValue());
+						if (studyrecord.getMaterialsAndMethods().getTestAnimals()!=null)
 						effect.getConditions().put(I5CONSTANTS.cSpecies,
 								p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSpecies()));
 						papp.addEffect(effect);

@@ -31,7 +31,8 @@ public class ToxicityReproduction_RecordWrapper
   @Override
   public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDToxicityReproduction studyrecord) {
      if (studyrecord.getResultsAndDiscussion()==null) return;
-    if (studyrecord.getResultsAndDiscussion().getResultsOfExaminationsParentalGeneration() != null)
+    if (studyrecord.getResultsAndDiscussion().getResultsOfExaminationsParentalGeneration() != null &&
+    		studyrecord.getResultsAndDiscussion().getResultsOfExaminationsParentalGeneration().getEffectLevelsP0() != null)
       try {
         for (Entry e : studyrecord.getResultsAndDiscussion().getResultsOfExaminationsParentalGeneration()
             .getEffectLevelsP0().getEfflevel().getEntry()) {
@@ -50,7 +51,8 @@ public class ToxicityReproduction_RecordWrapper
         logger.log(Level.WARNING, x.getMessage());
       }
 
-    if (studyrecord.getResultsAndDiscussion().getResultsOfExaminationsOffspring() != null)
+    if (studyrecord.getResultsAndDiscussion().getResultsOfExaminationsOffspring() != null &&
+    		studyrecord.getResultsAndDiscussion().getResultsOfExaminationsOffspring().getEffectLevelsF1() != null)
       try {
         for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._6.ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsOfExaminationsOffspring.EffectLevelsF1.Efflevel.Entry e : studyrecord
             .getResultsAndDiscussion().getResultsOfExaminationsOffspring().getEffectLevelsF1().getEfflevel()
@@ -69,7 +71,7 @@ public class ToxicityReproduction_RecordWrapper
       } catch (Exception x) {
         logger.log(Level.WARNING, x.getMessage());
       }
-    if (studyrecord.getResultsAndDiscussion().getResultsF2Generation() != null)
+    if (studyrecord.getResultsAndDiscussion().getResultsF2Generation() != null && studyrecord.getResultsAndDiscussion().getResultsF2Generation().getEffectLevelsF2() != null)
       for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._6.ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsF2Generation.EffectLevelsF2.Efflevel.Entry e : studyrecord
           .getResultsAndDiscussion().getResultsF2Generation().getEffectLevelsF2().getEfflevel().getEntry()) {
         EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
@@ -83,7 +85,7 @@ public class ToxicityReproduction_RecordWrapper
         effect.getConditions().put(I5CONSTANTS.RelationToOtherToxicEffects, null);
       }
 
-    if (studyrecord.getResultsAndDiscussion().getResultsP1SecondParentalGeneration() != null)
+    if (studyrecord.getResultsAndDiscussion().getResultsP1SecondParentalGeneration() != null && studyrecord.getResultsAndDiscussion().getResultsP1SecondParentalGeneration().getEffectLevelsP1() != null)
       for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_toxicityreproduction._6.ENDPOINTSTUDYRECORDToxicityReproduction.ResultsAndDiscussion.ResultsP1SecondParentalGeneration.EffectLevelsP1.Efflevel.Entry e : studyrecord
           .getResultsAndDiscussion().getResultsP1SecondParentalGeneration().getEffectLevelsP1().getEfflevel()
           .getEntry()) {

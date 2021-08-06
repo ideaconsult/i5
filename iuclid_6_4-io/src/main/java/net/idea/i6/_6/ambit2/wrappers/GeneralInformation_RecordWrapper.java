@@ -29,6 +29,7 @@ public class GeneralInformation_RecordWrapper
 			physstate = p2Value(studyrecord.getResultsAndDiscussion().getSubstancePhysicalState());
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.Physstate);
+			if (physstate!=null)
 			effect.setTextValue(physstate.toString());
 			// Physical state at 20°C and 1013 hPa
 
@@ -50,7 +51,7 @@ public class GeneralInformation_RecordWrapper
 		} catch (Exception x) {
 			logger.log(Level.WARNING, x.getMessage(), x);
 		}
-
+		if (studyrecord.getResultsAndDiscussion()!=null && studyrecord.getResultsAndDiscussion().getFormBlock()!=null)
 		for (Entry e : studyrecord.getResultsAndDiscussion().getFormBlock().getEntry()) {
 			if (e.getForm() != null)
 				try {

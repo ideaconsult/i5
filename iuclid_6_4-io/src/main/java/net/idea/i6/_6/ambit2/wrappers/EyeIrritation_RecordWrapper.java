@@ -31,9 +31,11 @@ public class EyeIrritation_RecordWrapper extends EndpointStudyRecordWrapper<ENDP
 				effect.setEndpoint(p2Value(e.getIrritationParameter()));
 				q2effectrecord(e.getValue(), effect);
 				papp.addEffect(effect);
-				
+				if (e.getNegativeControlsValid()!=null)
 				effect.getConditions().put("negative_controls", p2Value(e.getNegativeControlsValid().getValue()));
+				if (e.getPositiveControlsValid()!=null)
 				effect.getConditions().put("positive_controls", p2Value(e.getPositiveControlsValid().getValue()));
+				if (e.getVehicleControlsValid()!=null)
 				effect.getConditions().put("vehicle_controls", p2Value(e.getVehicleControlsValid().getValue()));
 				
 				effect.getConditions().put(I5CONSTANTS.cBasisForEffect, p2Value(e.getRunExperiment()));

@@ -45,10 +45,12 @@ public class BiodegradationInSoil_RecordWrapper
         && studyrecord.getMaterialsAndMethods().getStudyDesign().getSoilProperties() != null)
       for (Entry e : studyrecord.getMaterialsAndMethods().getStudyDesign().getSoilProperties().getEntry()) {
         String soilno = p2Value(e.getSoilNo());
-        Params p = getSoilParams(soil, soilno);
-        p.put(I5CONSTANTS.cSoilType, p2Value(e.getSoilType()));
-        p.put(I5CONSTANTS.cOCContent, q2value(e.getOrgC()));
-        p.put(I5CONSTANTS.pH, q2value(e.getPh()));
+        if (soilno!=null) {
+	        Params p = getSoilParams(soil, soilno);
+	        p.put(I5CONSTANTS.cSoilType, p2Value(e.getSoilType()));
+	        p.put(I5CONSTANTS.cOCContent, q2value(e.getOrgC()));
+	        p.put(I5CONSTANTS.pH, q2value(e.getPh()));
+        }
         // e.getSand()
         // e.getSilt()
         // e.getClay()
@@ -59,12 +61,14 @@ public class BiodegradationInSoil_RecordWrapper
           .getResultsAndDiscussion().getDegradation().getEntry()) {
 
         String soilno = p2Value(e.getSoilNo());
-        Params p = getSoilParams(soil, soilno);
-        p.put(I5CONSTANTS.rDegradation, q2value(e.getDegr()));
-        p.put(I5CONSTANTS.cTimePoint, p2Value(e.getParameter()));
-        if (e.getKeyResult() != null)
-          p.put(I5CONSTANTS.KeyResult, e.getKeyResult().getValue().booleanValue());
-        soil.put(soilno, p);
+        if (soilno!=null) {
+	        Params p = getSoilParams(soil, soilno);
+	        p.put(I5CONSTANTS.rDegradation, q2value(e.getDegr()));
+	        p.put(I5CONSTANTS.cTimePoint, p2Value(e.getParameter()));
+	        if (e.getKeyResult() != null)
+	          p.put(I5CONSTANTS.KeyResult, e.getKeyResult().getValue().booleanValue());
+	        soil.put(soilno, p);
+        }
       }
 
     if (studyrecord.getResultsAndDiscussion()!=null && studyrecord.getResultsAndDiscussion().getHalfLifeOfParentCompound() != null)
@@ -72,14 +76,16 @@ public class BiodegradationInSoil_RecordWrapper
           .getResultsAndDiscussion().getHalfLifeOfParentCompound().getEntry())
         try {
           String soilno = p2Value(e.getSoilNo());
-          Params p = getSoilParams(soil, soilno);
-          EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
-          effect.setEndpoint(p2Value(e.getType()));
-          q2effectrecord(e.getHalfLife(), effect);
-          effect.getConditions().putAll(p);
-          effect.getConditions().put(I5CONSTANTS.cTestType,
-              p2Value(studyrecord.getMaterialsAndMethods().getTestType()));
-          papp.addEffect(effect);
+          if (soilno!=null) {
+	          Params p = getSoilParams(soil, soilno);
+	          EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
+	          effect.setEndpoint(p2Value(e.getType()));
+	          q2effectrecord(e.getHalfLife(), effect);
+	          effect.getConditions().putAll(p);
+	          effect.getConditions().put(I5CONSTANTS.cTestType,
+	              p2Value(studyrecord.getMaterialsAndMethods().getTestType()));
+	          papp.addEffect(effect);
+          }
         } catch (Exception x) {
 
         }

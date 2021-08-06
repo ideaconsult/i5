@@ -44,12 +44,14 @@ public class LongTermToxicityToAquaInv_RecordWrapper
 	}
 
 	private Value q2value(Duration field) {
+		if (field==null) return null;
 		Value v = new Value();
 		if (field.getValue() != null)
 			try {
 				v.setLoValue(Double.parseDouble(field.getValue()));
 			} catch (Exception x) {
 			}
+		
 		v.setUnits(getPhrase(field.getUnitCode()));
 		return v;
 	}

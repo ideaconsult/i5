@@ -32,6 +32,7 @@ import eu.europa.echa.iuclid6.namespaces.reference_substance._6.REFERENCESUBSTAN
 import eu.europa.echa.iuclid6.namespaces.reference_substance._6.REFERENCESUBSTANCE.Inventory;
 import eu.europa.echa.iuclid6.namespaces.reference_substance._6.REFERENCESUBSTANCE.SynonymSet.Synonyms;
 import eu.europa.echa.iuclid6.namespaces.substance._6.SUBSTANCE;
+import eu.europa.echa.iuclid6.namespaces.substance._6.SUBSTANCE.TypeOfSubstance;
 import net.idea.i5.io.IStudyRecordConverter;
 import net.idea.i5.io.IuclidAmbitProcessor;
 import net.idea.i5.io.QACriteriaException;
@@ -305,12 +306,15 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				setSubstanceUUID(record, I5Utils.getPrefixedUUID("IUC6", getDocumentReferencePK()));
 
 				try {
-					String substanceType = getPhrase(unmarshalled.getTypeOfSubstance().getComposition().getValue(),
-							joinMultiTextFieldSmall(unmarshalled.getTypeOfSubstance().getComposition().getOther()));
-					
-					String origin = getPhrase(unmarshalled.getTypeOfSubstance().getOrigin().getValue(),
-							joinMultiTextFieldSmall(unmarshalled.getTypeOfSubstance().getOrigin().getOther()));
-					record.setSubstancetype(String.format("%s/%s",substanceType,origin));
+					TypeOfSubstance ts = unmarshalled.getTypeOfSubstance();
+					if (ts!=null) {
+						String substanceType = getPhrase(ts.getComposition().getValue(),
+								joinMultiTextFieldSmall(ts.getComposition().getOther()));
+						
+						String origin = (ts.getOrigin()==null)?"":(getPhrase(ts.getOrigin().getValue(),
+								joinMultiTextFieldSmall(ts.getOrigin().getOther())));
+						record.setSubstancetype(String.format("%s/%s",substanceType,origin));
+					}
 				} catch (Exception x) {
 					logger.warning(x.getMessage());
 					record.setSubstancetype(x.getMessage());

@@ -1,4 +1,7 @@
 # i6-2.0.0
+* IUCLID6.6 support
+
+# i6-2.0.0
 * IUCLID6 support
 
 # i5-1.2.1

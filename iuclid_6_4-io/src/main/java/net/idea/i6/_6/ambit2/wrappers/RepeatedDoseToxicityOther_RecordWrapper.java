@@ -64,8 +64,12 @@ public class RepeatedDoseToxicityOther_RecordWrapper
 				}
 				effect.getConditions().put(I5CONSTANTS.Organ, null);
 				effect.getConditions().put(I5CONSTANTS.CriticalEffectsObserved, null);
+				try {
 				effect.getConditions().put(I5CONSTANTS.cSpecies,
 						p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSpecies()));
+				} catch (Exception x) {
+					logger.finest(x.getMessage());
+				}
 				effect.getConditions().put(I5CONSTANTS.cTestType,
 						((IParams) papp.getParameters()).get(I5CONSTANTS.cTestType));
 

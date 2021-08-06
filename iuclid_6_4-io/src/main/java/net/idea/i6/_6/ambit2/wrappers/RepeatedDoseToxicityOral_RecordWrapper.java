@@ -132,10 +132,12 @@ public class RepeatedDoseToxicityOral_RecordWrapper
 							effect.getConditions().put(I5CONSTANTS.DoseResponseRelationship, dr);
 						if (kr != null)
 							effect.getConditions().put(I5CONSTANTS.KeyResult, kr.booleanValue());
-						effect.getConditions().put(I5CONSTANTS.cSpecies,
-								p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSpecies()));
-						effect.getConditions().put(I5CONSTANTS.cSex,
-								p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSex()));
+						if (studyrecord.getMaterialsAndMethods().getTestAnimals()!=null) {
+							effect.getConditions().put(I5CONSTANTS.cSpecies,
+									p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSpecies()));
+							effect.getConditions().put(I5CONSTANTS.cSex,
+									p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSex()));
+						}
 						papp.addEffect(effect);
 					} catch (Exception x) {
 						x.printStackTrace();

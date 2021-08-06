@@ -22,6 +22,7 @@ public class WaterSolubility_RecordWrapper extends EndpointStudyRecordWrapper<EN
 	@Override
 	public void assignEffectLevels(ProtocolApplication papp, ENDPOINTSTUDYRECORDWaterSolubility studyrecord) {
 	    if (studyrecord.getResultsAndDiscussion()==null) return;
+	    if (studyrecord.getResultsAndDiscussion().getWaterSolubility()==null) return;
 		for (Entry e : studyrecord.getResultsAndDiscussion().getWaterSolubility().getEntry()) {
 			EffectRecord<String, IParams, String> effect = endpointCategory.createEffectRecord();
 			effect.setEndpoint(I5CONSTANTS.eWaterSolubility);
