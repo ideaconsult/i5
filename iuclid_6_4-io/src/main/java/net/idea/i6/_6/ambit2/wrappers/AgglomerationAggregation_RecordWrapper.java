@@ -106,6 +106,7 @@ public class AgglomerationAggregation_RecordWrapper
   }
 
   protected Value q2value(Ph field) {
+	  if (field==null) return null;
     Value v = new Value();
     if (field.getLowerValue() != null)
       v.setLoValue(field.getLowerValue().doubleValue());

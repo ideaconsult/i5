@@ -50,6 +50,7 @@ public class WaterSolubility_RecordWrapper extends EndpointStudyRecordWrapper<EN
 	}
 
 	protected static Value q2value(Temp field) {
+		if (field==null) return null;
 		Value v = new Value();
 		v.setLoValue(field.getValue());
 		v.setUnits(getPhrase(field.getUnitCode()));

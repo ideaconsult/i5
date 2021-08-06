@@ -38,7 +38,7 @@ public class HenrysLawConstant_RecordWrapper extends EndpointStudyRecordWrapper<
   }
 
   private Value q2value(AtmPressure field) {
-
+	  if (field==null) return null;
     Value v = new Value();
     if (field.getValue() != null)
       v.setLoValue(Double.parseDouble(field.getValue()));
@@ -47,7 +47,7 @@ public class HenrysLawConstant_RecordWrapper extends EndpointStudyRecordWrapper<
   }
 
   private Value q2value(Temp field) {
-
+	  if (field==null) return null;
     Value v = new Value();
     if (field.getValue() != null)
       v.setLoValue(Double.parseDouble(field.getValue()));

@@ -75,6 +75,7 @@ public class Phototransformation_RecordWrapper
   }
 
   protected Value q2value(SamplingTime field) {
+	if (field==null) return null;
     Value v = new Value();
     if (field.getValue() != null)
       v.setLoValue(Double.parseDouble(field.getValue()));

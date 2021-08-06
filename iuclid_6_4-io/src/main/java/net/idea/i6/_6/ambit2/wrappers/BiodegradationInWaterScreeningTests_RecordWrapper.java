@@ -66,6 +66,7 @@ public class BiodegradationInWaterScreeningTests_RecordWrapper
   }
 
   protected static Value q2value(SamplingTime field) {
+	  if (field==null) return null;
     Value v = new Value();
     if (field.getValue() != null)
       v.setLoValue(Double.parseDouble(field.getValue()));

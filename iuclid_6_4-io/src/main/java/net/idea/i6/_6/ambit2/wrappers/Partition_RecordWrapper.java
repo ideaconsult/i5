@@ -47,6 +47,7 @@ public class Partition_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINT
 	}
 
 	protected Value q2value(Ph field) {
+		if (field==null) return null;
 		Value v = new Value();
 		if (field.getLowerValue() != null)
 			v.setLoValue(field.getLowerValue().doubleValue());
@@ -57,6 +58,7 @@ public class Partition_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINT
 		return v;
 	}
 	protected Value q2value(Temp field) {
+		if (field==null) return null;
 		Value v = new Value();
 		if (field.getValue() != null)
 			v.setLoValue(Double.parseDouble(field.getValue()));

@@ -38,7 +38,7 @@ public class Porosity_RecordWrapper extends EndpointStudyRecordWrapper<ENDPOINTS
           effect.getConditions().put(I5CONSTANTS.KeyResult, entry.getKeyResult().getValue().booleanValue());
       }
     if (studyrecord.getResultsAndDiscussion().getModalPoreDiameter() != null)
-      ;
+     
     for (eu.europa.echa.iuclid6.namespaces.endpoint_study_record_porosity._6.ENDPOINTSTUDYRECORDPorosity.ResultsAndDiscussion.ModalPoreDiameter.Entry entry : studyrecord
         .getResultsAndDiscussion().getModalPoreDiameter().getEntry()) {
       effect = addEffectRecord_meanstdev(papp, I5CONSTANTS.eMODAL_PORE_VOLUME, entry.getMean(),

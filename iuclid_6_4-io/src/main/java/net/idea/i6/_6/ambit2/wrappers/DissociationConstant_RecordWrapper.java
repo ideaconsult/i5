@@ -35,6 +35,7 @@ public class DissociationConstant_RecordWrapper
   }
 
   protected static Value q2value(Temp field) {
+	  if (field==null) return null;
     Value v = new Value();
     if (field.getValue() != null)
       try {
