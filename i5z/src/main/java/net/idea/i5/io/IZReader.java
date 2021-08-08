@@ -93,7 +93,7 @@ public abstract class IZReader<SUBSTANCE, ROOT_OBJECT extends IROOT_OBJECTS> ext
 		protected Unmarshaller jaxbUnmarshaller;
 
 		public JAXBStuff(String contextPath) throws JAXBException {
-			jaxbContext = JAXBContext.newInstance(contextPath);
+			jaxbContext = JAXBContext.newInstance(contextPath,IZReader.class.getClassLoader());
 			jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		}
 

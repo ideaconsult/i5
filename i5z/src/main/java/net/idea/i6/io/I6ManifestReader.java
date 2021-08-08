@@ -268,7 +268,7 @@ public class I6ManifestReader {
 				+ "eu.europa.echa.iuclid6.namespaces.legal_entity._6:" 
 				+ "eu.europa.echa.iuclid6.namespaces.test_material_information._6";
 
-		JAXBContext jaxbContext = JAXBContext.newInstance(jaxbcontextpath);
+		JAXBContext jaxbContext = JAXBContext.newInstance(jaxbcontextpath,I6ManifestReader.class.getClassLoader());
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
 		Map<String, eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document> library = new HashMap<String, eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document>();
