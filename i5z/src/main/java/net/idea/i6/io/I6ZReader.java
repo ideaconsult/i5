@@ -28,7 +28,7 @@ import net.idea.modbcum.i.exceptions.AmbitException;
  * @param <SUBSTANCE>
  */
 public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
-	protected Map<String, Document> library;
+	protected Map<String, Object> library;
 
 	public I6ZReader(InputStream stream) throws AmbitIOException {
 		this(stream, new I5Options());
@@ -147,6 +147,9 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 			} catch (Exception x) {
 				logger.log(Level.WARNING, x.getMessage(), x);
 			}
+		for (File key : referenceSubstances) {
+			System.out.println(key);
+		}
 		referenceSubstances.addAll(substances);
 		referenceSubstances.addAll(study);
 		substances.clear();

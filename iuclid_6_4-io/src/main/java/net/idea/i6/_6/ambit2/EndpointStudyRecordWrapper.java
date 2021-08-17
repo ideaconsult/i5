@@ -119,19 +119,22 @@ public class EndpointStudyRecordWrapper<STUDYRECORD> extends AbstractDocWrapper 
 			if (ref == null)
 				return;
 			for (String key : ref.getKey()) {
-				Document doc = library.get(key.replace("/", "_"));
-				if (doc.getContent().getAny() instanceof LITERATURE) {
-					LITERATURE bib = (LITERATURE) doc.getContent().getAny();
-
-					if (bib != null && bib.getGeneralInfo() != null) {
-						papp.setReference(
-								String.format("%s %s",
-										bib.getGeneralInfo().getAuthor() == null ? ""
-												: (bib.getGeneralInfo().getAuthor() + ","),
-										bib.getGeneralInfo().getName()));
-						if (bib.getGeneralInfo().getReferenceYear() != null)
-							papp.setReferenceYear(Integer.toString(bib.getGeneralInfo().getReferenceYear().getValue()));
-						papp.setReferenceOwner(bib.getGeneralInfo().getCompanyOwner());
+				Object entry = library.get(key.replace("/", "_"));
+				if (entry !=null && entry instanceof Document) {
+					Document doc = (Document) entry;
+					if (doc.getContent().getAny() instanceof LITERATURE) {
+						LITERATURE bib = (LITERATURE) doc.getContent().getAny();
+	
+						if (bib != null && bib.getGeneralInfo() != null) {
+							papp.setReference(
+									String.format("%s %s",
+											bib.getGeneralInfo().getAuthor() == null ? ""
+													: (bib.getGeneralInfo().getAuthor() + ","),
+											bib.getGeneralInfo().getName()));
+							if (bib.getGeneralInfo().getReferenceYear() != null)
+								papp.setReferenceYear(Integer.toString(bib.getGeneralInfo().getReferenceYear().getValue()));
+							papp.setReferenceOwner(bib.getGeneralInfo().getCompanyOwner());
+						}
 					}
 				}
 			}

@@ -23,18 +23,18 @@ public class AbstractDocWrapper {
   protected static ResourceBundle phr = ResourceBundle.getBundle("PhraseResourceBundle", Locale.ENGLISH);
   protected static ResourceBundle ppr = ResourceBundle.getBundle("ProtocolParametersResourceBundle", Locale.ENGLISH);
   protected static ResourceBundle msg = ResourceBundle.getBundle("ResourceBundle", Locale.ENGLISH);
-  protected Map<String, Document> library;
+  protected Map<String, Object> library;
   protected static final String _MIGRATED = "MIGRATED";
 
   public AbstractDocWrapper(Document doc) throws Exception {
     this.doc = doc;
   }
 
-  public Map<String, Document> getLibrary() {
+  public Map<String, Object> getLibrary() {
     return library;
   }
 
-  public void setLibrary(Map<String, Document> library) {
+  public void setLibrary(Map<String, Object> library) {
     this.library = library;
   }
 

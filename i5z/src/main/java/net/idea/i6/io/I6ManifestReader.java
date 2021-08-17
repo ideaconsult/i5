@@ -256,7 +256,7 @@ public class I6ManifestReader {
 		}
 	}
 
-	public static Map<String, eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document> parseLinkedEntry(
+	public static Map<String, Object> parseLinkedEntry(
 			List<File> files) throws JAXBException {
 		String jaxbcontextpath = "eu.europa.echa.iuclid6.namespaces.platform_container.v1:"
 				+ "eu.europa.echa.iuclid6.namespaces.platform_fields.v1:"
@@ -266,18 +266,20 @@ public class I6ManifestReader {
 				+ "eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._6:"
 				+ "eu.europa.echa.iuclid6.namespaces.flexible_record_identifiers._6:"
 				+ "eu.europa.echa.iuclid6.namespaces.legal_entity._6:" 
-				+ "eu.europa.echa.iuclid6.namespaces.test_material_information._6";
+				//+ "eu.europa.echa.iuclid6.namespaces.reference_substance._6"
+				+ "eu.europa.echa.iuclid6.namespaces.test_material_information._6"
+				;
 
 		JAXBContext jaxbContext = JAXBContext.newInstance(jaxbcontextpath,I6ManifestReader.class.getClassLoader());
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
-		Map<String, eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document> library = new HashMap<String, eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document>();
+		Map<String, Object> library = new HashMap<String, Object>();
 		for (File file : files)
 			try {
 				Object o = jaxbUnmarshaller.unmarshal(file);
 				if (o instanceof eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document)
 					library.put(file.getName().replace(".i6d", ""),
-							(eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document) o);
+							o);
 			} catch (Exception x) {
 				// logger.log(Level.WARNING, x.getMessage(), x);
 				x.printStackTrace();

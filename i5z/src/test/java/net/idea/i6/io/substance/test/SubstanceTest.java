@@ -104,7 +104,7 @@ public class SubstanceTest {
 			m.add(I6_ROOT_OBJECTS.FLEXIBLE_RECORD_SubstanceComposition.name());
 
 			List<File> libraryFiles = r.listFiles(manifest, i5folder, m);
-			Map<String, eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document> library = I6ManifestReader
+			Map<String, Object> library = I6ManifestReader
 					.parseLinkedEntry(libraryFiles);
 			Assert.assertNotNull(library);
 			Assert.assertTrue(library.size() > 0);
@@ -136,38 +136,40 @@ public class SubstanceTest {
 				x.printStackTrace();
 			}
 
-			Iterator<Entry<String, eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document>> e = library
+			Iterator<Entry<String, Object>> e = library
 					.entrySet().iterator();
 			while (e.hasNext()) {
-				Entry<String, eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document> entry = e.next();
-				if (entry.getValue().getContent().getAny() instanceof SUBSTANCE) {
-					SUBSTANCE tm = (SUBSTANCE) entry.getValue().getContent().getAny();
-					SUBSTANCE.ReferenceSubstance rs = tm.getReferenceSubstance();
-					System.out.println(">>>\t" + rs.getReferenceSubstance());
-				} else if (entry.getValue().getContent().getAny() instanceof FLEXIBLERECORDSubstanceComposition) {
-					FLEXIBLERECORDSubstanceComposition tm = (FLEXIBLERECORDSubstanceComposition) entry.getValue()
-							.getContent().getAny();
-					System.out.println(">>>\t" + tm.getGeneralInformation().getName());
-					/*
-					 * } else if (entry.getValue().getContent().getAny() instanceof
-					 * TESTMATERIALINFORMATION) { TESTMATERIALINFORMATION tm =
-					 * (TESTMATERIALINFORMATION) entry.getValue().getContent().getAny();
-					 * System.out.println(entry.getKey()); System.out.println(tm.getName());
-					 * Composition c = tm.getComposition();
-					 * System.out.println(c.getCompositionPurityOtherInformation ().getValue());
-					 * System.out.println(c.getOtherCharacteristics().
-					 * getTestMaterialForm().getValue()); String offset = "\t"; for
-					 * (eu.europa.echa.iuclid6.namespaces.
-					 * test_material_information._2.TESTMATERIALINFORMATION.
-					 * Composition.CompositionList.Entry i : c .getCompositionList().getEntry()) {
-					 * System.out.println(offset + i.getUuid()); System.out.println(offset +
-					 * "REFERENCE\t" + i.getReferenceSubstance()); System.out.println(offset +
-					 * i.getConcentration().getUpperValue()); System.out.println(offset +
-					 * i.getType().getValue()); System.out.println(); } System.out.println();
-					 */
+				Entry<String, Object> entry = e.next();
+					if (entry.getValue() instanceof eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document) {
+						eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document doc = (eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document) entry.getValue();
+					if (doc.getContent().getAny() instanceof SUBSTANCE) {
+						SUBSTANCE tm = (SUBSTANCE) doc.getContent().getAny();
+						SUBSTANCE.ReferenceSubstance rs = tm.getReferenceSubstance();
+						System.out.println(">>>\t" + rs.getReferenceSubstance());
+					} else if (doc.getContent().getAny() instanceof FLEXIBLERECORDSubstanceComposition) {
+						FLEXIBLERECORDSubstanceComposition tm = (FLEXIBLERECORDSubstanceComposition) doc
+								.getContent().getAny();
+						System.out.println(">>>\t" + tm.getGeneralInformation().getName());
+						/*
+						 * } else if (entry.getValue().getContent().getAny() instanceof
+						 * TESTMATERIALINFORMATION) { TESTMATERIALINFORMATION tm =
+						 * (TESTMATERIALINFORMATION) entry.getValue().getContent().getAny();
+						 * System.out.println(entry.getKey()); System.out.println(tm.getName());
+						 * Composition c = tm.getComposition();
+						 * System.out.println(c.getCompositionPurityOtherInformation ().getValue());
+						 * System.out.println(c.getOtherCharacteristics().
+						 * getTestMaterialForm().getValue()); String offset = "\t"; for
+						 * (eu.europa.echa.iuclid6.namespaces.
+						 * test_material_information._2.TESTMATERIALINFORMATION.
+						 * Composition.CompositionList.Entry i : c .getCompositionList().getEntry()) {
+						 * System.out.println(offset + i.getUuid()); System.out.println(offset +
+						 * "REFERENCE\t" + i.getReferenceSubstance()); System.out.println(offset +
+						 * i.getConcentration().getUpperValue()); System.out.println(offset +
+						 * i.getType().getValue()); System.out.println(); } System.out.println();
+						 */
+					}
 				}
 			}
-
 			/*
 			 * SubstanceRecord substance = new SubstanceRecord(); r.parseDocuments(manifest,
 			 * substance); Assert.assertNotNull(substance.getSubstanceUUID());

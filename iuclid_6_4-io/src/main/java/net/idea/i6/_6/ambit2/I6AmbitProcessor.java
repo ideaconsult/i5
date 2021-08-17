@@ -29,7 +29,6 @@ import eu.europa.echa.iuclid6.namespaces.legal_entity._6.LEGALENTITY;
 import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.InventoryEntry;
 import eu.europa.echa.iuclid6.namespaces.reference_substance._6.REFERENCESUBSTANCE;
-import eu.europa.echa.iuclid6.namespaces.reference_substance._6.REFERENCESUBSTANCE.Inventory;
 import eu.europa.echa.iuclid6.namespaces.reference_substance._6.REFERENCESUBSTANCE.SynonymSet.Synonyms;
 import eu.europa.echa.iuclid6.namespaces.substance._6.SUBSTANCE;
 import eu.europa.echa.iuclid6.namespaces.substance._6.SUBSTANCE.TypeOfSubstance;
@@ -48,13 +47,14 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 	private static final long serialVersionUID = 4709118915064457190L;
 	protected I6StudyRecordConverter convertor;
 
-	protected Map<String, Document> library;
+	protected Map<String, Object> library;
 
-	public Map<String, Document> getLibrary() {
+
+	public Map<String, Object> getLibrary() {
 		return library;
 	}
 
-	public void setLibrary(Map<String, Document> library) {
+	public void setLibrary(Map<String, Object> library) {
 		this.library = library;
 	}
 
@@ -170,20 +170,15 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 		public IStructureRecord transform2record(IStructureRecord structureRecord) {
 			structureRecord.clear();
 			setFormat(structureRecord);
-
+			if (library !=null) {
+				library.put(getDocumentReferencePK().replace("/", "_"), structureRecord);
+			}
 			setReferenceSubstanceUUID(structureRecord, I5Utils.getPrefixedUUID("IUC6", getDocumentReferencePK()));
 
 			if (unmarshalled.getReferenceSubstanceName() != null)
 				structureRecord.setRecordProperty(I5ReaderSimple.nameProperty,
 						unmarshalled.getReferenceSubstanceName());
 
-			if (unmarshalled.getInventory() != null)
-				for (InventoryEntry e : unmarshalled.getInventory().getInventoryEntry().getEntry()) {
-					if ("EC".equals(e.getInventoryCode()))
-						structureRecord.setRecordProperty(I5ReaderSimple.ecProperty, e.getNumberInInventory());
-					// else
-					// System.out.println(String.format("%s\t%s",e.getInventoryCode(),e.getNumberInInventory()));
-				}
 
 			structureRecord.setFormat(null);
 			if (unmarshalled.getMolecularStructuralInfo() != null) {
@@ -215,16 +210,23 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				structureRecord.setFormat(MOL_TYPE.INC.name());
 			// structureRecord.setFormat(MOL_TYPE.SDF.name());
 
-			Inventory cas = unmarshalled.getInventory() ;
-			if (cas != null) {
+
+			if (unmarshalled.getInventory() != null) {
+				for (InventoryEntry e : unmarshalled.getInventory().getInventoryEntry().getEntry()) {
+					if ("EC".equals(e.getInventoryCode()))
+						structureRecord.setRecordProperty(I5ReaderSimple.ecProperty, e.getNumberInInventory());
+					// else
+					// System.out.println(String.format("%s\t%s",e.getInventoryCode(),e.getNumberInInventory()));
+				}
 				try {
 					structureRecord.setRecordProperty(I5ReaderSimple.casProperty,
-							casProcessor.process(cas.getCASNumber()));
+							casProcessor.process(unmarshalled.getInventory().getCASNumber()));
 				} catch (Exception x) {
-					structureRecord.setRecordProperty(I5ReaderSimple.casProperty, cas.getCASNumber());
-				}
-				// TODO cas name
+					structureRecord.setRecordProperty(I5ReaderSimple.casProperty, unmarshalled.getInventory().getCASNumber());
+				}		
+				//unmarshalled.getInventory().getCASName()
 			}
+	
 			String iupacName = unmarshalled.getIupacName();
 			setIUPACName(structureRecord, iupacName);
 
@@ -321,8 +323,15 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				}
 
 				if (unmarshalled.getReferenceSubstance() != null) {
+					String key = unmarshalled.getReferenceSubstance().getReferenceSubstance();
+					System.out.println(key);
+					Object ref = library.get(key.replace("/", "_"));
+					if (ref!=null && ref instanceof StructureRecord)
+						System.out.println(ref);
+			
 					setReferenceSubstanceUUID(record, I5Utils.getPrefixedUUID("IUC6",
 							unmarshalled.getReferenceSubstance().getReferenceSubstance()));
+					//unmarshalled.getReferenceSubstance().
 				}
 
 				parseComposition(record);
@@ -334,10 +343,14 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 		public LEGALENTITY parseLegalEntity(String uuid) {
 			try {
 
-				Document doc = library.get(uuid.replace("/", "_"));
-				if (doc != null)
+				Object entry = library.get(uuid.replace("/", "_"));
+
+				if (entry != null)
+					if (entry instanceof Document) {
+						Document doc = (Document) entry;					
 					if (doc.getContent().getAny() instanceof LEGALENTITY)
 						return (LEGALENTITY) doc.getContent().getAny();
+					}
 
 			} catch (Exception x) {
 				logger.log(Level.WARNING, x.getMessage(), x);
@@ -348,14 +361,16 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 		public void parseIdentifiers(SubstanceRecord record) {
 			try {
 				ArrayList<ExternalIdentifier> a = new ArrayList<ExternalIdentifier>();
-				Iterator<Entry<String, Document>> i = library.entrySet().iterator();
+				Iterator<Entry<String, Object>> i = library.entrySet().iterator();
 				while (i.hasNext()) {
-					Entry<String, Document> e = i.next();
+					Entry<String, Object> e = i.next();
+					if (e.getValue() instanceof Document) {
+						Document doc = (Document)e.getValue();
 					// logger.log(Level.INFO,
 					// e.getValue().getContent().getAny().getClass().getName());
-					if (e.getValue().getContent().getAny() instanceof FLEXIBLERECORDIdentifiers) {
+					if (doc.getContent().getAny() instanceof FLEXIBLERECORDIdentifiers) {
 
-						FLEXIBLERECORDIdentifiers sc = (FLEXIBLERECORDIdentifiers) e.getValue().getContent().getAny();
+						FLEXIBLERECORDIdentifiers sc = (FLEXIBLERECORDIdentifiers) doc.getContent().getAny();
 						for (eu.europa.echa.iuclid6.namespaces.flexible_record_identifiers._6.FLEXIBLERECORDIdentifiers.ExternalSystemIdentifiersSet.ExternalSystemIdentifiers.Entry id : sc
 								.getExternalSystemIdentifiers().getExternalSystemIdentifiers().getEntry()) {
 							a.add(new ExternalIdentifier(id.getExternalSystemDesignator(), id.getId()));
@@ -369,6 +384,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 						 */
 
 					}
+					}
 				}
 				record.setExternalids(a);
 			} catch (Exception x) {
@@ -379,15 +395,17 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 		public void parseComposition(SubstanceRecord record) {
 			try {
-				Iterator<Entry<String, Document>> i = library.entrySet().iterator();
+				Iterator<Entry<String, Object>> i = library.entrySet().iterator();
 				while (i.hasNext()) {
-					Entry<String, Document> e = i.next();
-					if (e.getValue().getContent().getAny() instanceof FLEXIBLERECORDSubstanceComposition) {
+					Entry<String, Object> e = i.next();
+					if (e.getValue() instanceof Document) {
+						Document doc = (Document) e.getValue();
+					if (doc.getContent().getAny() instanceof FLEXIBLERECORDSubstanceComposition) {
 
-						FLEXIBLERECORDSubstanceComposition sc = (FLEXIBLERECORDSubstanceComposition) e.getValue()
+						FLEXIBLERECORDSubstanceComposition sc = (FLEXIBLERECORDSubstanceComposition) doc
 								.getContent().getAny();
 						String compositionUUID = cleanCompositionUUID(
-								getPlatformMetadataValue(e.getValue(), "documentKey"));
+								getPlatformMetadataValue(doc, "documentKey"));
 						String cname = sc.getGeneralInformation().getName();
 						if (sc.getImpurities() != null)
 							for (eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._6.FLEXIBLERECORDSubstanceComposition.ImpuritiesSet.Impurities.Entry c : sc
@@ -412,8 +430,14 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 								} catch (Exception x) {
 									logger.log(Level.WARNING, x.getMessage(), x);
 								}
-
+						if (sc.getCharacterisationOfNanoforms()!=null) {
+							
+						}
+						if (sc.getCharacterisationOfPolymers()!=null) {
+							
+						}
 					}
+				}
 				}
 
 			} catch (Exception x) {
