@@ -84,7 +84,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			try {
 				ReferenceSubstanceRecordWrapper w = new ReferenceSubstanceRecordWrapper(doc);
 				w.setLibrary(library);
-				return w.transform2record(structureRecord);
+				IStructureRecord record =  w.transform2record(structureRecord);
+				return record;
 			} catch (Exception x) {
 				logger.log(Level.WARNING, x.getMessage(), x);
 			}
@@ -157,7 +158,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 	class ReferenceSubstanceRecordWrapper extends AbstractDocWrapper {
 		protected REFERENCESUBSTANCE unmarshalled;
-
+		protected boolean empty = true;
 		public REFERENCESUBSTANCE getREFERENCESUBSTANCE() throws Exception {
 			return (REFERENCESUBSTANCE) doc.getContent().getAny();
 		}
@@ -170,9 +171,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 		public IStructureRecord transform2record(IStructureRecord structureRecord) {
 			structureRecord.clear();
 			setFormat(structureRecord);
-			if (library !=null) {
-				library.put(getDocumentReferencePK().replace("/", "_"), structureRecord);
-			}
+
 			setReferenceSubstanceUUID(structureRecord, I5Utils.getPrefixedUUID("IUC6", getDocumentReferencePK()));
 
 			if (unmarshalled.getReferenceSubstanceName() != null)
@@ -187,10 +186,12 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					structureRecord.setFormat(MOL_TYPE.INC.name());
 					structureRecord.setContent(inchi);
 					structureRecord.setType(STRUC_TYPE.D1);
+					empty = false;
 				} else {
 					structureRecord.setFormat(null);
 					structureRecord.setContent("");
 					structureRecord.setType(STRUC_TYPE.NA);
+					
 				}
 				structureRecord.setInchi(null);
 				String smiles = unmarshalled.getMolecularStructuralInfo().getSmilesNotation();
@@ -198,6 +199,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 					if (structureRecord.getFormat() == null) {
 						structureRecord.setFormat(MOL_TYPE.INC.name());
 						structureRecord.setContent(smiles);
+						empty = false;
 					}
 					structureRecord.setType(STRUC_TYPE.D1);
 				}
@@ -213,14 +215,17 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 			if (unmarshalled.getInventory() != null) {
 				for (InventoryEntry e : unmarshalled.getInventory().getInventoryEntry().getEntry()) {
-					if ("EC".equals(e.getInventoryCode()))
+					if ("EC".equals(e.getInventoryCode())) {
 						structureRecord.setRecordProperty(I5ReaderSimple.ecProperty, e.getNumberInInventory());
+						empty = false;
+					}
 					// else
 					// System.out.println(String.format("%s\t%s",e.getInventoryCode(),e.getNumberInInventory()));
 				}
 				try {
 					structureRecord.setRecordProperty(I5ReaderSimple.casProperty,
 							casProcessor.process(unmarshalled.getInventory().getCASNumber()));
+					empty = false;
 				} catch (Exception x) {
 					structureRecord.setRecordProperty(I5ReaderSimple.casProperty, unmarshalled.getInventory().getCASNumber());
 				}		
@@ -265,7 +270,12 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 				}
 
 			}
-
+			if (empty)
+				return null;
+			if (library !=null) {
+				library.put(getDocumentReferencePK().replace("/", "_"), structureRecord);
+			}
+			
 			return structureRecord;
 		}
 	}
@@ -324,11 +334,14 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 				if (unmarshalled.getReferenceSubstance() != null) {
 					String key = unmarshalled.getReferenceSubstance().getReferenceSubstance();
-					System.out.println(key);
+/*
 					Object ref = library.get(key.replace("/", "_"));
-					if (ref!=null && ref instanceof StructureRecord)
-						System.out.println(ref);
-			
+					if (ref!=null && ref instanceof StructureRecord) {
+						for (Property p :  ((StructureRecord) record).getRecordProperties()) {
+							System.out.println(((StructureRecord) record).getRecordProperty(p));
+						}
+					}
+			*/
 					setReferenceSubstanceUUID(record, I5Utils.getPrefixedUUID("IUC6",
 							unmarshalled.getReferenceSubstance().getReferenceSubstance()));
 					//unmarshalled.getReferenceSubstance().
@@ -407,6 +420,15 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 						String compositionUUID = cleanCompositionUUID(
 								getPlatformMetadataValue(doc, "documentKey"));
 						String cname = sc.getGeneralInformation().getName();
+						if (sc.getConstituents() != null)
+							for (eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._6.FLEXIBLERECORDSubstanceComposition.ConstituentsSet.Constituents.Entry c : sc
+									.getConstituents().getConstituents().getEntry())
+								try {
+									constituent2record(unmarshalled, compositionUUID, cname, record, c);
+																	
+								} catch (Exception x) {
+									logger.log(Level.WARNING, x.getMessage(), x);
+								}						
 						if (sc.getImpurities() != null)
 							for (eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._6.FLEXIBLERECORDSubstanceComposition.ImpuritiesSet.Impurities.Entry c : sc
 									.getImpurities().getImpurities().getEntry())
@@ -422,14 +444,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 								} catch (Exception x) {
 									logger.log(Level.WARNING, x.getMessage(), x);
 								}
-						if (sc.getConstituents() != null)
-							for (eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._6.FLEXIBLERECORDSubstanceComposition.ConstituentsSet.Constituents.Entry c : sc
-									.getConstituents().getConstituents().getEntry())
-								try {
-									constituent2record(unmarshalled, compositionUUID, cname, record, c);
-								} catch (Exception x) {
-									logger.log(Level.WARNING, x.getMessage(), x);
-								}
+
 						if (sc.getCharacterisationOfNanoforms()!=null) {
 							
 						}
@@ -470,6 +485,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			if (a.getReferenceSubstance() != null) {
 				record.setContent(a.getReferenceSubstance());
 				setReferenceSubstanceUUID(record, I5Utils.getPrefixedUUID("IUC6", a.getReferenceSubstance()));
+			
 			}
 
 			Proportion p = new Proportion();
@@ -533,7 +549,8 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			record.setType(STRUC_TYPE.NA);
 			if (a.getReferenceSubstance() != null) {
 				record.setContent(a.getReferenceSubstance());
-				setReferenceSubstanceUUID(record, a.getReferenceSubstance());
+				setReferenceSubstanceUUID(record, I5Utils.getPrefixedUUID("IUC6", a.getReferenceSubstance()));
+				
 			}
 
 			Proportion p = new Proportion();
@@ -590,15 +607,23 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			IStructureRelation r = substance.addStructureRelation(compositionUUID, record,
 					STRUCTURE_RELATION.HAS_IMPURITY, p);
 			r.setName(name);
+			
 			return record;
 		}
-
+		protected boolean isReferenceSubstanceEmpty(String key) {
+			
+			Object ref = library.get(key.replace("/", "_"));
+			return ref==null;
+	
+		}
 		protected IStructureRecord constituent2record(SUBSTANCE unmarshalled, String compositionUUID, String cname,
 				SubstanceRecord substance,
 				eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._6.FLEXIBLERECORDSubstanceComposition.ConstituentsSet.Constituents.Entry a)
 
 		{
 			if (a == null)
+				return null;
+			if (isReferenceSubstanceEmpty(a.getReferenceSubstance())) 
 				return null;
 			IStructureRecord record = new StructureRecord();
 			setFormat(record);
@@ -607,6 +632,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 			if (a.getReferenceSubstance() != null) {
 				record.setContent(a.getReferenceSubstance());
 				setReferenceSubstanceUUID(record, I5Utils.getPrefixedUUID("IUC6", a.getReferenceSubstance()));
+			
 			}
 
 			Proportion p = new Proportion();

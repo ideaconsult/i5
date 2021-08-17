@@ -15,7 +15,6 @@ import ambit2.base.exceptions.AmbitIOException;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.core.io.FileState;
 import ambit2.core.io.IRawReader;
-import eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document;
 import net.idea.i5.io.I5Options;
 import net.idea.i5.io.IZReader;
 import net.idea.modbcum.i.exceptions.AmbitException;
@@ -119,6 +118,7 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 						;
 					} else
 						referenceSubstances.add(file);
+				
 				} else if (cp.indexOf(".substance.") >= 0) {
 					substances.add(file);
 					if (options != null && (!options.isAllowMultipleSubstances() && (substances.size() > 1)))
@@ -147,9 +147,7 @@ public class I6ZReader<SUBSTANCE> extends IZReader<SUBSTANCE, I6_ROOT_OBJECTS> {
 			} catch (Exception x) {
 				logger.log(Level.WARNING, x.getMessage(), x);
 			}
-		for (File key : referenceSubstances) {
-			System.out.println(key);
-		}
+		
 		referenceSubstances.addAll(substances);
 		referenceSubstances.addAll(study);
 		substances.clear();
