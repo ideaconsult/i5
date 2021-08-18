@@ -519,6 +519,12 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 		protected IStructureRecord additive2record(String compositionUUID, String name, SubstanceRecord substance,
 				FLEXIBLERECORDSubstanceComposition.AdditivesSet.Additives.Entry a) {
+			
+			if (a == null)
+				return null;
+			if (isReferenceSubstanceEmpty(a.getReferenceSubstance()))
+				return null;
+			
 			IStructureRecord record = new StructureRecord();
 			setFormat(record);
 
@@ -584,6 +590,11 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 		protected IStructureRecord impurity2record(String compositionUUID, String name, SubstanceRecord substance,
 				eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._6.FLEXIBLERECORDSubstanceComposition.ImpuritiesSet.Impurities.Entry a) {
+			
+			if (a == null)
+				return null;
+			if (isReferenceSubstanceEmpty(a.getReferenceSubstance()))
+				return null;			
 			IStructureRecord record = new StructureRecord();
 			setFormat(record);
 
