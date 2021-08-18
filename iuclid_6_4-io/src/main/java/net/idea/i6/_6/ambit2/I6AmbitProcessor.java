@@ -366,6 +366,7 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 
 				for (eu.europa.echa.iuclid6.namespaces.substance._6.SUBSTANCE.OtherNames.Entry name : unmarshalled
 						.getOtherNames().getEntry()) {
+					if (name.getName()==null) continue;
 					String uname = name.getName().trim().toUpperCase();
 					if ("NOT KNOWN".equals(uname) || "".equals(uname)) continue;
 	
