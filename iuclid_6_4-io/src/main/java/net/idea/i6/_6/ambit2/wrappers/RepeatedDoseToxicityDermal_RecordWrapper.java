@@ -59,9 +59,13 @@ public class RepeatedDoseToxicityDermal_RecordWrapper
 				}
 				effect.getConditions().put(I5CONSTANTS.Organ, null);
 				effect.getConditions().put(I5CONSTANTS.CriticalEffectsObserved, null);
+				try {
 				if (studyrecord.getMaterialsAndMethods().getTestAnimals()!=null)
 				effect.getConditions().put(I5CONSTANTS.cSpecies,
 						p2Value(studyrecord.getMaterialsAndMethods().getTestAnimals().getSpecies()));
+				} catch (Exception x) {
+					effect.getConditions().put(I5CONSTANTS.cSpecies,null);
+				}
 
 			}
 		if (importResultsOfExaminations && studyrecord.getResultsAndDiscussion().getResultsOfExaminations() != null) {

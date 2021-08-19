@@ -664,9 +664,12 @@ public class I6AmbitProcessor<Target> extends IuclidAmbitProcessor<Target> {
 		}
 
 		protected boolean isReferenceSubstanceEmpty(String key) {
-
-			Object ref = library.get(key.replace("/", "_"));
-			return ref == null;
+			try {
+				Object ref = library.get(key.replace("/", "_"));
+				return ref == null;
+			} catch (Exception x) {
+				return false;
+			}
 
 		}
 
