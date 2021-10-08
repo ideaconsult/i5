@@ -45,17 +45,17 @@
 		<repository>
 			<id>central</id>
 			<name>central</name>
-			<url>http://repo1.maven.org/maven2/</url>
+			<url>https://repo1.maven.org/maven2/</url>
 		</repository>
 		<repository>
 			<id>maven-restlet</id>
 			<name>Public online Restlet repository</name>
-			<url>http://maven.restlet.org</url>
+			<url>https://maven.restlet.org</url>
 		</repository>
 		<repository>
 			<id>mvnrepository</id>
 			<name>mvnrepository</name>
-			<url>http://mvnrepository.com/</url>
+			<url>https://mvnrepository.com/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
