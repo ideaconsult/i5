@@ -1,0 +1,239 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:typ="http://echa.europa.eu/schemas/iuclid5/i5webservice/types/">
+   <soap:Header/>
+   <soap:Body>
+      <typ:countQueryExpression>
+         <typ:session typ:id="%s"/>
+         <typ:expression typ:dataLayer="?" typ:comment="?">
+            <!--You have a CHOICE of the next 3 items at this level-->
+            <typ:LogicalExpressionQueryBlock typ:operation="?">
+               <!--You have a CHOICE of the next 3 items at this level-->
+               <typ:LogicalExpressionQueryBlock/>
+               <typ:SimpleQueryBlock typ:fieldRestriction="?" typ:indexType="?">
+                  <typ:queryFields>
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <typ:StringQueryField typ:caseSensitive="?">
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:StringQueryValue typ:searchExpression="?" typ:op="?"/>
+                        </typ:values>
+                     </typ:StringQueryField>
+                     <typ:DateQueryField>
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:DateQueryValue typ:searchValue="?" typ:op="?"/>
+                        </typ:values>
+                     </typ:DateQueryField>
+                     <typ:NumericQueryField>
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:NumericQueryValue typ:searchValue="?" typ:op="?">
+                              <!--Optional:-->
+                              <typ:UnitValue typ:phraseGroupId="?" typ:phraseId="?" typ:otherText="?"/>
+                           </typ:NumericQueryValue>
+                        </typ:values>
+                     </typ:NumericQueryField>
+                     <typ:RangeQueryField>
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:RangeQueryValue typ:searchValueUpper="?" typ:searchValueLower="?" typ:op="?">
+                              <!--Optional:-->
+                              <typ:UnitValue typ:phraseGroupId="?" typ:phraseId="?" typ:otherText="?"/>
+                           </typ:RangeQueryValue>
+                        </typ:values>
+                     </typ:RangeQueryField>
+                  </typ:queryFields>
+               </typ:SimpleQueryBlock>
+               <typ:SimpleEndpointQueryBlock typ:fieldRestriction="?" typ:endpointKind="?" typ:parentType="?">
+                  <typ:indexTypes>
+                     <!--1 or more repetitions:-->
+                     <typ:documentType typ:type="?"/>
+                  </typ:indexTypes>
+                  <typ:queryFields>
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <typ:StringQueryField typ:caseSensitive="?">
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:StringQueryValue typ:searchExpression="?" typ:op="?"/>
+                        </typ:values>
+                     </typ:StringQueryField>
+                     <typ:DateQueryField>
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:DateQueryValue typ:searchValue="?" typ:op="?"/>
+                        </typ:values>
+                     </typ:DateQueryField>
+                     <typ:NumericQueryField>
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:NumericQueryValue typ:searchValue="?" typ:op="?">
+                              <!--Optional:-->
+                              <typ:UnitValue typ:phraseGroupId="?" typ:phraseId="?" typ:otherText="?"/>
+                           </typ:NumericQueryValue>
+                        </typ:values>
+                     </typ:NumericQueryField>
+                     <typ:RangeQueryField>
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:RangeQueryValue typ:searchValueUpper="?" typ:searchValueLower="?" typ:op="?">
+                              <!--Optional:-->
+                              <typ:UnitValue typ:phraseGroupId="?" typ:phraseId="?" typ:otherText="?"/>
+                           </typ:RangeQueryValue>
+                        </typ:values>
+                     </typ:RangeQueryField>
+                  </typ:queryFields>
+               </typ:SimpleEndpointQueryBlock>
+               <!--You have a CHOICE of the next 3 items at this level-->
+               <typ:LogicalExpressionQueryBlock/>
+               <typ:SimpleQueryBlock typ:fieldRestriction="?" typ:indexType="?">
+                  <typ:queryFields>
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <typ:StringQueryField typ:caseSensitive="?">
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:StringQueryValue typ:searchExpression="?" typ:op="?"/>
+                        </typ:values>
+                     </typ:StringQueryField>
+                     <typ:DateQueryField>
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:DateQueryValue typ:searchValue="?" typ:op="?"/>
+                        </typ:values>
+                     </typ:DateQueryField>
+                     <typ:NumericQueryField>
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:NumericQueryValue typ:searchValue="?" typ:op="?">
+                              <!--Optional:-->
+                              <typ:UnitValue typ:phraseGroupId="?" typ:phraseId="?" typ:otherText="?"/>
+                           </typ:NumericQueryValue>
+                        </typ:values>
+                     </typ:NumericQueryField>
+                     <typ:RangeQueryField>
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:RangeQueryValue typ:searchValueUpper="?" typ:searchValueLower="?" typ:op="?">
+                              <!--Optional:-->
+                              <typ:UnitValue typ:phraseGroupId="?" typ:phraseId="?" typ:otherText="?"/>
+                           </typ:RangeQueryValue>
+                        </typ:values>
+                     </typ:RangeQueryField>
+                  </typ:queryFields>
+               </typ:SimpleQueryBlock>
+               <typ:SimpleEndpointQueryBlock typ:fieldRestriction="?" typ:endpointKind="?" typ:parentType="?">
+                  <typ:indexTypes>
+                     <!--1 or more repetitions:-->
+                     <typ:documentType typ:type="?"/>
+                  </typ:indexTypes>
+                  <typ:queryFields>
+                     <!--You have a CHOICE of the next 4 items at this level-->
+                     <typ:StringQueryField typ:caseSensitive="?">
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:StringQueryValue typ:searchExpression="?" typ:op="?"/>
+                        </typ:values>
+                     </typ:StringQueryField>
+                     <typ:DateQueryField>
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:DateQueryValue typ:searchValue="?" typ:op="?"/>
+                        </typ:values>
+                     </typ:DateQueryField>
+                     <typ:NumericQueryField>
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:NumericQueryValue typ:searchValue="?" typ:op="?">
+                              <!--Optional:-->
+                              <typ:UnitValue typ:phraseGroupId="?" typ:phraseId="?" typ:otherText="?"/>
+                           </typ:NumericQueryValue>
+                        </typ:values>
+                     </typ:NumericQueryField>
+                     <typ:RangeQueryField>
+                        <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                        <typ:values>
+                           <typ:RangeQueryValue typ:searchValueUpper="?" typ:searchValueLower="?" typ:op="?">
+                              <!--Optional:-->
+                              <typ:UnitValue typ:phraseGroupId="?" typ:phraseId="?" typ:otherText="?"/>
+                           </typ:RangeQueryValue>
+                        </typ:values>
+                     </typ:RangeQueryField>
+                  </typ:queryFields>
+               </typ:SimpleEndpointQueryBlock>
+            </typ:LogicalExpressionQueryBlock>
+            <typ:SimpleQueryBlock typ:fieldRestriction="?" typ:indexType="?">
+               <typ:queryFields>
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <typ:StringQueryField typ:caseSensitive="?">
+                     <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                     <typ:values>
+                        <typ:StringQueryValue typ:searchExpression="?" typ:op="?"/>
+                     </typ:values>
+                  </typ:StringQueryField>
+                  <typ:DateQueryField>
+                     <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                     <typ:values>
+                        <typ:DateQueryValue typ:searchValue="?" typ:op="?"/>
+                     </typ:values>
+                  </typ:DateQueryField>
+                  <typ:NumericQueryField>
+                     <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                     <typ:values>
+                        <typ:NumericQueryValue typ:searchValue="?" typ:op="?">
+                           <!--Optional:-->
+                           <typ:UnitValue typ:phraseGroupId="?" typ:phraseId="?" typ:otherText="?"/>
+                        </typ:NumericQueryValue>
+                     </typ:values>
+                  </typ:NumericQueryField>
+                  <typ:RangeQueryField>
+                     <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                     <typ:values>
+                        <typ:RangeQueryValue typ:searchValueUpper="?" typ:searchValueLower="?" typ:op="?">
+                           <!--Optional:-->
+                           <typ:UnitValue typ:phraseGroupId="?" typ:phraseId="?" typ:otherText="?"/>
+                        </typ:RangeQueryValue>
+                     </typ:values>
+                  </typ:RangeQueryField>
+               </typ:queryFields>
+            </typ:SimpleQueryBlock>
+            <typ:SimpleEndpointQueryBlock typ:fieldRestriction="?" typ:endpointKind="?" typ:parentType="?">
+               <typ:indexTypes>
+                  <!--1 or more repetitions:-->
+                  <typ:documentType typ:type="?"/>
+               </typ:indexTypes>
+               <typ:queryFields>
+                  <!--You have a CHOICE of the next 4 items at this level-->
+                  <typ:StringQueryField typ:caseSensitive="?">
+                     <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                     <typ:values>
+                        <typ:StringQueryValue typ:searchExpression="?" typ:op="?"/>
+                     </typ:values>
+                  </typ:StringQueryField>
+                  <typ:DateQueryField>
+                     <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                     <typ:values>
+                        <typ:DateQueryValue typ:searchValue="?" typ:op="?"/>
+                     </typ:values>
+                  </typ:DateQueryField>
+                  <typ:NumericQueryField>
+                     <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                     <typ:values>
+                        <typ:NumericQueryValue typ:searchValue="?" typ:op="?">
+                           <!--Optional:-->
+                           <typ:UnitValue typ:phraseGroupId="?" typ:phraseId="?" typ:otherText="?"/>
+                        </typ:NumericQueryValue>
+                     </typ:values>
+                  </typ:NumericQueryField>
+                  <typ:RangeQueryField>
+                     <typ:QueryField typ:fieldName="?" typ:ID="?"/>
+                     <typ:values>
+                        <typ:RangeQueryValue typ:searchValueUpper="?" typ:searchValueLower="?" typ:op="?">
+                           <!--Optional:-->
+                           <typ:UnitValue typ:phraseGroupId="?" typ:phraseId="?" typ:otherText="?"/>
+                        </typ:RangeQueryValue>
+                     </typ:values>
+                  </typ:RangeQueryField>
+               </typ:queryFields>
+            </typ:SimpleEndpointQueryBlock>
+         </typ:expression>
+      </typ:countQueryExpression>
+   </soap:Body>
+</soap:Envelope>
