@@ -17,6 +17,9 @@
 		<module>iuclid_6_sections</module>
 		<module>iuclid_6_2-io</module>
 		<module>iuclid_6_4-io</module>
+		<module>iuclid-i6ws</module>
+		<module>iuclid-ixws</module>
+		<module>iuclid-i5ws</module>
 	</modules>
 	<distributionManagement>
 		<snapshotRepository>
@@ -34,7 +37,13 @@
 		<ambit.version>4.1.0-SNAPSHOT</ambit.version>
 		<jaxb.api.version>2.3.1</jaxb.api.version>
 		<sourceVersion>1.8</sourceVersion>
-	</properties>
+		<apache.jena.version>2.13.0</apache.jena.version>
+	    <org.apache.httpcomponents.httpclient.version>4.5</org.apache.httpcomponents.httpclient.version>
+	    <jackson.version>2.4.2</jackson.version>
+		<sourceVersion>1.8</sourceVersion>
+		<maven.compiler.source>${sourceVersion}</maven.compiler.source>
+        <maven.compiler.target>${sourceVersion}</maven.compiler.target>	    
+  </properties>
 	<scm>
 		<connection>scm:git:git://github.com/ideaconsult/i5.git</connection>
 		<developerConnection>scm:git:git@github.com:ideaconsult/i5.git</developerConnection>

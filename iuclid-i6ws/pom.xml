@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>net.idea</groupId>
+    <artifactId>iuclid5-cli</artifactId>
+    <version>2.2.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>iuclid-i6ws</artifactId>
+
+	<description>IUCLID6 REST client
+https://iuclid6.echa.europa.eu/public-api</description>
+	<organization>
+		<name>Ideaconsult Ltd.</name>
+	</organization>
+	<dependencies>
+		<dependency>
+			<groupId>net.idea</groupId>
+			<artifactId>iuclid-ixws</artifactId>
+			<version>${project.version}</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>net.idea</groupId>
+			<artifactId>i5z</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>  
+</project>
