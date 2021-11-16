@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Properties;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -26,12 +27,12 @@ import ambit2.base.data.study.Protocol;
 import ambit2.base.data.study.ProtocolApplication;
 import ambit2.base.interfaces.IStructureRecord;
 import ambit2.base.relation.composition.CompositionRelation;
-import eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._2.FLEXIBLERECORDSubstanceComposition;
-import eu.europa.echa.iuclid6.namespaces.substance._2.SUBSTANCE;
+import eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._6.FLEXIBLERECORDSubstanceComposition;
+import eu.europa.echa.iuclid6.namespaces.substance._6.SUBSTANCE;
 import junit.framework.Assert;
 import net.idea.i5.io.I5_ROOT_OBJECTS;
 import net.idea.i5.io.QASettings;
-import net.idea.i6._2.ambit2.EndpointStudyRecordWrapper;
+import net.idea.i6._6.ambit2.EndpointStudyRecordWrapper;
 import net.idea.i6.io.I6DReader;
 import net.idea.i6.io.I6ManifestReader;
 import net.idea.i6.io.I6ZReader;
@@ -39,6 +40,7 @@ import net.idea.i6.io.I6_ROOT_OBJECTS;
 
 public class SubstanceTest {
 	protected static Logger logger = Logger.getLogger(SubstanceTest.class.getName());
+	final String i66_ironore = "net/idea/i6/_6/substance/i6z/56e49ed8-0bec-49a2-8050-f8e87844b2e8";
 
 	@Test
 	public void testPhrases() throws Exception {
@@ -51,7 +53,7 @@ public class SubstanceTest {
 	public void readManifest() throws Exception {
 
 		File file = new File(
-				getClass().getClassLoader().getResource("net/idea/i6/_2/substance/manifest_i5c.xml").getFile());
+				SubstanceTest.class.getClassLoader().getResource("net/idea/i6/_6/substance/manifest_i5c.xml").getFile());
 		Assert.assertTrue(file.exists());
 		File folder = file.getParentFile();
 		// File i5folder = new File(folder,
@@ -81,7 +83,7 @@ public class SubstanceTest {
 			// File test = new
 			// File(folder,"IUC5-848a57ae-94a6-436a-965c-d7d6bd3c1a1f_0.i6d");
 
-			// Assert.assertEquals("eu.europa.echa.iuclid6.namespaces.endpoint_study_record_watersolubility._2",
+			// Assert.assertEquals("eu.europa.echa.iuclid6.namespaces.endpoint_study_record_watersolubility._5",
 			// file2cjaxbcp.get(test.getAbsolutePath()));
 			System.out.println(file2cjaxbcp.get(test.getAbsolutePath()));
 			Assert.assertNotNull(file2cjaxbcp.get(test.getAbsolutePath()));
@@ -89,7 +91,7 @@ public class SubstanceTest {
 			String jaxbcontextpath = "eu.europa.echa.iuclid6.namespaces.platform_container.v1:"
 					+ "eu.europa.echa.iuclid6.namespaces.platform_fields.v1:"
 					+ "eu.europa.echa.iuclid6.namespaces.platform_metadata.v1:"
-					+ "eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._2:"
+					+ "eu.europa.echa.iuclid6.namespaces.flexible_record_substancecomposition._6:"
 					+ file2cjaxbcp.get(test.getAbsolutePath());
 
 			JAXBContext jaxbContext = JAXBContext.newInstance(jaxbcontextpath);
@@ -102,7 +104,7 @@ public class SubstanceTest {
 			m.add(I6_ROOT_OBJECTS.FLEXIBLE_RECORD_SubstanceComposition.name());
 
 			List<File> libraryFiles = r.listFiles(manifest, i5folder, m);
-			Map<String, eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document> library = I6ManifestReader
+			Map<String, Object> library = I6ManifestReader
 					.parseLinkedEntry(libraryFiles);
 			Assert.assertNotNull(library);
 			Assert.assertTrue(library.size() > 0);
@@ -134,52 +136,45 @@ public class SubstanceTest {
 				x.printStackTrace();
 			}
 
-			Iterator<Entry<String, eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document>> e = library
+			Iterator<Entry<String, Object>> e = library
 					.entrySet().iterator();
 			while (e.hasNext()) {
-				Entry<String, eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document> entry = e.next();
-				if (entry.getValue().getContent().getAny() instanceof SUBSTANCE) {
-					SUBSTANCE tm = (SUBSTANCE) entry.getValue().getContent().getAny();
-					SUBSTANCE.ReferenceSubstance rs = tm.getReferenceSubstance();
-					System.out.println(">>>\t" + rs.getReferenceSubstance());
-				} else if (entry.getValue().getContent().getAny() instanceof FLEXIBLERECORDSubstanceComposition) {
-					FLEXIBLERECORDSubstanceComposition tm = (FLEXIBLERECORDSubstanceComposition) entry.getValue()
-							.getContent().getAny();
-					System.out.println(">>>\t" + tm.getGeneralInformation().getName());
-					/*
-					 * } else if (entry.getValue().getContent().getAny()
-					 * instanceof TESTMATERIALINFORMATION) {
-					 * TESTMATERIALINFORMATION tm = (TESTMATERIALINFORMATION)
-					 * entry.getValue().getContent().getAny();
-					 * System.out.println(entry.getKey());
-					 * System.out.println(tm.getName()); Composition c =
-					 * tm.getComposition();
-					 * System.out.println(c.getCompositionPurityOtherInformation
-					 * ().getValue());
-					 * System.out.println(c.getOtherCharacteristics().
-					 * getTestMaterialForm().getValue()); String offset = "\t";
-					 * for (eu.europa.echa.iuclid6.namespaces.
-					 * test_material_information._2.TESTMATERIALINFORMATION.
-					 * Composition.CompositionList.Entry i : c
-					 * .getCompositionList().getEntry()) {
-					 * System.out.println(offset + i.getUuid());
-					 * System.out.println(offset + "REFERENCE\t" +
-					 * i.getReferenceSubstance()); System.out.println(offset +
-					 * i.getConcentration().getUpperValue());
-					 * System.out.println(offset + i.getType().getValue());
-					 * System.out.println(); } System.out.println();
-					 */
+				Entry<String, Object> entry = e.next();
+					if (entry.getValue() instanceof eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document) {
+						eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document doc = (eu.europa.echa.iuclid6.namespaces.platform_container.v1.Document) entry.getValue();
+					if (doc.getContent().getAny() instanceof SUBSTANCE) {
+						SUBSTANCE tm = (SUBSTANCE) doc.getContent().getAny();
+						SUBSTANCE.ReferenceSubstance rs = tm.getReferenceSubstance();
+						System.out.println(">>>\t" + rs.getReferenceSubstance());
+					} else if (doc.getContent().getAny() instanceof FLEXIBLERECORDSubstanceComposition) {
+						FLEXIBLERECORDSubstanceComposition tm = (FLEXIBLERECORDSubstanceComposition) doc
+								.getContent().getAny();
+						System.out.println(">>>\t" + tm.getGeneralInformation().getName());
+						/*
+						 * } else if (entry.getValue().getContent().getAny() instanceof
+						 * TESTMATERIALINFORMATION) { TESTMATERIALINFORMATION tm =
+						 * (TESTMATERIALINFORMATION) entry.getValue().getContent().getAny();
+						 * System.out.println(entry.getKey()); System.out.println(tm.getName());
+						 * Composition c = tm.getComposition();
+						 * System.out.println(c.getCompositionPurityOtherInformation ().getValue());
+						 * System.out.println(c.getOtherCharacteristics().
+						 * getTestMaterialForm().getValue()); String offset = "\t"; for
+						 * (eu.europa.echa.iuclid6.namespaces.
+						 * test_material_information._2.TESTMATERIALINFORMATION.
+						 * Composition.CompositionList.Entry i : c .getCompositionList().getEntry()) {
+						 * System.out.println(offset + i.getUuid()); System.out.println(offset +
+						 * "REFERENCE\t" + i.getReferenceSubstance()); System.out.println(offset +
+						 * i.getConcentration().getUpperValue()); System.out.println(offset +
+						 * i.getType().getValue()); System.out.println(); } System.out.println();
+						 */
+					}
 				}
 			}
-
 			/*
-			 * SubstanceRecord substance = new SubstanceRecord();
-			 * r.parseDocuments(manifest, substance);
-			 * Assert.assertNotNull(substance.getSubstanceUUID());
-			 * Assert.assertNotNull(substance.getContent()); //
-			 * //Assert.assertEquals(
-			 * "IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734",
-			 * substance.getSubstanceUUID());
+			 * SubstanceRecord substance = new SubstanceRecord(); r.parseDocuments(manifest,
+			 * substance); Assert.assertNotNull(substance.getSubstanceUUID());
+			 * Assert.assertNotNull(substance.getContent()); // //Assert.assertEquals(
+			 * "IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734", substance.getSubstanceUUID());
 			 * Assert.assertNotNull(substance.getReferenceSubstanceUUID());
 			 */
 
@@ -187,33 +182,43 @@ public class SubstanceTest {
 	}
 
 	@Test
-	public void test_i6z_2() throws Exception {
-		String test = "net/idea/i6/_2/substance/i6z/IUC4-efdb21bb-e79f-3286-a988-b6f6944d3734.i6z";
+	public void test_i6z_6_endpointstudyrecords() throws Exception {
+		// String test =
+		// "net/idea/i6/_5/substance/i6z/f63698f5-6751-4bca-9ca8-8388de4fdea9.i6z";
+		// //formaldehyde
+		String test = i66_ironore + ".i6z";
 		URL url = SubstanceTest.class.getClassLoader().getResource(test);
 		Assert.assertNotNull(url);
-		Assert.assertEquals(603, unmarshall_i6z(new File(url.getFile()), 603));
-		// all 880
+		
+		Properties endpoints = getTestProperties(i66_ironore+".properties");
+		Assert.assertNotNull(endpoints);
+		try {
+			Assert.assertEquals(129, unmarshall_i6z(new File(url.getFile()), 129));
+		} catch (Exception x) {
+			Assert.fail(x.getMessage());
+		}
+		// all ???
 	}
 
 	@Test
-	public void test_i6z_2_echa() throws Exception {
-		String test = "net/idea/i6/_2/substance/i6z/ECHA-13cdf683-927b-47d6-81a5-32d27ec38747.i6z";
+	public void test_i6z_6() throws Exception {
+		String test = i66_ironore + ".i6z";
 		URL url = SubstanceTest.class.getClassLoader().getResource(test);
 		Assert.assertNotNull(url);
-		Assert.assertEquals(32, unmarshall_i6z(new File(url.getFile()), 32));
+		Assert.assertEquals(129, unmarshall_i6z(new File(url.getFile()), 129));
 		// all 52
 	}
 
 	@Test
-	public void test_i6z_2_internal() throws Exception {
-		String test = "net/idea/i6/_2/substance/i6z/IUC5-541ccdba-0033-45ee-8136-406478deb0f4.i6z";
+	public void test_i6z_6_internal() throws Exception {
+		String test = i66_ironore + ".i6z";
 		URL url = SubstanceTest.class.getClassLoader().getResource(test);
 		Assert.assertNotNull(url);
 		try (I6ZReader<IStructureRecord> reader = new I6ZReader<>(new File(url.getFile()))) {
 			while (reader.hasNext()) {
 				IStructureRecord record = (IStructureRecord) reader.next();
 				if (record instanceof SubstanceRecord) {
-					
+
 					if (((SubstanceRecord) record).getMeasurements() != null)
 						System.out.println(((SubstanceRecord) record).getMeasurements());
 					else
@@ -257,15 +262,24 @@ public class SubstanceTest {
 			while (reader.hasNext()) {
 				Object next = reader.nextRecord();
 				if (next instanceof SubstanceRecord) {
-					Assert.assertNotNull(((SubstanceRecord) next).getSubstanceUUID());
+					Assert.assertNotNull("Substance without UUID!", ((SubstanceRecord) next).getSubstanceUUID());
+					System.out.println(((SubstanceRecord) next).getSubstanceUUID());
 					// Assert.assertNotNull(((SubstanceRecord)
 					// next).getContent());
 					if (((SubstanceRecord) next).getRelatedStructures() != null)
 						for (CompositionRelation r : ((SubstanceRecord) next).getRelatedStructures()) {
 							Assert.assertNotNull(r.getCompositionUUID());
 						}
+					if (((SubstanceRecord) next).getMeasurements() != null) {
+						for (ProtocolApplication<Protocol, IParams, String, IParams, String> papp : ((SubstanceRecord) next)
+								.getMeasurements()) {
+							System.out.println(papp.getProtocol().getCategory());
+							System.out.println(papp.getDocumentUUID());
+						}
+					}
 				} else if (next instanceof IStructureRecord) {
 					System.out.println(((IStructureRecord) next).getContent());
+
 				}
 				logger.info(next == null ? "null entry" : next.toString());
 				count++;
@@ -279,6 +293,16 @@ public class SubstanceTest {
 			if (reader != null)
 				reader.close();
 		}
+	}
+
+	protected Properties getTestProperties(String resource) {
+		Properties properties = new Properties();
+		try (InputStream in = SubstanceTest.class.getClassLoader().getResourceAsStream(resource)) {
+			properties.load(in);
+		} catch (Exception x) {
+			x.printStackTrace();
+		}
+		return properties;
 	}
 
 }

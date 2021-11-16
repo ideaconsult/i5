@@ -1,0 +1,377 @@
+
+package eu.europa.echa.iuclid6.namespaces.endpoint_study_record_exposurerelatedobservationsother._6;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
+import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the eu.europa.echa.iuclid6.namespaces.endpoint_study_record_exposurerelatedobservationsother._6 package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _ENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataRobustStudy_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ExposureRelatedObservationsOther/6.0", "RobustStudy");
+    private final static QName _ENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataUsedForMSDS_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ExposureRelatedObservationsOther/6.0", "UsedForMSDS");
+    private final static QName _ENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataUsedForClassification_QNAME = new QName("http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ExposureRelatedObservationsOther/6.0", "UsedForClassification");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.europa.echa.iuclid6.namespaces.endpoint_study_record_exposurerelatedobservationsother._6
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther createENDPOINTSTUDYRECORDExposureRelatedObservationsOther() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.OverallRemarksAttachments }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.OverallRemarksAttachments createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherOverallRemarksAttachments() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.OverallRemarksAttachments();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.OverallRemarksAttachments.AttachedBackgroundMaterial }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.OverallRemarksAttachments.AttachedBackgroundMaterial createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherOverallRemarksAttachmentsAttachedBackgroundMaterial() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.OverallRemarksAttachments.AttachedBackgroundMaterial();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.ResultsAndDiscussion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.ResultsAndDiscussion createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherResultsAndDiscussion() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.ResultsAndDiscussion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherMaterialsAndMethods() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Method }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Method createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherMaterialsAndMethodsMethod() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Method();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherMaterialsAndMethodsGuidelines() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines.Entry createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherMaterialsAndMethodsGuidelinesEntry() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.DataSource }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.DataSource createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherDataSource() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.DataSource();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeData() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.CrossReference }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.CrossReference createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataCrossReference() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.CrossReference();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.CrossReference.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.CrossReference.Entry createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataCrossReferenceEntry() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.CrossReference.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.AttachedJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.AttachedJustification createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataAttachedJustification() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.AttachedJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.AttachedJustification.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.AttachedJustification.Entry createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataAttachedJustificationEntry() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.AttachedJustification.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.DataProtection }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.DataProtection createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataDataProtection() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.DataProtection();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.ApplicantSummaryAndConclusion }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.ApplicantSummaryAndConclusion createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherApplicantSummaryAndConclusion() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.ApplicantSummaryAndConclusion();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherOverallRemarksAttachmentsAttachedBackgroundMaterialEntry() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.OverallRemarksAttachments.AttachedBackgroundMaterial.Entry();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherResultsAndDiscussionAnyOtherInformationOnResultsInclTables() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.ResultsAndDiscussion.AnyOtherInformationOnResultsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.EndpointAddressed }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.EndpointAddressed createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherMaterialsAndMethodsEndpointAddressed() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.EndpointAddressed();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.GLPComplianceStatement }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.GLPComplianceStatement createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherMaterialsAndMethodsGLPComplianceStatement() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.GLPComplianceStatement();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.TestMaterials }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.TestMaterials createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherMaterialsAndMethodsTestMaterials() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.TestMaterials();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherMaterialsAndMethodsAnyOtherInformationOnMaterialsAndMethodsInclTables() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.AnyOtherInformationOnMaterialsAndMethodsInclTables();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Method.EthicalApproval }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Method.EthicalApproval createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherMaterialsAndMethodsMethodEthicalApproval() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Method.EthicalApproval();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Method.ExposureAssessment }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Method.ExposureAssessment createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherMaterialsAndMethodsMethodExposureAssessment() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Method.ExposureAssessment();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines.Entry.Qualifier }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines.Entry.Qualifier createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherMaterialsAndMethodsGuidelinesEntryQualifier() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines.Entry.Qualifier();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines.Entry.Guideline }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines.Entry.Guideline createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherMaterialsAndMethodsGuidelinesEntryGuideline() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines.Entry.Guideline();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines.Entry.Deviation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines.Entry.Deviation createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherMaterialsAndMethodsGuidelinesEntryDeviation() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.MaterialsAndMethods.Guidelines.Entry.Deviation();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.DataSource.DataAccess }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.DataSource.DataAccess createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherDataSourceDataAccess() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.DataSource.DataAccess();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.DataSource.DataProtectionClaimed }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.DataSource.DataProtectionClaimed createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherDataSourceDataProtectionClaimed() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.DataSource.DataProtectionClaimed();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.Endpoint }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.Endpoint createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataEndpoint() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.Endpoint();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.StudyResultType }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.StudyResultType createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataStudyResultType() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.StudyResultType();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.PurposeFlag }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.PurposeFlag createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataPurposeFlag() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.PurposeFlag();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.Reliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.Reliability createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataReliability() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.Reliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.RationalReliability }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.RationalReliability createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataRationalReliability() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.RationalReliability();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.DataWaiving }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.DataWaiving createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataDataWaiving() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.DataWaiving();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.DataWaivingJustification }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.DataWaivingJustification createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataDataWaivingJustification() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.DataWaivingJustification();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.CrossReference.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.CrossReference.Entry.ReasonPurpose createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataCrossReferenceEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.CrossReference.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.AttachedJustification.Entry.ReasonPurpose }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.AttachedJustification.Entry.ReasonPurpose createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataAttachedJustificationEntryReasonPurpose() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.AttachedJustification.Entry.ReasonPurpose();
+    }
+
+    /**
+     * Create an instance of {@link ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.DataProtection.Legislation }
+     * 
+     */
+    public ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.DataProtection.Legislation createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataDataProtectionLegislation() {
+        return new ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.DataProtection.Legislation();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ExposureRelatedObservationsOther/6.0", name = "RobustStudy", scope = ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataRobustStudy(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataRobustStudy_QNAME, Boolean.class, ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ExposureRelatedObservationsOther/6.0", name = "UsedForMSDS", scope = ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataUsedForMSDS(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataUsedForMSDS_QNAME, Boolean.class, ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Boolean }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://iuclid6.echa.europa.eu/namespaces/ENDPOINT_STUDY_RECORD-ExposureRelatedObservationsOther/6.0", name = "UsedForClassification", scope = ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.class)
+    public JAXBElement<Boolean> createENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataUsedForClassification(Boolean value) {
+        return new JAXBElement<Boolean>(_ENDPOINTSTUDYRECORDExposureRelatedObservationsOtherAdministrativeDataUsedForClassification_QNAME, Boolean.class, ENDPOINTSTUDYRECORDExposureRelatedObservationsOther.AdministrativeData.class, value);
+    }
+
+}

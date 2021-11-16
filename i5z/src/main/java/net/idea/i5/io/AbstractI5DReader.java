@@ -110,7 +110,7 @@ public abstract class AbstractI5DReader<T> extends DefaultIteratingChemObjectRea
 		}
 	}
 	public void initJAXB(String contextPath) throws JAXBException  {
-		jaxbContext = JAXBContext.newInstance(contextPath);
+		jaxbContext = JAXBContext.newInstance(contextPath,AbstractI5DReader.class.getClassLoader());
 		jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
 	}

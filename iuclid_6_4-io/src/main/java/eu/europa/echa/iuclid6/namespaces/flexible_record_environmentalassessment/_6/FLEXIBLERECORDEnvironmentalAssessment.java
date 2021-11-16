@@ -1,0 +1,6166 @@
+
+package eu.europa.echa.iuclid6.namespaces.flexible_record_environmentalassessment._6;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.BaseDataProtectionField;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.BasePhysicalQuantityField;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.BasePicklistField;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.MultilingualTextField;
+import eu.europa.echa.iuclid6.namespaces.platform_fields.v1.MultilingualTextFieldSmall;
+
+
+/**
+ * <p>Java class for anonymous complex type.
+ * 
+ * <p>The following schema fragment specifies the expected content contained within this class.
+ * 
+ * <pre>
+ * &lt;complexType>
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="DataProtection" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}baseDataProtectionField">
+ *                 &lt;sequence>
+ *                   &lt;element name="confidentiality" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}N64" minOccurs="0"/>
+ *                   &lt;element name="justification" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextField" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="legislation" maxOccurs="unbounded" minOccurs="0">
+ *                     &lt;complexType>
+ *                       &lt;complexContent>
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;sequence>
+ *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}N78" minOccurs="0"/>
+ *                             &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+ *                           &lt;/sequence>
+ *                         &lt;/restriction>
+ *                       &lt;/complexContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                 &lt;/sequence>
+ *               &lt;/extension>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="ExposureRelatedToSelectACompositionIfRelevant" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}documentReferenceField" minOccurs="0"/>
+ *         &lt;element name="ExposureRelatedToCSA" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+ *                 &lt;sequence>
+ *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}PG6_60471" minOccurs="0"/>
+ *                 &lt;/sequence>
+ *               &lt;/extension>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *         &lt;element name="RegionalExposure" minOccurs="0">
+ *           &lt;complexType>
+ *             &lt;complexContent>
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                 &lt;sequence>
+ *                   &lt;element name="TotalReleases" minOccurs="0">
+ *                     &lt;complexType>
+ *                       &lt;complexContent>
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;sequence>
+ *                             &lt;element name="SumWaterRelease" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}numericField" minOccurs="0"/>
+ *                             &lt;element name="SumAirRelease" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}numericField" minOccurs="0"/>
+ *                             &lt;element name="SumSoilRelease" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}numericField" minOccurs="0"/>
+ *                           &lt;/sequence>
+ *                         &lt;/restriction>
+ *                       &lt;/complexContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                   &lt;element name="EnvironmentalRegionalExposure" minOccurs="0">
+ *                     &lt;complexType>
+ *                       &lt;complexContent>
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;sequence>
+ *                             &lt;element name="FreshwaterPelagic" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="PecRegional" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+ *                                                 &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                             &lt;element name="FreshwaterSediment" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="PecRegional" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD110" minOccurs="0"/>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+ *                                                 &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                             &lt;element name="MarinePelagic" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="PecRegional" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+ *                                                 &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                             &lt;element name="MarineSediment" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="PecRegional" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD110" minOccurs="0"/>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+ *                                                 &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                             &lt;element name="FreshwaterFoodchain" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="PecRegional" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+ *                                                 &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                             &lt;element name="MarineFoodchain" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="PecRegional" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+ *                                                 &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                             &lt;element name="MarineFoodchainTop" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="PecRegional" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+ *                                                 &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                             &lt;element name="AgriculturalSoil" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="PecRegional" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD120" minOccurs="0"/>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+ *                                                 &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                             &lt;element name="TerrestrialFoodchain" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="PecRegional" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+ *                                                 &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                             &lt;element name="Air" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="PecRegional" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD180" minOccurs="0"/>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+ *                                                 &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                           &lt;/sequence>
+ *                         &lt;/restriction>
+ *                       &lt;/complexContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                   &lt;element name="RiskForManViaEnvironment" minOccurs="0">
+ *                     &lt;complexType>
+ *                       &lt;complexContent>
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;sequence>
+ *                             &lt;element name="ViaFoodAndWater" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="PecRegional" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+ *                                                 &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                       &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                           &lt;/sequence>
+ *                         &lt;/restriction>
+ *                       &lt;/complexContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                   &lt;element name="CombinedWidespread" minOccurs="0">
+ *                     &lt;complexType>
+ *                       &lt;complexContent>
+ *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                           &lt;sequence>
+ *                             &lt;element name="Water" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="Concentration" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                             &lt;element name="Soil" minOccurs="0">
+ *                               &lt;complexType>
+ *                                 &lt;complexContent>
+ *                                   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *                                     &lt;sequence>
+ *                                       &lt;element name="Concentration" minOccurs="0">
+ *                                         &lt;complexType>
+ *                                           &lt;complexContent>
+ *                                             &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+ *                                               &lt;sequence>
+ *                                                 &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD120" minOccurs="0"/>
+ *                                                 &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+ *                                               &lt;/sequence>
+ *                                             &lt;/extension>
+ *                                           &lt;/complexContent>
+ *                                         &lt;/complexType>
+ *                                       &lt;/element>
+ *                                     &lt;/sequence>
+ *                                   &lt;/restriction>
+ *                                 &lt;/complexContent>
+ *                               &lt;/complexType>
+ *                             &lt;/element>
+ *                           &lt;/sequence>
+ *                         &lt;/restriction>
+ *                       &lt;/complexContent>
+ *                     &lt;/complexType>
+ *                   &lt;/element>
+ *                 &lt;/sequence>
+ *               &lt;/restriction>
+ *             &lt;/complexContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+    "dataProtection",
+    "exposureRelatedToSelectACompositionIfRelevant",
+    "exposureRelatedToCSA",
+    "regionalExposure"
+})
+@XmlRootElement(name = "FLEXIBLE_RECORD.EnvironmentalAssessment")
+public class FLEXIBLERECORDEnvironmentalAssessment {
+
+    @XmlElement(name = "DataProtection")
+    protected FLEXIBLERECORDEnvironmentalAssessment.DataProtection dataProtection;
+    @XmlElement(name = "ExposureRelatedToSelectACompositionIfRelevant")
+    protected String exposureRelatedToSelectACompositionIfRelevant;
+    @XmlElement(name = "ExposureRelatedToCSA")
+    protected FLEXIBLERECORDEnvironmentalAssessment.ExposureRelatedToCSA exposureRelatedToCSA;
+    @XmlElement(name = "RegionalExposure")
+    protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure regionalExposure;
+
+    /**
+     * Gets the value of the dataProtection property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FLEXIBLERECORDEnvironmentalAssessment.DataProtection }
+     *     
+     */
+    public FLEXIBLERECORDEnvironmentalAssessment.DataProtection getDataProtection() {
+        return dataProtection;
+    }
+
+    /**
+     * Sets the value of the dataProtection property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FLEXIBLERECORDEnvironmentalAssessment.DataProtection }
+     *     
+     */
+    public void setDataProtection(FLEXIBLERECORDEnvironmentalAssessment.DataProtection value) {
+        this.dataProtection = value;
+    }
+
+    /**
+     * Gets the value of the exposureRelatedToSelectACompositionIfRelevant property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getExposureRelatedToSelectACompositionIfRelevant() {
+        return exposureRelatedToSelectACompositionIfRelevant;
+    }
+
+    /**
+     * Sets the value of the exposureRelatedToSelectACompositionIfRelevant property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setExposureRelatedToSelectACompositionIfRelevant(String value) {
+        this.exposureRelatedToSelectACompositionIfRelevant = value;
+    }
+
+    /**
+     * Gets the value of the exposureRelatedToCSA property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FLEXIBLERECORDEnvironmentalAssessment.ExposureRelatedToCSA }
+     *     
+     */
+    public FLEXIBLERECORDEnvironmentalAssessment.ExposureRelatedToCSA getExposureRelatedToCSA() {
+        return exposureRelatedToCSA;
+    }
+
+    /**
+     * Sets the value of the exposureRelatedToCSA property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FLEXIBLERECORDEnvironmentalAssessment.ExposureRelatedToCSA }
+     *     
+     */
+    public void setExposureRelatedToCSA(FLEXIBLERECORDEnvironmentalAssessment.ExposureRelatedToCSA value) {
+        this.exposureRelatedToCSA = value;
+    }
+
+    /**
+     * Gets the value of the regionalExposure property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure }
+     *     
+     */
+    public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure getRegionalExposure() {
+        return regionalExposure;
+    }
+
+    /**
+     * Sets the value of the regionalExposure property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure }
+     *     
+     */
+    public void setRegionalExposure(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure value) {
+        this.regionalExposure = value;
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}baseDataProtectionField">
+     *       &lt;sequence>
+     *         &lt;element name="confidentiality" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}N64" minOccurs="0"/>
+     *         &lt;element name="justification" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextField" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="legislation" maxOccurs="unbounded" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;sequence>
+     *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}N78" minOccurs="0"/>
+     *                   &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+     *                 &lt;/sequence>
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *       &lt;/sequence>
+     *     &lt;/extension>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "confidentiality",
+        "justification",
+        "legislation"
+    })
+    public static class DataProtection
+        extends BaseDataProtectionField
+    {
+
+        protected String confidentiality;
+        protected List<MultilingualTextField> justification;
+        protected List<FLEXIBLERECORDEnvironmentalAssessment.DataProtection.Legislation> legislation;
+
+        /**
+         * Gets the value of the confidentiality property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getConfidentiality() {
+            return confidentiality;
+        }
+
+        /**
+         * Sets the value of the confidentiality property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setConfidentiality(String value) {
+            this.confidentiality = value;
+        }
+
+        /**
+         * Gets the value of the justification property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the justification property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getJustification().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link MultilingualTextField }
+         * 
+         * 
+         */
+        public List<MultilingualTextField> getJustification() {
+            if (justification == null) {
+                justification = new ArrayList<MultilingualTextField>();
+            }
+            return this.justification;
+        }
+
+        /**
+         * Gets the value of the legislation property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the legislation property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getLegislation().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link FLEXIBLERECORDEnvironmentalAssessment.DataProtection.Legislation }
+         * 
+         * 
+         */
+        public List<FLEXIBLERECORDEnvironmentalAssessment.DataProtection.Legislation> getLegislation() {
+            if (legislation == null) {
+                legislation = new ArrayList<FLEXIBLERECORDEnvironmentalAssessment.DataProtection.Legislation>();
+            }
+            return this.legislation;
+        }
+
+
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;sequence>
+         *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}N78" minOccurs="0"/>
+         *         &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+         *       &lt;/sequence>
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "value",
+            "other"
+        })
+        public static class Legislation {
+
+            protected String value;
+            protected List<MultilingualTextFieldSmall> other;
+
+            /**
+             * Gets the value of the value property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link String }
+             *     
+             */
+            public String getValue() {
+                return value;
+            }
+
+            /**
+             * Sets the value of the value property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link String }
+             *     
+             */
+            public void setValue(String value) {
+                this.value = value;
+            }
+
+            /**
+             * Gets the value of the other property.
+             * 
+             * <p>
+             * This accessor method returns a reference to the live list,
+             * not a snapshot. Therefore any modification you make to the
+             * returned list will be present inside the JAXB object.
+             * This is why there is not a <CODE>set</CODE> method for the other property.
+             * 
+             * <p>
+             * For example, to add a new item, do as follows:
+             * <pre>
+             *    getOther().add(newItem);
+             * </pre>
+             * 
+             * 
+             * <p>
+             * Objects of the following type(s) are allowed in the list
+             * {@link MultilingualTextFieldSmall }
+             * 
+             * 
+             */
+            public List<MultilingualTextFieldSmall> getOther() {
+                if (other == null) {
+                    other = new ArrayList<MultilingualTextFieldSmall>();
+                }
+                return this.other;
+            }
+
+        }
+
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+     *       &lt;sequence>
+     *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}PG6_60471" minOccurs="0"/>
+     *       &lt;/sequence>
+     *     &lt;/extension>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "value"
+    })
+    public static class ExposureRelatedToCSA
+        extends BasePicklistField
+    {
+
+        protected String value;
+
+        /**
+         * Gets the value of the value property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
+         */
+        public String getValue() {
+            return value;
+        }
+
+        /**
+         * Sets the value of the value property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
+         */
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType>
+     *   &lt;complexContent>
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *       &lt;sequence>
+     *         &lt;element name="TotalReleases" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;sequence>
+     *                   &lt;element name="SumWaterRelease" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}numericField" minOccurs="0"/>
+     *                   &lt;element name="SumAirRelease" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}numericField" minOccurs="0"/>
+     *                   &lt;element name="SumSoilRelease" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}numericField" minOccurs="0"/>
+     *                 &lt;/sequence>
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *         &lt;element name="EnvironmentalRegionalExposure" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;sequence>
+     *                   &lt;element name="FreshwaterPelagic" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="PecRegional" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+     *                                       &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                   &lt;element name="FreshwaterSediment" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="PecRegional" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD110" minOccurs="0"/>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+     *                                       &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                   &lt;element name="MarinePelagic" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="PecRegional" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+     *                                       &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                   &lt;element name="MarineSediment" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="PecRegional" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD110" minOccurs="0"/>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+     *                                       &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                   &lt;element name="FreshwaterFoodchain" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="PecRegional" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+     *                                       &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                   &lt;element name="MarineFoodchain" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="PecRegional" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+     *                                       &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                   &lt;element name="MarineFoodchainTop" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="PecRegional" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+     *                                       &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                   &lt;element name="AgriculturalSoil" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="PecRegional" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD120" minOccurs="0"/>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+     *                                       &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                   &lt;element name="TerrestrialFoodchain" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="PecRegional" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+     *                                       &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                   &lt;element name="Air" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="PecRegional" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD180" minOccurs="0"/>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+     *                                       &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                 &lt;/sequence>
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *         &lt;element name="RiskForManViaEnvironment" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;sequence>
+     *                   &lt;element name="ViaFoodAndWater" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="PecRegional" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+     *                                       &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                             &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                 &lt;/sequence>
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *         &lt;element name="CombinedWidespread" minOccurs="0">
+     *           &lt;complexType>
+     *             &lt;complexContent>
+     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                 &lt;sequence>
+     *                   &lt;element name="Water" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="Concentration" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                   &lt;element name="Soil" minOccurs="0">
+     *                     &lt;complexType>
+     *                       &lt;complexContent>
+     *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+     *                           &lt;sequence>
+     *                             &lt;element name="Concentration" minOccurs="0">
+     *                               &lt;complexType>
+     *                                 &lt;complexContent>
+     *                                   &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+     *                                     &lt;sequence>
+     *                                       &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD120" minOccurs="0"/>
+     *                                       &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+     *                                     &lt;/sequence>
+     *                                   &lt;/extension>
+     *                                 &lt;/complexContent>
+     *                               &lt;/complexType>
+     *                             &lt;/element>
+     *                           &lt;/sequence>
+     *                         &lt;/restriction>
+     *                       &lt;/complexContent>
+     *                     &lt;/complexType>
+     *                   &lt;/element>
+     *                 &lt;/sequence>
+     *               &lt;/restriction>
+     *             &lt;/complexContent>
+     *           &lt;/complexType>
+     *         &lt;/element>
+     *       &lt;/sequence>
+     *     &lt;/restriction>
+     *   &lt;/complexContent>
+     * &lt;/complexType>
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "totalReleases",
+        "environmentalRegionalExposure",
+        "riskForManViaEnvironment",
+        "combinedWidespread"
+    })
+    public static class RegionalExposure {
+
+        @XmlElement(name = "TotalReleases")
+        protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.TotalReleases totalReleases;
+        @XmlElement(name = "EnvironmentalRegionalExposure")
+        protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure environmentalRegionalExposure;
+        @XmlElement(name = "RiskForManViaEnvironment")
+        protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment riskForManViaEnvironment;
+        @XmlElement(name = "CombinedWidespread")
+        protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread combinedWidespread;
+
+        /**
+         * Gets the value of the totalReleases property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.TotalReleases }
+         *     
+         */
+        public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.TotalReleases getTotalReleases() {
+            return totalReleases;
+        }
+
+        /**
+         * Sets the value of the totalReleases property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.TotalReleases }
+         *     
+         */
+        public void setTotalReleases(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.TotalReleases value) {
+            this.totalReleases = value;
+        }
+
+        /**
+         * Gets the value of the environmentalRegionalExposure property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure }
+         *     
+         */
+        public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure getEnvironmentalRegionalExposure() {
+            return environmentalRegionalExposure;
+        }
+
+        /**
+         * Sets the value of the environmentalRegionalExposure property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure }
+         *     
+         */
+        public void setEnvironmentalRegionalExposure(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure value) {
+            this.environmentalRegionalExposure = value;
+        }
+
+        /**
+         * Gets the value of the riskForManViaEnvironment property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment }
+         *     
+         */
+        public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment getRiskForManViaEnvironment() {
+            return riskForManViaEnvironment;
+        }
+
+        /**
+         * Sets the value of the riskForManViaEnvironment property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment }
+         *     
+         */
+        public void setRiskForManViaEnvironment(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment value) {
+            this.riskForManViaEnvironment = value;
+        }
+
+        /**
+         * Gets the value of the combinedWidespread property.
+         * 
+         * @return
+         *     possible object is
+         *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread }
+         *     
+         */
+        public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread getCombinedWidespread() {
+            return combinedWidespread;
+        }
+
+        /**
+         * Sets the value of the combinedWidespread property.
+         * 
+         * @param value
+         *     allowed object is
+         *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread }
+         *     
+         */
+        public void setCombinedWidespread(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread value) {
+            this.combinedWidespread = value;
+        }
+
+
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;sequence>
+         *         &lt;element name="Water" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="Concentration" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+         *                           &lt;sequence>
+         *                             &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *         &lt;element name="Soil" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="Concentration" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+         *                           &lt;sequence>
+         *                             &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD120" minOccurs="0"/>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *       &lt;/sequence>
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "water",
+            "soil"
+        })
+        public static class CombinedWidespread {
+
+            @XmlElement(name = "Water")
+            protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Water water;
+            @XmlElement(name = "Soil")
+            protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Soil soil;
+
+            /**
+             * Gets the value of the water property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Water }
+             *     
+             */
+            public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Water getWater() {
+                return water;
+            }
+
+            /**
+             * Sets the value of the water property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Water }
+             *     
+             */
+            public void setWater(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Water value) {
+                this.water = value;
+            }
+
+            /**
+             * Gets the value of the soil property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Soil }
+             *     
+             */
+            public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Soil getSoil() {
+                return soil;
+            }
+
+            /**
+             * Sets the value of the soil property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Soil }
+             *     
+             */
+            public void setSoil(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Soil value) {
+                this.soil = value;
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="Concentration" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+             *                 &lt;sequence>
+             *                   &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD120" minOccurs="0"/>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "concentration"
+            })
+            public static class Soil {
+
+                @XmlElement(name = "Concentration")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Soil.Concentration concentration;
+
+                /**
+                 * Gets the value of the concentration property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Soil.Concentration }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Soil.Concentration getConcentration() {
+                    return concentration;
+                }
+
+                /**
+                 * Sets the value of the concentration property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Soil.Concentration }
+                 *     
+                 */
+                public void setConcentration(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Soil.Concentration value) {
+                    this.concentration = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+                 *       &lt;sequence>
+                 *         &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD120" minOccurs="0"/>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "unitCode",
+                    "value"
+                })
+                public static class Concentration
+                    extends BasePhysicalQuantityField
+                {
+
+                    protected String unitCode;
+                    protected String value;
+
+                    /**
+                     * Gets the value of the unitCode property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnitCode() {
+                        return unitCode;
+                    }
+
+                    /**
+                     * Sets the value of the unitCode property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnitCode(String value) {
+                        this.unitCode = value;
+                    }
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                }
+
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="Concentration" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+             *                 &lt;sequence>
+             *                   &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "concentration"
+            })
+            public static class Water {
+
+                @XmlElement(name = "Concentration")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Water.Concentration concentration;
+
+                /**
+                 * Gets the value of the concentration property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Water.Concentration }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Water.Concentration getConcentration() {
+                    return concentration;
+                }
+
+                /**
+                 * Sets the value of the concentration property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Water.Concentration }
+                 *     
+                 */
+                public void setConcentration(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.CombinedWidespread.Water.Concentration value) {
+                    this.concentration = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+                 *       &lt;sequence>
+                 *         &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "unitCode",
+                    "value"
+                })
+                public static class Concentration
+                    extends BasePhysicalQuantityField
+                {
+
+                    protected String unitCode;
+                    protected String value;
+
+                    /**
+                     * Gets the value of the unitCode property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnitCode() {
+                        return unitCode;
+                    }
+
+                    /**
+                     * Sets the value of the unitCode property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnitCode(String value) {
+                        this.unitCode = value;
+                    }
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                }
+
+            }
+
+        }
+
+
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;sequence>
+         *         &lt;element name="FreshwaterPelagic" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="PecRegional" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+         *                           &lt;sequence>
+         *                             &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+         *                           &lt;sequence>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+         *                             &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *         &lt;element name="FreshwaterSediment" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="PecRegional" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+         *                           &lt;sequence>
+         *                             &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD110" minOccurs="0"/>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+         *                           &lt;sequence>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+         *                             &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *         &lt;element name="MarinePelagic" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="PecRegional" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+         *                           &lt;sequence>
+         *                             &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+         *                           &lt;sequence>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+         *                             &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *         &lt;element name="MarineSediment" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="PecRegional" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+         *                           &lt;sequence>
+         *                             &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD110" minOccurs="0"/>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+         *                           &lt;sequence>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+         *                             &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *         &lt;element name="FreshwaterFoodchain" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="PecRegional" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+         *                           &lt;sequence>
+         *                             &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+         *                           &lt;sequence>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+         *                             &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *         &lt;element name="MarineFoodchain" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="PecRegional" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+         *                           &lt;sequence>
+         *                             &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+         *                           &lt;sequence>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+         *                             &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *         &lt;element name="MarineFoodchainTop" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="PecRegional" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+         *                           &lt;sequence>
+         *                             &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+         *                           &lt;sequence>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+         *                             &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *         &lt;element name="AgriculturalSoil" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="PecRegional" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+         *                           &lt;sequence>
+         *                             &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD120" minOccurs="0"/>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+         *                           &lt;sequence>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+         *                             &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *         &lt;element name="TerrestrialFoodchain" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="PecRegional" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+         *                           &lt;sequence>
+         *                             &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+         *                           &lt;sequence>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+         *                             &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *         &lt;element name="Air" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="PecRegional" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+         *                           &lt;sequence>
+         *                             &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD180" minOccurs="0"/>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+         *                           &lt;sequence>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+         *                             &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *       &lt;/sequence>
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "freshwaterPelagic",
+            "freshwaterSediment",
+            "marinePelagic",
+            "marineSediment",
+            "freshwaterFoodchain",
+            "marineFoodchain",
+            "marineFoodchainTop",
+            "agriculturalSoil",
+            "terrestrialFoodchain",
+            "air"
+        })
+        public static class EnvironmentalRegionalExposure {
+
+            @XmlElement(name = "FreshwaterPelagic")
+            protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic freshwaterPelagic;
+            @XmlElement(name = "FreshwaterSediment")
+            protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment freshwaterSediment;
+            @XmlElement(name = "MarinePelagic")
+            protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic marinePelagic;
+            @XmlElement(name = "MarineSediment")
+            protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment marineSediment;
+            @XmlElement(name = "FreshwaterFoodchain")
+            protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain freshwaterFoodchain;
+            @XmlElement(name = "MarineFoodchain")
+            protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain marineFoodchain;
+            @XmlElement(name = "MarineFoodchainTop")
+            protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop marineFoodchainTop;
+            @XmlElement(name = "AgriculturalSoil")
+            protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil agriculturalSoil;
+            @XmlElement(name = "TerrestrialFoodchain")
+            protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain terrestrialFoodchain;
+            @XmlElement(name = "Air")
+            protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air air;
+
+            /**
+             * Gets the value of the freshwaterPelagic property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic }
+             *     
+             */
+            public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic getFreshwaterPelagic() {
+                return freshwaterPelagic;
+            }
+
+            /**
+             * Sets the value of the freshwaterPelagic property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic }
+             *     
+             */
+            public void setFreshwaterPelagic(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic value) {
+                this.freshwaterPelagic = value;
+            }
+
+            /**
+             * Gets the value of the freshwaterSediment property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment }
+             *     
+             */
+            public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment getFreshwaterSediment() {
+                return freshwaterSediment;
+            }
+
+            /**
+             * Sets the value of the freshwaterSediment property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment }
+             *     
+             */
+            public void setFreshwaterSediment(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment value) {
+                this.freshwaterSediment = value;
+            }
+
+            /**
+             * Gets the value of the marinePelagic property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic }
+             *     
+             */
+            public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic getMarinePelagic() {
+                return marinePelagic;
+            }
+
+            /**
+             * Sets the value of the marinePelagic property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic }
+             *     
+             */
+            public void setMarinePelagic(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic value) {
+                this.marinePelagic = value;
+            }
+
+            /**
+             * Gets the value of the marineSediment property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment }
+             *     
+             */
+            public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment getMarineSediment() {
+                return marineSediment;
+            }
+
+            /**
+             * Sets the value of the marineSediment property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment }
+             *     
+             */
+            public void setMarineSediment(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment value) {
+                this.marineSediment = value;
+            }
+
+            /**
+             * Gets the value of the freshwaterFoodchain property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain }
+             *     
+             */
+            public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain getFreshwaterFoodchain() {
+                return freshwaterFoodchain;
+            }
+
+            /**
+             * Sets the value of the freshwaterFoodchain property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain }
+             *     
+             */
+            public void setFreshwaterFoodchain(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain value) {
+                this.freshwaterFoodchain = value;
+            }
+
+            /**
+             * Gets the value of the marineFoodchain property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain }
+             *     
+             */
+            public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain getMarineFoodchain() {
+                return marineFoodchain;
+            }
+
+            /**
+             * Sets the value of the marineFoodchain property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain }
+             *     
+             */
+            public void setMarineFoodchain(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain value) {
+                this.marineFoodchain = value;
+            }
+
+            /**
+             * Gets the value of the marineFoodchainTop property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop }
+             *     
+             */
+            public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop getMarineFoodchainTop() {
+                return marineFoodchainTop;
+            }
+
+            /**
+             * Sets the value of the marineFoodchainTop property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop }
+             *     
+             */
+            public void setMarineFoodchainTop(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop value) {
+                this.marineFoodchainTop = value;
+            }
+
+            /**
+             * Gets the value of the agriculturalSoil property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil }
+             *     
+             */
+            public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil getAgriculturalSoil() {
+                return agriculturalSoil;
+            }
+
+            /**
+             * Sets the value of the agriculturalSoil property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil }
+             *     
+             */
+            public void setAgriculturalSoil(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil value) {
+                this.agriculturalSoil = value;
+            }
+
+            /**
+             * Gets the value of the terrestrialFoodchain property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain }
+             *     
+             */
+            public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain getTerrestrialFoodchain() {
+                return terrestrialFoodchain;
+            }
+
+            /**
+             * Sets the value of the terrestrialFoodchain property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain }
+             *     
+             */
+            public void setTerrestrialFoodchain(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain value) {
+                this.terrestrialFoodchain = value;
+            }
+
+            /**
+             * Gets the value of the air property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air }
+             *     
+             */
+            public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air getAir() {
+                return air;
+            }
+
+            /**
+             * Sets the value of the air property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air }
+             *     
+             */
+            public void setAir(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air value) {
+                this.air = value;
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="PecRegional" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+             *                 &lt;sequence>
+             *                   &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD120" minOccurs="0"/>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+             *                 &lt;sequence>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+             *                   &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "pecRegional",
+                "exposureAssessmentMethod",
+                "exposureEstimationTool"
+            })
+            public static class AgriculturalSoil {
+
+                @XmlElement(name = "PecRegional")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil.PecRegional pecRegional;
+                @XmlElement(name = "ExposureAssessmentMethod")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil.ExposureAssessmentMethod exposureAssessmentMethod;
+                @XmlElement(name = "ExposureEstimationTool")
+                protected String exposureEstimationTool;
+
+                /**
+                 * Gets the value of the pecRegional property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil.PecRegional }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil.PecRegional getPecRegional() {
+                    return pecRegional;
+                }
+
+                /**
+                 * Sets the value of the pecRegional property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil.PecRegional }
+                 *     
+                 */
+                public void setPecRegional(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil.PecRegional value) {
+                    this.pecRegional = value;
+                }
+
+                /**
+                 * Gets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil.ExposureAssessmentMethod }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil.ExposureAssessmentMethod getExposureAssessmentMethod() {
+                    return exposureAssessmentMethod;
+                }
+
+                /**
+                 * Sets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil.ExposureAssessmentMethod }
+                 *     
+                 */
+                public void setExposureAssessmentMethod(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.AgriculturalSoil.ExposureAssessmentMethod value) {
+                    this.exposureAssessmentMethod = value;
+                }
+
+                /**
+                 * Gets the value of the exposureEstimationTool property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getExposureEstimationTool() {
+                    return exposureEstimationTool;
+                }
+
+                /**
+                 * Sets the value of the exposureEstimationTool property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setExposureEstimationTool(String value) {
+                    this.exposureEstimationTool = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+                 *       &lt;sequence>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+                 *         &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value",
+                    "other"
+                })
+                public static class ExposureAssessmentMethod
+                    extends BasePicklistField
+                {
+
+                    protected String value;
+                    protected List<MultilingualTextFieldSmall> other;
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets the value of the other property.
+                     * 
+                     * <p>
+                     * This accessor method returns a reference to the live list,
+                     * not a snapshot. Therefore any modification you make to the
+                     * returned list will be present inside the JAXB object.
+                     * This is why there is not a <CODE>set</CODE> method for the other property.
+                     * 
+                     * <p>
+                     * For example, to add a new item, do as follows:
+                     * <pre>
+                     *    getOther().add(newItem);
+                     * </pre>
+                     * 
+                     * 
+                     * <p>
+                     * Objects of the following type(s) are allowed in the list
+                     * {@link MultilingualTextFieldSmall }
+                     * 
+                     * 
+                     */
+                    public List<MultilingualTextFieldSmall> getOther() {
+                        if (other == null) {
+                            other = new ArrayList<MultilingualTextFieldSmall>();
+                        }
+                        return this.other;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+                 *       &lt;sequence>
+                 *         &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD120" minOccurs="0"/>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "unitCode",
+                    "value"
+                })
+                public static class PecRegional
+                    extends BasePhysicalQuantityField
+                {
+
+                    protected String unitCode;
+                    protected String value;
+
+                    /**
+                     * Gets the value of the unitCode property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnitCode() {
+                        return unitCode;
+                    }
+
+                    /**
+                     * Sets the value of the unitCode property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnitCode(String value) {
+                        this.unitCode = value;
+                    }
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                }
+
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="PecRegional" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+             *                 &lt;sequence>
+             *                   &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD180" minOccurs="0"/>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+             *                 &lt;sequence>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+             *                   &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "pecRegional",
+                "exposureAssessmentMethod",
+                "exposureEstimationTool"
+            })
+            public static class Air {
+
+                @XmlElement(name = "PecRegional")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air.PecRegional pecRegional;
+                @XmlElement(name = "ExposureAssessmentMethod")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air.ExposureAssessmentMethod exposureAssessmentMethod;
+                @XmlElement(name = "ExposureEstimationTool")
+                protected String exposureEstimationTool;
+
+                /**
+                 * Gets the value of the pecRegional property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air.PecRegional }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air.PecRegional getPecRegional() {
+                    return pecRegional;
+                }
+
+                /**
+                 * Sets the value of the pecRegional property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air.PecRegional }
+                 *     
+                 */
+                public void setPecRegional(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air.PecRegional value) {
+                    this.pecRegional = value;
+                }
+
+                /**
+                 * Gets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air.ExposureAssessmentMethod }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air.ExposureAssessmentMethod getExposureAssessmentMethod() {
+                    return exposureAssessmentMethod;
+                }
+
+                /**
+                 * Sets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air.ExposureAssessmentMethod }
+                 *     
+                 */
+                public void setExposureAssessmentMethod(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.Air.ExposureAssessmentMethod value) {
+                    this.exposureAssessmentMethod = value;
+                }
+
+                /**
+                 * Gets the value of the exposureEstimationTool property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getExposureEstimationTool() {
+                    return exposureEstimationTool;
+                }
+
+                /**
+                 * Sets the value of the exposureEstimationTool property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setExposureEstimationTool(String value) {
+                    this.exposureEstimationTool = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+                 *       &lt;sequence>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+                 *         &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value",
+                    "other"
+                })
+                public static class ExposureAssessmentMethod
+                    extends BasePicklistField
+                {
+
+                    protected String value;
+                    protected List<MultilingualTextFieldSmall> other;
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets the value of the other property.
+                     * 
+                     * <p>
+                     * This accessor method returns a reference to the live list,
+                     * not a snapshot. Therefore any modification you make to the
+                     * returned list will be present inside the JAXB object.
+                     * This is why there is not a <CODE>set</CODE> method for the other property.
+                     * 
+                     * <p>
+                     * For example, to add a new item, do as follows:
+                     * <pre>
+                     *    getOther().add(newItem);
+                     * </pre>
+                     * 
+                     * 
+                     * <p>
+                     * Objects of the following type(s) are allowed in the list
+                     * {@link MultilingualTextFieldSmall }
+                     * 
+                     * 
+                     */
+                    public List<MultilingualTextFieldSmall> getOther() {
+                        if (other == null) {
+                            other = new ArrayList<MultilingualTextFieldSmall>();
+                        }
+                        return this.other;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+                 *       &lt;sequence>
+                 *         &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD180" minOccurs="0"/>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "unitCode",
+                    "value"
+                })
+                public static class PecRegional
+                    extends BasePhysicalQuantityField
+                {
+
+                    protected String unitCode;
+                    protected String value;
+
+                    /**
+                     * Gets the value of the unitCode property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnitCode() {
+                        return unitCode;
+                    }
+
+                    /**
+                     * Sets the value of the unitCode property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnitCode(String value) {
+                        this.unitCode = value;
+                    }
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                }
+
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="PecRegional" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+             *                 &lt;sequence>
+             *                   &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+             *                 &lt;sequence>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+             *                   &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "pecRegional",
+                "exposureAssessmentMethod",
+                "exposureEstimationTool"
+            })
+            public static class FreshwaterFoodchain {
+
+                @XmlElement(name = "PecRegional")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain.PecRegional pecRegional;
+                @XmlElement(name = "ExposureAssessmentMethod")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain.ExposureAssessmentMethod exposureAssessmentMethod;
+                @XmlElement(name = "ExposureEstimationTool")
+                protected String exposureEstimationTool;
+
+                /**
+                 * Gets the value of the pecRegional property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain.PecRegional }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain.PecRegional getPecRegional() {
+                    return pecRegional;
+                }
+
+                /**
+                 * Sets the value of the pecRegional property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain.PecRegional }
+                 *     
+                 */
+                public void setPecRegional(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain.PecRegional value) {
+                    this.pecRegional = value;
+                }
+
+                /**
+                 * Gets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain.ExposureAssessmentMethod }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain.ExposureAssessmentMethod getExposureAssessmentMethod() {
+                    return exposureAssessmentMethod;
+                }
+
+                /**
+                 * Sets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain.ExposureAssessmentMethod }
+                 *     
+                 */
+                public void setExposureAssessmentMethod(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterFoodchain.ExposureAssessmentMethod value) {
+                    this.exposureAssessmentMethod = value;
+                }
+
+                /**
+                 * Gets the value of the exposureEstimationTool property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getExposureEstimationTool() {
+                    return exposureEstimationTool;
+                }
+
+                /**
+                 * Sets the value of the exposureEstimationTool property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setExposureEstimationTool(String value) {
+                    this.exposureEstimationTool = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+                 *       &lt;sequence>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+                 *         &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value",
+                    "other"
+                })
+                public static class ExposureAssessmentMethod
+                    extends BasePicklistField
+                {
+
+                    protected String value;
+                    protected List<MultilingualTextFieldSmall> other;
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets the value of the other property.
+                     * 
+                     * <p>
+                     * This accessor method returns a reference to the live list,
+                     * not a snapshot. Therefore any modification you make to the
+                     * returned list will be present inside the JAXB object.
+                     * This is why there is not a <CODE>set</CODE> method for the other property.
+                     * 
+                     * <p>
+                     * For example, to add a new item, do as follows:
+                     * <pre>
+                     *    getOther().add(newItem);
+                     * </pre>
+                     * 
+                     * 
+                     * <p>
+                     * Objects of the following type(s) are allowed in the list
+                     * {@link MultilingualTextFieldSmall }
+                     * 
+                     * 
+                     */
+                    public List<MultilingualTextFieldSmall> getOther() {
+                        if (other == null) {
+                            other = new ArrayList<MultilingualTextFieldSmall>();
+                        }
+                        return this.other;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+                 *       &lt;sequence>
+                 *         &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "unitCode",
+                    "value"
+                })
+                public static class PecRegional
+                    extends BasePhysicalQuantityField
+                {
+
+                    protected String unitCode;
+                    protected String value;
+
+                    /**
+                     * Gets the value of the unitCode property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnitCode() {
+                        return unitCode;
+                    }
+
+                    /**
+                     * Sets the value of the unitCode property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnitCode(String value) {
+                        this.unitCode = value;
+                    }
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                }
+
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="PecRegional" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+             *                 &lt;sequence>
+             *                   &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+             *                 &lt;sequence>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+             *                   &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "pecRegional",
+                "exposureAssessmentMethod",
+                "exposureEstimationTool"
+            })
+            public static class FreshwaterPelagic {
+
+                @XmlElement(name = "PecRegional")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic.PecRegional pecRegional;
+                @XmlElement(name = "ExposureAssessmentMethod")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic.ExposureAssessmentMethod exposureAssessmentMethod;
+                @XmlElement(name = "ExposureEstimationTool")
+                protected String exposureEstimationTool;
+
+                /**
+                 * Gets the value of the pecRegional property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic.PecRegional }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic.PecRegional getPecRegional() {
+                    return pecRegional;
+                }
+
+                /**
+                 * Sets the value of the pecRegional property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic.PecRegional }
+                 *     
+                 */
+                public void setPecRegional(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic.PecRegional value) {
+                    this.pecRegional = value;
+                }
+
+                /**
+                 * Gets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic.ExposureAssessmentMethod }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic.ExposureAssessmentMethod getExposureAssessmentMethod() {
+                    return exposureAssessmentMethod;
+                }
+
+                /**
+                 * Sets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic.ExposureAssessmentMethod }
+                 *     
+                 */
+                public void setExposureAssessmentMethod(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterPelagic.ExposureAssessmentMethod value) {
+                    this.exposureAssessmentMethod = value;
+                }
+
+                /**
+                 * Gets the value of the exposureEstimationTool property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getExposureEstimationTool() {
+                    return exposureEstimationTool;
+                }
+
+                /**
+                 * Sets the value of the exposureEstimationTool property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setExposureEstimationTool(String value) {
+                    this.exposureEstimationTool = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+                 *       &lt;sequence>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+                 *         &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value",
+                    "other"
+                })
+                public static class ExposureAssessmentMethod
+                    extends BasePicklistField
+                {
+
+                    protected String value;
+                    protected List<MultilingualTextFieldSmall> other;
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets the value of the other property.
+                     * 
+                     * <p>
+                     * This accessor method returns a reference to the live list,
+                     * not a snapshot. Therefore any modification you make to the
+                     * returned list will be present inside the JAXB object.
+                     * This is why there is not a <CODE>set</CODE> method for the other property.
+                     * 
+                     * <p>
+                     * For example, to add a new item, do as follows:
+                     * <pre>
+                     *    getOther().add(newItem);
+                     * </pre>
+                     * 
+                     * 
+                     * <p>
+                     * Objects of the following type(s) are allowed in the list
+                     * {@link MultilingualTextFieldSmall }
+                     * 
+                     * 
+                     */
+                    public List<MultilingualTextFieldSmall> getOther() {
+                        if (other == null) {
+                            other = new ArrayList<MultilingualTextFieldSmall>();
+                        }
+                        return this.other;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+                 *       &lt;sequence>
+                 *         &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "unitCode",
+                    "value"
+                })
+                public static class PecRegional
+                    extends BasePhysicalQuantityField
+                {
+
+                    protected String unitCode;
+                    protected String value;
+
+                    /**
+                     * Gets the value of the unitCode property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnitCode() {
+                        return unitCode;
+                    }
+
+                    /**
+                     * Sets the value of the unitCode property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnitCode(String value) {
+                        this.unitCode = value;
+                    }
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                }
+
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="PecRegional" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+             *                 &lt;sequence>
+             *                   &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD110" minOccurs="0"/>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+             *                 &lt;sequence>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+             *                   &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "pecRegional",
+                "exposureAssessmentMethod",
+                "exposureEstimationTool"
+            })
+            public static class FreshwaterSediment {
+
+                @XmlElement(name = "PecRegional")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment.PecRegional pecRegional;
+                @XmlElement(name = "ExposureAssessmentMethod")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment.ExposureAssessmentMethod exposureAssessmentMethod;
+                @XmlElement(name = "ExposureEstimationTool")
+                protected String exposureEstimationTool;
+
+                /**
+                 * Gets the value of the pecRegional property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment.PecRegional }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment.PecRegional getPecRegional() {
+                    return pecRegional;
+                }
+
+                /**
+                 * Sets the value of the pecRegional property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment.PecRegional }
+                 *     
+                 */
+                public void setPecRegional(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment.PecRegional value) {
+                    this.pecRegional = value;
+                }
+
+                /**
+                 * Gets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment.ExposureAssessmentMethod }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment.ExposureAssessmentMethod getExposureAssessmentMethod() {
+                    return exposureAssessmentMethod;
+                }
+
+                /**
+                 * Sets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment.ExposureAssessmentMethod }
+                 *     
+                 */
+                public void setExposureAssessmentMethod(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.FreshwaterSediment.ExposureAssessmentMethod value) {
+                    this.exposureAssessmentMethod = value;
+                }
+
+                /**
+                 * Gets the value of the exposureEstimationTool property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getExposureEstimationTool() {
+                    return exposureEstimationTool;
+                }
+
+                /**
+                 * Sets the value of the exposureEstimationTool property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setExposureEstimationTool(String value) {
+                    this.exposureEstimationTool = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+                 *       &lt;sequence>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+                 *         &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value",
+                    "other"
+                })
+                public static class ExposureAssessmentMethod
+                    extends BasePicklistField
+                {
+
+                    protected String value;
+                    protected List<MultilingualTextFieldSmall> other;
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets the value of the other property.
+                     * 
+                     * <p>
+                     * This accessor method returns a reference to the live list,
+                     * not a snapshot. Therefore any modification you make to the
+                     * returned list will be present inside the JAXB object.
+                     * This is why there is not a <CODE>set</CODE> method for the other property.
+                     * 
+                     * <p>
+                     * For example, to add a new item, do as follows:
+                     * <pre>
+                     *    getOther().add(newItem);
+                     * </pre>
+                     * 
+                     * 
+                     * <p>
+                     * Objects of the following type(s) are allowed in the list
+                     * {@link MultilingualTextFieldSmall }
+                     * 
+                     * 
+                     */
+                    public List<MultilingualTextFieldSmall> getOther() {
+                        if (other == null) {
+                            other = new ArrayList<MultilingualTextFieldSmall>();
+                        }
+                        return this.other;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+                 *       &lt;sequence>
+                 *         &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD110" minOccurs="0"/>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "unitCode",
+                    "value"
+                })
+                public static class PecRegional
+                    extends BasePhysicalQuantityField
+                {
+
+                    protected String unitCode;
+                    protected String value;
+
+                    /**
+                     * Gets the value of the unitCode property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnitCode() {
+                        return unitCode;
+                    }
+
+                    /**
+                     * Sets the value of the unitCode property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnitCode(String value) {
+                        this.unitCode = value;
+                    }
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                }
+
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="PecRegional" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+             *                 &lt;sequence>
+             *                   &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+             *                 &lt;sequence>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+             *                   &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "pecRegional",
+                "exposureAssessmentMethod",
+                "exposureEstimationTool"
+            })
+            public static class MarineFoodchain {
+
+                @XmlElement(name = "PecRegional")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain.PecRegional pecRegional;
+                @XmlElement(name = "ExposureAssessmentMethod")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain.ExposureAssessmentMethod exposureAssessmentMethod;
+                @XmlElement(name = "ExposureEstimationTool")
+                protected String exposureEstimationTool;
+
+                /**
+                 * Gets the value of the pecRegional property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain.PecRegional }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain.PecRegional getPecRegional() {
+                    return pecRegional;
+                }
+
+                /**
+                 * Sets the value of the pecRegional property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain.PecRegional }
+                 *     
+                 */
+                public void setPecRegional(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain.PecRegional value) {
+                    this.pecRegional = value;
+                }
+
+                /**
+                 * Gets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain.ExposureAssessmentMethod }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain.ExposureAssessmentMethod getExposureAssessmentMethod() {
+                    return exposureAssessmentMethod;
+                }
+
+                /**
+                 * Sets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain.ExposureAssessmentMethod }
+                 *     
+                 */
+                public void setExposureAssessmentMethod(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchain.ExposureAssessmentMethod value) {
+                    this.exposureAssessmentMethod = value;
+                }
+
+                /**
+                 * Gets the value of the exposureEstimationTool property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getExposureEstimationTool() {
+                    return exposureEstimationTool;
+                }
+
+                /**
+                 * Sets the value of the exposureEstimationTool property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setExposureEstimationTool(String value) {
+                    this.exposureEstimationTool = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+                 *       &lt;sequence>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+                 *         &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value",
+                    "other"
+                })
+                public static class ExposureAssessmentMethod
+                    extends BasePicklistField
+                {
+
+                    protected String value;
+                    protected List<MultilingualTextFieldSmall> other;
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets the value of the other property.
+                     * 
+                     * <p>
+                     * This accessor method returns a reference to the live list,
+                     * not a snapshot. Therefore any modification you make to the
+                     * returned list will be present inside the JAXB object.
+                     * This is why there is not a <CODE>set</CODE> method for the other property.
+                     * 
+                     * <p>
+                     * For example, to add a new item, do as follows:
+                     * <pre>
+                     *    getOther().add(newItem);
+                     * </pre>
+                     * 
+                     * 
+                     * <p>
+                     * Objects of the following type(s) are allowed in the list
+                     * {@link MultilingualTextFieldSmall }
+                     * 
+                     * 
+                     */
+                    public List<MultilingualTextFieldSmall> getOther() {
+                        if (other == null) {
+                            other = new ArrayList<MultilingualTextFieldSmall>();
+                        }
+                        return this.other;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+                 *       &lt;sequence>
+                 *         &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "unitCode",
+                    "value"
+                })
+                public static class PecRegional
+                    extends BasePhysicalQuantityField
+                {
+
+                    protected String unitCode;
+                    protected String value;
+
+                    /**
+                     * Gets the value of the unitCode property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnitCode() {
+                        return unitCode;
+                    }
+
+                    /**
+                     * Sets the value of the unitCode property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnitCode(String value) {
+                        this.unitCode = value;
+                    }
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                }
+
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="PecRegional" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+             *                 &lt;sequence>
+             *                   &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+             *                 &lt;sequence>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+             *                   &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "pecRegional",
+                "exposureAssessmentMethod",
+                "exposureEstimationTool"
+            })
+            public static class MarineFoodchainTop {
+
+                @XmlElement(name = "PecRegional")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop.PecRegional pecRegional;
+                @XmlElement(name = "ExposureAssessmentMethod")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop.ExposureAssessmentMethod exposureAssessmentMethod;
+                @XmlElement(name = "ExposureEstimationTool")
+                protected String exposureEstimationTool;
+
+                /**
+                 * Gets the value of the pecRegional property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop.PecRegional }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop.PecRegional getPecRegional() {
+                    return pecRegional;
+                }
+
+                /**
+                 * Sets the value of the pecRegional property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop.PecRegional }
+                 *     
+                 */
+                public void setPecRegional(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop.PecRegional value) {
+                    this.pecRegional = value;
+                }
+
+                /**
+                 * Gets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop.ExposureAssessmentMethod }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop.ExposureAssessmentMethod getExposureAssessmentMethod() {
+                    return exposureAssessmentMethod;
+                }
+
+                /**
+                 * Sets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop.ExposureAssessmentMethod }
+                 *     
+                 */
+                public void setExposureAssessmentMethod(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineFoodchainTop.ExposureAssessmentMethod value) {
+                    this.exposureAssessmentMethod = value;
+                }
+
+                /**
+                 * Gets the value of the exposureEstimationTool property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getExposureEstimationTool() {
+                    return exposureEstimationTool;
+                }
+
+                /**
+                 * Sets the value of the exposureEstimationTool property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setExposureEstimationTool(String value) {
+                    this.exposureEstimationTool = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+                 *       &lt;sequence>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+                 *         &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value",
+                    "other"
+                })
+                public static class ExposureAssessmentMethod
+                    extends BasePicklistField
+                {
+
+                    protected String value;
+                    protected List<MultilingualTextFieldSmall> other;
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets the value of the other property.
+                     * 
+                     * <p>
+                     * This accessor method returns a reference to the live list,
+                     * not a snapshot. Therefore any modification you make to the
+                     * returned list will be present inside the JAXB object.
+                     * This is why there is not a <CODE>set</CODE> method for the other property.
+                     * 
+                     * <p>
+                     * For example, to add a new item, do as follows:
+                     * <pre>
+                     *    getOther().add(newItem);
+                     * </pre>
+                     * 
+                     * 
+                     * <p>
+                     * Objects of the following type(s) are allowed in the list
+                     * {@link MultilingualTextFieldSmall }
+                     * 
+                     * 
+                     */
+                    public List<MultilingualTextFieldSmall> getOther() {
+                        if (other == null) {
+                            other = new ArrayList<MultilingualTextFieldSmall>();
+                        }
+                        return this.other;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+                 *       &lt;sequence>
+                 *         &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "unitCode",
+                    "value"
+                })
+                public static class PecRegional
+                    extends BasePhysicalQuantityField
+                {
+
+                    protected String unitCode;
+                    protected String value;
+
+                    /**
+                     * Gets the value of the unitCode property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnitCode() {
+                        return unitCode;
+                    }
+
+                    /**
+                     * Sets the value of the unitCode property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnitCode(String value) {
+                        this.unitCode = value;
+                    }
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                }
+
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="PecRegional" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+             *                 &lt;sequence>
+             *                   &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+             *                 &lt;sequence>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+             *                   &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "pecRegional",
+                "exposureAssessmentMethod",
+                "exposureEstimationTool"
+            })
+            public static class MarinePelagic {
+
+                @XmlElement(name = "PecRegional")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic.PecRegional pecRegional;
+                @XmlElement(name = "ExposureAssessmentMethod")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic.ExposureAssessmentMethod exposureAssessmentMethod;
+                @XmlElement(name = "ExposureEstimationTool")
+                protected String exposureEstimationTool;
+
+                /**
+                 * Gets the value of the pecRegional property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic.PecRegional }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic.PecRegional getPecRegional() {
+                    return pecRegional;
+                }
+
+                /**
+                 * Sets the value of the pecRegional property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic.PecRegional }
+                 *     
+                 */
+                public void setPecRegional(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic.PecRegional value) {
+                    this.pecRegional = value;
+                }
+
+                /**
+                 * Gets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic.ExposureAssessmentMethod }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic.ExposureAssessmentMethod getExposureAssessmentMethod() {
+                    return exposureAssessmentMethod;
+                }
+
+                /**
+                 * Sets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic.ExposureAssessmentMethod }
+                 *     
+                 */
+                public void setExposureAssessmentMethod(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarinePelagic.ExposureAssessmentMethod value) {
+                    this.exposureAssessmentMethod = value;
+                }
+
+                /**
+                 * Gets the value of the exposureEstimationTool property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getExposureEstimationTool() {
+                    return exposureEstimationTool;
+                }
+
+                /**
+                 * Sets the value of the exposureEstimationTool property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setExposureEstimationTool(String value) {
+                    this.exposureEstimationTool = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+                 *       &lt;sequence>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+                 *         &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value",
+                    "other"
+                })
+                public static class ExposureAssessmentMethod
+                    extends BasePicklistField
+                {
+
+                    protected String value;
+                    protected List<MultilingualTextFieldSmall> other;
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets the value of the other property.
+                     * 
+                     * <p>
+                     * This accessor method returns a reference to the live list,
+                     * not a snapshot. Therefore any modification you make to the
+                     * returned list will be present inside the JAXB object.
+                     * This is why there is not a <CODE>set</CODE> method for the other property.
+                     * 
+                     * <p>
+                     * For example, to add a new item, do as follows:
+                     * <pre>
+                     *    getOther().add(newItem);
+                     * </pre>
+                     * 
+                     * 
+                     * <p>
+                     * Objects of the following type(s) are allowed in the list
+                     * {@link MultilingualTextFieldSmall }
+                     * 
+                     * 
+                     */
+                    public List<MultilingualTextFieldSmall> getOther() {
+                        if (other == null) {
+                            other = new ArrayList<MultilingualTextFieldSmall>();
+                        }
+                        return this.other;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+                 *       &lt;sequence>
+                 *         &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD140" minOccurs="0"/>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "unitCode",
+                    "value"
+                })
+                public static class PecRegional
+                    extends BasePhysicalQuantityField
+                {
+
+                    protected String unitCode;
+                    protected String value;
+
+                    /**
+                     * Gets the value of the unitCode property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnitCode() {
+                        return unitCode;
+                    }
+
+                    /**
+                     * Sets the value of the unitCode property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnitCode(String value) {
+                        this.unitCode = value;
+                    }
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                }
+
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="PecRegional" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+             *                 &lt;sequence>
+             *                   &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD110" minOccurs="0"/>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+             *                 &lt;sequence>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+             *                   &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "pecRegional",
+                "exposureAssessmentMethod",
+                "exposureEstimationTool"
+            })
+            public static class MarineSediment {
+
+                @XmlElement(name = "PecRegional")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment.PecRegional pecRegional;
+                @XmlElement(name = "ExposureAssessmentMethod")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment.ExposureAssessmentMethod exposureAssessmentMethod;
+                @XmlElement(name = "ExposureEstimationTool")
+                protected String exposureEstimationTool;
+
+                /**
+                 * Gets the value of the pecRegional property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment.PecRegional }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment.PecRegional getPecRegional() {
+                    return pecRegional;
+                }
+
+                /**
+                 * Sets the value of the pecRegional property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment.PecRegional }
+                 *     
+                 */
+                public void setPecRegional(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment.PecRegional value) {
+                    this.pecRegional = value;
+                }
+
+                /**
+                 * Gets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment.ExposureAssessmentMethod }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment.ExposureAssessmentMethod getExposureAssessmentMethod() {
+                    return exposureAssessmentMethod;
+                }
+
+                /**
+                 * Sets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment.ExposureAssessmentMethod }
+                 *     
+                 */
+                public void setExposureAssessmentMethod(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.MarineSediment.ExposureAssessmentMethod value) {
+                    this.exposureAssessmentMethod = value;
+                }
+
+                /**
+                 * Gets the value of the exposureEstimationTool property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getExposureEstimationTool() {
+                    return exposureEstimationTool;
+                }
+
+                /**
+                 * Sets the value of the exposureEstimationTool property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setExposureEstimationTool(String value) {
+                    this.exposureEstimationTool = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+                 *       &lt;sequence>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+                 *         &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value",
+                    "other"
+                })
+                public static class ExposureAssessmentMethod
+                    extends BasePicklistField
+                {
+
+                    protected String value;
+                    protected List<MultilingualTextFieldSmall> other;
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets the value of the other property.
+                     * 
+                     * <p>
+                     * This accessor method returns a reference to the live list,
+                     * not a snapshot. Therefore any modification you make to the
+                     * returned list will be present inside the JAXB object.
+                     * This is why there is not a <CODE>set</CODE> method for the other property.
+                     * 
+                     * <p>
+                     * For example, to add a new item, do as follows:
+                     * <pre>
+                     *    getOther().add(newItem);
+                     * </pre>
+                     * 
+                     * 
+                     * <p>
+                     * Objects of the following type(s) are allowed in the list
+                     * {@link MultilingualTextFieldSmall }
+                     * 
+                     * 
+                     */
+                    public List<MultilingualTextFieldSmall> getOther() {
+                        if (other == null) {
+                            other = new ArrayList<MultilingualTextFieldSmall>();
+                        }
+                        return this.other;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+                 *       &lt;sequence>
+                 *         &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD110" minOccurs="0"/>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "unitCode",
+                    "value"
+                })
+                public static class PecRegional
+                    extends BasePhysicalQuantityField
+                {
+
+                    protected String unitCode;
+                    protected String value;
+
+                    /**
+                     * Gets the value of the unitCode property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnitCode() {
+                        return unitCode;
+                    }
+
+                    /**
+                     * Sets the value of the unitCode property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnitCode(String value) {
+                        this.unitCode = value;
+                    }
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                }
+
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="PecRegional" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+             *                 &lt;sequence>
+             *                   &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+             *                 &lt;sequence>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+             *                   &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "pecRegional",
+                "exposureAssessmentMethod",
+                "exposureEstimationTool"
+            })
+            public static class TerrestrialFoodchain {
+
+                @XmlElement(name = "PecRegional")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain.PecRegional pecRegional;
+                @XmlElement(name = "ExposureAssessmentMethod")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain.ExposureAssessmentMethod exposureAssessmentMethod;
+                @XmlElement(name = "ExposureEstimationTool")
+                protected String exposureEstimationTool;
+
+                /**
+                 * Gets the value of the pecRegional property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain.PecRegional }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain.PecRegional getPecRegional() {
+                    return pecRegional;
+                }
+
+                /**
+                 * Sets the value of the pecRegional property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain.PecRegional }
+                 *     
+                 */
+                public void setPecRegional(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain.PecRegional value) {
+                    this.pecRegional = value;
+                }
+
+                /**
+                 * Gets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain.ExposureAssessmentMethod }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain.ExposureAssessmentMethod getExposureAssessmentMethod() {
+                    return exposureAssessmentMethod;
+                }
+
+                /**
+                 * Sets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain.ExposureAssessmentMethod }
+                 *     
+                 */
+                public void setExposureAssessmentMethod(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.EnvironmentalRegionalExposure.TerrestrialFoodchain.ExposureAssessmentMethod value) {
+                    this.exposureAssessmentMethod = value;
+                }
+
+                /**
+                 * Gets the value of the exposureEstimationTool property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getExposureEstimationTool() {
+                    return exposureEstimationTool;
+                }
+
+                /**
+                 * Sets the value of the exposureEstimationTool property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setExposureEstimationTool(String value) {
+                    this.exposureEstimationTool = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+                 *       &lt;sequence>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+                 *         &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value",
+                    "other"
+                })
+                public static class ExposureAssessmentMethod
+                    extends BasePicklistField
+                {
+
+                    protected String value;
+                    protected List<MultilingualTextFieldSmall> other;
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets the value of the other property.
+                     * 
+                     * <p>
+                     * This accessor method returns a reference to the live list,
+                     * not a snapshot. Therefore any modification you make to the
+                     * returned list will be present inside the JAXB object.
+                     * This is why there is not a <CODE>set</CODE> method for the other property.
+                     * 
+                     * <p>
+                     * For example, to add a new item, do as follows:
+                     * <pre>
+                     *    getOther().add(newItem);
+                     * </pre>
+                     * 
+                     * 
+                     * <p>
+                     * Objects of the following type(s) are allowed in the list
+                     * {@link MultilingualTextFieldSmall }
+                     * 
+                     * 
+                     */
+                    public List<MultilingualTextFieldSmall> getOther() {
+                        if (other == null) {
+                            other = new ArrayList<MultilingualTextFieldSmall>();
+                        }
+                        return this.other;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+                 *       &lt;sequence>
+                 *         &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "unitCode",
+                    "value"
+                })
+                public static class PecRegional
+                    extends BasePhysicalQuantityField
+                {
+
+                    protected String unitCode;
+                    protected String value;
+
+                    /**
+                     * Gets the value of the unitCode property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnitCode() {
+                        return unitCode;
+                    }
+
+                    /**
+                     * Sets the value of the unitCode property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnitCode(String value) {
+                        this.unitCode = value;
+                    }
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                }
+
+            }
+
+        }
+
+
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;sequence>
+         *         &lt;element name="ViaFoodAndWater" minOccurs="0">
+         *           &lt;complexType>
+         *             &lt;complexContent>
+         *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *                 &lt;sequence>
+         *                   &lt;element name="PecRegional" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+         *                           &lt;sequence>
+         *                             &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+         *                     &lt;complexType>
+         *                       &lt;complexContent>
+         *                         &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+         *                           &lt;sequence>
+         *                             &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+         *                             &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+         *                           &lt;/sequence>
+         *                         &lt;/extension>
+         *                       &lt;/complexContent>
+         *                     &lt;/complexType>
+         *                   &lt;/element>
+         *                   &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+         *                 &lt;/sequence>
+         *               &lt;/restriction>
+         *             &lt;/complexContent>
+         *           &lt;/complexType>
+         *         &lt;/element>
+         *       &lt;/sequence>
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "viaFoodAndWater"
+        })
+        public static class RiskForManViaEnvironment {
+
+            @XmlElement(name = "ViaFoodAndWater")
+            protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater viaFoodAndWater;
+
+            /**
+             * Gets the value of the viaFoodAndWater property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater }
+             *     
+             */
+            public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater getViaFoodAndWater() {
+                return viaFoodAndWater;
+            }
+
+            /**
+             * Sets the value of the viaFoodAndWater property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater }
+             *     
+             */
+            public void setViaFoodAndWater(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater value) {
+                this.viaFoodAndWater = value;
+            }
+
+
+            /**
+             * <p>Java class for anonymous complex type.
+             * 
+             * <p>The following schema fragment specifies the expected content contained within this class.
+             * 
+             * <pre>
+             * &lt;complexType>
+             *   &lt;complexContent>
+             *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+             *       &lt;sequence>
+             *         &lt;element name="PecRegional" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+             *                 &lt;sequence>
+             *                   &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureAssessmentMethod" minOccurs="0">
+             *           &lt;complexType>
+             *             &lt;complexContent>
+             *               &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+             *                 &lt;sequence>
+             *                   &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+             *                   &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+             *                 &lt;/sequence>
+             *               &lt;/extension>
+             *             &lt;/complexContent>
+             *           &lt;/complexType>
+             *         &lt;/element>
+             *         &lt;element name="ExposureEstimationTool" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textFieldLarge" minOccurs="0"/>
+             *       &lt;/sequence>
+             *     &lt;/restriction>
+             *   &lt;/complexContent>
+             * &lt;/complexType>
+             * </pre>
+             * 
+             * 
+             */
+            @XmlAccessorType(XmlAccessType.FIELD)
+            @XmlType(name = "", propOrder = {
+                "pecRegional",
+                "exposureAssessmentMethod",
+                "exposureEstimationTool"
+            })
+            public static class ViaFoodAndWater {
+
+                @XmlElement(name = "PecRegional")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater.PecRegional pecRegional;
+                @XmlElement(name = "ExposureAssessmentMethod")
+                protected FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater.ExposureAssessmentMethod exposureAssessmentMethod;
+                @XmlElement(name = "ExposureEstimationTool")
+                protected String exposureEstimationTool;
+
+                /**
+                 * Gets the value of the pecRegional property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater.PecRegional }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater.PecRegional getPecRegional() {
+                    return pecRegional;
+                }
+
+                /**
+                 * Sets the value of the pecRegional property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater.PecRegional }
+                 *     
+                 */
+                public void setPecRegional(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater.PecRegional value) {
+                    this.pecRegional = value;
+                }
+
+                /**
+                 * Gets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater.ExposureAssessmentMethod }
+                 *     
+                 */
+                public FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater.ExposureAssessmentMethod getExposureAssessmentMethod() {
+                    return exposureAssessmentMethod;
+                }
+
+                /**
+                 * Sets the value of the exposureAssessmentMethod property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater.ExposureAssessmentMethod }
+                 *     
+                 */
+                public void setExposureAssessmentMethod(FLEXIBLERECORDEnvironmentalAssessment.RegionalExposure.RiskForManViaEnvironment.ViaFoodAndWater.ExposureAssessmentMethod value) {
+                    this.exposureAssessmentMethod = value;
+                }
+
+                /**
+                 * Gets the value of the exposureEstimationTool property.
+                 * 
+                 * @return
+                 *     possible object is
+                 *     {@link String }
+                 *     
+                 */
+                public String getExposureEstimationTool() {
+                    return exposureEstimationTool;
+                }
+
+                /**
+                 * Sets the value of the exposureEstimationTool property.
+                 * 
+                 * @param value
+                 *     allowed object is
+                 *     {@link String }
+                 *     
+                 */
+                public void setExposureEstimationTool(String value) {
+                    this.exposureEstimationTool = value;
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePicklistField">
+                 *       &lt;sequence>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}EXP01" minOccurs="0"/>
+                 *         &lt;element name="other" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}multilingualTextFieldSmall" maxOccurs="unbounded" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "value",
+                    "other"
+                })
+                public static class ExposureAssessmentMethod
+                    extends BasePicklistField
+                {
+
+                    protected String value;
+                    protected List<MultilingualTextFieldSmall> other;
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                    /**
+                     * Gets the value of the other property.
+                     * 
+                     * <p>
+                     * This accessor method returns a reference to the live list,
+                     * not a snapshot. Therefore any modification you make to the
+                     * returned list will be present inside the JAXB object.
+                     * This is why there is not a <CODE>set</CODE> method for the other property.
+                     * 
+                     * <p>
+                     * For example, to add a new item, do as follows:
+                     * <pre>
+                     *    getOther().add(newItem);
+                     * </pre>
+                     * 
+                     * 
+                     * <p>
+                     * Objects of the following type(s) are allowed in the list
+                     * {@link MultilingualTextFieldSmall }
+                     * 
+                     * 
+                     */
+                    public List<MultilingualTextFieldSmall> getOther() {
+                        if (other == null) {
+                            other = new ArrayList<MultilingualTextFieldSmall>();
+                        }
+                        return this.other;
+                    }
+
+                }
+
+
+                /**
+                 * <p>Java class for anonymous complex type.
+                 * 
+                 * <p>The following schema fragment specifies the expected content contained within this class.
+                 * 
+                 * <pre>
+                 * &lt;complexType>
+                 *   &lt;complexContent>
+                 *     &lt;extension base="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}basePhysicalQuantityField">
+                 *       &lt;sequence>
+                 *         &lt;element name="unitCode" type="{http://iuclid6.echa.europa.eu/namespaces/core/v6}TD135" minOccurs="0"/>
+                 *         &lt;element name="value" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}textField" minOccurs="0"/>
+                 *       &lt;/sequence>
+                 *     &lt;/extension>
+                 *   &lt;/complexContent>
+                 * &lt;/complexType>
+                 * </pre>
+                 * 
+                 * 
+                 */
+                @XmlAccessorType(XmlAccessType.FIELD)
+                @XmlType(name = "", propOrder = {
+                    "unitCode",
+                    "value"
+                })
+                public static class PecRegional
+                    extends BasePhysicalQuantityField
+                {
+
+                    protected String unitCode;
+                    protected String value;
+
+                    /**
+                     * Gets the value of the unitCode property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getUnitCode() {
+                        return unitCode;
+                    }
+
+                    /**
+                     * Sets the value of the unitCode property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setUnitCode(String value) {
+                        this.unitCode = value;
+                    }
+
+                    /**
+                     * Gets the value of the value property.
+                     * 
+                     * @return
+                     *     possible object is
+                     *     {@link String }
+                     *     
+                     */
+                    public String getValue() {
+                        return value;
+                    }
+
+                    /**
+                     * Sets the value of the value property.
+                     * 
+                     * @param value
+                     *     allowed object is
+                     *     {@link String }
+                     *     
+                     */
+                    public void setValue(String value) {
+                        this.value = value;
+                    }
+
+                }
+
+            }
+
+        }
+
+
+        /**
+         * <p>Java class for anonymous complex type.
+         * 
+         * <p>The following schema fragment specifies the expected content contained within this class.
+         * 
+         * <pre>
+         * &lt;complexType>
+         *   &lt;complexContent>
+         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+         *       &lt;sequence>
+         *         &lt;element name="SumWaterRelease" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}numericField" minOccurs="0"/>
+         *         &lt;element name="SumAirRelease" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}numericField" minOccurs="0"/>
+         *         &lt;element name="SumSoilRelease" type="{http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1}numericField" minOccurs="0"/>
+         *       &lt;/sequence>
+         *     &lt;/restriction>
+         *   &lt;/complexContent>
+         * &lt;/complexType>
+         * </pre>
+         * 
+         * 
+         */
+        @XmlAccessorType(XmlAccessType.FIELD)
+        @XmlType(name = "", propOrder = {
+            "sumWaterRelease",
+            "sumAirRelease",
+            "sumSoilRelease"
+        })
+        public static class TotalReleases {
+
+            @XmlElementRef(name = "SumWaterRelease", namespace = "http://iuclid6.echa.europa.eu/namespaces/FLEXIBLE_RECORD-EnvironmentalAssessment/6.0", type = JAXBElement.class, required = false)
+            protected JAXBElement<BigDecimal> sumWaterRelease;
+            @XmlElementRef(name = "SumAirRelease", namespace = "http://iuclid6.echa.europa.eu/namespaces/FLEXIBLE_RECORD-EnvironmentalAssessment/6.0", type = JAXBElement.class, required = false)
+            protected JAXBElement<BigDecimal> sumAirRelease;
+            @XmlElementRef(name = "SumSoilRelease", namespace = "http://iuclid6.echa.europa.eu/namespaces/FLEXIBLE_RECORD-EnvironmentalAssessment/6.0", type = JAXBElement.class, required = false)
+            protected JAXBElement<BigDecimal> sumSoilRelease;
+
+            /**
+             * Gets the value of the sumWaterRelease property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}
+             *     
+             */
+            public JAXBElement<BigDecimal> getSumWaterRelease() {
+                return sumWaterRelease;
+            }
+
+            /**
+             * Sets the value of the sumWaterRelease property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}
+             *     
+             */
+            public void setSumWaterRelease(JAXBElement<BigDecimal> value) {
+                this.sumWaterRelease = value;
+            }
+
+            /**
+             * Gets the value of the sumAirRelease property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}
+             *     
+             */
+            public JAXBElement<BigDecimal> getSumAirRelease() {
+                return sumAirRelease;
+            }
+
+            /**
+             * Sets the value of the sumAirRelease property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}
+             *     
+             */
+            public void setSumAirRelease(JAXBElement<BigDecimal> value) {
+                this.sumAirRelease = value;
+            }
+
+            /**
+             * Gets the value of the sumSoilRelease property.
+             * 
+             * @return
+             *     possible object is
+             *     {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}
+             *     
+             */
+            public JAXBElement<BigDecimal> getSumSoilRelease() {
+                return sumSoilRelease;
+            }
+
+            /**
+             * Sets the value of the sumSoilRelease property.
+             * 
+             * @param value
+             *     allowed object is
+             *     {@link JAXBElement }{@code <}{@link BigDecimal }{@code >}
+             *     
+             */
+            public void setSumSoilRelease(JAXBElement<BigDecimal> value) {
+                this.sumSoilRelease = value;
+            }
+
+        }
+
+    }
+
+}

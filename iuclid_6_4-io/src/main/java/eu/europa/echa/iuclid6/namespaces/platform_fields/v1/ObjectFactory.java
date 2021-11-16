@@ -1,0 +1,320 @@
+
+package eu.europa.echa.iuclid6.namespaces.platform_fields.v1;
+
+import javax.xml.bind.annotation.XmlRegistry;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the eu.europa.echa.iuclid6.namespaces.platform_fields.v1 package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: eu.europa.echa.iuclid6.namespaces.platform_fields.v1
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link SectionTypesField }
+     * 
+     */
+    public SectionTypesField createSectionTypesField() {
+        return new SectionTypesField();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualTextFieldLarge }
+     * 
+     */
+    public MultilingualTextFieldLarge createMultilingualTextFieldLarge() {
+        return new MultilingualTextFieldLarge();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualPicklistField }
+     * 
+     */
+    public MultilingualPicklistField createMultilingualPicklistField() {
+        return new MultilingualPicklistField();
+    }
+
+    /**
+     * Create an instance of {@link AttachmentListField }
+     * 
+     */
+    public AttachmentListField createAttachmentListField() {
+        return new AttachmentListField();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualPhysicalQuantityHalfBoundedField }
+     * 
+     */
+    public MultilingualPhysicalQuantityHalfBoundedField createMultilingualPhysicalQuantityHalfBoundedField() {
+        return new MultilingualPhysicalQuantityHalfBoundedField();
+    }
+
+    /**
+     * Create an instance of {@link PhysicalQuantityRangeField }
+     * 
+     */
+    public PhysicalQuantityRangeField createPhysicalQuantityRangeField() {
+        return new PhysicalQuantityRangeField();
+    }
+
+    /**
+     * Create an instance of {@link PicklistField }
+     * 
+     */
+    public PicklistField createPicklistField() {
+        return new PicklistField();
+    }
+
+    /**
+     * Create an instance of {@link PhysicalQuantityField }
+     * 
+     */
+    public PhysicalQuantityField createPhysicalQuantityField() {
+        return new PhysicalQuantityField();
+    }
+
+    /**
+     * Create an instance of {@link BasePhysicalQuantityField }
+     * 
+     */
+    public BasePhysicalQuantityField createBasePhysicalQuantityField() {
+        return new BasePhysicalQuantityField();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualLegislation }
+     * 
+     */
+    public MultilingualLegislation createMultilingualLegislation() {
+        return new MultilingualLegislation();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualTextFieldMultiLine }
+     * 
+     */
+    public MultilingualTextFieldMultiLine createMultilingualTextFieldMultiLine() {
+        return new MultilingualTextFieldMultiLine();
+    }
+
+    /**
+     * Create an instance of {@link DataProtectionField }
+     * 
+     */
+    public DataProtectionField createDataProtectionField() {
+        return new DataProtectionField();
+    }
+
+    /**
+     * Create an instance of {@link BasePicklistField }
+     * 
+     */
+    public BasePicklistField createBasePicklistField() {
+        return new BasePicklistField();
+    }
+
+    /**
+     * Create an instance of {@link Legislation }
+     * 
+     */
+    public Legislation createLegislation() {
+        return new Legislation();
+    }
+
+    /**
+     * Create an instance of {@link PhysicalQuantityIntegerRangeField }
+     * 
+     */
+    public PhysicalQuantityIntegerRangeField createPhysicalQuantityIntegerRangeField() {
+        return new PhysicalQuantityIntegerRangeField();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualPhysicalQuantityIntegerHalfBoundedField }
+     * 
+     */
+    public MultilingualPhysicalQuantityIntegerHalfBoundedField createMultilingualPhysicalQuantityIntegerHalfBoundedField() {
+        return new MultilingualPhysicalQuantityIntegerHalfBoundedField();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualPicklistFieldWithSmallTextRemarks }
+     * 
+     */
+    public MultilingualPicklistFieldWithSmallTextRemarks createMultilingualPicklistFieldWithSmallTextRemarks() {
+        return new MultilingualPicklistFieldWithSmallTextRemarks();
+    }
+
+    /**
+     * Create an instance of {@link InventoryEntry }
+     * 
+     */
+    public InventoryEntry createInventoryEntry() {
+        return new InventoryEntry();
+    }
+
+    /**
+     * Create an instance of {@link PicklistFieldWithLargeTextRemarks }
+     * 
+     */
+    public PicklistFieldWithLargeTextRemarks createPicklistFieldWithLargeTextRemarks() {
+        return new PicklistFieldWithLargeTextRemarks();
+    }
+
+    /**
+     * Create an instance of {@link PicklistFieldWithSmallTextRemarks }
+     * 
+     */
+    public PicklistFieldWithSmallTextRemarks createPicklistFieldWithSmallTextRemarks() {
+        return new PicklistFieldWithSmallTextRemarks();
+    }
+
+    /**
+     * Create an instance of {@link DocumentReferenceMultipleField }
+     * 
+     */
+    public DocumentReferenceMultipleField createDocumentReferenceMultipleField() {
+        return new DocumentReferenceMultipleField();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualTextField }
+     * 
+     */
+    public MultilingualTextField createMultilingualTextField() {
+        return new MultilingualTextField();
+    }
+
+    /**
+     * Create an instance of {@link PicklistFieldWithMultiLineTextRemarks }
+     * 
+     */
+    public PicklistFieldWithMultiLineTextRemarks createPicklistFieldWithMultiLineTextRemarks() {
+        return new PicklistFieldWithMultiLineTextRemarks();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualPhysicalQuantityIntegerRangeField }
+     * 
+     */
+    public MultilingualPhysicalQuantityIntegerRangeField createMultilingualPhysicalQuantityIntegerRangeField() {
+        return new MultilingualPhysicalQuantityIntegerRangeField();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualPicklistFieldWithLargeTextRemarks }
+     * 
+     */
+    public MultilingualPicklistFieldWithLargeTextRemarks createMultilingualPicklistFieldWithLargeTextRemarks() {
+        return new MultilingualPicklistFieldWithLargeTextRemarks();
+    }
+
+    /**
+     * Create an instance of {@link PhysicalQuantityHalfBoundedField }
+     * 
+     */
+    public PhysicalQuantityHalfBoundedField createPhysicalQuantityHalfBoundedField() {
+        return new PhysicalQuantityHalfBoundedField();
+    }
+
+    /**
+     * Create an instance of {@link PhysicalQuantityIntegerHalfBoundedField }
+     * 
+     */
+    public PhysicalQuantityIntegerHalfBoundedField createPhysicalQuantityIntegerHalfBoundedField() {
+        return new PhysicalQuantityIntegerHalfBoundedField();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualTextFieldSmall }
+     * 
+     */
+    public MultilingualTextFieldSmall createMultilingualTextFieldSmall() {
+        return new MultilingualTextFieldSmall();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualDataProtectionField }
+     * 
+     */
+    public MultilingualDataProtectionField createMultilingualDataProtectionField() {
+        return new MultilingualDataProtectionField();
+    }
+
+    /**
+     * Create an instance of {@link BaseDataProtectionField }
+     * 
+     */
+    public BaseDataProtectionField createBaseDataProtectionField() {
+        return new BaseDataProtectionField();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualPhysicalQuantityRangeField }
+     * 
+     */
+    public MultilingualPhysicalQuantityRangeField createMultilingualPhysicalQuantityRangeField() {
+        return new MultilingualPhysicalQuantityRangeField();
+    }
+
+    /**
+     * Create an instance of {@link BasePhysicalQuantityRangeField }
+     * 
+     */
+    public BasePhysicalQuantityRangeField createBasePhysicalQuantityRangeField() {
+        return new BasePhysicalQuantityRangeField();
+    }
+
+    /**
+     * Create an instance of {@link AddressField }
+     * 
+     */
+    public AddressField createAddressField() {
+        return new AddressField();
+    }
+
+    /**
+     * Create an instance of {@link MultilingualPicklistFieldWithMultiLineTextRemarks }
+     * 
+     */
+    public MultilingualPicklistFieldWithMultiLineTextRemarks createMultilingualPicklistFieldWithMultiLineTextRemarks() {
+        return new MultilingualPicklistFieldWithMultiLineTextRemarks();
+    }
+
+    /**
+     * Create an instance of {@link RepeatableEntryType }
+     * 
+     */
+    public RepeatableEntryType createRepeatableEntryType() {
+        return new RepeatableEntryType();
+    }
+
+    /**
+     * Create an instance of {@link SectionTypesField.DocumentDefinitionIdentifier }
+     * 
+     */
+    public SectionTypesField.DocumentDefinitionIdentifier createSectionTypesFieldDocumentDefinitionIdentifier() {
+        return new SectionTypesField.DocumentDefinitionIdentifier();
+    }
+
+}

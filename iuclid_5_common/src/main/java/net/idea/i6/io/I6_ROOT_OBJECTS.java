@@ -49,7 +49,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 	REFERENCE_SUBSTANCE {
 		@Override
 		public String getContextPath() {
-			return "eu.europa.echa.iuclid6.namespaces.reference_substance._2";
+			return "eu.europa.echa.iuclid6.namespaces.reference_substance._6";
 		}
 
 		@Override
@@ -104,10 +104,15 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 			return false;
 		}
 	},
+	FLEXIBLE_RECORD_Identifiers {
+		public boolean isSupported() {
+			return false;
+		}
+	},
 	SUBSTANCE {
 		@Override
 		public String getContextPath() {
-			return "eu.europa.echa.iuclid6.namespaces.substance._2";
+			return "eu.europa.echa.iuclid6.namespaces.substance._6";
 		}
 
 		@Override
@@ -167,7 +172,12 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		}
 	},
 	ENDPOINT_STUDY_RECORD_AcuteToxicityOtherRoutes {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.TO_ACUTE_OTHER;
+		}
 	},
+
 	ENDPOINT_STUDY_RECORD_AdditionalInformationOnEnvironmentalFateAndBehaviour {
 	},
 	ENDPOINT_STUDY_RECORD_AdditionalPhysicoChemical {
@@ -202,6 +212,18 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 			return I5_ROOT_OBJECTS.TO_CARCINOGENICITY;
 		}
 	},
+	ENDPOINT_STUDY_RECORD_Density {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.PC_DENSITY;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_Viscosity {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.PC_VISCOSITY;
+		}
+	},	
 	ENDPOINT_STUDY_RECORD_PourDensity {
 		@Override
 		public I5_ROOT_OBJECTS mapIUCLID5() {
@@ -212,6 +234,12 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		@Override
 		public I5_ROOT_OBJECTS mapIUCLID5() {
 			return I5_ROOT_OBJECTS.TO_DEVELOPMENTAL;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_Dustiness {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.DUSTINESS;
 		}
 	},
 	ENDPOINT_STUDY_RECORD_DirectObservationsClinicalCases {
@@ -291,6 +319,10 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		}
 	},
 	ENDPOINT_STUDY_RECORD_RepeatedDoseToxicityOther {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.TO_REPEATED_OTHER;
+		}
 	},
 	ENDPOINT_STUDY_RECORD_ShortTermToxicityToAquaInv {
 		@Override
@@ -401,7 +433,10 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 
 	},
 	ENDPOINT_STUDY_RECORD_SurfaceTension {
-
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.SURFACE_TENSION;
+		}
 	},
 	ENDPOINT_STUDY_RECORD_ToxicityToBirds {
 
@@ -424,9 +459,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 			return I5_ROOT_OBJECTS.EC_HONEYBEESTOX;
 		}
 	},
-	ENDPOINT_STUDY_RECORD_Viscosity {
 
-	},
 	ENDPOINT_STUDY_RECORD_BiodegradationInSoil {
 		@Override
 		public I5_ROOT_OBJECTS mapIUCLID5() {
@@ -474,9 +507,75 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 	},
 	ENDPOINT_STUDY_RECORD_ToxicityReproductionOther {
 
-	}
+	},
+	ENDPOINT_STUDY_RECORD_AgglomeratiionAggregation {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.AGGLOMERATION_AGGREGATION;
+		}
+	},
 
-	;
+	ENDPOINT_STUDY_RECORD_AspectRatioShape {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.ASPECT_RATIO_SHAPE;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_CatalyticActivity {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.CATALYTIC_ACTIVITY;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_CrystallinePhase {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.CRYSTALLINE_PHASE;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_CrystalliteGrainSize {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.CRYSTALLITE_AND_GRAIN_SIZE;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_Porosity {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.POROSITY;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_PhotoCatalyticActivity {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.PHOTOCATALYTIC_ACTIVITY;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_SpecificSurfaceArea {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.SPECIFIC_SURFACE_AREA;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_SurfaceChemistry {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.SURFACE_CHEMISTRY;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_ZetaPotential {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.ZETA_POTENTIAL;
+		}
+	},
+	ENDPOINT_STUDY_RECORD_RadicalFormation {
+		@Override
+		public I5_ROOT_OBJECTS mapIUCLID5() {
+			return I5_ROOT_OBJECTS.RADICAL_FORMATION_POTENTIAL_SECTION;
+		}
+
+	};
 
 	public I5_ROOT_OBJECTS mapIUCLID5() {
 		return null;
@@ -491,7 +590,7 @@ public enum I6_ROOT_OBJECTS implements IROOT_OBJECTS {
 		if (isIUCLID6())
 			// package
 			// eu.europa.echa.iuclid6.namespaces.endpoint_study_record_directobservationsclinicalcases._2;
-			return String.format("eu.europa.echa.iuclid6.namespaces.%s._2", name().toLowerCase());
+			return String.format("eu.europa.echa.iuclid6.namespaces.%s._6", name().toLowerCase());
 
 		else
 			return null;
