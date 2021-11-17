@@ -24,7 +24,7 @@ Development snapshot
 <dependency>
   <groupId>net.idea</groupId>
   <artifactId>i5z</artifactId>
-  <version>2.0.1-SNAPSHOT</version>
+  <version>2.2.0-SNAPSHOT</version>
 </dependency>
 ````
 
